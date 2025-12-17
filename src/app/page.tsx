@@ -16,7 +16,6 @@ import ProgressTracker from "@/components/ProgressTracker";
 import type { Deck } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
-import MotivationalMessage from "@/components/MotivationalMessage";
 import DeckView from "@/components/DeckView";
 
 export default function Home() {
@@ -71,7 +70,6 @@ export default function Home() {
           />
         </SidebarContent>
         <SidebarFooter>
-          <ProgressTracker />
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
@@ -88,7 +86,7 @@ export default function Home() {
             {selectedDeck ? (
               <DeckView deck={selectedDeck} />
             ) : (
-              <MotivationalMessage />
+              <ProgressTracker mainView={true} />
             )}
           </main>
         </div>

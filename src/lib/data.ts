@@ -3,7 +3,7 @@ import type { Note } from './types';
 export const initialNotes: Note[] = [
   {
     id: '1',
-    title: 'Welcome to Evergreen!',
+    title: 'Welcome to Titra!',
     body: 'This is your first note. Feel free to edit it or create a new one. Use the sidebar to navigate your notes and track your progress.',
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24),
     updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24),

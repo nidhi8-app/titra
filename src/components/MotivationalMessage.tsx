@@ -14,7 +14,7 @@ const MotivationalMessage = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-background/50">
         <Sparkles className="w-16 h-16 text-gold mb-4" />
-        <p className="text-2xl font-semibold text-gold font-headline">
+        <p className="text-2xl font-bold italic text-gold font-headline">
             {message}
         </p>
         <p className="mt-4 text-muted-foreground">

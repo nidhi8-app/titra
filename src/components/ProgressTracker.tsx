@@ -12,7 +12,7 @@ const ProgressTracker = () => {
 
     return (
         <Card className="m-2 border-2 border-primary/20 bg-primary/5 shadow-none">
-            <CardHeader>
+            <CardHeader className="items-center">
                 <CardTitle className="font-sidebar text-2xl font-bold text-primary/80">
                     Your Progress
                 </CardTitle>

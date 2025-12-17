@@ -21,7 +21,7 @@ const NoteList = ({
   onCreateNote,
 }: NoteListProps) => {
   return (
-    <div className="p-2 flex flex-col h-full">
+    <div className="p-2 flex flex-col h-full items-center">
       <Button
         onClick={onCreateNote}
         className="w-full mb-4 font-sidebar font-bold text-lg rounded-xl shadow-sm"
@@ -29,13 +29,13 @@ const NoteList = ({
       >
         <Plus className="mr-2" /> New Note
       </Button>
-      <ScrollArea className="flex-1">
+      <ScrollArea className="flex-1 w-full">
         <div className="space-y-2 pr-2">
           {notes.map((note) => (
             <button
               key={note.id}
               onClick={() => onSelectNote(note.id)}
-              className={`w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg ${
+              className={`w-full p-3 text-center rounded-2xl transition-colors duration-200 font-sidebar text-lg ${
                 selectedNoteId === note.id
                   ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-inner'
                   : 'hover:bg-sidebar-accent/50'

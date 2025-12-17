@@ -22,12 +22,16 @@ import StreakTracker from "@/components/StreakTracker";
 import MotivationalMessage from "@/components/MotivationalMessage";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import NavMenu from "@/components/NavMenu";
+import LearningStyle from "@/components/LearningStyle";
+
+type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
   const [selectedDeckId, setSelectedDeckId] = React.useState<string | null>(
     null
   );
+  const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const { toast } = useToast();
 
   const handleCreateDeck = () => {
@@ -46,9 +50,16 @@ export default function Home() {
 
   const handleSelectDeck = (id: string) => {
     setSelectedDeckId(id);
+    setActiveView("dashboard");
   };
 
   const handleGoHome = () => {
+    setSelectedDeckId(null);
+    setActiveView("dashboard");
+  };
+  
+  const handleNavigate = (view: ActiveView) => {
+    setActiveView(view);
     setSelectedDeckId(null);
   };
 
@@ -78,6 +89,50 @@ export default function Home() {
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
+  
+  const renderContent = () => {
+    if (selectedDeck) {
+      return <DeckView deck={selectedDeck} />;
+    }
+
+    switch (activeView) {
+      case "dashboard":
+        return (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
+            <div className="lg:col-span-2">
+              <StreakTracker />
+            </div>
+            <div className="lg:col-span-1 h-full">
+              <ScrollArea className="h-full">
+                <div className="pr-4">
+                  <ProgressTracker mainView={true} />
+                  <MotivationalMessage />
+                </div>
+              </ScrollArea>
+            </div>
+          </div>
+        );
+      case "learning-style":
+        return <LearningStyle />;
+      case "quizzes":
+        return <div className="p-8"><h1>Quizzes</h1><p>Coming soon!</p></div>;
+      case "friends":
+        return <div className="p-8"><h1>Friends</h1><p>Coming soon!</p></div>;
+      default:
+        return null;
+    }
+  };
+
+  const getTitle = () => {
+    if (selectedDeck) return selectedDeck.title;
+    switch (activeView) {
+      case 'dashboard': return 'Titra';
+      case 'learning-style': return 'Learning Style';
+      case 'quizzes': return 'Quizzes';
+      case 'friends': return 'Friends';
+      default: return 'Titra';
+    }
+  }
 
   return (
     <SidebarProvider>
@@ -95,7 +150,7 @@ export default function Home() {
         </SidebarHeader>
         <SidebarContent>
           <div className="p-2">
-            <NavMenu />
+            <NavMenu activeView={activeView} onNavigate={handleNavigate} />
           </div>
           <SidebarSeparator />
           <DeckList
@@ -116,28 +171,12 @@ export default function Home() {
              <div className="flex items-center gap-2">
                 <SidebarTrigger className="md:hidden" />
                 <h2 className="text-xl font-semibold truncate">
-                  {selectedDeck ? selectedDeck.title : "Titra"}
+                  {getTitle()}
                 </h2>
              </div>
           </header>
           <main className="flex-1 overflow-y-auto">
-            {selectedDeck ? (
-              <DeckView deck={selectedDeck} />
-            ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
-                <div className="lg:col-span-2">
-                  <StreakTracker />
-                </div>
-                <div className="lg:col-span-1 h-full">
-                  <ScrollArea className="h-full">
-                    <div className="space-y-2 pr-4">
-                      <ProgressTracker mainView={true} />
-                      <MotivationalMessage />
-                    </div>
-                  </ScrollArea>
-                </div>
-              </div>
-            )}
+            {renderContent()}
           </main>
         </div>
       </SidebarInset>

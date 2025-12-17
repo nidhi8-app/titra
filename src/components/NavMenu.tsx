@@ -7,28 +7,34 @@ import {
 } from "@/components/ui/sidebar";
 import { LayoutGrid, Bug, Files, Users } from "lucide-react";
 
-const NavMenu = () => {
-  const menuItems = [
+type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
+
+type NavMenuProps = {
+  activeView: ActiveView;
+  onNavigate: (view: ActiveView) => void;
+};
+
+const NavMenu = ({ activeView, onNavigate }: NavMenuProps) => {
+  const menuItems: { id: ActiveView; label: string; icon: React.ElementType }[] = [
     {
+      id: "dashboard",
       label: "Dashboard",
       icon: LayoutGrid,
-      href: "#",
-      active: true,
     },
     {
+      id: "learning-style",
       label: "Learning Style",
       icon: Bug,
-      href: "#",
     },
     {
+      id: "quizzes",
       label: "Quizzes",
       icon: Files,
-      href: "#",
     },
     {
+      id: "friends",
       label: "Friends",
       icon: Users,
-      href: "#",
     },
   ];
 
@@ -37,14 +43,12 @@ const NavMenu = () => {
       {menuItems.map((item, index) => (
         <SidebarMenuItem key={index}>
           <SidebarMenuButton
-            asChild
-            isActive={item.active}
+            onClick={() => onNavigate(item.id)}
+            isActive={activeView === item.id}
             className="font-sidebar font-bold text-lg"
           >
-            <a href={item.href}>
-              <item.icon />
-              <span>{item.label}</span>
-            </a>
+            <item.icon />
+            <span>{item.label}</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}

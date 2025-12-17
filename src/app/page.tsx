@@ -78,7 +78,7 @@ export default function Home() {
              <div className="flex items-center gap-2">
                 <SidebarTrigger className="md:hidden" />
                 <h2 className="text-xl font-semibold truncate">
-                  {selectedDeck ? selectedDeck.title : "Decks"}
+                  {selectedDeck ? selectedDeck.title : "Titra"}
                 </h2>
              </div>
           </header>

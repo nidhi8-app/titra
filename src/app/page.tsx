@@ -18,6 +18,7 @@ import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
 import StreakTracker from "@/components/StreakTracker";
+import MotivationalMessage from "@/components/MotivationalMessage";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -91,8 +92,9 @@ export default function Home() {
                 <div className="lg:col-span-2">
                   <StreakTracker />
                 </div>
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-1 space-y-8">
                   <ProgressTracker mainView={true} />
+                  <MotivationalMessage />
                 </div>
               </div>
             )}

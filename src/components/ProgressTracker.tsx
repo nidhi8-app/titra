@@ -17,7 +17,7 @@ const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
 
     if (mainView) {
       return (
-         <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-background/50">
+         <div className="flex flex-col items-end justify-start h-full p-8 text-center bg-background/50">
            <Card className="w-full max-w-sm border-2 border-primary/20 bg-primary/5 shadow-lg">
              <CardHeader>
                <CardTitle className="text-2xl font-bold text-primary">
@@ -38,7 +38,7 @@ const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
                </div>
              </CardContent>
            </Card>
-           <p className="mt-6 text-muted-foreground">
+           <p className="mt-6 text-muted-foreground w-full max-w-sm">
              Create a new deck or select an existing one to get started.
            </p>
          </div>

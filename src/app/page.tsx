@@ -17,6 +17,7 @@ import type { Deck } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import MotivationalMessage from "@/components/MotivationalMessage";
+import DeckView from "@/components/DeckView";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -29,6 +30,7 @@ export default function Home() {
     const newDeck: Deck = {
       id: Date.now().toString(),
       title: "New Deck",
+      cards: [],
     };
     setDecks((prev) => [newDeck, ...prev]);
     setSelectedDeckId(newDeck.id);
@@ -83,9 +85,7 @@ export default function Home() {
              </div>
           </header>
           {selectedDeck ? (
-            <div className="flex-1 p-4 flex items-center justify-center">
-              <p className="text-2xl font-semibold">This is the {selectedDeck.title} deck.</p>
-            </div>
+            <DeckView deck={selectedDeck} />
           ) : (
             <MotivationalMessage />
           )}

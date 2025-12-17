@@ -4,10 +4,24 @@ export const initialDecks: Deck[] = [
   {
     id: '1',
     title: 'Bonding',
+    cards: [
+        { id: 'c1', title: 'English Language G...', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
+        { id: 'c2', title: 'English Literature G...', color: 'bg-pink-400', cardCount: 0, progress: 0 },
+        { id: 'c3', title: 'Economics GCSE', color: 'bg-blue-400', cardCount: 0, progress: 0 },
+        { id: 'c4', title: 'Computer Science G...', color: 'bg-green-400', cardCount: 0, progress: 0 },
+        { id: 'c5', title: 'Chemistry GCSE', color: 'bg-sky-400', cardCount: 15, progress: 0 },
+        { id: 'c6', title: 'Psychology GC...', color: 'bg-red-400', cardCount: 81, progress: 0 },
+        { id: 'c7', title: 'Physics GCSE', color: 'bg-fuchsia-400', cardCount: 271, progress: 54 },
+        { id: 'c8', title: 'Biology GCSE', color: 'bg-amber-400', cardCount: 227, progress: 19 },
+    ]
   },
   {
     id: '2',
     title: 'Titration',
+    cards: [
+        { id: 'c9', title: 'Organic Chemistry', color: 'bg-emerald-400', cardCount: 120, progress: 25 },
+        { id: 'c10', title: 'Inorganic Chemistry', color: 'bg-violet-400', cardCount: 95, progress: 60 },
+    ]
   },
 ];
 

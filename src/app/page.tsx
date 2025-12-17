@@ -19,6 +19,7 @@ import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
 import StreakTracker from "@/components/StreakTracker";
 import MotivationalMessage from "@/components/MotivationalMessage";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -117,13 +118,17 @@ export default function Home() {
             {selectedDeck ? (
               <DeckView deck={selectedDeck} />
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
                 <div className="lg:col-span-2">
                   <StreakTracker />
                 </div>
-                <div className="lg:col-span-1 space-y-8">
-                  <ProgressTracker mainView={true} />
-                  <MotivationalMessage />
+                <div className="lg:col-span-1">
+                  <ScrollArea className="h-full">
+                    <div className="space-y-8 pr-4">
+                      <ProgressTracker mainView={true} />
+                      <MotivationalMessage />
+                    </div>
+                  </ScrollArea>
                 </div>
               </div>
             )}

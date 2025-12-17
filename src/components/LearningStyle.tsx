@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
 
 const LearningStyle = () => {
   const learnerType = "Visual Learner"; // This can be made dynamic later
@@ -14,13 +15,16 @@ const LearningStyle = () => {
             Your Learning Style
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <p className="text-center text-lg">
+        <CardContent className="text-center">
+          <p className="text-lg">
             You are a: <span className="font-bold text-primary">{learnerType}</span>
           </p>
-          <p className="text-center text-muted-foreground mt-4">
+          <p className="text-muted-foreground mt-4">
             Visual learners best absorb information through charts, graphs, and seeing information in a spatial layout.
           </p>
+          <Button className="mt-6">
+            Press here to re-take learning style quiz
+          </Button>
         </CardContent>
       </Card>
     </div>

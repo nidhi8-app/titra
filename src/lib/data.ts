@@ -3,7 +3,7 @@ import type { Deck, Note } from './types';
 export const initialDecks: Deck[] = [
   {
     id: '1',
-    title: 'Bonding',
+    title: 'Titra',
   },
   {
     id: '2',

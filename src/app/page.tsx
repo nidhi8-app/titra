@@ -83,9 +83,8 @@ export default function Home() {
              </div>
           </header>
           {selectedDeck ? (
-            <div className="flex-1 p-4">
-              {/* Future content for selected deck */}
-              <p>Deck: {selectedDeck.title}</p>
+            <div className="flex-1 p-4 flex items-center justify-center">
+              <p className="text-2xl font-semibold">This is the {selectedDeck.title} deck.</p>
             </div>
           ) : (
             <MotivationalMessage />

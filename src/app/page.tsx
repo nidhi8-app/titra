@@ -92,7 +92,7 @@ export default function Home() {
                 <div className="lg:col-span-2">
                   <StreakTracker />
                 </div>
-                <div className="lg:col-span-1 space-y-8">
+                <div className="lg:col-span-1">
                   <ProgressTracker mainView={true} />
                   <MotivationalMessage />
                 </div>

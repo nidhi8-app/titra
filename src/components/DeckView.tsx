@@ -11,6 +11,22 @@ type DeckViewProps = {
 };
 
 const DeckView = ({ deck }: DeckViewProps) => {
+  // If there are no cards, we can show a message to the user.
+  if (!deck.cards || deck.cards.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+        <h3 className="text-2xl font-semibold">This deck is empty!</h3>
+        <p className="mt-2 text-muted-foreground">
+          Click the button below to start adding cards.
+        </p>
+        <Button className="mt-4">
+          <Plus className="mr-2 h-4 w-4" />
+          Add Card
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-6">

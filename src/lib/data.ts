@@ -5,14 +5,14 @@ export const initialDecks: Deck[] = [
     id: '1',
     title: 'Bonding',
     cards: [
-        { id: 'c1', title: 'English Language G...', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
-        { id: 'c2', title: 'English Literature G...', color: 'bg-pink-400', cardCount: 0, progress: 0 },
-        { id: 'c3', title: 'Economics GCSE', color: 'bg-blue-400', cardCount: 0, progress: 0 },
-        { id: 'c4', title: 'Computer Science G...', color: 'bg-green-400', cardCount: 0, progress: 0 },
-        { id: 'c5', title: 'Chemistry GCSE', color: 'bg-sky-400', cardCount: 15, progress: 0 },
-        { id: 'c6', title: 'Psychology GC...', color: 'bg-red-400', cardCount: 81, progress: 0 },
-        { id: 'c7', title: 'Physics GCSE', color: 'bg-fuchsia-400', cardCount: 271, progress: 54 },
-        { id: 'c8', title: 'Biology GCSE', color: 'bg-amber-400', cardCount: 227, progress: 19 },
+        { id: 'c1', title: 'Ionic Bonding', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
+        { id: 'c2', title: 'Covalent Bonding', color: 'bg-pink-400', cardCount: 0, progress: 0 },
+        { id: 'c3', title: 'Metallic Bonding', color: 'bg-blue-400', cardCount: 0, progress: 0 },
+        { id: 'c4', title: 'Intermolecular Forces', color: 'bg-green-400', cardCount: 0, progress: 0 },
+        { id: 'c5', title: 'Giant Covalent Structures', color: 'bg-sky-400', cardCount: 15, progress: 0 },
+        { id: 'c6', title: 'Electronegativity', color: 'bg-red-400', cardCount: 81, progress: 0 },
+        { id: 'c7', title: 'Polarity', color: 'bg-fuchsia-400', cardCount: 271, progress: 54 },
+        { id: 'c8', title: 'Shapes of Molecules', color: 'bg-amber-400', cardCount: 227, progress: 19 },
     ]
   },
   {

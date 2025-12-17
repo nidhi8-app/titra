@@ -14,15 +14,23 @@ const diagramFolders = [
   { id: '4', title: 'Reaction Mechanisms' },
 ];
 
+const mindmapFolders = [
+  { id: '1', title: 'Periodic Table Trends' },
+  { id: '2', title: 'Types of Chemical Reactions' },
+  { id: '3', title: 'Solution Chemistry' },
+  { id: '4', title: 'Gas Laws' },
+];
+
 const LearningStyle = () => {
   const learnerType = "Visual Learner"; // This can be made dynamic later
 
   return (
     <div className="p-8 h-full flex flex-col">
       <Tabs defaultValue="style" className="flex-1 flex flex-col">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="style">Learning Style</TabsTrigger>
           <TabsTrigger value="diagrams">Diagrams of Chemistry</TabsTrigger>
+          <TabsTrigger value="mindmaps">Mindmaps</TabsTrigger>
         </TabsList>
         <TabsContent value="style" className="flex-1">
           <div className="flex items-center justify-center pt-8">
@@ -55,6 +63,28 @@ const LearningStyle = () => {
               <ScrollArea className="h-full">
                 <div className="space-y-2 pr-4">
                   {diagramFolders.map((folder) => (
+                     <button
+                        key={folder.id}
+                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
+                      >
+                        <Folder className="w-6 h-6 flex-shrink-0" />
+                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
+                      </button>
+                  ))}
+                </div>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="mindmaps" className="flex-1 flex flex-col pt-4">
+          <Card className="flex-1 flex flex-col">
+            <CardHeader>
+              <CardTitle>Mindmap Folders</CardTitle>
+            </CardHeader>
+            <CardContent className="flex-1">
+              <ScrollArea className="h-full">
+                <div className="space-y-2 pr-4">
+                  {mindmapFolders.map((folder) => (
                      <button
                         key={folder.id}
                         className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"

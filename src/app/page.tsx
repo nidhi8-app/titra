@@ -45,6 +45,10 @@ export default function Home() {
     setSelectedDeckId(id);
   };
 
+  const handleGoHome = () => {
+    setSelectedDeckId(null);
+  };
+
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
@@ -53,7 +57,7 @@ export default function Home() {
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader className="p-4 items-center">
-          <div className="flex items-center gap-2">
+          <button onClick={handleGoHome} className="flex items-center gap-2 text-left">
             <div className="relative">
               <FlaskConical className="w-8 h-8 text-primary" />
               <Sparkles className="absolute -top-1 -right-2 w-5 h-5 text-yellow-300" />
@@ -61,7 +65,7 @@ export default function Home() {
             <h1 className="font-headline text-2xl font-bold text-primary">
               Titra
             </h1>
-          </div>
+          </button>
         </SidebarHeader>
         <SidebarContent>
           <DeckList
@@ -92,7 +96,7 @@ export default function Home() {
                 <div className="lg:col-span-2">
                   <StreakTracker />
                 </div>
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-1 space-y-8">
                   <ProgressTracker mainView={true} />
                   <MotivationalMessage />
                 </div>

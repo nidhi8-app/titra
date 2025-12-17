@@ -84,11 +84,13 @@ export default function Home() {
                 </h2>
              </div>
           </header>
-          {selectedDeck ? (
-            <DeckView deck={selectedDeck} />
-          ) : (
-            <MotivationalMessage />
-          )}
+          <main className="flex-1 overflow-y-auto">
+            {selectedDeck ? (
+              <DeckView deck={selectedDeck} />
+            ) : (
+              <MotivationalMessage />
+            )}
+          </main>
         </div>
       </SidebarInset>
     </SidebarProvider>

@@ -12,17 +12,17 @@ type DeckViewProps = {
 
 const DeckView = ({ deck }: DeckViewProps) => {
   return (
-    <div className="flex-1 p-4 md:p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold">My decks</h2>
         <div className="flex items-center gap-2">
           <Button variant="outline">
-            <Plus className="mr-2" />
+            <Plus className="mr-2 h-4 w-4" />
             Add deck
           </Button>
           <Button>Learn</Button>
           <Button variant="ghost" size="icon">
-            <Search />
+            <Search className="h-4 w-4" />
           </Button>
         </div>
       </div>
@@ -31,10 +31,12 @@ const DeckView = ({ deck }: DeckViewProps) => {
           <div key={card.id} className="rounded-xl shadow-md bg-card border flex flex-col">
             <div className={`h-16 rounded-t-xl ${card.color}`}></div>
             <div className="p-4 flex-1 flex flex-col justify-between">
-              <h3 className="font-bold truncate mb-2">{card.title}</h3>
-              <div className="text-sm text-muted-foreground">
+              <div>
+                <h3 className="font-bold truncate mb-2">{card.title}</h3>
+              </div>
+              <div className="text-sm text-muted-foreground mt-2">
                 <div className="flex justify-between items-center">
-                  <span>{card.cardCount > 0 ? `${card.cardCount} cards` : ''}</span>
+                  <span>{card.cardCount > 0 ? `${card.cardCount} cards` : 'No cards'}</span>
                   {card.progress > 0 && (
                     <span className="font-semibold">{card.progress}%</span>
                   )}

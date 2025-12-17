@@ -17,6 +17,7 @@ import type { Deck } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
+import StreakTracker from "@/components/StreakTracker";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -86,7 +87,14 @@ export default function Home() {
             {selectedDeck ? (
               <DeckView deck={selectedDeck} />
             ) : (
-              <ProgressTracker mainView={true} />
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+                <div className="lg:col-span-2">
+                  <StreakTracker />
+                </div>
+                <div className="lg:col-span-1">
+                  <ProgressTracker mainView={true} />
+                </div>
+              </div>
             )}
           </main>
         </div>

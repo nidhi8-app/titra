@@ -9,6 +9,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { FlaskConical, Sparkles } from "lucide-react";
 import DeckList from "@/components/DeckList";
@@ -20,6 +21,7 @@ import DeckView from "@/components/DeckView";
 import StreakTracker from "@/components/StreakTracker";
 import MotivationalMessage from "@/components/MotivationalMessage";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import NavMenu from "@/components/NavMenu";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -92,6 +94,10 @@ export default function Home() {
           </button>
         </SidebarHeader>
         <SidebarContent>
+          <div className="p-2">
+            <NavMenu />
+          </div>
+          <SidebarSeparator />
           <DeckList
             decks={decks}
             selectedDeckId={selectedDeckId}
@@ -122,9 +128,9 @@ export default function Home() {
                 <div className="lg:col-span-2">
                   <StreakTracker />
                 </div>
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-1 h-full">
                   <ScrollArea className="h-full">
-                    <div className="space-y-8 pr-4">
+                    <div className="space-y-2 pr-4">
                       <ProgressTracker mainView={true} />
                       <MotivationalMessage />
                     </div>

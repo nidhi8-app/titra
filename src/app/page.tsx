@@ -49,6 +49,29 @@ export default function Home() {
     setSelectedDeckId(null);
   };
 
+  const handleRenameDeck = (deckId: string, newTitle: string) => {
+    setDecks(decks.map(d => d.id === deckId ? {...d, title: newTitle} : d));
+    toast({
+      title: "Deck Renamed",
+      description: `The deck has been renamed to "${newTitle}".`,
+    });
+  };
+
+  const handleDeleteDeck = (deckId: string) => {
+    const deletedDeck = decks.find(d => d.id === deckId);
+    if (!deletedDeck) return;
+
+    setDecks(decks.filter(d => d.id !== deckId));
+    if (selectedDeckId === deckId) {
+      setSelectedDeckId(null);
+    }
+    toast({
+      title: "Deck Deleted",
+      description: `The deck "${deletedDeck.title}" has been deleted.`,
+      variant: 'destructive',
+    });
+  };
+
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
@@ -73,6 +96,8 @@ export default function Home() {
             selectedDeckId={selectedDeckId}
             onSelectDeck={handleSelectDeck}
             onCreateDeck={handleCreateDeck}
+            onRenameDeck={handleRenameDeck}
+            onDeleteDeck={handleDeleteDeck}
           />
         </SidebarContent>
         <SidebarFooter>

@@ -10,7 +10,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Leaf } from "lucide-react";
+import { FlaskConical, Sparkles } from "lucide-react";
 import NoteList from "@/components/NoteList";
 import NoteEditor from "@/components/NoteEditor";
 import ProgressTracker from "@/components/ProgressTracker";
@@ -96,13 +96,14 @@ export default function Home() {
   return (
     <SidebarProvider>
       <Sidebar>
-        <SidebarHeader className="p-4">
+        <SidebarHeader className="p-4 items-center">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-primary hover:bg-transparent">
-              <Leaf />
-            </Button>
+            <div className="relative">
+              <FlaskConical className="w-8 h-8 text-primary" />
+              <Sparkles className="absolute -top-1 -right-2 w-5 h-5 text-yellow-300" />
+            </div>
             <h1 className="font-headline text-2xl font-bold text-primary">
-              Evergreen Notes
+              Titra
             </h1>
           </div>
         </SidebarHeader>

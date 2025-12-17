@@ -18,27 +18,27 @@ const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
     if (mainView) {
       return (
          <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-background/50">
-           <Card className="w-full max-w-md border-2 border-primary/20 bg-primary/5 shadow-lg">
+           <Card className="w-full max-w-sm border-2 border-primary/20 bg-primary/5 shadow-lg">
              <CardHeader>
-               <CardTitle className="text-3xl font-bold text-primary">
+               <CardTitle className="text-2xl font-bold text-primary">
                  Your Progress
                </CardTitle>
              </CardHeader>
              <CardContent>
-               <div className="space-y-6">
+               <div className="space-y-4">
                  {stats.map((stat, index) => (
-                   <div key={index} className="flex items-center gap-4">
-                     <stat.icon className={cn("w-8 h-8", stat.color)} />
+                   <div key={index} className="flex items-center gap-3">
+                     <stat.icon className={cn("w-7 h-7", stat.color)} />
                      <div className="text-left">
-                       <p className="font-bold text-2xl text-primary">{stat.value}</p>
-                       <p className="text-md text-primary/70">{stat.label}</p>
+                       <p className="font-bold text-xl text-primary">{stat.value}</p>
+                       <p className="text-sm text-primary/70">{stat.label}</p>
                      </div>
                    </div>
                  ))}
                </div>
              </CardContent>
            </Card>
-           <p className="mt-8 text-muted-foreground">
+           <p className="mt-6 text-muted-foreground">
              Create a new deck or select an existing one to get started.
            </p>
          </div>

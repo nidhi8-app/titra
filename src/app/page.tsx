@@ -11,87 +11,40 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { FlaskConical, Sparkles } from "lucide-react";
-import NoteList from "@/components/NoteList";
-import NoteEditor from "@/components/NoteEditor";
+import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Note } from "@/lib/types";
-import { initialNotes } from "@/lib/data";
+import type { Deck } from "@/lib/types";
+import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import MotivationalMessage from "@/components/MotivationalMessage";
 
 export default function Home() {
-  const [notes, setNotes] = React.useState<Note[]>(initialNotes);
-  const [selectedNoteId, setSelectedNoteId] = React.useState<string | null>(
-    notes[0]?.id || null
+  const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
+  const [selectedDeckId, setSelectedDeckId] = React.useState<string | null>(
+    null
   );
   const { toast } = useToast();
-  const [deleteCandidate, setDeleteCandidate] = React.useState<string | null>(null);
 
-  const sortedNotes = React.useMemo(() => {
-    return [...notes].sort(
-      (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime()
-    );
-  }, [notes]);
-
-  const selectedNote = React.useMemo(() => {
-    return notes.find((note) => note.id === selectedNoteId);
-  }, [notes, selectedNoteId]);
-
-  const handleCreateNote = () => {
-    const newNote: Note = {
+  const handleCreateDeck = () => {
+    const newDeck: Deck = {
       id: Date.now().toString(),
-      title: "New Note",
-      body: "",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      title: "New Deck",
     };
-    setNotes((prev) => [newNote, ...prev]);
-    setSelectedNoteId(newNote.id);
+    setDecks((prev) => [newDeck, ...prev]);
+    setSelectedDeckId(newDeck.id);
     toast({
-      title: "Note Created",
-      description: "A new note has been added to your collection.",
+      title: "Deck Created",
+      description: "A new deck has been added.",
     });
   };
 
-  const handleSelectNote = (id: string) => {
-    setSelectedNoteId(id);
+  const handleSelectDeck = (id: string) => {
+    setSelectedDeckId(id);
   };
 
-  const handleUpdateNote = (id: string, title: string, body: string) => {
-    setNotes((prev) =>
-      prev.map((note) =>
-        note.id === id ? { ...note, title, body, updatedAt: new Date() } : note
-      )
-    );
-    toast({
-      title: "Note Saved!",
-      description: "Your changes have been saved successfully.",
-    });
-  };
-
-  const handleDeleteNote = (id: string) => {
-    setNotes((prev) => prev.filter((note) => note.id !== id));
-    if (selectedNoteId === id) {
-      const newSortedNotes = sortedNotes.filter(note => note.id !== id);
-      setSelectedNoteId(newSortedNotes[0]?.id || null);
-    }
-    toast({
-      title: "Note Deleted",
-      variant: "destructive",
-      description: "The note has been permanently removed.",
-    });
-    setDeleteCandidate(null);
-  };
+  const selectedDeck = React.useMemo(() => {
+    return decks.find((deck) => deck.id === selectedDeckId);
+  }, [decks, selectedDeckId]);
 
   return (
     <SidebarProvider>
@@ -108,11 +61,11 @@ export default function Home() {
           </div>
         </SidebarHeader>
         <SidebarContent>
-          <NoteList
-            notes={sortedNotes}
-            selectedNoteId={selectedNoteId}
-            onSelectNote={handleSelectNote}
-            onCreateNote={handleCreateNote}
+          <DeckList
+            decks={decks}
+            selectedDeckId={selectedDeckId}
+            onSelectDeck={handleSelectDeck}
+            onCreateDeck={handleCreateDeck}
           />
         </SidebarContent>
         <SidebarFooter>
@@ -125,35 +78,20 @@ export default function Home() {
              <div className="flex items-center gap-2">
                 <SidebarTrigger className="md:hidden" />
                 <h2 className="text-xl font-semibold truncate">
-                  {selectedNote ? selectedNote.title : "Welcome"}
+                  {selectedDeck ? selectedDeck.title : "Decks"}
                 </h2>
              </div>
           </header>
-          <NoteEditor
-            key={selectedNote?.id || "welcome"}
-            note={selectedNote}
-            onSave={handleUpdateNote}
-            onDeleteRequest={setDeleteCandidate}
-          />
+          {selectedDeck ? (
+            <div className="flex-1 p-4">
+              {/* Future content for selected deck */}
+              <p>Deck: {selectedDeck.title}</p>
+            </div>
+          ) : (
+            <MotivationalMessage />
+          )}
         </div>
       </SidebarInset>
-
-      <AlertDialog open={!!deleteCandidate} onOpenChange={(open) => !open && setDeleteCandidate(null)}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your note.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteCandidate && handleDeleteNote(deleteCandidate)}>
-              Delete
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </SidebarProvider>
   );
 }

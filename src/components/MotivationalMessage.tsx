@@ -18,7 +18,7 @@ const MotivationalMessage = () => {
             {message}
         </p>
         <p className="mt-4 text-muted-foreground">
-            Create a new note or select an existing one to get started.
+            Create a new deck or select an existing one to get started.
         </p>
     </div>
   );

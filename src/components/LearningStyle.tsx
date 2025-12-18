@@ -1,11 +1,24 @@
 "use client";
 
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from './ui/card';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Folder } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
+
 
 const diagramFolders = [
   { id: '1', title: 'Atomic Structure' },
@@ -22,7 +35,14 @@ const mindmapFolders = [
 ];
 
 const LearningStyle = () => {
-  const learnerType = "Visual Learner"; // This can be made dynamic later
+  const [learnerType, setLearnerType] = useState("Visual");
+  const [inputValue, setInputValue] = useState(learnerType);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleSave = () => {
+    setLearnerType(inputValue);
+    setIsDialogOpen(false);
+  };
 
   return (
     <div className="p-8 h-full flex flex-col">
@@ -34,10 +54,13 @@ const LearningStyle = () => {
         </CardHeader>
         <CardContent className="text-center">
           <p className="text-lg">
-            You are a: <span className="font-bold text-primary">{learnerType}</span>
+            You are a: <span className="font-bold text-primary">{learnerType} Learner</span>
           </p>
           <p className="text-muted-foreground mt-4">
-            Visual learners best absorb information through charts, graphs, and seeing information in a spatial layout.
+            {learnerType === "Visual" && "Visual learners best absorb information through charts, graphs, and seeing information in a spatial layout."}
+            {learnerType === "Auditory" && "Auditory learners best absorb information through listening, speaking, and music."}
+            {learnerType === "Kinesthetic" && "Kinesthetic learners best absorb information by doing, moving, and interacting with their environment."}
+            {learnerType === "Reading/Writing" && "Reading/Writing learners best absorb information through reading and writing."}
           </p>
           <Button className="mt-6" asChild>
             <a href="https://www.educationplanner.org/students/self-assessments/learning-styles" target="_blank" rel="noopener noreferrer">
@@ -45,6 +68,40 @@ const LearningStyle = () => {
             </a>
           </Button>
         </CardContent>
+        <CardFooter className="flex-col gap-4">
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline">Enter your learning style</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Update Your Learning Style</DialogTitle>
+                <DialogDescription>
+                  Enter the learning style you identified with from the quiz.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="learning-style-input" className="text-right">
+                    Style
+                  </Label>
+                  <Input
+                    id="learning-style-input"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                   <Button type="button" variant="secondary">Cancel</Button>
+                </DialogClose>
+                <Button onClick={handleSave}>Save changes</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </CardFooter>
       </Card>
       
       <Tabs defaultValue="diagrams" className="flex-1 flex flex-col mt-8">

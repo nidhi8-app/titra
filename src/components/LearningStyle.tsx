@@ -39,8 +39,10 @@ const LearningStyle = () => {
           <p className="text-muted-foreground mt-4">
             Visual learners best absorb information through charts, graphs, and seeing information in a spatial layout.
           </p>
-          <Button className="mt-6">
-            Press here to re-take learning style quiz
+          <Button className="mt-6" asChild>
+            <a href="https://www.educationplanner.org/students/self-assessments/learning-styles" target="_blank" rel="noopener noreferrer">
+              Press here to re-take learning style quiz
+            </a>
           </Button>
         </CardContent>
       </Card>

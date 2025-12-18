@@ -6,7 +6,6 @@ import { initialQuizTopics } from '@/lib/data';
 import { Button } from './ui/button';
 import { Plus, Search } from 'lucide-react';
 import { Progress } from './ui/progress';
-import { Folder } from 'lucide-react';
 
 const QuizView = () => {
   const topics = initialQuizTopics;
@@ -29,8 +28,7 @@ const QuizView = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {topics.map((topic) => (
           <div key={topic.id} className="rounded-xl shadow-md bg-card border flex flex-col p-4 gap-4">
-            <div className="flex items-center gap-4">
-                <Folder className="w-8 h-8 text-primary" />
+            <div className="flex items-center">
                 <h3 className="font-bold truncate text-lg">{topic.title}</h3>
             </div>
             <div className="text-sm text-muted-foreground mt-auto">

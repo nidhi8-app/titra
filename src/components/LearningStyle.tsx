@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from './ui/card';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Folder, Music, Mic, Beaker, Atom } from 'lucide-react';
+import { Folder, Music, Mic, Beaker, Atom, Puzzle, Swords } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -41,11 +41,18 @@ const auditoryFolders = [
   { id: '4', title: 'Debates: Ionic vs. Covalent', icon: Mic },
 ];
 
-const kinestheticFolders = [
+const simulationFolders = [
   { id: '1', title: 'Virtual Lab: Titration', icon: Beaker },
   { id: '2', title: 'Interactive Simulation: Build an Atom', icon: Atom },
   { id: '3', title: 'Model Building: VSEPR Theory', icon: Beaker },
-  { id: '4', title: 'Experiment: Chemical Reactions at Home', icon: Atom },
+  { id: '4', title: 'Virtual Bond Builder', icon: Atom },
+];
+
+const gamificationFolders = [
+  { id: '1', title: 'Molecule Naming Race', icon: Swords },
+  { id: '2', title: 'Element Matching Game', icon: Puzzle },
+  { id: '3', title: 'Lab Safety Escape Room', icon: Swords },
+  { id: '4', title: 'Periodic Table Battleship', icon: Puzzle },
 ];
 
 type LearningStyleProps = {
@@ -140,27 +147,58 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
   );
 
   const renderKinestheticContent = () => (
-     <Card className="flex-1 flex flex-col mt-8">
-      <CardHeader>
-        <CardTitle>Hands-On Activities</CardTitle>
-        <CardDescription>Get hands-on with virtual labs and interactive simulations.</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-1">
-        <ScrollArea className="h-[300px]">
-          <div className="space-y-2 pr-4">
-            {kinestheticFolders.map((folder) => (
-               <button
-                  key={folder.id}
-                  className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                >
-                  <folder.icon className="w-6 h-6 flex-shrink-0" />
-                  <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                </button>
-            ))}
-          </div>
-        </ScrollArea>
-      </CardContent>
-    </Card>
+    <Tabs defaultValue="simulations" className="flex-1 flex flex-col mt-8">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="simulations">Simulations</TabsTrigger>
+          <TabsTrigger value="gamification">Gamification</TabsTrigger>
+        </TabsList>
+        <TabsContent value="simulations" className="flex-1 flex flex-col pt-4">
+          <Card className="flex-1 flex flex-col">
+            <CardHeader>
+              <CardTitle>Interactive Simulations</CardTitle>
+              <CardDescription>Get hands-on with virtual labs and simulations.</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1">
+              <ScrollArea className="h-full">
+                <div className="space-y-2 pr-4">
+                  {simulationFolders.map((folder) => (
+                     <button
+                        key={folder.id}
+                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
+                      >
+                        <folder.icon className="w-6 h-6 flex-shrink-0" />
+                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
+                      </button>
+                  ))}
+                </div>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="gamification" className="flex-1 flex flex-col pt-4">
+          <Card className="flex-1 flex flex-col">
+            <CardHeader>
+              <CardTitle>Learning Games</CardTitle>
+              <CardDescription>Learn chemistry through fun and engaging games.</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1">
+              <ScrollArea className="h-full">
+                <div className="space-y-2 pr-4">
+                  {gamificationFolders.map((folder) => (
+                     <button
+                        key={folder.id}
+                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
+                      >
+                        <folder.icon className="w-6 h-6 flex-shrink-0" />
+                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
+                      </button>
+                  ))}
+                </div>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
   );
 
   const renderContentForLearner = () => {

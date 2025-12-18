@@ -112,9 +112,10 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
      <Card className="flex-1 flex flex-col mt-8">
       <CardHeader>
         <CardTitle>Audio Resources</CardTitle>
+        <CardDescription>Listen to recordings, podcasts, and rhymes about chemistry.</CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
-        <ScrollArea className="h-full">
+        <ScrollArea className="h-[300px]">
           <div className="space-y-2 pr-4">
             {auditoryFolders.map((folder) => (
                <button

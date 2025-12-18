@@ -32,6 +32,7 @@ export default function Home() {
     null
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
+  const [learnerType, setLearnerType] = React.useState("Visual");
   const { toast } = useToast();
 
   const handleCreateDeck = () => {
@@ -90,6 +91,19 @@ export default function Home() {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
   
+  React.useEffect(() => {
+    document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic", "theme-reading-writing");
+    switch (learnerType) {
+      case 'Auditory':
+        document.body.classList.add('theme-auditory');
+        break;
+      // Add cases for other learner types here
+      default:
+        document.body.classList.add('theme-visual');
+        break;
+    }
+  }, [learnerType]);
+  
   const renderContent = () => {
     if (selectedDeck) {
       return <DeckView deck={selectedDeck} />;
@@ -103,7 +117,7 @@ export default function Home() {
               <StreakTracker />
             </div>
             <div className="lg:col-span-1 h-full">
-              <ScrollArea className="h-full">
+              <ScrollArea className="h-[calc(100vh-12rem)]">
                 <div className="pr-4">
                   <ProgressTracker mainView={true} />
                   <MotivationalMessage />
@@ -113,7 +127,7 @@ export default function Home() {
           </div>
         );
       case "learning-style":
-        return <LearningStyle />;
+        return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
         return <div className="p-8"><h1>Quizzes</h1><p>Coming soon!</p></div>;
       case "friends":

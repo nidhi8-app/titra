@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root, .theme-visual {
     --background: 88 56% 95%; /* #F1F8E9 */
     --foreground: 224 71% 4%; /* Dark Blue/Black for readability */
 
@@ -50,6 +50,47 @@
     --sidebar-ring: 180 100% 30%;
   }
 
+  .theme-auditory {
+    --background: 220 15% 95%; /* Light cool gray */
+    --foreground: 220 20% 10%; /* Dark blue-gray */
+
+    --card: 220 15% 95%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 220 15% 95%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 210 40% 50%; /* #4d7cbf - Calming Blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 90%;
+    --secondary-foreground: 210 40% 30%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 250 50% 60%; /* #7966d9 - Soft Purple */
+    --accent-foreground: 250 50% 98%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 85%;
+    --input: 210 20% 90%;
+    --ring: 210 40% 55%;
+    
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 210 40% 50%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 90%;
+    --sidebar-accent-foreground: 210 40% 20%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 210 40% 55%;
+  }
+
   .dark {
     --background: 27 10% 10%; /* Dark brown */
     --foreground: 27 20% 90%; /* Light cream */
@@ -94,6 +135,45 @@
     --sidebar-border: 27 10% 25%;
     --sidebar-ring: 180 80% 50%;
   }
+
+  .dark.theme-auditory {
+    --background: 220 20% 12%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 210 40% 60%;
+    --primary-foreground: 210 40% 5%;
+
+    --secondary: 210 40% 20%;
+    --secondary-foreground: 210 40% 80%;
+
+    --muted: 210 20% 25%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 250 50% 70%;
+    --accent-foreground: 250 50% 98%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 30%;
+    --input: 210 20% 30%;
+    --ring: 210 40% 65%;
+
+    --sidebar-background: 220 20% 14%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 210 40% 60%;
+    --sidebar-primary-foreground: 210 40% 5%;
+    --sidebar-accent: 210 40% 25%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 210 20% 30%;
+    --sidebar-ring: 210 40% 65%;
+  }
 }
 
 @layer base {
@@ -102,5 +182,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  .theme-auditory {
+    @apply font-sans;
+  }
+  .theme-auditory .font-headline, .theme-auditory .font-sidebar, .theme-auditory .font-body {
+    font-family: 'Inter', sans-serif;
   }
 }

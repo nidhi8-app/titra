@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['Inter', 'sans-serif'],
         body: ['Gaegu', 'cursive'],
         headline: ['Gaegu', 'cursive'],
         sidebar: ['Gaegu', 'cursive'],

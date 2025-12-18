@@ -19,3 +19,9 @@ export type Note = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type Friend = {
+  id: string;
+  name: string;
+  avatarUrl: string;
+};

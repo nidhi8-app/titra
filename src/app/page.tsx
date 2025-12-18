@@ -24,6 +24,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import NavMenu from "@/components/NavMenu";
 import LearningStyle from "@/components/LearningStyle";
 import QuizView from "@/components/QuizView";
+import FriendsView from "@/components/FriendsView";
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
 
@@ -135,7 +136,7 @@ export default function Home() {
       case "quizzes":
         return <QuizView />;
       case "friends":
-        return <div className="p-8"><h1>Friends</h1><p>Coming soon!</p></div>;
+        return <FriendsView />;
       default:
         return null;
     }

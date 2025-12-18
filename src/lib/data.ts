@@ -1,4 +1,4 @@
-import type { Card, Deck, Note } from './types';
+import type { Card, Deck, Note, Friend } from './types';
 
 export const initialDecks: Deck[] = [
   {
@@ -65,4 +65,13 @@ export const motivationalMessages: string[] = [
     "A blank canvas is an open door to endless possibilities.",
     "Capture the fleeting ideas. They are more valuable than you think.",
     "The secret to getting ahead is getting started. Let's go!",
+];
+
+export const initialFriends: Friend[] = [
+  { id: 'f1', name: 'Alice', avatarUrl: 'https://picsum.photos/seed/f1/200/200' },
+  { id: 'f2', name: 'Bob', avatarUrl: 'https://picsum.photos/seed/f2/200/200' },
+  { id: 'f3', name: 'Charlie', avatarUrl: 'https://picsum.photos/seed/f3/200/200' },
+  { id: 'f4', name: 'Diana', avatarUrl: 'https://picsum.photos/seed/f4/200/200' },
+  { id: 'f5', name: 'Eve', avatarUrl: 'https://picsum.photos/seed/f5/200/200' },
+  { id: 'f6', name: 'Frank', avatarUrl: 'https://picsum.photos/seed/f6/200/200' },
 ];

@@ -263,12 +263,4 @@
   body {
     @apply bg-background text-foreground;
   }
-  
-  .theme-auditory, .theme-kinesthetic {
-    @apply font-sans;
-  }
-  .theme-auditory .font-headline, .theme-auditory .font-sidebar, .theme-auditory .font-body,
-  .theme-kinesthetic .font-headline, .theme-kinesthetic .font-sidebar, .theme-kinesthetic .font-body {
-    font-family: 'Inter', sans-serif;
-  }
 }

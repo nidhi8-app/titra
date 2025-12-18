@@ -23,6 +23,7 @@ import MotivationalMessage from "@/components/MotivationalMessage";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import NavMenu from "@/components/NavMenu";
 import LearningStyle from "@/components/LearningStyle";
+import QuizView from "@/components/QuizView";
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
 
@@ -92,7 +93,7 @@ export default function Home() {
   }, [decks, selectedDeckId]);
   
   React.useEffect(() => {
-    document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic", "theme-reading-writing");
+    document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic");
     switch (learnerType) {
       case 'Auditory':
         document.body.classList.add('theme-auditory');
@@ -132,7 +133,7 @@ export default function Home() {
       case "learning-style":
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
-        return <div className="p-8"><h1>Quizzes</h1><p>Coming soon!</p></div>;
+        return <QuizView />;
       case "friends":
         return <div className="p-8"><h1>Friends</h1><p>Coming soon!</p></div>;
       default:

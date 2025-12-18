@@ -1,4 +1,4 @@
-import type { Deck, Note } from './types';
+import type { Card, Deck, Note } from './types';
 
 export const initialDecks: Deck[] = [
   {
@@ -23,6 +23,15 @@ export const initialDecks: Deck[] = [
         { id: 'c10', title: 'Inorganic Chemistry', color: 'bg-violet-400', cardCount: 95, progress: 60 },
     ]
   },
+];
+
+export const initialQuizTopics: Card[] = [
+    { id: 'q1', title: 'Atomic Structure', color: 'bg-blue-500', cardCount: 20, progress: 0 },
+    { id: 'q2', title: 'Periodic Table', color: 'bg-green-500', cardCount: 15, progress: 0 },
+    { id: 'q3', title: 'Chemical Reactions', color: 'bg-orange-500', cardCount: 30, progress: 0 },
+    { id: 'q4', title: 'Stoichiometry', color: 'bg-purple-500', cardCount: 25, progress: 0 },
+    { id: 'q5', title: 'Thermochemistry', color: 'bg-red-500', cardCount: 18, progress: 0 },
+    { id: 'q6', title: 'Acids and Bases', color: 'bg-yellow-500', cardCount: 22, progress: 0 },
 ];
 
 export const initialNotes: Note[] = [

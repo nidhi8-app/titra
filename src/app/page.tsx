@@ -97,6 +97,9 @@ export default function Home() {
       case 'Auditory':
         document.body.classList.add('theme-auditory');
         break;
+      case 'Kinesthetic':
+        document.body.classList.add('theme-kinesthetic');
+        break;
       // Add cases for other learner types here
       default:
         document.body.classList.add('theme-visual');

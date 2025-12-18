@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from './ui/card';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Folder, Music, Mic } from 'lucide-react';
+import { Folder, Music, Mic, Beaker, Atom } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -39,6 +39,13 @@ const auditoryFolders = [
   { id: '2', title: 'Mnemonic Rhymes for Polyatomic Ions', icon: Mic },
   { id: '3', title: 'Podcast: The World of Organic Chemistry', icon: Music },
   { id: '4', title: 'Debates: Ionic vs. Covalent', icon: Mic },
+];
+
+const kinestheticFolders = [
+  { id: '1', title: 'Virtual Lab: Titration', icon: Beaker },
+  { id: '2', title: 'Interactive Simulation: Build an Atom', icon: Atom },
+  { id: '3', title: 'Model Building: VSEPR Theory', icon: Beaker },
+  { id: '4', title: 'Experiment: Chemical Reactions at Home', icon: Atom },
 ];
 
 type LearningStyleProps = {
@@ -132,6 +139,42 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
     </Card>
   );
 
+  const renderKinestheticContent = () => (
+     <Card className="flex-1 flex flex-col mt-8">
+      <CardHeader>
+        <CardTitle>Hands-On Activities</CardTitle>
+        <CardDescription>Get hands-on with virtual labs and interactive simulations.</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-1">
+        <ScrollArea className="h-[300px]">
+          <div className="space-y-2 pr-4">
+            {kinestheticFolders.map((folder) => (
+               <button
+                  key={folder.id}
+                  className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
+                >
+                  <folder.icon className="w-6 h-6 flex-shrink-0" />
+                  <h3 className="font-bold truncate flex-1">{folder.title}</h3>
+                </button>
+            ))}
+          </div>
+        </ScrollArea>
+      </CardContent>
+    </Card>
+  );
+
+  const renderContentForLearner = () => {
+    switch (learnerType) {
+        case 'Auditory':
+            return renderAuditoryContent();
+        case 'Kinesthetic':
+            return renderKinestheticContent();
+        case 'Visual':
+        default:
+            return renderVisualContent();
+    }
+  }
+
   return (
     <div className="p-8 h-full flex flex-col">
       <Card className="max-w-md w-full mx-auto">
@@ -192,7 +235,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
         </CardFooter>
       </Card>
       
-      {learnerType === 'Auditory' ? renderAuditoryContent() : renderVisualContent()}
+      {renderContentForLearner()}
     </div>
   );
 };

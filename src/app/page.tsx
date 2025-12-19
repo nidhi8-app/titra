@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -53,7 +54,11 @@ export default function Home() {
       setIsAuthenticated(true);
       const savedDetails = localStorage.getItem('userDetails');
       if (savedDetails) {
-        setUserDetails(JSON.parse(savedDetails));
+        const user = JSON.parse(savedDetails);
+        setUserDetails(user);
+        if (user.learningStyle) {
+          setLearnerType(user.learningStyle);
+        }
       }
     }
     setIsAppLoaded(true);
@@ -113,6 +118,9 @@ export default function Home() {
 
   const handleOnboardingComplete = (details: UserDetails) => {
     setUserDetails(details);
+    if (details.learningStyle) {
+      setLearnerType(details.learningStyle);
+    }
     setIsAuthenticated(true);
     localStorage.setItem('onboardingComplete', 'true');
     localStorage.setItem('userDetails', JSON.stringify(details));
@@ -120,9 +128,13 @@ export default function Home() {
   
   const handleLogin = (details: UserDetails) => {
     setUserDetails(details);
+    if (details.learningStyle) {
+      setLearnerType(details.learningStyle);
+    }
     setIsAuthenticated(true);
     // onboardingComplete is likely already true, but we set it just in case
     localStorage.setItem('onboardingComplete', 'true');
+    localStorage.setItem('userDetails', JSON.stringify(details));
     toast({
         title: "Welcome back!",
         description: "You've successfully logged in.",
@@ -130,14 +142,15 @@ export default function Home() {
   }
 
   const handleLogout = () => {
-    if (userDetails?.emailOrPhone) {
-      localStorage.setItem('lastUserEmail', userDetails.emailOrPhone);
+    if (userDetails?.email) {
+      localStorage.setItem('lastUserEmail', userDetails.email);
     }
     setIsAuthenticated(false);
-    // We don't clear userDetails from state or localStorage here
-    // so the user can log back in.
+    // We don't clear userDetails from state here so the login form can be pre-filled
     // We remove 'onboardingComplete' to signify the user is logged out.
     localStorage.removeItem('onboardingComplete');
+    // Keep user details in local storage for login, but clear from active state
+    // localStorage.removeItem('userDetails');
     setAuthView('login');
     toast({
         title: "Logged Out",

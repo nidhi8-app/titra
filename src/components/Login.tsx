@@ -17,29 +17,13 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import type { UserDetails } from '@/lib/types';
-
-// Mock function to "find" a user. In a real app, this would be an API call.
-const findUserByEmail = (email: string): UserDetails | null => {
-    // In our prototype, userDetails are persisted in localStorage.
-    const storedDetails = localStorage.getItem('userDetails');
-    if (storedDetails) {
-        const user = JSON.parse(storedDetails);
-        if (user.emailOrPhone.toLowerCase() === email.toLowerCase()) {
-            return user;
-        }
-    }
-    
-    // As a fallback for development, check if there's an email but no user details yet.
-    const lastUserEmail = localStorage.getItem('lastUserEmail');
-    if (lastUserEmail?.toLowerCase() === email.toLowerCase() && !storedDetails) {
-        // This case shouldn't happen in normal flow, but as a recovery.
-        // We can't return user details, so we let the error message guide the user.
-    }
-    return null;
-}
+import { useAuth } from '@/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
-  emailOrPhone: z.string().min(1, { message: 'Email or phone number is required.' }).email({ message: 'Please enter a valid email address.'}),
+  email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Please enter a valid email address.'}),
+  password: z.string().min(1, { message: "Password is required."}),
 });
 
 type LoginProps = {
@@ -49,6 +33,8 @@ type LoginProps = {
 
 const Login = ({ onLogin, setAuthView }: LoginProps) => {
     const [defaultEmail, setDefaultEmail] = React.useState('');
+    const auth = useAuth();
+    const { toast } = useToast();
 
     React.useEffect(() => {
         const lastEmail = localStorage.getItem('lastUserEmail');
@@ -60,25 +46,51 @@ const Login = ({ onLogin, setAuthView }: LoginProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     values: {
-      emailOrPhone: defaultEmail,
+      email: defaultEmail,
+      password: '',
     },
     mode: 'onBlur'
   });
 
   React.useEffect(() => {
-    form.setValue('emailOrPhone', defaultEmail);
+    form.setValue('email', defaultEmail);
   }, [defaultEmail, form]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const user = findUserByEmail(values.emailOrPhone);
-    if (user) {
-        onLogin(user);
-    } else {
-        form.setError("emailOrPhone", {
-            type: "manual",
-            message: "No account found with this email. Please sign up.",
-        });
-    }
+    signInWithEmailAndPassword(auth, values.email, values.password)
+    .then((userCredential) => {
+      // In a real app, you'd fetch the user profile from Firestore here.
+      // For the prototype, we rely on localStorage which should have the profile.
+      const storedDetails = localStorage.getItem('userDetails');
+      if (storedDetails) {
+        const user = JSON.parse(storedDetails);
+        if (user.email.toLowerCase() === values.email.toLowerCase()) {
+          onLogin(user);
+        } else {
+          // This case happens if a different user logs in on the same browser
+          // You'd need to fetch their profile from Firestore.
+          // For now, we'll show an error and recommend signing up if it's a new user.
+          toast({
+            variant: "destructive",
+            title: "Login Error",
+            description: "Could not find your user details. Please sign up if you are a new user.",
+          })
+        }
+      } else {
+         toast({
+            variant: "destructive",
+            title: "Login Error",
+            description: "No user details found in this browser. Please sign up.",
+          })
+      }
+    })
+    .catch((error) => {
+       toast({
+          variant: "destructive",
+          title: "Login Failed",
+          description: error.message,
+       });
+    });
   }
 
   return (
@@ -92,12 +104,25 @@ const Login = ({ onLogin, setAuthView }: LoginProps) => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="emailOrPhone"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="you@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

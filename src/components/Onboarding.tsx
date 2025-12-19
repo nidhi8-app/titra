@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -20,6 +21,9 @@ import { useToast } from '@/hooks/use-toast';
 import { useAuth, useFirestore, setDocumentNonBlocking } from '@/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc } from 'firebase/firestore';
+import { learningStyleQuestions } from '@/lib/quiz-data';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Progress } from './ui/progress';
 
 
 const formSchema = z.object({
@@ -33,7 +37,7 @@ const formSchema = z.object({
 });
 
 type UserDetailsFormProps = {
-  onNext: (data: Omit<UserDetails, 'id'>) => void;
+  onNext: (data: Omit<UserDetails, 'id' | 'learningStyle'>, password: string) => void;
   setAuthView: (view: 'login' | 'signup') => void;
 };
 
@@ -53,7 +57,7 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { password, ...userDetails } = values;
-    onNext(userDetails);
+    onNext(userDetails, password);
   }
 
   return (
@@ -174,22 +178,80 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
   );
 };
 
-// Placeholder for Learning Style Quiz
-const LearningStyleQuiz = ({ onComplete }: { onComplete: () => void }) => (
-  <Card className="w-full max-w-md">
+const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void }) => {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<{[key: number]: string}>({});
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const currentQuestion = learningStyleQuestions[currentQuestionIndex];
+  const progress = ((currentQuestionIndex + 1) / learningStyleQuestions.length) * 100;
+
+  const handleNext = () => {
+    if (selectedOption) {
+      const newAnswers = {...answers, [currentQuestionIndex]: selectedOption};
+      setAnswers(newAnswers);
+      setSelectedOption(null);
+
+      if (currentQuestionIndex < learningStyleQuestions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        calculateResult(newAnswers);
+      }
+    }
+  };
+
+  const calculateResult = (finalAnswers: {[key: number]: string}) => {
+    const counts = { V: 0, A: 0, R: 0, K: 0 };
+    Object.values(finalAnswers).forEach(answer => {
+      counts[answer as keyof typeof counts]++;
+    });
+
+    const dominantStyle = Object.keys(counts).reduce((a, b) => 
+      counts[a as keyof typeof counts] > counts[b as keyof typeof counts] ? a : b
+    );
+    
+    const mapVarkToStyle: { [key: string]: string } = {
+        V: "Visual",
+        A: "Auditory",
+        R: "Reading/Writing",
+        K: "Kinesthetic",
+    };
+
+    onComplete(mapVarkToStyle[dominantStyle]);
+  };
+
+  return (
+    <Card className="w-full max-w-2xl">
       <CardHeader>
-        <CardTitle>What's your learning style?</CardTitle>
-        <CardDescription>This will help us personalize your content.</CardDescription>
+        <div className="flex justify-between items-center mb-2">
+           <CardTitle>What's your learning style?</CardTitle>
+           <span className="text-sm text-muted-foreground">{currentQuestionIndex + 1} / {learningStyleQuestions.length}</span>
+        </div>
+        <Progress value={progress} />
       </CardHeader>
-      <CardContent className="text-center">
-        <p>The learning style quiz will go here.</p>
-        <p className="mt-4 text-muted-foreground">For now, let's skip this step.</p>
+      <CardContent>
+        <p className="font-semibold mb-4 text-lg">{currentQuestion.question}</p>
+        <RadioGroup onValueChange={setSelectedOption} value={selectedOption || ""}>
+          {currentQuestion.options.map((option, index) => (
+            <div key={index} className="flex items-center space-x-2 p-3 bg-muted/50 rounded-md">
+              <RadioGroupItem value={option.type} id={`q${currentQuestionIndex}-o${index}`} />
+              <Label htmlFor={`q${currentQuestionIndex}-o${index}`} className="flex-1 text-base">{option.text}</Label>
+            </div>
+          ))}
+        </RadioGroup>
       </CardContent>
-      <CardFooter>
-        <Button onClick={onComplete} className="w-full">Finish Onboarding</Button>
+      <CardFooter className="flex-col items-end gap-4">
+        <Button onClick={handleNext} disabled={!selectedOption}>
+            {currentQuestionIndex < learningStyleQuestions.length - 1 ? 'Next' : 'Finish'}
+        </Button>
+        <p className="text-xs text-muted-foreground self-center">
+            This quiz is based on the VARK model.
+        </p>
       </CardFooter>
   </Card>
-);
+  );
+};
+
 
 type OnboardingProps = {
   onComplete: (details: UserDetails) => void;
@@ -198,26 +260,29 @@ type OnboardingProps = {
 
 const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
   const [step, setStep] = useState(1);
-  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'> | null>(null);
+  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id' | 'learningStyle'> | null>(null);
+  const [userPassword, setUserPassword] = useState('');
   const auth = useAuth();
   const firestore = useFirestore();
   const { toast } = useToast();
 
-  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'>) => {
-    const email = data.email;
-    const password = "password"; // This should come from the form
-    
-    createUserWithEmailAndPassword(auth, email, password)
+  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'| 'learningStyle'>, password: string) => {
+    setUserDetails(data);
+    setUserPassword(password);
+    setStep(2);
+  };
+
+  const handleQuizComplete = (learningStyle: string) => {
+    if (userDetails && userPassword) {
+      createUserWithEmailAndPassword(auth, userDetails.email, userPassword)
       .then(userCredential => {
         const user = userCredential.user;
-        const finalDetails: UserDetails = { ...data, id: user.uid };
+        const finalDetails: UserDetails = { ...userDetails, id: user.uid, learningStyle };
 
         const userDocRef = doc(firestore, "users", user.uid);
-        
         setDocumentNonBlocking(userDocRef, finalDetails, { merge: true });
 
-        setUserDetails(finalDetails);
-        setStep(2);
+        onComplete(finalDetails);
       })
       .catch(error => {
         toast({
@@ -225,12 +290,8 @@ const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
           title: "Signup Failed",
           description: error.message,
         });
+        setStep(1); // Go back to details form on error
       });
-  };
-
-  const handleQuizComplete = () => {
-    if (userDetails) {
-      onComplete(userDetails as UserDetails);
     }
   };
 

@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { UserDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
@@ -43,6 +43,12 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
   const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
 
+  useEffect(() => {
+    if (userDetails) {
+      setEditedDetails(userDetails);
+      setAvatarUrl(userDetails.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name || 'default'}`);
+    }
+  }, [userDetails]);
 
   if (!userDetails) {
     return (
@@ -60,6 +66,9 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const handleCancelClick = () => {
     setIsEditing(false);
     setEditedDetails(userDetails);
+    if (userDetails.avatarUrl) {
+      setAvatarUrl(userDetails.avatarUrl);
+    }
   }
 
   const handleSaveClick = () => {
@@ -84,6 +93,12 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const handleAvatarSelect = (newAvatarUrl: string) => {
     setAvatarUrl(newAvatarUrl);
     setIsAvatarDialogOpen(false);
+    // Immediately update details if we are in editing mode.
+    if(isEditing && editedDetails) {
+        const updatedDetails = { ...editedDetails, avatarUrl: newAvatarUrl };
+        setEditedDetails(updatedDetails);
+        // We don't save to parent/localStorage until "Save" is clicked
+    }
   }
 
 
@@ -112,7 +127,7 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
             <CardContent>
                  {isEditing && editedDetails ? (
                     <div className="space-y-4">
-                        <EditableDetailItem label="Email / Phone" name="email" value={editedDetails.email} onChange={handleChange} />
+                        <EditableDetailItem label="Email" name="email" value={editedDetails.email} onChange={handleChange} />
                         <div className="grid grid-cols-2 gap-4">
                             <EditableDetailItem label="Age" name="age" value={editedDetails.age} onChange={handleChange} type="number" />
                             <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup} onChange={handleChange} />
@@ -122,6 +137,7 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
+                        <DetailItem label="Learning Style" value={userDetails.learningStyle} />
                         <DetailItem label="Age" value={userDetails.age} />
                         <DetailItem label="Year Group" value={userDetails.yearGroup} />
                         <DetailItem label="School" value={userDetails.schoolName} />

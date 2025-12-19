@@ -25,3 +25,10 @@ export type Friend = {
   name: string;
   avatarUrl: string;
 };
+
+export type QuizQuestion = {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+};

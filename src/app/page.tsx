@@ -38,16 +38,22 @@ export default function Home() {
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
-  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(true);
-  const [userDetails, setUserDetails] = React.useState<UserDetails | null>({
-      name: 'Jane Doe',
-      age: 16,
-      yearGroup: 'Year 12',
-      emailOrPhone: 'jane.doe@example.com',
-      schoolName: 'North London Collegiate School',
-      curriculum: 'IB Diploma',
-  });
+  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(false);
+  const [isAppLoaded, setIsAppLoaded] = React.useState(false);
+  const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const { toast } = useToast();
+  
+  React.useEffect(() => {
+    const onboardingStatus = localStorage.getItem('onboardingComplete');
+    if (onboardingStatus === 'true') {
+      setIsOnboardingComplete(true);
+      const savedDetails = localStorage.getItem('userDetails');
+      if (savedDetails) {
+        setUserDetails(JSON.parse(savedDetails));
+      }
+    }
+    setIsAppLoaded(true);
+  }, []);
 
   const handleCreateDeck = () => {
     const newDeck: Deck = {
@@ -104,6 +110,8 @@ export default function Home() {
   const handleOnboardingComplete = (details: UserDetails) => {
     setUserDetails(details);
     setIsOnboardingComplete(true);
+    localStorage.setItem('onboardingComplete', 'true');
+    localStorage.setItem('userDetails', JSON.stringify(details));
   };
 
   const selectedDeck = React.useMemo(() => {
@@ -125,6 +133,10 @@ export default function Home() {
         break;
     }
   }, [learnerType]);
+
+  if (!isAppLoaded) {
+    return null; // or a loading spinner
+  }
   
   const renderContent = () => {
     if (selectedDeck) {

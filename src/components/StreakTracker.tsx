@@ -4,13 +4,18 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flame } from 'lucide-react';
+import { Flame, Beaker, FlaskConical, Atom, Trophy, ChevronDown, Sparkles as SparklesIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
 import { startOfMonth, getDaysInMonth, getDay, format } from 'date-fns';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 
 const chartData = [
   { name: "Progress", value: 75, fill: "hsl(var(--accent))" },
@@ -22,6 +27,15 @@ const chartConfig = {
     label: "Value",
   },
 };
+
+const streakRewards = [
+    { icon: Flame, label: "Daily Activity", description: "Complete any revision.", color: "text-orange-500" },
+    { icon: Beaker, label: "Solid Session", description: "30+ minutes of revision.", color: "text-blue-500" },
+    { icon: FlaskConical, label: "Deep Dive", description: "1+ hour of revision.", color: "text-green-500" },
+    { icon: Atom, label: "Topic Mastered", description: "Ace a quiz in a new topic.", color: "text-purple-500" },
+    { icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-yellow-500" },
+    { icon: Trophy, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
+]
 
 const StreakTracker = () => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -84,6 +98,28 @@ const StreakTracker = () => {
               </div>
             ))}
           </div>
+
+           <Collapsible className="mt-6">
+                <CollapsibleTrigger asChild>
+                    <Button variant="ghost" className="w-full group">
+                        Show Streak Rewards
+                        <ChevronDown className="ml-2 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                    </Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 border rounded-md mt-2">
+                        {streakRewards.map((reward) => (
+                            <div key={reward.label} className="flex items-center gap-3">
+                                <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color)} />
+                                <div>
+                                    <p className="font-semibold">{reward.label}</p>
+                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </CollapsibleContent>
+            </Collapsible>
         </div>
         <div className="flex flex-col items-center justify-center space-y-4">
           <h3 className="text-4xl font-bold">18</h3>

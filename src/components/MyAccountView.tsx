@@ -75,7 +75,6 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
     if (editedDetails) {
       const updatedDetails = { ...editedDetails, avatarUrl };
       setUserDetails(updatedDetails);
-      localStorage.setItem('userDetails', JSON.stringify(updatedDetails));
       setIsEditing(false);
     }
   }

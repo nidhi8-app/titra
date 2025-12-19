@@ -61,27 +61,19 @@ const Login = ({ onLogin, setAuthView }: LoginProps) => {
     .then((userCredential) => {
       // In a real app, you'd fetch the user profile from Firestore here.
       // For the prototype, we rely on localStorage which should have the profile.
-      const storedDetails = localStorage.getItem('userDetails');
+      const storedDetails = localStorage.getItem(`userDetails-${userCredential.user.uid}`);
       if (storedDetails) {
         const user = JSON.parse(storedDetails);
-        if (user.email.toLowerCase() === values.email.toLowerCase()) {
-          onLogin(user);
-        } else {
-          // This case happens if a different user logs in on the same browser
-          // You'd need to fetch their profile from Firestore.
-          // For now, we'll show an error and recommend signing up if it's a new user.
-          toast({
-            variant: "destructive",
-            title: "Login Error",
-            description: "Could not find your user details. Please sign up if you are a new user.",
-          })
-        }
+        onLogin(user);
       } else {
+         // This case happens if a different user logs in on the same browser
+         // You'd need to fetch their profile from Firestore.
+         // For now, we'll show an error and recommend signing up if it's a new user.
          toast({
-            variant: "destructive",
-            title: "Login Error",
-            description: "No user details found in this browser. Please sign up.",
-          })
+           variant: "destructive",
+           title: "Login Error",
+           description: "Could not find your user details. Please sign up if you are a new user.",
+         })
       }
     })
     .catch((error) => {

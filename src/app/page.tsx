@@ -30,7 +30,9 @@ import Onboarding from "@/components/Onboarding";
 import MyAccountView from "@/components/MyAccountView";
 import Login from "@/components/Login";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/firebase";
+import { useUser, useAuth, useFirestore, setDocumentNonBlocking } from "@/firebase";
+import { signOut } from "firebase/auth";
+import { doc } from 'firebase/firestore';
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -44,6 +46,8 @@ export default function Home() {
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
   const { user, isUserLoading } = useUser();
+  const auth = useAuth();
+  const firestore = useFirestore();
   const [isAppLoaded, setIsAppLoaded] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const [authView, setAuthView] = React.useState<AuthView>('signup');
@@ -54,12 +58,12 @@ export default function Home() {
     if (!isUserLoading) {
       if (user) {
         // User is authenticated
-        const savedDetails = localStorage.getItem('userDetails');
+        const savedDetails = localStorage.getItem(`userDetails-${user.uid}`);
         if (savedDetails) {
-          const user = JSON.parse(savedDetails);
-          setUserDetails(user);
-          if (user.learningStyle) {
-            setLearnerType(user.learningStyle);
+          const userDetails = JSON.parse(savedDetails);
+          setUserDetails(userDetails);
+          if (userDetails.learningStyle) {
+            setLearnerType(userDetails.learningStyle);
           }
         }
       }
@@ -124,7 +128,8 @@ export default function Home() {
     if (details.learningStyle) {
       setLearnerType(details.learningStyle);
     }
-    localStorage.setItem('userDetails', JSON.stringify(details));
+    // Save user details against their UID
+    localStorage.setItem(`userDetails-${details.id}`, JSON.stringify(details));
   };
   
   const handleLogin = (details: UserDetails) => {
@@ -133,7 +138,7 @@ export default function Home() {
       setLearnerType(details.learningStyle);
     }
     // onboardingComplete is likely already true, but we set it just in case
-    localStorage.setItem('userDetails', JSON.stringify(details));
+    localStorage.setItem(`userDetails-${details.id}`, JSON.stringify(details));
     toast({
         title: "Welcome back!",
         description: "You've successfully logged in.",
@@ -144,16 +149,28 @@ export default function Home() {
     if (userDetails?.email) {
       localStorage.setItem('lastUserEmail', userDetails.email);
     }
-    // We don't clear userDetails from state here so the login form can be pre-filled
-    // We remove 'onboardingComplete' to signify the user is logged out.
-    // Keep user details in local storage for login, but clear from active state
-    // localStorage.removeItem('userDetails');
-    setAuthView('login');
-    toast({
-        title: "Logged Out",
-        description: "You have been successfully logged out.",
+    signOut(auth).then(() => {
+        setUserDetails(null);
+        setAuthView('login');
+        toast({
+            title: "Logged Out",
+            description: "You have been successfully logged out.",
+        });
     });
   };
+  
+  const handleUpdateUserDetails = (updatedDetails: UserDetails | null) => {
+    setUserDetails(updatedDetails);
+    if(updatedDetails && updatedDetails.id) {
+        localStorage.setItem(`userDetails-${updatedDetails.id}`, JSON.stringify(updatedDetails));
+        if(updatedDetails.learningStyle) {
+          setLearnerType(updatedDetails.learningStyle);
+        }
+        const userDocRef = doc(firestore, "users", updatedDetails.id);
+        setDocumentNonBlocking(userDocRef, updatedDetails, { merge: true });
+    }
+  }
+
 
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
@@ -168,7 +185,8 @@ export default function Home() {
       case 'Kinesthetic':
         document.body.classList.add('theme-kinesthetic');
         break;
-      // Add cases for other learner types here
+      case 'Reading/Writing':
+      case 'Visual':
       default:
         document.body.classList.add('theme-visual');
         break;
@@ -208,7 +226,7 @@ export default function Home() {
       case "friends":
         return <FriendsView />;
       case "account":
-        return <MyAccountView userDetails={userDetails} setUserDetails={setUserDetails} />;
+        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} />;
       default:
         return null;
     }
@@ -300,5 +318,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
-    

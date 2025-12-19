@@ -91,7 +91,7 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
                   <FormItem>
                     <FormLabel>Age</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="16" {...field} />
+                      <Input type="number" placeholder="16" {...field} value={field.value ?? ''} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -232,7 +232,7 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
       </CardHeader>
       <CardContent>
         <p className="font-semibold mb-4 text-lg">{currentQuestion.question}</p>
-        <RadioGroup onValueChange={setSelectedOption} value={selectedOption}>
+        <RadioGroup onValueChange={setSelectedOption} value={selectedOption} key={currentQuestionIndex}>
           {currentQuestion.options.map((option, index) => (
             <div key={index} className="flex items-center space-x-2 p-3 bg-muted/50 rounded-md">
               <RadioGroupItem value={option.type} id={`q${currentQuestionIndex}-o${index}`} />

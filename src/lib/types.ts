@@ -32,3 +32,12 @@ export type QuizQuestion = {
   options: string[];
   correctAnswer: string;
 };
+
+export type UserDetails = {
+  name: string;
+  age: number;
+  yearGroup: string;
+  emailOrPhone: string;
+  schoolName: string;
+  curriculum: string;
+};

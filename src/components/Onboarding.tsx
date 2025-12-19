@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { FlaskConical, Sparkles } from 'lucide-react';
+import type { UserDetails } from '@/lib/types';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -27,7 +28,7 @@ const formSchema = z.object({
 });
 
 type UserDetailsFormProps = {
-  onNext: () => void;
+  onNext: (data: UserDetails) => void;
 };
 
 const UserDetailsForm = ({ onNext }: UserDetailsFormProps) => {
@@ -44,8 +45,7 @@ const UserDetailsForm = ({ onNext }: UserDetailsFormProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    onNext();
+    onNext(values);
   }
 
   return (
@@ -155,11 +155,23 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: () => void }) => (
 );
 
 type OnboardingProps = {
-  onComplete: () => void;
+  onComplete: (details: UserDetails) => void;
 };
 
 const Onboarding = ({ onComplete }: OnboardingProps) => {
   const [step, setStep] = useState(1);
+  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+
+  const handleUserDetailsNext = (data: UserDetails) => {
+    setUserDetails(data);
+    setStep(2);
+  };
+
+  const handleQuizComplete = () => {
+    if (userDetails) {
+      onComplete(userDetails);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
@@ -172,8 +184,8 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
               Titra
             </h1>
           </div>
-      {step === 1 && <UserDetailsForm onNext={() => setStep(2)} />}
-      {step === 2 && <LearningStyleQuiz onComplete={onComplete} />}
+      {step === 1 && <UserDetailsForm onNext={handleUserDetailsNext} />}
+      {step === 2 && <LearningStyleQuiz onComplete={handleQuizComplete} />}
     </div>
   );
 };

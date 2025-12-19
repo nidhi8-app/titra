@@ -5,9 +5,9 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { LayoutGrid, Bug, Files, Users } from "lucide-react";
+import { LayoutGrid, Bug, Files, Users, User } from "lucide-react";
 
-type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
+type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
 
 type NavMenuProps = {
   activeView: ActiveView;
@@ -36,6 +36,11 @@ const NavMenu = ({ activeView, onNavigate }: NavMenuProps) => {
       label: "Friends",
       icon: Users,
     },
+    {
+      id: "account",
+      label: "My Account",
+      icon: User,
+    }
   ];
 
   return (

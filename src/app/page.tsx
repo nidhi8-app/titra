@@ -14,7 +14,7 @@ import {
 import { FlaskConical, Sparkles } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Deck } from "@/lib/types";
+import type { Deck, UserDetails } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
@@ -26,8 +26,10 @@ import LearningStyle from "@/components/LearningStyle";
 import QuizView from "@/components/QuizView";
 import FriendsView from "@/components/FriendsView";
 import Onboarding from "@/components/Onboarding";
+import MyAccountView from "@/components/MyAccountView";
 
-type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
+
+type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -37,6 +39,7 @@ export default function Home() {
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
   const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(false);
+  const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const { toast } = useToast();
 
   const handleCreateDeck = () => {
@@ -91,6 +94,11 @@ export default function Home() {
     });
   };
 
+  const handleOnboardingComplete = (details: UserDetails) => {
+    setUserDetails(details);
+    setIsOnboardingComplete(true);
+  };
+
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
@@ -139,6 +147,8 @@ export default function Home() {
         return <QuizView />;
       case "friends":
         return <FriendsView />;
+      case "account":
+        return <MyAccountView userDetails={userDetails} />;
       default:
         return null;
     }
@@ -151,12 +161,13 @@ export default function Home() {
       case 'learning-style': return 'Learning Style';
       case 'quizzes': return 'Quizzes';
       case 'friends': return 'Friends';
+      case 'account': return 'My Account';
       default: return 'Titra';
     }
   }
 
   if (!isOnboardingComplete) {
-    return <Onboarding onComplete={() => setIsOnboardingComplete(true)} />;
+    return <Onboarding onComplete={handleOnboardingComplete} />;
   }
 
   return (

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -8,6 +9,7 @@ import { Button } from './ui/button';
 import { Pencil } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
+import { AvatarSelectionDialog } from './AvatarSelectionDialog';
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
@@ -38,15 +40,9 @@ const EditableDetailItem = ({ label, value, name, onChange, type = "text" }: { l
 const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
-  const [avatarSeed, setAvatarSeed] = useState(userDetails?.name || 'default');
+  const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
+  const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
 
-  const generateNewAvatar = () => {
-    const newSeed = Date.now().toString();
-    setAvatarSeed(newSeed);
-    if (editedDetails) {
-        // In a real app you might want to save this new seed with the user profile
-    }
-  }
 
   if (!userDetails) {
     return (
@@ -68,8 +64,9 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
 
   const handleSaveClick = () => {
     if (editedDetails) {
-      setUserDetails(editedDetails);
-      localStorage.setItem('userDetails', JSON.stringify(editedDetails));
+      const updatedDetails = { ...editedDetails, avatarUrl };
+      setUserDetails(updatedDetails);
+      localStorage.setItem('userDetails', JSON.stringify(updatedDetails));
       setIsEditing(false);
     }
   }
@@ -84,6 +81,11 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
     }
   };
 
+  const handleAvatarSelect = (newAvatarUrl: string) => {
+    setAvatarUrl(newAvatarUrl);
+    setIsAvatarDialogOpen(false);
+  }
+
 
   return (
     <div className="p-4 md:p-8">
@@ -91,10 +93,10 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
             <CardHeader className="text-center">
                 <div className="flex justify-center mb-4 relative w-fit mx-auto">
                     <Avatar className="w-32 h-32 border-4 border-primary">
-                        <AvatarImage src={`https://api.dicebear.com/8.x/bottts/svg?seed=${avatarSeed}`} alt={userDetails.name} />
+                        <AvatarImage src={avatarUrl} alt={userDetails.name} />
                         <AvatarFallback>{userDetails.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                     <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={generateNewAvatar}>
+                     <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={() => setIsAvatarDialogOpen(true)}>
                         <Pencil className="h-5 w-5"/>
                     </Button>
                 </div>
@@ -138,6 +140,14 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                 </div>
             </CardContent>
         </Card>
+        {isAvatarDialogOpen && (
+             <AvatarSelectionDialog 
+                isOpen={isAvatarDialogOpen}
+                onClose={() => setIsAvatarDialogOpen(false)}
+                onAvatarSelect={handleAvatarSelect}
+                currentAvatar={avatarUrl}
+             />
+        )}
     </div>
   );
 };

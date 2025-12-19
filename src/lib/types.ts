@@ -1,3 +1,4 @@
+
 export type Card = {
   id: string;
   title: string;
@@ -13,7 +14,7 @@ export type Deck = {
 };
 
 export type Note = {
-  id: string;
+  id:string;
   title: string;
   body: string;
   createdAt: Date;
@@ -42,4 +43,5 @@ export type UserDetails = {
   schoolName: string;
   curriculum: string;
   friends?: string[];
+  avatarUrl?: string;
 };

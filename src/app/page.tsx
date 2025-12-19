@@ -51,7 +51,7 @@ const LiveClock = () => {
     return (
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Clock className="h-4 w-4" />
-            <span>{time.toLocaleTimeString()}</span>
+            <span>{time.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</span>
         </div>
     );
 };

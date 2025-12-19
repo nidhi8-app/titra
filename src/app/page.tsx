@@ -130,6 +130,9 @@ export default function Home() {
   }
 
   const handleLogout = () => {
+    if (userDetails?.emailOrPhone) {
+      localStorage.setItem('lastUserEmail', userDetails.emailOrPhone);
+    }
     setIsAuthenticated(false);
     setUserDetails(null);
     localStorage.removeItem('onboardingComplete');

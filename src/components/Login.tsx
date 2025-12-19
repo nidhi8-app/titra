@@ -40,10 +40,19 @@ type LoginProps = {
 };
 
 const Login = ({ onLogin, setAuthView }: LoginProps) => {
+    const [defaultEmail, setDefaultEmail] = React.useState('');
+
+    React.useEffect(() => {
+        const lastEmail = localStorage.getItem('lastUserEmail');
+        if (lastEmail) {
+            setDefaultEmail(lastEmail);
+        }
+    }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      emailOrPhone: '',
+    values: {
+      emailOrPhone: defaultEmail,
     },
   });
 

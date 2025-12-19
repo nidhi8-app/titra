@@ -12,7 +12,7 @@ import {
   SidebarTrigger,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import { FlaskConical, Sparkles, LogOut } from "lucide-react";
+import { FlaskConical, Sparkles, LogOut, Clock } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
 import type { Deck, UserDetails } from "@/lib/types";
@@ -37,6 +37,24 @@ import { doc } from 'firebase/firestore';
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
 type AuthView = 'login' | 'signup';
+
+const LiveClock = () => {
+    const [time, setTime] = React.useState(new Date());
+
+    React.useEffect(() => {
+        const timerId = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+        return () => clearInterval(timerId);
+    }, []);
+
+    return (
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Clock className="h-4 w-4" />
+            <span>{time.toLocaleTimeString()}</span>
+        </div>
+    );
+};
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -299,16 +317,19 @@ export default function Home() {
       <SidebarInset>
         <div className="flex h-full flex-col">
           <header className="flex items-center justify-between border-b p-2 lg:p-4">
-             <div className="flex items-center gap-2">
+             <div className="flex items-center gap-4">
                 <SidebarTrigger className="md:hidden" />
                 <h2 className="text-xl font-semibold truncate">
                   {getTitle()}
                 </h2>
              </div>
-             <Button variant="ghost" onClick={handleLogout}>
-                <LogOut className="mr-2 h-4 w-4" />
-                Log Out
-             </Button>
+             <div className="flex items-center gap-4">
+                <LiveClock />
+                <Button variant="ghost" onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Log Out
+                </Button>
+             </div>
           </header>
           <main className="flex-1 overflow-y-auto">
             {renderContent()}

@@ -132,7 +132,10 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                             <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup} onChange={handleChange} />
                         </div>
                         <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName} onChange={handleChange} />
-                        <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum} onChange={handleChange} />
+                        <div className="grid grid-cols-2 gap-4">
+                            <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum} onChange={handleChange} />
+                            <EditableDetailItem label="Country" name="country" value={editedDetails.country} onChange={handleChange} />
+                        </div>
                     </div>
                 ) : (
                     <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
@@ -141,6 +144,7 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                         <DetailItem label="Year Group" value={userDetails.yearGroup} />
                         <DetailItem label="School" value={userDetails.schoolName} />
                         <DetailItem label="Curriculum" value={userDetails.curriculum} />
+                        <DetailItem label="Country" value={userDetails.country} />
                     </div>
                 )}
                  <div className="mt-8 flex justify-end gap-2">

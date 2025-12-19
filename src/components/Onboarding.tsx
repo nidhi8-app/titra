@@ -32,6 +32,7 @@ const formSchema = z.object({
   password: z.string().min(6, { message: "Password must be at least 6 characters."}),
   schoolName: z.string().min(1, { message: 'School name is required.' }),
   curriculum: z.string().min(1, { message: 'Curriculum is required.' }),
+  country: z.string().min(1, { message: 'Country is required.' }),
 });
 
 type UserDetailsFormProps = {
@@ -44,12 +45,13 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      age: '' as any,
+      age: '',
       yearGroup: '',
       email: '',
       password: '',
       schoolName: '',
       curriculum: '',
+      country: '',
     },
   });
 
@@ -147,19 +149,34 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="curriculum"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Curriculum</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., IB Diploma" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+             <div className="grid grid-cols-2 gap-4">
+                <FormField
+                control={form.control}
+                name="curriculum"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Curriculum</FormLabel>
+                    <FormControl>
+                        <Input placeholder="e.g., IB Diploma" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+                <FormField
+                control={form.control}
+                name="country"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Country</FormLabel>
+                    <FormControl>
+                        <Input placeholder="e.g., UAE" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+            </div>
             <Button type="submit" className="w-full">Next</Button>
           </form>
         </Form>
@@ -224,10 +241,14 @@ const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
     }
   };
 
+  const handleQuizBack = () => {
+    setStep(1);
+  }
+
   return (
     <>
       {step === 1 && <UserDetailsForm onNext={handleUserDetailsNext} setAuthView={setAuthView} />}
-      {step === 2 && <LearningStyleQuiz onComplete={handleQuizComplete} />}
+      {step === 2 && <LearningStyleQuiz onComplete={handleQuizComplete} onBack={handleQuizBack} />}
     </>
   );
 };

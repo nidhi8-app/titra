@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Progress } from './ui/progress';
 import { Label } from '@/components/ui/label';
 
-const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void }) => {
+const LearningStyleQuiz = ({ onComplete, onBack }: { onComplete: (style: string) => void, onBack?: () => void }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
@@ -30,7 +30,7 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
 
       if (currentQuestionIndex < learningStyleQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedOption(undefined); // This will be overridden by the useEffect if an answer exists
+        setSelectedOption(undefined); 
       } else {
         calculateResult(newAnswers);
       }
@@ -38,6 +38,10 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
   };
 
   const handleBack = () => {
+    if (onBack && currentQuestionIndex === 0) {
+      onBack();
+      return;
+    }
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
@@ -85,7 +89,7 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
       </CardContent>
       <CardFooter className="flex-col items-end gap-4">
         <div className="flex justify-end w-full gap-2">
-            {currentQuestionIndex > 0 && (
+            {(currentQuestionIndex > 0 || onBack) && (
                 <Button variant="outline" onClick={handleBack}>
                     Back
                 </Button>

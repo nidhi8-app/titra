@@ -43,6 +43,7 @@ export type UserDetails = {
   email: string;
   schoolName: string;
   curriculum: string;
+  country: string;
   friends?: string[];
   avatarUrl?: string;
   learningStyle?: string;

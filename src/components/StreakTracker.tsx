@@ -1,14 +1,13 @@
+
 "use client";
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Snowflake, Flame } from 'lucide-react';
+import { Flame } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
 
@@ -25,39 +24,24 @@ const chartConfig = {
 
 const StreakTracker = () => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-  const calendarDays = [
-    { day: 23, status: 'inactive' },
-    { day: 24, status: 'inactive' },
-    { day: 25, status: 'inactive' },
-    { day: 26, status: 'inactive' },
-    { day: 27, status: 'inactive' },
-    { day: 28, status: 'inactive' },
-    { day: 29, status: 'special', icon: Flame, color: 'text-red-500 bg-red-100' },
+  
+  // Simplified calendar, we will populate this based on user activity later.
+  const calendarDays = Array.from({ length: 35 }, (_, i) => {
+      // Dummy logic to make today's date active.
+      // In a real app, this would be based on real dates.
+      const day = i - 5;
+      const today = new Date().getDate();
+      let status = 'inactive';
+      if (day > 0 && day <= 31) {
+          if (day < today) {
+              status = 'active';
+          } else if (day === today) {
+              status = 'today';
+          }
+      }
 
-    { day: 30, status: 'special', icon: Snowflake, color: 'text-blue-500 bg-blue-100' },
-    { day: 1, status: 'active' },
-    { day: 2, status: 'active' },
-    { day: 3, status: 'active' },
-    { day: 4, status: 'active' },
-    { day: 5, status: 'active' },
-    { day: 6, status: 'active' },
-
-    { day: 7, status: 'active' },
-    { day: 8, status: 'active' },
-    { day: 9, status: 'special', icon: Flame, color: 'text-blue-500 bg-blue-100' },
-    { day: 10, status: 'special', icon: Flame, color: 'text-orange-500 bg-orange-100' },
-    { day: 11, status: 'special', icon: Flame, color: 'text-white bg-orange-500' },
-    { day: 12, status: 'special', icon: Snowflake, color: 'text-blue-500 bg-blue-100' },
-    { day: 13, status: 'special', icon: Flame, color: 'text-orange-500 bg-orange-100' },
-
-    { day: 14, status: 'special', icon: Flame, color: 'text-pink-500 bg-pink-100' },
-    { day: 15, status: 'special', icon: Flame, color: 'text-red-500 bg-red-100' },
-    { day: 16, status: 'special', icon: Flame, color: 'text-green-500 bg-green-100' },
-    { day: 17, status: 'special', icon: Flame, color: 'text-red-500 bg-red-100' },
-    { day: 18, status: 'today' },
-    { day: 19, status: 'inactive' },
-    { day: 20, status: 'inactive' },
-  ];
+      return { day, status };
+  });
 
   return (
     <Card className="w-full shadow-lg">
@@ -72,17 +56,18 @@ const StreakTracker = () => {
             ))}
           </div>
           <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
-            {calendarDays.map(({ day, status, icon: Icon, color }, index) => (
+            {calendarDays.map(({ day, status }, index) => (
               <div
                 key={index}
                 className={cn('flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
-                  'text-muted-foreground/50': status === 'inactive',
-                  'bg-muted/50': status === 'active',
+                  'text-muted-foreground/50': status === 'inactive' || day <= 0,
+                  'bg-orange-100 text-orange-500': status === 'active',
                   'bg-primary text-primary-foreground': status === 'today',
-                  [color || '']: status === 'special'
                 })}
               >
-                {Icon ? <Icon className="w-6 h-6" /> : day}
+                {status !== 'inactive' && day > 0 && (
+                   status === 'active' ? <Flame className="w-6 h-6" /> : day
+                )}
               </div>
             ))}
           </div>

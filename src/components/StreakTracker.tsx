@@ -19,7 +19,7 @@ import {
 
 const chartData = [
   { name: "Progress", value: 0, fill: "hsl(var(--accent))" },
-  { name: "Remaining", value: 100, fill: "hsl(var(--muted))" },
+  { name: "Remaining", value: 100, fill: "hsl(var(--secondary))" },
 ];
 
 const chartConfig = {

@@ -10,6 +10,13 @@ import { ScrollArea } from './ui/scroll-area';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Dialog,
   DialogContent,
   DialogHeader,
@@ -82,11 +89,12 @@ type LearningStyleProps = {
 };
 
 const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
-  const [inputValue, setInputValue] = useState(learnerType);
+  const [selectedStyle, setSelectedStyle] = useState(learnerType);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
 
   const handleSave = () => {
-    setLearnerType(inputValue);
+    setLearnerType(selectedStyle);
     setIsDialogOpen(false);
   };
   
@@ -229,6 +237,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
         case 'Kinesthetic':
             return renderKinestheticContent();
         case 'Visual':
+        case 'Reading/Writing':
         default:
             return renderVisualContent();
     }
@@ -261,26 +270,30 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
         <CardFooter className="flex-col gap-4">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline">Enter your learning style</Button>
+              <Button variant="outline" onClick={() => setSelectedStyle(learnerType)}>Enter your learning style</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Update Your Learning Style</DialogTitle>
                 <DialogDescription>
-                  Enter the learning style you identified with from the quiz.
+                  Choose the learning style you identified with from the quiz.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="learning-style-input" className="text-right">
+                  <Label htmlFor="learning-style-select" className="text-right">
                     Style
                   </Label>
-                  <Input
-                    id="learning-style-input"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    className="col-span-3"
-                  />
+                  <Select value={selectedStyle} onValueChange={setSelectedStyle}>
+                    <SelectTrigger id="learning-style-select" className="col-span-3">
+                        <SelectValue placeholder="Select a style" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {learningStyles.map((style) => (
+                            <SelectItem key={style} value={style}>{style}</SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               <DialogFooter>
@@ -300,3 +313,5 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
+
+    

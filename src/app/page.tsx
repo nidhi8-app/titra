@@ -30,6 +30,7 @@ import Onboarding from "@/components/Onboarding";
 import MyAccountView from "@/components/MyAccountView";
 import Login from "@/components/Login";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/firebase";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -42,27 +43,29 @@ export default function Home() {
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const { user, isUserLoading } = useUser();
   const [isAppLoaded, setIsAppLoaded] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const [authView, setAuthView] = React.useState<AuthView>('signup');
   const { toast } = useToast();
   
   React.useEffect(() => {
-    const onboardingStatus = localStorage.getItem('onboardingComplete');
-    if (onboardingStatus === 'true') {
-      setIsAuthenticated(true);
-      const savedDetails = localStorage.getItem('userDetails');
-      if (savedDetails) {
-        const user = JSON.parse(savedDetails);
-        setUserDetails(user);
-        if (user.learningStyle) {
-          setLearnerType(user.learningStyle);
+    // We wait for the user state to be determined.
+    if (!isUserLoading) {
+      if (user) {
+        // User is authenticated
+        const savedDetails = localStorage.getItem('userDetails');
+        if (savedDetails) {
+          const user = JSON.parse(savedDetails);
+          setUserDetails(user);
+          if (user.learningStyle) {
+            setLearnerType(user.learningStyle);
+          }
         }
       }
+      setIsAppLoaded(true);
     }
-    setIsAppLoaded(true);
-  }, []);
+  }, [user, isUserLoading]);
 
   const handleCreateDeck = () => {
     const newDeck: Deck = {
@@ -121,8 +124,6 @@ export default function Home() {
     if (details.learningStyle) {
       setLearnerType(details.learningStyle);
     }
-    setIsAuthenticated(true);
-    localStorage.setItem('onboardingComplete', 'true');
     localStorage.setItem('userDetails', JSON.stringify(details));
   };
   
@@ -131,9 +132,7 @@ export default function Home() {
     if (details.learningStyle) {
       setLearnerType(details.learningStyle);
     }
-    setIsAuthenticated(true);
     // onboardingComplete is likely already true, but we set it just in case
-    localStorage.setItem('onboardingComplete', 'true');
     localStorage.setItem('userDetails', JSON.stringify(details));
     toast({
         title: "Welcome back!",
@@ -145,10 +144,8 @@ export default function Home() {
     if (userDetails?.email) {
       localStorage.setItem('lastUserEmail', userDetails.email);
     }
-    setIsAuthenticated(false);
     // We don't clear userDetails from state here so the login form can be pre-filled
     // We remove 'onboardingComplete' to signify the user is logged out.
-    localStorage.removeItem('onboardingComplete');
     // Keep user details in local storage for login, but clear from active state
     // localStorage.removeItem('userDetails');
     setAuthView('login');
@@ -229,7 +226,7 @@ export default function Home() {
     }
   }
 
-  if (!isAuthenticated) {
+  if (!user) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
         <div className="flex items-center gap-2 mb-8">
@@ -303,3 +300,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    

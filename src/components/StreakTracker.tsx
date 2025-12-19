@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flame, Beaker, FlaskConical, Atom, Trophy, ChevronDown, Sparkles as SparklesIcon } from 'lucide-react';
+import { Flame, Beaker, FlaskConical, Atom, Trophy, ChevronDown, Sparkles as SparklesIcon, Medal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
@@ -34,7 +34,7 @@ const streakRewards = [
     { icon: FlaskConical, label: "Deep Dive", description: "1+ hour of revision.", color: "text-green-500" },
     { icon: Atom, label: "Topic Mastered", description: "Ace a quiz in a new topic.", color: "text-purple-500" },
     { icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-yellow-500" },
-    { icon: Trophy, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
+    { icon: Medal, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
 ]
 
 const StreakTracker = () => {

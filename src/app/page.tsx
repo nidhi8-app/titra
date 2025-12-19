@@ -25,6 +25,7 @@ import NavMenu from "@/components/NavMenu";
 import LearningStyle from "@/components/LearningStyle";
 import QuizView from "@/components/QuizView";
 import FriendsView from "@/components/FriendsView";
+import Onboarding from "@/components/Onboarding";
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends";
 
@@ -35,6 +36,7 @@ export default function Home() {
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
+  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(false);
   const { toast } = useToast();
 
   const handleCreateDeck = () => {
@@ -151,6 +153,10 @@ export default function Home() {
       case 'friends': return 'Friends';
       default: return 'Titra';
     }
+  }
+
+  if (!isOnboardingComplete) {
+    return <Onboarding onComplete={() => setIsOnboardingComplete(true)} />;
   }
 
   return (

@@ -7,6 +7,7 @@ export type Card = {
   cardCount: number;
   progress: number;
   imageId?: string;
+  emoji?: string;
 };
 
 export type Deck = {

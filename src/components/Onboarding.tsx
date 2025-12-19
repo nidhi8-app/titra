@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 type UserDetailsFormProps = {
-  onNext: (data: Omit<UserDetails, 'id' | 'learningStyle'>, password: string) => void;
+  onNext: (data: Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl'>, password: string) => void;
   setAuthView: (view: 'login' | 'signup') => void;
 };
 
@@ -181,7 +181,7 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
 const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<{[key: number]: string}>({});
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
 
   const currentQuestion = learningStyleQuestions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / learningStyleQuestions.length) * 100;
@@ -190,7 +190,7 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
     if (selectedOption) {
       const newAnswers = {...answers, [currentQuestionIndex]: selectedOption};
       setAnswers(newAnswers);
-      setSelectedOption(null);
+      setSelectedOption(undefined);
 
       if (currentQuestionIndex < learningStyleQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -231,7 +231,7 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
       </CardHeader>
       <CardContent>
         <p className="font-semibold mb-4 text-lg">{currentQuestion.question}</p>
-        <RadioGroup onValueChange={setSelectedOption} value={selectedOption || ""}>
+        <RadioGroup onValueChange={setSelectedOption} value={selectedOption}>
           {currentQuestion.options.map((option, index) => (
             <div key={index} className="flex items-center space-x-2 p-3 bg-muted/50 rounded-md">
               <RadioGroupItem value={option.type} id={`q${currentQuestionIndex}-o${index}`} />
@@ -260,13 +260,13 @@ type OnboardingProps = {
 
 const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
   const [step, setStep] = useState(1);
-  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id' | 'learningStyle'> | null>(null);
+  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl'> | null>(null);
   const [userPassword, setUserPassword] = useState('');
   const auth = useAuth();
   const firestore = useFirestore();
   const { toast } = useToast();
 
-  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'| 'learningStyle'>, password: string) => {
+  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'| 'learningStyle' | 'avatarUrl'>, password: string) => {
     setUserDetails(data);
     setUserPassword(password);
     setStep(2);
@@ -277,7 +277,12 @@ const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
       createUserWithEmailAndPassword(auth, userDetails.email, userPassword)
       .then(userCredential => {
         const user = userCredential.user;
-        const finalDetails: UserDetails = { ...userDetails, id: user.uid, learningStyle };
+        const finalDetails: UserDetails = { 
+          ...userDetails, 
+          id: user.uid, 
+          learningStyle,
+          avatarUrl: `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name}`
+        };
 
         const userDocRef = doc(firestore, "users", user.uid);
         setDocumentNonBlocking(userDocRef, finalDetails, { merge: true });

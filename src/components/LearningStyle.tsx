@@ -313,5 +313,3 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
-
-    

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,9 +11,9 @@ type ProgressTrackerProps = {
 
 const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
     const stats = [
-        { icon: Flame, value: '12 days', label: 'Current Streak', color: 'text-orange-500' },
-        { icon: Layers, value: '5', label: 'Decks Completed', color: 'text-blue-500' },
-        { icon: Target, value: '23', label: 'Topics Mastered', color: 'text-green-500' },
+        { icon: Flame, value: '0 days', label: 'Current Streak', color: 'text-orange-500' },
+        { icon: Layers, value: '0', label: 'Decks Completed', color: 'text-blue-500' },
+        { icon: Target, value: '0', label: 'Topics Mastered', color: 'text-green-500' },
     ];
 
     if (mainView) {

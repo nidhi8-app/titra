@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 type UserDetailsFormProps = {
-  onNext: (data: Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl'>, password: string) => void;
+  onNext: (data: Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl' | 'friends'>, password: string) => void;
   setAuthView: (view: 'login' | 'signup') => void;
 };
 
@@ -260,13 +260,13 @@ type OnboardingProps = {
 
 const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
   const [step, setStep] = useState(1);
-  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl'> | null>(null);
+  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id' | 'learningStyle' | 'avatarUrl' | 'friends'> | null>(null);
   const [userPassword, setUserPassword] = useState('');
   const auth = useAuth();
   const firestore = useFirestore();
   const { toast } = useToast();
 
-  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'| 'learningStyle' | 'avatarUrl'>, password: string) => {
+  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'| 'learningStyle' | 'avatarUrl' | 'friends'>, password: string) => {
     setUserDetails(data);
     setUserPassword(password);
     setStep(2);
@@ -281,7 +281,8 @@ const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
           ...userDetails, 
           id: user.uid, 
           learningStyle,
-          avatarUrl: `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name}`
+          avatarUrl: `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name}`,
+          friends: [],
         };
 
         const userDocRef = doc(firestore, "users", user.uid);

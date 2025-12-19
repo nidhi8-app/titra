@@ -1,0 +1,124 @@
+/**
+ * @file firestore.rules
+ * @description Security rules for the Evergreen Notes application.
+ *
+ * @section Core Philosophy
+ * This ruleset enforces a strict user-ownership model where all data is private to the user
+ * who created it. There is no concept of public or shared data. Access control is primarily
+ * managed by nesting user-specific data within their own document tree.
+ *
+ * @section Data Structure
+ * - /users/{userId}: Stores the public profile for a user. Each user can only manage their own document.
+ * - /users/{userId}/notes/{noteId}: A subcollection containing all notes for a specific user, ensuring data is isolated.
+ * - /user_progress/{userId}: A top-level collection that stores user-specific progress. A 1:1 relationship is enforced by making the document ID identical to the user's auth UID.
+ *
+ * @section Key Security Decisions
+ * - User Privacy: Listing the top-level `/users` or `/user_progress` collections is strictly forbidden to prevent user enumeration and data scraping.
+ * - Path-Based Security: Ownership is determined by the `{userId}` in the document path, making rules simple, fast, and secure.
+ * - No Shared Data: The current model does not support collaborative or shared documents. All data is private to the owner.
+ *
+ * @section Denormalization for Authorization
+ * The data model uses path-based security, which is inherently efficient. For the `/users` and `/user_progress` collections, an internal `id` or `userId` field is stored on the document to create an immutable link between the document's content and its path, which is crucial for write validation.
+ *
+ * @section Structural Segregation
+ * User-specific data like notes is stored in a subcollection under the user's document (`/users/{userId}/notes`). This is a highly secure and performant pattern for isolating user data and enabling safe list queries.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -------------------------------------------------------------------------
+    // Helper Functions
+    // -------------------------------------------------------------------------
+
+    /**
+     * Checks if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the currently authenticated user's UID matches the provided userId.
+     * This is the primary function for verifying document ownership.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * A robust check for update and delete operations.
+     * Verifies ownership AND ensures the document already exists.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    // -------------------------------------------------------------------------
+    // User Profile Rules
+    // -------------------------------------------------------------------------
+
+    /**
+     * @description Manages user profile documents. Users can create and manage their own
+     *              profile, but cannot see or list other users' profiles.
+     * @path /users/{userId}
+     * @allow (create) A new user `auth.uid: 'user_abc'` creating their own document at `/users/user_abc`.
+     * @deny  (get) A user `auth.uid: 'user_abc'` trying to read `/users/user_xyz`.
+     * @deny  (list) Any user trying to list the `/users` collection.
+     * @principle User self-management and privacy. Prevents user enumeration.
+     */
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId)
+                      && request.resource.data.id == userId;
+      allow update: if isExistingOwner(userId)
+                      && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    // -------------------------------------------------------------------------
+    // User Notes Rules
+    // -------------------------------------------------------------------------
+
+    /**
+     * @description Secures notes, which are stored in a subcollection under each user.
+     *              Only the owner of the user document can access the notes within it.
+     * @path /users/{userId}/notes/{noteId}
+     * @allow (create) User `auth.uid: 'user_abc'` creating a note at `/users/user_abc/notes/note_123`.
+     * @allow (list) User `auth.uid: 'user_abc'` listing all notes under `/users/user_abc/notes`.
+     * @deny  (get) User `auth.uid: 'user_xyz'` trying to read `/users/user_abc/notes/note_123`.
+     * @principle Restricts access to a user's own data tree using path-based security.
+     */
+    match /users/{userId}/notes/{noteId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    // -------------------------------------------------------------------------
+    // User Progress Rules
+    // -------------------------------------------------------------------------
+
+    /**
+     * @description Secures user progress data. The document ID must match the user's UID,
+     *              enforcing a 1:1 relationship between a user and their progress document.
+     * @path /user_progress/{userId}
+     * @allow (create) User `auth.uid: 'user_abc'` creating their progress doc at `/user_progress/user_abc`.
+     * @deny  (get) User `auth.uid: 'user_xyz'` trying to read `/user_progress/user_abc`.
+     * @deny  (list) Any user trying to list the `/user_progress` collection.
+     * @principle Enforces a strict 1:1 relationship and ownership of sensitive user metrics.
+     */
+    match /user_progress/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId)
+                      && request.resource.data.userId == userId;
+      allow update: if isExistingOwner(userId)
+                      && request.resource.data.userId == resource.data.userId;
+      allow delete: if isExistingOwner(userId);
+    }
+  }
+}

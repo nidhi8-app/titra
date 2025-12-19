@@ -1,0 +1,170 @@
+{
+  "entities": {
+    "Note": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Note",
+      "type": "object",
+      "description": "Represents a single note within the Evergreen Notes application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Note entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the note."
+        },
+        "body": {
+          "type": "string",
+          "description": "The main content or body of the note."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the note was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the note was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "body",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "UserProgress": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProgress",
+      "type": "object",
+      "description": "Tracks the user's progress and streak within the application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProgress entity."
+        },
+        "currentStreak": {
+          "type": "number",
+          "description": "The user's current streak."
+        },
+        "longestStreak": {
+          "type": "number",
+          "description": "The user's longest streak achieved."
+        },
+        "decksCompleted": {
+          "type": "number",
+          "description": "The number of decks the user has completed."
+        },
+        "topicsCompleted": {
+          "type": "number",
+          "description": "The number of topics the user has completed."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:1 UserProgress)"
+        }
+      },
+      "required": [
+        "id",
+        "currentStreak",
+        "longestStreak",
+        "decksCompleted",
+        "topicsCompleted",
+        "userId"
+      ]
+    },
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user account in the Evergreen Notes application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity."
+        },
+        "username": {
+          "type": "string",
+          "description": "The username of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the user.",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "username",
+        "email"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles.  Allows users to only read/write their own document.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique ID of the user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/notes/{noteId}",
+        "definition": {
+          "entityName": "Note",
+          "schema": {
+            "$ref": "#/backend/entities/Note"
+          },
+          "description": "Stores notes specific to each user. Path-based authorization ensures only the owner can access these notes.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique ID of the user."
+            },
+            {
+              "name": "noteId",
+              "description": "The unique ID of the note."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/user_progress/{userId}",
+        "definition": {
+          "entityName": "UserProgress",
+          "schema": {
+            "$ref": "#/backend/entities/UserProgress"
+          },
+          "description": "Stores user progress data.  Document ID is equal to the userId. This enforces a 1:1 relationship between users and their progress.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique ID of the user.  This is also the document ID."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to ensure security, scalability, and ease of debugging, adhering to the core design principles of Authorization Independence, Clarity of Intent, DBAC (Database-based Access Control), and QAPs (Rules are not Filters). It also leverages denormalization to avoid complex security rules that rely on `get()` calls.\n\n**Structure Overview:**\n\n*   **`/users/{userId}`:** Stores user profiles. Security rules ensure that only the user can read/write their document.\n*   **`/users/{userId}/notes/{noteId}`:**  Stores notes specific to each user. This hierarchical structure enforces ownership and simplifies security rules.\n*   **`/user_progress/{userId}`:** Stores the user progress. The document ID will be the `userId` to ensure a 1:1 relationship.\n\n**Authorization Independence:**\n\nAuthorization is primarily path-based, particularly for notes.  The `/users/{userId}/notes/{noteId}` path inherently grants the specified user ownership. Because there are no shared notes and all notes are private, no denormalization is required.\n\n**QAPs (Rules are not Filters):**\n\n*   The structure inherently supports secure `list` operations. Listing notes under `/users/{userId}/notes` is secure because security rules can easily restrict access to only the authenticated `userId`.\n\n**DBAC (Database-Based Access Control):**\n\nRoles are not directly implemented in this design, as the application focuses on private notes per user. If collaborative features were added, a `members` map within each note document (denormalized with user roles) would be necessary to achieve Authorization Independence.\n"
+  }
+}

@@ -92,11 +92,16 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const handleAvatarSelect = (newAvatarUrl: string) => {
     setAvatarUrl(newAvatarUrl);
     setIsAvatarDialogOpen(false);
-    // Immediately update details if we are in editing mode.
+    
+    // Immediately save the avatar change.
+    if (userDetails) {
+        const updatedDetails = { ...userDetails, avatarUrl: newAvatarUrl };
+        setUserDetails(updatedDetails);
+    }
+
+    // If in editing mode, also update the editedDetails state
     if(isEditing && editedDetails) {
-        const updatedDetails = { ...editedDetails, avatarUrl: newAvatarUrl };
-        setEditedDetails(updatedDetails);
-        // We don't save to parent/localStorage until "Save" is clicked
+        setEditedDetails({ ...editedDetails, avatarUrl: newAvatarUrl });
     }
   }
 

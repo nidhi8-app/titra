@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flame, Beaker, FlaskConical, Atom, Trophy, ChevronDown, Sparkles as SparklesIcon, Medal } from 'lucide-react';
+import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
@@ -60,8 +60,8 @@ const StreakTracker = () => {
     if (isToday) {
       status = 'today';
     } else if (new Date(currentDate.getFullYear(), currentDate.getMonth(), day) < today) {
-      // Dummy logic for past days, will be based on activity later
-      status = 'active'; 
+      // No dummy logic for past days. Will be based on actual user activity.
+      status = 'past'; 
     }
     
     return { day, status };
@@ -87,14 +87,12 @@ const StreakTracker = () => {
               <div
                 key={index}
                 className={cn('flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
-                  'text-muted-foreground/50': status === 'inactive' || !day,
-                  'bg-orange-100 text-orange-500': status === 'active',
+                  'text-muted-foreground/50': !day,
+                  '': status === 'past', // No specific style for past days without activity
                   'bg-primary text-primary-foreground': status === 'today',
                 })}
               >
-                {day && (
-                   status === 'active' ? <Flame className="w-6 h-6" /> : day
-                )}
+                {day}
               </div>
             ))}
           </div>

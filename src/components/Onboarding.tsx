@@ -24,6 +24,7 @@ import { doc } from 'firebase/firestore';
 import { learningStyleQuestions } from '@/lib/quiz-data';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Progress } from './ui/progress';
+import { Label } from '@/components/ui/label';
 
 
 const formSchema = z.object({
@@ -46,7 +47,7 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      age: undefined,
+      age: '' as any,
       yearGroup: '',
       email: '',
       password: '',

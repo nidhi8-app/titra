@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { learningStyleQuestions } from '@/lib/quiz-data';
@@ -17,6 +17,12 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
   const currentQuestion = learningStyleQuestions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / learningStyleQuestions.length) * 100;
 
+  useEffect(() => {
+    // When the question changes, pre-fill the answer if it exists
+    setSelectedOption(answers[currentQuestionIndex]);
+  }, [currentQuestionIndex, answers]);
+
+
   const handleNext = () => {
     if (selectedOption) {
       const newAnswers = { ...answers, [currentQuestionIndex]: selectedOption };
@@ -24,10 +30,16 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
 
       if (currentQuestionIndex < learningStyleQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedOption(undefined);
+        setSelectedOption(undefined); // This will be overridden by the useEffect if an answer exists
       } else {
         calculateResult(newAnswers);
       }
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
 
@@ -72,9 +84,16 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
         </RadioGroup>
       </CardContent>
       <CardFooter className="flex-col items-end gap-4">
-        <Button onClick={handleNext} disabled={!selectedOption}>
-          {currentQuestionIndex < learningStyleQuestions.length - 1 ? 'Next' : 'Finish'}
-        </Button>
+        <div className="flex justify-end w-full gap-2">
+            {currentQuestionIndex > 0 && (
+                <Button variant="outline" onClick={handleBack}>
+                    Back
+                </Button>
+            )}
+            <Button onClick={handleNext} disabled={!selectedOption}>
+                {currentQuestionIndex < learningStyleQuestions.length - 1 ? 'Next' : 'Finish'}
+            </Button>
+        </div>
         <p className="text-xs text-muted-foreground self-center">
           This quiz is based on the VARK model.
         </p>

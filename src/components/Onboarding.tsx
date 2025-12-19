@@ -191,10 +191,10 @@ const LearningStyleQuiz = ({ onComplete }: { onComplete: (style: string) => void
     if (selectedOption) {
       const newAnswers = {...answers, [currentQuestionIndex]: selectedOption};
       setAnswers(newAnswers);
-      setSelectedOption(undefined);
-
+      
       if (currentQuestionIndex < learningStyleQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedOption(undefined);
       } else {
         calculateResult(newAnswers);
       }

@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/collapsible"
 
 const chartData = [
-  { name: "Progress", value: 75, fill: "hsl(var(--accent))" },
-  { name: "Remaining", value: 25, fill: "hsl(var(--muted))" },
+  { name: "Progress", value: 0, fill: "hsl(var(--accent))" },
+  { name: "Remaining", value: 100, fill: "hsl(var(--muted))" },
 ];
 
 const chartConfig = {
@@ -122,8 +122,8 @@ const StreakTracker = () => {
             </Collapsible>
         </div>
         <div className="flex flex-col items-center justify-center space-y-4">
-          <h3 className="text-4xl font-bold">18</h3>
-          <p className="text-center text-muted-foreground">Questions to get your Emerald streak</p>
+          <h3 className="text-4xl font-bold">Goal</h3>
+          <p className="text-center text-muted-foreground">Complete a task to fill the circle</p>
           <ChartContainer config={chartConfig} className="w-full h-48">
               <PieChart accessibilityLayer>
                   <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
@@ -135,7 +135,7 @@ const StreakTracker = () => {
       <div className="p-6">
         <Button className="w-full font-bold text-lg" size="lg">
           <Sparkles className="mr-2" />
-          Get Emerald streak
+          Start Quizzing
         </Button>
       </div>
     </Card>

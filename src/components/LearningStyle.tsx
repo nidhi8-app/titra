@@ -7,7 +7,6 @@ import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Folder, Music, Mic, Beaker, Atom, Puzzle, Swords } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
-import { Input } from './ui/input';
 import { Label } from './ui/label';
 import {
   Select,
@@ -26,6 +25,7 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
+import LearningStyleQuiz from './LearningStyleQuiz';
 
 
 const diagramFolders = [
@@ -91,11 +91,17 @@ type LearningStyleProps = {
 const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
   const [selectedStyle, setSelectedStyle] = useState(learnerType);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
   const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
 
   const handleSave = () => {
     setLearnerType(selectedStyle);
     setIsDialogOpen(false);
+  };
+
+  const handleQuizComplete = (style: string) => {
+    setLearnerType(style);
+    setShowQuiz(false);
   };
   
   const renderVisualContent = () => (
@@ -243,6 +249,14 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
     }
   }
 
+  if (showQuiz) {
+    return (
+        <div className="p-8 h-full flex flex-col items-center justify-center">
+            <LearningStyleQuiz onComplete={handleQuizComplete} />
+        </div>
+    );
+  }
+
   return (
     <div className="p-8 h-full flex flex-col">
       <Card className="max-w-md w-full mx-auto">
@@ -261,10 +275,8 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             {learnerType === "Kinesthetic" && "Kinesthetic learners best absorb information by doing, moving, and interacting with their environment."}
             {learnerType === "Reading/Writing" && "Reading/Writing learners best absorb information through reading and writing."}
           </p>
-          <Button className="mt-6" asChild>
-            <a href="https://www.educationplanner.org/students/self-assessments/learning-styles" target="_blank" rel="noopener noreferrer">
-              Press here to re-take learning style quiz
-            </a>
+          <Button className="mt-6" onClick={() => setShowQuiz(true)}>
+            Press here to re-take learning style quiz
           </Button>
         </CardContent>
         <CardFooter className="flex-col gap-4">

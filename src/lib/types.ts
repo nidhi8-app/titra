@@ -34,10 +34,12 @@ export type QuizQuestion = {
 };
 
 export type UserDetails = {
+  id: string;
   name: string;
   age: number;
   yearGroup: string;
-  emailOrPhone: string;
+  email: string;
   schoolName: string;
   curriculum: string;
+  friends?: string[];
 };

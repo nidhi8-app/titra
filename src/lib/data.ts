@@ -4,59 +4,73 @@ import type { Card, Deck, Note, Friend, QuizQuestion } from './types';
 export const initialDecks: Deck[] = [
   {
     id: '1',
-    title: 'Stoichiometry',
+    title: 'Stoichiometric relationships',
     cards: [
-        { id: 'c1', title: 'Introduction to the particulate nature of matter', color: 'bg-yellow-400', cardCount: 12, progress: 0 },
-        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 25, progress: 0 },
-        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 30, progress: 0 },
+        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
+        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0 },
+        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0 },
     ]
   },
   {
     id: '2',
-    title: 'Atomic Structure',
+    title: 'Atomic structure',
     cards: [
-        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 18, progress: 0 },
-        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 22, progress: 0 },
+        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0 },
+        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0 },
     ]
   },
   {
     id: '3',
     title: 'Periodicity',
     cards: [
-      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 15, progress: 0 },
-      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 28, progress: 0 },
+      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0 },
+      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0 },
     ]
   },
   {
     id: '4',
-    title: 'Chemical Bonding',
+    title: 'Chemical bonding and structure',
     cards: [
-      { id: 'c8', title: 'Ionic bonding and structure', color: 'bg-amber-400', cardCount: 19, progress: 0 },
-      { id: 'c9', title: 'Covalent bonding', color: 'bg-emerald-400', cardCount: 35, progress: 0 },
-      { id: 'c10', title: 'Covalent structures', color: 'bg-violet-400', cardCount: 40, progress: 0 },
-      { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 24, progress: 0 },
-      { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 10, progress: 0 },
+      { id: 'c8', title: 'Ionic bonding and structure', color: 'bg-amber-400', cardCount: 0, progress: 0 },
+      { id: 'c9', title: 'Covalent bonding', color: 'bg-emerald-400', cardCount: 0, progress: 0 },
+      { id: 'c10', title: 'Covalent structures', color: 'bg-violet-400', cardCount: 0, progress: 0 },
+      { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 0, progress: 0 },
+      { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 0, progress: 0 },
     ]
   },
   {
     id: '5',
-    title: 'Energetics',
-    cards: []
+    title: 'Energetics/thermochemistry',
+    cards: [
+        { id: 'c13', title: 'Measuring energy changes', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
+        { id: 'c14', title: 'Hess\'s Law', color: 'bg-pink-400', cardCount: 0, progress: 0 },
+        { id: 'c15', title: 'Bond enthalpies', color: 'bg-blue-400', cardCount: 0, progress: 0 },
+    ]
   },
   {
     id: '6',
-    title: 'Kinetics',
-    cards: []
+    title: 'Chemical kinetics',
+    cards: [
+        { id: 'c16', title: 'Collision theory and rates of reaction', color: 'bg-green-400', cardCount: 0, progress: 0 },
+    ]
   },
   {
     id: '7',
     title: 'Equilibrium',
-    cards: []
+    cards: [
+        { id: 'c17', title: 'Equilibrium', color: 'bg-red-400', cardCount: 0, progress: 0 },
+    ]
   },
   {
     id: '8',
-    title: 'Acids and Bases',
-    cards: []
+    title: 'Acids and bases',
+    cards: [
+        { id: 'c18', title: 'Theories of acids and bases', color: 'bg-amber-400', cardCount: 0, progress: 0 },
+        { id: 'c19', title: 'Properties of acids and bases', color: 'bg-emerald-400', cardCount: 0, progress: 0 },
+        { id: 'c20', title: 'The pH scale', color: 'bg-violet-400', cardCount: 0, progress: 0 },
+        { id: 'c21', title: 'Strong and weak acids and bases', color: 'bg-rose-400', cardCount: 0, progress: 0 },
+        { id: 'c22', title: 'Acid deposition', color: 'bg-cyan-400', cardCount: 0, progress: 0 },
+    ]
   }
 ];
 
@@ -67,6 +81,8 @@ export const initialQuizTopics: Omit<Card, 'color'>[] = [
     { id: 'q4', title: 'Chemical bonding and structure', cardCount: 0, progress: 0 },
     { id: 'q5', title: 'Energetics/thermochemistry', cardCount: 0, progress: 0 },
     { id: 'q6', title: 'Chemical kinetics', cardCount: 0, progress: 0 },
+    { id: 'q7', title: 'Equilibrium', cardCount: 0, progress: 0 },
+    { id: 'q8', title: 'Acids and bases', cardCount: 0, progress: 0 },
 ];
 
 export const initialNotes: Note[] = [
@@ -102,14 +118,7 @@ export const motivationalMessages: string[] = [
     "The secret to getting ahead is getting started. Let's go!",
 ];
 
-export const initialFriends: Friend[] = [
-  { id: 'f1', name: 'Alice', avatarUrl: 'https://picsum.photos/seed/f1/200/200' },
-  { id: 'f2', name: 'Bob', avatarUrl: 'https://picsum.photos/seed/f2/200/200' },
-  { id: 'f3', name: 'Charlie', avatarUrl: 'https://picsum.photos/seed/f3/200/200' },
-  { id: 'f4', name: 'Diana', avatarUrl: 'https://picsum.photos/seed/f4/200/200' },
-  { id: 'f5', name: 'Eve', avatarUrl: 'https://picsum.photos/seed/f5/200/200' },
-  { id: 'f6', name: 'Frank', avatarUrl: 'https://picsum.photos/seed/f6/200/200' },
-];
+export const initialFriends: Friend[] = [];
 
 export const quizQuestions: { [key: string]: QuizQuestion[] } = {
   'q1': [

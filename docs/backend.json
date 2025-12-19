@@ -85,22 +85,49 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the User entity."
+          "description": "Unique identifier for the User entity, same as Firebase Auth UID."
         },
-        "username": {
+        "name": {
           "type": "string",
-          "description": "The username of the user."
+          "description": "The user's display name."
         },
         "email": {
           "type": "string",
           "description": "The email address of the user.",
           "format": "email"
+        },
+        "age": {
+          "type": "number",
+          "description": "The age of the user."
+        },
+        "yearGroup": {
+          "type": "string",
+          "description": "The user's year group in school."
+        },
+        "schoolName": {
+          "type": "string",
+          "description": "The name of the user's school."
+        },
+        "curriculum": {
+          "type": "string",
+          "description": "The user's educational curriculum."
+        },
+        "friends": {
+          "type": "array",
+          "description": "An array of user IDs that are friends with this user.",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": [
         "id",
-        "username",
-        "email"
+        "name",
+        "email",
+        "age",
+        "yearGroup",
+        "schoolName",
+        "curriculum"
       ]
     }
   },
@@ -168,3 +195,4 @@
     "reasoning": "The Firestore data structure is designed to ensure security, scalability, and ease of debugging, adhering to the core design principles of Authorization Independence, Clarity of Intent, DBAC (Database-based Access Control), and QAPs (Rules are not Filters). It also leverages denormalization to avoid complex security rules that rely on `get()` calls.\n\n**Structure Overview:**\n\n*   **`/users/{userId}`:** Stores user profiles. Security rules ensure that only the user can read/write their document.\n*   **`/users/{userId}/notes/{noteId}`:**  Stores notes specific to each user. This hierarchical structure enforces ownership and simplifies security rules.\n*   **`/user_progress/{userId}`:** Stores the user progress. The document ID will be the `userId` to ensure a 1:1 relationship.\n\n**Authorization Independence:**\n\nAuthorization is primarily path-based, particularly for notes.  The `/users/{userId}/notes/{noteId}` path inherently grants the specified user ownership. Because there are no shared notes and all notes are private, no denormalization is required.\n\n**QAPs (Rules are not Filters):**\n\n*   The structure inherently supports secure `list` operations. Listing notes under `/users/{userId}/notes` is secure because security rules can easily restrict access to only the authenticated `userId`.\n\n**DBAC (Database-Based Access Control):**\n\nRoles are not directly implemented in this design, as the application focuses on private notes per user. If collaborative features were added, a `members` map within each note document (denormalized with user roles) would be necessary to achieve Authorization Independence.\n"
   }
 }
+    

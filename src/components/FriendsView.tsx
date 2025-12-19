@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from 'react';
-import type { Friend } from '@/lib/types';
-import { initialFriends } from '@/lib/data';
+import type { Friend, UserDetails } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from './ui/button';
-import { UserPlus, MessageSquare, ArrowLeft, Flame, Layers } from 'lucide-react';
+import { UserPlus, MessageSquare, ArrowLeft, Flame, Layers, Search, UserSearch } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from './ui/input';
 
 const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void }) => {
   return (
@@ -91,23 +91,24 @@ const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void 
 
 const FriendsView = () => {
   const [selectedFriend, setSelectedFriend] = useState<Friend | null>(null);
-  const friends = initialFriends;
+  const [friends, setFriends] = useState<Friend[]>([]);
 
   if (selectedFriend) {
     return <FriendProfile friend={selectedFriend} onBack={() => setSelectedFriend(null)} />;
   }
-
-  return (
-    <div className="p-4 md:p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold">Friends</h2>
-        <Button>
-          <UserPlus className="mr-2 h-4 w-4" />
-          Add Friend
-        </Button>
-      </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-        {friends.map((friend) => (
+  
+  const renderFriendsGrid = () => {
+     if (friends.length === 0) {
+        return (
+            <div className="text-center col-span-full py-16">
+                <UserSearch className="mx-auto h-16 w-16 text-muted-foreground" />
+                <h3 className="mt-4 text-lg font-semibold">Find your friends</h3>
+                <p className="mt-1 text-sm text-muted-foreground">Search for friends by name or email to connect.</p>
+            </div>
+        )
+     }
+     
+     return friends.map((friend) => (
           <Card 
             key={friend.id} 
             className="text-center cursor-pointer hover:shadow-lg transition-shadow"
@@ -121,7 +122,23 @@ const FriendsView = () => {
               <h3 className="font-bold truncate text-lg">{friend.name}</h3>
             </CardContent>
           </Card>
-        ))}
+        ));
+  }
+
+  return (
+    <div className="p-4 md:p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold">Friends</h2>
+        <div className="relative w-full max-w-xs">
+          <Input 
+            placeholder="Search for friends..."
+            className="pr-10"
+          />
+          <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        {renderFriendsGrid()}
       </div>
     </div>
   );

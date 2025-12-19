@@ -21,13 +21,14 @@ const DetailItem = ({ label, value }: { label: string, value: string | number | 
     </div>
 );
 
-const EditableDetailItem = ({ label, value, name, onChange }: { label: string, value: string | number, name: keyof UserDetails, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) => (
+const EditableDetailItem = ({ label, value, name, onChange, type = "text" }: { label: string, value: string | number, name: keyof UserDetails, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void, type?: string }) => (
     <div>
         <Label htmlFor={name} className="text-sm text-muted-foreground">{label}</Label>
         <Input 
             id={name} 
             name={name}
-            value={value} 
+            value={value}
+            type={type}
             onChange={onChange}
             className="mt-1"
         />
@@ -37,6 +38,15 @@ const EditableDetailItem = ({ label, value, name, onChange }: { label: string, v
 const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
+  const [avatarSeed, setAvatarSeed] = useState(userDetails?.name || 'default');
+
+  const generateNewAvatar = () => {
+    const newSeed = Date.now().toString();
+    setAvatarSeed(newSeed);
+    if (editedDetails) {
+        // In a real app you might want to save this new seed with the user profile
+    }
+  }
 
   if (!userDetails) {
     return (
@@ -81,30 +91,28 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
             <CardHeader className="text-center">
                 <div className="flex justify-center mb-4 relative w-fit mx-auto">
                     <Avatar className="w-32 h-32 border-4 border-primary">
-                        <AvatarImage src={`https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name}`} alt={userDetails.name} />
+                        <AvatarImage src={`https://api.dicebear.com/8.x/bottts/svg?seed=${avatarSeed}`} alt={userDetails.name} />
                         <AvatarFallback>{userDetails.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                     {!isEditing && (
-                        <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={handleEditClick}>
-                            <Pencil className="h-5 w-5"/>
-                        </Button>
-                     )}
+                     <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={generateNewAvatar}>
+                        <Pencil className="h-5 w-5"/>
+                    </Button>
                 </div>
                 {isEditing ? (
                      <EditableDetailItem label="Name" name="name" value={editedDetails?.name || ''} onChange={handleChange} />
                 ) : (
                     <>
                         <CardTitle className="text-3xl">{userDetails.name}</CardTitle>
-                        <CardDescription>{userDetails.emailOrPhone}</CardDescription>
+                        <CardDescription>{userDetails.email}</CardDescription>
                     </>
                 )}
             </CardHeader>
             <CardContent>
                  {isEditing && editedDetails ? (
                     <div className="space-y-4">
-                        <EditableDetailItem label="Email / Phone" name="emailOrPhone" value={editedDetails.emailOrPhone} onChange={handleChange} />
+                        <EditableDetailItem label="Email / Phone" name="email" value={editedDetails.email} onChange={handleChange} />
                         <div className="grid grid-cols-2 gap-4">
-                            <EditableDetailItem label="Age" name="age" value={editedDetails.age} onChange={handleChange} />
+                            <EditableDetailItem label="Age" name="age" value={editedDetails.age} onChange={handleChange} type="number" />
                             <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup} onChange={handleChange} />
                         </div>
                         <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName} onChange={handleChange} />

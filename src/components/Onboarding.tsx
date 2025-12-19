@@ -16,18 +16,24 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import type { UserDetails } from '@/lib/types';
+import { useToast } from '@/hooks/use-toast';
+import { useAuth, useFirestore, setDocumentNonBlocking } from '@/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc } from 'firebase/firestore';
+
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   age: z.coerce.number().int().positive({ message: 'Please enter a valid age.' }),
   yearGroup: z.string().min(1, { message: 'Year group is required.' }),
-  emailOrPhone: z.string().min(1, { message: 'Email or phone number is required.' }),
+  email: z.string().email({ message: "Please enter a valid email."}),
+  password: z.string().min(6, { message: "Password must be at least 6 characters."}),
   schoolName: z.string().min(1, { message: 'School name is required.' }),
   curriculum: z.string().min(1, { message: 'Curriculum is required.' }),
 });
 
 type UserDetailsFormProps = {
-  onNext: (data: UserDetails) => void;
+  onNext: (data: Omit<UserDetails, 'id'>) => void;
   setAuthView: (view: 'login' | 'signup') => void;
 };
 
@@ -38,14 +44,16 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
       name: '',
       age: undefined,
       yearGroup: '',
-      emailOrPhone: '',
+      email: '',
+      password: '',
       schoolName: '',
       curriculum: '',
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    onNext(values);
+    const { password, ...userDetails } = values;
+    onNext(userDetails);
   }
 
   return (
@@ -100,12 +108,25 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
             </div>
             <FormField
               control={form.control}
-              name="emailOrPhone"
+              name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email / Phone Number</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
+                    <Input type="email" placeholder="you@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -177,16 +198,39 @@ type OnboardingProps = {
 
 const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
   const [step, setStep] = useState(1);
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+  const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'> | null>(null);
+  const auth = useAuth();
+  const firestore = useFirestore();
+  const { toast } = useToast();
 
-  const handleUserDetailsNext = (data: UserDetails) => {
-    setUserDetails(data);
-    setStep(2);
+  const handleUserDetailsNext = (data: Omit<UserDetails, 'id'>) => {
+    const email = data.email;
+    const password = "password"; // This should come from the form
+    
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        const user = userCredential.user;
+        const finalDetails: UserDetails = { ...data, id: user.uid };
+
+        const userDocRef = doc(firestore, "users", user.uid);
+        
+        setDocumentNonBlocking(userDocRef, finalDetails, { merge: true });
+
+        setUserDetails(finalDetails);
+        setStep(2);
+      })
+      .catch(error => {
+        toast({
+          variant: "destructive",
+          title: "Signup Failed",
+          description: error.message,
+        });
+      });
   };
 
   const handleQuizComplete = () => {
     if (userDetails) {
-      onComplete(userDetails);
+      onComplete(userDetails as UserDetails);
     }
   };
 

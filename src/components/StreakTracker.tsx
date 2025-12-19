@@ -10,6 +10,7 @@ import {
   ChartContainer,
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
+import { startOfMonth, getDaysInMonth, getDay, format } from 'date-fns';
 
 const chartData = [
   { name: "Progress", value: 75, fill: "hsl(var(--accent))" },
@@ -25,22 +26,31 @@ const chartConfig = {
 const StreakTracker = () => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   
-  // Simplified calendar, we will populate this based on user activity later.
-  const calendarDays = Array.from({ length: 35 }, (_, i) => {
-      // Dummy logic to make today's date active.
-      // In a real app, this would be based on real dates.
-      const day = i - 5;
-      const today = new Date().getDate();
-      let status = 'inactive';
-      if (day > 0 && day <= 31) {
-          if (day < today) {
-              status = 'active';
-          } else if (day === today) {
-              status = 'today';
-          }
-      }
+  const [currentDate, setCurrentDate] = React.useState(new Date());
 
-      return { day, status };
+  const firstDayOfMonth = startOfMonth(currentDate);
+  const daysInMonth = getDaysInMonth(currentDate);
+  const startingDayOfWeek = getDay(firstDayOfMonth);
+
+  const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
+    if (i < startingDayOfWeek) {
+      return { day: null, status: 'inactive' };
+    }
+    const day = i - startingDayOfWeek + 1;
+    const today = new Date();
+    const isToday = day === today.getDate() &&
+                    currentDate.getMonth() === today.getMonth() &&
+                    currentDate.getFullYear() === today.getFullYear();
+
+    let status = 'inactive';
+    if (isToday) {
+      status = 'today';
+    } else if (new Date(currentDate.getFullYear(), currentDate.getMonth(), day) < today) {
+      // Dummy logic for past days, will be based on activity later
+      status = 'active'; 
+    }
+    
+    return { day, status };
   });
 
   return (
@@ -50,6 +60,9 @@ const StreakTracker = () => {
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
+          </div>
           <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4">
             {weekDays.map((day) => (
               <div key={day}>{day}</div>
@@ -60,12 +73,12 @@ const StreakTracker = () => {
               <div
                 key={index}
                 className={cn('flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
-                  'text-muted-foreground/50': status === 'inactive' || day <= 0,
+                  'text-muted-foreground/50': status === 'inactive' || !day,
                   'bg-orange-100 text-orange-500': status === 'active',
                   'bg-primary text-primary-foreground': status === 'today',
                 })}
               >
-                {status !== 'inactive' && day > 0 && (
+                {day && (
                    status === 'active' ? <Flame className="w-6 h-6" /> : day
                 )}
               </div>

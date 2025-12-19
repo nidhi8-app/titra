@@ -38,8 +38,15 @@ export default function Home() {
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
-  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(false);
-  const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
+  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(true);
+  const [userDetails, setUserDetails] = React.useState<UserDetails | null>({
+      name: 'Jane Doe',
+      age: 16,
+      yearGroup: 'Year 12',
+      emailOrPhone: 'jane.doe@example.com',
+      schoolName: 'North London Collegiate School',
+      curriculum: 'IB Diploma',
+  });
   const { toast } = useToast();
 
   const handleCreateDeck = () => {

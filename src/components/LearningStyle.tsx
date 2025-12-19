@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -21,38 +22,58 @@ import {
 
 
 const diagramFolders = [
-  { id: '1', title: 'Atomic Structure' },
-  { id: '2', title: 'Bonding & Structures' },
-  { id: '3', title: 'Organic Molecules' },
-  { id: '4', title: 'Reaction Mechanisms' },
+  { id: '1', title: 'Stoichiometry Diagrams' },
+  { id: '2', title: 'Atomic Structure Visuals' },
+  { id: '3', title: 'Periodicity Charts' },
+  { id: '4', title: 'Chemical Bonding Models' },
+  { id: '5', title: 'Energetics & Thermochemistry Flowcharts' },
+  { id: '6', title: 'Chemical Kinetics Graphs' },
+  { id: '7', title: 'Equilibrium Models' },
+  { id: '8', title: 'Acids and Bases pH Scale Diagrams' },
 ];
 
 const mindmapFolders = [
-  { id: '1', title: 'Periodic Table Trends' },
-  { id: '2', title: 'Types of Chemical Reactions' },
-  { id: '3', title: 'Solution Chemistry' },
-  { id: '4', title: 'Gas Laws' },
+  { id: '1', title: 'Stoichiometric Relationships' },
+  { id: '2', title: 'Electron Configuration Maps' },
+  { id: '3', title: 'Periodic Trends Mindmap' },
+  { id: '4', title: 'Intermolecular Forces Map' },
+  { id: '5', title: 'Enthalpy and Entropy' },
+  { id: '6', title: 'Reaction Rate Factors' },
+  { id: '7', title: 'Le Chatelier\'s Principle' },
+  { id: '8', title: 'Acid-Base Titration Curves' },
 ];
 
 const auditoryFolders = [
-  { id: '1', title: 'Recorded Lectures: Covalent Bonds', icon: Music },
-  { id: '2', title: 'Mnemonic Rhymes for Polyatomic Ions', icon: Mic },
-  { id: '3', title: 'Podcast: The World of Organic Chemistry', icon: Music },
-  { id: '4', title: 'Debates: Ionic vs. Covalent', icon: Mic },
+  { id: '1', title: 'Podcast: The Mole Concept', icon: Music },
+  { id: '2', title: 'Rhymes for Electron Shells', icon: Mic },
+  { id: '3', title: 'Lecture: Periodic Trends Explained', icon: Music },
+  { id: '4', title: 'Debate: Ionic vs. Covalent Bonds', icon: Mic },
+  { id: '5', title: 'Audiobook: Hess\'s Law', icon: Music },
+  { id: '6', title: 'Collision Theory Explained', icon: Mic },
+  { id: '7', title: 'Equilibrium Constant Sonification', icon: Music },
+  { id: '8', title: 'Strong vs. Weak Acids Chant', icon: Mic },
 ];
 
 const simulationFolders = [
   { id: '1', title: 'Virtual Lab: Titration', icon: Beaker },
-  { id: '2', title: 'Interactive Simulation: Build an Atom', icon: Atom },
-  { id: '3', title: 'Model Building: VSEPR Theory', icon: Beaker },
+  { id: '2', title: 'Interactive: Build an Atom', icon: Atom },
+  { id: '3', title: 'Model Kit: VSEPR Theory', icon: Beaker },
   { id: '4', title: 'Virtual Bond Builder', icon: Atom },
+  { id: '5', title: 'Calorimetry Experiment', icon: Beaker },
+  { id: '6', title: 'Reaction Rate Simulator', icon: Atom },
+  { id: '7', title: 'Equilibrium Simulation', icon: Beaker },
+  { id: '8', title: 'Acid-Base Virtual Lab', icon: Atom },
 ];
 
 const gamificationFolders = [
   { id: '1', title: 'Molecule Naming Race', icon: Swords },
   { id: '2', title: 'Element Matching Game', icon: Puzzle },
-  { id: '3', title: 'Lab Safety Escape Room', icon: Swords },
-  { id: '4', title: 'Periodic Table Battleship', icon: Puzzle },
+  { id: '3', title: 'Periodic Table Battleship', icon: Swords },
+  { id: '4', title: 'Bonding Type Quiz Show', icon: Puzzle },
+  { id: '5', title: 'Enthalpy Change Challenge', icon: Swords },
+  { id: '6', title: 'Kinetics Rate Law Puzzle', icon: Puzzle },
+  { id: '7', title: 'Le Chatelier\'s Principle Game', icon: Swords },
+  { id: '8', title: 'pH Scale Target Practice', icon: Puzzle },
 ];
 
 type LearningStyleProps = {

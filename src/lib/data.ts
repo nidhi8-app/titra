@@ -1,3 +1,4 @@
+
 import type { Card, Deck, Note, Friend, QuizQuestion } from './types';
 
 export const initialDecks: Deck[] = [
@@ -36,16 +37,36 @@ export const initialDecks: Deck[] = [
       { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 24, progress: 0 },
       { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 10, progress: 0 },
     ]
+  },
+  {
+    id: '5',
+    title: 'Energetics',
+    cards: []
+  },
+  {
+    id: '6',
+    title: 'Kinetics',
+    cards: []
+  },
+  {
+    id: '7',
+    title: 'Equilibrium',
+    cards: []
+  },
+  {
+    id: '8',
+    title: 'Acids and Bases',
+    cards: []
   }
 ];
 
 export const initialQuizTopics: Omit<Card, 'color'>[] = [
-    { id: 'q1', title: 'Stoichiometric relationships', cardCount: 10, progress: 0 },
-    { id: 'q2', title: 'Atomic structure', cardCount: 8, progress: 0 },
-    { id: 'q3', title: 'Periodicity', cardCount: 12, progress: 0 },
-    { id: 'q4', title: 'Chemical bonding and structure', cardCount: 15, progress: 0 },
-    { id: 'q5', title: 'Energetics/thermochemistry', cardCount: 10, progress: 0 },
-    { id: 'q6', title: 'Chemical kinetics', cardCount: 9, progress: 0 },
+    { id: 'q1', title: 'Stoichiometric relationships', cardCount: 2, progress: 0 },
+    { id: 'q2', title: 'Atomic structure', cardCount: 0, progress: 0 },
+    { id: 'q3', title: 'Periodicity', cardCount: 0, progress: 0 },
+    { id: 'q4', title: 'Chemical bonding and structure', cardCount: 0, progress: 0 },
+    { id: 'q5', title: 'Energetics/thermochemistry', cardCount: 0, progress: 0 },
+    { id: 'q6', title: 'Chemical kinetics', cardCount: 0, progress: 0 },
 ];
 
 export const initialNotes: Note[] = [

@@ -15,7 +15,7 @@ import {
 import { FlaskConical, Sparkles, LogOut, Clock } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Deck, UserDetails } from "@/lib/types";
+import type { Deck, UserDetails, Card as TopicCard } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
@@ -33,6 +33,7 @@ import { Button } from "@/components/ui/button";
 import { useUser, useAuth, useFirestore, setDocumentNonBlocking } from "@/firebase";
 import { signOut } from "firebase/auth";
 import { doc } from 'firebase/firestore';
+import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -69,6 +70,8 @@ export default function Home() {
   const [isAppLoaded, setIsAppLoaded] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const [authView, setAuthView] = React.useState<AuthView>('signup');
+  const [isQuizDialogVisible, setIsQuizDialogVisible] = React.useState(false);
+  const [quizTopicFromDashboard, setQuizTopicFromDashboard] = React.useState<TopicCard | null>(null);
   const { toast } = useToast();
   
   React.useEffect(() => {
@@ -114,6 +117,9 @@ export default function Home() {
   };
   
   const handleNavigate = (view: ActiveView) => {
+    if (view !== 'quizzes') {
+        setQuizTopicFromDashboard(null);
+    }
     setActiveView(view);
     setSelectedDeckId(null);
   };
@@ -189,6 +195,12 @@ export default function Home() {
     }
   }
 
+  const handleStartQuizFromDashboard = (topic: TopicCard) => {
+    setQuizTopicFromDashboard(topic);
+    setActiveView('quizzes');
+    setIsQuizDialogVisible(false);
+  }
+
 
   const selectedDeck = React.useMemo(() => {
     return decks.find((deck) => deck.id === selectedDeckId);
@@ -225,7 +237,7 @@ export default function Home() {
         return (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
             <div className="lg:col-span-2">
-              <StreakTracker />
+              <StreakTracker onStartQuizzing={() => setIsQuizDialogVisible(true)} />
             </div>
             <div className="lg:col-span-1 h-full">
               <ScrollArea className="h-[calc(100vh-12rem)]">
@@ -240,7 +252,7 @@ export default function Home() {
       case "learning-style":
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
-        return <QuizView />;
+        return <QuizView preselectedTopic={quizTopicFromDashboard} />;
       case "friends":
         return <FriendsView />;
       case "account":
@@ -336,6 +348,11 @@ export default function Home() {
           </main>
         </div>
       </SidebarInset>
+      <QuizSelectionDialog 
+        isOpen={isQuizDialogVisible}
+        onClose={() => setIsQuizDialogVisible(false)}
+        onSelectTopic={handleStartQuizFromDashboard}
+      />
     </SidebarProvider>
   );
 }

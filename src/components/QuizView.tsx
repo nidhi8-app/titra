@@ -65,11 +65,18 @@ const QuizSession = ({ topic, onBack }: { topic: TopicCard, onBack: () => void }
   );
 };
 
+type QuizViewProps = {
+    preselectedTopic?: TopicCard | null;
+}
 
-const QuizView = () => {
-  const [selectedTopic, setSelectedTopic] = React.useState<TopicCard | null>(null);
+const QuizView = ({ preselectedTopic = null }: QuizViewProps) => {
+  const [selectedTopic, setSelectedTopic] = React.useState<TopicCard | null>(preselectedTopic);
   const topics = initialQuizTopics;
   
+  React.useEffect(() => {
+    setSelectedTopic(preselectedTopic);
+  }, [preselectedTopic]);
+
   if (selectedTopic) {
     return <QuizSession topic={selectedTopic} onBack={() => setSelectedTopic(null)} />
   }

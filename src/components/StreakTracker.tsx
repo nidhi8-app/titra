@@ -37,7 +37,11 @@ const streakRewards = [
     { icon: Medal, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
 ]
 
-const StreakTracker = () => {
+type StreakTrackerProps = {
+    onStartQuizzing: () => void;
+};
+
+const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   
   const [currentDate, setCurrentDate] = React.useState(new Date());
@@ -131,7 +135,7 @@ const StreakTracker = () => {
         </div>
       </CardContent>
       <div className="p-6">
-        <Button className="w-full font-bold text-lg" size="lg">
+        <Button className="w-full font-bold text-lg" size="lg" onClick={onStartQuizzing}>
           <Sparkles className="mr-2" />
           Start Quizzing
         </Button>

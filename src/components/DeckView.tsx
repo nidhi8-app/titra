@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -5,6 +6,12 @@ import type { Deck } from '@/lib/types';
 import { Button } from './ui/button';
 import { Plus, Search } from 'lucide-react';
 import { Progress } from './ui/progress';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+import Image from 'next/image';
+
+const imageMap = new Map<string, ImagePlaceholder>(
+  PlaceHolderImages.map(img => [img.id, img])
+);
 
 type DeckViewProps = {
   deck: Deck;
@@ -43,27 +50,42 @@ const DeckView = ({ deck }: DeckViewProps) => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {deck.cards.map((card) => (
-          <div key={card.id} className="rounded-xl shadow-md bg-card border flex flex-col">
-            <div className={`h-16 rounded-t-xl ${card.color}`}></div>
-            <div className="p-4 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="font-bold truncate mb-2">{card.title}</h3>
-              </div>
-              <div className="text-sm text-muted-foreground mt-2">
-                <div className="flex justify-between items-center">
-                  <span>{card.cardCount > 0 ? `${card.cardCount} cards` : 'No cards'}</span>
+        {deck.cards.map((card) => {
+          const image = card.imageId ? imageMap.get(card.imageId) : null;
+          return (
+            <div key={card.id} className="rounded-xl shadow-md bg-card border flex flex-col">
+              {image ? (
+                <div className="relative h-32 w-full rounded-t-xl overflow-hidden">
+                  <Image
+                    src={image.imageUrl}
+                    alt={image.description}
+                    fill
+                    className="object-cover"
+                    data-ai-hint={image.imageHint}
+                  />
+                </div>
+              ) : (
+                <div className={`h-16 rounded-t-xl ${card.color}`}></div>
+              )}
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bold truncate mb-2">{card.title}</h3>
+                </div>
+                <div className="text-sm text-muted-foreground mt-2">
+                  <div className="flex justify-between items-center">
+                    <span>{card.cardCount > 0 ? `${card.cardCount} cards` : 'No cards'}</span>
+                    {card.progress > 0 && (
+                      <span className="font-semibold">{card.progress}%</span>
+                    )}
+                  </div>
                   {card.progress > 0 && (
-                    <span className="font-semibold">{card.progress}%</span>
+                    <Progress value={card.progress} className="h-2 mt-2" />
                   )}
                 </div>
-                {card.progress > 0 && (
-                  <Progress value={card.progress} className="h-2 mt-2" />
-                )}
               </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   );

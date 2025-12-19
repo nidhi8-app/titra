@@ -6,6 +6,7 @@ export type Card = {
   color: string;
   cardCount: number;
   progress: number;
+  imageId?: string;
 };
 
 export type Deck = {

@@ -1,3 +1,136 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "c1",
+      "description": "Particulate nature of matter",
+      "imageUrl": "https://images.unsplash.com/photo-1659975045301-b213fab4058b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb2xlY3VsZXMlMjBhdG9tc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "molecules atoms"
+    },
+    {
+      "id": "c2",
+      "description": "Mole concept visualization",
+      "imageUrl": "https://images.unsplash.com/photo-1688494930420-694c13332f83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZWFrZXIlMjBzY2FsZXxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beaker scale"
+    },
+    {
+      "id": "c3",
+      "description": "Reacting masses and volumes",
+      "imageUrl": "https://images.unsplash.com/photo-1608037222022-62649819f8aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjaGVtaXN0cnklMjBleHBlcmltZW50fGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chemistry experiment"
+    },
+    {
+      "id": "c4",
+      "description": "The nuclear atom",
+      "imageUrl": "https://images.unsplash.com/photo-1707135719639-409915fbc68f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhdG9taWMlMjBzdHJ1Y3R1cmV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "atomic structure"
+    },
+    {
+      "id": "c5",
+      "description": "Electron configuration",
+      "imageUrl": "https://images.unsplash.com/photo-1680779116067-e02dadf73b99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxlbGVjdHJvbiUyMHNoZWxsfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "electron shell"
+    },
+    {
+      "id": "c6",
+      "description": "The periodic table",
+      "imageUrl": "https://images.unsplash.com/photo-1582089319119-a788d9f9d976?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJpb2RpYyUyMHRhYmxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "periodic table"
+    },
+    {
+      "id": "c7",
+      "description": "Periodic trends graph",
+      "imageUrl": "https://images.unsplash.com/photo-1647032713701-a80d2b69e502?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxncmFwaCUyMGFycm93fGVufDB8fHx8MTc2NjA4NjU2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "graph arrow"
+    },
+    {
+      "id": "c8",
+      "description": "Ionic bonding structure",
+      "imageUrl": "https://images.unsplash.com/photo-1693237396552-91b5d6a9cd2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxpb25pYyUyMGJvbmR8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ionic bond"
+    },
+    {
+      "id": "c9",
+      "description": "Covalent bonding",
+      "imageUrl": "https://images.unsplash.com/photo-1655890954753-f9ec41ce58ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb3ZhbGVudCUyMGJvbmR8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "covalent bond"
+    },
+    {
+      "id": "c10",
+      "description": "Covalent structures (e.g. diamond)",
+      "imageUrl": "https://images.unsplash.com/photo-1759860238002-92f42d4158f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkaWFtb25kJTIwc3RydWN0dXJlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "diamond structure"
+    },
+    {
+      "id": "c11",
+      "description": "Intermolecular forces",
+      "imageUrl": "https://images.unsplash.com/photo-1632667860090-10314f5722d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3YXRlciUyMG1vbGVjdWxlc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water molecules"
+    },
+    {
+      "id": "c12",
+      "description": "Metallic bonding",
+      "imageUrl": "https://images.unsplash.com/photo-1763776091902-3d58451c42fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZXRhbCUyMGxhdHRpY2V8ZW58MHx8fHwxNzY2MTY0NDM1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "metal lattice"
+    },
+    {
+      "id": "c13",
+      "description": "Measuring energy changes (calorimeter)",
+      "imageUrl": "https://images.unsplash.com/photo-1581091013158-5c7184f43b62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2Fsb3JpbWV0ZXIlMjBzY2llbmNlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calorimeter science"
+    },
+    {
+      "id": "c14",
+      "description": "Hess's Law diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1719671749913-684a8752e16b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlbmVyZ3klMjBjeWNsZXxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "energy cycle"
+    },
+    {
+      "id": "c15",
+      "description": "Bond enthalpies diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1765726951362-df46f5a74cdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaGVtaWNhbCUyMGJvbmRzfGVufDB8fHx8MTc2NjE0NDc5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chemical bonds"
+    },
+    {
+      "id": "c16",
+      "description": "Collision theory",
+      "imageUrl": "https://images.unsplash.com/photo-1655890954739-c5782b4a8211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2xlY3VsZSUyMGNvbGxpc2lvbnxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "molecule collision"
+    },
+    {
+      "id": "c17",
+      "description": "Chemical equilibrium",
+      "imageUrl": "https://images.unsplash.com/photo-1587740896339-96a76170508d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYWxhbmNlJTIwc2NhbGV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "balance scale"
+    },
+    {
+      "id": "c18",
+      "description": "Theories of acids and bases",
+      "imageUrl": "https://images.unsplash.com/photo-1628863353691-0071c8c1874c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGVtaXN0cnklMjBnbGFzc3dhcmV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chemistry glassware"
+    },
+    {
+      "id": "c19",
+      "description": "Properties of acids and bases",
+      "imageUrl": "https://images.unsplash.com/photo-1727195077380-1c0f7e7a3456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXRtdXMlMjBwYXBlcnxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "litmus paper"
+    },
+    {
+      "id": "c20",
+      "description": "The pH scale",
+      "imageUrl": "https://images.unsplash.com/photo-1648566777018-31e5201f9ced?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaCUyMHNjYWxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ph scale"
+    },
+    {
+      "id": "c21",
+      "description": "Strong and weak acids",
+      "imageUrl": "https://images.unsplash.com/photo-1758685734062-165cc0094e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFrZXJzJTIwbGlxdWlkc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beakers liquids"
+    },
+    {
+      "id": "c22",
+      "description": "Acid deposition effects",
+      "imageUrl": "https://images.unsplash.com/photo-1664783366257-ed2a579eea86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb3Jlc3QlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "forest pollution"
+    }
+  ]
 }

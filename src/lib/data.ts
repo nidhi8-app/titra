@@ -6,70 +6,70 @@ export const initialDecks: Deck[] = [
     id: '1',
     title: 'Stoichiometric relationships',
     cards: [
-        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
-        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0 },
-        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0 },
+        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c1' },
+        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c2' },
+        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c3' },
     ]
   },
   {
     id: '2',
     title: 'Atomic structure',
     cards: [
-        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0 },
-        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0 },
+        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c4' },
+        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c5' },
     ]
   },
   {
     id: '3',
     title: 'Periodicity',
     cards: [
-      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0 },
-      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0 },
+      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c6' },
+      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0, imageId: 'c7' },
     ]
   },
   {
     id: '4',
     title: 'Chemical bonding and structure',
     cards: [
-      { id: 'c8', title: 'Ionic bonding and structure', color: 'bg-amber-400', cardCount: 0, progress: 0 },
-      { id: 'c9', title: 'Covalent bonding', color: 'bg-emerald-400', cardCount: 0, progress: 0 },
-      { id: 'c10', title: 'Covalent structures', color: 'bg-violet-400', cardCount: 0, progress: 0 },
-      { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 0, progress: 0 },
-      { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 0, progress: 0 },
+      { id: 'c8', title: 'Ionic bonding and structure', color: 'bg-amber-400', cardCount: 0, progress: 0, imageId: 'c8' },
+      { id: 'c9', title: 'Covalent bonding', color: 'bg-emerald-400', cardCount: 0, progress: 0, imageId: 'c9' },
+      { id: 'c10', title: 'Covalent structures', color: 'bg-violet-400', cardCount: 0, progress: 0, imageId: 'c10' },
+      { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 0, progress: 0, imageId: 'c11' },
+      { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c12' },
     ]
   },
   {
     id: '5',
     title: 'Energetics/thermochemistry',
     cards: [
-        { id: 'c13', title: 'Measuring energy changes', color: 'bg-yellow-400', cardCount: 0, progress: 0 },
-        { id: 'c14', title: 'Hess\'s Law', color: 'bg-pink-400', cardCount: 0, progress: 0 },
-        { id: 'c15', title: 'Bond enthalpies', color: 'bg-blue-400', cardCount: 0, progress: 0 },
+        { id: 'c13', title: 'Measuring energy changes', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c13' },
+        { id: 'c14', title: 'Hess\'s Law', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c14' },
+        { id: 'c15', title: 'Bond enthalpies', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c15' },
     ]
   },
   {
     id: '6',
     title: 'Chemical kinetics',
     cards: [
-        { id: 'c16', title: 'Collision theory and rates of reaction', color: 'bg-green-400', cardCount: 0, progress: 0 },
+        { id: 'c16', title: 'Collision theory and rates of reaction', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c16' },
     ]
   },
   {
     id: '7',
     title: 'Equilibrium',
     cards: [
-        { id: 'c17', title: 'Equilibrium', color: 'bg-red-400', cardCount: 0, progress: 0 },
+        { id: 'c17', title: 'Equilibrium', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c17' },
     ]
   },
   {
     id: '8',
     title: 'Acids and bases',
     cards: [
-        { id: 'c18', title: 'Theories of acids and bases', color: 'bg-amber-400', cardCount: 0, progress: 0 },
-        { id: 'c19', title: 'Properties of acids and bases', color: 'bg-emerald-400', cardCount: 0, progress: 0 },
-        { id: 'c20', title: 'The pH scale', color: 'bg-violet-400', cardCount: 0, progress: 0 },
-        { id: 'c21', title: 'Strong and weak acids and bases', color: 'bg-rose-400', cardCount: 0, progress: 0 },
-        { id: 'c22', title: 'Acid deposition', color: 'bg-cyan-400', cardCount: 0, progress: 0 },
+        { id: 'c18', title: 'Theories of acids and bases', color: 'bg-amber-400', cardCount: 0, progress: 0, imageId: 'c18' },
+        { id: 'c19', title: 'Properties of acids and bases', color: 'bg-emerald-400', cardCount: 0, progress: 0, imageId: 'c19' },
+        { id: 'c20', title: 'The pH scale', color: 'bg-violet-400', cardCount: 0, progress: 0, imageId: 'c20' },
+        { id: 'c21', title: 'Strong and weak acids and bases', color: 'bg-rose-400', cardCount: 0, progress: 0, imageId: 'c21' },
+        { id: 'c22', title: 'Acid deposition', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c22' },
     ]
   }
 ];

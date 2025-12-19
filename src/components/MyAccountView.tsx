@@ -1,15 +1,17 @@
-
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import type { UserDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Pencil } from 'lucide-react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
+  setUserDetails: (details: UserDetails | null) => void;
 };
 
 const DetailItem = ({ label, value }: { label: string, value: string | number | undefined }) => (
@@ -19,7 +21,23 @@ const DetailItem = ({ label, value }: { label: string, value: string | number | 
     </div>
 );
 
-const MyAccountView = ({ userDetails }: MyAccountViewProps) => {
+const EditableDetailItem = ({ label, value, name, onChange }: { label: string, value: string | number, name: keyof UserDetails, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) => (
+    <div>
+        <Label htmlFor={name} className="text-sm text-muted-foreground">{label}</Label>
+        <Input 
+            id={name} 
+            name={name}
+            value={value} 
+            onChange={onChange}
+            className="mt-1"
+        />
+    </div>
+);
+
+const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
+
   if (!userDetails) {
     return (
       <div className="p-8 text-center">
@@ -27,6 +45,35 @@ const MyAccountView = ({ userDetails }: MyAccountViewProps) => {
       </div>
     );
   }
+
+  const handleEditClick = () => {
+    setEditedDetails(userDetails);
+    setIsEditing(true);
+  };
+  
+  const handleCancelClick = () => {
+    setIsEditing(false);
+    setEditedDetails(userDetails);
+  }
+
+  const handleSaveClick = () => {
+    if (editedDetails) {
+      setUserDetails(editedDetails);
+      localStorage.setItem('userDetails', JSON.stringify(editedDetails));
+      setIsEditing(false);
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (editedDetails) {
+        setEditedDetails({
+            ...editedDetails,
+            [name]: name === 'age' ? Number(value) : value
+        });
+    }
+  };
+
 
   return (
     <div className="p-4 md:p-8">
@@ -37,22 +84,49 @@ const MyAccountView = ({ userDetails }: MyAccountViewProps) => {
                         <AvatarImage src={`https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails.name}`} alt={userDetails.name} />
                         <AvatarFallback>{userDetails.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10">
-                        <Pencil className="h-5 w-5"/>
-                    </Button>
+                     {!isEditing && (
+                        <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={handleEditClick}>
+                            <Pencil className="h-5 w-5"/>
+                        </Button>
+                     )}
                 </div>
-                <CardTitle className="text-3xl">{userDetails.name}</CardTitle>
-                <CardDescription>{userDetails.emailOrPhone}</CardDescription>
+                {isEditing ? (
+                     <EditableDetailItem label="Name" name="name" value={editedDetails?.name || ''} onChange={handleChange} />
+                ) : (
+                    <>
+                        <CardTitle className="text-3xl">{userDetails.name}</CardTitle>
+                        <CardDescription>{userDetails.emailOrPhone}</CardDescription>
+                    </>
+                )}
             </CardHeader>
             <CardContent>
-                <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
-                    <DetailItem label="Age" value={userDetails.age} />
-                    <DetailItem label="Year Group" value={userDetails.yearGroup} />
-                    <DetailItem label="School" value={userDetails.schoolName} />
-                    <DetailItem label="Curriculum" value={userDetails.curriculum} />
-                </div>
-                 <div className="mt-8 flex justify-end">
-                    <Button variant="outline">Edit Profile</Button>
+                 {isEditing && editedDetails ? (
+                    <div className="space-y-4">
+                        <EditableDetailItem label="Email / Phone" name="emailOrPhone" value={editedDetails.emailOrPhone} onChange={handleChange} />
+                        <div className="grid grid-cols-2 gap-4">
+                            <EditableDetailItem label="Age" name="age" value={editedDetails.age} onChange={handleChange} />
+                            <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup} onChange={handleChange} />
+                        </div>
+                        <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName} onChange={handleChange} />
+                        <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum} onChange={handleChange} />
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
+                        <DetailItem label="Age" value={userDetails.age} />
+                        <DetailItem label="Year Group" value={userDetails.yearGroup} />
+                        <DetailItem label="School" value={userDetails.schoolName} />
+                        <DetailItem label="Curriculum" value={userDetails.curriculum} />
+                    </div>
+                )}
+                 <div className="mt-8 flex justify-end gap-2">
+                    {isEditing ? (
+                        <>
+                            <Button variant="outline" onClick={handleCancelClick}>Cancel</Button>
+                            <Button onClick={handleSaveClick}>Save</Button>
+                        </>
+                    ) : (
+                        <Button variant="outline" onClick={handleEditClick}>Edit Profile</Button>
+                    )}
                 </div>
             </CardContent>
         </Card>

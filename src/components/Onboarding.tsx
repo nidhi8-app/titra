@@ -14,8 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { FlaskConical, Sparkles } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import type { UserDetails } from '@/lib/types';
 
 const formSchema = z.object({
@@ -29,9 +28,10 @@ const formSchema = z.object({
 
 type UserDetailsFormProps = {
   onNext: (data: UserDetails) => void;
+  setAuthView: (view: 'login' | 'signup') => void;
 };
 
-const UserDetailsForm = ({ onNext }: UserDetailsFormProps) => {
+const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -141,24 +141,41 @@ const UserDetailsForm = ({ onNext }: UserDetailsFormProps) => {
           </form>
         </Form>
       </CardContent>
+       <CardFooter className="flex-col gap-4 text-sm">
+        <p>
+          Already have an account?{' '}
+          <Button variant="link" className="p-0 h-auto" onClick={() => setAuthView('login')}>
+            Log in here
+          </Button>
+        </p>
+      </CardFooter>
     </Card>
   );
 };
 
 // Placeholder for Learning Style Quiz
 const LearningStyleQuiz = ({ onComplete }: { onComplete: () => void }) => (
-  <div>
-    <h2>Learning Style Quiz</h2>
-    <p>This is where the learning style quiz will go.</p>
-    <Button onClick={onComplete}>Finish Onboarding</Button>
-  </div>
+  <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>What's your learning style?</CardTitle>
+        <CardDescription>This will help us personalize your content.</CardDescription>
+      </CardHeader>
+      <CardContent className="text-center">
+        <p>The learning style quiz will go here.</p>
+        <p className="mt-4 text-muted-foreground">For now, let's skip this step.</p>
+      </CardContent>
+      <CardFooter>
+        <Button onClick={onComplete} className="w-full">Finish Onboarding</Button>
+      </CardFooter>
+  </Card>
 );
 
 type OnboardingProps = {
   onComplete: (details: UserDetails) => void;
+  setAuthView: (view: 'login' | 'signup') => void;
 };
 
-const Onboarding = ({ onComplete }: OnboardingProps) => {
+const Onboarding = ({ onComplete, setAuthView }: OnboardingProps) => {
   const [step, setStep] = useState(1);
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
 
@@ -174,19 +191,10 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
-       <div className="flex items-center gap-2 mb-8">
-            <div className="relative">
-              <FlaskConical className="w-12 h-12 text-primary" />
-              <Sparkles className="absolute -top-1 -right-2 w-7 h-7 text-yellow-300" />
-            </div>
-            <h1 className="font-headline text-5xl font-bold text-primary">
-              Titra
-            </h1>
-          </div>
-      {step === 1 && <UserDetailsForm onNext={handleUserDetailsNext} />}
+    <>
+      {step === 1 && <UserDetailsForm onNext={handleUserDetailsNext} setAuthView={setAuthView} />}
       {step === 2 && <LearningStyleQuiz onComplete={handleQuizComplete} />}
-    </div>
+    </>
   );
 };
 

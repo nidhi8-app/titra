@@ -11,7 +11,7 @@ import {
   SidebarTrigger,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import { FlaskConical, Sparkles } from "lucide-react";
+import { FlaskConical, Sparkles, LogOut } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
 import type { Deck, UserDetails } from "@/lib/types";
@@ -27,9 +27,12 @@ import QuizView from "@/components/QuizView";
 import FriendsView from "@/components/FriendsView";
 import Onboarding from "@/components/Onboarding";
 import MyAccountView from "@/components/MyAccountView";
+import Login from "@/components/Login";
+import { Button } from "@/components/ui/button";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
+type AuthView = 'login' | 'signup';
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
@@ -38,15 +41,16 @@ export default function Home() {
   );
   const [activeView, setActiveView] = React.useState<ActiveView>("dashboard");
   const [learnerType, setLearnerType] = React.useState("Visual");
-  const [isOnboardingComplete, setIsOnboardingComplete] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [isAppLoaded, setIsAppLoaded] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
+  const [authView, setAuthView] = React.useState<AuthView>('signup');
   const { toast } = useToast();
   
   React.useEffect(() => {
     const onboardingStatus = localStorage.getItem('onboardingComplete');
     if (onboardingStatus === 'true') {
-      setIsOnboardingComplete(true);
+      setIsAuthenticated(true);
       const savedDetails = localStorage.getItem('userDetails');
       if (savedDetails) {
         setUserDetails(JSON.parse(savedDetails));
@@ -109,9 +113,32 @@ export default function Home() {
 
   const handleOnboardingComplete = (details: UserDetails) => {
     setUserDetails(details);
-    setIsOnboardingComplete(true);
+    setIsAuthenticated(true);
     localStorage.setItem('onboardingComplete', 'true');
     localStorage.setItem('userDetails', JSON.stringify(details));
+  };
+  
+  const handleLogin = (details: UserDetails) => {
+    setUserDetails(details);
+    setIsAuthenticated(true);
+    localStorage.setItem('onboardingComplete', 'true');
+    localStorage.setItem('userDetails', JSON.stringify(details));
+    toast({
+        title: "Welcome back!",
+        description: "You've successfully logged in.",
+    });
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setUserDetails(null);
+    localStorage.removeItem('onboardingComplete');
+    localStorage.removeItem('userDetails');
+    setAuthView('login');
+    toast({
+        title: "Logged Out",
+        description: "You have been successfully logged out.",
+    });
   };
 
   const selectedDeck = React.useMemo(() => {
@@ -167,7 +194,7 @@ export default function Home() {
       case "friends":
         return <FriendsView />;
       case "account":
-        return <MyAccountView userDetails={userDetails} />;
+        return <MyAccountView userDetails={userDetails} setUserDetails={setUserDetails} />;
       default:
         return null;
     }
@@ -185,8 +212,25 @@ export default function Home() {
     }
   }
 
-  if (!isOnboardingComplete) {
-    return <Onboarding onComplete={handleOnboardingComplete} />;
+  if (!isAuthenticated) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="relative">
+            <FlaskConical className="w-12 h-12 text-primary" />
+            <Sparkles className="absolute -top-1 -right-2 w-7 h-7 text-yellow-300" />
+          </div>
+          <h1 className="font-headline text-5xl font-bold text-primary">
+            Titra
+          </h1>
+        </div>
+        {authView === 'signup' ? (
+          <Onboarding onComplete={handleOnboardingComplete} setAuthView={setAuthView} />
+        ) : (
+          <Login onLogin={handleLogin} setAuthView={setAuthView} />
+        )}
+      </div>
+    );
   }
 
   return (
@@ -229,6 +273,10 @@ export default function Home() {
                   {getTitle()}
                 </h2>
              </div>
+             <Button variant="ghost" onClick={handleLogout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Log Out
+             </Button>
           </header>
           <main className="flex-1 overflow-y-auto">
             {renderContent()}

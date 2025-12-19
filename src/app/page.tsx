@@ -121,8 +121,8 @@ export default function Home() {
   const handleLogin = (details: UserDetails) => {
     setUserDetails(details);
     setIsAuthenticated(true);
+    // onboardingComplete is likely already true, but we set it just in case
     localStorage.setItem('onboardingComplete', 'true');
-    localStorage.setItem('userDetails', JSON.stringify(details));
     toast({
         title: "Welcome back!",
         description: "You've successfully logged in.",
@@ -134,9 +134,10 @@ export default function Home() {
       localStorage.setItem('lastUserEmail', userDetails.emailOrPhone);
     }
     setIsAuthenticated(false);
-    setUserDetails(null);
+    // We don't clear userDetails from state or localStorage here
+    // so the user can log back in.
+    // We remove 'onboardingComplete' to signify the user is logged out.
     localStorage.removeItem('onboardingComplete');
-    localStorage.removeItem('userDetails');
     setAuthView('login');
     toast({
         title: "Logged Out",

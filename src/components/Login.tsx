@@ -20,18 +20,26 @@ import type { UserDetails } from '@/lib/types';
 
 // Mock function to "find" a user. In a real app, this would be an API call.
 const findUserByEmail = (email: string): UserDetails | null => {
+    // In our prototype, userDetails are persisted in localStorage.
     const storedDetails = localStorage.getItem('userDetails');
     if (storedDetails) {
         const user = JSON.parse(storedDetails);
-        if (user.emailOrPhone === email) {
+        if (user.emailOrPhone.toLowerCase() === email.toLowerCase()) {
             return user;
         }
+    }
+    
+    // As a fallback for development, check if there's an email but no user details yet.
+    const lastUserEmail = localStorage.getItem('lastUserEmail');
+    if (lastUserEmail?.toLowerCase() === email.toLowerCase() && !storedDetails) {
+        // This case shouldn't happen in normal flow, but as a recovery.
+        // We can't return user details, so we let the error message guide the user.
     }
     return null;
 }
 
 const formSchema = z.object({
-  emailOrPhone: z.string().min(1, { message: 'Email or phone number is required.' }),
+  emailOrPhone: z.string().min(1, { message: 'Email or phone number is required.' }).email({ message: 'Please enter a valid email address.'}),
 });
 
 type LoginProps = {
@@ -54,10 +62,14 @@ const Login = ({ onLogin, setAuthView }: LoginProps) => {
     values: {
       emailOrPhone: defaultEmail,
     },
+    mode: 'onBlur'
   });
 
+  React.useEffect(() => {
+    form.setValue('emailOrPhone', defaultEmail);
+  }, [defaultEmail, form]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // For this prototype, we'll just check if a user with this email exists in localStorage
     const user = findUserByEmail(values.emailOrPhone);
     if (user) {
         onLogin(user);
@@ -83,7 +95,7 @@ const Login = ({ onLogin, setAuthView }: LoginProps) => {
               name="emailOrPhone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email / Phone Number</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="you@example.com" {...field} />
                   </FormControl>

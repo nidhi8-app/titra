@@ -10,7 +10,7 @@ import {
   ChartContainer,
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
-import { startOfMonth, getDaysInMonth, getDay, format, isToday, parseISO, isSameDay } from 'date-fns';
+import { startOfMonth, getDaysInMonth, getDay, format, isToday, parseISO, isSameDay, subDays, differenceInCalendarDays } from 'date-fns';
 import {
   Collapsible,
   CollapsibleContent,
@@ -32,12 +32,12 @@ const chartConfig = {
 };
 
 const streakRewards = [
-    { id: 'daily', icon: CheckCircle2, label: "Daily Activity", description: "Complete any revision.", color: "text-green-500" },
-    { id: 'solid', icon: Flame, label: "Solid Session", description: "30+ minutes of revision.", color: "text-orange-500" },
-    { id: 'deep', icon: FlaskConical, label: "Deep Dive", description: "60+ minutes of revision.", color: "text-blue-500" },
-    { id: 'master', icon: Atom, label: "Topic Mastered", description: "Ace a quiz (>=80%).", color: "text-purple-500" },
-    { id: 'weekly', icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-yellow-500" },
-    { id: 'monthly', icon: Medal, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
+    { id: 'createDeck', icon: BookOpen, label: "Deck Builder", description: "Create a new deck.", color: "text-blue-500" },
+    { id: 'addNote', icon: BookOpen, label: "Note Taker", description: "Add a new note.", color: "text-blue-500" },
+    { id: 'startQuiz', icon: Flame, label: "Quiz Starter", description: "Start any quiz.", color: "text-orange-500" },
+    { id: 'aceQuiz', icon: Medal, label: "Quiz Ace", description: "Score 80%+ on a quiz.", color: "text-yellow-500" },
+    { id: 'deep', icon: FlaskConical, label: "Deep Dive", description: "60+ minutes of revision.", color: "text-purple-500" },
+    { id: 'weekly', icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-green-500" },
 ]
 
 type StreakTrackerProps = {
@@ -146,10 +146,53 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     return { day, status, emoji };
   });
 
+  const streak = React.useMemo(() => {
+    const activityDates = Object.keys(dailyActivity)
+        .map(dateStr => parseISO(dateStr))
+        .sort((a, b) => b.getTime() - a.getTime());
+
+    if (activityDates.length === 0) return 0;
+    
+    let currentStreak = 0;
+    const today = new Date();
+    const lastActivityDate = activityDates[0];
+    
+    if (!isSameDay(lastActivityDate, today) && !isSameDay(lastActivityDate, subDays(today, 1))) {
+        return 0; // Streak is broken if no activity today or yesterday
+    }
+
+    currentStreak = 1;
+    let expectedDate = subDays(lastActivityDate, 1);
+
+    for (let i = 1; i < activityDates.length; i++) {
+        if (isSameDay(activityDates[i], expectedDate)) {
+            currentStreak++;
+            expectedDate = subDays(expectedDate, 1);
+        } else if (differenceInCalendarDays(expectedDate, activityDates[i]) > 0) {
+            // Gap in activity, so streak is broken
+            break;
+        }
+        // If activityDates[i] is the same day as expectedDate, loop continues
+    }
+
+    // If the last activity was yesterday, the streak is valid. If it was today, it is also valid.
+    if(isSameDay(lastActivityDate, new Date()) || isSameDay(lastActivityDate, subDays(new Date(), 1))) {
+      return currentStreak;
+    }
+
+    return 0;
+
+
+  }, [dailyActivity]);
+
   return (
     <Card className="w-full shadow-lg">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">9 day streak!</CardTitle>
+        {streak > 0 ? (
+          <CardTitle className="text-3xl font-bold">{streak} day streak!</CardTitle>
+        ) : (
+           <CardTitle className="text-3xl font-bold">Start quizzing to build a streak!</CardTitle>
+        )}
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
@@ -228,3 +271,5 @@ const Sparkles = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default StreakTracker;
+
+    

@@ -1,48 +1,50 @@
 
 import type { Card, Deck, Note, Friend, QuizQuestion } from './types';
+import { Beaker, Atom, FlaskConical, BookText, Network, Scale, Microscope, TestTube, ChevronsRightLeft, Rows, Link, CircleDashed } from 'lucide-react';
+
 
 export const initialDecks: Deck[] = [
   {
     id: '1',
     title: 'Chemical Symbols, Formulae & Equations',
     cards: [
-        { id: 'q1', title: 'Chemical symbols and formulae', color: 'bg-yellow-400', cardCount: 10, progress: -1, imageId: 'c1', emoji: '🧪' },
-        { id: 'q2', title: 'Word and balanced chemical equations', color: 'bg-pink-400', cardCount: 10, progress: -1, imageId: 'c2', emoji: '✍️' },
+        { id: 'q1', title: 'Chemical symbols and formulae', color: 'bg-yellow-400', cardCount: 10, progress: -1, imageId: 'c1', emoji: BookText },
+        { id: 'q2', title: 'Word and balanced chemical equations', color: 'bg-pink-400', cardCount: 10, progress: -1, imageId: 'c2', emoji: ChevronsRightLeft },
     ]
   },
   {
     id: '2',
     title: 'Chemical Bonding and Structure',
     cards: [
-        { id: 'q3', title: 'Ionic Bonding', color: 'bg-green-400', cardCount: 10, progress: -1, imageId: 'c8', emoji: '💎' },
-        { id: 'q4', title: 'Covalent Bonding', color: 'bg-sky-400', cardCount: 10, progress: -1, imageId: 'c9', emoji: '🔗' },
-        { id: 'q5', title: 'Metallic Bonding', color: 'bg-amber-400', cardCount: 5, progress: -1, imageId: 'c12', emoji: '⛓️' },
-        { id: 'q6', title: 'Limitations of Models', color: 'bg-rose-400', cardCount: 5, progress: -1, imageId: 'c10', emoji: '🧩' },
+        { id: 'q3', title: 'Ionic Bonding', color: 'bg-green-400', cardCount: 10, progress: -1, imageId: 'c8', emoji: Atom },
+        { id: 'q4', title: 'Covalent Bonding', color: 'bg-sky-400', cardCount: 10, progress: -1, imageId: 'c9', emoji: Link },
+        { id: 'q5', title: 'Metallic Bonding', color: 'bg-amber-400', cardCount: 5, progress: -1, imageId: 'c12', emoji: CircleDashed },
+        { id: 'q6', title: 'Limitations of Models', color: 'bg-rose-400', cardCount: 5, progress: -1, imageId: 'c10', emoji: Network },
     ]
   },
   {
     id: '3',
     title: 'Stoichiometric relationships',
     cards: [
-        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c1', emoji: '🔬' },
-        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c2', emoji: '⚖️' },
-        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c3', emoji: '🧪' },
+        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c1', emoji: Microscope },
+        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c2', emoji: Scale },
+        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c3', emoji: Beaker },
     ]
   },
   {
     id: '4',
     title: 'Atomic structure',
     cards: [
-        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: '⚛️' },
-        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c5', emoji: '⚡️' },
+        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: Atom },
+        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c5', emoji: TestTube },
     ]
   },
   {
     id: '5',
     title: 'Periodicity',
     cards: [
-      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c6', emoji: '🗓️' },
-      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0, imageId: 'c7', emoji: '📈' },
+      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c6', emoji: Rows },
+      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0, imageId: 'c7', emoji: FlaskConical },
     ]
   },
 ];

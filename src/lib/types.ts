@@ -1,4 +1,6 @@
 
+import { LucideIcon } from "lucide-react";
+
 export type Card = {
   id: string;
   title: string;
@@ -6,7 +8,7 @@ export type Card = {
   cardCount: number;
   progress: number;
   imageId?: string;
-  emoji?: string;
+  emoji?: LucideIcon | string;
 };
 
 export type Deck = {

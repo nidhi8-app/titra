@@ -105,14 +105,25 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     return <NoteEditor onSave={handleSaveNote} onCancel={() => setIsCreatingNote(false)} />;
   }
 
-  if (isLoading) {
-    return (
-        <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-            <h3 className="text-2xl font-semibold">Loading notes...</h3>
+  const renderDeckCards = () => {
+    if (deck.cards.length === 0 && deckNotes.length === 0) {
+      return (
+        <div className="text-center col-span-full py-16">
+          <h3 className="mt-4 text-lg font-semibold">This deck is empty</h3>
+          <p className="mt-1 text-sm text-muted-foreground">Click 'Import' to add your first note.</p>
         </div>
-    )
-  }
+      );
+    }
 
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {deckNotes.map((note) => (
+          <NoteCard key={note.id} note={note} />
+        ))}
+      </div>
+    );
+  };
+  
   return (
     <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-6 gap-2">
@@ -132,11 +143,13 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
             </Button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {deckNotes.map((note) => (
-            <NoteCard key={note.id} note={note} />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      ) : (
+        renderDeckCards()
+      )}
       <ImportDialog
         isOpen={isImporting}
         onClose={() => setIsImporting(false)}

@@ -114,7 +114,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (activity.duration >= 60) return <FlaskConical className="w-5 h-5 text-purple-500" />;
     if (activity.duration >= 30) return <Flame className="w-5 h-5 text-orange-500" />;
-    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <CheckCircle2 className="w-5 h-5 text-green-500" />;
+    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <Flame className="w-5 h-5 text-orange-500/50" />;
     
     return null;
 };
@@ -291,5 +291,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    
 
     

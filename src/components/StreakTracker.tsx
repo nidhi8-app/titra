@@ -202,8 +202,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
         )}
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div className="md:col-span-3">
                 <div className="flex justify-between items-center mb-2">
                     <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
                 </div>
@@ -242,7 +242,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                         <AccordionItem value="item-1" className="border-b-0">
                             <AccordionTrigger className="font-semibold text-lg">Streak rewards</AccordionTrigger>
                             <AccordionContent>
-                                <div className="space-y-2">
+                                <div className="grid grid-cols-2 gap-2">
                                     {streakRewards.map((reward) => {
                                         const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
                                         return (
@@ -265,7 +265,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                 <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>
 
-            <div className="md:col-span-1 flex flex-col items-center justify-start space-y-4">
+            <div className="md:col-span-2 flex flex-col items-center justify-start space-y-4">
                 <div className='relative flex flex-col items-center justify-center'>
                     <h3 className="text-4xl font-bold">Goal</h3>
                     <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>

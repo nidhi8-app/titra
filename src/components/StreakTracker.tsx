@@ -48,7 +48,7 @@ const StreakFlameIcon = ({ day, opacity }: { day: number, opacity: number }) => 
         background: `radial-gradient(circle, rgba(255, 193, 7, ${opacity * 0.7}) 0%, rgba(255, 152, 0, 0) 70%)`,
       }}
     >
-      <Flame className="absolute text-orange-200/80" style={{ opacity: opacity * 0.9, fontSize: '36px' }} />
+      <Flame className="absolute text-orange-200/80 w-9 h-9" style={{ opacity: opacity * 0.9 }} />
       <span className="relative font-bold text-gray-800">{day}</span>
     </div>
   );
@@ -219,7 +219,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
         {streak > 0 ? (
           <CardTitle className="text-3xl font-bold">{streak} day streak!</CardTitle>
         ) : (
-           <CardTitle className="text-3xl font-bold">Start quizzing to build a streak!</CardTitle>
+           <CardTitle className="text-3xl font-bold">Start quizzing to start a streak!</CardTitle>
         )}
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -227,7 +227,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
           </div>
-          <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4">
+          <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4 font-bold">
             {weekDays.map((day) => (
               <div key={day}>{day}</div>
             ))}
@@ -310,11 +310,3 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
-
-    
-
-    
-
-    
-
-    

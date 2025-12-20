@@ -2,13 +2,19 @@
 "use client";
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal, BookOpen, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
 } from "@/components/ui/chart";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Pie, PieChart } from "recharts"
 import { startOfMonth, getDaysInMonth, getDay, format, isToday, parseISO, isSameDay, subDays, differenceInCalendarDays } from 'date-fns';
 import { useUser } from '@/firebase';
@@ -195,82 +201,95 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
            <CardTitle className="text-3xl font-bold">Start quizzing to start a streak!</CardTitle>
         )}
       </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
-          </div>
-          <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4 font-bold">
-            {weekDays.map((day) => (
-              <div key={day}>{day}</div>
-            ))}
-          </div>
-          <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
-            {calendarDays.map(({ day, status, icon }, index) => (
-              <div
-                key={index}
-                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors font-bold', {
-                  'text-muted-foreground/50': !day,
-                  'cursor-pointer': !!day,
-                })}
-              >
-                {day && (
-                  <>
-                    {icon && (
-                      <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
+            </div>
+            <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4 font-bold">
+                {weekDays.map((day) => (
+                <div key={day}>{day}</div>
+                ))}
+            </div>
+            <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
+                {calendarDays.map(({ day, status, icon }, index) => (
+                <div
+                    key={index}
+                    className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors font-bold', {
+                    'text-muted-foreground/50': !day,
+                    'cursor-pointer': !!day,
+                    })}
+                >
+                    {day && (
+                    <>
+                        {icon && (
+                        <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
+                        )}
+                        <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
+                            'bg-primary text-primary-foreground': status === 'today' && !icon,
+                            'text-foreground': icon,
+                        })}>
+                        {day}
+                        </span>
+                    </>
                     )}
-                    <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
-                      'bg-primary text-primary-foreground': status === 'today' && !icon,
-                    })}>
-                      {day}
-                    </span>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-          <ContinueLearning onStartQuizzing={onStartQuizzing} />
-        </div>
+                </div>
+                ))}
+            </div>
+             <ContinueLearning onStartQuizzing={onStartQuizzing} />
+            </div>
 
-        <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
-            <div className='relative flex flex-col items-center justify-center'>
-                <h3 className="text-4xl font-bold">Goal</h3>
-                <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
-                <ChartContainer config={chartConfig} className="w-full h-48">
-                    <PieChart accessibilityLayer>
-                        <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
-                        </Pie>
-                    </PieChart>
-                </ChartContainer>
-            </div>
-            <div className="w-full space-y-2">
-                {streakRewards.map((reward) => {
-                    const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
-                    return (
-                        <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
-                            <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
-                                <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
-                            </div>
-                            <div>
-                                <p className="font-semibold">{reward.label}</p>
-                                <p className="text-xs text-muted-foreground">{reward.description}</p>
-                            </div>
-                        </div>
-                    );
-                })}
+            <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
+                <div className='relative flex flex-col items-center justify-center'>
+                    <h3 className="text-4xl font-bold">Goal</h3>
+                    <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
+                    <ChartContainer config={chartConfig} className="w-full h-48">
+                        <PieChart accessibilityLayer>
+                            <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
+                            </Pie>
+                        </PieChart>
+                    </ChartContainer>
+                </div>
             </div>
         </div>
+        <Accordion type="single" collapsible className="w-full mt-6">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>
+              <h4 className="font-semibold text-lg">Today's Goals</h4>
+            </AccordionTrigger>
+            <AccordionContent>
+                <div className="w-full space-y-2">
+                    {streakRewards.map((reward) => {
+                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                        return (
+                            <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
+                                <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
+                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
+                                </div>
+                                <div>
+                                    <p className="font-semibold">{reward.label}</p>
+                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </CardContent>
-      <div className="p-6">
+      <CardFooter className="p-6">
         <Button className="w-full font-bold text-lg" size="lg" onClick={() => onStartQuizzing()}>
           <SparklesIcon className="mr-2" />
           Start Quizzing
         </Button>
-      </div>
+      </CardFooter>
     </Card>
   );
 };
 
 export default StreakTracker;
+    
 
     

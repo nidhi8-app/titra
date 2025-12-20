@@ -15,7 +15,7 @@ import {
 import { FlaskConical, Sparkles, LogOut, Clock, BookOpen } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Deck, UserDetails, Card as TopicCard, QuizQuestion } from "@/lib/types";
+import type { Deck, UserDetails, Card as TopicCard, QuizQuestion, Note } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
@@ -30,10 +30,11 @@ import Onboarding from "@/components/Onboarding";
 import MyAccountView from "@/components/MyAccountView";
 import Login from "@/components/Login";
 import { Button } from "@/components/ui/button";
-import { useUser, useAuth, useFirestore, setDocumentNonBlocking } from "@/firebase";
+import { useUser, useAuth, useFirestore, setDocumentNonBlocking, useCollection, useMemoFirebase } from "@/firebase";
 import { signOut } from "firebase/auth";
-import { doc } from 'firebase/firestore';
+import { collection, doc, getDocs, query, writeBatch, where } from 'firebase/firestore';
 import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
+import { initialNotesData } from "@/lib/initial-notes";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -81,6 +82,45 @@ export default function Home() {
   const [isQuizDialogVisible, setIsQuizDialogVisible] = React.useState(false);
   const [quizSource, setQuizSource] = React.useState<QuizSource | null>(null);
   const { toast } = useToast();
+  
+  const notesCollectionRef = useMemoFirebase(() => {
+    if (!user || !firestore) return null;
+    return collection(firestore, `users/${user.uid}/notes`);
+  }, [user, firestore]);
+  const { data: notes } = useCollection<Note>(notesCollectionRef);
+  
+  // Seed initial notes
+  React.useEffect(() => {
+    const seedInitialNotes = async () => {
+        if (user && firestore && notes !== undefined) {
+            const hasSeededKey = `hasSeededNotes-${user.uid}`;
+            const hasSeeded = localStorage.getItem(hasSeededKey);
+
+            if (!hasSeeded) {
+                // Check if there are any notes for the initial decks already.
+                const initialDeckIds = initialDecks.map(d => d.id);
+                const q = query(notesCollectionRef!, where('deckId', 'in', initialDeckIds));
+                const existingNotesSnapshot = await getDocs(q);
+
+                if (existingNotesSnapshot.empty) {
+                    console.log("Seeding initial notes...");
+                    const batch = writeBatch(firestore);
+                    Object.entries(initialNotesData).forEach(([deckId, notesToSeed]) => {
+                        notesToSeed.forEach(noteContent => {
+                            const noteDocRef = doc(notesCollectionRef!);
+                            batch.set(noteDocRef, { ...noteContent, deckId });
+                        });
+                    });
+                    await batch.commit();
+                }
+                localStorage.setItem(hasSeededKey, 'true');
+            }
+        }
+    };
+    
+    seedInitialNotes();
+
+  }, [user, firestore, notes, notesCollectionRef]);
   
   React.useEffect(() => {
     // We wait for the user state to be determined.

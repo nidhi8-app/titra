@@ -111,7 +111,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-500 opacity-90" />;
+    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-400 opacity-90" />;
     if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500 opacity-90" />;
     
     return <CheckCircle2 className="w-8 h-8 text-green-500 opacity-90" />;
@@ -214,28 +214,22 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
             {calendarDays.map(({ day, status, icon }, index) => (
               <div
                 key={index}
-                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors', {
+                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors font-bold', {
                   'text-muted-foreground/50': !day,
                   'cursor-pointer': !!day,
-                  'font-bold': !!day,
                 })}
               >
                 {day && (
                   <>
-                    {icon ? (
-                      <>
-                        <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
-                        <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-background text-foreground rounded-full text-xs border-2 border-background">
-                            {day}
-                        </span>
-                      </>
-                    ) : (
-                       <span className={cn('flex items-center justify-center w-10 h-10 rounded-full', {
-                           'bg-primary text-primary-foreground': status === 'today',
-                       })}>
-                         {day}
-                       </span>
+                    {icon && (
+                      <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
                     )}
+                    <span className={cn('flex items-center justify-center w-10 h-10 rounded-full', {
+                      'bg-primary text-primary-foreground': status === 'today' && !icon,
+                      'text-white [text-shadow:0_0_4px_rgba(0,0,0,0.7)]': !!icon,
+                    })}>
+                      {day}
+                    </span>
                   </>
                 )}
               </div>

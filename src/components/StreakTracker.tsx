@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal } from 'lucide-react';
+import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
@@ -16,6 +16,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { useUser } from '@/firebase';
+import { initialQuizTopics } from '@/lib/data';
 
 const chartData = [
   { name: "Progress", value: 0, fill: "hsl(var(--accent))" },
@@ -38,8 +40,64 @@ const streakRewards = [
 ]
 
 type StreakTrackerProps = {
-    onStartQuizzing: () => void;
+    onStartQuizzing: (topic?: any) => void;
 };
+
+const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) => void; }) => {
+    const { user } = useUser();
+    const [lowestScoreTopic, setLowestScoreTopic] = React.useState<{id: string; title: string} | null>(null);
+
+    React.useEffect(() => {
+        if (user) {
+            const scoresKey = `quizScores-${user.uid}`;
+            const scores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+            const topicIds = Object.keys(scores);
+
+            if (topicIds.length > 0) {
+                let lowestTopicId = topicIds[0];
+                let lowestScore = scores[lowestTopicId];
+
+                for (let i = 1; i < topicIds.length; i++) {
+                    const topicId = topicIds[i];
+                    if (scores[topicId] < lowestScore) {
+                        lowestScore = scores[topicId];
+                        lowestTopicId = topicId;
+                    }
+                }
+
+                const topicDetails = initialQuizTopics.find(t => t.id === lowestTopicId);
+                if (topicDetails) {
+                    setLowestScoreTopic({ id: topicDetails.id, title: topicDetails.title });
+                }
+            }
+        }
+    }, [user]);
+
+    if (!lowestScoreTopic) {
+        return null;
+    }
+
+    const handleContinue = () => {
+        const topic = initialQuizTopics.find(t => t.id === lowestScoreTopic.id);
+        if (topic) {
+            onStartQuizzing(topic);
+        }
+    }
+
+    return (
+        <div className="mt-6 border-t pt-6">
+             <h4 className="font-semibold text-lg mb-2">Recommended for you</h4>
+             <Button variant="outline" className="w-full justify-start h-auto" onClick={handleContinue}>
+                <BookOpen className="mr-4 text-primary" />
+                <div className="text-left">
+                    <p className="font-bold">Continue learning about</p>
+                    <p className="text-primary">{lowestScoreTopic.title}</p>
+                </div>
+             </Button>
+        </div>
+    );
+};
+
 
 const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -122,6 +180,7 @@ const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
                     </div>
                 </CollapsibleContent>
             </Collapsible>
+            <ContinueLearning onStartQuizzing={onStartQuizzing} />
         </div>
         <div className="flex flex-col items-center justify-center space-y-4">
           <h3 className="text-4xl font-bold">Goal</h3>
@@ -135,7 +194,7 @@ const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
         </div>
       </CardContent>
       <div className="p-6">
-        <Button className="w-full font-bold text-lg" size="lg" onClick={onStartQuizzing}>
+        <Button className="w-full font-bold text-lg" size="lg" onClick={() => onStartQuizzing()}>
           <Sparkles className="mr-2" />
           Start Quizzing
         </Button>

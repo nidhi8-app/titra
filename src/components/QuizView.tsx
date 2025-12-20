@@ -14,6 +14,7 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
+  const { user } = useUser();
   
   const questions = quizQuestions[topic.id] || [];
   const currentQuestion = questions[currentQuestionIndex];
@@ -30,12 +31,28 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
       setQuizFinished(true);
     }
   }
+
+  React.useEffect(() => {
+    if (quizFinished && user && questions.length > 0) {
+      const percentage = (score / questions.length) * 100;
+      const scoresKey = `quizScores-${user.uid}`;
+      const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+      const updatedScores = {
+        ...existingScores,
+        [topic.id]: percentage
+      };
+      localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+    }
+  }, [quizFinished, score, questions.length, topic.id, user]);
+  
   
   if (quizFinished) {
+    const percentage = questions.length > 0 ? ((score / questions.length) * 100).toFixed(0) : 0;
     return (
       <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
         <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
-        <p className="text-xl mb-4">You scored {score} out of {questions.length}</p>
+        <p className="text-xl mb-2">You scored {score} out of {questions.length}</p>
+        <p className="text-4xl font-bold text-primary mb-6">{percentage}%</p>
         <Button onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Quizzes

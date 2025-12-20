@@ -218,12 +218,19 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                   'text-muted-foreground/50': !day,
                   'bg-primary text-primary-foreground': status === 'today' && !icon,
                   'cursor-pointer': !!day,
+                  'font-bold': !!day,
                 })}
               >
                 {day && (
                   <>
-                    <span className="font-bold">{day}</span>
                     {icon && <div className="absolute inset-0 flex items-center justify-center">{icon}</div>}
+                    <span 
+                      className={cn("font-bold z-10", { 
+                        "text-white [text-shadow:0_0_4px_rgba(0,0,0,0.7)]": icon 
+                      })}
+                    >
+                      {day}
+                    </span>
                   </>
                 )}
               </div>
@@ -278,7 +285,3 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
-
-    
-
-    

@@ -2,24 +2,31 @@
 "use client";
 
 import React, { useState } from 'react';
-import type { Deck, Note } from '@/lib/types';
+import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { Plus } from 'lucide-react';
+import { Plus, BrainCircuit, Loader2 } from 'lucide-react';
 import NoteEditor from './NoteEditor';
 import NoteCard from './NoteCard';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { ImportDialog } from './ImportDialog';
+import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
+import { useToast } from '@/hooks/use-toast';
+
 
 type DeckViewProps = {
   deck: Deck;
+  onQuiz: (questions: QuizQuestion[], deckTitle: string) => void;
+  userDetails: UserDetails | null;
 };
 
-const DeckView = ({ deck }: DeckViewProps) => {
+const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const [isCreatingNote, setIsCreatingNote] = useState(false);
   const { user } = useUser();
   const firestore = useFirestore();
   const [isImporting, setIsImporting] = useState(false);
+  const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
+  const { toast } = useToast();
 
   const notesCollectionRef = useMemoFirebase(() => {
     if (!user || !firestore) return null;
@@ -32,16 +39,61 @@ const DeckView = ({ deck }: DeckViewProps) => {
   const handleSaveNote = async (title: string, body: string) => {
     if (!notesCollectionRef) return;
 
-    const newNote: Omit<Note, 'id' | 'deckId'> = {
+    const newNote: Omit<Note, 'id' > = {
         title,
         body,
         createdAt: new Date(),
         updatedAt: new Date(),
+        deckId: deck.id,
     };
 
-    await addDoc(notesCollectionRef, { ...newNote, deckId: deck.id });
+    await addDoc(notesCollectionRef, newNote);
     
     setIsCreatingNote(false);
+  };
+
+  const handleGenerateQuiz = async () => {
+    if (!deckNotes || deckNotes.length === 0) {
+      toast({
+        variant: "destructive",
+        title: "Cannot generate quiz",
+        description: "You need to add some notes to this deck first.",
+      });
+      return;
+    }
+    
+    if (!userDetails?.learningStyle) {
+      toast({
+        variant: "destructive",
+        title: "Learning style not set",
+        description: "Please set your learning style in the 'Learning Style' tab before generating a quiz.",
+      });
+      return;
+    }
+
+    setIsGeneratingQuiz(true);
+    try {
+      const notesContent = deckNotes.map(n => `Title: ${n.title}\nBody: ${n.body}`).join('\n\n---\n\n');
+      const result = await generateQuiz({
+        notes: notesContent,
+        learningStyle: userDetails.learningStyle,
+      });
+
+      if (result.questions && result.questions.length > 0) {
+        onQuiz(result.questions, deck.title);
+      } else {
+        throw new Error("AI did not return any questions.");
+      }
+    } catch (error) {
+      console.error("Failed to generate quiz:", error);
+      toast({
+        variant: "destructive",
+        title: "Quiz Generation Failed",
+        description: "There was an error generating the quiz. Please try again.",
+      });
+    } finally {
+      setIsGeneratingQuiz(false);
+    }
   };
   
   const deckNotes = React.useMemo(() => {
@@ -62,29 +114,27 @@ const DeckView = ({ deck }: DeckViewProps) => {
 
   return (
     <div className="p-4 md:p-6">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 gap-2">
         <h2 className="text-2xl font-bold">{deck.title}</h2>
-        <Button onClick={() => setIsImporting(true)}>
-            <Plus className="mr-2 h-4 w-4" />
-            Import
-        </Button>
+        <div className="flex gap-2">
+            <Button onClick={() => setIsImporting(true)}>
+                <Plus className="mr-2 h-4 w-4" />
+                Import
+            </Button>
+            <Button onClick={handleGenerateQuiz} disabled={isGeneratingQuiz}>
+                {isGeneratingQuiz ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                    <BrainCircuit className="mr-2 h-4 w-4" />
+                )}
+                Quiz me
+            </Button>
+        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {deckNotes.map((note) => (
             <NoteCard key={note.id} note={note} />
         ))}
-        {deck.id === '1' && (
-          <>
-            <NoteCard note={{id: 'temp-1', title: "Combining atoms", body: "Atoms combine with other atoms through the movement of electrons...", createdAt: new Date(), updatedAt: new Date() }} />
-            <NoteCard note={{id: 'temp-2', title: "Ionic bonds", body: "Takes place when metals and non-metals react by transferring electrons...", createdAt: new Date(), updatedAt: new Date() }} />
-          </>
-        )}
-        {deck.id === '2' && (
-          <>
-             <NoteCard note={{id: 'temp-3', title: "What is an ion?", body: "An ion is an electrically charged atom or group of atoms formed by the loss or gain of electrons.", createdAt: new Date(), updatedAt: new Date() }} />
-             <NoteCard note={{id: 'temp-4', title: "Giant ionic lattice", body: "The lattices formed by ionic compounds consist of a regular arrangement...", createdAt: new Date(), updatedAt: new Date() }} />
-          </>
-        )}
       </div>
       <ImportDialog
         isOpen={isImporting}
@@ -92,6 +142,11 @@ const DeckView = ({ deck }: DeckViewProps) => {
         onSelect={(option) => {
             if (option === 'Notes') {
                 setIsCreatingNote(true);
+            } else {
+                toast({
+                    title: "Feature not available",
+                    description: `Importing from "${option}" is not yet implemented.`,
+                });
             }
             setIsImporting(false);
         }}

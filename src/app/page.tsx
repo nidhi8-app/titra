@@ -15,7 +15,7 @@ import {
 import { FlaskConical, Sparkles, LogOut, Clock, BookOpen } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Deck, UserDetails, Card as TopicCard } from "@/lib/types";
+import type { Deck, UserDetails, Card as TopicCard, QuizQuestion } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
@@ -38,6 +38,14 @@ import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
 type AuthView = 'login' | 'signup';
+type QuizSource = {
+  type: 'pre-made',
+  topic: TopicCard
+} | {
+  type: 'generated',
+  deckTitle: string,
+  questions: QuizQuestion[]
+}
 
 const LiveClock = () => {
     const [time, setTime] = React.useState(new Date());
@@ -71,7 +79,7 @@ export default function Home() {
   const [userDetails, setUserDetails] = React.useState<UserDetails | null>(null);
   const [authView, setAuthView] = React.useState<AuthView>('signup');
   const [isQuizDialogVisible, setIsQuizDialogVisible] = React.useState(false);
-  const [quizTopicFromDashboard, setQuizTopicFromDashboard] = React.useState<TopicCard | null>(null);
+  const [quizSource, setQuizSource] = React.useState<QuizSource | null>(null);
   const { toast } = useToast();
   
   React.useEffect(() => {
@@ -114,14 +122,13 @@ export default function Home() {
   const handleGoHome = () => {
     setSelectedDeckId(null);
     setActiveView("dashboard");
+    setQuizSource(null);
   };
   
   const handleNavigate = (view: ActiveView) => {
-    if (view !== 'quizzes') {
-        setQuizTopicFromDashboard(null);
-    }
     setActiveView(view);
     setSelectedDeckId(null);
+    setQuizSource(null);
   };
 
   const handleRenameDeck = (deckId: string, newTitle: string) => {
@@ -196,7 +203,7 @@ export default function Home() {
   }
 
   const handleStartQuizFromDashboard = (topic: TopicCard) => {
-    setQuizTopicFromDashboard(topic);
+    setQuizSource({ type: 'pre-made', topic });
     setActiveView('quizzes');
     setIsQuizDialogVisible(false);
   }
@@ -208,6 +215,12 @@ export default function Home() {
         setIsQuizDialogVisible(true);
     }
   }
+  
+  const handleGeneratedQuiz = (questions: QuizQuestion[], deckTitle: string) => {
+    setQuizSource({ type: 'generated', questions, deckTitle });
+    setActiveView('quizzes');
+    setSelectedDeckId(null);
+  };
 
 
   const selectedDeck = React.useMemo(() => {
@@ -236,8 +249,8 @@ export default function Home() {
   }
   
   const renderContent = () => {
-    if (selectedDeck) {
-      return <DeckView deck={selectedDeck} />;
+    if (selectedDeck && activeView === 'dashboard') {
+      return <DeckView deck={selectedDeck} onQuiz={handleGeneratedQuiz} userDetails={userDetails} />;
     }
 
     switch (activeView) {
@@ -260,7 +273,10 @@ export default function Home() {
       case "learning-style":
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
-        return <QuizView preselectedTopic={quizTopicFromDashboard} userDetails={userDetails} />;
+        return <QuizView quizSource={quizSource} userDetails={userDetails} onBack={() => {
+          setQuizSource(null);
+          setActiveView('dashboard');
+        }} />;
       case "friends":
         return <FriendsView />;
       case "account":
@@ -271,11 +287,15 @@ export default function Home() {
   };
 
   const getTitle = () => {
-    if (selectedDeck) return selectedDeck.title;
+    if (selectedDeck && activeView === 'dashboard') return selectedDeck.title;
+    if (activeView === 'quizzes') {
+        if (quizSource?.type === 'pre-made') return quizSource.topic.title;
+        if (quizSource?.type === 'generated') return `Quiz: ${quizSource.deckTitle}`;
+        return 'Quizzes';
+    }
     switch (activeView) {
       case 'dashboard': return 'Titra';
       case 'learning-style': return 'Learning Style';
-      case 'quizzes': return 'Quizzes';
       case 'friends': return 'Friends';
       case 'account': return 'My Account';
       default: return 'Titra';

@@ -10,14 +10,25 @@ import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
 import { useUser } from '@/firebase';
 
-const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack: () => void, userDetails: UserDetails | null }) => {
+type QuizSource = {
+  type: 'pre-made',
+  topic: TopicCard
+} | {
+  type: 'generated',
+  deckTitle: string,
+  questions: QuizQuestion[]
+} | null;
+
+
+const QuizSession = ({ source, onBack, userDetails }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
   const { user } = useUser();
   
-  const questions = quizQuestions[topic.id] || [];
+  const questions = source.type === 'pre-made' ? (quizQuestions[source.topic.id] || []) : source.questions;
   const currentQuestion = questions[currentQuestionIndex];
+  const title = source.type === 'pre-made' ? source.topic.title : source.deckTitle;
 
   const handleCorrectAnswer = () => {
     setScore(score + 1);
@@ -33,17 +44,17 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
   }
 
   React.useEffect(() => {
-    if (quizFinished && user && questions.length > 0) {
+    if (quizFinished && user && questions.length > 0 && source.type === 'pre-made') {
       const percentage = (score / questions.length) * 100;
       const scoresKey = `quizScores-${user.uid}`;
       const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
       const updatedScores = {
         ...existingScores,
-        [topic.id]: percentage
+        [source.topic.id]: percentage
       };
       localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
     }
-  }, [quizFinished, score, questions.length, topic.id, user]);
+  }, [quizFinished, score, questions.length, source, user]);
   
   
   if (quizFinished) {
@@ -68,7 +79,7 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back
         </Button>
-        <h2 className="text-2xl font-bold">{topic.title}</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
       </div>
       {currentQuestion && userDetails ? (
         <QuestionCard 
@@ -79,7 +90,7 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
         />
       ) : (
          <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
-            <p className="text-xl">{userDetails ? "No questions available for this topic yet." : "Loading user details..."}</p>
+            <p className="text-xl">{!userDetails ? "Loading user details..." : "No questions available for this topic yet."}</p>
          </div>
       )}
     </div>
@@ -87,12 +98,12 @@ const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack:
 };
 
 type QuizViewProps = {
-    preselectedTopic?: TopicCard | null;
+    quizSource?: QuizSource | null;
     userDetails: UserDetails | null;
+    onBack: () => void;
 }
 
-const QuizView = ({ preselectedTopic = null, userDetails }: QuizViewProps) => {
-  const [selectedTopic, setSelectedTopic] = React.useState<TopicCard | null>(preselectedTopic);
+const QuizView = ({ quizSource = null, userDetails, onBack }: QuizViewProps) => {
   const [topics, setTopics] = React.useState(initialQuizTopics);
   const { user } = useUser();
 
@@ -106,18 +117,10 @@ const QuizView = ({ preselectedTopic = null, userDetails }: QuizViewProps) => {
         }));
         setTopics(updatedTopics);
     }
-  }, [user, selectedTopic]);
-  
-  React.useEffect(() => {
-    setSelectedTopic(preselectedTopic);
-  }, [preselectedTopic]);
+  }, [user, quizSource]);
 
-  const handleBackFromQuiz = () => {
-    setSelectedTopic(null);
-  };
-
-  if (selectedTopic) {
-    return <QuizSession topic={selectedTopic} onBack={handleBackFromQuiz} userDetails={userDetails} />
+  if (quizSource) {
+    return <QuizSession source={quizSource} onBack={onBack} userDetails={userDetails} />
   }
 
   return (
@@ -139,7 +142,7 @@ const QuizView = ({ preselectedTopic = null, userDetails }: QuizViewProps) => {
         {topics.map((topic) => (
           <button
             key={topic.id}
-            onClick={() => setSelectedTopic(topic)}
+            // onClick={() => setSelectedTopic(topic)}
             className="rounded-xl shadow-md bg-card border flex flex-col p-4 gap-4 text-left hover:bg-accent/50 transition-colors"
           >
             <div className="flex items-center">

@@ -20,17 +20,6 @@ import { useUser } from '@/firebase';
 import { initialQuizTopics } from '@/lib/data';
 import type { DailyActivity } from '@/lib/types';
 
-const chartData = [
-  { name: "Progress", value: 0, fill: "hsl(var(--accent))" },
-  { name: "Remaining", value: 100, fill: "hsl(var(--secondary))" },
-];
-
-const chartConfig = {
-  value: {
-    label: "Value",
-  },
-};
-
 const streakRewards = [
     { id: 'createDeck', icon: BookOpen, label: "Deck Builder", description: "Create a new deck.", color: "text-blue-500" },
     { id: 'addNote', icon: BookOpen, label: "Note Taker", description: "Add a new note.", color: "text-blue-500" },
@@ -39,6 +28,13 @@ const streakRewards = [
     { id: 'deep', icon: FlaskConical, label: "Deep Dive", description: "60+ minutes of revision.", color: "text-purple-500" },
     { id: 'weekly', icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-green-500" },
 ]
+
+const chartConfig = {
+  value: {
+    label: "Value",
+  },
+};
+
 
 type StreakTrackerProps = {
     onStartQuizzing: (topic?: any) => void;
@@ -116,7 +112,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-5 h-5 text-blue-500" />;
+    if (activity.duration >= 60) return <FlaskConical className="w-5 h-5 text-purple-500" />;
     if (activity.duration >= 30) return <Flame className="w-5 h-5 text-orange-500" />;
     if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <CheckCircle2 className="w-5 h-5 text-green-500" />;
     
@@ -160,30 +156,56 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     if (!isSameDay(lastActivityDate, today) && !isSameDay(lastActivityDate, subDays(today, 1))) {
         return 0; // Streak is broken if no activity today or yesterday
     }
+    
+    // Check if there was any activity on the last active day
+    const lastActivity = dailyActivity[format(lastActivityDate, 'yyyy-MM-dd')];
+    if(!lastActivity || (lastActivity.duration === 0 && Object.keys(lastActivity.tasks).length === 0)) {
+        // Find the last actual day of activity
+         const realLastActivityDate = activityDates.find(d => {
+             const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
+             return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+         });
 
-    currentStreak = 1;
+         if (!realLastActivityDate) return 0;
+         if (!isSameDay(realLastActivityDate, today) && !isSameDay(realLastActivityDate, subDays(today, 1))) {
+            return 0;
+         }
+         currentStreak = 1;
+    } else {
+       currentStreak = 1;
+    }
+
+
     let expectedDate = subDays(lastActivityDate, 1);
 
     for (let i = 1; i < activityDates.length; i++) {
-        if (isSameDay(activityDates[i], expectedDate)) {
+        const activityDate = activityDates[i];
+        const activity = dailyActivity[format(activityDate, 'yyyy-MM-dd')];
+        const hasActivity = activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+
+        if (isSameDay(activityDate, expectedDate) && hasActivity) {
             currentStreak++;
             expectedDate = subDays(expectedDate, 1);
-        } else if (differenceInCalendarDays(expectedDate, activityDates[i]) > 0) {
+        } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
             // Gap in activity, so streak is broken
             break;
         }
         // If activityDates[i] is the same day as expectedDate, loop continues
     }
 
-    // If the last activity was yesterday, the streak is valid. If it was today, it is also valid.
-    if(isSameDay(lastActivityDate, new Date()) || isSameDay(lastActivityDate, subDays(new Date(), 1))) {
-      return currentStreak;
-    }
-
-    return 0;
-
-
+    return currentStreak;
   }, [dailyActivity]);
+
+   const today = format(new Date(), 'yyyy-MM-dd');
+   const todayTasksCompleted = Object.keys(dailyActivity[today]?.tasks || {}).length;
+   const totalTasks = streakRewards.length;
+   const progress = totalTasks > 0 ? (todayTasksCompleted / totalTasks) * 100 : 0;
+   
+    const chartData = [
+      { name: "Progress", value: progress, fill: "hsl(var(--accent))" },
+      { name: "Remaining", value: 100 - progress, fill: "hsl(var(--secondary))" },
+    ];
+
 
   return (
     <Card className="w-full shadow-lg">
@@ -230,15 +252,18 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 border rounded-md mt-2">
-                        {streakRewards.map((reward) => (
-                            <div key={reward.label} className="flex items-center gap-3">
-                                <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color)} />
-                                <div>
-                                    <p className="font-semibold">{reward.label}</p>
-                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
+                        {streakRewards.map((reward) => {
+                            const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                            return (
+                                <div key={reward.label} className={cn("flex items-center gap-3", isCompleted ? "opacity-100" : "opacity-50")}>
+                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color)} />
+                                    <div>
+                                        <p className="font-semibold">{reward.label}</p>
+                                        <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </CollapsibleContent>
             </Collapsible>
@@ -257,18 +282,13 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
       </CardContent>
       <div className="p-6">
         <Button className="w-full font-bold text-lg" size="lg" onClick={() => onStartQuizzing()}>
-          <Sparkles className="mr-2" />
+          <SparklesIcon className="mr-2" />
           Start Quizzing
         </Button>
       </div>
     </Card>
   );
 };
-
-const Sparkles = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m12 3-1.9 4.8-4.8 1.9 4.8 1.9 1.9 4.8 1.9-4.8 4.8-1.9-4.8-1.9L12 3zM5 13l-1 2.5-2.5.5 2.5.5 1 2.5 1-2.5 2.5-.5-2.5-.5L5 13zM21 13l-1 2.5-2.5.5 2.5.5 1 2.5 1-2.5 2.5-.5-2.5-.5L21 13z"/></svg>
-)
-
 
 export default StreakTracker;
 

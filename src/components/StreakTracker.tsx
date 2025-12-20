@@ -111,7 +111,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-400 opacity-90" />;
+    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-300 opacity-90" />;
     if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500 opacity-90" />;
     
     return <CheckCircle2 className="w-8 h-8 text-green-500 opacity-90" />;
@@ -224,9 +224,9 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                     {icon && (
                       <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
                     )}
-                    <span className={cn('flex items-center justify-center w-10 h-10 rounded-full', {
+                    <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full', {
                       'bg-primary text-primary-foreground': status === 'today' && !icon,
-                      'text-white [text-shadow:0_0_4px_rgba(0,0,0,0.7)]': !!icon,
+                      'text-foreground [text-shadow:0_0_4px_rgba(255,255,255,0.7)]': !!icon,
                     })}>
                       {day}
                     </span>

@@ -282,7 +282,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
         <CardFooter className="flex-col gap-4">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" onClick={() => setSelectedStyle(learnerType)}>Enter your learning style</Button>
+              <Button variant="outline" onClick={() => setSelectedStyle(learnerType)}>Press here to change learning style</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>

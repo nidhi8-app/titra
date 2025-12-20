@@ -35,34 +35,6 @@ const chartConfig = {
   },
 };
 
-const StreakFlameIcon = ({ day, color }: { day: number, color: string }) => {
-    if (color === 'transparent') {
-        return (
-             <span className="font-bold">{day}</span>
-        );
-    }
-
-  const radialGradient = {
-    'text-orange-200': 'radial-gradient(circle, rgba(254, 215, 170, 0.8) 0%, rgba(254, 215, 170, 0) 70%)', // Light
-    'text-orange-400': 'radial-gradient(circle, rgba(251, 146, 60, 0.8) 0%, rgba(251, 146, 60, 0) 70%)', // Medium
-    'text-orange-600': 'radial-gradient(circle, rgba(234, 88, 12, 0.9) 0%, rgba(234, 88, 12, 0) 70%)', // Dark
-  }[color] || '';
-
-
-  return (
-    <div
-      className="relative flex h-10 w-10 items-center justify-center rounded-full"
-      style={{
-        background: radialGradient,
-      }}
-    >
-      <Flame className={cn("absolute w-9 h-9", color)} />
-      <span className="relative font-bold text-gray-800">{day}</span>
-    </div>
-  );
-};
-
-
 type StreakTrackerProps = {
     onStartQuizzing: (topic?: any) => void;
     dailyActivity: Record<string, DailyActivity>;
@@ -133,38 +105,36 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
   const daysInMonth = getDaysInMonth(currentDate);
   const startingDayOfWeek = getDay(firstDayOfMonth);
 
-  const getEmojiForDay = (dayDate: Date): string => {
+  const getEmojiForDay = (dayDate: Date) => {
     const dateString = format(dayDate, 'yyyy-MM-dd');
     const activity = dailyActivity[dateString];
 
-    if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return 'transparent';
+    if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
-    if (activity.duration >= 60) return 'text-orange-600'; // Dark
-    if (activity.duration >= 30) return 'text-orange-400'; // Medium
+    if (activity.duration >= 60) return <FlaskConical className="w-9 h-9 text-purple-500 opacity-90" />;
+    if (activity.duration >= 30) return <Beaker className="w-9 h-9 text-blue-500 opacity-90" />;
     
-    return 'text-orange-200'; // Light
-};
+    return <CheckCircle2 className="w-9 h-9 text-green-500 opacity-90" />;
+  };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
     if (i < startingDayOfWeek) {
-      return { day: null, status: 'inactive', emojiColor: 'transparent' };
+      return { day: null, status: 'inactive', icon: null };
     }
     const day = i - startingDayOfWeek + 1;
     const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     const today = new Date();
     
-    const isPast = date < today && !isSameDay(date, today);
-    
     let status = 'inactive';
     if (isToday(date)) {
       status = 'today';
-    } else if (isPast) {
+    } else if (date < today) {
       status = 'past';
     }
 
-    const emojiColor = getEmojiForDay(date);
+    const icon = getEmojiForDay(date);
 
-    return { day, status, emojiColor };
+    return { day, status, icon };
   });
 
   const streak = React.useMemo(() => {
@@ -241,16 +211,21 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
             ))}
           </div>
           <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
-            {calendarDays.map(({ day, status, emojiColor }, index) => (
+            {calendarDays.map(({ day, status, icon }, index) => (
               <div
                 key={index}
                 className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors', {
                   'text-muted-foreground/50': !day,
-                  'bg-primary text-primary-foreground': status === 'today' && emojiColor === 'transparent',
+                  'bg-primary text-primary-foreground': status === 'today' && !icon,
                   'cursor-pointer': !!day,
                 })}
               >
-                {day ? <StreakFlameIcon day={day} color={emojiColor} /> : null}
+                {day && (
+                  <>
+                    <span className="font-bold">{day}</span>
+                    {icon && <div className="absolute inset-0 flex items-center justify-center">{icon}</div>}
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -303,5 +278,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    
 
     

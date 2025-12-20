@@ -147,7 +147,7 @@ export const quizQuestions: { [key: string]: QuizQuestion[] } = {
     { id: 'q1-3', question: 'How many moles are in 40g of NaOH? (Ar: Na=23, O=16, H=1)', options: ['1 mole', '2 moles', '0.5 moles', '40 moles'], correctAnswer: '1 mole' },
     { id: 'q1-4', question: 'What is the empirical formula of a compound containing 40% Carbon, 6.7% Hydrogen, and 53.3% Oxygen by mass?', options: ['CH2O', 'C2H4O2', 'CHO', 'CH3O'], correctAnswer: 'CH2O' },
     { id: 'q1-5', question: 'Which of the following is NOT a state of matter?', options: ['Solid', 'Liquid', 'Gas', 'Molecule'], correctAnswer: 'Molecule' },
-    { id: 'q1-6', question: 'What volume does one mole of any gas occupy at standard temperature and pressure (STP)?', options: ['22.4 dm^3', '24.0 dm^3', '1.0 dm^3', 'Depends on the gas'], correctAnswer: '22.4 dm^3' },
+    { id: 'q1-6', question: 'What volume does one mole of any gas occupy at room temperature and pressure (RTP)?', options: ['22.4 dm^3', '24.0 dm^3', '1.0 dm^3', 'Depends on the gas'], correctAnswer: '24.0 dm^3' },
     { id: 'q1-7', question: 'In the reaction 2H₂ + O₂ → 2H₂O, what is the mole ratio of hydrogen to oxygen?', options: ['1:1', '2:1', '1:2', '2:2'], correctAnswer: '2:1' },
     { id: 'q1-8', question: 'The molecular formula C₄H₈O₂ is consistent with which empirical formula?', options: ['C₂H₄O', 'CHO', 'C₄H₈O₂', 'CH₂O'], correctAnswer: 'C₂H₄O' },
     { id: 'q1-9', question: 'What is the concentration of a solution with 0.5 moles of NaCl dissolved in 2 dm³ of water?', options: ['0.25 mol/dm³', '0.5 mol/dm³', '1.0 mol/dm³', '2.0 mol/dm³'], correctAnswer: '0.25 mol/dm³' },

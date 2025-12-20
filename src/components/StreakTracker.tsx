@@ -237,30 +237,30 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                     </div>
                     ))}
                 </div>
-                 <div className="w-full pt-4 mt-4 border-t">
-                        <Accordion type="single" collapsible className="w-full">
-                            <AccordionItem value="item-1">
-                                <AccordionTrigger className="font-semibold text-lg text-center">Emojis to achieve on your calendar</AccordionTrigger>
-                                <AccordionContent>
-                                    <div className="w-full space-y-2">
-                                        {streakRewards.map((reward) => {
-                                            const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
-                                            return (
-                                                <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
-                                                    <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
-                                                        <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
-                                                    </div>
-                                                    <div>
-                                                        <p className="font-semibold">{reward.label}</p>
-                                                        <p className="text-xs text-muted-foreground">{reward.description}</p>
-                                                    </div>
+                <div className="w-full pt-4 mt-4 border-t">
+                    <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger className="font-semibold text-lg">Emojis to achieve on your calendar</AccordionTrigger>
+                            <AccordionContent>
+                                <div className="space-y-2">
+                                    {streakRewards.map((reward) => {
+                                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                                        return (
+                                            <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
+                                                <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
+                                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
                                                 </div>
-                                            );
-                                        })}
-                                    </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
+                                                <div>
+                                                    <p className="font-semibold">{reward.label}</p>
+                                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
                 <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>

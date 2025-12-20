@@ -51,16 +51,20 @@ const mindmapFolders: Resource[] = [
   { id: '8', title: 'Acid-Base Titration Curves', description: 'Mindmaps showing the shapes of different titration curves.' },
 ];
 
-const auditoryFolders: Resource[] = [
-  { id: '1', title: 'Podcast: The Mole Concept', icon: Music, description: 'An audio deep-dive into Avogadro\'s number and its importance.' },
-  { id: '2', title: 'Rhymes for Electron Shells', icon: Mic, description: 'Catchy mnemonics and rhymes to remember electron configurations.' },
-  { id: '3', title: 'Lecture: Periodic Trends Explained', icon: Music, description: 'A professor explains the reasons behind periodic trends.' },
-  { id: '4', title: 'Debate: Ionic vs. Covalent Bonds', icon: Mic, description: 'Two experts debate the characteristics of different bond types.' },
-  { id: '5', title: 'Audiobook: Hess\'s Law', icon: Music, description: 'A chapter from a chemistry textbook, read aloud.' },
-  { id: '6', title: 'Collision Theory Explained', icon: Mic, description: 'A conversational explanation of how and why reactions happen.' },
-  { id: '7', title: 'Equilibrium Constant Sonification', icon: Music, description: 'Listen to how the "sound" of a reaction changes as it reaches equilibrium.' },
-  { id: '8', title: 'Strong vs. Weak Acids Chant', icon: Mic, description: 'A chant to help you remember the key differences.' },
+const podcastEpisodes: Resource[] = [
+  { id: 'p1', title: 'Podcast: The Mole Concept', description: 'An audio deep-dive into Avogadro\'s number and its importance.' },
+  { id: 'p2', title: 'Podcast: Periodic Trends Explained', description: 'A professor explains the reasons behind periodic trends.' },
+  { id: 'p3', title: 'Podcast: Hess\'s Law', description: 'A chapter from a chemistry textbook, read aloud.' },
+  { id: 'p4', title: 'Podcast: Collision Theory Explained', description: 'A conversational explanation of how and why reactions happen.' },
 ];
+
+const otherAudioResources: Resource[] = [
+  { id: 'a1', title: 'Rhymes for Electron Shells', icon: Mic, description: 'Catchy mnemonics and rhymes to remember electron configurations.' },
+  { id: 'a2', title: 'Debate: Ionic vs. Covalent Bonds', icon: Mic, description: 'Two experts debate the characteristics of different bond types.' },
+  { id: 'a3', title: 'Equilibrium Constant Sonification', icon: Music, description: 'Listen to how the "sound" of a reaction changes as it reaches equilibrium.' },
+  { id: 'a4', title: 'Strong vs. Weak Acids Chant', icon: Mic, description: 'A chant to help you remember the key differences.' },
+];
+
 
 const simulationFolders: Resource[] = [
   { id: '1', title: 'Virtual Lab: Titration', icon: Beaker, description: 'Perform a virtual titration to find the concentration of an unknown acid.' },
@@ -94,6 +98,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [isPodcastListOpen, setIsPodcastListOpen] = useState(false);
   const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
 
   const handleSave = () => {
@@ -106,14 +111,14 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
     setShowQuiz(false);
   };
 
-  const renderFolderList = (folders: Resource[], icon: React.ElementType = Folder) => (
+  const renderFolderList = (folders: Resource[], onFolderClick: (folder: Resource) => void, icon: React.ElementType = Folder) => (
     <div className="space-y-2 pr-4">
       {folders.map((folder) => {
         const Icon = folder.icon || icon;
         return (
           <button
             key={folder.id}
-            onClick={() => setSelectedResource(folder)}
+            onClick={() => onFolderClick(folder)}
             className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
           >
             <Icon className="w-6 h-6 flex-shrink-0" />
@@ -137,7 +142,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(diagramFolders)}
+                {renderFolderList(diagramFolders, (r) => setSelectedResource(r))}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -149,7 +154,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(mindmapFolders)}
+                {renderFolderList(mindmapFolders, (r) => setSelectedResource(r))}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -157,19 +162,34 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
       </Tabs>
   );
 
-  const renderAuditoryContent = () => (
-     <Card className="flex-1 flex flex-col mt-8">
-      <CardHeader>
-        <CardTitle>Audio Resources</CardTitle>
-        <CardDescription>Listen to recordings, podcasts, and rhymes about chemistry.</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-1">
-        <ScrollArea className="h-[300px]">
-          {renderFolderList(auditoryFolders)}
-        </ScrollArea>
-      </CardContent>
-    </Card>
-  );
+  const renderAuditoryContent = () => {
+    const auditoryResources: Resource[] = [
+        { id: 'podcasts', title: 'Podcasts', icon: Music, description: 'Listen to various podcasts on chemistry topics.' },
+        ...otherAudioResources
+    ];
+
+    const handleAudioResourceClick = (resource: Resource) => {
+        if (resource.id === 'podcasts') {
+            setIsPodcastListOpen(true);
+        } else {
+            setSelectedResource(resource);
+        }
+    }
+
+     return (
+        <Card className="flex-1 flex flex-col mt-8">
+        <CardHeader>
+            <CardTitle>Audio Resources</CardTitle>
+            <CardDescription>Listen to recordings, podcasts, and rhymes about chemistry.</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <ScrollArea className="h-[300px]">
+                {renderFolderList(auditoryResources, handleAudioResourceClick)}
+            </ScrollArea>
+        </CardContent>
+        </Card>
+     )
+  };
 
   const renderKinestheticContent = () => (
     <Tabs defaultValue="simulations" className="flex-1 flex flex-col mt-8">
@@ -185,7 +205,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(simulationFolders)}
+                {renderFolderList(simulationFolders, (r) => setSelectedResource(r))}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -198,7 +218,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(gamificationFolders)}
+                {renderFolderList(gamificationFolders, (r) => setSelectedResource(r))}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -296,8 +316,29 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
         onClose={() => setSelectedResource(null)}
         resource={selectedResource}
       />
+
+       <Dialog open={isPodcastListOpen} onOpenChange={setIsPodcastListOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Podcasts</DialogTitle>
+            <DialogDescription>
+              Select a podcast episode to listen to.
+            </DialogDescription>
+          </DialogHeader>
+          <ScrollArea className="h-72 my-4">
+             {renderFolderList(podcastEpisodes, (r) => {
+                setIsPodcastListOpen(false);
+                setSelectedResource(r);
+             }, Music)}
+          </ScrollArea>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
 
 export default LearningStyle;
+
+    
+
+    

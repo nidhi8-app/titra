@@ -112,9 +112,9 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-5 h-5 text-purple-500" />;
-    if (activity.duration >= 30) return <Flame className="w-5 h-5 text-orange-500" />;
-    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <Flame className="w-5 h-5 text-orange-500/50" />;
+    if (activity.duration >= 60) return <FlaskConical className="w-6 h-6 text-purple-500" />;
+    if (activity.duration >= 30) return <Flame className="w-6 h-6 text-orange-500" />;
+    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <Flame className="w-6 h-6 text-orange-500/50" />;
     
     return null;
 };
@@ -237,8 +237,12 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                   'bg-accent/20': emoji !== null && status !== 'today',
                 })}
               >
-                {day}
-                 {emoji && <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">{emoji}</div>}
+                <span className={cn(emoji && "opacity-70")}>{day}</span>
+                 {emoji && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                    {emoji}
+                    </div>
+                 )}
               </div>
             ))}
           </div>
@@ -295,3 +299,4 @@ export default StreakTracker;
     
 
     
+

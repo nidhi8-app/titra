@@ -21,6 +21,7 @@ export type Note = {
   body: string;
   createdAt: Date;
   updatedAt: Date;
+  deckId?: string;
 };
 
 export type Friend = {

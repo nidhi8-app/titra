@@ -7,7 +7,7 @@ import { Button } from './ui/button';
 import { Plus } from 'lucide-react';
 import NoteEditor from './NoteEditor';
 import NoteCard from './NoteCard';
-import { useUser, useFirestore } from '@/firebase';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
 type DeckViewProps = {
@@ -16,33 +16,49 @@ type DeckViewProps = {
 
 const DeckView = ({ deck }: DeckViewProps) => {
   const [isCreatingNote, setIsCreatingNote] = useState(false);
-  const [notes, setNotes] = useState<Note[]>([]);
   const { user } = useUser();
   const firestore = useFirestore();
 
-  const handleSaveNote = async (title: string, body: string) => {
-    if (!user || !firestore) return;
+  const notesCollectionRef = useMemoFirebase(() => {
+    if (!user || !firestore) return null;
+    return collection(firestore, `users/${user.uid}/notes`);
+  }, [user, firestore]);
+  
+  const { data: notes, isLoading } = useCollection<Note>(notesCollectionRef);
 
-    const newNote: Omit<Note, 'id'> = {
+
+  const handleSaveNote = async (title: string, body: string) => {
+    if (!notesCollectionRef) return;
+
+    const newNote: Omit<Note, 'id' | 'deckId'> = {
         title,
         body,
         createdAt: new Date(),
         updatedAt: new Date(),
     };
 
-    const notesCollectionRef = collection(firestore, `users/${user.uid}/notes`);
-    const docRef = await addDoc(notesCollectionRef, newNote);
+    await addDoc(notesCollectionRef, { ...newNote, deckId: deck.id });
     
-    setNotes(prev => [...prev, { ...newNote, id: docRef.id }]);
     setIsCreatingNote(false);
   };
   
+  const deckNotes = React.useMemo(() => {
+    return notes?.filter(note => note.deckId === deck.id) || [];
+  }, [notes, deck.id]);
+
   if (isCreatingNote) {
     return <NoteEditor onSave={handleSaveNote} onCancel={() => setIsCreatingNote(false)} />;
   }
 
-  // If there are no cards, we can show a message to the user.
-  if (notes.length === 0) {
+  if (isLoading) {
+    return (
+        <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+            <h3 className="text-2xl font-semibold">Loading notes...</h3>
+        </div>
+    )
+  }
+
+  if (deckNotes.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full p-8 text-center">
         <h3 className="text-2xl font-semibold">This deck is empty!</h3>
@@ -67,7 +83,7 @@ const DeckView = ({ deck }: DeckViewProps) => {
         </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {notes.map((note) => (
+        {deckNotes.map((note) => (
             <NoteCard key={note.id} note={note} />
         ))}
       </div>

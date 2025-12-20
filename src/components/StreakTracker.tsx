@@ -110,13 +110,12 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     const dateString = format(dayDate, 'yyyy-MM-dd');
     const activity = dailyActivity[dateString];
 
-    if (!activity) return null;
+    if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
     if (activity.duration >= 60) return <FlaskConical className="w-6 h-6 text-purple-500" />;
     if (activity.duration >= 30) return <Flame className="w-6 h-6 text-orange-500" />;
-    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <Flame className="w-6 h-6 text-orange-500/50" />;
     
-    return null;
+    return <Flame className="w-6 h-6 text-orange-500/50" />;
 };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
@@ -151,35 +150,26 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     
     let currentStreak = 0;
     const today = new Date();
-    const lastActivityDate = activityDates[0];
     
-    if (!isSameDay(lastActivityDate, today) && !isSameDay(lastActivityDate, subDays(today, 1))) {
+    const lastRealActivityDate = activityDates.find(d => {
+        const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
+        return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+    });
+
+    if (!lastRealActivityDate) return 0;
+    
+    if (!isSameDay(lastRealActivityDate, today) && !isSameDay(lastRealActivityDate, subDays(today, 1))) {
         return 0; // Streak is broken if no activity today or yesterday
     }
-    
-    // Check if there was any activity on the last active day
-    const lastActivity = dailyActivity[format(lastActivityDate, 'yyyy-MM-dd')];
-    if(!lastActivity || (lastActivity.duration === 0 && Object.keys(lastActivity.tasks).length === 0)) {
-        // Find the last actual day of activity
-         const realLastActivityDate = activityDates.find(d => {
-             const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
-             return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
-         });
 
-         if (!realLastActivityDate) return 0;
-         if (!isSameDay(realLastActivityDate, today) && !isSameDay(realLastActivityDate, subDays(today, 1))) {
-            return 0;
-         }
-         currentStreak = 1;
-    } else {
-       currentStreak = 1;
-    }
+    currentStreak = 1;
 
-
-    let expectedDate = subDays(lastActivityDate, 1);
+    let expectedDate = subDays(lastRealActivityDate, 1);
 
     for (let i = 1; i < activityDates.length; i++) {
         const activityDate = activityDates[i];
+        if (isSameDay(activityDate, lastRealActivityDate)) continue;
+
         const activity = dailyActivity[format(activityDate, 'yyyy-MM-dd')];
         const hasActivity = activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
 
@@ -187,10 +177,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
             currentStreak++;
             expectedDate = subDays(expectedDate, 1);
         } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
-            // Gap in activity, so streak is broken
             break;
         }
-        // If activityDates[i] is the same day as expectedDate, loop continues
     }
 
     return currentStreak;
@@ -297,6 +285,3 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 export default StreakTracker;
 
     
-
-    
-

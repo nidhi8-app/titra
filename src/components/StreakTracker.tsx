@@ -35,6 +35,17 @@ const chartConfig = {
   },
 };
 
+const StreakFlameIcon = ({ opacity = 1 }: { opacity?: number }) => (
+    <div 
+        className="absolute inset-0 flex items-center justify-center rounded-full"
+        style={{
+            background: `radial-gradient(circle, rgba(255,193,7,${opacity * 0.7}) 0%, rgba(255,152,0,${opacity * 0.5}) 50%, rgba(255,152,0,0) 70%)`,
+        }}
+    >
+        <Flame className="w-6 h-6 text-white" style={{ opacity: opacity * 0.9 }} />
+    </div>
+);
+
 
 type StreakTrackerProps = {
     onStartQuizzing: (topic?: any) => void;
@@ -112,10 +123,10 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-6 h-6 text-purple-500" />;
-    if (activity.duration >= 30) return <Flame className="w-6 h-6 text-orange-500" />;
+    if (activity.duration >= 60) return <StreakFlameIcon opacity={1} />;
+    if (activity.duration >= 30) return <StreakFlameIcon opacity={0.8} />;
     
-    return <Flame className="w-6 h-6 text-orange-500/50" />;
+    return <StreakFlameIcon opacity={0.6} />;
 };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
@@ -127,7 +138,6 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     const today = new Date();
     
     const isPast = date < today && !isSameDay(date, today);
-    const isFuture = date > today;
     
     let status = 'inactive';
     if (isToday(date)) {
@@ -220,17 +230,11 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                 key={index}
                 className={cn('relative flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
                   'text-muted-foreground/50': !day,
-                  '': status === 'past',
-                  'bg-primary text-primary-foreground': status === 'today',
-                  'bg-accent/20': emoji !== null && status !== 'today',
+                  'bg-primary text-primary-foreground': status === 'today' && !emoji,
                 })}
               >
-                <span className={cn(emoji && "opacity-70")}>{day}</span>
-                 {emoji && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                    {emoji}
-                    </div>
-                 )}
+                <span>{day}</span>
+                 {emoji}
               </div>
             ))}
           </div>
@@ -283,5 +287,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    
 
     

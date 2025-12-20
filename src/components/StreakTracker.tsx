@@ -204,63 +204,65 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
-            <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
-            </div>
-            <div className="grid grid-cols-7 gap-1 text-center text-muted-foreground text-sm mb-2 font-bold">
-                {weekDays.map((day) => (
-                <div key={day}>{day}</div>
-                ))}
-            </div>
-            <div className="grid grid-cols-7 gap-1 text-center">
-                {calendarDays.map(({ day, status, icon }, index) => (
-                <div
-                    key={index}
-                    className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors font-bold', {
-                    'text-muted-foreground/50': !day,
-                    'cursor-pointer': !!day,
-                    })}
-                >
-                    {day && (
-                    <>
-                        {icon && (
-                        <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
+                <div className="flex justify-between items-center mb-2">
+                    <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
+                </div>
+                <div className="grid grid-cols-7 gap-1 text-center text-muted-foreground text-sm mb-2 font-bold">
+                    {weekDays.map((day) => (
+                    <div key={day}>{day}</div>
+                    ))}
+                </div>
+                <div className="grid grid-cols-7 text-center">
+                    {calendarDays.map(({ day, status, icon }, index) => (
+                    <div
+                        key={index}
+                        className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors font-bold', {
+                        'text-muted-foreground/50': !day,
+                        'cursor-pointer': !!day,
+                        })}
+                    >
+                        {day && (
+                        <>
+                            {icon && (
+                            <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
+                            )}
+                            <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
+                                'bg-primary text-primary-foreground': status === 'today' && !icon,
+                                'text-foreground': icon
+                            })}>
+                            {day}
+                            </span>
+                        </>
                         )}
-                        <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
-                            'bg-primary text-primary-foreground': status === 'today' && !icon,
-                        })}>
-                        {day}
-                        </span>
-                    </>
-                    )}
+                    </div>
+                    ))}
                 </div>
-                ))}
-            </div>
-             <div className="w-full pt-4 mt-4 border-t">
-                    <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger className="font-semibold text-lg text-center">Emojis to achieve on your calendar</AccordionTrigger>
-                            <AccordionContent>
-                                <div className="w-full space-y-2">
-                                    {streakRewards.map((reward) => {
-                                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
-                                        return (
-                                            <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
-                                                <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
-                                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
+                 <div className="w-full pt-4 mt-4 border-t">
+                        <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value="item-1">
+                                <AccordionTrigger className="font-semibold text-lg text-center">Emojis to achieve on your calendar</AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="w-full space-y-2">
+                                        {streakRewards.map((reward) => {
+                                            const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                                            return (
+                                                <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
+                                                    <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
+                                                        <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-semibold">{reward.label}</p>
+                                                        <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p className="font-semibold">{reward.label}</p>
-                                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
+                                            );
+                                        })}
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
                 </div>
+                <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>
 
             <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
@@ -274,7 +276,6 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                         </PieChart>
                     </ChartContainer>
                 </div>
-                <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>
         </div>
       </CardContent>

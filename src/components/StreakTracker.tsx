@@ -111,7 +111,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
     const activity = dailyActivity[dateString];
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
-
+    
     if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-400" />;
     if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500" />;
     
@@ -251,33 +251,27 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                         </PieChart>
                     </ChartContainer>
                 </div>
+                <div className="w-full pt-4 border-t">
+                    <h4 className="font-semibold text-lg text-center mb-2">Today's Goals</h4>
+                    <div className="w-full space-y-2">
+                        {streakRewards.map((reward) => {
+                            const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                            return (
+                                <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
+                                    <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
+                                        <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold">{reward.label}</p>
+                                        <p className="text-xs text-muted-foreground">{reward.description}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
-        <Accordion type="single" collapsible className="w-full mt-6">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>
-              <h4 className="font-semibold text-lg">Today's Goals</h4>
-            </AccordionTrigger>
-            <AccordionContent>
-                <div className="w-full space-y-2">
-                    {streakRewards.map((reward) => {
-                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
-                        return (
-                            <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
-                                <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
-                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
-                                </div>
-                                <div>
-                                    <p className="font-semibold">{reward.label}</p>
-                                    <p className="text-xs text-muted-foreground">{reward.description}</p>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
       </CardContent>
       <CardFooter className="p-6">
         <Button className="w-full font-bold text-lg" size="lg" onClick={() => onStartQuizzing()}>
@@ -290,6 +284,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+    
+
     
 
     

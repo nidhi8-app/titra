@@ -10,6 +10,7 @@ import { Pencil } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { AvatarSelectionDialog } from './AvatarSelectionDialog';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
@@ -89,6 +90,12 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
     }
   };
 
+  const handleRadioChange = (value: 'separate' | 'combined') => {
+      if (editedDetails) {
+        setEditedDetails({ ...editedDetails, scienceSet: value });
+      }
+  }
+
   const handleAvatarSelect = (newAvatarUrl: string) => {
     setAvatarUrl(newAvatarUrl);
     setIsAvatarDialogOpen(false);
@@ -141,6 +148,23 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                             <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum} onChange={handleChange} />
                             <EditableDetailItem label="Country" name="country" value={editedDetails.country} onChange={handleChange} />
                         </div>
+                         <div>
+                            <Label className="text-sm text-muted-foreground">Science Set</Label>
+                            <RadioGroup
+                                value={editedDetails.scienceSet}
+                                onValueChange={handleRadioChange}
+                                className="flex space-x-4 mt-1"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="separate" id="separate" />
+                                    <Label htmlFor="separate">Separate</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="combined" id="combined" />
+                                    <Label htmlFor="combined">Combined</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
                     </div>
                 ) : (
                     <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
@@ -150,6 +174,7 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                         <DetailItem label="School" value={userDetails.schoolName} />
                         <DetailItem label="Curriculum" value={userDetails.curriculum} />
                         <DetailItem label="Country" value={userDetails.country} />
+                        <DetailItem label="Science Set" value={userDetails.scienceSet === 'separate' ? 'Separate' : 'Combined'} />
                     </div>
                 )}
                  <div className="mt-8 flex justify-end gap-2">

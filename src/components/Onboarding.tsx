@@ -22,6 +22,8 @@ import { useAuth, useFirestore, setDocumentNonBlocking } from '@/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc } from 'firebase/firestore';
 import LearningStyleQuiz from './LearningStyleQuiz';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Label } from './ui/label';
 
 
 const formSchema = z.object({
@@ -33,6 +35,7 @@ const formSchema = z.object({
   schoolName: z.string().min(1, { message: 'School name is required.' }),
   curriculum: z.string().min(1, { message: 'Curriculum is required.' }),
   country: z.string().min(1, { message: 'Country is required.' }),
+  scienceSet: z.enum(['separate', 'combined'], { required_error: 'Please select your science set.'}),
 });
 
 type UserDetailsFormProps = {
@@ -45,7 +48,7 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      age: '',
+      age: undefined,
       yearGroup: '',
       email: '',
       password: '',
@@ -177,6 +180,40 @@ const UserDetailsForm = ({ onNext, setAuthView }: UserDetailsFormProps) => {
                 )}
                 />
             </div>
+             <FormField
+                control={form.control}
+                name="scienceSet"
+                render={({ field }) => (
+                    <FormItem className="space-y-3">
+                    <FormLabel>Science Set</FormLabel>
+                    <FormControl>
+                        <RadioGroup
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        className="flex flex-col space-y-1"
+                        >
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                            <RadioGroupItem value="separate" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                                Separate Science (Triple Award)
+                            </FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                            <RadioGroupItem value="combined" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                                Combined Science (Double Award)
+                            </FormLabel>
+                        </FormItem>
+                        </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
             <Button type="submit" className="w-full">Next</Button>
           </form>
         </Form>

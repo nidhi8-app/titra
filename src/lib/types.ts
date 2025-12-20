@@ -46,6 +46,7 @@ export type UserDetails = {
   schoolName: string;
   curriculum: string;
   country: string;
+  scienceSet: 'separate' | 'combined';
   friends?: string[];
   avatarUrl?: string;
   learningStyle?: string;

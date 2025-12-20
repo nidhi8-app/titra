@@ -11,11 +11,6 @@ import {
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
 import { startOfMonth, getDaysInMonth, getDay, format, isToday, parseISO, isSameDay, subDays, differenceInCalendarDays } from 'date-fns';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import { useUser } from '@/firebase';
 import { initialQuizTopics } from '@/lib/data';
 import type { DailyActivity } from '@/lib/types';
@@ -111,10 +106,10 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
 
-    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-300 opacity-90" />;
-    if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500 opacity-90" />;
+    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-400" />;
+    if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500" />;
     
-    return <CheckCircle2 className="w-8 h-8 text-green-500 opacity-90" />;
+    return <CheckCircle2 className="w-8 h-8 text-green-500" />;
   };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
@@ -226,7 +221,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                     )}
                     <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full', {
                       'bg-primary text-primary-foreground': status === 'today' && !icon,
-                      'text-foreground [text-shadow:0_0_4px_rgba(255,255,255,0.7)]': !!icon,
+                      'text-foreground': !!icon,
                     })}>
                       {day}
                     </span>
@@ -235,42 +230,36 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
               </div>
             ))}
           </div>
-
-           <Collapsible className="mt-6">
-                <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full group">
-                        Show Streak Rewards
-                        <ChevronDown className="ml-2 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
-                    </Button>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 border rounded-md mt-2">
-                        {streakRewards.map((reward) => {
-                            const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
-                            return (
-                                <div key={reward.label} className={cn("flex items-center gap-3", isCompleted ? "opacity-100" : "opacity-50")}>
-                                    <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color)} />
-                                    <div>
-                                        <p className="font-semibold">{reward.label}</p>
-                                        <p className="text-xs text-muted-foreground">{reward.description}</p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </CollapsibleContent>
-            </Collapsible>
-            <ContinueLearning onStartQuizzing={onStartQuizzing} />
+          <ContinueLearning onStartQuizzing={onStartQuizzing} />
         </div>
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <h3 className="text-4xl font-bold">Goal</h3>
-          <p className="text-center text-muted-foreground">Complete a task to fill the circle</p>
-          <ChartContainer config={chartConfig} className="w-full h-48">
-              <PieChart accessibilityLayer>
-                  <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
-                  </Pie>
-              </PieChart>
-          </ChartContainer>
+
+        <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
+            <div className='relative flex flex-col items-center justify-center'>
+                <h3 className="text-4xl font-bold">Goal</h3>
+                <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
+                <ChartContainer config={chartConfig} className="w-full h-48">
+                    <PieChart accessibilityLayer>
+                        <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
+                        </Pie>
+                    </PieChart>
+                </ChartContainer>
+            </div>
+            <div className="w-full space-y-2">
+                {streakRewards.map((reward) => {
+                    const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                    return (
+                        <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
+                            <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
+                                <reward.icon className={cn("w-6 h-6 flex-shrink-0", reward.color, isCompleted && "text-green-500")} />
+                            </div>
+                            <div>
+                                <p className="font-semibold">{reward.label}</p>
+                                <p className="text-xs text-muted-foreground">{reward.description}</p>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
       </CardContent>
       <div className="p-6">
@@ -284,3 +273,5 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    

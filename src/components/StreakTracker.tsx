@@ -45,7 +45,7 @@ const StreakFlameIcon = ({ day, color }: { day: number, color: string }) => {
   const radialGradient = {
     'text-orange-200': 'radial-gradient(circle, rgba(254, 215, 170, 0.7) 0%, rgba(254, 215, 170, 0) 70%)', // Light
     'text-orange-400': 'radial-gradient(circle, rgba(251, 146, 60, 0.7) 0%, rgba(251, 146, 60, 0) 70%)', // Medium
-    'text-orange-500': 'radial-gradient(circle, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0) 70%)', // Dark
+    'text-orange-600': 'radial-gradient(circle, rgba(234, 88, 12, 0.8) 0%, rgba(234, 88, 12, 0) 70%)', // Dark
   }[color] || '';
 
 
@@ -112,7 +112,7 @@ const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) =
     return (
         <div className="mt-6 border-t pt-6">
              <h4 className="font-semibold text-lg mb-2">Recommended for you</h4>
-             <Button variant="outline" className="w-full justify-start h-auto" onClick={handleContinue}>
+             <Button variant="outline" className="w-full justify-start h-auto" onClick={() => handleContinue()}>
                 <BookOpen className="mr-4 text-primary" />
                 <div className="text-left">
                     <p className="font-bold">Continue learning about</p>
@@ -139,7 +139,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return 'transparent';
 
-    if (activity.duration >= 60) return 'text-orange-500'; // Dark
+    if (activity.duration >= 60) return 'text-orange-600'; // Dark
     if (activity.duration >= 30) return 'text-orange-400'; // Medium
     
     return 'text-orange-200'; // Light
@@ -265,7 +265,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                     <span>= 30+ min</span>
                 </div>
                  <div className="flex items-center gap-1">
-                    <Flame className="w-3 h-3 text-orange-500" />
+                    <Flame className="w-3 h-3 text-orange-600" />
                     <span>= 60+ min</span>
                 </div>
             </div>

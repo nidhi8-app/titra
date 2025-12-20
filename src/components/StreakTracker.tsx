@@ -35,16 +35,24 @@ const chartConfig = {
   },
 };
 
-const StreakFlameIcon = ({ opacity = 1 }: { opacity?: number }) => (
-    <div 
-        className="absolute inset-0 flex items-center justify-center rounded-full"
-        style={{
-            background: `radial-gradient(circle, rgba(255,193,7,${opacity * 0.8}) 0%, rgba(255,152,0,${opacity * 0.6}) 50%, rgba(255,152,0,0) 70%)`,
-        }}
+const StreakFlameIcon = ({ day, opacity }: { day: number, opacity: number }) => {
+    if (opacity === 0) {
+        return (
+             <span className="font-bold">{day}</span>
+        );
+    }
+  return (
+    <div
+      className="relative flex h-10 w-10 items-center justify-center rounded-full"
+      style={{
+        background: `radial-gradient(circle, rgba(255, 193, 7, ${opacity * 0.7}) 0%, rgba(255, 152, 0, 0) 70%)`,
+      }}
     >
-        <Flame className="w-6 h-6 text-white" style={{ opacity }} />
+      <Flame className="absolute text-orange-200/80" style={{ opacity: opacity * 0.9, fontSize: '36px' }} />
+      <span className="relative font-bold text-gray-800">{day}</span>
     </div>
-);
+  );
+};
 
 
 type StreakTrackerProps = {
@@ -117,21 +125,21 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
   const daysInMonth = getDaysInMonth(currentDate);
   const startingDayOfWeek = getDay(firstDayOfMonth);
 
-  const getEmojiForDay = (dayDate: Date): React.ReactNode => {
+  const getEmojiForDay = (dayDate: Date): number => {
     const dateString = format(dayDate, 'yyyy-MM-dd');
     const activity = dailyActivity[dateString];
 
-    if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
+    if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return 0;
 
-    if (activity.duration >= 60) return <StreakFlameIcon opacity={1} />;
-    if (activity.duration >= 30) return <StreakFlameIcon opacity={0.8} />;
+    if (activity.duration >= 60) return 1;
+    if (activity.duration >= 30) return 0.7;
     
-    return <StreakFlameIcon opacity={0.6} />;
+    return 0.4;
 };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
     if (i < startingDayOfWeek) {
-      return { day: null, status: 'inactive', emoji: null };
+      return { day: null, status: 'inactive', emojiOpacity: 0 };
     }
     const day = i - startingDayOfWeek + 1;
     const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
@@ -146,9 +154,9 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
       status = 'past';
     }
 
-    const emoji = getEmojiForDay(date);
+    const emojiOpacity = getEmojiForDay(date);
 
-    return { day, status, emoji };
+    return { day, status, emojiOpacity };
   });
 
   const streak = React.useMemo(() => {
@@ -225,19 +233,34 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
             ))}
           </div>
           <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
-            {calendarDays.map(({ day, status, emoji }, index) => (
+            {calendarDays.map(({ day, status, emojiOpacity }, index) => (
               <div
                 key={index}
-                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
+                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full transition-colors', {
                   'text-muted-foreground/50': !day,
-                  'bg-primary text-primary-foreground': status === 'today' && !emoji,
+                  'bg-primary text-primary-foreground': status === 'today' && emojiOpacity === 0,
+                  'cursor-pointer': !!day,
                 })}
               >
-                <span className="font-bold">{day}</span>
-                 {emoji}
+                {day ? <StreakFlameIcon day={day} opacity={emojiOpacity} /> : null}
               </div>
             ))}
           </div>
+
+            <div className="mt-4 flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1">
+                    <Flame className="w-3 h-3 text-orange-200" />
+                    <span>= Active</span>
+                </div>
+                 <div className="flex items-center gap-1">
+                    <Flame className="w-3 h-3 text-orange-400" />
+                    <span>= 30+ min</span>
+                </div>
+                 <div className="flex items-center gap-1">
+                    <Flame className="w-3 h-3 text-orange-500" />
+                    <span>= 60+ min</span>
+                </div>
+            </div>
 
            <Collapsible className="mt-6">
                 <CollapsibleTrigger asChild>
@@ -287,6 +310,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    
 
     
 

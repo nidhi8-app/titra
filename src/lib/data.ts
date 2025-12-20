@@ -4,6 +4,24 @@ import type { Card, Deck, Note, Friend, QuizQuestion } from './types';
 export const initialDecks: Deck[] = [
   {
     id: '1',
+    title: 'Chemical Symbols, Formulae & Equations',
+    cards: [
+        { id: 'q1', title: 'Chemical symbols and formulae', color: 'bg-yellow-400', cardCount: 10, progress: -1, imageId: 'c1', emoji: '🧪' },
+        { id: 'q2', title: 'Word and balanced chemical equations', color: 'bg-pink-400', cardCount: 10, progress: -1, imageId: 'c2', emoji: '✍️' },
+    ]
+  },
+  {
+    id: '2',
+    title: 'Chemical Bonding and Structure',
+    cards: [
+        { id: 'q3', title: 'Ionic Bonding', color: 'bg-green-400', cardCount: 10, progress: -1, imageId: 'c8', emoji: '💎' },
+        { id: 'q4', title: 'Covalent Bonding', color: 'bg-sky-400', cardCount: 10, progress: -1, imageId: 'c9', emoji: '🔗' },
+        { id: 'q5', title: 'Metallic Bonding', color: 'bg-amber-400', cardCount: 5, progress: -1, imageId: 'c12', emoji: '⛓️' },
+        { id: 'q6', title: 'Limitations of Models', color: 'bg-rose-400', cardCount: 5, progress: -1, imageId: 'c10', emoji: '🧩' },
+    ]
+  },
+  {
+    id: '3',
     title: 'Stoichiometric relationships',
     cards: [
         { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c1', emoji: '🔬' },
@@ -12,7 +30,7 @@ export const initialDecks: Deck[] = [
     ]
   },
   {
-    id: '2',
+    id: '4',
     title: 'Atomic structure',
     cards: [
         { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: '⚛️' },
@@ -20,69 +38,22 @@ export const initialDecks: Deck[] = [
     ]
   },
   {
-    id: '3',
+    id: '5',
     title: 'Periodicity',
     cards: [
       { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c6', emoji: '🗓️' },
       { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0, imageId: 'c7', emoji: '📈' },
     ]
   },
-  {
-    id: '4',
-    title: 'Chemical bonding and structure',
-    cards: [
-      { id: 'c8', title: 'Ionic bonding and structure', color: 'bg-amber-400', cardCount: 0, progress: 0, imageId: 'c8', emoji: '💎' },
-      { id: 'c9', title: 'Covalent bonding', color: 'bg-emerald-400', cardCount: 0, progress: 0, imageId: 'c9', emoji: '🔗' },
-      { id: 'c10', title: 'Covalent structures', color: 'bg-violet-400', cardCount: 0, progress: 0, imageId: 'c10', emoji: '🕸️' },
-      { id: 'c11', title: 'Intermolecular forces', color: 'bg-rose-400', cardCount: 0, progress: 0, imageId: 'c11', emoji: '💧' },
-      { id: 'c12', title: 'Metallic bonding', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c12', emoji: '⛓️' },
-    ]
-  },
-  {
-    id: '5',
-    title: 'Energetics/thermochemistry',
-    cards: [
-        { id: 'c13', title: 'Measuring energy changes', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c13', emoji: '🌡️' },
-        { id: 'c14', title: 'Hess\'s Law', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c14', emoji: '🔄' },
-        { id: 'c15', title: 'Bond enthalpies', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c15', emoji: '💥' },
-    ]
-  },
-  {
-    id: '6',
-    title: 'Chemical kinetics',
-    cards: [
-        { id: 'c16', title: 'Collision theory and rates of reaction', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c16', emoji: '🏃' },
-    ]
-  },
-  {
-    id: '7',
-    title: 'Equilibrium',
-    cards: [
-        { id: 'c17', title: 'Equilibrium', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c17', emoji: '⚖️' },
-    ]
-  },
-  {
-    id: '8',
-    title: 'Acids and bases',
-    cards: [
-        { id: 'c18', title: 'Theories of acids and bases', color: 'bg-amber-400', cardCount: 0, progress: 0, imageId: 'c18', emoji: '💡' },
-        { id: 'c19', title: 'Properties of acids and bases', color: 'bg-emerald-400', cardCount: 0, progress: 0, imageId: 'c19', emoji: '🍋' },
-        { id: 'c20', title: 'The pH scale', color: 'bg-violet-400', cardCount: 0, progress: 0, imageId: 'c20', emoji: '📊' },
-        { id: 'c21', title: 'Strong and weak acids and bases', color: 'bg-rose-400', cardCount: 0, progress: 0, imageId: 'c21', emoji: '💪' },
-        { id: 'c22', title: 'Acid deposition', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c22', emoji: '🌧️' },
-    ]
-  }
 ];
 
-export const initialQuizTopics: Omit<Card, 'color'>[] = [
-    { id: 'q1', title: 'Stoichiometric relationships', cardCount: 10, progress: 0 },
-    { id: 'q2', title: 'Atomic structure', cardCount: 10, progress: 0 },
-    { id: 'q3', title: 'Periodicity', cardCount: 10, progress: 0 },
-    { id: 'q4', title: 'Chemical bonding and structure', cardCount: 10, progress: 0 },
-    { id: 'q5', title: 'Energetics/thermochemistry', cardCount: 10, progress: 0 },
-    { id: 'q6', title: 'Chemical kinetics', cardCount: 10, progress: 0 },
-    { id: 'q7', title: 'Equilibrium', cardCount: 10, progress: 0 },
-    { id: 'q8', title: 'Acids and bases', cardCount: 10, progress: 0 },
+export const initialQuizTopics: Omit<Card, 'color' | 'emoji' | 'imageId'>[] = [
+    { id: 'q1', title: 'Chemical symbols and formulae', cardCount: 10, progress: -1 },
+    { id: 'q2', title: 'Word and balanced chemical equations', cardCount: 10, progress: -1 },
+    { id: 'q3', title: 'Ionic Bonding', cardCount: 10, progress: -1 },
+    { id: 'q4', title: 'Covalent Bonding', cardCount: 10, progress: -1 },
+    { id: 'q5', title: 'Metallic Bonding', cardCount: 5, progress: -1 },
+    { id: 'q6', title: 'Limitations of Models', cardCount: 5, progress: -1 },
 ];
 
 export const initialNotes: Note[] = [
@@ -124,117 +95,473 @@ export const quizQuestions: { [key: string]: QuizQuestion[] } = {
   'q1': [
     {
       id: 'q1-1',
-      question: 'What is the relative atomic mass of an element?',
-      options: [
-        'The mass of an atom compared to the mass of a carbon-12 atom.',
-        'The total number of protons and neutrons in an atom.',
-        'The average mass of an element\'s isotopes.',
-        'The weighted average mass of an atom of an element, taking into account its naturally occurring isotopes, relative to 1/12th the mass of a carbon-12 atom.'
-      ],
-      correctAnswer: 'The weighted average mass of an atom of an element, taking into account its naturally occurring isotopes, relative to 1/12th the mass of a carbon-12 atom.'
+      question: 'What is the smallest part of an element that can exist?',
+      options: ['Molecule', 'Compound', 'Atom', 'Ion'],
+      correctAnswer: 'Atom'
     },
     {
       id: 'q1-2',
-      question: 'What is Avogadro\'s constant?',
-      options: [
-        '6.02 x 10^23',
-        'The number of atoms in 12g of carbon-12.',
-        'The number of particles in one mole of a substance.',
-        'All of the above.'
-      ],
-      correctAnswer: 'All of the above.'
+      question: 'Which of the following is the correct chemical symbol for Sodium?',
+      options: ['S', 'So', 'NA', 'Na'],
+      correctAnswer: 'Na'
     },
-    { id: 'q1-3', question: 'How many moles are in 40g of NaOH? (Ar: Na=23, O=16, H=1)', options: ['1 mole', '2 moles', '0.5 moles', '40 moles'], correctAnswer: '1 mole' },
-    { id: 'q1-4', question: 'What is the empirical formula of a compound containing 40% Carbon, 6.7% Hydrogen, and 53.3% Oxygen by mass?', options: ['CH2O', 'C2H4O2', 'CHO', 'CH3O'], correctAnswer: 'CH2O' },
-    { id: 'q1-5', question: 'Which of the following is NOT a state of matter?', options: ['Solid', 'Liquid', 'Gas', 'Molecule'], correctAnswer: 'Molecule' },
-    { id: 'q1-6', question: 'What volume does one mole of any gas occupy at room temperature and pressure (RTP)?', options: ['22.4 dm^3', '24.0 dm^3', '1.0 dm^3', 'Depends on the gas'], correctAnswer: '24.0 dm^3' },
-    { id: 'q1-7', question: 'In the reaction 2H₂ + O₂ → 2H₂O, what is the mole ratio of hydrogen to oxygen?', options: ['1:1', '2:1', '1:2', '2:2'], correctAnswer: '2:1' },
-    { id: 'q1-8', question: 'The molecular formula C₄H₈O₂ is consistent with which empirical formula?', options: ['C₂H₄O', 'CHO', 'C₄H₈O₂', 'CH₂O'], correctAnswer: 'C₂H₄O' },
-    { id: 'q1-9', question: 'What is the concentration of a solution with 0.5 moles of NaCl dissolved in 2 dm³ of water?', options: ['0.25 mol/dm³', '0.5 mol/dm³', '1.0 mol/dm³', '2.0 mol/dm³'], correctAnswer: '0.25 mol/dm³' },
-    { id: 'q1-10', question: 'In a chemical reaction, the substance that is completely consumed is called the...?', options: ['Excess reactant', 'Limiting reactant', 'Product', 'Catalyst'], correctAnswer: 'Limiting reactant' }
+    {
+      id: 'q1-3',
+      question: 'How are metals and non-metals generally arranged in the periodic table?',
+      options: [
+        'Metals on the right, non-metals on the left',
+        'Metals on the left, non-metals on the right',
+        'Metals at the top, non-metals at the bottom',
+        'They are mixed throughout'
+      ],
+      correctAnswer: 'Metals on the left, non-metals on the right'
+    },
+    {
+      id: 'q1-4',
+      question: 'What is the chemical formula for Nitrogen gas?',
+      options: ['N', 'N2', 'Ni', 'Nt'],
+      correctAnswer: 'N2'
+    },
+    {
+      id: 'q1-5',
+      question: 'What is a compound?',
+      options: [
+        'A substance containing one type of atom',
+        'A substance containing two or more elements mixed together',
+        'A substance containing two or more elements chemically combined in fixed proportions',
+        'A charged particle'
+      ],
+      correctAnswer: 'A substance containing two or more elements chemically combined in fixed proportions'
+    },
+    {
+      id: 'q1-6',
+      question: 'What does the formula H₂O tell us?',
+      options: [
+        'There is one Hydrogen atom and two Oxygen atoms',
+        'There are two Hydrogen atoms and one Oxygen atom',
+        'It is a mixture of Hydrogen and Oxygen',
+        'It is an element'
+      ],
+      correctAnswer: 'There are two Hydrogen atoms and one Oxygen atom'
+    },
+    {
+      id: 'q1-7',
+      question: 'What is an ion?',
+      options: [
+        'An atom with a full outer shell',
+        'A substance made of only one type of atom',
+        'A charged particle formed when an atom loses or gains electrons',
+        'The smallest part of a compound'
+      ],
+      correctAnswer: 'A charged particle formed when an atom loses or gains electrons'
+    },
+    {
+      id: 'q1-8',
+      question: 'The formula for Magnesium Oxide is MgO. What charges do the Magnesium and Oxide ions have?',
+      options: ['Mg+ and O-', 'Mg2+ and O2-', 'Mg+ and O2-', 'Mg2+ and O-'],
+      correctAnswer: 'Mg2+ and O2-'
+    },
+    {
+      id: 'q1-9',
+      question: 'What is the correct formula for Magnesium Chloride, which contains Mg²⁺ and Cl⁻ ions?',
+      options: ['MgCl', 'Mg2Cl', 'MgCl2', 'Mg2Cl2'],
+      correctAnswer: 'MgCl2'
+    },
+    {
+      id: 'q1-10',
+      question: 'What does the prefix "di-" in "carbon dioxide" signify?',
+      options: [
+        'There is one oxygen atom',
+        'There are two oxygen atoms',
+        'There are three oxygen atoms',
+        'It is a gas'
+      ],
+      correctAnswer: 'There are two oxygen atoms'
+    }
   ],
   'q2': [
-    { id: 'q2-1', question: 'Which subatomic particle has a negative charge?', options: ['Proton', 'Neutron', 'Electron', 'Nucleus'], correctAnswer: 'Electron' },
-    { id: 'q2-2', question: 'The nucleus of an atom contains...', options: ['Protons only', 'Neutrons only', 'Protons and neutrons', 'Protons, neutrons, and electrons'], correctAnswer: 'Protons and neutrons' },
-    { id: 'q2-3', question: 'Isotopes of an element have the same number of protons but a different number of...', options: ['Electrons', 'Neutrons', 'Nuclei', 'Orbitals'], correctAnswer: 'Neutrons' },
-    { id: 'q2-4', question: 'What is the electron configuration of a neutral Sodium atom (Na, atomic number 11)?', options: ['2, 8, 1', '2, 8, 8', '2, 1, 8', '1s²2s²2p⁶3s²'], correctAnswer: '2, 8, 1' },
-    { id: 'q2-5', question: 'The mass number of an atom is the total number of...', options: ['Protons', 'Electrons', 'Protons and neutrons', 'Protons and electrons'], correctAnswer: 'Protons and neutrons' },
-    { id: 'q2-6', question: 'Which scientist discovered the nucleus with the gold foil experiment?', options: ['J.J. Thomson', 'John Dalton', 'Ernest Rutherford', 'Niels Bohr'], correctAnswer: 'Ernest Rutherford' },
-    { id: 'q2-7', question: 'The first shell in an atom can hold a maximum of how many electrons?', options: ['1', '2', '8', '18'], correctAnswer: '2' },
-    { id: 'q2-8', question: 'What does the atomic number of an element represent?', options: ['Number of neutrons', 'Number of protons', 'Number of protons and neutrons', 'Number of electrons in a neutral atom'], correctAnswer: 'Number of protons' },
-    { id: 'q2-9', question: 'Which type of radiation is a high-energy electron emitted from the nucleus?', options: ['Alpha particle', 'Beta particle', 'Gamma ray', 'Neutron'], correctAnswer: 'Beta particle' },
-    { id: 'q2-10', question: 'What is the name for the region of space where an electron is most likely to be found?', options: ['Nucleus', 'Shell', 'Orbital', 'Level'], correctAnswer: 'Orbital' }
+    {
+      id: 'q2-1',
+      question: 'What does a word equation show?',
+      options: [
+        'The chemical symbols of reactants and products',
+        'The names of the reactants and products',
+        'The number of atoms on each side',
+        'The states of matter of the substances'
+      ],
+      correctAnswer: 'The names of the reactants and products'
+    },
+    {
+      id: 'q2-2',
+      question: 'In the equation: reactants → products, what are the reactants?',
+      options: [
+        'Substances that are formed in the reaction',
+        'Substances that react together',
+        'The arrow in the middle',
+        'The substances on the right side of the arrow'
+      ],
+      correctAnswer: 'Substances that react together'
+    },
+    {
+      id: 'q2-3',
+      question: 'What does the arrow (→) in a chemical equation mean?',
+      options: ['Equals', 'Is the same as', 'Reacts to make', 'And'],
+      correctAnswer: 'Reacts to make'
+    },
+    {
+      id: 'q2-4',
+      question: 'What does the state symbol (aq) mean?',
+      options: ['Solid', 'Liquid', 'Gas', 'Aqueous solution (dissolved in water)'],
+      correctAnswer: 'Aqueous solution (dissolved in water)'
+    },
+    {
+      id: 'q2-5',
+      question: 'What is the meaning of H₂O(l)?',
+      options: ['Water vapour', 'Ice', 'Liquid water', 'A solution of water'],
+      correctAnswer: 'Liquid water'
+    },
+    {
+      id: 'q2-6',
+      question: 'What does the Law of Conservation of Mass state?',
+      options: [
+        'Mass is always lost in a reaction',
+        'No atoms are lost or made during a chemical reaction',
+        'The mass of reactants is always greater than the mass of products',
+        'Energy is conserved, but mass is not'
+      ],
+      correctAnswer: 'No atoms are lost or made during a chemical reaction'
+    },
+    {
+      id: 'q2-7',
+      question: 'Why must chemical equations be balanced?',
+      options: [
+        'To make them look neat',
+        'To satisfy the Law of Conservation of Mass',
+        'To show the state symbols',
+        'To make the reactants equal the products'
+      ],
+      correctAnswer: 'To satisfy the Law of Conservation of Mass'
+    },
+    {
+      id: 'q2-8',
+      question: 'Which of these equations is balanced?',
+      options: [
+        'H₂ + O₂ → H₂O',
+        '2H₂ + O₂ → 2H₂O',
+        'H₂ + O → H₂O',
+        'H₂ + 2O₂ → 2H₂O'
+      ],
+      correctAnswer: '2H₂ + O₂ → 2H₂O'
+    },
+    {
+      id: 'q2-9',
+      question: 'When balancing an equation, what can you change?',
+      options: [
+        'The chemical formulae of the substances (e.g., change H₂O to H₃O)',
+        'The numbers to the left of the formulae (coefficients)',
+        'The subscript numbers within a formula (e.g., change H₂O to H₂O₂)',
+        'The elements involved'
+      ],
+      correctAnswer: 'The numbers to the left of the formulae (coefficients)'
+    },
+    {
+      id: 'q2-10',
+      question: 'What is the balanced equation for the reaction between Nitrogen (N₂) and Hydrogen (H₂) to form Ammonia (NH₃)?',
+      options: [
+        'N + H → NH',
+        'N₂ + H₂ → NH₃',
+        'N₂ + 2H₂ → 2NH₃',
+        'N₂ + 3H₂ → 2NH₃'
+      ],
+      correctAnswer: 'N₂ + 3H₂ → 2NH₃'
+    }
   ],
   'q3': [
-    { id: 'q3-1', question: 'Elements in the same group of the periodic table have the same number of...', options: ['Valence electrons', 'Protons', 'Neutrons', 'Energy shells'], correctAnswer: 'Valence electrons' },
-    { id: 'q3-2', question: 'Which of the following elements is a halogen?', options: ['Sodium (Na)', 'Chlorine (Cl)', 'Helium (He)', 'Iron (Fe)'], correctAnswer: 'Chlorine (Cl)' },
-    { id: 'q3-3', question: 'Which trend decreases as you go from left to right across a period in the periodic table?', options: ['Atomic radius', 'Ionization energy', 'Electronegativity', 'Electron affinity'], correctAnswer: 'Atomic radius' },
-    { id: 'q3-4', question: 'Which group of elements is known as the alkali metals?', options: ['Group 1', 'Group 2', 'Group 17', 'Group 18'], correctAnswer: 'Group 1' },
-    { id: 'q3-5', question: 'What is the name for the elements in Group 18?', options: ['Halogens', 'Alkaline earth metals', 'Noble gases', 'Transition metals'], correctAnswer: 'Noble gases' },
-    { id: 'q3-6', question: 'Electronegativity is a measure of an atom\'s ability to...', options: ['Lose electrons', 'Gain electrons', 'Attract electrons in a chemical bond', 'Form positive ions'], correctAnswer: 'Attract electrons in a chemical bond' },
-    { id: 'q3-7', question: 'Which element has the highest first ionization energy?', options: ['Helium (He)', 'Hydrogen (H)', 'Lithium (Li)', 'Francium (Fr)'], correctAnswer: 'Helium (He)' },
-    { id: 'q3-8', question: 'The elements in the d-block of the periodic table are known as...', options: ['Actinides', 'Lanthanides', 'Main group elements', 'Transition metals'], correctAnswer: 'Transition metals' },
-    { id: 'q3-9', question: 'As you go down a group, the atomic radius...', options: ['Increases', 'Decreases', 'Stays the same', 'Varies unpredictably'], correctAnswer: 'Increases' },
-    { id: 'q3-10', question: 'The ability of metallic oxides to act as bases and non-metallic oxides to act as acids demonstrates which trend?', options: ['Atomic radius', 'Ionization energy', 'Metallic character', 'Acid-base character of oxides'], correctAnswer: 'Acid-base character of oxides' }
+    {
+      id: 'q3-1',
+      question: 'Why do atoms combine with other atoms?',
+      options: [
+        'To become less stable',
+        'To gain a full outer shell of electrons and achieve greater stability',
+        'To share protons',
+        'To become larger'
+      ],
+      correctAnswer: 'To gain a full outer shell of electrons and achieve greater stability'
+    },
+    {
+      id: 'q3-2',
+      question: 'What is ionic bonding?',
+      options: [
+        'The sharing of electrons between non-metal atoms',
+        'The electrostatic force of attraction between oppositely charged ions',
+        'The force of attraction between positive ions and delocalized electrons',
+        'The weak forces between molecules'
+      ],
+      correctAnswer: 'The electrostatic force of attraction between oppositely charged ions'
+    },
+    {
+      id: 'q3-3',
+      question: 'Ionic bonding typically occurs between...',
+      options: [
+        'A metal and another metal',
+        'A non-metal and another non-metal',
+        'A metal and a non-metal',
+        'A noble gas and a halogen'
+      ],
+      correctAnswer: 'A metal and a non-metal'
+    },
+    {
+      id: 'q3-4',
+      question: 'How do metal atoms form ions?',
+      options: [
+        'They gain electrons to become negatively charged anions',
+        'They lose electrons to become positively charged cations',
+        'They share electrons',
+        'They gain protons'
+      ],
+      correctAnswer: 'They lose electrons to become positively charged cations'
+    },
+    {
+      id: 'q3-5',
+      question: 'What is an anion?',
+      options: [
+        'A positively charged ion formed by losing electrons',
+        'A neutral atom',
+        'A negatively charged ion formed by gaining electrons',
+        'A type of covalent bond'
+      ],
+      correctAnswer: 'A negatively charged ion formed by gaining electrons'
+    },
+    {
+      id: 'q3-6',
+      question: 'What is the main purpose of a dot and cross diagram in ionic bonding?',
+      options: [
+        'To show the 3D shape of the compound',
+        'To show the movement (transfer) of electrons',
+        'To show the relative sizes of the atoms',
+        'To show the melting point'
+      ],
+      correctAnswer: 'To show the movement (transfer) of electrons'
+    },
+    {
+      id: 'q3-7',
+      question: 'What is a giant ionic lattice?',
+      options: [
+        'A single molecule of an ionic compound',
+        'A small group of ions bonded together',
+        'A regular arrangement of alternating positive and negative ions',
+        'A type of covalent structure'
+      ],
+      correctAnswer: 'A regular arrangement of alternating positive and negative ions'
+    },
+    {
+      id: 'q3-8',
+      question: 'Why do ionic compounds have high melting and boiling points?',
+      options: [
+        'Because of weak intermolecular forces',
+        'Because the covalent bonds are very strong',
+        'Because of the strong electrostatic forces of attraction between ions that require a lot of energy to overcome',
+        'Because they are made of metal atoms'
+      ],
+      correctAnswer: 'Because of the strong electrostatic forces of attraction between ions that require a lot of energy to overcome'
+    },
+    {
+      id: 'q3-9',
+      question: 'What is a major limitation of the 3D ball and stick model for ionic lattices?',
+      options: [
+        'It doesn\'t show the 3D arrangement',
+        'It represents the strong electrostatic forces as "sticks" and incorrectly shows large gaps between ions',
+        'It doesn\'t show which atoms are which',
+        'It is too realistic and complicated'
+      ],
+      correctAnswer: 'It represents the strong electrostatic forces as "sticks" and incorrectly shows large gaps between ions'
+    },
+    {
+      id: 'q3-10',
+      question: 'Ions of elements in Groups 1, 2, 6, and 7 have the same electronic structure as which type of element?',
+      options: ['Halogens', 'Transition metals', 'Alkali metals', 'Noble gases'],
+      correctAnswer: 'Noble gases'
+    }
   ],
   'q4': [
-    { id: 'q4-1', question: 'What type of bond is formed by the transfer of electrons between atoms?', options: ['Ionic bond', 'Covalent bond', 'Metallic bond', 'Hydrogen bond'], correctAnswer: 'Ionic bond' },
-    { id: 'q4-2', question: 'Which of the following is a property of ionic compounds?', options: ['Low melting point', 'Insoluble in water', 'Conducts electricity when molten or dissolved', 'Forms discrete molecules'], correctAnswer: 'Conducts electricity when molten or dissolved' },
-    { id: 'q4-3', question: 'A covalent bond is formed by the...', options: ['Transfer of electrons', 'Sharing of electrons', 'Sea of delocalized electrons', 'Attraction between ions'], correctAnswer: 'Sharing of electrons' },
-    { id: 'q4-4', question: 'Which of the following molecules has a double bond?', options: ['H₂', 'O₂', 'N₂', 'Cl₂'], correctAnswer: 'O₂' },
-    { id: 'q4-5', question: 'What is the shape of a methane (CH₄) molecule?', options: ['Linear', 'Trigonal planar', 'Tetrahedral', 'Pyramidal'], correctAnswer: 'Tetrahedral' },
-    { id: 'q4-6', question: 'Which type of intermolecular force is the strongest?', options: ['Van der Waals forces', 'Dipole-dipole forces', 'Hydrogen bonding', 'Ionic bonding'], correctAnswer: 'Hydrogen bonding' },
-    { id: 'q4-7', question: 'Diamond and graphite are both allotropes of which element?', options: ['Silicon', 'Carbon', 'Oxygen', 'Sulfur'], correctAnswer: 'Carbon' },
-    { id: 'q4-8', question: 'What holds metal atoms together in a metallic bond?', options: ['Shared electrons between two atoms', 'Electrostatic attraction between positive and negative ions', 'Electrostatic attraction between positive metal ions and delocalized electrons', 'Intermolecular forces'], correctAnswer: 'Electrostatic attraction between positive metal ions and delocalized electrons' },
-    { id: 'q4-9', question: 'A molecule that has a slight positive charge on one side and a slight negative charge on the other is called a...', options: ['Nonpolar molecule', 'Polar molecule', 'Ion', 'Isotope'], correctAnswer: 'Polar molecule' },
-    { id: 'q4-10', question: 'VSEPR theory is used to predict the...', options: ['Boiling point of a substance', 'Shape of a molecule', 'Type of bond', 'Number of isotopes'], correctAnswer: 'Shape of a molecule' }
+    {
+      id: 'q4-1',
+      question: 'What is a covalent bond?',
+      options: [
+        'The transfer of electrons from a metal to a non-metal',
+        'The electrostatic attraction between oppositely charged ions',
+        'The sharing of one or more pairs of electrons between non-metal atoms',
+        'The attraction between positive ions and a sea of electrons'
+      ],
+      correctAnswer: 'The sharing of one or more pairs of electrons between non-metal atoms'
+    },
+    {
+      id: 'q4-2',
+      question: 'What is a substance made of atoms joined by covalent bonds called?',
+      options: ['An ion', 'A lattice', 'A molecule', 'A metal'],
+      correctAnswer: 'A molecule'
+    },
+    {
+      id: 'q4-3',
+      question: 'Why do simple covalent molecules typically have low melting and boiling points?',
+      options: [
+        'The covalent bonds are weak',
+        'They have strong electrostatic forces',
+        'Only weak intermolecular forces need to be overcome',
+        'They contain free electrons'
+      ],
+      correctAnswer: 'Only weak intermolecular forces need to be overcome'
+    },
+    {
+      id: 'q4-4',
+      question: 'Why do simple covalent molecules not conduct electricity?',
+      options: [
+        'They have no overall charge and no free electrons or ions to move',
+        'They are always gases',
+        'The intermolecular forces are too strong',
+        'The covalent bonds are too weak'
+      ],
+      correctAnswer: 'They have no overall charge and no free electrons or ions to move'
+    },
+    {
+      id: 'q4-5',
+      question: 'What are the electrons on the outer shell that are NOT involved in bonding called?',
+      options: ['Bonding electrons', 'Inner electrons', 'Shared electrons', 'Non-bonding electrons'],
+      correctAnswer: 'Non-bonding electrons'
+    },
+    {
+      id: 'q4-6',
+      question: 'Which of the following is an example of a simple covalent molecule?',
+      options: ['Sodium chloride (NaCl)', 'Diamond (C)', 'Water (H₂O)', 'Iron (Fe)'],
+      correctAnswer: 'Water (H₂O)'
+    },
+    {
+      id: 'q4-7',
+      question: 'What is a polymer?',
+      options: [
+        'A type of ionic compound',
+        'A very large molecule made of many repeating units joined by covalent bonds',
+        'A small molecule like water',
+        'A structure with delocalised electrons'
+      ],
+      correctAnswer: 'A very large molecule made of many repeating units joined by covalent bonds'
+    },
+    {
+      id: 'q4-8',
+      question: 'Which of the following is a giant covalent structure?',
+      options: ['Methane (CH₄)', 'Ammonia (NH₃)', 'Graphite', 'Polythene'],
+      correctAnswer: 'Graphite'
+    },
+    {
+      id: 'q4-9',
+      question: 'How many covalent bonds does each carbon atom form in methane (CH₄)?',
+      options: ['1', '2', '3', '4'],
+      correctAnswer: '4'
+    },
+    {
+      id: 'q4-10',
+      question: 'In a dot and cross diagram for a covalent molecule, what does a pair of a dot and a cross between two atoms represent?',
+      options: [
+        'A lone pair of electrons',
+        'A transferred electron',
+        'A shared pair of electrons forming a covalent bond',
+        'An intermolecular force'
+      ],
+      correctAnswer: 'A shared pair of electrons forming a covalent bond'
+    }
   ],
   'q5': [
-    { id: 'q5-1', question: 'A reaction that releases heat into the surroundings is called...', options: ['Endothermic', 'Exothermic', 'Exergonic', 'Endergonic'], correctAnswer: 'Exothermic' },
-    { id: 'q5-2', question: 'Enthalpy change (ΔH) for an exothermic reaction is...', options: ['Positive', 'Negative', 'Zero', 'Variable'], correctAnswer: 'Negative' },
-    { id: 'q5-3', question: 'Hess\'s Law states that the total enthalpy change for a reaction is...', options: ['Dependent on the path taken', 'Independent of the path taken', 'Always zero', 'Equal to the activation energy'], correctAnswer: 'Independent of the path taken' },
-    { id: 'q5-4', question: 'The energy required to break one mole of a specific type of bond in a gaseous state is called...', options: ['Enthalpy of formation', 'Enthalpy of combustion', 'Lattice enthalpy', 'Bond enthalpy'], correctAnswer: 'Bond enthalpy' },
-    { id: 'q5-5', question: 'In calorimetry, the heat change of a reaction is calculated using the formula...', options: ['q = m / cΔT', 'q = mc / ΔT', 'q = mΔT / c', 'q = mcΔT'], correctAnswer: 'q = mcΔT' },
-    { id: 'q5-6', question: 'What is the standard enthalpy of formation (ΔH°f) of an element in its standard state?', options: ['Positive', 'Negative', 'Zero', 'Depends on the element'], correctAnswer: 'Zero' },
-    { id: 'q5-7', question: 'Breaking bonds is an __________ process.', options: ['Exothermic', 'Endothermic', 'Spontaneous', 'Non-spontaneous'], correctAnswer: 'Endothermic' },
-    { id: 'q5-8', question: 'A measure of the disorder or randomness of a system is called...', options: ['Enthalpy', 'Entropy', 'Gibbs free energy', 'Internal energy'], correctAnswer: 'Entropy' },
-    { id: 'q5-9', question: 'Which of the following processes would have a positive entropy change (ΔS)?', options: ['Freezing water', 'Condensing steam', 'Sublimation of dry ice', 'Crystallizing salt from a solution'], correctAnswer: 'Sublimation of dry ice' },
-    { id: 'q5-10', question: 'The overall energy change in a chemical reaction is the difference between the energy required to break bonds and the energy...', options: ['Absorbed when new bonds are formed', 'Released when new bonds are formed', 'Used to start the reaction', 'Lost to the surroundings'], correctAnswer: 'Released when new bonds are formed' }
+    {
+      id: 'q5-1',
+      question: 'Metallic bonding occurs in...',
+      options: [
+        'Non-metals only',
+        'Metals and metal alloys',
+        'Ionic compounds',
+        'Covalent molecules'
+      ],
+      correctAnswer: 'Metals and metal alloys'
+    },
+    {
+      id: 'q5-2',
+      question: 'What does a metallic bond consist of?',
+      options: [
+        'The sharing of electrons between two atoms',
+        'The transfer of electrons between atoms',
+        'The electrostatic attraction between positive metal ions and delocalized electrons',
+        'The attraction between oppositely charged ions'
+      ],
+      correctAnswer: 'The electrostatic attraction between positive metal ions and delocalized electrons'
+    },
+    {
+      id: 'q5-3',
+      question: 'Why are metals good conductors of electricity?',
+      options: [
+        'Because they have high melting points',
+        'Because the ions can move',
+        'Because the delocalized electrons are free to move and carry charge',
+        'Because they are shiny'
+      ],
+      correctAnswer: 'Because the delocalized electrons are free to move and carry charge'
+    },
+    {
+      id: 'q5-4',
+      question: 'The term "sea of electrons" is used to describe the electrons in which type of bonding?',
+      options: ['Ionic', 'Covalent', 'Metallic', 'Hydrogen'],
+      correctAnswer: 'Metallic'
+    },
+    {
+      id: 'q5-5',
+      question: 'What is a mixture of metals called?',
+      options: ['A compound', 'An isotope', 'An allotrope', 'An alloy'],
+      correctAnswer: 'An alloy'
+    }
   ],
-  'q6': [
-    { id: 'q6-1', question: 'According to collision theory, for a reaction to occur, particles must collide with...', options: ['Any orientation and any energy', 'The correct orientation and sufficient energy', 'Low energy', 'High pressure'], correctAnswer: 'The correct orientation and sufficient energy' },
-    { id: 'q6-2', question: 'The minimum energy required for a reaction to occur is called the...', options: ['Enthalpy change', 'Activation energy', 'Kinetic energy', 'Potential energy'], correctAnswer: 'Activation energy' },
-    { id: 'q6-3', question: 'Which of the following factors will increase the rate of a reaction?', options: ['Decreasing the temperature', 'Decreasing the concentration', 'Adding a catalyst', 'Using larger reactant particles'], correctAnswer: 'Adding a catalyst' },
-    { id: 'q6-4', question: 'A substance that increases the rate of a reaction without being consumed is called a...', options: ['Reactant', 'Product', 'Inhibitor', 'Catalyst'], correctAnswer: 'Catalyst' },
-    { id: 'q6-5', question: 'How does increasing the temperature increase the rate of reaction?', options: ['It decreases the activation energy', 'It increases the frequency of collisions and the energy of collisions', 'It increases the concentration of reactants', 'It changes the reaction pathway'], correctAnswer: 'It increases the frequency of collisions and the energy of collisions' },
-    { id: 'q6-6', question: 'The rate of reaction is often measured as the change in...', options: ['Temperature over time', 'Pressure over time', 'Concentration of a reactant or product over time', 'Volume over time'], correctAnswer: 'Concentration of a reactant or product over time' },
-    { id: 'q6-7', question: 'A Maxwell-Boltzmann distribution curve shows the distribution of...', options: ['Activation energies', 'Kinetic energies of particles', 'Reaction rates', 'Enthalpy changes'], correctAnswer: 'Kinetic energies of particles' },
-    { id: 'q6-8', question: 'How does a catalyst increase the rate of reaction?', options: ['It increases the kinetic energy of particles', 'It provides an alternative reaction pathway with a lower activation energy', 'It increases the number of collisions', 'It shifts the equilibrium to the right'], correctAnswer: 'It provides an alternative reaction pathway with a lower activation energy' },
-    { id: 'q6-9', question: 'Increasing the surface area of a solid reactant will...', options: ['Decrease the reaction rate', 'Increase the reaction rate', 'Have no effect on the reaction rate', 'Increase the activation energy'], correctAnswer: 'Increase the reaction rate' },
-    { id: 'q6-10', question: 'The exponents in a rate law (rate equation) are determined by...', options: ['The balanced chemical equation', 'The temperature', 'Experimental data', 'The pressure'], correctAnswer: 'Experimental data' }
-  ],
-  'q7': [
-    { id: 'q7-1', question: 'Chemical equilibrium is reached when...', options: ['The concentrations of reactants and products are equal', 'The forward and reverse reaction rates are equal', 'The reaction stops', 'All reactants have been converted to products'], correctAnswer: 'The forward and reverse reaction rates are equal' },
-    { id: 'q7-2', question: 'Le Chatelier\'s principle states that if a change is made to a system at equilibrium...', options: ['The system will stop reacting', 'The equilibrium constant will change', 'The system will shift to counteract the change', 'The reaction will become non-spontaneous'], correctAnswer: 'The system will shift to counteract the change' },
-    { id: 'q7-3', question: 'For the reaction N₂ (g) + 3H₂ (g) ⇌ 2NH₃ (g) (ΔH is negative), increasing the pressure will...', options: ['Shift the equilibrium to the left', 'Shift the equilibrium to the right', 'Have no effect', 'Decrease the reaction rate'], correctAnswer: 'Shift the equilibrium to the right' },
-    { id: 'q7-4', question: 'For the same reaction (N₂ + 3H₂ ⇌ 2NH₃), increasing the temperature will...', options: ['Shift the equilibrium to the left', 'Shift the equilibrium to the right', 'Have no effect', 'Increase the equilibrium constant'], correctAnswer: 'Shift the equilibrium to the left' },
-    { id: 'q7-5', question: 'What is the only factor that can change the value of the equilibrium constant (Kc)?', options: ['Pressure', 'Concentration', 'Temperature', 'Catalyst'], correctAnswer: 'Temperature' },
-    { id: 'q7-6', question: 'What is the expression for the equilibrium constant (Kc) for the reaction aA + bB ⇌ cC + dD?', options: ['[A]ª[B]ᵇ / [C]ᶜ[D]ᵈ', '[C]ᶜ[D]ᵈ / [A]ª[B]ᵇ', '[A][B] / [C][D]', '[C][D] / [A][B]'], correctAnswer: '[C]ᶜ[D]ᵈ / [A]ª[B]ᵇ' },
-    { id: 'q7-7', question: 'A large value for Kc (e.g., Kc > 1) indicates that at equilibrium...', options: ['The concentration of reactants is high', 'The concentration of products is high', 'The reaction is slow', 'The reaction is endothermic'], correctAnswer: 'The concentration of products is high' },
-    { id: 'q7-8', question: 'How does a catalyst affect a system at equilibrium?', options: ['It shifts the equilibrium to the right', 'It shifts the equilibrium to the left', 'It increases the rate of the forward and reverse reactions equally', 'It increases the equilibrium constant'], correctAnswer: 'It increases the rate of the forward and reverse reactions equally' },
-    { id: 'q7-9', question: 'If you remove a product from a system at equilibrium, the equilibrium will...', options: ['Shift to the left to produce more reactant', 'Shift to the right to produce more product', 'Not change', 'Stop'], correctAnswer: 'Shift to the right to produce more product' },
-    { id: 'q7-10', question: 'Which states of matter are typically included in the equilibrium constant expression?', options: ['Solids and liquids', 'Liquids and gases', 'Gases and aqueous solutions', 'Solids and gases'], correctAnswer: 'Gases and aqueous solutions' }
-  ],
-  'q8': [
-    { id: 'q8-1', question: 'According to the Brønsted-Lowry theory, an acid is a...', options: ['Proton donor', 'Proton acceptor', 'Electron donor', 'Electron acceptor'], correctAnswer: 'Proton donor' },
-    { id: 'q8-2', question: 'A substance that can act as both an acid and a base is called...', options: ['Neutral', 'Isotopic', 'Amphiprotic', 'Aprotic'], correctAnswer: 'Amphiprotic' },
-    { id: 'q8-3', question: 'A solution with a pH of 3 is...', options: ['Acidic', 'Basic', 'Neutral', 'Salty'], correctAnswer: 'Acidic' },
-    { id: 'q8-4', question: 'Which of the following is a strong acid?', options: ['Acetic acid (CH₃COOH)', 'Carbonic acid (H₂CO₃)', 'Hydrochloric acid (HCl)', 'Phosphoric acid (H₃PO₄)'], correctAnswer: 'Hydrochloric acid (HCl)' },
-    { id: 'q8-5', question: 'The reaction between an acid and a base is called...', options: ['Combustion', 'Decomposition', 'Oxidation', 'Neutralization'], correctAnswer: 'Neutralization' },
-    { id: 'q8-6', question: 'What are the products of the reaction between hydrochloric acid (HCl) and sodium hydroxide (NaOH)?', options: ['Sodium chloride and water', 'Sodium hydride and chlorine oxide', 'Sodium and chloric acid', 'No reaction occurs'], correctAnswer: 'Sodium chloride and water' },
-    { id: 'q8-7', question: 'A strong acid in solution is...', options: ['Partially ionized', 'Fully ionized', 'Not ionized', 'Concentrated'], correctAnswer: 'Fully ionized' },
-    { id: 'q8-8', question: 'What is the pH of pure water at 25°C?', options: ['0', '7', '14', '1'], correctAnswer: '7' },
-    { id: 'q8-9', question: 'Acid rain is mainly caused by the dissolution of which gases in the atmosphere?', options: ['Oxygen and nitrogen', 'Carbon dioxide and methane', 'Sulfur dioxide and nitrogen oxides', 'Helium and argon'], correctAnswer: 'Sulfur dioxide and nitrogen oxides' },
-    { id: 'q8-10', question: 'A buffer solution is a solution that...', options: ['Resists changes in pH', 'Has a pH of 7', 'Is highly acidic', 'Is highly basic'], correctAnswer: 'Resists changes in pH' }
+    'q6': [
+    {
+      id: 'q6-1',
+      question: 'What is a disadvantage of using dot and cross diagrams?',
+      options: [
+        'They don\'t show which atom the electrons come from',
+        'They don\'t show the transfer of electrons',
+        'They fail to illustrate the 3D arrangement of atoms',
+        'They are too complex to draw'
+      ],
+      correctAnswer: 'They fail to illustrate the 3D arrangement of atoms'
+    },
+    {
+      id: 'q6-2',
+      question: 'What is an advantage of a ball and stick model?',
+      options: [
+        'It accurately shows the space between atoms',
+        'It shows the movement of electrons',
+        'It is useful for visualizing the 3D shape of a molecule',
+        'It shows the relative sizes of atoms perfectly'
+      ],
+      correctAnswer: 'It is useful for visualizing the 3D shape of a molecule'
+    },
+    {
+      id: 'q6-3',
+      question: 'Which model incorrectly represents ionic bonds as "sticks" between ions?',
+      options: ['Dot and cross diagram', '2D representation', '3D ball and stick model', '3D space-filling model'],
+      correctAnswer: '3D ball and stick model'
+    },
+    {
+      id: 'q6-4',
+      question: 'What is a disadvantage of 2D displayed formulae?',
+      options: [
+        'They don\'t show which atoms are connected',
+        'They are too complicated',
+        'They cannot give you an idea of the 3D shape of a molecule',
+        'They show the electrons'
+      ],
+      correctAnswer: 'They cannot give you an idea of the 3D shape of a molecule'
+    },
+    {
+      id: 'q6-5',
+      question: 'Which model gives a more accurate representation of the space between ions in a lattice?',
+      options: ['3D ball and stick model', 'Dot and cross diagram', '2D displayed formula', '3D space-filling model'],
+      correctAnswer: '3D space-filling model'
+    }
   ]
 };

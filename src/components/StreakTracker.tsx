@@ -43,9 +43,9 @@ const StreakFlameIcon = ({ day, color }: { day: number, color: string }) => {
     }
 
   const radialGradient = {
-    'text-orange-200': 'radial-gradient(circle, rgba(254, 215, 170, 0.7) 0%, rgba(254, 215, 170, 0) 70%)', // Light
-    'text-orange-400': 'radial-gradient(circle, rgba(251, 146, 60, 0.7) 0%, rgba(251, 146, 60, 0) 70%)', // Medium
-    'text-orange-600': 'radial-gradient(circle, rgba(234, 88, 12, 0.8) 0%, rgba(234, 88, 12, 0) 70%)', // Dark
+    'text-orange-200': 'radial-gradient(circle, rgba(254, 215, 170, 0.8) 0%, rgba(254, 215, 170, 0) 70%)', // Light
+    'text-orange-400': 'radial-gradient(circle, rgba(251, 146, 60, 0.8) 0%, rgba(251, 146, 60, 0) 70%)', // Medium
+    'text-orange-600': 'radial-gradient(circle, rgba(234, 88, 12, 0.9) 0%, rgba(234, 88, 12, 0) 70%)', // Dark
   }[color] || '';
 
 
@@ -254,21 +254,6 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
               </div>
             ))}
           </div>
-
-            <div className="mt-4 flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                <div className="flex items-center gap-1">
-                    <Flame className="w-3 h-3 text-orange-200" />
-                    <span>= Active</span>
-                </div>
-                 <div className="flex items-center gap-1">
-                    <Flame className="w-3 h-3 text-orange-400" />
-                    <span>= 30+ min</span>
-                </div>
-                 <div className="flex items-center gap-1">
-                    <Flame className="w-3 h-3 text-orange-600" />
-                    <span>= 60+ min</span>
-                </div>
-            </div>
 
            <Collapsible className="mt-6">
                 <CollapsibleTrigger asChild>

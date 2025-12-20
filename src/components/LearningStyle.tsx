@@ -26,61 +26,62 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import LearningStyleQuiz from './LearningStyleQuiz';
+import { ResourceDialog, Resource } from './ResourceDialog';
 
 
-const diagramFolders = [
-  { id: '1', title: 'Stoichiometry Diagrams' },
-  { id: '2', title: 'Atomic Structure Visuals' },
-  { id: '3', title: 'Periodicity Charts' },
-  { id: '4', title: 'Chemical Bonding Models' },
-  { id: '5', title: 'Energetics & Thermochemistry Flowcharts' },
-  { id: '6', title: 'Chemical Kinetics Graphs' },
-  { id: '7', title: 'Equilibrium Models' },
-  { id: '8', title: 'Acids and Bases pH Scale Diagrams' },
+const diagramFolders: Resource[] = [
+  { id: '1', title: 'Stoichiometry Diagrams', description: 'Visual breakdowns of mole ratios and reaction balancing.' },
+  { id: '2', title: 'Atomic Structure Visuals', description: 'Charts showing electron shells, orbitals, and subatomic particles.' },
+  { id: '3', title: 'Periodicity Charts', description: 'Graphs illustrating trends like atomic radius and ionization energy.' },
+  { id: '4', title: 'Chemical Bonding Models', description: '3D models of ionic lattices and covalent molecules.' },
+  { id: '5', title: 'Energetics & Thermochemistry Flowcharts', description: 'Diagrams explaining enthalpy changes and Hess\'s Law.' },
+  { id: '6', title: 'Chemical Kinetics Graphs', description: 'Plots of reaction rates vs. concentration or temperature.' },
+  { id: '7', title: 'Equilibrium Models', description: 'Visual representations of Le Chatelier\'s Principle.' },
+  { id: '8', title: 'Acids and Bases pH Scale Diagrams', description: 'Colorful charts showing the pH of common substances.' },
 ];
 
-const mindmapFolders = [
-  { id: '1', title: 'Stoichiometric Relationships' },
-  { id: '2', title: 'Electron Configuration Maps' },
-  { id: '3', title: 'Periodic Trends Mindmap' },
-  { id: '4', title: 'Intermolecular Forces Map' },
-  { id: '5', title: 'Enthalpy and Entropy' },
-  { id: '6', title: 'Reaction Rate Factors' },
-  { id: '7', title: 'Le Chatelier\'s Principle' },
-  { id: '8', title: 'Acid-Base Titration Curves' },
+const mindmapFolders: Resource[] = [
+  { id: '1', title: 'Stoichiometric Relationships', description: 'A mindmap connecting moles, mass, and volume calculations.' },
+  { id: '2', title: 'Electron Configuration Maps', description: 'Hierarchical maps for filling electron orbitals (Aufbau, Hund, Pauli).' },
+  { id: '3', title: 'Periodic Trends Mindmap', description: 'A map linking electronegativity, ionization energy, and atomic radius.' },
+  { id: '4', title: 'Intermolecular Forces Map', description: 'Visual connections between London dispersion, dipole-dipole, and hydrogen bonds.' },
+  { id: '5', title: 'Enthalpy and Entropy', description: 'A map exploring the concepts of thermochemistry and spontaneity.' },
+  { id: '6', title: 'Reaction Rate Factors', description: 'A mindmap covering temperature, concentration, surface area, and catalysts.' },
+  { id: '7', title: 'Le Chatelier\'s Principle', description: 'A visual guide to how equilibrium shifts with changes in conditions.' },
+  { id: '8', title: 'Acid-Base Titration Curves', description: 'Mindmaps showing the shapes of different titration curves.' },
 ];
 
-const auditoryFolders = [
-  { id: '1', title: 'Podcast: The Mole Concept', icon: Music },
-  { id: '2', title: 'Rhymes for Electron Shells', icon: Mic },
-  { id: '3', title: 'Lecture: Periodic Trends Explained', icon: Music },
-  { id: '4', title: 'Debate: Ionic vs. Covalent Bonds', icon: Mic },
-  { id: '5', title: 'Audiobook: Hess\'s Law', icon: Music },
-  { id: '6', title: 'Collision Theory Explained', icon: Mic },
-  { id: '7', title: 'Equilibrium Constant Sonification', icon: Music },
-  { id: '8', title: 'Strong vs. Weak Acids Chant', icon: Mic },
+const auditoryFolders: Resource[] = [
+  { id: '1', title: 'Podcast: The Mole Concept', icon: Music, description: 'An audio deep-dive into Avogadro\'s number and its importance.' },
+  { id: '2', title: 'Rhymes for Electron Shells', icon: Mic, description: 'Catchy mnemonics and rhymes to remember electron configurations.' },
+  { id: '3', title: 'Lecture: Periodic Trends Explained', icon: Music, description: 'A professor explains the reasons behind periodic trends.' },
+  { id: '4', title: 'Debate: Ionic vs. Covalent Bonds', icon: Mic, description: 'Two experts debate the characteristics of different bond types.' },
+  { id: '5', title: 'Audiobook: Hess\'s Law', icon: Music, description: 'A chapter from a chemistry textbook, read aloud.' },
+  { id: '6', title: 'Collision Theory Explained', icon: Mic, description: 'A conversational explanation of how and why reactions happen.' },
+  { id: '7', title: 'Equilibrium Constant Sonification', icon: Music, description: 'Listen to how the "sound" of a reaction changes as it reaches equilibrium.' },
+  { id: '8', title: 'Strong vs. Weak Acids Chant', icon: Mic, description: 'A chant to help you remember the key differences.' },
 ];
 
-const simulationFolders = [
-  { id: '1', title: 'Virtual Lab: Titration', icon: Beaker },
-  { id: '2', title: 'Interactive: Build an Atom', icon: Atom },
-  { id: '3', title: 'Model Kit: VSEPR Theory', icon: Beaker },
-  { id: '4', title: 'Virtual Bond Builder', icon: Atom },
-  { id: '5', title: 'Calorimetry Experiment', icon: Beaker },
-  { id: '6', title: 'Reaction Rate Simulator', icon: Atom },
-  { id: '7', title: 'Equilibrium Simulation', icon: Beaker },
-  { id: '8', title: 'Acid-Base Virtual Lab', icon: Atom },
+const simulationFolders: Resource[] = [
+  { id: '1', title: 'Virtual Lab: Titration', icon: Beaker, description: 'Perform a virtual titration to find the concentration of an unknown acid.' },
+  { id: '2', title: 'Interactive: Build an Atom', icon: Atom, description: 'Drag and drop protons, neutrons, and electrons to build any element.' },
+  { id: '3', title: 'Model Kit: VSEPR Theory', icon: Beaker, description: 'Build and rotate 3D molecules to understand their shapes.' },
+  { id: '4', title: 'Virtual Bond Builder', icon: Atom, description: 'Combine atoms to see how ionic and covalent bonds form.' },
+  { id: '5', title: 'Calorimetry Experiment', icon: Beaker, description: 'Measure the heat of a reaction in a virtual coffee-cup calorimeter.' },
+  { id: '6', title: 'Reaction Rate Simulator', icon: Atom, description: 'Adjust temperature and concentration to see the effect on reaction speed.' },
+  { id: '7', title: 'Equilibrium Simulation', icon: Beaker, description: 'Add and remove reactants to see Le Chatelier\'s Principle in action.' },
+  { id: '8', title: 'Acid-Base Virtual Lab', icon: Atom, description: 'Test the pH of different household items in a safe, virtual environment.' },
 ];
 
-const gamificationFolders = [
-  { id: '1', title: 'Molecule Naming Race', icon: Swords },
-  { id: '2', title: 'Element Matching Game', icon: Puzzle },
-  { id: '3', title: 'Periodic Table Battleship', icon: Swords },
-  { id: '4', title: 'Bonding Type Quiz Show', icon: Puzzle },
-  { id: '5', title: 'Enthalpy Change Challenge', icon: Swords },
-  { id: '6', title: 'Kinetics Rate Law Puzzle', icon: Puzzle },
-  { id: '7', title: 'Le Chatelier\'s Principle Game', icon: Swords },
-  { id: '8', title: 'pH Scale Target Practice', icon: Puzzle },
+const gamificationFolders: Resource[] = [
+  { id: '1', title: 'Molecule Naming Race', icon: Swords, description: 'Race against the clock to name as many chemical compounds as you can.' },
+  { id: '2', title: 'Element Matching Game', icon: Puzzle, description: 'A memory game where you match element symbols to their names.' },
+  { id: '3', title: 'Periodic Table Battleship', icon: Swords, description: 'Guess the location of your opponent\'s "elements" on the periodic table.' },
+  { id: '4', title: 'Bonding Type Quiz Show', icon: Puzzle, description: 'Answer questions about ionic, covalent, and metallic bonding in a game show format.' },
+  { id: '5', title: 'Enthalpy Change Challenge', icon: Swords, description: 'Quickly calculate the enthalpy change for a series of reactions.' },
+  { id: '6', title: 'Kinetics Rate Law Puzzle', icon: Puzzle, description: 'Solve puzzles to determine the rate law for different reactions.' },
+  { id: '7', title: 'Le Chatelier\'s Principle Game', icon: Swords, description: 'Predict which way the equilibrium will shift in this fast-paced game.' },
+  { id: '8', title: 'pH Scale Target Practice', icon: Puzzle, description: 'Drag and drop substances onto the correct position on the pH scale.' },
 ];
 
 type LearningStyleProps = {
@@ -92,6 +93,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
   const [selectedStyle, setSelectedStyle] = useState(learnerType);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
 
   const handleSave = () => {
@@ -103,6 +105,24 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
     setLearnerType(style);
     setShowQuiz(false);
   };
+
+  const renderFolderList = (folders: Resource[], icon: React.ElementType = Folder) => (
+    <div className="space-y-2 pr-4">
+      {folders.map((folder) => {
+        const Icon = folder.icon || icon;
+        return (
+          <button
+            key={folder.id}
+            onClick={() => setSelectedResource(folder)}
+            className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
+          >
+            <Icon className="w-6 h-6 flex-shrink-0" />
+            <h3 className="font-bold truncate flex-1">{folder.title}</h3>
+          </button>
+        );
+      })}
+    </div>
+  );
   
   const renderVisualContent = () => (
     <Tabs defaultValue="diagrams" className="flex-1 flex flex-col mt-8">
@@ -117,17 +137,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                <div className="space-y-2 pr-4">
-                  {diagramFolders.map((folder) => (
-                     <button
-                        key={folder.id}
-                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                      >
-                        <Folder className="w-6 h-6 flex-shrink-0" />
-                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                      </button>
-                  ))}
-                </div>
+                {renderFolderList(diagramFolders)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -139,17 +149,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                <div className="space-y-2 pr-4">
-                  {mindmapFolders.map((folder) => (
-                     <button
-                        key={folder.id}
-                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                      >
-                        <Folder className="w-6 h-6 flex-shrink-0" />
-                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                      </button>
-                  ))}
-                </div>
+                {renderFolderList(mindmapFolders)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -165,17 +165,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
       </CardHeader>
       <CardContent className="flex-1">
         <ScrollArea className="h-[300px]">
-          <div className="space-y-2 pr-4">
-            {auditoryFolders.map((folder) => (
-               <button
-                  key={folder.id}
-                  className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                >
-                  <folder.icon className="w-6 h-6 flex-shrink-0" />
-                  <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                </button>
-            ))}
-          </div>
+          {renderFolderList(auditoryFolders)}
         </ScrollArea>
       </CardContent>
     </Card>
@@ -195,17 +185,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                <div className="space-y-2 pr-4">
-                  {simulationFolders.map((folder) => (
-                     <button
-                        key={folder.id}
-                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                      >
-                        <folder.icon className="w-6 h-6 flex-shrink-0" />
-                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                      </button>
-                  ))}
-                </div>
+                {renderFolderList(simulationFolders)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -218,17 +198,7 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                <div className="space-y-2 pr-4">
-                  {gamificationFolders.map((folder) => (
-                     <button
-                        key={folder.id}
-                        className="w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 hover:bg-accent/50"
-                      >
-                        <folder.icon className="w-6 h-6 flex-shrink-0" />
-                        <h3 className="font-bold truncate flex-1">{folder.title}</h3>
-                      </button>
-                  ))}
-                </div>
+                {renderFolderList(gamificationFolders)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -320,6 +290,12 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
       </Card>
       
       {renderContentForLearner()}
+
+       <ResourceDialog
+        isOpen={selectedResource !== null}
+        onClose={() => setSelectedResource(null)}
+        resource={selectedResource}
+      />
     </div>
   );
 };

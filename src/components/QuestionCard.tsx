@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { QuizQuestion } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -15,6 +15,12 @@ type QuestionCardProps = {
 const QuestionCard = ({ question, onAnswer }: QuestionCardProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
+
+  useEffect(() => {
+    // Reset state when the question changes
+    setSelectedOption(null);
+    setIsAnswered(false);
+  }, [question]);
 
   const handleOptionClick = (option: string) => {
     if (isAnswered) return;

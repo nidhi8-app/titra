@@ -219,9 +219,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                     {icon && (
                       <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
                     )}
-                    <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full', {
+                    <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
                       'bg-primary text-primary-foreground': status === 'today' && !icon,
-                      'text-foreground': !!icon,
                     })}>
                       {day}
                     </span>

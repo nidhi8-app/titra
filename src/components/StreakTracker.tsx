@@ -204,15 +204,15 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center mb-2">
                 <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
             </div>
-            <div className="grid grid-cols-7 gap-2 text-center text-muted-foreground mb-4 font-bold">
+            <div className="grid grid-cols-7 gap-1 text-center text-muted-foreground text-sm mb-2 font-bold">
                 {weekDays.map((day) => (
                 <div key={day}>{day}</div>
                 ))}
             </div>
-            <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
+            <div className="grid grid-cols-7 gap-1 text-center">
                 {calendarDays.map(({ day, status, icon }, index) => (
                 <div
                     key={index}
@@ -236,24 +236,10 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                 </div>
                 ))}
             </div>
-             <ContinueLearning onStartQuizzing={onStartQuizzing} />
-            </div>
-
-            <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
-                <div className='relative flex flex-col items-center justify-center'>
-                    <h3 className="text-4xl font-bold">Goal</h3>
-                    <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
-                    <ChartContainer config={chartConfig} className="w-full h-48">
-                        <PieChart accessibilityLayer>
-                            <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
-                            </Pie>
-                        </PieChart>
-                    </ChartContainer>
-                </div>
-                <div className="w-full pt-4 border-t">
+             <div className="w-full pt-4 mt-4 border-t">
                     <Accordion type="single" collapsible className="w-full">
                         <AccordionItem value="item-1">
-                            <AccordionTrigger className="font-semibold text-lg text-center">Today's Goals</AccordionTrigger>
+                            <AccordionTrigger className="font-semibold text-lg text-center">Emojis to achieve on your calendar</AccordionTrigger>
                             <AccordionContent>
                                 <div className="w-full space-y-2">
                                     {streakRewards.map((reward) => {
@@ -275,6 +261,20 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                         </AccordionItem>
                     </Accordion>
                 </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-start space-y-4 border-l md:pl-8">
+                <div className='relative flex flex-col items-center justify-center'>
+                    <h3 className="text-4xl font-bold">Goal</h3>
+                    <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
+                    <ChartContainer config={chartConfig} className="w-full h-48">
+                        <PieChart accessibilityLayer>
+                            <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
+                            </Pie>
+                        </PieChart>
+                    </ChartContainer>
+                </div>
+                <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>
         </div>
       </CardContent>

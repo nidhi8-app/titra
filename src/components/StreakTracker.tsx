@@ -112,10 +112,10 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     if (!activity || (activity.duration === 0 && Object.keys(activity.tasks).length === 0)) return null;
     
-    if (activity.duration >= 60) return <FlaskConical className="w-8 h-8 text-purple-400" />;
-    if (activity.duration >= 30) return <Beaker className="w-8 h-8 text-blue-500" />;
+    if (activity.duration >= 60) return <Flame className="w-8 h-8 text-orange-700" />;
+    if (activity.duration >= 30) return <Flame className="w-8 h-8 text-orange-500" />;
     
-    return <CheckCircle2 className="w-8 h-8 text-green-500" />;
+    return <Flame className="w-8 h-8 text-orange-300" />;
   };
 
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
@@ -228,7 +228,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                         )}
                         <span className={cn('z-10 flex items-center justify-center w-10 h-10 rounded-full text-foreground', {
                             'bg-primary text-primary-foreground': status === 'today' && !icon,
-                            'text-foreground': icon,
+                            'text-white': icon,
                         })}>
                         {day}
                         </span>
@@ -284,6 +284,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+    
+
     
 
     

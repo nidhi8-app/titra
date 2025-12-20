@@ -93,14 +93,31 @@ type QuizViewProps = {
 
 const QuizView = ({ preselectedTopic = null, userDetails }: QuizViewProps) => {
   const [selectedTopic, setSelectedTopic] = React.useState<TopicCard | null>(preselectedTopic);
-  const topics = initialQuizTopics;
+  const [topics, setTopics] = React.useState(initialQuizTopics);
+  const { user } = useUser();
+
+  React.useEffect(() => {
+    if (user) {
+        const scoresKey = `quizScores-${user.uid}`;
+        const scores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+        const updatedTopics = initialQuizTopics.map(topic => ({
+            ...topic,
+            progress: scores[topic.id] !== undefined ? Math.round(scores[topic.id]) : -1,
+        }));
+        setTopics(updatedTopics);
+    }
+  }, [user, selectedTopic]);
   
   React.useEffect(() => {
     setSelectedTopic(preselectedTopic);
   }, [preselectedTopic]);
 
+  const handleBackFromQuiz = () => {
+    setSelectedTopic(null);
+  };
+
   if (selectedTopic) {
-    return <QuizSession topic={selectedTopic} onBack={() => setSelectedTopic(null)} userDetails={userDetails} />
+    return <QuizSession topic={selectedTopic} onBack={handleBackFromQuiz} userDetails={userDetails} />
   }
 
   return (

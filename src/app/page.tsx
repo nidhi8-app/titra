@@ -15,7 +15,7 @@ import {
 import { FlaskConical, Sparkles, LogOut, Clock, BookOpen } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
-import type { Deck, UserDetails, Card as TopicCard, QuizQuestion, Note } from "@/lib/types";
+import type { Deck, UserDetails, Card as TopicCard, QuizQuestion, Note, DailyActivity } from "@/lib/types";
 import { initialDecks } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
@@ -35,6 +35,7 @@ import { signOut } from "firebase/auth";
 import { collection, doc, getDocs, query, writeBatch, where } from 'firebase/firestore';
 import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
 import { initialNotesData } from "@/lib/initial-notes";
+import { format } from "date-fns";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -82,6 +83,8 @@ export default function Home() {
   const [isQuizDialogVisible, setIsQuizDialogVisible] = React.useState(false);
   const [quizSource, setQuizSource] = React.useState<QuizSource | null>(null);
   const { toast } = useToast();
+  const [dailyActivity, setDailyActivity] = React.useState<Record<string, DailyActivity>>({});
+
   
   const notesCollectionRef = useMemoFirebase(() => {
     if (!user || !firestore) return null;
@@ -89,6 +92,45 @@ export default function Home() {
   }, [user, firestore]);
   const { data: notes } = useCollection<Note>(notesCollectionRef);
   
+  // Activity tracking
+    React.useEffect(() => {
+        if (!user) return;
+
+        const today = format(new Date(), 'yyyy-MM-dd');
+        const activityKey = `dailyActivity-${user.uid}`;
+        
+        const allActivity: Record<string, DailyActivity> = JSON.parse(localStorage.getItem(activityKey) || '{}');
+        setDailyActivity(allActivity);
+
+        const interval = setInterval(() => {
+            setDailyActivity(prev => {
+                const current = { ...prev };
+                const todayActivity = current[today] || { duration: 0, tasks: {} };
+                todayActivity.duration += 1; // Add 1 minute
+                current[today] = todayActivity;
+                localStorage.setItem(activityKey, JSON.stringify(current));
+                return current;
+            });
+        }, 60000); // every minute
+
+        return () => clearInterval(interval);
+    }, [user]);
+
+    const markTaskComplete = (taskId: string) => {
+        if (!user) return;
+        const today = format(new Date(), 'yyyy-MM-dd');
+        const activityKey = `dailyActivity-${user.uid}`;
+        
+        setDailyActivity(prev => {
+            const current = { ...prev };
+            const todayActivity = current[today] || { duration: 0, tasks: {} };
+            todayActivity.tasks[taskId] = true;
+            current[today] = todayActivity;
+            localStorage.setItem(activityKey, JSON.stringify(current));
+            return current;
+        });
+    };
+
   // Seed initial notes
   React.useEffect(() => {
     const seedInitialNotes = async () => {
@@ -152,6 +194,7 @@ export default function Home() {
       title: "Deck Created",
       description: "A new deck has been added.",
     });
+     markTaskComplete('createDeck');
   };
 
   const handleSelectDeck = (id: string) => {
@@ -246,6 +289,7 @@ export default function Home() {
     setQuizSource({ type: 'pre-made', topic });
     setActiveView('quizzes');
     setIsQuizDialogVisible(false);
+    markTaskComplete('startQuiz');
   }
   
   const handleStartQuizzing = (topic?: TopicCard) => {
@@ -260,6 +304,7 @@ export default function Home() {
     setQuizSource({ type: 'generated', questions, deckTitle });
     setActiveView('quizzes');
     setSelectedDeckId(null);
+    markTaskComplete('startQuiz');
   };
 
 
@@ -290,7 +335,7 @@ export default function Home() {
   
   const renderContent = () => {
     if (selectedDeck && activeView === 'dashboard') {
-      return <DeckView deck={selectedDeck} onQuiz={handleGeneratedQuiz} userDetails={userDetails} />;
+      return <DeckView deck={selectedDeck} onQuiz={handleGeneratedQuiz} userDetails={userDetails} onNoteAdded={() => markTaskComplete('addNote')} />;
     }
 
     switch (activeView) {
@@ -298,7 +343,7 @@ export default function Home() {
         return (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
             <div className="lg:col-span-2">
-              <StreakTracker onStartQuizzing={handleStartQuizzing} />
+              <StreakTracker onStartQuizzing={handleStartQuizzing} dailyActivity={dailyActivity} />
             </div>
             <div className="lg:col-span-1 h-full">
               <ScrollArea className="h-[calc(100vh-12rem)]">
@@ -316,6 +361,10 @@ export default function Home() {
         return <QuizView quizSource={quizSource} userDetails={userDetails} onBack={() => {
           setQuizSource(null);
           setActiveView('dashboard');
+        }} onQuizCompleted={(score, total) => {
+            if (score / total >= 0.8) {
+                markTaskComplete('aceQuiz');
+            }
         }} />;
       case "friends":
         return <FriendsView />;

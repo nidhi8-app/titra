@@ -20,7 +20,7 @@ type QuizSource = {
 } | null;
 
 
-const QuizSession = ({ source, onBack, userDetails }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null }) => {
+const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null, onQuizCompleted: (score: number, total: number) => void }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
@@ -44,17 +44,20 @@ const QuizSession = ({ source, onBack, userDetails }: { source: NonNullable<Quiz
   }
 
   React.useEffect(() => {
-    if (quizFinished && user && questions.length > 0 && source.type === 'pre-made') {
-      const percentage = (score / questions.length) * 100;
-      const scoresKey = `quizScores-${user.uid}`;
-      const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
-      const updatedScores = {
-        ...existingScores,
-        [source.topic.id]: percentage
-      };
-      localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+    if (quizFinished) {
+      onQuizCompleted(score, questions.length);
+      if (user && questions.length > 0 && source.type === 'pre-made') {
+        const percentage = (score / questions.length) * 100;
+        const scoresKey = `quizScores-${user.uid}`;
+        const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+        const updatedScores = {
+          ...existingScores,
+          [source.topic.id]: percentage
+        };
+        localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+      }
     }
-  }, [quizFinished, score, questions.length, source, user]);
+  }, [quizFinished, score, questions.length, source, user, onQuizCompleted]);
   
   
   if (quizFinished) {
@@ -101,9 +104,10 @@ type QuizViewProps = {
     quizSource?: QuizSource | null;
     userDetails: UserDetails | null;
     onBack: () => void;
+    onQuizCompleted: (score: number, total: number) => void;
 }
 
-const QuizView = ({ quizSource = null, userDetails, onBack }: QuizViewProps) => {
+const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted }: QuizViewProps) => {
   const [topics, setTopics] = React.useState(initialQuizTopics);
   const { user } = useUser();
 
@@ -120,7 +124,7 @@ const QuizView = ({ quizSource = null, userDetails, onBack }: QuizViewProps) => 
   }, [user, quizSource]);
 
   if (quizSource) {
-    return <QuizSession source={quizSource} onBack={onBack} userDetails={userDetails} />
+    return <QuizSession source={quizSource} onBack={onBack} userDetails={userDetails} onQuizCompleted={onQuizCompleted} />
   }
 
   return (

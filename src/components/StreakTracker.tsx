@@ -4,13 +4,13 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal, BookOpen } from 'lucide-react';
+import { Flame, Beaker, FlaskConical, Atom, ChevronDown, Sparkles as SparklesIcon, Medal, BookOpen, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   ChartContainer,
 } from "@/components/ui/chart";
 import { Pie, PieChart } from "recharts"
-import { startOfMonth, getDaysInMonth, getDay, format } from 'date-fns';
+import { startOfMonth, getDaysInMonth, getDay, format, isToday, parseISO, isSameDay } from 'date-fns';
 import {
   Collapsible,
   CollapsibleContent,
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/collapsible"
 import { useUser } from '@/firebase';
 import { initialQuizTopics } from '@/lib/data';
+import type { DailyActivity } from '@/lib/types';
 
 const chartData = [
   { name: "Progress", value: 0, fill: "hsl(var(--accent))" },
@@ -31,16 +32,17 @@ const chartConfig = {
 };
 
 const streakRewards = [
-    { icon: Flame, label: "Daily Activity", description: "Complete any revision.", color: "text-orange-500" },
-    { icon: Beaker, label: "Solid Session", description: "30+ minutes of revision.", color: "text-blue-500" },
-    { icon: FlaskConical, label: "Deep Dive", description: "1+ hour of revision.", color: "text-green-500" },
-    { icon: Atom, label: "Topic Mastered", description: "Ace a quiz in a new topic.", color: "text-purple-500" },
-    { icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-yellow-500" },
-    { icon: Medal, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
+    { id: 'daily', icon: CheckCircle2, label: "Daily Activity", description: "Complete any revision.", color: "text-green-500" },
+    { id: 'solid', icon: Flame, label: "Solid Session", description: "30+ minutes of revision.", color: "text-orange-500" },
+    { id: 'deep', icon: FlaskConical, label: "Deep Dive", description: "60+ minutes of revision.", color: "text-blue-500" },
+    { id: 'master', icon: Atom, label: "Topic Mastered", description: "Ace a quiz (>=80%).", color: "text-purple-500" },
+    { id: 'weekly', icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-yellow-500" },
+    { id: 'monthly', icon: Medal, label: "Monthly Champion", description: "Maintain a 30-day streak.", color: "text-yellow-600" },
 ]
 
 type StreakTrackerProps = {
     onStartQuizzing: (topic?: any) => void;
+    dailyActivity: Record<string, DailyActivity>;
 };
 
 const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) => void; }) => {
@@ -99,7 +101,7 @@ const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) =
 };
 
 
-const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
+const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   
   const [currentDate, setCurrentDate] = React.useState(new Date());
@@ -108,25 +110,40 @@ const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
   const daysInMonth = getDaysInMonth(currentDate);
   const startingDayOfWeek = getDay(firstDayOfMonth);
 
+  const getEmojiForDay = (dayDate: Date): React.ReactNode => {
+    const dateString = format(dayDate, 'yyyy-MM-dd');
+    const activity = dailyActivity[dateString];
+
+    if (!activity) return null;
+
+    if (activity.duration >= 60) return <FlaskConical className="w-5 h-5 text-blue-500" />;
+    if (activity.duration >= 30) return <Flame className="w-5 h-5 text-orange-500" />;
+    if (activity.duration > 0 || Object.keys(activity.tasks).length > 0) return <CheckCircle2 className="w-5 h-5 text-green-500" />;
+    
+    return null;
+};
+
   const calendarDays = Array.from({ length: startingDayOfWeek + daysInMonth }, (_, i) => {
     if (i < startingDayOfWeek) {
-      return { day: null, status: 'inactive' };
+      return { day: null, status: 'inactive', emoji: null };
     }
     const day = i - startingDayOfWeek + 1;
+    const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     const today = new Date();
-    const isToday = day === today.getDate() &&
-                    currentDate.getMonth() === today.getMonth() &&
-                    currentDate.getFullYear() === today.getFullYear();
-
-    let status = 'inactive';
-    if (isToday) {
-      status = 'today';
-    } else if (new Date(currentDate.getFullYear(), currentDate.getMonth(), day) < today) {
-      // No dummy logic for past days. Will be based on actual user activity.
-      status = 'past'; 
-    }
     
-    return { day, status };
+    const isPast = date < today && !isSameDay(date, today);
+    const isFuture = date > today;
+    
+    let status = 'inactive';
+    if (isToday(date)) {
+      status = 'today';
+    } else if (isPast) {
+      status = 'past';
+    }
+
+    const emoji = getEmojiForDay(date);
+
+    return { day, status, emoji };
   });
 
   return (
@@ -145,16 +162,18 @@ const StreakTracker = ({ onStartQuizzing }: StreakTrackerProps) => {
             ))}
           </div>
           <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
-            {calendarDays.map(({ day, status }, index) => (
+            {calendarDays.map(({ day, status, emoji }, index) => (
               <div
                 key={index}
-                className={cn('flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
+                className={cn('relative flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors', {
                   'text-muted-foreground/50': !day,
-                  '': status === 'past', // No specific style for past days without activity
+                  '': status === 'past',
                   'bg-primary text-primary-foreground': status === 'today',
+                  'bg-accent/20': emoji !== null && status !== 'today',
                 })}
               >
                 {day}
+                 {emoji && <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">{emoji}</div>}
               </div>
             ))}
           </div>

@@ -51,3 +51,8 @@ export type UserDetails = {
   avatarUrl?: string;
   learningStyle?: string;
 };
+
+export type DailyActivity = {
+  duration: number; // in minutes
+  tasks: Record<string, boolean>; // e.g., { 'startQuiz': true, 'aceQuiz': true }
+};

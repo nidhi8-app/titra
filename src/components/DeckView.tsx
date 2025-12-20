@@ -18,9 +18,10 @@ type DeckViewProps = {
   deck: Deck;
   onQuiz: (questions: QuizQuestion[], deckTitle: string) => void;
   userDetails: UserDetails | null;
+  onNoteAdded: () => void;
 };
 
-const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
+const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const [isCreatingNote, setIsCreatingNote] = useState(false);
   const { user } = useUser();
   const firestore = useFirestore();
@@ -48,7 +49,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     };
 
     await addDoc(notesCollectionRef, newNote);
-    
+    onNoteAdded();
     setIsCreatingNote(false);
   };
 

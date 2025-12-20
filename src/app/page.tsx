@@ -252,7 +252,7 @@ export default function Home() {
       case "learning-style":
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
-        return <QuizView preselectedTopic={quizTopicFromDashboard} />;
+        return <QuizView preselectedTopic={quizTopicFromDashboard} userDetails={userDetails} />;
       case "friends":
         return <FriendsView />;
       case "account":

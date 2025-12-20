@@ -6,10 +6,11 @@ import { initialQuizTopics, quizQuestions } from '@/lib/data';
 import { Button } from './ui/button';
 import { Plus, Search, ArrowLeft } from 'lucide-react';
 import { Progress } from './ui/progress';
-import type { Card as TopicCard, QuizQuestion } from '@/lib/types';
+import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
+import { useUser } from '@/firebase';
 
-const QuizSession = ({ topic, onBack }: { topic: TopicCard, onBack: () => void }) => {
+const QuizSession = ({ topic, onBack, userDetails }: { topic: TopicCard, onBack: () => void, userDetails: UserDetails | null }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
@@ -17,17 +18,18 @@ const QuizSession = ({ topic, onBack }: { topic: TopicCard, onBack: () => void }
   const questions = quizQuestions[topic.id] || [];
   const currentQuestion = questions[currentQuestionIndex];
 
-  const handleAnswer = (isCorrect: boolean) => {
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-    const nextQuestionIndex = currentQuestionIndex + 1;
+  const handleCorrectAnswer = () => {
+    setScore(score + 1);
+  };
+  
+  const handleNextQuestion = () => {
+     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       setQuizFinished(true);
     }
-  };
+  }
   
   if (quizFinished) {
     return (
@@ -51,14 +53,16 @@ const QuizSession = ({ topic, onBack }: { topic: TopicCard, onBack: () => void }
         </Button>
         <h2 className="text-2xl font-bold">{topic.title}</h2>
       </div>
-      {currentQuestion ? (
+      {currentQuestion && userDetails ? (
         <QuestionCard 
           question={currentQuestion}
-          onAnswer={handleAnswer}
+          onCorrectAnswer={handleCorrectAnswer}
+          onNextQuestion={handleNextQuestion}
+          learningStyle={userDetails.learningStyle || 'Visual'}
         />
       ) : (
          <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
-            <p className="text-xl">No questions available for this topic yet.</p>
+            <p className="text-xl">{userDetails ? "No questions available for this topic yet." : "Loading user details..."}</p>
          </div>
       )}
     </div>
@@ -67,9 +71,10 @@ const QuizSession = ({ topic, onBack }: { topic: TopicCard, onBack: () => void }
 
 type QuizViewProps = {
     preselectedTopic?: TopicCard | null;
+    userDetails: UserDetails | null;
 }
 
-const QuizView = ({ preselectedTopic = null }: QuizViewProps) => {
+const QuizView = ({ preselectedTopic = null, userDetails }: QuizViewProps) => {
   const [selectedTopic, setSelectedTopic] = React.useState<TopicCard | null>(preselectedTopic);
   const topics = initialQuizTopics;
   
@@ -78,7 +83,7 @@ const QuizView = ({ preselectedTopic = null }: QuizViewProps) => {
   }, [preselectedTopic]);
 
   if (selectedTopic) {
-    return <QuizSession topic={selectedTopic} onBack={() => setSelectedTopic(null)} />
+    return <QuizSession topic={selectedTopic} onBack={() => setSelectedTopic(null)} userDetails={userDetails} />
   }
 
   return (

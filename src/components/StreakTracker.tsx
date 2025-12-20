@@ -45,10 +45,10 @@ const StreakFlameIcon = ({ day, opacity }: { day: number, opacity: number }) => 
     <div
       className="relative flex h-10 w-10 items-center justify-center rounded-full"
       style={{
-        background: `radial-gradient(circle, rgba(255, 193, 7, ${opacity * 0.7}) 0%, rgba(255, 152, 0, 0) 70%)`,
+        background: `radial-gradient(circle, rgba(255, 165, 0, ${opacity * 0.8}) 0%, rgba(255, 100, 0, 0) 70%)`,
       }}
     >
-      <Flame className="absolute text-orange-200/80 w-9 h-9" style={{ opacity: opacity * 0.9 }} />
+      <Flame className="absolute text-orange-500/90 w-9 h-9" style={{ opacity: opacity }} />
       <span className="relative font-bold text-gray-800">{day}</span>
     </div>
   );

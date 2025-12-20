@@ -39,10 +39,10 @@ const StreakFlameIcon = ({ opacity = 1 }: { opacity?: number }) => (
     <div 
         className="absolute inset-0 flex items-center justify-center rounded-full"
         style={{
-            background: `radial-gradient(circle, rgba(255,193,7,${opacity * 0.7}) 0%, rgba(255,152,0,${opacity * 0.5}) 50%, rgba(255,152,0,0) 70%)`,
+            background: `radial-gradient(circle, rgba(255,193,7,${opacity * 0.8}) 0%, rgba(255,152,0,${opacity * 0.6}) 50%, rgba(255,152,0,0) 70%)`,
         }}
     >
-        <Flame className="w-6 h-6 text-white" style={{ opacity: opacity * 0.9 }} />
+        <Flame className="w-6 h-6 text-white" style={{ opacity }} />
     </div>
 );
 
@@ -233,7 +233,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                   'bg-primary text-primary-foreground': status === 'today' && !emoji,
                 })}
               >
-                <span>{day}</span>
+                <span className="font-bold">{day}</span>
                  {emoji}
               </div>
             ))}
@@ -287,6 +287,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
+
+    
 
     
 

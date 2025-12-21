@@ -1,5 +1,6 @@
 
 import { LucideIcon } from "lucide-react";
+import type { Timestamp } from 'firebase/firestore';
 
 export type Card = {
   id: string;
@@ -21,8 +22,8 @@ export type Note = {
   id:string;
   title: string;
   body: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Timestamp | Date;
+  updatedAt: Timestamp | Date;
   deckId?: string;
 };
 

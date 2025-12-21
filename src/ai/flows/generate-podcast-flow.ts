@@ -14,10 +14,10 @@ import { googleAI } from '@genkit-ai/google-genai';
 import wav from 'wav';
 
 
-export const GeneratePodcastOutputSchema = z.object({
+const GeneratePodcastOutputSchema = z.object({
   media: z.string().describe("A data URI of the WAV audio file. Format: 'data:audio/wav;base64,<encoded_data>'."),
 });
-export type GeneratePodcastOutput = z.infer<typeof GeneratePodcastOutputSchema>;
+type GeneratePodcastOutput = z.infer<typeof GeneratePodcastOutputSchema>;
 
 export async function generatePodcast(text: string): Promise<GeneratePodcastOutput> {
   return generatePodcastFlow(text);

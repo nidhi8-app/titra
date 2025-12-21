@@ -161,14 +161,14 @@ export default function Home() {
   // Seed initial notes
   React.useEffect(() => {
     const seedInitialNotes = async () => {
-        if (user && firestore && notes !== undefined) {
+        if (user && firestore && notes !== undefined && notesCollectionRef) {
             const hasSeededKey = `hasSeededNotes-${user.uid}`;
             const hasSeeded = localStorage.getItem(hasSeededKey);
 
             if (!hasSeeded) {
                 // Check if there are any notes for the initial decks already.
                 const initialDeckIds = initialDecks.map(d => d.id);
-                const q = query(notesCollectionRef!, where('deckId', 'in', initialDeckIds));
+                const q = query(notesCollectionRef, where('deckId', 'in', initialDeckIds));
                 const existingNotesSnapshot = await getDocs(q);
 
                 if (existingNotesSnapshot.empty) {
@@ -176,7 +176,7 @@ export default function Home() {
                     const batch = writeBatch(firestore);
                     Object.entries(initialNotesData).forEach(([deckId, notesToSeed]) => {
                         notesToSeed.forEach(noteContent => {
-                            const noteDocRef = doc(notesCollectionRef!);
+                            const noteDocRef = doc(notesCollectionRef);
                             batch.set(noteDocRef, { ...noteContent, deckId });
                         });
                     });
@@ -569,5 +569,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
-    

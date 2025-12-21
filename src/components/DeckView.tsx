@@ -8,7 +8,7 @@ import { Plus, BrainCircuit, Loader2 } from 'lucide-react';
 import NoteEditor from './NoteEditor';
 import NoteCard from './NoteCard';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where } from 'firebase/firestore';
 import { ImportDialog } from './ImportDialog';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { useToast } from '@/hooks/use-toast';
@@ -29,16 +29,20 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const { toast } = useToast();
 
-  const notesCollectionRef = useMemoFirebase(() => {
+  const notesQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
-    return collection(firestore, `users/${user.uid}/notes`);
-  }, [user, firestore]);
+    return query(
+      collection(firestore, `users/${user.uid}/notes`),
+      where('deckId', '==', deck.id)
+    );
+  }, [user, firestore, deck.id]);
   
-  const { data: notes, isLoading } = useCollection<Note>(notesCollectionRef);
+  const { data: deckNotes, isLoading } = useCollection<Note>(notesQuery);
 
 
   const handleSaveNote = async (title: string, body: string) => {
-    if (!notesCollectionRef) return;
+    if (!user || !firestore) return;
+    const notesCollectionRef = collection(firestore, `users/${user.uid}/notes`);
 
     const newNote: Omit<Note, 'id' > = {
         title,
@@ -104,17 +108,13 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
       setIsGeneratingQuiz(false);
     }
   };
-  
-  const deckNotes = React.useMemo(() => {
-    return notes?.filter(note => note.deckId === deck.id) || [];
-  }, [notes, deck.id]);
 
   if (isCreatingNote) {
     return <NoteEditor onSave={handleSaveNote} onCancel={() => setIsCreatingNote(false)} />;
   }
 
   const renderDeckCards = () => {
-    if (deck.cards.length === 0 && deckNotes.length === 0) {
+    if (deck.cards.length === 0 && (!deckNotes || deckNotes.length === 0)) {
       return (
         <div className="text-center col-span-full py-16">
           <h3 className="mt-4 text-lg font-semibold">This deck is empty</h3>
@@ -125,7 +125,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {deckNotes.map((note) => (
+        {deckNotes?.map((note) => (
           <NoteCard key={note.id} note={note} />
         ))}
       </div>
@@ -178,5 +178,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

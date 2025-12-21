@@ -112,18 +112,33 @@ export default function Home() {
         const allActivity: Record<string, DailyActivity> = JSON.parse(localStorage.getItem(activityKey) || '{}');
         setDailyActivity(allActivity);
 
+        let lastActivityTime = Date.now();
+
+        const activityEvents = ['mousemove', 'keydown', 'click', 'scroll'];
+        const handleActivity = () => {
+            lastActivityTime = Date.now();
+        };
+
+        activityEvents.forEach(event => window.addEventListener(event, handleActivity));
+
         const interval = setInterval(() => {
-            setDailyActivity(prev => {
-                const current = { ...prev };
-                const todayActivity = current[today] || { duration: 0, tasks: {} };
-                todayActivity.duration += 1; // Add 1 minute
-                current[today] = todayActivity;
-                localStorage.setItem(activityKey, JSON.stringify(current));
-                return current;
-            });
+            // Only update duration if user has been active in the last minute
+            if (Date.now() - lastActivityTime < 60000) {
+                 setDailyActivity(prev => {
+                    const current = { ...prev };
+                    const todayActivity = current[today] || { duration: 0, tasks: {} };
+                    todayActivity.duration += 1; // Add 1 minute
+                    current[today] = todayActivity;
+                    localStorage.setItem(activityKey, JSON.stringify(current));
+                    return current;
+                });
+            }
         }, 60000); // every minute
 
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval)
+            activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
+        };
     }, [user]);
 
     const markTaskComplete = (taskId: string) => {
@@ -134,9 +149,11 @@ export default function Home() {
         setDailyActivity(prev => {
             const current = { ...prev };
             const todayActivity = current[today] || { duration: 0, tasks: {} };
-            todayActivity.tasks[taskId] = true;
-            current[today] = todayActivity;
-            localStorage.setItem(activityKey, JSON.stringify(current));
+            if (!todayActivity.tasks[taskId]) {
+                todayActivity.tasks[taskId] = true;
+                current[today] = todayActivity;
+                localStorage.setItem(activityKey, JSON.stringify(current));
+            }
             return current;
         });
     };
@@ -337,28 +354,24 @@ export default function Home() {
     const lastActivityDate = activityDates[0];
 
     // If there was no activity today or yesterday, streak is broken.
-    if (!isSameDay(lastActivityDate, today) && !isSameDay(lastActivityDate, subDays(today, 1))) {
+    if (differenceInCalendarDays(today, lastActivityDate) > 1) {
       return 0;
     }
 
-    let streak = 1;
-    // Start checking from the day before the last activity day.
-    let expectedDate = subDays(lastActivityDate, 1);
+    let streak = isSameDay(lastActivityDate, today) || isSameDay(lastActivityDate, subDays(today, 1)) ? 1 : 0;
+    if (streak === 0) return 0;
 
     // Go through the rest of the activity dates
-    for (let i = 1; i < activityDates.length; i++) {
-        const activityDate = activityDates[i];
+    for (let i = 0; i < activityDates.length - 1; i++) {
+        const currentDay = activityDates[i];
+        const nextDay = activityDates[i+1];
         
-        // If the current activity date matches the expected date in the sequence
-        if (isSameDay(activityDate, expectedDate)) {
+        if (differenceInCalendarDays(currentDay, nextDay) === 1) {
             streak++;
-            // Set the next expected date to the day before the current one
-            expectedDate = subDays(expectedDate, 1);
-        } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
-            // If there's a gap between the expected date and the current activity date, the streak is broken.
+        } else {
+            // If there's a gap bigger than 1 day, the streak is broken.
             break;
         }
-        // If activityDate is the same as lastActivityDate (multiple entries for one day), we just skip it.
     }
     
     return streak;
@@ -547,6 +560,8 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    
 
     
 

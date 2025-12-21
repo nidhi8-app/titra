@@ -8,7 +8,8 @@ import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSqu
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
-import { generatePodcast, type GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
+import { generatePodcast } from '@/ai/flows/generate-podcast-flow';
+import type { GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
@@ -28,6 +29,20 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
 
     useEffect(() => {
         const generateAudio = async () => {
+            // Check for API key availability on the client.
+            // Note: This relies on the key being exposed to the client, which is okay for this prototype.
+            // In a production app, this check might happen on the server or the API call would be proxied.
+            if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+                toast({
+                    variant: "destructive",
+                    title: "Google AI API Key is Not Set",
+                    description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
+                });
+                setError("The AI feature is not configured. Please add an API key.");
+                setIsLoading(false);
+                return;
+            }
+
             if (!notesText) {
                 setError("There are no notes to generate a podcast from.");
                 setIsLoading(false);
@@ -46,6 +61,7 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
                 }
             } catch (err: any) {
                 console.error("Failed to generate podcast:", err);
+                // The API key error is now caught before the call, but we keep this as a fallback.
                 if (err.message.includes('API key not valid')) {
                     toast({
                         variant: "destructive",
@@ -267,3 +283,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+    

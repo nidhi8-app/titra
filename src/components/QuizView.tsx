@@ -20,11 +20,10 @@ type QuizSource = {
 } | null;
 
 
-const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null, onQuizCompleted: (score: number, total: number) => void }) => {
+const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null, onQuizCompleted: (score: number, total: number, topicId?: string) => void }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
-  const { user } = useUser();
   
   const questions = source.type === 'pre-made' ? (quizQuestions[source.topic.id] || []) : source.questions;
   const currentQuestion = questions[currentQuestionIndex];
@@ -45,19 +44,9 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
 
   React.useEffect(() => {
     if (quizFinished) {
-      onQuizCompleted(score, questions.length);
-      if (user && questions.length > 0 && source.type === 'pre-made') {
-        const percentage = (score / questions.length) * 100;
-        const scoresKey = `quizScores-${user.uid}`;
-        const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
-        const updatedScores = {
-          ...existingScores,
-          [source.topic.id]: percentage
-        };
-        localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
-      }
+      onQuizCompleted(score, questions.length, source.type === 'pre-made' ? source.topic.id : undefined);
     }
-  }, [quizFinished, score, questions.length, source, user, onQuizCompleted]);
+  }, [quizFinished, score, questions.length, source, onQuizCompleted]);
   
   
   if (quizFinished) {
@@ -104,7 +93,7 @@ type QuizViewProps = {
     quizSource?: QuizSource | null;
     userDetails: UserDetails | null;
     onBack: () => void;
-    onQuizCompleted: (score: number, total: number) => void;
+    onQuizCompleted: (score: number, total: number, topicId?: string) => void;
     onSelectTopic: (topic: TopicCard) => void;
 }
 
@@ -172,3 +161,5 @@ const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted, onS
 };
 
 export default QuizView;
+
+    

@@ -85,13 +85,21 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
       } else {
         throw new Error("AI did not return any questions.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to generate quiz:", error);
-      toast({
-        variant: "destructive",
-        title: "Quiz Generation Failed",
-        description: "There was an error generating the quiz. Please try again.",
-      });
+      if (error.message.includes('API key not valid')) {
+        toast({
+            variant: "destructive",
+            title: "Google AI API Key is Not Set",
+            description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
+        });
+      } else {
+        toast({
+            variant: "destructive",
+            title: "Quiz Generation Failed",
+            description: "There was an error generating the quiz. Please try again.",
+        });
+      }
     } finally {
       setIsGeneratingQuiz(false);
     }
@@ -170,3 +178,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

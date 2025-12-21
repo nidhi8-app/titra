@@ -100,7 +100,7 @@ export default function Home() {
             const scores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
             setQuizScores(scores);
         }
-    }, [user, quizSource]);
+    }, [user]);
   
   // Activity tracking
     React.useEffect(() => {
@@ -443,9 +443,20 @@ export default function Home() {
         return <QuizView quizSource={quizSource} userDetails={userDetails} onBack={() => {
           setQuizSource(null);
           setActiveView('dashboard');
-        }} onQuizCompleted={(score, total) => {
+        }} onQuizCompleted={(score, total, topicId) => {
             if (score / total >= 0.8) {
                 markTaskComplete('aceQuiz');
+            }
+             if (user && topicId) {
+                const percentage = (score / total) * 100;
+                const scoresKey = `quizScores-${user.uid}`;
+                const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+                const updatedScores = {
+                    ...existingScores,
+                    [topicId]: percentage
+                };
+                localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+                setQuizScores(updatedScores);
             }
         }} 
         onSelectTopic={handleStartQuizFromDashboard}
@@ -560,8 +571,3 @@ export default function Home() {
 }
 
     
-
-    
-
-    
-

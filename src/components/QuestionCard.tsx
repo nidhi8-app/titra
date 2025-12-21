@@ -17,6 +17,7 @@ import {
 import { explainConcept } from '@/ai/flows/explain-concept-flow';
 import { Loader } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
+import { useToast } from '@/hooks/use-toast';
 
 type QuestionCardProps = {
   question: QuizQuestion;
@@ -32,6 +33,7 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
   const [explanation, setExplanation] = useState<string | null>(null);
   const [isExplanationLoading, setIsExplanationLoading] = useState(false);
   const [isExplanationDialogOpen, setIsExplanationDialogOpen] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setSelectedOption(null);
@@ -70,9 +72,13 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
         learningStyle: learningStyle,
       });
       setExplanation(result.explanation);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to get explanation:", error);
-      setExplanation("Sorry, I couldn't get an explanation at this time.");
+      if (error.message.includes('API key not valid')) {
+        setExplanation("The Google AI API Key is not set. Please add your GEMINI_API_KEY to the .env file to use this feature.");
+      } else {
+        setExplanation("Sorry, I couldn't get an explanation at this time.");
+      }
     } finally {
       setIsExplanationLoading(false);
     }
@@ -169,3 +175,5 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
 };
 
 export default QuestionCard;
+
+    

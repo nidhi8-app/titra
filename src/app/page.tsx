@@ -142,7 +142,7 @@ export default function Home() {
         };
     }, [user]);
 
-    const markTaskComplete = (taskId: string) => {
+    const markTaskComplete = React.useCallback((taskId: string) => {
         if (!user) return;
         const today = format(new Date(), 'yyyy-MM-dd');
         const activityKey = `dailyActivity-${user.uid}`;
@@ -157,7 +157,7 @@ export default function Home() {
             }
             return current;
         });
-    };
+    }, [user]);
 
   // Seed initial notes
   React.useEffect(() => {
@@ -210,7 +210,7 @@ export default function Home() {
     }
   }, [user, isUserLoading]);
 
-  const handleCreateDeck = () => {
+  const handleCreateDeck = React.useCallback(() => {
     const newDeck: Deck = {
       id: Date.now().toString(),
       title: "New Deck",
@@ -223,34 +223,34 @@ export default function Home() {
       description: "A new deck has been added.",
     });
      markTaskComplete('createDeck');
-  };
+  }, [toast, markTaskComplete]);
 
-  const handleSelectDeck = (id: string) => {
+  const handleSelectDeck = React.useCallback((id: string) => {
     setSelectedDeckId(id);
     setActiveView("dashboard");
-  };
+  }, []);
 
-  const handleGoHome = () => {
+  const handleGoHome = React.useCallback(() => {
     setSelectedDeckId(null);
     setActiveView("dashboard");
     setQuizSource(null);
-  };
+  }, []);
   
-  const handleNavigate = (view: ActiveView) => {
+  const handleNavigate = React.useCallback((view: ActiveView) => {
     setActiveView(view);
     setSelectedDeckId(null);
     setQuizSource(null);
-  };
+  }, []);
 
-  const handleRenameDeck = (deckId: string, newTitle: string) => {
+  const handleRenameDeck = React.useCallback((deckId: string, newTitle: string) => {
     setDecks(decks.map(d => d.id === deckId ? {...d, title: newTitle} : d));
     toast({
       title: "Deck Renamed",
       description: `The deck has been renamed to "${newTitle}".`,
     });
-  };
+  }, [decks, toast]);
 
-  const handleDeleteDeck = (deckId: string) => {
+  const handleDeleteDeck = React.useCallback((deckId: string) => {
     const deletedDeck = decks.find(d => d.id === deckId);
     if (!deletedDeck) return;
 
@@ -263,18 +263,18 @@ export default function Home() {
       description: `The deck "${deletedDeck.title}" has been deleted.`,
       variant: 'destructive',
     });
-  };
+  }, [decks, toast, selectedDeckId]);
 
-  const handleOnboardingComplete = (details: UserDetails) => {
+  const handleOnboardingComplete = React.useCallback((details: UserDetails) => {
     setUserDetails(details);
     if (details.learningStyle) {
       setLearnerType(details.learningStyle);
     }
     // Save user details against their UID
     localStorage.setItem(`userDetails-${details.id}`, JSON.stringify(details));
-  };
+  }, []);
   
-  const handleLogin = (details: UserDetails) => {
+  const handleLogin = React.useCallback((details: UserDetails) => {
     setUserDetails(details);
     if (details.learningStyle) {
       setLearnerType(details.learningStyle);
@@ -285,9 +285,9 @@ export default function Home() {
         title: "Welcome back!",
         description: "You've successfully logged in.",
     });
-  }
+  }, [toast]);
 
-  const handleLogout = () => {
+  const handleLogout = React.useCallback(() => {
     if (userDetails?.email) {
       localStorage.setItem('lastUserEmail', userDetails.email);
     }
@@ -299,41 +299,60 @@ export default function Home() {
             description: "You have been successfully logged out.",
         });
     });
-  };
+  }, [auth, userDetails, toast]);
   
-  const handleUpdateUserDetails = (updatedDetails: UserDetails | null) => {
+  const handleUpdateUserDetails = React.useCallback((updatedDetails: UserDetails | null) => {
     setUserDetails(updatedDetails);
     if(updatedDetails && updatedDetails.id) {
         localStorage.setItem(`userDetails-${updatedDetails.id}`, JSON.stringify(updatedDetails));
         if(updatedDetails.learningStyle) {
           setLearnerType(updatedDetails.learningStyle);
         }
-        const userDocRef = doc(firestore, "users", updatedDetails.id);
-        setDocumentNonBlocking(userDocRef, updatedDetails, { merge: true });
+        if (firestore) {
+            const userDocRef = doc(firestore, "users", updatedDetails.id);
+            setDocumentNonBlocking(userDocRef, updatedDetails, { merge: true });
+        }
     }
-  }
+  }, [firestore]);
 
-  const handleStartQuizFromDashboard = (topic: TopicCard) => {
+  const handleStartQuizFromDashboard = React.useCallback((topic: TopicCard) => {
     setQuizSource({ type: 'pre-made', topic });
     setActiveView('quizzes');
     setIsQuizDialogVisible(false);
     markTaskComplete('startQuiz');
-  }
+  }, [markTaskComplete]);
   
-  const handleStartQuizzing = (topic?: TopicCard) => {
+  const handleStartQuizzing = React.useCallback((topic?: TopicCard) => {
     if (topic) {
         handleStartQuizFromDashboard(topic);
     } else {
         setIsQuizDialogVisible(true);
     }
-  }
+  }, [handleStartQuizFromDashboard]);
   
-  const handleGeneratedQuiz = (questions: QuizQuestion[], deckTitle: string) => {
+  const handleGeneratedQuiz = React.useCallback((questions: QuizQuestion[], deckTitle: string) => {
     setQuizSource({ type: 'generated', questions, deckTitle });
     setActiveView('quizzes');
     setSelectedDeckId(null);
     markTaskComplete('startQuiz');
-  };
+  }, [markTaskComplete]);
+
+  const handleQuizCompleted = React.useCallback((score: number, total: number, topicId?: string) => {
+      if (score / total >= 0.8) {
+          markTaskComplete('aceQuiz');
+      }
+       if (user && topicId) {
+          const percentage = (score / total) * 100;
+          const scoresKey = `quizScores-${user.uid}`;
+          const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+          const updatedScores = {
+              ...existingScores,
+              [topicId]: percentage
+          };
+          localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+          setQuizScores(updatedScores);
+      }
+  }, [user, markTaskComplete]);
 
 
   const selectedDeck = React.useMemo(() => {
@@ -448,22 +467,8 @@ export default function Home() {
             onBack={() => {
               setQuizSource(null);
               setActiveView('dashboard');
-            }} onQuizCompleted={(score, total, topicId) => {
-                if (score / total >= 0.8) {
-                    markTaskComplete('aceQuiz');
-                }
-                 if (user && topicId) {
-                    const percentage = (score / total) * 100;
-                    const scoresKey = `quizScores-${user.uid}`;
-                    const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
-                    const updatedScores = {
-                        ...existingScores,
-                        [topicId]: percentage
-                    };
-                    localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
-                    setQuizScores(updatedScores);
-                }
             }} 
+            onQuizCompleted={handleQuizCompleted}
             onSelectTopic={handleStartQuizFromDashboard}
         />;
       case "friends":

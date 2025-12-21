@@ -22,11 +22,11 @@ import { initialQuizTopics } from '@/lib/data';
 import type { DailyActivity } from '@/lib/types';
 
 const streakRewards = [
-    { id: 'createDeck', icon: BookOpen, label: "Deck Builder", description: "Create a new deck.", color: "text-blue-500" },
-    { id: 'addNote', icon: BookOpen, label: "Note Taker", description: "Add a new note.", color: "text-blue-500" },
-    { id: 'startQuiz', icon: Flame, label: "Quiz Starter", description: "Start any quiz.", color: "text-orange-500" },
+    { id: 'taskDone', icon: CheckCircle2, label: "Task Complete", description: "Complete any daily task.", color: "text-green-500" },
     { id: 'aceQuiz', icon: Medal, label: "Quiz Ace", description: "Score 80%+ on a quiz.", color: "text-yellow-500" },
+    { id: 'halfHour', icon: Beaker, label: "Half Hour", description: "30+ minutes of revision.", color: "text-sky-500" },
     { id: 'deep', icon: FlaskConical, label: "Deep Dive", description: "60+ minutes of revision.", color: "text-purple-500" },
+    { id: 'startQuiz', icon: Flame, label: "Quiz Starter", description: "Start any quiz.", color: "text-orange-500" },
     { id: 'weekly', icon: SparklesIcon, label: "Weekly Warrior", description: "Maintain a 7-day streak.", color: "text-green-500" },
 ]
 
@@ -160,7 +160,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTracker
         )}
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div className="md:col-span-3">
                 <div className="flex justify-between items-center mb-2">
                     <h3 className="text-lg font-semibold">{format(currentDate, 'MMMM yyyy')}</h3>
@@ -197,12 +197,12 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTracker
                 </div>
                 <div className="w-full pt-4">
                     <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1">
+                        <AccordionItem value="item-1" className="border-b-0">
                             <AccordionTrigger className="font-semibold text-lg">Streak rewards</AccordionTrigger>
                             <AccordionContent>
                                 <div className="grid grid-cols-2 gap-2">
                                     {streakRewards.map((reward) => {
-                                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60);
+                                        const isCompleted = dailyActivity[today]?.tasks[reward.id] || (reward.id === 'deep' && dailyActivity[today]?.duration >= 60) || (reward.id === 'halfHour' && dailyActivity[today]?.duration >= 30) || (reward.id === 'taskDone' && Object.keys(dailyActivity[today]?.tasks || {}).length > 0);
                                         return (
                                             <div key={reward.label} className={cn("flex items-center gap-3 p-2 rounded-md", isCompleted ? "bg-green-500/10 opacity-100" : "opacity-60")}>
                                                 <div className={cn("p-1 rounded-full", isCompleted ? "bg-green-500/20" : "bg-muted")}>
@@ -219,8 +219,8 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTracker
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
+                    <ContinueLearning onStartQuizzing={onStartQuizzing} />
                 </div>
-                <ContinueLearning onStartQuizzing={onStartQuizzing} />
             </div>
 
             <div className="md:col-span-2 flex flex-col items-center justify-start space-y-4">

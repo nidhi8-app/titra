@@ -39,6 +39,7 @@ const chartConfig = {
 type StreakTrackerProps = {
     onStartQuizzing: (topic?: any) => void;
     dailyActivity: Record<string, DailyActivity>;
+    streak: number;
 };
 
 const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) => void; }) => {
@@ -83,7 +84,7 @@ const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) =
     }
 
     return (
-        <div className="mt-6 border-t pt-6">
+        <div className="mt-6">
              <h4 className="font-semibold text-lg mb-2">Recommended for you</h4>
              <Button variant="outline" className="w-full justify-start h-auto" onClick={() => handleContinue()}>
                 <BookOpen className="mr-4 text-primary" />
@@ -97,7 +98,7 @@ const ContinueLearning = ({ onStartQuizzing }: { onStartQuizzing: (topic: any) =
 };
 
 
-const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) => {
+const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTrackerProps) => {
   const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   
   const [currentDate, setCurrentDate] = React.useState(new Date());
@@ -137,49 +138,6 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 
     return { day, status, icon };
   });
-
-  const streak = React.useMemo(() => {
-    const activityDates = Object.keys(dailyActivity)
-        .map(dateStr => parseISO(dateStr))
-        .sort((a, b) => b.getTime() - a.getTime());
-
-    if (activityDates.length === 0) return 0;
-    
-    let currentStreak = 0;
-    const today = new Date();
-    
-    const lastRealActivityDate = activityDates.find(d => {
-        const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
-        return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
-    });
-
-    if (!lastRealActivityDate) return 0;
-    
-    if (!isSameDay(lastRealActivityDate, today) && !isSameDay(lastRealActivityDate, subDays(today, 1))) {
-        return 0; // Streak is broken if no activity today or yesterday
-    }
-
-    currentStreak = 1;
-
-    let expectedDate = subDays(lastRealActivityDate, 1);
-
-    for (let i = 1; i < activityDates.length; i++) {
-        const activityDate = activityDates[i];
-        if (isSameDay(activityDate, lastRealActivityDate)) continue;
-
-        const activity = dailyActivity[format(activityDate, 'yyyy-MM-dd')];
-        const hasActivity = activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
-
-        if (isSameDay(activityDate, expectedDate) && hasActivity) {
-            currentStreak++;
-            expectedDate = subDays(expectedDate, 1);
-        } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
-            break;
-        }
-    }
-
-    return currentStreak;
-  }, [dailyActivity]);
 
    const today = format(new Date(), 'yyyy-MM-dd');
    const todayTasksCompleted = Object.keys(dailyActivity[today]?.tasks || {}).length;
@@ -239,7 +197,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
                 </div>
                 <div className="w-full pt-4">
                     <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1" className="border-b-0">
+                        <AccordionItem value="item-1">
                             <AccordionTrigger className="font-semibold text-lg">Streak rewards</AccordionTrigger>
                             <AccordionContent>
                                 <div className="grid grid-cols-2 gap-2">
@@ -268,7 +226,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
             <div className="md:col-span-2 flex flex-col items-center justify-start space-y-4">
                 <div className='relative flex flex-col items-center justify-center'>
                     <h3 className="text-4xl font-bold">Goal</h3>
-                    <p className="text-center text-muted-foreground">Complete tasks to fill the circle</p>
+                    <p className="text-center text-muted-foreground px-4">Complete tasks to fill the circle</p>
                     <ChartContainer config={chartConfig} className="w-full h-48">
                         <PieChart accessibilityLayer>
                             <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={80} startAngle={90} endAngle={450}>
@@ -290,17 +248,5 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity }: StreakTrackerProps) =
 };
 
 export default StreakTracker;
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
 
     

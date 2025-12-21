@@ -7,13 +7,16 @@ import { cn } from '@/lib/utils';
 
 type ProgressTrackerProps = {
   mainView?: boolean;
+  streak: number;
+  decksCompleted: number;
+  topicsMastered: number;
 };
 
-const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
+const ProgressTracker = ({ mainView = false, streak, decksCompleted, topicsMastered }: ProgressTrackerProps) => {
     const stats = [
-        { icon: Flame, value: '0 days', label: 'Current Streak', color: 'text-orange-500' },
-        { icon: Layers, value: '0', label: 'Decks Completed', color: 'text-blue-500' },
-        { icon: Target, value: '0', label: 'Topics Mastered', color: 'text-green-500' },
+        { icon: Flame, value: `${streak} days`, label: 'Current Streak', color: 'text-orange-500' },
+        { icon: Layers, value: decksCompleted, label: 'Decks Completed', color: 'text-blue-500' },
+        { icon: Target, value: topicsMastered, label: 'Topics Mastered', color: 'text-green-500' },
     ];
 
     if (mainView) {
@@ -66,3 +69,5 @@ const ProgressTracker = ({ mainView = false }: ProgressTrackerProps) => {
 };
 
 export default ProgressTracker;
+
+    

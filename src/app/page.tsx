@@ -16,7 +16,7 @@ import { FlaskConical, Sparkles, LogOut, Clock, BookOpen } from "lucide-react";
 import DeckList from "@/components/DeckList";
 import ProgressTracker from "@/components/ProgressTracker";
 import type { Deck, UserDetails, Card as TopicCard, QuizQuestion, Note, DailyActivity } from "@/lib/types";
-import { initialDecks } from "@/lib/data";
+import { initialDecks, initialQuizTopics } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import DeckView from "@/components/DeckView";
 import StreakTracker from "@/components/StreakTracker";
@@ -35,7 +35,7 @@ import { signOut } from "firebase/auth";
 import { collection, doc, getDocs, query, writeBatch, where } from 'firebase/firestore';
 import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
 import { initialNotesData } from "@/lib/initial-notes";
-import { format } from "date-fns";
+import { format, isSameDay, parseISO, subDays, differenceInCalendarDays } from "date-fns";
 
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
@@ -84,13 +84,23 @@ export default function Home() {
   const [quizSource, setQuizSource] = React.useState<QuizSource | null>(null);
   const { toast } = useToast();
   const [dailyActivity, setDailyActivity] = React.useState<Record<string, DailyActivity>>({});
+  const [quizScores, setQuizScores] = React.useState<Record<string, number>>({});
 
-  
+
   const notesCollectionRef = useMemoFirebase(() => {
     if (!user || !firestore) return null;
     return collection(firestore, `users/${user.uid}/notes`);
   }, [user, firestore]);
   const { data: notes } = useCollection<Note>(notesCollectionRef);
+  
+  // Load quiz scores from local storage
+    React.useEffect(() => {
+        if (user) {
+            const scoresKey = `quizScores-${user.uid}`;
+            const scores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+            setQuizScores(scores);
+        }
+    }, [user, quizSource]);
   
   // Activity tracking
     React.useEffect(() => {
@@ -312,6 +322,60 @@ export default function Home() {
     return decks.find((deck) => deck.id === selectedDeckId);
   }, [decks, selectedDeckId]);
   
+  const currentStreak = React.useMemo(() => {
+    const activityDates = Object.keys(dailyActivity)
+        .map(dateStr => parseISO(dateStr))
+        .sort((a, b) => b.getTime() - a.getTime());
+
+    if (activityDates.length === 0) return 0;
+    
+    let streak = 0;
+    const today = new Date();
+    
+    const lastRealActivityDate = activityDates.find(d => {
+        const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
+        return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+    });
+
+    if (!lastRealActivityDate) return 0;
+    
+    if (!isSameDay(lastRealActivityDate, today) && !isSameDay(lastRealActivityDate, subDays(today, 1))) {
+        return 0; // Streak is broken if no activity today or yesterday
+    }
+
+    streak = 1;
+
+    let expectedDate = subDays(lastRealActivityDate, 1);
+
+    for (let i = 1; i < activityDates.length; i++) {
+        const activityDate = activityDates[i];
+        if (isSameDay(activityDate, lastRealActivityDate)) continue;
+
+        const activity = dailyActivity[format(activityDate, 'yyyy-MM-dd')];
+        const hasActivity = activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+
+        if (isSameDay(activityDate, expectedDate) && hasActivity) {
+            streak++;
+            expectedDate = subDays(expectedDate, 1);
+        } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
+            break;
+        }
+    }
+    return streak;
+  }, [dailyActivity]);
+
+  const decksCompleted = React.useMemo(() => {
+    return initialDecks.filter(deck => {
+        const deckTopicIds = deck.cards.map(c => c.id);
+        if (deckTopicIds.length === 0) return false;
+        return deckTopicIds.every(id => quizScores[id] >= 80);
+    }).length;
+  }, [quizScores]);
+
+  const topicsMastered = React.useMemo(() => {
+    return Object.values(quizScores).filter(score => score >= 80).length;
+  }, [quizScores]);
+
   React.useEffect(() => {
     document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic");
     switch (learnerType) {
@@ -343,12 +407,17 @@ export default function Home() {
         return (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 h-full">
             <div className="lg:col-span-2">
-              <StreakTracker onStartQuizzing={handleStartQuizzing} dailyActivity={dailyActivity} />
+              <StreakTracker onStartQuizzing={handleStartQuizzing} dailyActivity={dailyActivity} streak={currentStreak} />
             </div>
             <div className="lg:col-span-1 h-full">
               <ScrollArea className="h-[calc(100vh-12rem)]">
                 <div className="pr-4">
-                  <ProgressTracker mainView={true} />
+                  <ProgressTracker 
+                    mainView={true} 
+                    streak={currentStreak}
+                    decksCompleted={decksCompleted}
+                    topicsMastered={topicsMastered}
+                  />
                   <MotivationalMessage />
                 </div>
               </ScrollArea>
@@ -473,3 +542,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    

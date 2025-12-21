@@ -447,7 +447,9 @@ export default function Home() {
             if (score / total >= 0.8) {
                 markTaskComplete('aceQuiz');
             }
-        }} />;
+        }} 
+        onSelectTopic={handleStartQuizFromDashboard}
+        />;
       case "friends":
         return <FriendsView />;
       case "account":
@@ -562,3 +564,4 @@ export default function Home() {
     
 
     
+

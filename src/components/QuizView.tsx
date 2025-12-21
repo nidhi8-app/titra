@@ -105,9 +105,10 @@ type QuizViewProps = {
     userDetails: UserDetails | null;
     onBack: () => void;
     onQuizCompleted: (score: number, total: number) => void;
+    onSelectTopic: (topic: TopicCard) => void;
 }
 
-const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted }: QuizViewProps) => {
+const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted, onSelectTopic }: QuizViewProps) => {
   const [topics, setTopics] = React.useState(initialQuizTopics);
   const { user } = useUser();
 
@@ -146,7 +147,7 @@ const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted }: Q
         {topics.map((topic) => (
           <button
             key={topic.id}
-            // onClick={() => setSelectedTopic(topic)}
+            onClick={() => onSelectTopic(topic)}
             className="rounded-xl shadow-md bg-card border flex flex-col p-4 gap-4 text-left hover:bg-accent/50 transition-colors"
           >
             <div className="flex items-center">

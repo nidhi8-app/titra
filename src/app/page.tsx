@@ -91,6 +91,7 @@ export default function Home() {
     if (!user || !firestore) return null;
     return collection(firestore, `users/${user.uid}/notes`);
   }, [user, firestore]);
+
   const { data: notes } = useCollection<Note>(notesCollectionRef);
   
   // Load quiz scores from local storage
@@ -440,26 +441,30 @@ export default function Home() {
       case "learning-style":
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
-        return <QuizView quizSource={quizSource} userDetails={userDetails} onBack={() => {
-          setQuizSource(null);
-          setActiveView('dashboard');
-        }} onQuizCompleted={(score, total, topicId) => {
-            if (score / total >= 0.8) {
-                markTaskComplete('aceQuiz');
-            }
-             if (user && topicId) {
-                const percentage = (score / total) * 100;
-                const scoresKey = `quizScores-${user.uid}`;
-                const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
-                const updatedScores = {
-                    ...existingScores,
-                    [topicId]: percentage
-                };
-                localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
-                setQuizScores(updatedScores);
-            }
-        }} 
-        onSelectTopic={handleStartQuizFromDashboard}
+        return <QuizView 
+            quizSource={quizSource} 
+            userDetails={userDetails} 
+            quizScores={quizScores}
+            onBack={() => {
+              setQuizSource(null);
+              setActiveView('dashboard');
+            }} onQuizCompleted={(score, total, topicId) => {
+                if (score / total >= 0.8) {
+                    markTaskComplete('aceQuiz');
+                }
+                 if (user && topicId) {
+                    const percentage = (score / total) * 100;
+                    const scoresKey = `quizScores-${user.uid}`;
+                    const existingScores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
+                    const updatedScores = {
+                        ...existingScores,
+                        [topicId]: percentage
+                    };
+                    localStorage.setItem(scoresKey, JSON.stringify(updatedScores));
+                    setQuizScores(updatedScores);
+                }
+            }} 
+            onSelectTopic={handleStartQuizFromDashboard}
         />;
       case "friends":
         return <FriendsView />;
@@ -569,3 +574,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    

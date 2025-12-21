@@ -92,26 +92,22 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
 type QuizViewProps = {
     quizSource?: QuizSource | null;
     userDetails: UserDetails | null;
+    quizScores: Record<string, number>;
     onBack: () => void;
     onQuizCompleted: (score: number, total: number, topicId?: string) => void;
     onSelectTopic: (topic: TopicCard) => void;
 }
 
-const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted, onSelectTopic }: QuizViewProps) => {
+const QuizView = ({ quizSource = null, userDetails, quizScores, onBack, onQuizCompleted, onSelectTopic }: QuizViewProps) => {
   const [topics, setTopics] = React.useState(initialQuizTopics);
-  const { user } = useUser();
 
   React.useEffect(() => {
-    if (user) {
-        const scoresKey = `quizScores-${user.uid}`;
-        const scores = JSON.parse(localStorage.getItem(scoresKey) || '{}');
-        const updatedTopics = initialQuizTopics.map(topic => ({
-            ...topic,
-            progress: scores[topic.id] !== undefined ? Math.round(scores[topic.id]) : -1,
-        }));
-        setTopics(updatedTopics);
-    }
-  }, [user, quizSource]);
+    const updatedTopics = initialQuizTopics.map(topic => ({
+        ...topic,
+        progress: quizScores[topic.id] !== undefined ? Math.round(quizScores[topic.id]) : -1,
+    }));
+    setTopics(updatedTopics);
+  }, [quizScores]);
 
   if (quizSource) {
     return <QuizSession source={quizSource} onBack={onBack} userDetails={userDetails} onQuizCompleted={onQuizCompleted} />
@@ -161,5 +157,7 @@ const QuizView = ({ quizSource = null, userDetails, onBack, onQuizCompleted, onS
 };
 
 export default QuizView;
+
+    
 
     

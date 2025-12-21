@@ -523,11 +523,7 @@ export default function Home() {
           />
         </SidebarContent>
         <SidebarFooter>
-          <ProgressTracker 
-            streak={currentStreak}
-            decksCompleted={decksCompleted}
-            topicsMastered={topicsMastered}
-          />
+          {/* ProgressTracker removed from here */}
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>

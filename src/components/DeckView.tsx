@@ -1,18 +1,17 @@
 
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
 import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Play, Pause, RotateCcw } from 'lucide-react';
-import NoteCard from './NoteCard';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
+import { generatePodcast, type GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
-import { Slider } from './ui/slider';
 
 type DeckViewProps = {
   deck: Deck;
@@ -21,13 +20,58 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
-const PodcastPlayer = ({ title }: { title: string }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [progress, setProgress] = useState(30);
+const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string }) => {
+    const [podcast, setPodcast] = useState<GeneratePodcastOutput | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast();
+
+    useEffect(() => {
+        const generateAudio = async () => {
+            if (!notesText) {
+                setError("There are no notes to generate a podcast from.");
+                setIsLoading(false);
+                return;
+            }
+            
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const result = await generatePodcast(notesText);
+                if (result.media) {
+                    setPodcast(result);
+                } else {
+                    throw new Error("AI did not return any audio.");
+                }
+            } catch (err: any) {
+                console.error("Failed to generate podcast:", err);
+                if (err.message.includes('API key not valid')) {
+                    toast({
+                        variant: "destructive",
+                        title: "Google AI API Key is Not Set",
+                        description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
+                    });
+                    setError("The AI feature is not configured. Please add an API key.");
+                } else {
+                    toast({
+                        variant: "destructive",
+                        title: "Podcast Generation Failed",
+                        description: "There was an error generating the podcast audio.",
+                    });
+                    setError("Could not generate audio at this time.");
+                }
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        generateAudio();
+    }, [notesText, toast]);
 
     return (
         <div className="p-4 rounded-lg bg-muted/30 border">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-4">
                 <div className="p-4 bg-primary/10 rounded-lg">
                     <Mic className="w-8 h-8 text-primary" />
                 </div>
@@ -36,27 +80,26 @@ const PodcastPlayer = ({ title }: { title: string }) => {
                     <p className="text-sm text-muted-foreground">Titra Podcasts</p>
                 </div>
             </div>
-            <div className="mt-4 flex items-center gap-2">
-                <span className="text-xs font-mono">1:24</span>
-                <Slider 
-                    value={[progress]} 
-                    onValueChange={(value) => setProgress(value[0])} 
-                    max={100} 
-                    step={1} 
-                />
-                <span className="text-xs font-mono">4:10</span>
-            </div>
-            <div className="mt-4 flex justify-center items-center gap-4">
-                <Button variant="ghost" size="icon">
-                    <RotateCcw className="w-5 h-5" />
-                </Button>
-                <Button size="lg" className="rounded-full w-16 h-16" onClick={() => setIsPlaying(!isPlaying)}>
-                    {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                </Button>
-                 <Button variant="ghost" size="icon">
-                    <RotateCcw className="w-5 h-5 scale-x-[-1]" />
-                </Button>
-            </div>
+            
+            {isLoading && (
+                <div className="flex items-center justify-center h-24">
+                    <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                    <p className="ml-4 text-muted-foreground">Generating your podcast...</p>
+                </div>
+            )}
+            
+            {error && (
+                 <div className="flex items-center justify-center h-24 text-red-500">
+                    <p>{error}</p>
+                 </div>
+            )}
+
+            {!isLoading && !error && podcast?.media && (
+                <audio controls className="w-full">
+                    <source src={podcast.media} type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+            )}
         </div>
     );
 };
@@ -76,7 +119,7 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: Note
 
   const renderLearningContent = () => {
     if (learningStyle === 'Auditory') {
-        return <PodcastPlayer title={deckTitle} />;
+        return <PodcastPlayer title={deckTitle} notesText={combinedNotes} />;
     }
 
     return (

@@ -138,15 +138,15 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
             <CardContent>
                  {isEditing && editedDetails ? (
                     <div className="space-y-4">
-                        <EditableDetailItem label="Email" name="email" value={editedDetails.email} onChange={handleChange} />
+                        <EditableDetailItem label="Email" name="email" value={editedDetails.email || ''} onChange={handleChange} />
                         <div className="grid grid-cols-2 gap-4">
-                            <EditableDetailItem label="Age" name="age" value={editedDetails.age} onChange={handleChange} type="number" />
-                            <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup} onChange={handleChange} />
+                            <EditableDetailItem label="Age" name="age" value={editedDetails.age || ''} onChange={handleChange} type="number" />
+                            <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup || ''} onChange={handleChange} />
                         </div>
-                        <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName} onChange={handleChange} />
+                        <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName || ''} onChange={handleChange} />
                         <div className="grid grid-cols-2 gap-4">
-                            <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum} onChange={handleChange} />
-                            <EditableDetailItem label="Country" name="country" value={editedDetails.country} onChange={handleChange} />
+                            <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum || ''} onChange={handleChange} />
+                            <EditableDetailItem label="Country" name="country" value={editedDetails.country || ''} onChange={handleChange} />
                         </div>
                          <div>
                             <Label className="text-sm text-muted-foreground">Science Set</Label>

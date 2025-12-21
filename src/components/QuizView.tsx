@@ -19,7 +19,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription }
 
 type QuizSource = {
   type: 'pre-made',
-  topic: TopicCard
+  topic: TopicCard,
+  style: string,
 } | {
   type: 'generated',
   deckTitle: string,
@@ -35,6 +36,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   const questions = source.type === 'pre-made' ? (quizQuestions[source.topic.id] || []) : source.questions;
   const currentQuestion = questions[currentQuestionIndex];
   const title = source.type === 'pre-made' ? source.topic.title : source.deckTitle;
+  const practiceStyle = source.type === 'pre-made' ? source.style : 'MCQ';
 
   const handleCorrectAnswer = () => {
     setScore(score + 1);
@@ -63,6 +65,19 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
         <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
         <p className="text-xl mb-2">You scored {score} out of {questions.length}</p>
         <p className="text-4xl font-bold text-primary mb-6">{percentage}%</p>
+        <Button onClick={onBack}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Quizzes
+        </Button>
+      </div>
+    )
+  }
+
+  if (practiceStyle !== 'MCQ') {
+    return (
+      <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
+        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <p className="text-xl mb-6">The "{practiceStyle}" practice mode is coming soon!</p>
         <Button onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Quizzes
@@ -102,7 +117,7 @@ type QuizViewProps = {
     quizScores: Record<string, number>;
     onBack: () => void;
     onQuizCompleted: (score: number, total: number, topicId?: string) => void;
-    onSelectTopic: (topic: TopicCard) => void;
+    onSelectTopic: (topic: TopicCard, style: string) => void;
 }
 
 const QuizView = ({ quizSource = null, userDetails, quizScores, onBack, onQuizCompleted, onSelectTopic }: QuizViewProps) => {
@@ -121,12 +136,7 @@ const QuizView = ({ quizSource = null, userDetails, quizScores, onBack, onQuizCo
   }
   
   const handlePracticeClick = (topic: TopicCard, style: string) => {
-    if (style === 'MCQ') {
-      onSelectTopic(topic);
-    } else {
-      // Placeholder for other styles
-      console.log(`Practice style "${style}" for topic "${topic.title}" is not implemented yet.`);
-    }
+    onSelectTopic(topic, style);
   };
 
 
@@ -139,7 +149,7 @@ const QuizView = ({ quizSource = null, userDetails, quizScores, onBack, onQuizCo
             <Plus className="mr-2 h-4 w-4" />
             New Quiz
           </Button>
-          <Button onClick={() => onSelectTopic(topics[Math.floor(Math.random() * topics.length)])}>Start Random Quiz</Button>
+          <Button onClick={() => onSelectTopic(topics[Math.floor(Math.random() * topics.length)], 'MCQ')}>Start Random Quiz</Button>
           <Button variant="ghost" size="icon">
             <Search className="h-4 w-4" />
           </Button>
@@ -153,7 +163,6 @@ const QuizView = ({ quizSource = null, userDetails, quizScores, onBack, onQuizCo
           >
             <CardHeader>
                 <CardTitle className="truncate text-lg">{topic.title}</CardTitle>
-                 <CardDescription className="text-xs">Not tailored to learning style</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
                 <div className="text-sm text-muted-foreground mt-auto">

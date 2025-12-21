@@ -42,7 +42,8 @@ type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "acco
 type AuthView = 'login' | 'signup';
 type QuizSource = {
   type: 'pre-made',
-  topic: TopicCard
+  topic: TopicCard,
+  style: string
 } | {
   type: 'generated',
   deckTitle: string,
@@ -315,8 +316,8 @@ export default function Home() {
     }
   }, [firestore]);
 
-  const handleStartQuizFromDashboard = React.useCallback((topic: TopicCard) => {
-    setQuizSource({ type: 'pre-made', topic });
+  const handleStartQuizFromDashboard = React.useCallback((topic: TopicCard, style: string = 'MCQ') => {
+    setQuizSource({ type: 'pre-made', topic, style });
     setActiveView('quizzes');
     setIsQuizDialogVisible(false);
     markTaskComplete('startQuiz');
@@ -485,7 +486,7 @@ export default function Home() {
     if (activeView === 'quizzes') {
         if (quizSource?.type === 'pre-made') return quizSource.topic.title;
         if (quizSource?.type === 'generated') return `Quiz: ${quizSource.deckTitle}`;
-        return 'Quizzes';
+        return 'Quizzes - not tailored to learning style';
     }
     switch (activeView) {
       case 'dashboard': return 'Titra';
@@ -579,5 +580,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
-    

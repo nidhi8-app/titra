@@ -324,43 +324,43 @@ export default function Home() {
   
   const currentStreak = React.useMemo(() => {
     const activityDates = Object.keys(dailyActivity)
-        .map(dateStr => parseISO(dateStr))
-        .sort((a, b) => b.getTime() - a.getTime());
+      .map(dateStr => parseISO(dateStr))
+      .filter(date => {
+          const activity = dailyActivity[format(date, 'yyyy-MM-dd')];
+          return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
+      })
+      .sort((a, b) => b.getTime() - a.getTime());
 
     if (activityDates.length === 0) return 0;
     
-    let streak = 0;
     const today = new Date();
-    
-    const lastRealActivityDate = activityDates.find(d => {
-        const activity = dailyActivity[format(d, 'yyyy-MM-dd')];
-        return activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
-    });
+    const lastActivityDate = activityDates[0];
 
-    if (!lastRealActivityDate) return 0;
-    
-    if (!isSameDay(lastRealActivityDate, today) && !isSameDay(lastRealActivityDate, subDays(today, 1))) {
-        return 0; // Streak is broken if no activity today or yesterday
+    // If there was no activity today or yesterday, streak is broken.
+    if (!isSameDay(lastActivityDate, today) && !isSameDay(lastActivityDate, subDays(today, 1))) {
+      return 0;
     }
 
-    streak = 1;
+    let streak = 1;
+    // Start checking from the day before the last activity day.
+    let expectedDate = subDays(lastActivityDate, 1);
 
-    let expectedDate = subDays(lastRealActivityDate, 1);
-
+    // Go through the rest of the activity dates
     for (let i = 1; i < activityDates.length; i++) {
         const activityDate = activityDates[i];
-        if (isSameDay(activityDate, lastRealActivityDate)) continue;
-
-        const activity = dailyActivity[format(activityDate, 'yyyy-MM-dd')];
-        const hasActivity = activity && (activity.duration > 0 || Object.keys(activity.tasks).length > 0);
-
-        if (isSameDay(activityDate, expectedDate) && hasActivity) {
+        
+        // If the current activity date matches the expected date in the sequence
+        if (isSameDay(activityDate, expectedDate)) {
             streak++;
+            // Set the next expected date to the day before the current one
             expectedDate = subDays(expectedDate, 1);
         } else if (differenceInCalendarDays(expectedDate, activityDate) > 0) {
+            // If there's a gap between the expected date and the current activity date, the streak is broken.
             break;
         }
+        // If activityDate is the same as lastActivityDate (multiple entries for one day), we just skip it.
     }
+    
     return streak;
   }, [dailyActivity]);
 
@@ -510,6 +510,11 @@ export default function Home() {
           />
         </SidebarContent>
         <SidebarFooter>
+          <ProgressTracker 
+            streak={currentStreak}
+            decksCompleted={decksCompleted}
+            topicsMastered={topicsMastered}
+          />
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
@@ -542,5 +547,7 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    
 
     

@@ -378,7 +378,7 @@ export default function Home() {
   }, [quizScores]);
 
   const topicsMastered = React.useMemo(() => {
-    return Object.values(quizScores).filter(score => score >= 80).length;
+    return Object.values(quizScores).filter(score => score === 100).length;
   }, [quizScores]);
 
   React.useEffect(() => {

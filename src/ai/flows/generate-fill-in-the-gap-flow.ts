@@ -38,19 +38,18 @@ const GenerateFillInTheGapOutputSchema = z.object({
 export type GenerateFillInTheGapOutput = z.infer<typeof GenerateFillInTheGapOutputSchema>;
 
 
-export async function generateFillInTheGap(input: GenerateFillInTheGapInput): Promise<GenerateFillInTheGapOutput> {
-    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-        throw new Error("The AI feature is not configured. Please add your GEMINI_API_KEY to the .env file to use this feature.");
-    }
-    return generateFillInTheGapFlow(input);
-}
-
-
-const prompt = ai.definePrompt({
-    name: 'generateFillInTheGapPrompt',
-    input: { schema: GenerateFillInTheGapInputSchema },
-    output: { schema: GenerateFillInTheGapOutputSchema },
-    prompt: `You are an expert in creating educational materials. Your task is to convert a list of standard questions into "fill-in-the-gap" style questions.
+const generateFillInTheGapFlow = ai.defineFlow(
+    {
+        name: 'generateFillInTheGapFlow',
+        inputSchema: GenerateFillInTheGapInputSchema,
+        outputSchema: GenerateFillInTheGapOutputSchema,
+    },
+    async (input) => {
+        const prompt = ai.definePrompt({
+            name: 'generateFillInTheGapPrompt',
+            input: { schema: GenerateFillInTheGapInputSchema },
+            output: { schema: GenerateFillInTheGapOutputSchema },
+            prompt: `You are an expert in creating educational materials. Your task is to convert a list of standard questions into "fill-in-the-gap" style questions.
 
 For each question provided, rephrase it so that the correct answer fills in a blank. The blank should be represented by '_________'.
 
@@ -73,16 +72,16 @@ Here are the questions to convert:
 ---
 
 Generate only the rephrased questions in the correct output format.`,
-});
-
-const generateFillInTheGapFlow = ai.defineFlow(
-    {
-        name: 'generateFillInTheGapFlow',
-        inputSchema: GenerateFillInTheGapInputSchema,
-        outputSchema: GenerateFillInTheGapOutputSchema,
-    },
-    async (input) => {
+        });
+        
         const { output } = await prompt(input);
         return output!;
     }
 )
+
+export async function generateFillInTheGap(input: GenerateFillInTheGapInput): Promise<GenerateFillInTheGapOutput> {
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+        throw new Error("The AI feature is not configured. Please add your GEMINI_API_KEY to the .env file to use this feature.");
+    }
+    return generateFillInTheGapFlow(input);
+}

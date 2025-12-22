@@ -140,18 +140,22 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Not
   const { icon: Icon, description } = styleInfo[learningStyle as keyof typeof styleInfo] || styleInfo["Reading/Writing"];
 
   const renderLearningContent = () => {
-    if (learningStyle === 'Auditory') {
+    switch (learningStyle) {
+      case 'Auditory':
         return <PodcastPlayer title={deckTitle} notesText={combinedNotes} />;
-    }
-
-    return (
-         <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
-              <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
-                  {combinedNotes}
-              </div>
+      case 'Visual':
+      case 'Kinesthetic':
+      case 'Reading/Writing':
+      default:
+        return (
+          <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+            <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+              {combinedNotes}
+            </div>
           </ScrollArea>
-    );
-  }
+        );
+    }
+  };
 
   return (
     <Card>

@@ -33,7 +33,7 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
     useEffect(() => {
         const getSummary = async () => {
              if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-                setError("The AI feature is not configured. Please add an API key.");
+                setError("The AI summary feature is disabled. Please add your Gemini API key to the .env file to enable it.");
                 setIsLoading(false);
                 return;
             }
@@ -54,11 +54,11 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
                 }
             } catch (err: any) {
                 console.error("Failed to generate summary:", err);
-                setError("Could not generate summary at this time.");
+                setError(err.message || "Could not generate summary at this time.");
                  toast({
                     variant: "destructive",
                     title: "Summary Generation Failed",
-                    description: "There was an error generating the summary.",
+                    description: err.message || "There was an error generating the summary.",
                 });
             } finally {
                 setIsLoading(false);
@@ -81,7 +81,7 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
                         <p className="ml-2 text-muted-foreground">Generating summary...</p>
                     </div>
                 )}
-                {error && <p className="text-red-500">{error}</p>}
+                {error && <p className="text-destructive text-sm">{error}</p>}
                 {summary && (
                     <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
                         {summary}
@@ -102,7 +102,7 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
     useEffect(() => {
         const generateAudio = async () => {
             if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-                setError("The AI feature is not configured. Please add an API key.");
+                setError("The AI podcast feature is disabled. Please add your Gemini API key to the .env file to enable it.");
                 setIsLoading(false);
                 return;
             }
@@ -125,21 +125,13 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
                 }
             } catch (err: any) {
                 console.error("Failed to generate podcast:", err);
-                if (err.message.includes('API key not valid')) {
-                    toast({
-                        variant: "destructive",
-                        title: "Google AI API Key is Not Set",
-                        description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
-                    });
-                    setError("The AI feature is not configured. Please add an API key.");
-                } else {
-                    toast({
-                        variant: "destructive",
-                        title: "Podcast Generation Failed",
-                        description: "There was an error generating the podcast audio.",
-                    });
-                    setError("Could not generate audio at this time.");
-                }
+                const errorMessage = err.message || "Could not generate audio at this time.";
+                setError(errorMessage);
+                toast({
+                    variant: "destructive",
+                    title: "Podcast Generation Failed",
+                    description: errorMessage,
+                });
             } finally {
                 setIsLoading(false);
             }
@@ -168,7 +160,7 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
             )}
             
             {error && (
-                 <div className="flex items-center justify-center h-24 text-red-500">
+                 <div className="flex items-center justify-center h-24 text-destructive text-sm px-4 text-center">
                     <p>{error}</p>
                  </div>
             )}
@@ -247,6 +239,8 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     if (isLoading) {
       return initial;
     }
+    // If firestore has notes, use them. Otherwise, fall back to initial notes.
+    // This handles the case where a user has added their own notes.
     if (userNotes && userNotes.length > 0) {
       return userNotes;
     }
@@ -267,6 +261,15 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
         description: "There are no notes in this deck to generate a quiz from.",
       });
       return;
+    }
+    
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+        toast({
+            variant: "destructive",
+            title: "AI Feature Disabled",
+            description: "Please add your Gemini API key to the .env file to generate a quiz.",
+        });
+        return;
     }
     
     if (!userDetails?.learningStyle) {
@@ -293,26 +296,19 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
       }
     } catch (error: any) {
       console.error("Failed to generate quiz:", error);
-      if (error.message.includes('API key not valid')) {
-        toast({
-            variant: "destructive",
-            title: "Google AI API Key is Not Set",
-            description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
-        });
-      } else {
-        toast({
-            variant: "destructive",
-            title: "Quiz Generation Failed",
-            description: "There was an error generating the quiz. Please try again.",
-        });
-      }
+      const errorMessage = error.message || "There was an error generating the quiz. Please try again.";
+      toast({
+          variant: "destructive",
+          title: "Quiz Generation Failed",
+          description: errorMessage,
+      });
     } finally {
       setIsGeneratingQuiz(false);
     }
   };
   
   const renderContent = () => {
-    if (isLoading) {
+    if (isLoading && !userNotes) {
       return (
         <div className="flex justify-center items-center h-64">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />

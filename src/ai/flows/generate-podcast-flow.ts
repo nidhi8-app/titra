@@ -57,6 +57,10 @@ const generatePodcastFlow = ai.defineFlow(
     outputSchema: GeneratePodcastOutputSchema,
   },
   async (query) => {
+    if (!process.env.GEMINI_API_KEY) {
+        throw new Error("The AI podcast feature is disabled. Please add your Gemini API key to the .env file to enable it.");
+    }
+    
     const { media } = await ai.generate({
       model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
@@ -83,3 +87,5 @@ const generatePodcastFlow = ai.defineFlow(
     };
   }
 );
+
+    

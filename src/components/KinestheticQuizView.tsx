@@ -1,11 +1,13 @@
 
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Flame, Brain, Hand, Pen, List, Check, AlarmClock, Move, PersonStanding } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Pen, Move, PersonStanding, Check, CheckCircle } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { Textarea } from './ui/textarea';
 
 type KinestheticQuizViewProps = {
     title: string;
@@ -13,6 +15,7 @@ type KinestheticQuizViewProps = {
 };
 
 const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
+    const [atomDefinition, setAtomDefinition] = useState('');
     
     return (
         <div className="p-4 md:p-6">
@@ -42,21 +45,55 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
                         <p className="text-sm italic">Walk one step forward for each answer.</p>
                         <ul>
                             <li>Say the sentence: “All substances are made of ____.”</li>
-                            <li>Say the definition: “An atom is ______________________________.”</li>
+                            <li>
+                                Type the definition:
+                                <Textarea 
+                                    placeholder="“An atom is ...”"
+                                    value={atomDefinition}
+                                    onChange={(e) => setAtomDefinition(e.target.value)}
+                                    className="mt-2 text-base"
+                                />
+                            </li>
                             <li>Point to something in the room and say: “Atoms of each element are represented by a __________ ________.”</li>
                             <li>Say: “There are about ______ different elements.”</li>
                             <li>Say where elements are shown: “Elements are shown in the __________ __________.”</li>
                         </ul>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                  <li>“All substances are made of **atoms**.”</li>
+                                  <li>“An atom is **the smallest part of an element that can exist**.”</li>
+                                  <li>“Atoms of each element are represented by a **chemical symbol**.”</li>
+                                  <li>“There are about **100** different elements.”</li>
+                                  <li>“Elements are shown in the **periodic table**.”</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
 
                         <hr />
 
                         <h3 className="flex items-center gap-2"><Hand className="text-accent"/>ROUND 2: BUILD IT (Hands-on)</h3>
                         <p className="text-sm italic">Use coins, paper, or small objects.</p>
                         <ul>
-                            <li>Use one object and say what it represents.</li>
+                            <li>Use one object and say what it represents. (Answer: an atom of an element)</li>
                             <li>Join two different objects together and say: What is this called? What is it formed from?</li>
                             <li>Pull them apart and say: “Compounds can only be separated into elements by __________ __________.”</li>
                         </ul>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-2">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>When you join two objects: "This is a **compound**. It is formed from **two or more elements chemically combined**."</li>
+                                <li>When you pull them apart: “Compounds can only be separated into elements by **chemical reactions**.”</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
 
                          <hr />
                         
@@ -68,6 +105,19 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
                             <li>Chemical reactions often involve a detectable energy change.</li>
                             <li>Compounds can be separated into elements by physical processes.</li>
                         </ul>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-3">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>**True**.</li>
+                                <li>**False**. Compounds contain **two or more** elements chemically combined.</li>
+                                <li>**True**.</li>
+                                <li>**False**. Compounds can only be separated into elements by **chemical reactions**.</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
 
                          <hr />
 
@@ -78,20 +128,23 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
                             <li>Write one sentence explaining what a compound contains.</li>
                             <li>Write two ways chemical reactions can be represented.</li>
                         </ul>
-                        
-                         <hr />
-
-                        <h3 className="flex items-center gap-2"><PersonStanding className="text-accent"/>ROUND 5: WALK & LIST (Exam Skills)</h3>
-                        <p className="text-sm italic">Walk while answering out loud.</p>
-                        <ul>
-                            <li>List what students will be supplied with in the exam.</li>
-                            <li>Say four things students should be able to do in the exam.</li>
-                        </ul>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-4">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>Oxygen: **O**, Sodium: **Na**</li>
+                                <li>A compound contains **two or more elements chemically combined in fixed proportions**.</li>
+                                <li>Word equations and balanced chemical equations (using symbols).</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
 
                         <hr />
 
                         <div className="p-4 mt-6 bg-green-500/10 border-l-4 border-green-500 text-green-800 dark:text-green-300 rounded-lg">
-                            <h4 className="font-bold flex items-center gap-2"><Check />Self-check rule</h4>
+                            <h4 className="font-bold flex items-center gap-2"><CheckCircle />Self-check rule</h4>
                             <p>If you can: say it without looking, explain it while moving, and write it from memory, then 👉 <strong>you know it.</strong></p>
                         </div>
                     </CardContent>

@@ -132,7 +132,7 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Not
   const combinedNotes = useMemo(() => notes.map(n => `### ${n.title}\n\n${n.body}`).join('\n\n---\n\n'), [notes]);
 
   const styleInfo = {
-    "Visual": { icon: Lightbulb, description: "Visual learners prefer using images, diagrams, and spatial understanding. Here are your notes presented as a structured document." },
+    "Visual": { icon: Lightbulb, description: "Visual learners thrive on images, diagrams, and seeing the connections between ideas. Try these techniques to make your notes more memorable." },
     "Auditory": { icon: Mic, description: "Auditory learners prefer listening and speaking. Plug in and listen to this podcast episode covering the key concepts." },
     "Kinesthetic": { icon: Footprints, description: "Kinesthetic learners prefer hands-on experience and application. Here are some activities to get you moving." },
     "Reading/Writing": { icon: BookOpen, description: "Reading/Writing learners prefer text-based information. Here are your notes, organized for clarity and review." },
@@ -201,6 +201,41 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Not
           </ScrollArea>
         );
       case 'Visual':
+        return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+                <div className="prose prose-sm dark:prose-invert max-w-none">
+                    <h4>One-page visual map (MOST effective)</h4>
+                    <p><strong>What to do</strong>: Put “All substances are made of atoms” in the centre. Branch out to Atoms, Elements, Compounds, and Chemical reactions. Use arrows for processes, boxes for definitions, and circles for examples. This turns the notes into a mental picture.</p>
+                    <hr />
+                    <h4>Concept boxes (see the differences clearly)</h4>
+                    <p>Draw four large boxes for Atom, Element, Compound, and Chemical reaction. Write key definitions in each. Seeing them side-by-side prevents confusion.</p>
+                    <hr />
+                    <h4>Colour-coded system (consistency matters)</h4>
+                    <p>Use the same colours every time: 🔵 Atoms / elements, 🟢 Compounds, 🔴 Chemical reactions, 🟣 Exam skills. Your brain remembers colour faster than words.</p>
+                    <hr />
+                    <h4>Flow diagrams for processes</h4>
+                    <p>Draw this as a flowchart: Elements ⬇ (chemical reaction) ➡ Compound formed ⬇ (energy change) ➡ New substance. Flow diagrams help understand cause and effect.</p>
+                    <hr />
+                    <h4>Symbol → word → meaning triangles</h4>
+                    <p>For each example, draw a triangle with the symbol (e.g., O), the word (oxygen), and the meaning (atom of an element) at each corner. Linking them visually strengthens recall.</p>
+                    <hr />
+                    <h4>Exam skills checklist (visual layout)</h4>
+                    <p>Create a tick-box list for exam requirements: ☐ Use names and symbols, ☐ Name compounds, ☐ Write word equations, etc. Seeing progress is motivating.</p>
+                    <hr />
+                    <h4>Split-page notes (powerful for understanding)</h4>
+                    <p>On the left side of a page, write key terms (atom, element). On the right side, draw diagrams, arrows, and examples. This forces processing, not just copying.</p>
+                    <hr />
+                    <h4>Redraw from memory (no copying)</h4>
+                    <p><strong>Method</strong>: Look at your diagram for 30 seconds. Cover it. Redraw from memory. Compare and fix gaps in a different colour. This is visual active recall.</p>
+                    <hr />
+                     <h4>Before-and-after diagrams</h4>
+                    <p>Draw: Before reaction → separate elements. After reaction → compound formed. Add arrows and labels like “new substance formed”.</p>
+                    <hr />
+                    <h4>Icon system (quick recognition)</h4>
+                    <p>Use simple icons: ⚛️ atom, 🧱 element, 🔗 compound, ⚡ energy change, 🧪 reaction. Your brain starts recognising ideas instantly.</p>
+                </div>
+            </ScrollArea>
+        );
       case 'Reading/Writing':
       default:
         return (
@@ -416,3 +451,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+    

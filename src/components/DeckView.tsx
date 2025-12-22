@@ -10,7 +10,6 @@ import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { generatePodcast } from '@/ai/flows/generate-podcast-flow';
 import type { GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
-import { summarizeNotes } from '@/ai/flows/summarize-notes-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
@@ -25,66 +24,17 @@ type DeckViewProps = {
 };
 
 const NotesSummary = ({ notesText }: { notesText: string }) => {
-    const [summary, setSummary] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const { toast } = useToast();
-
-    useEffect(() => {
-        const getSummary = async () => {
-             if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-                setError("The AI summary feature is disabled. Please add your Gemini API key to the .env file to enable it.");
-                setIsLoading(false);
-                return;
-            }
-            if (!notesText) {
-                setError("There are no notes to summarize.");
-                setIsLoading(false);
-                return;
-            }
-            
-            setIsLoading(true);
-            setError(null);
-            try {
-                const result = await summarizeNotes({ notes: notesText });
-                if (result.summary) {
-                    setSummary(result.summary);
-                } else {
-                    throw new Error("AI did not return a summary.");
-                }
-            } catch (err: any) {
-                console.error("Failed to generate summary:", err);
-                setError(err.message || "Could not generate summary at this time.");
-                 toast({
-                    variant: "destructive",
-                    title: "Summary Generation Failed",
-                    description: err.message || "There was an error generating the summary.",
-                });
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        getSummary();
-    }, [notesText, toast]);
-
     return (
         <Card className="mb-6">
             <CardHeader>
-                <CardTitle>Topic Summary</CardTitle>
+                <CardTitle>Topic Notes</CardTitle>
                 <CardDescription>A quick overview of the key points in this deck.</CardDescription>
             </CardHeader>
             <CardContent>
-                {isLoading && (
-                    <div className="flex items-center">
-                        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-                        <p className="ml-2 text-muted-foreground">Generating summary...</p>
-                    </div>
-                )}
-                {error && <p className="text-destructive text-sm">{error}</p>}
-                {summary && (
+                {!notesText && <p className="text-destructive text-sm">There are no notes to display.</p>}
+                {notesText && (
                     <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
-                        {summary}
+                        {notesText}
                     </div>
                 )}
             </CardContent>
@@ -360,5 +310,3 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
-
-    

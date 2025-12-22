@@ -2,9 +2,9 @@
 "use client";
 
 import React from 'react';
-import { initialQuizTopics, quizQuestions } from '@/lib/data';
+import { initialQuizTopics, quizQuestions, quizMotivationalMessages } from '@/lib/data';
 import { Button } from './ui/button';
-import { Plus, Search, ArrowLeft, ChevronDown } from 'lucide-react';
+import { Plus, Search, ArrowLeft, ChevronDown, Sparkles } from 'lucide-react';
 import { Progress } from './ui/progress';
 import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from './ui/card';
+import { useToast } from '@/hooks/use-toast';
 
 type QuizSource = {
   type: 'pre-made',
@@ -33,11 +34,29 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
+  const { toast } = useToast();
   
   const questions = source.type === 'pre-made' ? (quizQuestions[source.topic.id] || []) : source.questions;
   const currentQuestion = questions[currentQuestionIndex];
   const title = source.type === 'pre-made' ? source.topic.title : source.deckTitle;
   const practiceStyle = source.type === 'pre-made' ? source.style : 'MCQ';
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const message = quizMotivationalMessages[Math.floor(Math.random() * quizMotivationalMessages.length)];
+      toast({
+        description: (
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-yellow-400" />
+            <span className="font-semibold">{message}</span>
+          </div>
+        ),
+        duration: 5000,
+      });
+    }, 10 * 60 * 1000); // 10 minutes
+
+    return () => clearInterval(interval);
+  }, [toast]);
 
   const handleCorrectAnswer = () => {
     setScore(score + 1);

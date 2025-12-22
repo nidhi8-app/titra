@@ -125,6 +125,18 @@ export const motivationalMessages: string[] = [
     "The secret to getting ahead is getting started. Let's go!",
 ];
 
+export const quizMotivationalMessages: string[] = [
+  "Keep going, you're doing great!",
+  "Every question is a step forward.",
+  "You've got this!",
+  "Don't give up, the finish line is near.",
+  "Learning is a journey, not a race. Keep up the steady pace!",
+  "Mistakes are proof that you are trying.",
+  "Believe in yourself and all that you are.",
+  "Focus on progress, not perfection."
+];
+
+
 export const initialFriends: Friend[] = [];
 
 export const quizQuestions: { [key: string]: QuizQuestion[] } = {

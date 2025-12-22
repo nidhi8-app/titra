@@ -9,29 +9,22 @@ export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
     {
         title: 'Atoms, elements and compounds',
         body: `
-- All substances are made of <u>atoms</u>. An <u>atom</u> is the smallest part of an <u>element</u> that can exist.
-
-- Atoms of each element are represented by a <u>chemical symbol</u>, eg O represents an atom of oxygen, Na represents an atom of sodium.
-
-- There are about 100 different <u>elements</u>, which are shown in the <u>periodic table</u>.
-
-- <u>Compounds</u> are formed from elements by <u>chemical reactions</u>.
-
-- <u>Chemical reactions</u> always involve the formation of one or more new substances, and often involve a detectable <u>energy change</u>.
-
-- <u>Compounds</u> contain two or more elements <u>chemically combined</u> in fixed proportions and can be represented by <u>formulae</u>.
-
-- <u>Compounds</u> can only be separated into elements by <u>chemical reactions</u>.
-
-- Chemical reactions can be represented by <u>word equations</u> or <u>equations using symbols and formulae</u>.
+- All substances are made of atoms. An atom is the smallest part of an element that can exist.
+- Atoms of each element are represented by a chemical symbol, eg O represents an atom of oxygen, Na represents an atom of sodium.
+- There are about 100 different elements, which are shown in the periodic table.
+- Compounds are formed from elements by chemical reactions.
+- Chemical reactions always involve the formation of one or more new substances, and often involve a detectable energy change.
+- Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae.
+- Compounds can only be separated into elements by chemical reactions.
+- Chemical reactions can be represented by word equations or equations using symbols and formulae.
 
 ### Exam Skills:
 Students should be able to:
-- Use the names and symbols of the <u>first 20 elements</u>, elements in <u>Groups 1 and 7</u>, and others.
-- Name compounds from given <u>formulae</u> or <u>symbol equations</u>.
-- Write <u>word equations</u>.
-- Write <u>formulae</u> and <u>balanced chemical equations</u>.
-- (HT only) Write balanced <u>half equations</u> and <u>ionic equations</u>.
+- use the names and symbols of the first 20 elements, elements in Groups 1 and 7, and others.
+- name compounds from given formulae or symbol equations.
+- write word equations.
+- write formulae and balanced chemical equations.
+- (HT only) write balanced half equations and ionic equations.
 `,
         createdAt: new Date(),
         updatedAt: new Date(),

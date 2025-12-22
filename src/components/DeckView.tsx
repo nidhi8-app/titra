@@ -133,7 +133,7 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Not
   const styleInfo = {
     "Visual": { icon: Lightbulb, description: "Visual learners prefer using images, diagrams, and spatial understanding. Here are your notes presented as a structured document." },
     "Auditory": { icon: Mic, description: "Auditory learners prefer listening and speaking. Plug in and listen to this podcast episode covering the key concepts." },
-    "Kinesthetic": { icon: Footprints, description: "Kinesthetic learners prefer hands-on experience and application. Read through these notes as steps in a process or real-world examples." },
+    "Kinesthetic": { icon: Footprints, description: "Kinesthetic learners prefer hands-on experience and application. Here are some activities to get you moving." },
     "Reading/Writing": { icon: BookOpen, description: "Reading/Writing learners prefer text-based information. Here are your notes, organized for clarity and review." },
   };
 
@@ -143,8 +143,63 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Not
     switch (learningStyle) {
       case 'Auditory':
         return <PodcastPlayer title={deckTitle} notesText={combinedNotes} />;
-      case 'Visual':
       case 'Kinesthetic':
+        return (
+           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+              <h4>Tabletop sorting game (great for memory)</h4>
+              <p><strong>What to do</strong></p>
+              <p>Write these on separate pieces of paper:</p>
+              <ul>
+                <li>atom</li>
+                <li>element</li>
+                <li>compound</li>
+                <li>chemical reaction</li>
+                <li>symbol</li>
+                <li>formula</li>
+                <li>word equation</li>
+                <li>periodic table</li>
+              </ul>
+              <p>Physically sort them into groups:</p>
+              <ul>
+                <li>“Things”</li>
+                <li>“Representations”</li>
+                <li>“Processes”</li>
+              </ul>
+              <p>Move them around until it makes sense.</p>
+              <p>👉 This builds understanding, not just memory.</p>
+              <hr />
+              <h4>Teach an imaginary class</h4>
+              <p><strong>What to do</strong></p>
+              <ul>
+                  <li>Stand up.</li>
+                  <li>Explain the topic out loud like you’re teaching Year 7.</li>
+                  <li>Use hand movements and pointing.</li>
+              </ul>
+              <p>If you can teach it without notes, you understand it.</p>
+              <hr />
+              <h4>Rip-and-rebuild notes</h4>
+               <p><strong>What to do</strong></p>
+              <ul>
+                  <li>Write notes once.</li>
+                  <li>Rip the page into strips (each strip = one idea).</li>
+                  <li>Mix them up.</li>
+                  <li>Rebuild them in the correct order.</li>
+                  <li>Say each sentence as you place it.</li>
+              </ul>
+              <hr />
+              <h4>Rubber-band chemistry</h4>
+              <p><strong>What to do</strong></p>
+              <ul>
+                  <li>Rubber bands = chemical bonds</li>
+                  <li>Stretching band → energy change</li>
+                  <li>Breaking band → chemical reaction</li>
+              </ul>
+              <p>Say what’s happening while doing it.</p>
+            </div>
+          </ScrollArea>
+        );
+      case 'Visual':
       case 'Reading/Writing':
       default:
         return (
@@ -349,5 +404,3 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
-
-    

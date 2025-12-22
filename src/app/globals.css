@@ -142,14 +142,14 @@
     --popover: 40 33% 97%;
     --popover-foreground: 30 15% 20%;
 
-    --primary: 345 55% 45%; /* Burgundy */
-    --primary-foreground: 345 55% 95%;
+    --primary: 45 90% 55%; /* Warm Yellow */
+    --primary-foreground: 45 90% 10%;
 
-    --secondary: 345 55% 90%;
-    --secondary-foreground: 345 55% 25%;
+    --secondary: 45 90% 92%;
+    --secondary-foreground: 45 90% 30%;
 
-    --muted: 345 25% 93%;
-    --muted-foreground: 345 10% 50%;
+    --muted: 45 25% 93%;
+    --muted-foreground: 45 10% 50%;
 
     --accent: 220 25% 55%; /* Muted Blue */
     --accent-foreground: 220 25% 95%;
@@ -159,18 +159,18 @@
 
     --border: 30 15% 85%;
     --input: 30 15% 90%;
-    --ring: 345 55% 50%;
+    --ring: 45 90% 60%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 40 33% 98%;
     --sidebar-foreground: 30 15% 25%;
-    --sidebar-primary: 345 55% 45%;
-    --sidebar-primary-foreground: 345 55% 95%;
-    --sidebar-accent: 345 55% 92%;
-    --sidebar-accent-foreground: 345 55% 25%;
+    --sidebar-primary: 45 90% 55%;
+    --sidebar-primary-foreground: 45 90% 10%;
+    --sidebar-accent: 45 90% 92%;
+    --sidebar-accent-foreground: 45 90% 25%;
     --sidebar-border: 30 15% 90%;
-    --sidebar-ring: 345 55% 50%;
+    --sidebar-ring: 45 90% 60%;
   }
 
 
@@ -298,20 +298,20 @@
   }
 
   .dark.theme-reading-writing {
-    --background: 30 10% 15%; /* Dark Sepia */
-    --foreground: 40 25% 85%; /* Light Parchment/Cream */
+    --background: 45 10% 15%; /* Dark Sepia */
+    --foreground: 45 25% 85%; /* Light Parchment/Cream */
 
-    --card: 30 10% 15%;
-    --card-foreground: 40 25% 85%;
+    --card: 45 10% 15%;
+    --card-foreground: 45 25% 85%;
 
-    --popover: 30 10% 15%;
-    --popover-foreground: 40 25% 85%;
+    --popover: 45 10% 15%;
+    --popover-foreground: 45 25% 85%;
 
-    --primary: 345 70% 75%; /* Brighter Burgundy for dark mode */
-    --primary-foreground: 345 70% 10%;
+    --primary: 45 80% 75%; /* Brighter yellow for dark mode */
+    --primary-foreground: 45 80% 10%;
 
-    --secondary: 345 70% 25%;
-    --secondary-foreground: 345 70% 85%;
+    --secondary: 45 80% 25%;
+    --secondary-foreground: 45 80% 85%;
 
     --muted: 220 15% 30%;
     --muted-foreground: 220 10% 65%;
@@ -322,18 +322,18 @@
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 30 15% 35%;
-    --input: 30 15% 35%;
-    --ring: 345 70% 80%;
+    --border: 45 15% 35%;
+    --input: 45 15% 35%;
+    --ring: 45 80% 80%;
 
-    --sidebar-background: 30 10% 17%;
-    --sidebar-foreground: 40 25% 85%;
-    --sidebar-primary: 345 70% 75%;
-    --sidebar-primary-foreground: 345 70% 10%;
-    --sidebar-accent: 345 70% 25%;
-    --sidebar-accent-foreground: 345 70% 85%;
-    --sidebar-border: 30 15% 35%;
-    --sidebar-ring: 345 70% 80%;
+    --sidebar-background: 45 10% 17%;
+    --sidebar-foreground: 45 25% 85%;
+    --sidebar-primary: 45 80% 75%;
+    --sidebar-primary-foreground: 45 80% 10%;
+    --sidebar-accent: 45 80% 25%;
+    --sidebar-accent-foreground: 45 80% 85%;
+    --sidebar-border: 45 15% 35%;
+    --sidebar-ring: 45 80% 80%;
   }
 }
 
@@ -345,5 +345,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-    

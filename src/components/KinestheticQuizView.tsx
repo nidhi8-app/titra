@@ -87,19 +87,8 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
                             <li>List what students will be supplied with in the exam.</li>
                             <li>Say four things students should be able to do in the exam.</li>
                         </ul>
-                        
-                         <hr />
-
-                        <h3 className="flex items-center gap-2"><Flame className="text-accent"/>ROUND 6: HIGHER TIER CHALLENGE (Optional)</h3>
-                        <p className="text-sm italic">Step forward if you do Higher Tier.</p>
-                        <ul>
-                           <li>Say: What type of equations HT students should be able to write in addition.</li>
-                        </ul>
 
                         <hr />
-                        
-                        <h3 className="flex items-center gap-2"><AlarmClock className="text-accent"/>FINAL CHALLENGE: 60-SECOND BLURT</h3>
-                        <p className="text-sm italic">Set a timer. Stand up. Without notes, say everything you remember about: atoms, elements, compounds, and chemical reactions. Stop when the timer ends.</p>
 
                         <div className="p-4 mt-6 bg-green-500/10 border-l-4 border-green-500 text-green-800 dark:text-green-300 rounded-lg">
                             <h4 className="font-bold flex items-center gap-2"><Check />Self-check rule</h4>

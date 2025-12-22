@@ -47,7 +47,12 @@ type QuizSource = {
   type: 'generated',
   deckTitle: string,
   questions: QuizQuestion[]
-}
+} | {
+    type: 'fill-in-the-gap',
+    topic: TopicCard,
+    questions: QuizQuestion[],
+    style: 'MCQ' | 'Writing'
+} | null;
 
 const LiveClock = () => {
     const [time, setTime] = React.useState(new Date());
@@ -428,7 +433,8 @@ export default function Home() {
         return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
       case "quizzes":
         return <QuizView 
-            quizSource={quizSource} 
+            quizSource={quizSource}
+            setQuizSource={setQuizSource}
             userDetails={userDetails} 
             quizScores={quizScores}
             onBack={() => {
@@ -452,7 +458,8 @@ export default function Home() {
     if (activeView === 'quizzes') {
         if (quizSource?.type === 'pre-made') return quizSource.topic.title;
         if (quizSource?.type === 'generated') return `Quiz: ${quizSource.deckTitle}`;
-        return 'Quizzes - not tailored to learning style';
+        if (quizSource?.type === 'fill-in-the-gap') return `Fill in the Gap: ${quizSource.topic.title}`;
+        return 'Quizzes';
     }
     switch (activeView) {
       case 'dashboard': return 'Titra';
@@ -546,5 +553,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
-    

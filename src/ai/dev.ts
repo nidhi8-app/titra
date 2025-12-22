@@ -3,3 +3,4 @@ import './flows/explain-concept-flow';
 import './flows/generate-quiz-flow';
 import './flows/generate-podcast-flow';
 import './flows/summarize-notes-flow';
+import './flows/generate-fill-in-the-gap-flow';

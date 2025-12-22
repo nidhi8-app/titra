@@ -2,3 +2,4 @@
 import './flows/explain-concept-flow';
 import './flows/generate-quiz-flow';
 import './flows/generate-podcast-flow';
+import './flows/summarize-notes-flow';

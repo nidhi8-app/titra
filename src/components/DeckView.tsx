@@ -9,6 +9,7 @@ import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebas
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { generatePodcast } from '@/ai/flows/generate-podcast-flow';
+import { summarizeNotes } from '@/ai/flows/summarize-notes-flow';
 import type { GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -21,6 +22,70 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
+const NotesSummary = ({ notesText }: { notesText: string }) => {
+    const [summary, setSummary] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast();
+
+    useEffect(() => {
+        const getSummary = async () => {
+             if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+                setError("The AI feature is not configured. Please add an API key.");
+                setIsLoading(false);
+                return;
+            }
+            if (!notesText) {
+                setError("There are no notes to summarize.");
+                setIsLoading(false);
+                return;
+            }
+            
+            setIsLoading(true);
+            setError(null);
+            try {
+                const result = await summarizeNotes({ notes: notesText });
+                if (result.summary) {
+                    setSummary(result.summary);
+                } else {
+                    throw new Error("AI did not return a summary.");
+                }
+            } catch (err: any) {
+                console.error("Failed to generate summary:", err);
+                setError("Could not generate summary at this time.");
+                 toast({
+                    variant: "destructive",
+                    title: "Summary Generation Failed",
+                    description: "There was an error generating the summary.",
+                });
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        getSummary();
+    }, [notesText, toast]);
+
+    return (
+        <div className="p-4 rounded-lg bg-muted/30 border mb-6">
+            <h4 className="font-bold text-lg mb-2">Topic Summary</h4>
+            {isLoading && (
+                <div className="flex items-center">
+                    <Loader2 className="w-5 h-5 animate-spin text-primary" />
+                    <p className="ml-2 text-muted-foreground">Generating summary...</p>
+                </div>
+            )}
+            {error && <p className="text-red-500">{error}</p>}
+            {summary && (
+                 <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                    {summary}
+                </div>
+            )}
+        </div>
+    )
+};
+
+
 const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string }) => {
     const [podcast, setPodcast] = useState<GeneratePodcastOutput | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +94,6 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
 
     useEffect(() => {
         const generateAudio = async () => {
-            // Check for API key availability on the client.
-            // Note: This relies on the key being exposed to the client, which is okay for this prototype.
-            // In a production app, this check might happen on the server or the API call would be proxied.
             if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
                 toast({
                     variant: "destructive",
@@ -61,7 +123,6 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
                 }
             } catch (err: any) {
                 console.error("Failed to generate podcast:", err);
-                // The API key error is now caught before the call, but we keep this as a fallback.
                 if (err.message.includes('API key not valid')) {
                     toast({
                         variant: "destructive",
@@ -157,6 +218,7 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: Note
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
+          <NotesSummary notesText={combinedNotes} />
           {renderLearningContent()}
       </CardContent>
     </Card>
@@ -283,5 +345,3 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
-
-    

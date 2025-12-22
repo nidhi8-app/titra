@@ -53,8 +53,8 @@ const summarizeNotesFlow = ai.defineFlow(
         outputSchema: SummarizeNotesOutputSchema,
     },
     async (input) => {
-        if (!process.env.GEMINI_API_KEY) {
-            throw new Error("The Google AI API Key is not set. Please set your GEMINI_API_KEY in the .env file to use this feature.");
+        if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+            throw new Error("The AI feature is not configured. Please add your GEMINI_API_KEY to the .env file to use this feature.");
         }
         const { output } = await prompt(input);
         return output!;

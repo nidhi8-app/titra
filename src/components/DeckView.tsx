@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare } from 'lucide-react';
+import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Award } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
@@ -14,6 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
 import { initialNotesData, type InitialNoteSeed } from '@/lib/initial-notes';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 
 
 type DeckViewProps = {
@@ -172,6 +173,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
+  const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -189,8 +191,6 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     if (isLoading) {
       return initial;
     }
-    // If firestore has notes, use them. Otherwise, fall back to initial notes.
-    // This handles the case where a user has added their own notes.
     if (userNotes && userNotes.length > 0) {
       return userNotes;
     }
@@ -199,7 +199,13 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   
   const combinedNotesText = useMemo(() => {
     if (!deckNotes) return "";
-    return deckNotes.map(n => `### ${n.title}\n\n${n.body}`).join('\n\n---\n\n');
+    return deckNotes.map(n => n.body).join('\n\n---\n\n');
+  }, [deckNotes]);
+
+  const examSkillsText = useMemo(() => {
+    if (!deckNotes) return null;
+    // Assuming the exam skills are on the first note of the deck for simplicity
+    return deckNotes[0]?.examSkills || null;
   }, [deckNotes]);
 
 
@@ -278,6 +284,14 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     return (
         <div className="space-y-6">
             <NotesSummary notesText={combinedNotesText} />
+            
+            {examSkillsText && (
+                <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
+                    <Award className="mr-2 h-4 w-4" />
+                    Exam Skills
+                </Button>
+            )}
+
             <LearningStyleContent notes={deckNotes} learningStyle={userDetails?.learningStyle || 'Reading/Writing'} deckTitle={deck.title} />
             <Card>
                 <CardHeader>
@@ -305,6 +319,27 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   return (
     <div className="p-4 md:p-6">
       {renderContent()}
+
+      {examSkillsText && (
+        <Dialog open={isExamSkillsDialogOpen} onOpenChange={setIsExamSkillsDialogOpen}>
+          <DialogContent className="max-w-lg">
+            <DialogHeader>
+              <DialogTitle>Exam Skills</DialogTitle>
+              <DialogDescription>
+                Here's what you need to know for your exam based on this topic.
+              </DialogDescription>
+            </DialogHeader>
+            <ScrollArea className="max-h-[60vh] my-4">
+              <div className="pr-4 prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                {examSkillsText}
+              </div>
+            </ScrollArea>
+            <DialogFooter>
+              <Button onClick={() => setIsExamSkillsDialogOpen(false)}>Close</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };

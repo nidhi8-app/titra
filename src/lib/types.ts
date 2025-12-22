@@ -22,6 +22,7 @@ export type Note = {
   id:string;
   title: string;
   body: string;
+  examSkills?: string;
   createdAt: Timestamp | Date;
   updatedAt: Timestamp | Date;
   deckId?: string;

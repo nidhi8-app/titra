@@ -7,17 +7,23 @@ export type InitialNoteSeed = Omit<Note, 'id' | 'deckId'>;
 export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
   'deck1': [
     {
-      title: 'Atomic Structure',
-      body: 'Atoms consist of a central nucleus containing protons and neutrons, surrounded by electrons in shells. Protons have a positive charge, neutrons are neutral, and electrons have a negative charge. The atomic number is the number of protons, defining the element. The mass number is the total number of protons and neutrons.',
+      title: 'Atoms, Elements, and Compounds',
+      body: 'All substances are made of atoms. An atom is the smallest part of an element that can exist. There are about 100 different elements, which are shown in the periodic table. Compounds are formed from elements by chemical reactions, which always involve the formation of one or more new substances and often a detectable energy change. Compounds contain two or more elements chemically combined in fixed proportions and can only be separated into elements by chemical reactions.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'The Periodic Table',
-      body: 'The periodic table arranges elements by increasing atomic number. Elements in the same group (column) have similar chemical properties because they have the same number of outer shell electrons. Elements in the same period (row) have the same number of electron shells.',
+      title: 'Chemical Symbols and Formulae',
+      body: 'Atoms of each element are represented by a chemical symbol, for example, O represents an atom of oxygen, and Na represents an atom of sodium. You should be familiar with the names and symbols of the first 20 elements, the elements in Groups 1 and 7, and other elements in the specification. Compounds are represented by formulae using the symbols of the atoms from which they were formed.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+        title: 'Equations',
+        body: 'Chemical reactions can be represented by word equations or balanced symbol equations. For example, the reaction of sodium with chlorine can be written as a word equation: Sodium + Chlorine -> Sodium Chloride. The balanced chemical equation is: 2Na + Cl₂ -> 2NaCl. (HT only) You may also need to write balanced half equations and ionic equations where appropriate.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    }
   ],
   'deck2': [
     {

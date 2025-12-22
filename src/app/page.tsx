@@ -382,8 +382,8 @@ export default function Home() {
   }, [quizScores]);
 
   React.useEffect(() => {
-    if (isAppLoaded) {
-      document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic");
+    if (isAppLoaded && userDetails) {
+      document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic", "theme-reading-writing");
       switch (learnerType) {
         case 'Auditory':
           document.body.classList.add('theme-auditory');
@@ -392,13 +392,15 @@ export default function Home() {
           document.body.classList.add('theme-kinesthetic');
           break;
         case 'Reading/Writing':
+           document.body.classList.add('theme-reading-writing');
+          break;
         case 'Visual':
         default:
           document.body.classList.add('theme-visual');
           break;
       }
     }
-  }, [learnerType, isAppLoaded]);
+  }, [learnerType, isAppLoaded, userDetails]);
 
   if (!isAppLoaded) {
     return null; // or a loading spinner

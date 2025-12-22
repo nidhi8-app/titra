@@ -142,8 +142,8 @@
     --popover: 40 33% 97%;
     --popover-foreground: 30 15% 20%;
 
-    --primary: 45 90% 55%; /* Warm Yellow */
-    --primary-foreground: 45 90% 10%;
+    --primary: 45 90% 50%; /* Darker, more saturated Yellow */
+    --primary-foreground: 45 90% 5%; /* Darker text for contrast */
 
     --secondary: 45 90% 92%;
     --secondary-foreground: 45 90% 30%;
@@ -159,18 +159,18 @@
 
     --border: 30 15% 85%;
     --input: 30 15% 90%;
-    --ring: 45 90% 60%;
+    --ring: 45 90% 55%; /* Adjusted ring */
 
     --radius: 0.5rem;
 
     --sidebar-background: 40 33% 98%;
     --sidebar-foreground: 30 15% 25%;
-    --sidebar-primary: 45 90% 55%;
-    --sidebar-primary-foreground: 45 90% 10%;
+    --sidebar-primary: 45 90% 50%;
+    --sidebar-primary-foreground: 45 90% 5%;
     --sidebar-accent: 45 90% 92%;
     --sidebar-accent-foreground: 45 90% 25%;
     --sidebar-border: 30 15% 90%;
-    --sidebar-ring: 45 90% 60%;
+    --sidebar-ring: 45 90% 55%;
   }
 
 
@@ -307,7 +307,7 @@
     --popover: 45 10% 15%;
     --popover-foreground: 45 25% 85%;
 
-    --primary: 45 80% 75%; /* Brighter yellow for dark mode */
+    --primary: 45 80% 65%; /* Brighter yellow for dark mode */
     --primary-foreground: 45 80% 10%;
 
     --secondary: 45 80% 25%;
@@ -324,16 +324,16 @@
 
     --border: 45 15% 35%;
     --input: 45 15% 35%;
-    --ring: 45 80% 80%;
+    --ring: 45 80% 70%; /* Adjusted ring */
 
     --sidebar-background: 45 10% 17%;
     --sidebar-foreground: 45 25% 85%;
-    --sidebar-primary: 45 80% 75%;
+    --sidebar-primary: 45 80% 65%;
     --sidebar-primary-foreground: 45 80% 10%;
     --sidebar-accent: 45 80% 25%;
     --sidebar-accent-foreground: 45 80% 85%;
     --sidebar-border: 45 15% 35%;
-    --sidebar-ring: 45 80% 80%;
+    --sidebar-ring: 45 80% 70%;
   }
 }
 

@@ -16,6 +16,7 @@ import { ScrollArea } from './ui/scroll-area';
 import { initialNotesData, type InitialNoteSeed } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import KinestheticQuizView from './KinestheticQuizView';
+import VisualQuizView from './VisualQuizView';
 
 
 type DeckViewProps = {
@@ -270,6 +271,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [kinestheticQuiz, setKinestheticQuiz] = useState<string | null>(null);
+  const [visualQuiz, setVisualQuiz] = useState<string | null>(null);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -324,7 +326,11 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
       return;
     }
     
-    // Kinesthetic Quiz Handler
+    if (userDetails.learningStyle === 'Visual' && deck.id === 'deck1') {
+        setVisualQuiz(deck.title);
+        return;
+    }
+
     if (userDetails.learningStyle === 'Kinesthetic' && deck.id === 'deck1') {
         setKinestheticQuiz(deck.title);
         return;
@@ -365,6 +371,10 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     }
   };
   
+  if (visualQuiz) {
+    return <VisualQuizView title={visualQuiz} onBack={() => setVisualQuiz(null)} />;
+  }
+
   if (kinestheticQuiz) {
     return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} />;
   }
@@ -451,5 +461,3 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
-
-    

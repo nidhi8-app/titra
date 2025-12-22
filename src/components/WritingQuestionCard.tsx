@@ -55,6 +55,12 @@ const WritingQuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learni
     }
   };
 
+  const handleReveal = () => {
+    setShowReveal(true);
+    setIsAnswered(true);
+    setIsCorrect(false); // Revealing means they didn't get it right on their own
+  };
+
   const handleNext = () => {
     onNextQuestion();
   };
@@ -106,7 +112,7 @@ const WritingQuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learni
                 <Button variant="outline" size="sm" onClick={() => setShowHint(!showHint)} disabled={isAnswered}>
                     {showHint ? 'Hide' : 'Hint'}
                 </Button>
-                <Button variant="outline" size="sm" onClick={() => setShowReveal(true)} disabled={isAnswered}>
+                <Button variant="outline" size="sm" onClick={handleReveal} disabled={isAnswered}>
                     Reveal Answer
                 </Button>
             </div>

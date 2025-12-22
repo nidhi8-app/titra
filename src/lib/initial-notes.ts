@@ -7,20 +7,14 @@ export type InitialNoteSeed = Omit<Note, 'id' | 'deckId'>;
 export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
   'deck1': [
     {
-      title: 'Atoms, Elements, and Compounds',
-      body: 'All substances are made of atoms. An atom is the smallest part of an element that can exist. There are about 100 different elements, which are shown in the periodic table. Compounds are formed from elements by chemical reactions, which always involve the formation of one or more new substances and often a detectable energy change. Compounds contain two or more elements chemically combined in fixed proportions and can only be separated into elements by chemical reactions.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Chemical Symbols and Formulae',
-      body: 'Atoms of each element are represented by a chemical symbol, for example, O represents an atom of oxygen, and Na represents an atom of sodium. You should be familiar with the names and symbols of the first 20 elements, the elements in Groups 1 and 7, and other elements in the specification. Compounds are represented by formulae using the symbols of the atoms from which they were formed.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        title: 'Atoms, elements and compounds',
+        body: 'All substances are made of atoms. An atom is the smallest part of an element that can exist. Atoms of each element are represented by a chemical symbol, eg O represents an atom of oxygen, Na represents an atom of sodium. There are about 100 different elements. Elements are shown in the periodic table. Compounds are formed from elements by chemical reactions. Chemical reactions always involve the formation of one or more new substances, and often involve a detectable energy change. Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae using the symbols of the atoms from which they were formed. Compounds can only be separated into elements by chemical reactions.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         title: 'Equations',
-        body: 'Chemical reactions can be represented by word equations or balanced symbol equations. For example, the reaction of sodium with chlorine can be written as a word equation: Sodium + Chlorine -> Sodium Chloride. The balanced chemical equation is: 2Na + Cl₂ -> 2NaCl. (HT only) You may also need to write balanced half equations and ionic equations where appropriate.',
+        body: 'Chemical reactions can be represented by word equations or equations using symbols and formulae. Students should be able to use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification, name compounds of these elements from given formulae or symbol equations, write word equations for the reactions in this specification, write formulae and balanced chemical equations for the reactions in this specification. (HT only) write balanced half equations and ionic equations where appropriate.',
         createdAt: new Date(),
         updatedAt: new Date(),
     }

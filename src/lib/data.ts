@@ -6,77 +6,77 @@ import { Beaker, Atom, FlaskConical, BookText, Network, Scale, Microscope, TestT
 export const initialDecks: Deck[] = [
   {
     id: 'deck1',
-    title: '4.1 Atomic structure and the periodic table',
+    title: 'Atomic structure and the periodic table',
     cards: [
         { id: 'topic1', title: 'Atomic structure and the periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: Atom },
     ]
   },
   {
     id: 'deck2',
-    title: '4.2 Bonding, structure, and the properties of matter',
+    title: 'Bonding, structure, and the properties of matter',
     cards: [
         { id: 'topic2', title: 'Bonding, structure, and properties', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c9', emoji: Link },
     ]
   },
   {
     id: 'deck3',
-    title: '4.3 Quantitative chemistry',
+    title: 'Quantitative chemistry',
     cards: [
         { id: 'topic3', title: 'Quantitative chemistry', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c2', emoji: Scale },
     ]
   },
   {
     id: 'deck4',
-    title: '4.4 Chemical changes',
+    title: 'Chemical changes',
     cards: [
         { id: 'topic4', title: 'Chemical changes', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c3', emoji: Beaker },
     ]
   },
   {
     id: 'deck5',
-    title: '4.5 Energy changes',
+    title: 'Energy changes',
     cards: [
         { id: 'topic5', title: 'Energy changes', color: 'bg-orange-400', cardCount: 0, progress: 0, imageId: 'c13', emoji: Thermometer },
     ]
   },
   {
     id: 'deck6',
-    title: '4.6 The rate and extent of chemical change',
+    title: 'The rate and extent of chemical change',
     cards: [
         { id: 'topic6', title: 'Rate and extent of chemical change', color: 'bg-indigo-400', cardCount: 0, progress: 0, imageId: 'c16', emoji: Gauge },
     ]
   },
   {
     id: 'deck7',
-    title: '4.7 Organic chemistry',
+    title: 'Organic chemistry',
     cards: [
         { id: 'topic7', title: 'Organic chemistry', color: 'bg-purple-400', cardCount: 0, progress: 0, imageId: 'c10', emoji: TestTube2 },
     ]
   },
   {
     id: 'deck8',
-    title: '4.8 Chemical analysis',
+    title: 'Chemical analysis',
     cards: [
         { id: 'topic8', title: 'Chemical analysis', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c19', emoji: Microscope },
     ]
   },
   {
     id: 'deck9',
-    title: '4.9 Chemistry of the atmosphere',
+    title: 'Chemistry of the atmosphere',
     cards: [
         { id: 'topic9', title: 'Chemistry of the atmosphere', color: 'bg-teal-400', cardCount: 0, progress: 0, imageId: 'c22', emoji: Cloud },
     ]
   },
   {
     id: 'deck10',
-    title: '4.10 Using resources',
+    title: 'Using resources',
     cards: [
         { id: 'topic10', title: 'Using resources', color: 'bg-lime-400', cardCount: 0, progress: 0, imageId: 'c11', emoji: Recycle },
     ]
   },
   {
     id: 'deck11',
-    title: '4.11 Key ideas',
+    title: 'Key ideas',
     cards: [
         { id: 'topic11', title: 'Key ideas', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c15', emoji: Key },
     ]

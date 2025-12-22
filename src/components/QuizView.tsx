@@ -8,6 +8,7 @@ import { Plus, Search, ArrowLeft, ChevronDown } from 'lucide-react';
 import { Progress } from './ui/progress';
 import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
+import WritingQuestionCard from './WritingQuestionCard';
 import { useUser } from '@/firebase';
 import {
   DropdownMenu,
@@ -73,7 +74,37 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
     )
   }
 
-  if (practiceStyle !== 'MCQ') {
+  const renderQuestion = () => {
+    if (!currentQuestion || !userDetails) {
+      return (
+        <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
+          <p className="text-xl">{!userDetails ? "Loading user details..." : "No questions available for this topic yet."}</p>
+        </div>
+      );
+    }
+
+    if (practiceStyle === 'Writing') {
+      return (
+        <WritingQuestionCard
+          question={currentQuestion}
+          onCorrectAnswer={handleCorrectAnswer}
+          onNextQuestion={handleNextQuestion}
+          learningStyle={userDetails.learningStyle || 'Visual'}
+        />
+      );
+    }
+
+    if (practiceStyle === 'MCQ') {
+      return (
+        <QuestionCard
+          question={currentQuestion}
+          onCorrectAnswer={handleCorrectAnswer}
+          onNextQuestion={handleNextQuestion}
+          learningStyle={userDetails.learningStyle || 'Visual'}
+        />
+      );
+    }
+
     return (
       <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
@@ -83,8 +114,9 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
           Back to Quizzes
         </Button>
       </div>
-    )
-  }
+    );
+  };
+
 
   return (
     <div className="p-4 md:p-6">
@@ -95,18 +127,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
         </Button>
         <h2 className="text-2xl font-bold">{title}</h2>
       </div>
-      {currentQuestion && userDetails ? (
-        <QuestionCard 
-          question={currentQuestion}
-          onCorrectAnswer={handleCorrectAnswer}
-          onNextQuestion={handleNextQuestion}
-          learningStyle={userDetails.learningStyle || 'Visual'}
-        />
-      ) : (
-         <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
-            <p className="text-xl">{!userDetails ? "Loading user details..." : "No questions available for this topic yet."}</p>
-         </div>
-      )}
+      {renderQuestion()}
     </div>
   );
 };

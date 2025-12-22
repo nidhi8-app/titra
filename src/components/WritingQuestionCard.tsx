@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import type { QuizQuestion } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { cn } from '@/lib/utils';
+import { Input } from './ui/input';
 import {
   Dialog,
   DialogContent,
@@ -17,39 +17,37 @@ import {
 import { explainConcept } from '@/ai/flows/explain-concept-flow';
 import { Loader } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
-import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
-type QuestionCardProps = {
+type WritingQuestionCardProps = {
   question: QuizQuestion;
   onNextQuestion: () => void;
   onCorrectAnswer: () => void;
   learningStyle: string;
 };
 
-const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle }: QuestionCardProps) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+const WritingQuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle }: WritingQuestionCardProps) => {
+  const [userAnswer, setUserAnswer] = useState('');
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [showReveal, setShowReveal] = useState(false);
   const [explanation, setExplanation] = useState<string | null>(null);
   const [isExplanationLoading, setIsExplanationLoading] = useState(false);
   const [isExplanationDialogOpen, setIsExplanationDialogOpen] = useState(false);
-  const { toast } = useToast();
 
   useEffect(() => {
-    setSelectedOption(null);
+    setUserAnswer('');
     setIsAnswered(false);
     setIsCorrect(false);
+    setShowHint(false);
+    setShowReveal(false);
     setExplanation(null);
   }, [question]);
 
-  const handleOptionClick = (option: string) => {
-    if (isAnswered) return;
-    setSelectedOption(option);
-  };
-
   const handleSubmit = () => {
-    if (!selectedOption) return;
-    const correct = selectedOption === question.correctAnswer;
+    if (!userAnswer) return;
+    const correct = userAnswer.trim().toLowerCase() === question.correctAnswer.toLowerCase();
     setIsCorrect(correct);
     setIsAnswered(true);
     if (correct) {
@@ -74,28 +72,20 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
       setExplanation(result.explanation);
     } catch (error: any) {
       console.error("Failed to get explanation:", error);
-      if (error.message.includes('API key not valid')) {
-        setExplanation("The Google AI API Key is not set. Please add your GEMINI_API_KEY to the .env file to use this feature.");
-      } else {
-        setExplanation("Sorry, I couldn't get an explanation at this time.");
-      }
+      setExplanation("Sorry, I couldn't get an explanation at this time.");
     } finally {
       setIsExplanationLoading(false);
     }
   };
 
-  const getButtonClass = (option: string) => {
-    if (!isAnswered) {
-      return selectedOption === option ? 'bg-primary/80' : 'bg-primary';
-    }
-    if (option === question.correctAnswer) {
-      return 'bg-green-500 hover:bg-green-600';
-    }
-    if (option === selectedOption && option !== question.correctAnswer) {
-      return 'bg-red-500 hover:bg-red-600';
-    }
-    return 'bg-primary/50';
-  };
+  const getHint = () => {
+    const hintLength = Math.max(3, Math.floor(question.correctAnswer.length / 3));
+    return question.correctAnswer.substring(0, hintLength) + '...';
+  }
+
+  const inputClass = isAnswered 
+    ? (isCorrect ? 'border-green-500 focus-visible:ring-green-500' : 'border-red-500 focus-visible:ring-red-500')
+    : '';
 
   return (
     <>
@@ -104,25 +94,34 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
           <CardTitle>{question.question}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {question.options && question.options.map((option, index) => (
-              <Button
-                key={index}
-                onClick={() => handleOptionClick(option)}
-                className={cn("h-auto w-full whitespace-normal justify-start text-left", getButtonClass(option))}
-                disabled={isAnswered}
-              >
-                {option}
-              </Button>
-            ))}
+          <div className="space-y-4">
+            <Input
+              value={showReveal ? question.correctAnswer : userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+              placeholder="Type your answer here..."
+              disabled={isAnswered || showReveal}
+              className={cn("text-base", inputClass)}
+            />
+            <div className="flex gap-2">
+                <Button variant="outline" size="sm" onClick={() => setShowHint(!showHint)} disabled={isAnswered}>
+                    {showHint ? 'Hide' : 'Hint'}
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => setShowReveal(true)} disabled={isAnswered}>
+                    Reveal Answer
+                </Button>
+            </div>
+            {showHint && !isAnswered && !showReveal && (
+                 <p className="text-sm text-muted-foreground p-2 bg-muted rounded-md">Hint: {getHint()}</p>
+            )}
           </div>
+
           <div className="mt-6 flex justify-end">
             {isAnswered ? (
               <div className="flex w-full justify-between items-center">
                 <div>
                   {!isCorrect ? (
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                      <p className="text-red-500 font-semibold">Try again next time!</p>
+                      <p className="text-red-500 font-semibold">The correct answer is: {question.correctAnswer}</p>
                       <Button variant="outline" onClick={handleExplainConcept}>
                         Explain the concept to me
                       </Button>
@@ -136,7 +135,7 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
                 </Button>
               </div>
             ) : (
-              <Button onClick={handleSubmit} disabled={!selectedOption}>
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
                 Submit
               </Button>
             )}
@@ -174,4 +173,4 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
   );
 };
 
-export default QuestionCard;
+export default WritingQuestionCard;

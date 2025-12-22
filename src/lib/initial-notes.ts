@@ -5,92 +5,132 @@ import type { Note } from './types';
 export type InitialNoteSeed = Omit<Note, 'id' | 'deckId'>;
 
 export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
-  '1': [
+  'deck1': [
     {
-      title: 'Atoms & Elements',
-      body: 'All substances are made from tiny particles called atoms. An atom is the smallest part of an element that can exist.\n\nAtoms of each element are represented by their own chemical symbol, which consists of one or two letters and always starts with a capital letter (e.g., O for oxygen, Na for sodium).\n\nThere are over 100 different elements, arranged in the periodic table into groups with similar properties. Metals are on the left of the stepped line, and non-metals are on the right.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Chemical Formulae of Elements',
-      body: 'A chemical formula represents an element or compound. For most elements, the formula is just its symbol (e.g., He, C, Mg).\n\nSome non-metal elements exist as diatomic molecules (two atoms joined together). Their formulae include a subscripted \'2\'. Examples: Iodine (I₂), Bromine (Br₂), Chlorine (Cl₂), Fluorine (F₂), Oxygen (O₂), Nitrogen (N₂), Hydrogen (H₂).',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-     {
-      title: 'Chemical Formulae of Compounds',
-      body: 'A compound contains two or more elements chemically combined in fixed proportions. A chemical formula shows the symbols for each element and the number of atoms of each.\n\nExamples:\n- Magnesium oxide: MgO (one Mg, one O)\n- Water: H₂O (two H, one O)\n- Carbon dioxide: CO₂ (one C, two O)\n\nIn compounds with only non-metals, prefixes like "di-" or "tri-" indicate the number of atoms (e.g., carbon dioxide has two oxygen atoms).',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-     {
-      title: 'Word Equations',
-      body: 'A word equation represents a chemical reaction using the names of the substances.\n\n- Reactants: Substances that react together.\n- Products: Substances that are formed.\n\nThe general form is: reactants → products.\n\nAn arrow (→) means "reacts to make".\nExample: sodium + chlorine → sodium chloride',
+      title: 'Atomic Structure',
+      body: 'Atoms consist of a central nucleus containing protons and neutrons, surrounded by electrons in shells. Protons have a positive charge, neutrons are neutral, and electrons have a negative charge. The atomic number is the number of protons, defining the element. The mass number is the total number of protons and neutrons.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Balanced Chemical Equations & State Symbols',
-      body: 'A balanced chemical equation uses formulae to represent a reaction and shows the number of units of each substance. It obeys the Law of Conservation of Mass: no atoms are lost or made. There must be the same number of atoms of each element on both sides.\n\nTo balance, you add numbers (coefficients) in front of the formulae.\nExample: N₂(g) + 3H₂(g) → 2NH₃(g)\n\nState Symbols:\n- (s) for solid\n- (l) for liquid\n- (g) for gas\n- (aq) for aqueous solution (dissolved in water)',
+      title: 'The Periodic Table',
+      body: 'The periodic table arranges elements by increasing atomic number. Elements in the same group (column) have similar chemical properties because they have the same number of outer shell electrons. Elements in the same period (row) have the same number of electron shells.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
   ],
-  '2': [
+  'deck2': [
     {
-      title: 'Ionic Bonding Fundamentals',
-      body: 'Ionic bonding takes place when metals and non-metals react by transferring electrons. It is the strong electrostatic force of attraction between oppositely charged ions.\n\n- Metal atoms lose electrons to form positive ions (cations).\n- Non-metal atoms gain electrons to form negative ions (anions).\n- The goal is to achieve a full, stable outer shell of electrons, like a noble gas.',
+      title: 'Types of Bonding',
+      body: 'There are three main types of chemical bonding: ionic, covalent, and metallic. Ionic bonding involves the transfer of electrons between a metal and a non-metal. Covalent bonding involves the sharing of electrons between non-metal atoms. Metallic bonding involves a lattice of positive ions in a sea of delocalised electrons.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'How Ions Form',
-      body: 'An ion is a charged particle formed by the loss or gain of electrons.\n\n- Anions (negative ions) form when atoms gain electrons. They have more electrons than protons.\n- Cations (positive ions) form when atoms lose electrons. They have more protons than electrons.\n\nAll metals lose electrons to become positive ions. All non-metals gain electrons to become negative ions.',
+      title: 'Properties of Matter',
+      body: 'The type of bonding and structure determines the properties of a substance. For example, giant ionic lattices have high melting points and conduct electricity when molten or dissolved. Simple covalent molecules have low melting points and do not conduct electricity. Giant covalent structures have very high melting points. Metals are malleable and conduct electricity.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck3': [
+    {
+      title: 'The Mole Concept',
+      body: 'A mole is a unit of measurement for the amount of a substance. One mole of any substance contains the same number of particles, known as the Avogadro constant (6.02 x 10^23). The mass of one mole of a substance is its relative formula mass in grams.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck4': [
+    {
+      title: 'Reactivity of Metals',
+      body: 'The reactivity of metals is determined by their tendency to lose electrons and form positive ions. The reactivity series lists metals in order of their reactivity. A more reactive metal can displace a less reactive metal from its compound.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-        title: 'Giant Ionic Lattice',
-        body: 'Ionic compounds form a giant ionic lattice, which is a regular, repeating arrangement of alternating positive and negative ions.\n\nStrong electrostatic forces of attraction exist between these ions, acting in all directions. A huge amount of energy is needed to overcome these forces, which is why ionic compounds have very high melting and boiling points.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+      title: 'Acids and Bases',
+      body: 'Acids are substances that produce H+ ions in aqueous solution. Bases are substances that can neutralise an acid. Alkalis are soluble bases that produce OH- ions in aqueous solution. The reaction between an acid and a base is called neutralisation, which produces a salt and water.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
+  ],
+  'deck5': [
     {
-      title: 'Representing Ionic Bonding',
-      body: 'Dot and cross diagrams are used to show the transfer of electrons in ionic bonding. \n\nRules:\n- Use dots and crosses to show electrons from different atoms.\n- Draw only the outer shell for larger atoms.\n- Put the final ions in square brackets with the charge shown in the top right corner.',
+      title: 'Exothermic and Endothermic Reactions',
+      body: 'An exothermic reaction is one that transfers energy to the surroundings, usually in the form of heat, causing a temperature increase. An endothermic reaction is one that takes in energy from the surroundings, causing a temperature decrease. Bond breaking is an endothermic process, while bond making is an exothermic process.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck6': [
+    {
+      title: 'Rates of Reaction',
+      body: 'The rate of a chemical reaction can be affected by several factors: temperature, concentration (or pressure for gases), surface area, and the presence of a catalyst. The collision theory states that for a reaction to occur, particles must collide with sufficient energy (activation energy).',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Covalent Bonding Fundamentals',
-      body: 'Covalent bonding occurs when non-metal atoms share one or more pairs of electrons to get a full outer shell. A molecule is formed when two or more atoms are held together by covalent bonds.\n\n- Shared electrons are called bonding electrons.\n- Outer shell electrons not involved in bonding are non-bonding electrons (lone pairs).\n- Covalently bonded substances can be small molecules (like H₂O) or giant structures (like diamond).',
+      title: 'Reversible Reactions and Equilibrium',
+      body: 'Some reactions are reversible, meaning the products can react to re-form the reactants. In a closed system, a reversible reaction can reach a state of dynamic equilibrium, where the forward and reverse reactions occur at the same rate, and the concentrations of reactants and products remain constant.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-     {
-      title: 'Simple Covalent Molecules',
-      body: 'Simple covalent molecules (like water, methane, chlorine) have weak intermolecular forces between the molecules. These forces are easy to overcome, so these substances have low melting and boiling points.\n\nThey do not conduct electricity because there are no free-moving charged particles (no ions or delocalised electrons).',
+  ],
+  'deck7': [
+    {
+      title: 'Crude Oil and Hydrocarbons',
+      body: 'Crude oil is a finite resource and a complex mixture of hydrocarbons. It is separated into fractions with different boiling points by fractional distillation. Many hydrocarbons are alkanes, which are a homologous series of saturated hydrocarbons with the general formula CnH2n+2.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck8': [
+    {
+      title: 'Purity and Formulations',
+      body: 'In chemistry, a pure substance consists of only one element or one compound. Melting and boiling point data can be used to distinguish pure substances from mixtures. A formulation is a mixture that has been designed as a useful product, such as fuels, paints, and medicines.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-        title: 'Polymers and Giant Covalent Structures',
-        body: 'Not all covalent molecules are small. \n\n- Polymers are very large molecules made of many repeating units (monomers) joined by covalent bonds. Examples: polythene, PVC.\n\n- Giant covalent structures (macromolecules) have billions of atoms joined by a network of covalent bonds. Examples: Diamond, Graphite, Silicon Dioxide. These have very high melting points because strong covalent bonds must be broken.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+      title: 'Identification of Ions',
+      body: 'Flame tests are used to identify metal ions (cations) by the colour they produce in a flame. For example, lithium produces a crimson flame. Anions, such as carbonate or sulfate ions, can be identified using specific chemical tests that often produce a precipitate.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck9': [
+    {
+      title: 'The Earth\'s Atmosphere',
+      body: 'The Earth\'s early atmosphere was very different from today. It was likely formed by volcanic activity and consisted mainly of carbon dioxide with little or no oxygen. The evolution of the atmosphere involved processes like the condensation of water vapour to form oceans and the increase of oxygen due to photosynthesis by algae and plants.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-      title: 'Metallic Bonding',
-      body: 'Metallic bonding is found in metals and alloys. It consists of a giant structure of positive metal ions surrounded by a "sea" of delocalised electrons.\n\nThere is a strong electrostatic attraction between the positive ions and the shared negative electrons. This is why metals have high melting points and are good conductors of electricity (the delocalised electrons are free to move and carry charge).',
-      createdAt: new
-Date(),
-      updatedAt: new
-Date(),
+      title: 'Climate Change',
+      body: 'Greenhouse gases, such as carbon dioxide, methane, and water vapour, maintain temperatures on Earth high enough to support life. Human activities, particularly burning fossil fuels, are increasing the levels of these gases, leading to an enhanced greenhouse effect and global climate change.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck10': [
+    {
+      title: 'Using the Earth\'s Resources',
+      body: 'Humans use the Earth\'s resources to provide warmth, shelter, food, and transport. Natural resources, supplemented by agriculture, provide food, timber, clothing, and fuels. Finite resources from the Earth, oceans, and atmosphere are processed to make synthetic products.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-      title: 'Limitations of Bonding Models',
-      body: 'Models help us visualise bonding, but they have limitations.\n\n- Dot and Cross Diagrams: Don\'t show the 3D shape or relative sizes of atoms.\n- 2D Displayed Formulae: Don\'t show the 3D shape.\n- Ball and Stick Models: Clearly show 3D shape, but the "sticks" misrepresent the nature of bonds (forces), and the gaps between atoms are exaggerated.\n- Space-filling Models: More realistic about the space atoms occupy but can obscure the internal structure.',
+      title: 'Sustainability and Recycling',
+      body: 'Sustainable development involves meeting the needs of the present generation without compromising the ability of future generations to meet their own needs. It is important to reduce the use of finite resources, reuse materials, and recycle where possible. This reduces waste, pollution, and the need to extract new raw materials.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  'deck11': [
+    {
+      title: 'Key Ideas in Chemistry',
+      body: 'This section brings together the fundamental principles of chemistry. It includes the idea that matter is made of atoms, which are rearranged during chemical reactions. The periodic table is a key tool for understanding the properties of elements. The energy changes and rates of these reactions are also central concepts.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },

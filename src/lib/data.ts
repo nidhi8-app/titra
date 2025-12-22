@@ -1,50 +1,84 @@
 
 import type { Card, Deck, Note, Friend, QuizQuestion } from './types';
-import { Beaker, Atom, FlaskConical, BookText, Network, Scale, Microscope, TestTube, ChevronsRightLeft, Rows, Link, CircleDashed } from 'lucide-react';
+import { Beaker, Atom, FlaskConical, BookText, Network, Scale, Microscope, TestTube, ChevronsRightLeft, Rows, Link, CircleDashed, Thermometer, Gauge, TestTube2, Cloud, Recycle, BrainCircuit, Key } from 'lucide-react';
 
 
 export const initialDecks: Deck[] = [
   {
-    id: '1',
-    title: 'Chemical Symbols, Formulae & Equations',
+    id: 'deck1',
+    title: '4.1 Atomic structure and the periodic table',
     cards: [
-        { id: 'q1', title: 'Chemical symbols and formulae', color: 'bg-yellow-400', cardCount: 10, progress: -1, imageId: 'c1', emoji: BookText },
-        { id: 'q2', title: 'Word and balanced chemical equations', color: 'bg-pink-400', cardCount: 10, progress: -1, imageId: 'c2', emoji: ChevronsRightLeft },
+        { id: 'topic1', title: 'Atomic structure and the periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: Atom },
     ]
   },
   {
-    id: '2',
-    title: 'Chemical Bonding and Structure',
+    id: 'deck2',
+    title: '4.2 Bonding, structure, and the properties of matter',
     cards: [
-        { id: 'q3', title: 'Ionic Bonding', color: 'bg-green-400', cardCount: 10, progress: -1, imageId: 'c8', emoji: Atom },
-        { id: 'q4', title: 'Covalent Bonding', color: 'bg-sky-400', cardCount: 10, progress: -1, imageId: 'c9', emoji: Link },
-        { id: 'q5', title: 'Metallic Bonding', color: 'bg-amber-400', cardCount: 5, progress: -1, imageId: 'c12', emoji: CircleDashed },
-        { id: 'q6', title: 'Limitations of Models', color: 'bg-rose-400', cardCount: 5, progress: -1, imageId: 'c10', emoji: Network },
+        { id: 'topic2', title: 'Bonding, structure, and properties', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c9', emoji: Link },
     ]
   },
   {
-    id: '3',
-    title: 'Stoichiometric relationships',
+    id: 'deck3',
+    title: '4.3 Quantitative chemistry',
     cards: [
-        { id: 'c1', title: 'Introduction to the particulate nature of matter and chemical change', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c1', emoji: Microscope },
-        { id: 'c2', title: 'The mole concept', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c2', emoji: Scale },
-        { id: 'c3', title: 'Reacting masses and volumes', color: 'bg-blue-400', cardCount: 0, progress: 0, imageId: 'c3', emoji: Beaker },
+        { id: 'topic3', title: 'Quantitative chemistry', color: 'bg-yellow-400', cardCount: 0, progress: 0, imageId: 'c2', emoji: Scale },
     ]
   },
   {
-    id: '4',
-    title: 'Atomic structure',
+    id: 'deck4',
+    title: '4.4 Chemical changes',
     cards: [
-        { id: 'c4', title: 'The nuclear atom', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c4', emoji: Atom },
-        { id: 'c5', title: 'Electron configuration', color: 'bg-sky-400', cardCount: 0, progress: 0, imageId: 'c5', emoji: TestTube },
+        { id: 'topic4', title: 'Chemical changes', color: 'bg-green-400', cardCount: 0, progress: 0, imageId: 'c3', emoji: Beaker },
     ]
   },
   {
-    id: '5',
-    title: 'Periodicity',
+    id: 'deck5',
+    title: '4.5 Energy changes',
     cards: [
-      { id: 'c6', title: 'Periodic table', color: 'bg-red-400', cardCount: 0, progress: 0, imageId: 'c6', emoji: Rows },
-      { id: 'c7', title: 'Periodic trends', color: 'bg-fuchsia-400', cardCount: 0, progress: 0, imageId: 'c7', emoji: FlaskConical },
+        { id: 'topic5', title: 'Energy changes', color: 'bg-orange-400', cardCount: 0, progress: 0, imageId: 'c13', emoji: Thermometer },
+    ]
+  },
+  {
+    id: 'deck6',
+    title: '4.6 The rate and extent of chemical change',
+    cards: [
+        { id: 'topic6', title: 'Rate and extent of chemical change', color: 'bg-indigo-400', cardCount: 0, progress: 0, imageId: 'c16', emoji: Gauge },
+    ]
+  },
+  {
+    id: 'deck7',
+    title: '4.7 Organic chemistry',
+    cards: [
+        { id: 'topic7', title: 'Organic chemistry', color: 'bg-purple-400', cardCount: 0, progress: 0, imageId: 'c10', emoji: TestTube2 },
+    ]
+  },
+  {
+    id: 'deck8',
+    title: '4.8 Chemical analysis',
+    cards: [
+        { id: 'topic8', title: 'Chemical analysis', color: 'bg-pink-400', cardCount: 0, progress: 0, imageId: 'c19', emoji: Microscope },
+    ]
+  },
+  {
+    id: 'deck9',
+    title: '4.9 Chemistry of the atmosphere',
+    cards: [
+        { id: 'topic9', title: 'Chemistry of the atmosphere', color: 'bg-teal-400', cardCount: 0, progress: 0, imageId: 'c22', emoji: Cloud },
+    ]
+  },
+  {
+    id: 'deck10',
+    title: '4.10 Using resources',
+    cards: [
+        { id: 'topic10', title: 'Using resources', color: 'bg-lime-400', cardCount: 0, progress: 0, imageId: 'c11', emoji: Recycle },
+    ]
+  },
+  {
+    id: 'deck11',
+    title: '4.11 Key ideas',
+    cards: [
+        { id: 'topic11', title: 'Key ideas', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c15', emoji: Key },
     ]
   },
 ];

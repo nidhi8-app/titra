@@ -8,24 +8,38 @@ export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
   'deck1': [
     {
         title: 'Atoms, elements and compounds',
-        body: `All substances are made of atoms. An atom is the smallest part of an element that can exist.
-Atoms of each element are represented by a chemical symbol, eg O represents an atom of oxygen, Na represents an atom of sodium.
-There are about 100 different elements. Elements are shown in the periodic table.
+        body: `All substances are made of atoms. An atom is the smallest part of
+an element that can exist.
+Atoms of each element are represented by a chemical symbol, eg
+O represents an atom of oxygen, Na represents an atom of sodium.
+There are about 100 different elements. Elements are shown in the
+periodic table.
 Compounds are formed from elements by chemical reactions.
-Chemical reactions always involve the formation of one or more new substances, and often involve a detectable energy change.
-Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae using the symbols of the atoms from which they were formed. Compounds can only be separated into elements by chemical reactions.`,
+Chemical reactions always involve the formation of one or more
+new substances, and often involve a detectable energy change.
+Compounds contain two or more elements chemically combined in
+fixed proportions and can be represented by formulae using the
+symbols of the atoms from which they were formed. Compounds
+can only be separated into elements by chemical reactions.
+Chemical reactions can be represented by word equations or
+equations using symbols and formulae.
+Students should be able to:
+• use the names and symbols of the first 20 elements in the
+periodic table, the elements in Groups 1 and 7, and other
+elements in this specification
+• name compounds of these elements from given formulae or
+symbol equations
+• write word equations for the reactions in this specification
+• write formulae and balanced chemical equations for the
+reactions in this specification.
+(HT only) write balanced half equations and ionic equations where
+appropriate.`,
         createdAt: new Date(),
         updatedAt: new Date(),
     },
     {
         title: 'Equations and Specifications',
-        body: `Chemical reactions can be represented by word equations or equations using symbols and formulae.
-Students should be able to:
-• use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
-• name compounds of these elements from given formulae or symbol equations
-• write word equations for the reactions in this specification
-• write formulae and balanced chemical equations for the reactions in this specification.
-(HT only) write balanced half equations and ionic equations where appropriate.`,
+        body: `Chemical reactions can be represented by word equations or equations using symbols and formulae. Students should be able to: use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification; name compounds of these elements from given formulae or symbol equations; write word equations for the reactions in this specification; write formulae and balanced chemical equations for the reactions in this specification. (HT only) write balanced half equations and ionic equations where appropriate.`,
         createdAt: new Date(),
         updatedAt: new Date(),
     }

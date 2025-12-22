@@ -430,7 +430,7 @@ export default function Home() {
           </div>
         );
       case "learning-style":
-        return <LearningStyle learnerType={learnerType} setLearnerType={setLearnerType} />;
+        return <LearningStyle userDetails={userDetails} setUserDetails={handleUpdateUserDetails} />;
       case "quizzes":
         return <QuizView 
             quizSource={quizSource}

@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/dialog";
 import LearningStyleQuiz from './LearningStyleQuiz';
 import { ResourceDialog, Resource } from './ResourceDialog';
+import type { UserDetails } from '@/lib/types';
 
 
 const diagramFolders: Resource[] = [
@@ -89,17 +90,24 @@ const gamificationFolders: Resource[] = [
 ];
 
 type LearningStyleProps = {
-  learnerType: string;
-  setLearnerType: (type: string) => void;
+  userDetails: UserDetails | null;
+  setUserDetails: (details: UserDetails | null) => void;
 };
 
-const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
+const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
+  const learnerType = userDetails?.learningStyle || 'Visual';
   const [selectedStyle, setSelectedStyle] = useState(learnerType);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [isPodcastListOpen, setIsPodcastListOpen] = useState(false);
   const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
+
+  const setLearnerType = (style: string) => {
+    if (userDetails) {
+      setUserDetails({ ...userDetails, learningStyle: style });
+    }
+  };
 
   const handleSave = () => {
     setLearnerType(selectedStyle);
@@ -338,7 +346,3 @@ const LearningStyle = ({ learnerType, setLearnerType }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
-
-    
-
-    

@@ -382,21 +382,23 @@ export default function Home() {
   }, [quizScores]);
 
   React.useEffect(() => {
-    document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic");
-    switch (learnerType) {
-      case 'Auditory':
-        document.body.classList.add('theme-auditory');
-        break;
-      case 'Kinesthetic':
-        document.body.classList.add('theme-kinesthetic');
-        break;
-      case 'Reading/Writing':
-      case 'Visual':
-      default:
-        document.body.classList.add('theme-visual');
-        break;
+    if (isAppLoaded) {
+      document.body.classList.remove("theme-visual", "theme-auditory", "theme-kinesthetic");
+      switch (learnerType) {
+        case 'Auditory':
+          document.body.classList.add('theme-auditory');
+          break;
+        case 'Kinesthetic':
+          document.body.classList.add('theme-kinesthetic');
+          break;
+        case 'Reading/Writing':
+        case 'Visual':
+        default:
+          document.body.classList.add('theme-visual');
+          break;
+      }
     }
-  }, [learnerType]);
+  }, [learnerType, isAppLoaded]);
 
   if (!isAppLoaded) {
     return null; // or a loading spinner
@@ -553,3 +555,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    

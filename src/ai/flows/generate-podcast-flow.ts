@@ -20,6 +20,9 @@ const GeneratePodcastOutputSchema = z.object({
 export type GeneratePodcastOutput = z.infer<typeof GeneratePodcastOutputSchema>;
 
 export async function generatePodcast(text: string): Promise<GeneratePodcastOutput> {
+  if (!process.env.GEMINI_API_KEY) {
+      throw new Error("The AI podcast feature is disabled. Please add your Gemini API key to the .env file to enable it.");
+  }
   return generatePodcastFlow(text);
 }
 
@@ -57,9 +60,6 @@ const generatePodcastFlow = ai.defineFlow(
     outputSchema: GeneratePodcastOutputSchema,
   },
   async (query) => {
-    if (!process.env.GEMINI_API_KEY) {
-        throw new Error("The AI podcast feature is disabled. Please add your Gemini API key to the .env file to enable it.");
-    }
     
     const { media } = await ai.generate({
       model: googleAI.model('gemini-2.5-flash-preview-tts'),
@@ -87,5 +87,7 @@ const generatePodcastFlow = ai.defineFlow(
     };
   }
 );
+
+    
 
     

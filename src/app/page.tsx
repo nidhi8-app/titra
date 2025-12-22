@@ -93,7 +93,7 @@ export default function Home() {
     return collection(firestore, `users/${user.uid}/notes`);
   }, [user, firestore]);
 
-  const { data: notes } = useCollection<Note>(notesCollectionRef);
+  const { data: notes, isLoading: isNotesLoading } = useCollection<Note>(notesCollectionRef);
   
   // Load quiz scores from local storage
     React.useEffect(() => {
@@ -163,18 +163,14 @@ export default function Home() {
   // Seed initial notes
   React.useEffect(() => {
     const seedInitialNotes = async () => {
-        if (user && firestore && notes !== undefined && notesCollectionRef) {
-            const hasSeededKey = `hasSeededNotes-${user.uid}`;
+        if (user && firestore && notes !== undefined && notesCollectionRef && !isNotesLoading) {
+            const hasSeededKey = `hasSeededNotes-v2-${user.uid}`; // Use a new version key
             const hasSeeded = localStorage.getItem(hasSeededKey);
 
             if (!hasSeeded) {
-                // Check if there are any notes for the initial decks already.
-                const initialDeckIds = initialDecks.map(d => d.id);
-                const q = query(notesCollectionRef, where('deckId', 'in', initialDeckIds));
-                const existingNotesSnapshot = await getDocs(q);
-
-                if (existingNotesSnapshot.empty) {
-                    console.log("Seeding initial notes...");
+                const notesSnapshot = await getDocs(notesCollectionRef);
+                if (notesSnapshot.empty) {
+                    console.log("Seeding initial notes for all decks...");
                     const batch = writeBatch(firestore);
                     Object.entries(initialNotesData).forEach(([deckId, notesToSeed]) => {
                         notesToSeed.forEach(noteContent => {
@@ -183,6 +179,7 @@ export default function Home() {
                         });
                     });
                     await batch.commit();
+                    console.log("Initial notes committed.");
                 }
                 localStorage.setItem(hasSeededKey, 'true');
             }
@@ -191,7 +188,7 @@ export default function Home() {
     
     seedInitialNotes();
 
-  }, [user, firestore, notes, notesCollectionRef]);
+  }, [user, firestore, notes, notesCollectionRef, isNotesLoading]);
   
   React.useEffect(() => {
     // We wait for the user state to be determined.

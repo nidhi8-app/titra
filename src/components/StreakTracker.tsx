@@ -145,7 +145,7 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTracker
    const progress = totalTasks > 0 ? (todayTasksCompleted / totalTasks) * 100 : 0;
    
     const chartData = [
-      { name: "Progress", value: progress, fill: "hsl(var(--accent))" },
+      { name: "Progress", value: progress, fill: "#A7F3D0" },
       { name: "Remaining", value: 100 - progress, fill: "hsl(var(--secondary))" },
     ];
 
@@ -248,5 +248,3 @@ const StreakTracker = ({ onStartQuizzing, dailyActivity, streak }: StreakTracker
 };
 
 export default StreakTracker;
-
-    

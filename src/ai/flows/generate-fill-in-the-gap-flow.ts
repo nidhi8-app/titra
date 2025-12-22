@@ -39,6 +39,9 @@ export type GenerateFillInTheGapOutput = z.infer<typeof GenerateFillInTheGapOutp
 
 
 export async function generateFillInTheGap(input: GenerateFillInTheGapInput): Promise<GenerateFillInTheGapOutput> {
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+        throw new Error("The AI feature is not configured. Please add your GEMINI_API_KEY to the .env file to use this feature.");
+    }
     return generateFillInTheGapFlow(input);
 }
 
@@ -79,9 +82,6 @@ const generateFillInTheGapFlow = ai.defineFlow(
         outputSchema: GenerateFillInTheGapOutputSchema,
     },
     async (input) => {
-        if (!process.env.GEMINI_API_KEY) {
-            throw new Error("The AI feature is not configured. Please add your GEMINI_API_KEY to the .env file to use this feature.");
-        }
         const { output } = await prompt(input);
         return output!;
     }

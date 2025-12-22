@@ -227,7 +227,6 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
                 questions: result.questions,
                 style: format,
             });
-            setIsGenerating(false);
         } else {
             throw new Error("AI failed to generate fill-in-the-gap questions.");
         }
@@ -235,8 +234,8 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
         console.error("Failed to generate fill-in-the-gap quiz:", error);
         const errorMessage = error.message || "Could not generate quiz. Please try again.";
         toast({ title: "Generation Failed", description: errorMessage, variant: "destructive" });
-        setIsGenerating(false);
     } finally {
+        setIsGenerating(false);
         setFillInTheGapTopic(null);
     }
   }

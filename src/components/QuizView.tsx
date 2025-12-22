@@ -9,7 +9,6 @@ import { Progress } from './ui/progress';
 import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
 import WritingQuestionCard from './WritingQuestionCard';
-import { useUser } from '@/firebase';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -328,5 +327,7 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
 };
 
 export default QuizView;
+
+    
 
     

@@ -180,3 +180,5 @@ const WritingQuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learni
 };
 
 export default WritingQuestionCard;
+
+    

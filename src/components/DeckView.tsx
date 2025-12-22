@@ -67,21 +67,26 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
     }, [notesText, toast]);
 
     return (
-        <div className="p-4 rounded-lg bg-muted/30 border mb-6">
-            <h4 className="font-bold text-lg mb-2">Topic Summary</h4>
-            {isLoading && (
-                <div className="flex items-center">
-                    <Loader2 className="w-5 h-5 animate-spin text-primary" />
-                    <p className="ml-2 text-muted-foreground">Generating summary...</p>
-                </div>
-            )}
-            {error && <p className="text-red-500">{error}</p>}
-            {summary && (
-                 <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
-                    {summary}
-                </div>
-            )}
-        </div>
+        <Card className="mb-6">
+            <CardHeader>
+                <CardTitle>Topic Summary</CardTitle>
+                <CardDescription>A quick overview of the key points in this deck.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                {isLoading && (
+                    <div className="flex items-center">
+                        <Loader2 className="w-5 h-5 animate-spin text-primary" />
+                        <p className="ml-2 text-muted-foreground">Generating summary...</p>
+                    </div>
+                )}
+                {error && <p className="text-red-500">{error}</p>}
+                {summary && (
+                    <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                        {summary}
+                    </div>
+                )}
+            </CardContent>
+        </Card>
     )
 };
 
@@ -95,11 +100,6 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
     useEffect(() => {
         const generateAudio = async () => {
             if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-                toast({
-                    variant: "destructive",
-                    title: "Google AI API Key is Not Set",
-                    description: "Please set your GEMINI_API_KEY in the .env file to use this feature.",
-                });
                 setError("The AI feature is not configured. Please add an API key.");
                 setIsLoading(false);
                 return;
@@ -218,7 +218,6 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: Note
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-          <NotesSummary notesText={combinedNotes} />
           {renderLearningContent()}
       </CardContent>
     </Card>
@@ -240,6 +239,11 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   }, [user, firestore, deck.id]);
   
   const { data: deckNotes, isLoading } = useCollection<Note>(notesQuery);
+  const combinedNotesText = useMemo(() => {
+    if (!deckNotes) return "";
+    return deckNotes.map(n => `### ${n.title}\n\n${n.body}`).join('\n\n---\n\n');
+  }, [deckNotes]);
+
 
   const handleGenerateQuiz = async () => {
     if (!deckNotes || deckNotes.length === 0) {
@@ -313,6 +317,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
     return (
         <div className="space-y-6">
+            <NotesSummary notesText={combinedNotesText} />
             <LearningStyleContent notes={deckNotes} learningStyle={userDetails?.learningStyle || 'Reading/Writing'} deckTitle={deck.title} />
             <Card>
                 <CardHeader>
@@ -345,3 +350,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+  

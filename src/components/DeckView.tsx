@@ -4,16 +4,18 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Play, Pause, RotateCcw } from 'lucide-react';
+import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { generatePodcast } from '@/ai/flows/generate-podcast-flow';
-import { summarizeNotes } from '@/ai/flows/summarize-notes-flow';
 import type { GeneratePodcastOutput } from '@/ai/flows/generate-podcast-flow';
+import { summarizeNotes } from '@/ai/flows/summarize-notes-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
+import { initialNotesData, type InitialNoteSeed } from '@/lib/initial-notes';
+
 
 type DeckViewProps = {
   deck: Deck;
@@ -93,7 +95,7 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
 
 const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string }) => {
     const [podcast, setPodcast] = useState<GeneratePodcastOutput | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { toast } = useToast();
 
@@ -182,7 +184,7 @@ const PodcastPlayer = ({ title, notesText }: { title: string, notesText: string 
 };
 
 
-const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: Note[], learningStyle: string, deckTitle: string }) => {
+const LearningStyleContent = ({ notes, learningStyle, deckTitle }: { notes: (Note | InitialNoteSeed)[], learningStyle: string, deckTitle: string }) => {
   const combinedNotes = useMemo(() => notes.map(n => `### ${n.title}\n\n${n.body}`).join('\n\n---\n\n'), [notes]);
 
   const styleInfo = {
@@ -238,7 +240,19 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     );
   }, [user, firestore, deck.id]);
   
-  const { data: deckNotes, isLoading } = useCollection<Note>(notesQuery);
+  const { data: userNotes, isLoading } = useCollection<Note>(notesQuery);
+
+  const deckNotes = useMemo(() => {
+    const initial = initialNotesData[deck.id] || [];
+    if (isLoading) {
+      return initial;
+    }
+    if (userNotes && userNotes.length > 0) {
+      return userNotes;
+    }
+    return initial;
+  }, [deck.id, userNotes, isLoading]);
+  
   const combinedNotesText = useMemo(() => {
     if (!deckNotes) return "";
     return deckNotes.map(n => `### ${n.title}\n\n${n.body}`).join('\n\n---\n\n');
@@ -351,4 +365,4 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
 export default DeckView;
 
-  
+    

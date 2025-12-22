@@ -32,9 +32,8 @@ import Login from "@/components/Login";
 import { Button } from "@/components/ui/button";
 import { useUser, useAuth, useFirestore, setDocumentNonBlocking, useCollection, useMemoFirebase } from "@/firebase";
 import { signOut } from "firebase/auth";
-import { collection, doc, getDocs, query, writeBatch, where } from 'firebase/firestore';
+import { collection, doc } from 'firebase/firestore';
 import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
-import { initialNotesData } from "@/lib/initial-notes";
 import { format, isSameDay, parseISO, subDays, differenceInCalendarDays } from "date-fns";
 
 
@@ -160,36 +159,6 @@ export default function Home() {
         });
     }, [user]);
 
-  // Seed initial notes
-  React.useEffect(() => {
-    const seedInitialNotes = async () => {
-        if (user && firestore && notes !== undefined && notesCollectionRef && !isNotesLoading) {
-            const hasSeededKey = `hasSeededNotes-v2-${user.uid}`; // Use a new version key
-            const hasSeeded = localStorage.getItem(hasSeededKey);
-
-            if (!hasSeeded) {
-                const notesSnapshot = await getDocs(notesCollectionRef);
-                if (notesSnapshot.empty) {
-                    console.log("Seeding initial notes for all decks...");
-                    const batch = writeBatch(firestore);
-                    Object.entries(initialNotesData).forEach(([deckId, notesToSeed]) => {
-                        notesToSeed.forEach(noteContent => {
-                            const noteDocRef = doc(notesCollectionRef);
-                            batch.set(noteDocRef, { ...noteContent, deckId });
-                        });
-                    });
-                    await batch.commit();
-                    console.log("Initial notes committed.");
-                }
-                localStorage.setItem(hasSeededKey, 'true');
-            }
-        }
-    };
-    
-    seedInitialNotes();
-
-  }, [user, firestore, notes, notesCollectionRef, isNotesLoading]);
-  
   React.useEffect(() => {
     // We wait for the user state to be determined.
     if (!isUserLoading) {
@@ -577,3 +546,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+    

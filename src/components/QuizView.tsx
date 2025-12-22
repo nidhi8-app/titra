@@ -239,6 +239,11 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
         setFillInTheGapTopic(null);
     }
   }
+
+  const handleCloseDialog = () => {
+    setIsFillInTheGapDialogOpen(false);
+    setFillInTheGapTopic(null);
+  };
   
   if (isGenerating) {
     return (
@@ -315,7 +320,7 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
       </div>
       <FillInTheGapDialog 
         isOpen={isFillInTheGapDialogOpen}
-        onClose={() => setIsFillInTheGapDialogOpen(false)}
+        onClose={handleCloseDialog}
         onSelectFormat={handleFillInTheGapFormatSelect}
       />
     </>

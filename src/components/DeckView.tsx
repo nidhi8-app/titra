@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { ScrollArea } from './ui/scroll-area';
 import { initialNotesData, type InitialNoteSeed } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
+import KinestheticQuizView from './KinestheticQuizView';
 
 
 type DeckViewProps = {
@@ -233,6 +234,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const firestore = useFirestore();
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
+  const [kinestheticQuiz, setKinestheticQuiz] = useState<string | null>(null);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -278,15 +280,6 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
       return;
     }
     
-    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-        toast({
-            variant: "destructive",
-            title: "AI Feature Disabled",
-            description: "Please add your Gemini API key to the .env file to generate a quiz.",
-        });
-        return;
-    }
-    
     if (!userDetails?.learningStyle) {
       toast({
         variant: "destructive",
@@ -294,6 +287,21 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
         description: "Please set your learning style in the 'Learning Style' tab before generating a quiz.",
       });
       return;
+    }
+    
+    // Kinesthetic Quiz Handler
+    if (userDetails.learningStyle === 'Kinesthetic' && deck.id === 'deck1') {
+        setKinestheticQuiz(deck.title);
+        return;
+    }
+    
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+        toast({
+            variant: "destructive",
+            title: "AI Feature Disabled",
+            description: "Please add your Gemini API key to the .env file to generate a quiz.",
+        });
+        return;
     }
 
     setIsGeneratingQuiz(true);
@@ -322,6 +330,10 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     }
   };
   
+  if (kinestheticQuiz) {
+    return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} />;
+  }
+
   const renderContent = () => {
     if (isLoading && !userNotes) {
       return (

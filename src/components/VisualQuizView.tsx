@@ -4,11 +4,10 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key } from 'lucide-react';
+import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key, Atom, TestTube, Thermometer, Sigma } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { Checkbox } from './ui/checkbox';
 
 type VisualQuizViewProps = {
     title: string;
@@ -40,80 +39,70 @@ const VisualQuizView = ({ title, onBack }: VisualQuizViewProps) => {
 
                         <hr />
                         
-                        <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: CONCEPT MAP</h3>
-                        <p><strong>1. Flow diagram</strong>: Draw a flow diagram showing how elements form compounds. Include the words 'chemical reaction', 'new substances', and 'energy change'.</p>
+                        <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: BIG-PICTURE DIAGRAMS</h3>
+                        <p><strong>1️⃣ Concept map (draw, don’t write paragraphs)</strong></p>
+                        <p>Draw a concept map starting with 'Atoms' in the centre. Add branches to: elements, compounds, mixtures, chemical reactions. On each branch, add one key fact from the notes.</p>
+                        <p className="mt-4"><strong>2️⃣ Before vs After (box diagrams)</strong></p>
+                        <p>Draw two pairs of boxes: Pair A (Chemical reaction) and Pair B (Mixture). Label 'Before' and 'After' for each, and mark whether new substances are formed and if a chemical reaction was involved.</p>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger>Check Answer</AccordionTrigger>
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
-                                <p className="font-semibold">Example flow diagram:</p>
-                                <div className="text-center border p-4 rounded-md">
-                                    <p>Elements</p>
-                                    <p>↓ <span className="italic text-sm">(chemical reaction)</span></p>
-                                    <p>Compound formed</p>
-                                    <p>↓ <span className="italic text-sm">(energy change)</span></p>
-                                    <p>New substance</p>
-                                </div>
+                                <p className="font-semibold">Example Concept Map Facts:</p>
+                                <ul className="text-sm">
+                                  <li><strong>Atoms:</strong> Smallest part of an element.</li>
+                                  <li><strong>Elements:</strong> Made of one type of atom.</li>
+                                  <li><strong>Compounds:</strong> 2+ elements chemically combined.</li>
+                                  <li><strong>Mixtures:</strong> Not chemically combined.</li>
+                                  <li><strong>Chemical reactions:</strong> Form new substances.</li>
+                                </ul>
+                                <p className="font-semibold mt-4">Before vs After Boxes:</p>
+                                <ul className="text-sm">
+                                    <li><strong>Pair A (Chemical Reaction):</strong> "new substances formed" ✔, "chemical reaction involved" ✔</li>
+                                    <li><strong>Pair B (Mixture):</strong> "new substances formed" ✖, "chemical reaction involved" ✖</li>
+                                </ul>
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
                         
                         <hr />
 
-                        <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 2: SYMBOLS & REPRESENTATION</h3>
-                        <p><strong>2. Matching</strong>: Draw lines to match each symbol to the correct word.</p>
-                        <div className="flex justify-around text-2xl font-bold p-4">
-                            <div>O</div>
-                            <div>Na</div>
-                        </div>
-                        <div className="flex justify-around text-2xl p-4">
-                            <div>oxygen</div>
-                            <div>sodium</div>
-                        </div>
-                        <p><strong>3. Triangle link</strong>: Draw a triangle and label the corners: chemical symbol, element name, atom. Fill it in for Oxygen.</p>
+                        <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 2: ATOMIC MODELS (TIMELINE)</h3>
+                        <p><strong>3️⃣ Timeline task</strong></p>
+                        <p>Draw a horizontal timeline and place these in order: tiny solid sphere, plum pudding model, nuclear model, Bohr model, proton, neutron. Add one visual detail (dot, circle, shading) to each model.</p>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-2">
-                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionTrigger>Check Answer</AccordionTrigger>
                             <AccordionContent>
-                                <p><strong>Matching:</strong> O should be connected to oxygen, and Na to sodium.</p>
-                                <p><strong>Triangle:</strong> The corners should be 'O', 'oxygen', and 'atom'.</p>
+                                <p className="font-semibold text-sm">Correct Order:</p>
+                                <ol className="list-decimal pl-6 text-sm">
+                                    <li>Tiny solid sphere (solid circle)</li>
+                                    <li>Plum pudding model (circle with dots inside)</li>
+                                    <li>Nuclear model (circle with central dot)</li>
+                                    <li>Bohr model (central dot with rings)</li>
+                                    <li>Proton (discovered within nucleus)</li>
+                                    <li>Neutron (discovered within nucleus)</li>
+                                </ol>
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
 
                         <hr />
 
-                        <h3 className="flex items-center gap-2"><Rows className="text-accent" />SECTION 3: SPOT THE DIFFERENCE (TABLE)</h3>
-                        <p><strong>4. Complete the table</strong>: Use short phrases, not sentences.</p>
+                        <h3 className="flex items-center gap-2"><Rows className="text-accent" />SECTION 3: SUBATOMIC PARTICLES (TABLE COMPLETION)</h3>
+                        <p><strong>4️⃣ Complete the table</strong>: Then circle the particle with no charge and the one with very small mass.</p>
                         <Table>
                             <TableHeader>
                                 <TableRow>
-                                    <TableHead>Feature</TableHead>
-                                    <TableHead>Element</TableHead>
-                                    <TableHead>Compound</TableHead>
+                                    <TableHead>Particle</TableHead>
+                                    <TableHead>Relative charge</TableHead>
+                                    <TableHead>Relative mass</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>Number of elements</TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>How it is formed</TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                </TableRow>
-                                 <TableRow>
-                                    <TableCell>How it can be separated</TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Representation</TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                </TableRow>
+                                <TableRow><TableCell>Proton</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                                <TableRow><TableCell>Neutron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                                <TableRow><TableCell>Electron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
                             </TableBody>
                         </Table>
                          <Accordion type="single" collapsible className="w-full">
@@ -121,34 +110,10 @@ const VisualQuizView = ({ title, onBack }: VisualQuizViewProps) => {
                             <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHead>Feature</TableHead>
-                                            <TableHead>Element</TableHead>
-                                            <TableHead>Compound</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
                                     <TableBody>
-                                        <TableRow>
-                                            <TableCell>Number of elements</TableCell>
-                                            <TableCell>One</TableCell>
-                                            <TableCell>Two or more</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>How it is formed</TableCell>
-                                            <TableCell>N/A</TableCell>
-                                            <TableCell>Chemical reaction</TableCell>
-                                        </TableRow>
-                                         <TableRow>
-                                            <TableCell>How it can be separated</TableCell>
-                                            <TableCell>Cannot be simplified</TableCell>
-                                            <TableCell>Only by chemical reaction</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Representation</TableCell>
-                                            <TableCell>Symbol</TableCell>
-                                            <TableCell>Formula</TableCell>
-                                        </TableRow>
+                                        <TableRow><TableCell>Proton</TableCell><TableCell>+1</TableCell><TableCell>1</TableCell></TableRow>
+                                        <TableRow><TableCell><strong>Neutron (circled)</strong></TableCell><TableCell><strong>0</strong></TableCell><TableCell>1</TableCell></TableRow>
+                                        <TableRow><TableCell><strong>Electron (circled)</strong></TableCell><TableCell>-1</TableCell><TableCell><strong>Very small</strong></TableCell></TableRow>
                                     </TableBody>
                                 </Table>
                             </AccordionContent>
@@ -157,23 +122,17 @@ const VisualQuizView = ({ title, onBack }: VisualQuizViewProps) => {
                         
                         <hr />
 
-                        <h3 className="flex items-center gap-2"><CheckCircle className="text-accent" />SECTION 4: TRUE / FALSE (VISUAL MARKING)</h3>
-                        <p><strong>5. Colour code</strong>: Green ✔️ = true, Red ✖️ = false. Then correct the false ones underneath.</p>
-                        <ul>
-                            <li>All substances are made of atoms</li>
-                            <li>Compounds contain one element</li>
-                            <li>Chemical reactions form new substances</li>
-                            <li>Compounds can be separated by physical processes</li>
-                        </ul>
+                         <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 4: SIZE & SCALE</h3>
+                         <p><strong>5️⃣ Scale drawing</strong></p>
+                         <p>Draw a large circle for an atom and a tiny dot in the centre for the nucleus. Label the atom radius and nucleus radius. Then add an arrow pointing to where almost all the mass is.</p>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-4">
-                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionTrigger>Check Answer</AccordionTrigger>
                             <AccordionContent>
-                                <ul>
-                                    <li><span className="text-green-500">✔️ True</span>: All substances are made of atoms</li>
-                                    <li><span className="text-red-500">✖️ False</span>: Compounds contain **two or more** elements chemically combined.</li>
-                                    <li><span className="text-green-500">✔️ True</span>: Chemical reactions form new substances</li>
-                                    <li><span className="text-red-500">✖️ False</span>: Compounds can only be separated by **chemical reactions**.</li>
+                                <ul className="text-sm">
+                                    <li>Atom radius: 0.1 nm (1 × 10⁻¹⁰ m)</li>
+                                    <li>Nucleus radius: &lt;1/10,000 of atom (1 × 10⁻¹⁴ m)</li>
+                                    <li>Arrow should point to the nucleus, labelled "almost all mass here".</li>
                                 </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -181,20 +140,89 @@ const VisualQuizView = ({ title, onBack }: VisualQuizViewProps) => {
 
                         <hr />
                         
-                        <h3 className="flex items-center gap-2"><Key className="text-accent" />SECTION 5: EXAM SKILLS CHECKLIST</h3>
-                        <p><strong>6. Tick the boxes</strong>: Draw a checklist and tick what students should be able to do.</p>
-                        <div className="space-y-2">
-                            <div className="flex items-center space-x-2"><Checkbox id="es1" /> <label htmlFor="es1">use names and symbols of elements</label></div>
-                            <div className="flex items-center space-x-2"><Checkbox id="es2" /> <label htmlFor="es2">name compounds from formulae</label></div>
-                            <div className="flex items-center space-x-2"><Checkbox id="es3" /> <label htmlFor="es3">write word equations</label></div>
-                            <div className="flex items-center space-x-2"><Checkbox id="es4" /> <label htmlFor="es4">write formulae and balanced chemical equations</label></div>
-                            <div className="flex items-center space-x-2"><Checkbox id="es5" /> <label htmlFor="es5">(HT only) write half equations and ionic equations</label></div>
-                        </div>
+                        <h3 className="flex items-center gap-2"><Sigma className="text-accent" />SECTION 5: ELECTRONIC STRUCTURE</h3>
+                        <p><strong>6️⃣ Shell diagram</strong></p>
+                        <p>Draw the electronic structure of sodium as a shell diagram OR numbers (2,8,1). Circle the outer shell.</p>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-5">
+                            <AccordionTrigger>Check Answer</AccordionTrigger>
+                            <AccordionContent>
+                                <p className="text-sm">Diagram should show a nucleus, an inner shell with 2 electrons, a second shell with 8 electrons, and an outer shell (circled) with 1 electron.</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
 
-                         <hr />
+                        <hr />
 
-                        <h3 className="flex items-center gap-2"><Brain className="text-accent" />SECTION 6: REDRAW FROM MEMORY (MOST IMPORTANT)</h3>
-                        <p><strong>7. Memory diagram</strong>: Without looking at notes, draw the entire topic as one diagram. Use arrows, boxes, and colour. Then compare with notes and add missing parts in a different colour.</p>
+                        <h3 className="flex items-center gap-2"><Key className="text-accent" />SECTION 6: PERIODIC TABLE PATTERNS</h3>
+                        <p><strong>7️⃣ Highlighting task</strong></p>
+                        <p>Draw a simplified periodic table grid and shade metals and non-metals, circle Groups 0, 1, and 7, and add arrows for reactivity trends.</p>
+                        <p className="mt-4"><strong>8️⃣ Group summary boxes</strong></p>
+                        <p>Draw three boxes for Groups 0, 1, and 7 and list their key properties using bullet points.</p>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-6">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                                <p className="font-semibold text-sm">Highlighting Task:</p>
+                                <ul className="text-sm">
+                                    <li>Metals shaded on the left, non-metals on the right.</li>
+                                    <li>Group 1 reactivity arrow points down (increases).</li>
+                                    <li>Group 7 reactivity arrow points up (decreases down the group).</li>
+                                </ul>
+                                <p className="font-semibold text-sm mt-2">Group Summary Boxes:</p>
+                                <ul className="text-sm">
+                                    <li><strong>Group 0:</strong> 8 outer electrons, unreactive, boiling point increases down group.</li>
+                                    <li><strong>Group 1:</strong> 1 outer electron, reactivity increases down group.</li>
+                                    <li><strong>Group 7:</strong> 7 outer electrons, reactivity decreases down group, can do displacement reactions.</li>
+                                </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+                        
+                        <h3 className="flex items-center gap-2"><CheckCircle className="text-accent" />SECTION 7: TRUE / FALSE (VISUAL MARKING)</h3>
+                        <p><strong>9️⃣ Colour-code</strong>: Use 🟢 for true and 🔴 for false. Correct the false ones using diagrams or arrows.</p>
+                         <ul className="list-none pl-0">
+                            <li>a) All substances are made of atoms</li>
+                            <li>b) Mixtures are chemically combined</li>
+                            <li>c) Atoms have no overall electrical charge</li>
+                            <li>d) Group 1 reactivity decreases down the group</li>
+                            <li>e) Group 7 reactivity increases down the group</li>
+                        </ul>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-7">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                                <ul className="list-none pl-0 text-sm">
+                                    <li>🟢 a) True</li>
+                                    <li>🔴 b) False (Correction: draw two separate substances in a box, not bonded)</li>
+                                    <li>🟢 c) True</li>
+                                    <li>🔴 d) False (Correction: draw arrow pointing down next to Group 1)</li>
+                                    <li>🔴 e) False (Correction: draw arrow pointing up next to Group 7)</li>
+                                </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+                        
+                        <h3 className="flex items-center gap-2"><TestTube className="text-accent" />SECTION 8: DISPLACEMENT VISUAL</h3>
+                        <p><strong>🔟 Displacement sketch</strong></p>
+                        <p>Draw a beaker with a halogen solution, showing a more reactive halogen displacing a less reactive one with arrows.</p>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-8">
+                            <AccordionTrigger>Check Answer</AccordionTrigger>
+                            <AccordionContent>
+                                <p className="text-sm">Example: An arrow from 'Chlorine' points to a beaker of 'Potassium Bromide solution', with an arrow pointing out labelled 'Bromine'. Chlorine should be labelled 'more reactive'.</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                        
+                        <hr />
+
+                        <h3 className="flex items-center gap-2"><Brain className="text-accent" />FINAL VISUAL CHECK (MOST IMPORTANT)</h3>
+                        <p><strong>1️⃣1️⃣ One-page redraw</strong>: Without notes, redraw the entire topic using diagrams, tables, and arrows. Then compare with your notes and add missing parts in a different colour.</p>
 
                         <div className="p-4 mt-6 bg-green-500/10 border-l-4 border-green-500 text-green-800 dark:text-green-300 rounded-lg">
                             <h4 className="font-bold flex items-center gap-2"><CheckCircle />Self-check rule</h4>
@@ -209,3 +237,4 @@ const VisualQuizView = ({ title, onBack }: VisualQuizViewProps) => {
 
 export default VisualQuizView;
 
+    

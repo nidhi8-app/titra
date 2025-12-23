@@ -4,25 +4,21 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Eye, Footprints, BookOpen } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
-import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
 import { initialNotesData, parseNotes } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
-import KinestheticQuizView from './KinestheticQuizView';
-import VisualQuizView from './VisualQuizView';
-import ReadingWritingQuizView from './ReadingWritingQuizView';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
 import { NestedAccordion } from './NestedAccordion';
 
 
 type DeckViewProps = {
   deck: Deck;
-  onQuiz: (questions: QuizQuestion[], deckTitle: string) => void;
+  onQuiz: (deckId: string, deckTitle: string) => void;
   userDetails: UserDetails | null;
   onNoteAdded: () => void;
 };
@@ -30,11 +26,11 @@ type DeckViewProps = {
 const NotesSummary = ({ notes }: { notes: Note[] }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
-        <Card>
-            <CardHeader>
+        <Card className="border-none shadow-none bg-transparent">
+            <CardHeader className="px-2">
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
                 <NestedAccordion sections={parsed} />
             </CardContent>
         </Card>
@@ -97,87 +93,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
       return;
     }
     
-    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-        toast({
-            variant: "destructive",
-            title: "AI Feature Disabled",
-            description: "Please add your Gemini API key to the .env file to generate a quiz.",
-        });
-        return;
-    }
-
-    setIsGeneratingQuiz(true);
-    try {
-      const notesContent = deckNotes.map(n => `Title: ${n.title}\nBody: ${n.body}`).join('\n\n---\n\n');
-      const result = await generateQuiz({
-        notes: notesContent,
-        learningStyle: userDetails.learningStyle,
-      });
-
-      if (result.questions && result.questions.length > 0) {
-        onQuiz(result.questions, deck.title);
-      } else {
-        throw new Error("AI did not return any questions.");
-      }
-    } catch (error: any) {
-      console.error("Failed to generate quiz:", error);
-      const errorMessage = error.message || "There was an error generating the quiz. Please try again.";
-      toast({
-          variant: "destructive",
-          title: "Quiz Generation Failed",
-          description: errorMessage,
-      });
-    } finally {
-      setIsGeneratingQuiz(false);
-    }
+    onQuiz(deck.id, deck.title);
   };
   
-  const renderLearningStyleActions = () => {
-    const style = userDetails?.learningStyle;
-    
-    let Icon;
-    let titleText = '';
-    let descriptionText = '';
-    let quizContent = null;
-
-    switch(style) {
-        case 'Visual':
-            Icon = Eye;
-            titleText = 'Learn as a Visual Learner';
-            descriptionText = 'Engage with this topic by drawing, connecting, and organizing information visually.';
-            quizContent = <VisualQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
-            break;
-        case 'Kinesthetic':
-            Icon = Footprints;
-            titleText = 'Learn as a Kinesthetic Learner';
-            descriptionText = 'Engage with this topic by doing, moving, and interacting with your environment.';
-            quizContent = <KinestheticQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
-            break;
-        case 'Reading/Writing':
-            Icon = BookOpen;
-            titleText = 'Learn as a Reading/Writing Learner';
-            descriptionText = 'Engage with this topic by writing, summarizing, and organizing text.';
-            quizContent = <ReadingWritingQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
-            break;
-        default:
-            return null; // or a default action
-    }
-
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Icon className="w-6 h-6" />
-                    {titleText}
-                </CardTitle>
-                <CardDescription>{descriptionText}</CardDescription>
-            </CardHeader>
-            <CardContent>
-                {quizContent}
-            </CardContent>
-        </Card>
-    );
-  };
 
   const renderContent = () => {
     if (isLoading && !userNotes) {
@@ -213,8 +131,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     Periodic Table
                 </Button>
             </div>
-            
-            {renderLearningStyleActions()}
 
             <Card>
                 <CardHeader>
@@ -222,7 +138,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                         <BrainCircuit className="w-6 h-6" />
                         Quiz Me
                     </CardTitle>
-                    <CardDescription>Test your knowledge with a generic quiz tailored to your learning style.</CardDescription>
+                    <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>
                 <CardContent>
                      <Button onClick={handleGenerateQuiz} disabled={isGeneratingQuiz} className="w-full" size="lg">

@@ -39,7 +39,7 @@ import { format, isSameDay, parseISO, subDays, differenceInCalendarDays } from "
 
 type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
 type AuthView = 'login' | 'signup';
-type QuizSource = {
+export type QuizSource = {
   type: 'pre-made',
   topic: TopicCard,
   style: string
@@ -52,6 +52,10 @@ type QuizSource = {
     topic: TopicCard,
     questions: QuizQuestion[],
     style: 'MCQ' | 'Writing'
+} | {
+    type: 'style-based',
+    deckId: string,
+    deckTitle: string,
 } | null;
 
 const LiveClock = () => {
@@ -302,8 +306,8 @@ export default function Home() {
     }
   }, [handleStartQuizFromDashboard]);
   
-  const handleGeneratedQuiz = React.useCallback((questions: QuizQuestion[], deckTitle: string) => {
-    setQuizSource({ type: 'generated', questions, deckTitle });
+  const handleGeneratedQuiz = React.useCallback((deckId: string, deckTitle: string) => {
+    setQuizSource({ type: 'style-based', deckId, deckTitle });
     setActiveView('quizzes');
     setSelectedDeckId(null);
     markTaskComplete('startQuiz');
@@ -463,6 +467,7 @@ export default function Home() {
         if (quizSource?.type === 'pre-made') return quizSource.topic.title;
         if (quizSource?.type === 'generated') return `Quiz: ${quizSource.deckTitle}`;
         if (quizSource?.type === 'fill-in-the-gap') return `Fill in the Gap: ${quizSource.topic.title}`;
+        if (quizSource?.type === 'style-based') return quizSource.deckTitle;
         return 'Quizzes';
     }
     switch (activeView) {
@@ -558,4 +563,5 @@ export default function Home() {
   );
 }
 
+    
     

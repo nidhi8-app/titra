@@ -6,11 +6,12 @@ import type { UserDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
-import { Pencil } from 'lucide-react';
+import { Pencil, BookImage } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { AvatarSelectionDialog } from './AvatarSelectionDialog';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { PeriodicTableDialog } from './PeriodicTableDialog';
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
@@ -43,6 +44,7 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
   const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
   const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
+  const [isPeriodicTableOpen, setIsPeriodicTableOpen] = useState(false);
 
   useEffect(() => {
     if (userDetails) {
@@ -189,6 +191,12 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                 </div>
             </CardContent>
         </Card>
+        <div className="max-w-2xl mx-auto mt-4">
+             <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableOpen(true)}>
+                <BookImage className="mr-2 h-4 w-4" />
+                Periodic Table
+            </Button>
+        </div>
         {isAvatarDialogOpen && (
              <AvatarSelectionDialog 
                 isOpen={isAvatarDialogOpen}
@@ -197,8 +205,14 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
                 currentAvatar={avatarUrl}
              />
         )}
+        <PeriodicTableDialog
+            isOpen={isPeriodicTableOpen}
+            onClose={() => setIsPeriodicTableOpen(false)}
+        />
     </div>
   );
 };
 
 export default MyAccountView;
+
+    

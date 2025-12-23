@@ -4,7 +4,7 @@
 import React from 'react';
 import { initialQuizTopics, quizQuestions, quizMotivationalMessages } from '@/lib/data';
 import { Button } from './ui/button';
-import { Plus, Search, ArrowLeft, ChevronDown, Sparkles, Loader2, FileUp } from 'lucide-react';
+import { Plus, Search, ArrowLeft, ChevronDown, Sparkles, Loader2, FileUp, BookImage } from 'lucide-react';
 import { Progress } from './ui/progress';
 import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
@@ -20,21 +20,11 @@ import { useToast } from '@/hooks/use-toast';
 import { FillInTheGapDialog } from './FillInTheGapDialog';
 import { generateFillInTheGap } from '@/ai/flows/generate-fill-in-the-gap-flow';
 import { ImportDialog } from './ImportDialog';
-
-type QuizSource = {
-  type: 'pre-made',
-  topic: TopicCard,
-  style: string,
-} | {
-  type: 'generated',
-  deckTitle: string,
-  questions: QuizQuestion[]
-} | {
-    type: 'fill-in-the-gap',
-    topic: TopicCard,
-    questions: QuizQuestion[],
-    style: 'MCQ' | 'Writing'
-} | null;
+import type { QuizSource } from '@/app/page';
+import VisualQuizView from './VisualQuizView';
+import KinestheticQuizView from './KinestheticQuizView';
+import ReadingWritingQuizView from './ReadingWritingQuizView';
+import { PeriodicTableDialog } from './PeriodicTableDialog';
 
 
 const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null, onQuizCompleted: (score: number, total: number, topicId?: string) => void }) => {
@@ -42,6 +32,60 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   const [score, setScore] = React.useState(0);
   const [quizFinished, setQuizFinished] = React.useState(false);
   const { toast } = useToast();
+  const [isPeriodicTableOpen, setIsPeriodicTableOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const message = quizMotivationalMessages[Math.floor(Math.random() * quizMotivationalMessages.length)];
+      toast({
+        description: (
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-yellow-400" />
+            <span className="font-semibold">{message}</span>
+          </div>
+        ),
+        duration: 5000,
+      });
+    }, 10 * 60 * 1000); // 10 minutes
+
+    return () => clearInterval(interval);
+  }, [toast]);
+
+  if (source.type === 'style-based') {
+    if (!userDetails?.learningStyle) {
+       return (
+         <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
+            <p className="text-xl">Please set your learning style first.</p>
+             <Button onClick={onBack} className="mt-4">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
+            </Button>
+         </div>
+       )
+    }
+
+    const quizProps = {
+        title: source.deckTitle,
+        deckId: source.deckId,
+        onBack: onBack
+    };
+
+    let QuizComponent;
+    switch(userDetails.learningStyle) {
+        case 'Visual':
+            QuizComponent = VisualQuizView;
+            break;
+        case 'Kinesthetic':
+            QuizComponent = KinestheticQuizView;
+            break;
+        case 'Reading/Writing':
+            QuizComponent = ReadingWritingQuizView;
+            break;
+        default:
+             return <p>Invalid learning style.</p>;
+    }
+    return <QuizComponent {...quizProps} />
+  }
   
   let questions: QuizQuestion[];
   let title: string;
@@ -62,23 +106,6 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   }
 
   const currentQuestion = questions[currentQuestionIndex];
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      const message = quizMotivationalMessages[Math.floor(Math.random() * quizMotivationalMessages.length)];
-      toast({
-        description: (
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-yellow-400" />
-            <span className="font-semibold">{message}</span>
-          </div>
-        ),
-        duration: 5000,
-      });
-    }, 10 * 60 * 1000); // 10 minutes
-
-    return () => clearInterval(interval);
-  }, [toast]);
 
   const handleCorrectAnswer = () => {
     setScore(score + 1);
@@ -161,14 +188,21 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
 
   return (
     <div className="p-4 md:p-6">
-      <div className="flex items-center mb-6">
-        <Button variant="ghost" onClick={onBack} className="mr-4">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-4">
+            <Button variant="ghost" onClick={onBack}>
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back
+            </Button>
+            <h2 className="text-2xl font-bold">{title}</h2>
+        </div>
+        <Button variant="outline" onClick={() => setIsPeriodicTableOpen(true)}>
+            <BookImage className="mr-2 h-4 w-4" />
+            Periodic Table
         </Button>
-        <h2 className="text-2xl font-bold">{title}</h2>
       </div>
       {renderQuestion()}
+      <PeriodicTableDialog isOpen={isPeriodicTableOpen} onClose={() => setIsPeriodicTableOpen(false)} />
     </div>
   );
 };
@@ -352,3 +386,5 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
 };
 
 export default QuizView;
+
+    

@@ -4,17 +4,22 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key, Atom, TestTube, Thermometer, Sigma, Link as LinkIcon, CircleDashed, Disc } from 'lucide-react';
+import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key, Atom, TestTube, Thermometer, Sigma, Link as LinkIcon, CircleDashed, Disc, BookImage } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import Image from 'next/image';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+import { DiagramsDialog } from './DiagramsDialog';
 
 type VisualQuizViewProps = {
     title: string;
     onBack: () => void;
     deckId: string;
 };
+
+const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c8', 'c9'].includes(img.id));
+const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8', 'c9', 'c10', 'c11', 'c12'].includes(img.id));
+
 
 const Deck1Quiz = () => (
     <>
@@ -49,14 +54,6 @@ const Deck1Quiz = () => (
         <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 2: ATOMIC MODELS (TIMELINE)</h3>
         <p><strong>3️⃣ Timeline task</strong></p>
         <p>Draw a horizontal timeline and place these in order: tiny solid sphere, plum pudding model, nuclear model, Bohr model, proton, neutron. Add one visual detail (dot, circle, shading) to each model.</p>
-        <div className="my-4 p-4 border rounded-lg bg-muted/20">
-            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
-            <p className="text-sm text-muted-foreground mb-2">These diagrams illustrate the evolution of the atomic model, from the simple sphere to the nuclear model.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Image src="https://picsum.photos/seed/101/400/300" alt="Plum Pudding Model" width={400} height={300} className="rounded-md" data-ai-hint="plum pudding" />
-                <Image src="https://picsum.photos/seed/102/400/300" alt="Nuclear Model" width={400} height={300} className="rounded-md" data-ai-hint="nuclear model" />
-            </div>
-        </div>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-2">
             <AccordionTrigger>Check Answer</AccordionTrigger>
@@ -130,13 +127,6 @@ const Deck1Quiz = () => (
         <h3 className="flex items-center gap-2"><Sigma className="text-accent" />SECTION 5: ELECTRONIC STRUCTURE</h3>
         <p><strong>6️⃣ Shell diagram</strong></p>
         <p>Draw the electronic structure of sodium as a shell diagram OR numbers (2,8,1). Circle the outer shell.</p>
-        <div className="my-4 p-4 border rounded-lg bg-muted/20">
-            <h4 className="font-bold text-lg text-primary">DIAGRAM</h4>
-            <p className="text-sm text-muted-foreground mb-2">This diagram shows the electron shell configuration for an element like Sodium (2,8,1).</p>
-            <div className="flex justify-center">
-                <Image src="https://picsum.photos/seed/103/300/300" alt="Electron Shell Diagram" width={300} height={300} className="rounded-md" data-ai-hint="electron shell" />
-            </div>
-        </div>
          <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-5">
             <AccordionTrigger>Check Answer</AccordionTrigger>
@@ -228,16 +218,10 @@ const Deck1Quiz = () => (
 const Deck2Quiz = () => (
     <>
         <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: BIG-PICTURE DIAGRAMS</h3>
-        <p><strong>1️⃣ Concept map:</strong> Draw a map starting with ‘Bonding & Structure’. Branch out to Ionic, Covalent, Metallic, Polymers, Nanoparticles. Add one key visual fact to each branch.</p>
-        <p className="mt-4"><strong>2️⃣ Comparison boxes:</strong> Draw two pairs of boxes for Ionic vs. Covalent bonding. Show 'Atoms before' and 'Atoms after' with dots and crosses to represent electron transfer/sharing.</p>
-        <div className="my-4 p-4 border rounded-lg bg-muted/20">
-            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
-            <p className="text-sm text-muted-foreground mb-2">Visual representation of ionic (electron transfer) and covalent (electron sharing) bonds.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Image src="https://picsum.photos/seed/104/400/300" alt="Ionic Bonding" width={400} height={300} className="rounded-md" data-ai-hint="ionic bond" />
-                <Image src="https://picsum.photos/seed/105/400/300" alt="Covalent Bonding" width={400} height={300} className="rounded-md" data-ai-hint="covalent bond" />
-            </div>
-        </div>
+        <p><strong>1️⃣ Concept map (draw, don’t write paragraphs)</strong></p>
+        <p>Draw a concept map starting with ‘Bonding & Structure’ in the centre. Add branches to: Ionic, Covalent, Metallic, Polymers, Nanoparticles. On each branch, add one key visual fact.</p>
+        <p className="mt-4"><strong>2️⃣ Comparison boxes (before vs after)</strong></p>
+        <p>Draw two pairs of boxes: Pair A (Ionic bonding) and Pair B (Covalent bonding). Label 'Atoms before' and 'Atoms after'. Show electron transfer or sharing visually using dots and crosses.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-1">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -311,14 +295,6 @@ const Deck2Quiz = () => (
         <h3 className="flex items-center gap-2"><CircleDashed className="text-accent" />SECTION 4: PARTICLE DIAGRAMS</h3>
         <p><strong>5️⃣ Draw the NaCl lattice:</strong> Use circles for ions, labeling Na⁺ and Cl⁻. Add arrows to show electrostatic forces.</p>
         <p className="mt-4"><strong>8️⃣ Draw particle diagrams</strong> for a simple covalent substance as a solid, liquid, and gas.</p>
-        <div className="my-4 p-4 border rounded-lg bg-muted/20">
-            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
-            <p className="text-sm text-muted-foreground mb-2">Diagrams showing an ionic lattice and the three states of matter.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Image src="https://picsum.photos/seed/106/400/300" alt="Ionic Lattice" width={400} height={300} className="rounded-md" data-ai-hint="ionic lattice" />
-                <Image src="https://picsum.photos/seed/107/400/300" alt="States of Matter" width={400} height={300} className="rounded-md" data-ai-hint="states matter" />
-            </div>
-        </div>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-4">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -348,14 +324,6 @@ const Deck2Quiz = () => (
 
         <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 6: CARBON STRUCTURES</h3>
         <p><strong>9️⃣ Draw and label:</strong> Create simple diagrams for diamond, graphite, graphene, and C₆₀ fullerene. Label key features like bonding and layers.</p>
-        <div className="my-4 p-4 border rounded-lg bg-muted/20">
-            <h4 className="font-bold text-lg text-primary">DIAGRAM</h4>
-            <p className="text-sm text-muted-foreground mb-2">The structure of diamond and graphite, two allotropes of carbon.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <Image src="https://picsum.photos/seed/108/400/300" alt="Diamond Structure" width={400} height={300} className="rounded-md" data-ai-hint="diamond structure" />
-                 <Image src="https://picsum.photos/seed/109/400/300" alt="Graphite Structure" width={400} height={300} className="rounded-md" data-ai-hint="graphite structure" />
-            </div>
-        </div>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-6">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -371,7 +339,7 @@ const Deck2Quiz = () => (
         </Accordion>
 
         <hr />
-
+        
         <h3 className="flex items-center gap-2"><Brain className="text-accent" />FINAL VISUAL CHECK</h3>
         <p><strong>1️⃣1️⃣ One-page redraw:</strong> Without notes, visually summarize the entire topic using diagrams, tables, and arrows. Compare with your notes and fill in gaps with a different color.</p>
 
@@ -383,7 +351,10 @@ const Deck2Quiz = () => (
 );
 
 const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
+    const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
 
+    const diagrams = deckId === 'deck1' ? deck1Diagrams : deck2Diagrams;
+    
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
             return <Deck1Quiz />;
@@ -414,16 +385,28 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
                         <div className="p-4 bg-primary/10 rounded-lg text-center">
                             <h3 className="font-bold text-primary">How to use this quiz</h3>
                             <p className="text-sm">Draw, connect, and organize the information visually. Use pen and paper.</p>
+                             <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
+                                <BookImage className="mr-2 h-4 w-4" />
+                                View Diagrams
+                            </Button>
                         </div>
                         <hr />
                         {renderQuizContent()}
                     </CardContent>
                 </Card>
             </ScrollArea>
+             <DiagramsDialog 
+                isOpen={isDiagramsOpen} 
+                onClose={() => setIsDiagramsOpen(false)} 
+                diagrams={diagrams}
+                title={`Diagrams for ${title}`}
+            />
         </div>
     );
 };
 
 export default VisualQuizView;
+
+    
 
     

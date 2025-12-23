@@ -200,38 +200,38 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
           return (
             <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
               <div className="prose prose-sm dark:prose-invert max-w-none">
-                <h4>One Master Diagram (Highest Impact)</h4>
-                <p>On a large sheet of paper, create a central hub titled "Structure of Matter". Branch out with main sections in boxes: Atoms & Elements, Compounds & Mixtures, Atomic Structure, and Periodic Table Groups. Use arrows to link related concepts (e.g., atoms → elements → compounds). This creates a single visual anchor for the whole topic.</p>
-                <hr />
-                <h4>Color-Coded Meaning System</h4>
-                <p>Assign a specific color to each core concept and stick to it: 🔵 Atoms/Subatomic Particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Reactions, 🟣 Periodic Table. Your brain will build faster connections based on these visual cues.</p>
-                <hr />
-                <h4>"Before vs. After" Diagrams</h4>
-                <p>Draw paired boxes to compare processes. For a chemical reaction, show "Before: separate elements" and "After: compound formed + energy change". For a mixture, show "Before: substances together" and "After: substances physically separated". This visually solidifies the key difference.</p>
-                <hr />
-                <h4>Atomic Model Timeline</h4>
-                <p>Draw a horizontal timeline showing the evolution of the atomic model: Solid Sphere → Plum Pudding → Nuclear → Bohr → Protons/Neutrons. Add small sketches and arrows labeled "new evidence" to show how scientific understanding developed.</p>
-                <hr />
-                <h4>Particle Tables for Quick Comparison</h4>
-                <p>Instead of writing sentences, organize information into tables. Create one for subatomic particles (Particle, Charge, Mass, Location) and another for atomic numbers and mass numbers. Tables allow for instant visual comparison.</p>
-                <hr />
-                <h4>Scale Diagrams for Size and Mass</h4>
-                <p>Draw a large circle for an atom and a tiny dot in the middle for the nucleus. Label their approximate sizes (0.1 nm vs 1x10⁻¹⁴ m) and add the note "Almost all mass is in the nucleus." Seeing the scale difference makes the concept tangible.</p>
-                <hr />
-                <h4>Electronic Structure Ring Diagrams</h4>
-                <p>For the first 20 elements, draw the nucleus and electron shells as concentric circles. Fill in the electrons and color-code the outer shell. This visually links an element's structure to its group and reactivity.</p>
-                <hr />
-                <h4>Periodic Table Highlighting</h4>
-                <p>Print a periodic table and use highlighters to mark patterns. Shade the areas for metals and non-metals. Circle key groups (0, 1, 7). This turns the table from a list of facts into a map of patterns.</p>
-                <hr />
-                <h4>Group Summary Boxes</h4>
-                <p>For each key group (0, 1, 7), create a small summary box with the most critical information: number of outer electrons, reactivity trend, and key properties. Placing these side-by-side makes comparison effortless.</p>
-                <hr />
-                <h4>Arrow Trend Diagrams</h4>
-                <p>Represent trends using simple arrows instead of words. For example: Group 1 Reactivity ⬇️ INCREASES. Group 7 Reactivity ⬇️ DECREASES. Your brain processes and remembers these directional cues very effectively.</p>
-                <hr />
-                <h4>Redraw-from-Memory Rule</h4>
-                <p><strong>This is the most important technique.</strong> Look at your master diagram or notes for one minute. Cover them up and redraw everything from memory. Then, compare and add any missing information in a different color. If you can draw it, you truly understand it.</p>
+                  <h4>One Master Diagram (Highest Impact)</h4>
+                  <p>On a large sheet of paper, create a central hub titled "Structure of Matter". Branch out with main sections in boxes: Atoms & Elements, Compounds & Mixtures, Atomic Structure, and Periodic Table Groups. Use arrows to link related concepts (e.g., atoms → elements → compounds). This creates a single visual anchor for the whole topic.</p>
+                  <hr />
+                  <h4>Color-Coded Meaning System</h4>
+                  <p>Assign a specific color to each core concept and stick to it: 🔵 Atoms/Subatomic Particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Reactions, 🟣 Periodic Table. Your brain will build faster connections based on these visual cues.</p>
+                  <hr />
+                  <h4>"Before vs. After" Diagrams</h4>
+                  <p>Draw paired boxes to compare processes. For a chemical reaction, show "Before: separate elements" and "After: compound formed + energy change". For a mixture, show "Before: substances together" and "After: substances physically separated". This visually solidifies the key difference.</p>
+                  <hr />
+                  <h4>Atomic Model Timeline</h4>
+                  <p>Draw a horizontal timeline showing the evolution of the atomic model: Solid Sphere → Plum Pudding → Nuclear → Bohr → Protons/Neutrons. Add small sketches and arrows labeled "new evidence" to show how scientific understanding developed.</p>
+                  <hr />
+                  <h4>Particle Tables for Quick Comparison</h4>
+                  <p>Instead of writing sentences, organize information into tables. Create one for subatomic particles (Particle, Charge, Mass, Location) and another for atomic numbers and mass numbers. Tables allow for instant visual comparison.</p>
+                  <hr />
+                  <h4>Scale Diagrams for Size and Mass</h4>
+                  <p>Draw a large circle for an atom and a tiny dot in the middle for the nucleus. Label their approximate sizes (0.1 nm vs 1x10⁻¹⁴ m) and add the note "Almost all mass is in the nucleus." Seeing the scale difference makes the concept tangible.</p>
+                  <hr />
+                  <h4>Electronic Structure Ring Diagrams</h4>
+                  <p>For the first 20 elements, draw the nucleus and electron shells as concentric circles. Fill in the electrons and color-code the outer shell. This visually links an element's structure to its group and reactivity.</p>
+                  <hr />
+                  <h4>Periodic Table Highlighting</h4>
+                  <p>Print a periodic table and use highlighters to mark patterns. Shade the areas for metals and non-metals. Circle key groups (0, 1, 7). This turns the table from a list of facts into a map of patterns.</p>
+                  <hr />
+                  <h4>Group Summary Boxes</h4>
+                  <p>For each key group (0, 1, 7), create a small summary box with the most critical information: number of outer electrons, reactivity trend, and key properties. Placing these side-by-side makes comparison effortless.</p>
+                  <hr />
+                  <h4>Arrow Trend Diagrams</h4>
+                  <p>Represent trends using simple arrows instead of words. For example: Group 1 Reactivity ⬇️ INCREASES. Group 7 Reactivity ⬇️ DECREASES. Your brain processes and remembers these directional cues very effectively.</p>
+                  <hr />
+                  <h4>Redraw-from-Memory Rule</h4>
+                  <p><strong>This is the most important technique.</strong> Look at your master diagram or notes for one minute. Cover them up and redraw everything from memory. Then, compare and add any missing information in a different color. If you can draw it, you truly understand it.</p>
               </div>
             </ScrollArea>
           );
@@ -249,32 +249,29 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
             return (
               <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
                   <div className="prose prose-sm dark:prose-invert max-w-none">
-                      <h4>1️⃣ Rewrite → Reduce → Rewrite (very effective)</h4>
-                      <p><strong>How</strong>: Rewrite the notes in full sentences. Reduce them to half the length. Reduce again to 5–6 key sentences. This forces understanding, not copying.</p>
+                      <h4>1️⃣ Rewrite → Condense → Memorise (Most Effective)</h4>
+                      <p><strong>How:</strong> Rewrite the notes in full sentences. Rewrite again, cutting it to half the length. Rewrite again into 10–12 key sentences. This forces you to identify what actually matters.</p>
                       <hr />
-                      <h4>2️⃣ Definition drilling (exam-focused)</h4>
-                      <p><strong>How</strong>: Write each definition clearly: atom, element, compound, chemical reaction. Cover the definitions. Rewrite them from memory. Check and correct. Repeat until accurate.</p>
+                      <h4>2️⃣ Definition Mastery (Exam Gold)</h4>
+                      <p><strong>How:</strong> Create a page titled “GCSE Chemistry Definitions”. Write and memorise: atom, element, compound, mixture, chemical reaction, isotope, atomic number, mass number, relative atomic mass. Cover → rewrite → check → correct.</p>
                       <hr />
-                      <h4>3️⃣ Turn notes into questions</h4>
-                      <p><strong>How</strong>: Convert each line into a question, e.g.: What are all substances made of? What is an atom? How are atoms represented? How are compounds formed? Then write full answers.</p>
+                      <h4>3️⃣ Turn Every Fact into a Question</h4>
+                      <p><strong>How:</strong> Convert each line into a question, e.g.: What is an atom? How are atoms represented? How are compounds formed? Why can compounds only be separated chemically? Then write full sentence answers.</p>
                       <hr />
-                      <h4>4️⃣ Sentence stems (controlled writing)</h4>
-                      <p>Complete these in writing: “All substances are made of …”, “An atom is …”, “Compounds contain …”, “Chemical reactions always involve …”. This helps precise exam wording.</p>
+                      <h4>4️⃣ Paragraph Chaining (Build Understanding)</h4>
+                      <p><strong>How:</strong> Write linked paragraphs on different topics (e.g., atomic models, subatomic particles, periodic table). Use connectives like "therefore", "because", and "as a result" to improve 6-mark answers.</p>
                       <hr />
-                      <h4>5️⃣ Paragraph chaining</h4>
-                      <p><strong>How</strong>: Write one paragraph about atoms & elements. Write one paragraph about compounds. Write one paragraph about chemical reactions. Link paragraphs using connectives like because, therefore, however.</p>
+                      <h4>5️⃣ Tables from Memory (Structure + Clarity)</h4>
+                      <p><strong>How:</strong> Rewrite key information into tables from memory, covering subatomic particles or group trends. Tables help with exam organisation.</p>
                       <hr />
-                      <h4>6️⃣ Keyword lists + explanations</h4>
-                      <p><strong>How</strong>: List keywords from the notes. Under each, write a one-line explanation in your own words. Example: atom → smallest part of an element that can exist.</p>
+                      <h4>6️⃣ "Explain Why" Practice (Higher Marks)</h4>
+                      <p><strong>How:</strong> Write short answers to questions like "Explain why atoms have no overall charge" or "Explain why Group 1 reactivity increases down the group." This builds AO2/AO3 skills.</p>
                       <hr />
-                      <h4>7️⃣ Copy → Cover → Write (classic but powerful)</h4>
-                      <p><strong>How</strong>: Copy a section neatly. Cover it. Write it again from memory. Compare and correct in a different colour.</p>
+                      <h4>7️⃣ Model Development Summaries</h4>
+                      <p><strong>How:</strong> Write one paragraph explaining how atomic models changed and why experimental evidence caused those changes. This targets common GCSE questions.</p>
                       <hr />
-                      <h4>8️⃣ Exam command-word practice</h4>
-                      <p><strong>How</strong>: Write answers to: Define atom, Describe a compound, Explain a chemical reaction, State two ways reactions can be represented. Stick to clear written responses.</p>
-                      <hr />
-                      <h4>9️⃣ Checklist writing</h4>
-                      <p><strong>How</strong>: Rewrite the “Students should be able to…” section as a checklist, then rewrite it as sentences, then rewrite from memory.</p>
+                      <h4>8️⃣ Exam Command-Word Practice</h4>
+                      <p><strong>How:</strong> Write answers using command words like "define", "describe", "explain", "compare", and "state". Stick to clear, concise language.</p>
                   </div>
               </ScrollArea>
             );

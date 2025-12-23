@@ -8,6 +8,7 @@ import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Ke
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import Image from 'next/image';
 
 type VisualQuizViewProps = {
     title: string;
@@ -48,6 +49,14 @@ const Deck1Quiz = () => (
         <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 2: ATOMIC MODELS (TIMELINE)</h3>
         <p><strong>3️⃣ Timeline task</strong></p>
         <p>Draw a horizontal timeline and place these in order: tiny solid sphere, plum pudding model, nuclear model, Bohr model, proton, neutron. Add one visual detail (dot, circle, shading) to each model.</p>
+        <div className="my-4 p-4 border rounded-lg bg-muted/20">
+            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
+            <p className="text-sm text-muted-foreground mb-2">These diagrams illustrate the evolution of the atomic model, from the simple sphere to the nuclear model.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Image src="https://picsum.photos/seed/101/400/300" alt="Plum Pudding Model" width={400} height={300} className="rounded-md" data-ai-hint="plum pudding" />
+                <Image src="https://picsum.photos/seed/102/400/300" alt="Nuclear Model" width={400} height={300} className="rounded-md" data-ai-hint="nuclear model" />
+            </div>
+        </div>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-2">
             <AccordionTrigger>Check Answer</AccordionTrigger>
@@ -121,6 +130,13 @@ const Deck1Quiz = () => (
         <h3 className="flex items-center gap-2"><Sigma className="text-accent" />SECTION 5: ELECTRONIC STRUCTURE</h3>
         <p><strong>6️⃣ Shell diagram</strong></p>
         <p>Draw the electronic structure of sodium as a shell diagram OR numbers (2,8,1). Circle the outer shell.</p>
+        <div className="my-4 p-4 border rounded-lg bg-muted/20">
+            <h4 className="font-bold text-lg text-primary">DIAGRAM</h4>
+            <p className="text-sm text-muted-foreground mb-2">This diagram shows the electron shell configuration for an element like Sodium (2,8,1).</p>
+            <div className="flex justify-center">
+                <Image src="https://picsum.photos/seed/103/300/300" alt="Electron Shell Diagram" width={300} height={300} className="rounded-md" data-ai-hint="electron shell" />
+            </div>
+        </div>
          <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-5">
             <AccordionTrigger>Check Answer</AccordionTrigger>
@@ -151,7 +167,7 @@ const Deck1Quiz = () => (
                 <ul className="text-sm">
                     <li><strong>Group 0:</strong> 8 outer electrons, unreactive, boiling point increases down group.</li>
                     <li><strong>Group 1:</strong> 1 outer electron, reactivity increases down group.</li>
-                    <li><strong>Group 7:</strong> 7 outer electrons, reactivity decreases down group, can do displacement reactions.</li>
+                    <li><strong>Group 7:</strong> 7 outer electrons, reactivity decreases down group, displacement reactions.</li>
                 </ul>
             </AccordionContent>
           </AccordionItem>
@@ -198,7 +214,7 @@ const Deck1Quiz = () => (
         </Accordion>
         
         <hr />
-
+        
         <h3 className="flex items-center gap-2"><Brain className="text-accent" />FINAL VISUAL CHECK (MOST IMPORTANT)</h3>
         <p><strong>1️⃣1️⃣ One-page redraw</strong>: Without notes, redraw the entire topic using diagrams, tables, and arrows. Then compare with your notes and add missing parts in a different colour.</p>
 
@@ -214,6 +230,14 @@ const Deck2Quiz = () => (
         <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: BIG-PICTURE DIAGRAMS</h3>
         <p><strong>1️⃣ Concept map:</strong> Draw a map starting with ‘Bonding & Structure’. Branch out to Ionic, Covalent, Metallic, Polymers, Nanoparticles. Add one key visual fact to each branch.</p>
         <p className="mt-4"><strong>2️⃣ Comparison boxes:</strong> Draw two pairs of boxes for Ionic vs. Covalent bonding. Show 'Atoms before' and 'Atoms after' with dots and crosses to represent electron transfer/sharing.</p>
+        <div className="my-4 p-4 border rounded-lg bg-muted/20">
+            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
+            <p className="text-sm text-muted-foreground mb-2">Visual representation of ionic (electron transfer) and covalent (electron sharing) bonds.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Image src="https://picsum.photos/seed/104/400/300" alt="Ionic Bonding" width={400} height={300} className="rounded-md" data-ai-hint="ionic bond" />
+                <Image src="https://picsum.photos/seed/105/400/300" alt="Covalent Bonding" width={400} height={300} className="rounded-md" data-ai-hint="covalent bond" />
+            </div>
+        </div>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-1">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -287,6 +311,14 @@ const Deck2Quiz = () => (
         <h3 className="flex items-center gap-2"><CircleDashed className="text-accent" />SECTION 4: PARTICLE DIAGRAMS</h3>
         <p><strong>5️⃣ Draw the NaCl lattice:</strong> Use circles for ions, labeling Na⁺ and Cl⁻. Add arrows to show electrostatic forces.</p>
         <p className="mt-4"><strong>8️⃣ Draw particle diagrams</strong> for a simple covalent substance as a solid, liquid, and gas.</p>
+        <div className="my-4 p-4 border rounded-lg bg-muted/20">
+            <h4 className="font-bold text-lg text-primary">DIAGRAMS</h4>
+            <p className="text-sm text-muted-foreground mb-2">Diagrams showing an ionic lattice and the three states of matter.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Image src="https://picsum.photos/seed/106/400/300" alt="Ionic Lattice" width={400} height={300} className="rounded-md" data-ai-hint="ionic lattice" />
+                <Image src="https://picsum.photos/seed/107/400/300" alt="States of Matter" width={400} height={300} className="rounded-md" data-ai-hint="states matter" />
+            </div>
+        </div>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-4">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -316,6 +348,14 @@ const Deck2Quiz = () => (
 
         <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 6: CARBON STRUCTURES</h3>
         <p><strong>9️⃣ Draw and label:</strong> Create simple diagrams for diamond, graphite, graphene, and C₆₀ fullerene. Label key features like bonding and layers.</p>
+        <div className="my-4 p-4 border rounded-lg bg-muted/20">
+            <h4 className="font-bold text-lg text-primary">DIAGRAM</h4>
+            <p className="text-sm text-muted-foreground mb-2">The structure of diamond and graphite, two allotropes of carbon.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <Image src="https://picsum.photos/seed/108/400/300" alt="Diamond Structure" width={400} height={300} className="rounded-md" data-ai-hint="diamond structure" />
+                 <Image src="https://picsum.photos/seed/109/400/300" alt="Graphite Structure" width={400} height={300} className="rounded-md" data-ai-hint="graphite structure" />
+            </div>
+        </div>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d2-item-6">
                 <AccordionTrigger>Check Diagrams</AccordionTrigger>
@@ -385,3 +425,5 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
 };
 
 export default VisualQuizView;
+
+    

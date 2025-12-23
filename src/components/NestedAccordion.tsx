@@ -22,19 +22,18 @@ export const NestedAccordion = ({ sections, level = 0 }: NestedAccordionProps) =
                 <AccordionItem 
                     value={`${level}-${index}`} 
                     key={`${level}-${index}`}
-                    className={cn(level > 0 ? "border-b" : "", "border-border/50")}
                 >
                     <AccordionTrigger 
                         className={cn(
-                            'font-semibold', 
-                            level === 0 && 'p-4 border rounded-md bg-card',
+                            'font-semibold text-left',
+                            level === 0 && 'p-4 border rounded-md bg-card text-lg',
                             level === 1 && 'pl-4 text-base', 
                             level > 1 && 'pl-8 text-sm'
                         )}
                     >
                         {section.title}
                     </AccordionTrigger>
-                    <AccordionContent className={`${level === 0 ? 'pl-4' : ''} ${level > 0 ? 'pl-8' : ''}`}>
+                    <AccordionContent className={cn('pb-4', level === 0 ? 'pl-4' : 'pl-8')}>
                         <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
                             {section.content}
                         </div>
@@ -47,5 +46,3 @@ export const NestedAccordion = ({ sections, level = 0 }: NestedAccordionProps) =
         </Accordion>
     );
 };
-
-    

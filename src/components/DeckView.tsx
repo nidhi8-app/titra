@@ -151,34 +151,35 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
             return (
                 <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
                     <div className="prose prose-sm dark:prose-invert max-w-none">
-                        <h4>1️⃣ Build-it-with-objects method (Foundation Method)</h4>
-                        <p><strong>What you need:</strong> Coins, beads, paper balls, or LEGO.</p>
+                        <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
+                        <p><strong>What you need:</strong> Coins / beads / paper balls / LEGO</p>
                         <p><strong>How:</strong> One object = atom. Same objects = element. Different objects joined = compound. Loose pile = mixture.</p>
                         <p>Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.”</p>
-                        <p>👉 This physically locks in compound vs mixture.</p>
+                        <p>👉 This physically locks in compound vs mixture (huge exam confusion point).</p>
                         <hr />
-                        <h4>2️⃣ Walk-the-topic method (Movement + Recall)</h4>
-                        <p>Walk around your room. Each step = one fact. Say from memory: “All substances are made of atoms.”, “An atom is the smallest part of an element.”, etc. If you stop, check your notes and restart walking.</p>
+                        <h4>2️⃣ Walk-the-topic method (movement + recall)</h4>
+                        <p>Walk around your room. Each step = one fact. Say (from memory): “All substances are made of atoms.”, “An atom is the smallest part of an element.”, etc. If you stop → check notes → restart walking.</p>
                         <hr />
-                        <h4>3️⃣ Act out atomic models</h4>
-                        <p>You are the atom. Stand still (tiny solid sphere) → Spread arms with dots (plum pudding) → Hands tight in center (nucleus) → Walk in circles (Bohr model). Say the model name while acting.</p>
+                        <h4>3️⃣ Act out atomic models (model development)</h4>
+                        <p>You = the atom. Stand still → tiny solid sphere. Spread arms with dots → plum pudding model. Hands tight in centre → nucleus. Walk in circles → Bohr model. Tap chest → protons. Tap head → neutrons. Say the model name while acting it out.</p>
+                        <p>👉 Movement helps remember sequence + reasons models changed.</p>
                         <hr />
-                        <h4>4️⃣ Human charge game</h4>
-                        <p>Stand up. Right hand up = +1 proton. Arms out = 0 neutron. Left hand down = –1 electron. Say: “Atoms have no overall electrical charge.”</p>
+                        <h4>4️⃣ Human charge game (subatomic particles)</h4>
+                        <p>Stand up and use your body: Right hand up → +1 proton. Arms out → 0 neutron. Left hand down → –1 electron. Then say: “Atoms have no overall electrical charge.” and “Number of electrons equals number of protons.”</p>
                         <hr />
-                        <h4>5️⃣ Scale it with your hands</h4>
-                        <p>Use your hands: Big circle with arms = atom. Tiny pinch = nucleus. Say: “Almost all of the mass is in the nucleus.”</p>
+                        <h4>5️⃣ Scale it with your hands (size & mass)</h4>
+                        <p>Use your hands: Big circle with arms = atom. Tiny pinch = nucleus. Say: “Almost all of the mass is in the nucleus.” This makes size vs mass intuitive.</p>
                         <hr />
                         <h4>6️⃣ Electron shell walking</h4>
                         <p>Put objects in circles on the floor. Walk and place electrons for Sodium (2, 8, 1). Say: “Electrons occupy the lowest available energy levels.”</p>
                         <hr />
                         <h4>7️⃣ Periodic table floor map</h4>
-                        <p>Use tape on the floor. Left side = metals. Right side = non-metals. Stand in Group 1 and say its reactivity trend. Do the same for Groups 7 and 0.</p>
+                        <p>Use tape or paper on the floor. Left side = metals. Right side = non-metals. Stand in Group 1 and say its reactivity trend. Do the same for Groups 7 and 0.</p>
                         <hr />
                         <h4>8️⃣ Reactivity direction game</h4>
-                        <p>Point DOWN and say: Group 1 reactivity “increases”. Group 7 reactivity “decreases”. Group 0 boiling point “increases”.</p>
+                        <p>Point DOWN with your hand: Group 1 → “reactivity increases”. Group 7 → “reactivity decreases”. Group 0 → “boiling point increases”.</p>
                         <hr />
-                        <h4>9️⃣ Separation process stations</h4>
+                        <h4>9️⃣ Separation process stations (mixtures)</h4>
                         <p>Set up 5 stations in your room (Filtration, Crystallisation, etc.). Walk to a station and explain what it separates and that it's a physical process.</p>
                         <hr />
                         <h4>🔟 Teach-an-invisible-student method</h4>
@@ -187,6 +188,33 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
                 </ScrollArea>
             );
          }
+         if (deckId === 'deck2') {
+          return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <h4>Role-play atoms</h4>
+                <p>Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices).</p>
+                <h4>Build-and-touch models</h4>
+                <p>Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
+                <hr />
+                <h4>Chemical bonds: ionic, covalent, metallic</h4>
+                <p><strong>Electron transfer simulation:</strong> "Metal atoms" give away colored balls (electrons), "non-metals" take them to show ionic bonding.</p>
+                <p><strong>Covalent bonding handshake:</strong> Two students “share” balls to simulate shared electrons.</p>
+                <p><strong>Metallic bonding:</strong> Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
+                <hr />
+                <h4>States of matter</h4>
+                <p><strong>Movement simulation:</strong> Students act as particles. Solid = tightly packed, vibrating; liquid = moving past each other; gas = moving fast and far apart.</p>
+                <hr />
+                <h4>Structure and bonding of carbon</h4>
+                <p><strong>Model building:</strong> Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits.</p>
+                <p><strong>Layer movement:</strong> Slide graphite layers over each other to feel why it’s slippery; try the same with a “diamond lattice” (rigid model) to feel hardness.</p>
+                <hr />
+                <h4>Nanoparticles</h4>
+                <p><strong>Size comparison:</strong> Use balls of different sizes to represent nanoparticles vs. bulk materials; feel how many small balls fit into a container compared to large ones (surface area effect).</p>
+              </div>
+            </ScrollArea>
+          );
+        }
         // Fallback for other decks
         return (
           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
@@ -309,6 +337,31 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
                   </div>
               </ScrollArea>
             );
+        }
+        if (deckId === 'deck2') {
+          return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <h4>Summarize in your own words</h4>
+                <p>Write a 3–5 sentence summary for this section. Create bullet-point notes for key ideas and a glossary for terms like structure, bonding, and properties.</p>
+                <hr />
+                <h4>Comparison table: Ionic, Covalent, Metallic</h4>
+                <p>Create a written table comparing the three bond types, covering: type of atoms involved, electron movement, forces involved, and examples.</p>
+                <hr />
+                <h4>Step-by-step written notes</h4>
+                <p>Write out the process of electron transfer for ionic bonding, or the steps to draw dot-and-cross diagrams for covalent molecules (H₂, HCl, H₂O, CH₄, NH₃).</p>
+                <hr />
+                <h4>Written explanations for properties</h4>
+                <p>Describe in words why ionic compounds have high melting points, why metals conduct electricity, and why simple molecules have low boiling points.</p>
+                <hr />
+                <h4>Carbon structures comparison</h4>
+                <p>Make a table comparing diamond, graphite, graphene, and fullerenes, listing their bonds, hardness, conductivity, and uses.</p>
+                <hr />
+                <h4>Nanoparticles summary sheet</h4>
+                <p>Write down the size, properties, and uses of nanoparticles in your own words. Create a pros and cons list for their applications.</p>
+              </div>
+            </ScrollArea>
+          );
         }
         // Fallback for other decks
         return (
@@ -552,6 +605,8 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
 export default DeckView;
 
+
+    
 
     
 

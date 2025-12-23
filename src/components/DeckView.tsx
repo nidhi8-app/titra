@@ -357,6 +357,38 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
                 <hr />
                 <h4>6. Amounts & Concentrations</h4>
                 <p>Use diagrams of volumetric flasks. To show concentration, use colored dots (solute) in the liquid (solvent). A darker color or more dots means a higher concentration. Label flasks with volumes (e.g., 250 cm³) and amounts to connect the visual with the formula.</p>
+                <hr/>
+                <h4>1. Concept Maps</h4>
+                <p><strong>Activity:</strong> Draw a large concept map starting with Quantitative Chemistry in the center. Branches: Include “Conservation of Mass”, “Moles”, “Limiting Reactants”, “Percentage Yield”, “Atom Economy”, “Concentration of Solutions”, “Gas Volumes”.</p>
+                <p><strong>Visual cues:</strong> Use colors for each branch, small icons or simple drawings (e.g., a balance for conservation of mass, flasks for concentration).</p>
+                <hr/>
+                <h4>2. Flow Diagrams</h4>
+                <p><strong>Activity:</strong> Create step-by-step flow diagrams for processes: Balancing chemical equations → Mass calculations → Moles → Limiting reactants → Percentage yield.</p>
+                <p><strong>Tip:</strong> Use arrows, different colors, and numbered steps to make the sequence easy to follow.</p>
+                <hr/>
+                <h4>3. Infographics</h4>
+                <p><strong>Activity:</strong> Turn your notes into a one-page infographic. Include: Equations (draw atoms as colored spheres), Moles & Avogadro’s Constant (illustrate 1 mole as a cluster of particles), Limiting Reactants (show tokens being used up), Percentage Yield & Atom Economy (draw “before and after” with lost products visually).</p>
+                <hr/>
+                <h4>4. Tables & Charts</h4>
+                <p><strong>Activity:</strong> Mass calculations table (Reactant → Mr → Mass → Moles → Products). Concentration beaker diagrams showing volume and solute, color-coded. Gas Volumes: Draw balloons representing molar volume (24 dm³).</p>
+                <hr/>
+                <h4>5. Color-Coding</h4>
+                <p><strong>Activity:</strong> Assign a color to each concept: Conservation of Mass (Blue), Moles (Yellow), Limiting Reactants (Orange), Percentage Yield (Purple), Atom Economy (Green), Concentration (Pink). Always highlight formulas and key numbers in their assigned color.</p>
+                <hr/>
+                <h4>6. Visual Mnemonics</h4>
+                <p><strong>Activity:</strong> Create visual memory aids: draw a balance scale for Conservation of Mass, a funnel for Limiting Reactants, a pie chart for Atom Economy showing “useful product” vs “waste”.</p>
+                <hr/>
+                <h4>7. Sketch Your Equations</h4>
+                <p><strong>Activity:</strong> For each chemical equation, use colored dots for atoms and draw arrows showing electron transfer or bonds forming.</p>
+                <hr/>
+                <h4>8. Mind Maps for Exam Preparation</h4>
+                <p><strong>Activity:</strong> Create a mind map with main topics as branches. Add examples and mini flow charts for calculation steps.</p>
+                <hr/>
+                <h4>9. Flashcards with Diagrams</h4>
+                <p><strong>Activity:</strong> Make flashcards with a question on the front and a colored visual solution on the back.</p>
+                <hr/>
+                <h4>10. “Redraw Without Notes” Practice</h4>
+                <p><strong>Activity:</strong> Take a blank sheet and redraw concept maps, equations, and diagrams from memory. Compare with your notes and use a different color to fill in gaps.</p>
               </div>
             </ScrollArea>
           );
@@ -674,5 +706,6 @@ export default DeckView;
     
 
     
+
 
 

@@ -236,6 +236,40 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
             </ScrollArea>
           );
         }
+        if (deckId === 'deck2') {
+          return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                  <h4>Mind Map Activity</h4>
+                  <p>Create a colorful mind map connecting bonding types (ionic, covalent, metallic) to their structures, properties, and common uses. Use icons or small sketches for atoms, ions, polymers, and nanoparticles to make it more memorable.</p>
+                  <hr />
+                  <h4>Color-Coded Bonding Chart</h4>
+                  <p>Make a three-column chart for Ionic, Covalent, and Metallic bonding. Instead of just text, use visual cues:</p>
+                  <ul>
+                      <li><strong>Ionic:</strong> Show electron transfer with a colored arrow (e.g., red electron moving from a blue atom).</li>
+                      <li><strong>Covalent:</strong> Use overlapping colored circles to represent shared electron pairs.</li>
+                      <li><strong>Metallic:</strong> Draw a grid of positive ions with wavy arrows representing the "sea" of delocalized electrons.</li>
+                  </ul>
+                   <p>Also, consider using an online simulation (like PhET) to see these bonds form in 3D.</p>
+                  <hr />
+                  <h4>Ionic and Covalent Diagram Practice</h4>
+                  <p>Practice drawing dot-and-cross diagrams for ionic compounds (like NaCl) and covalent molecules (like H₂O, CH₄). Use different colors for each element to clearly see where electrons come from or how they are shared.</p>
+                  <hr />
+                  <h4>Build 3D Models</h4>
+                  <p>Use a modeling kit (or even small balls and sticks) to build 3D structures. Create a simple ionic lattice (NaCl), a water molecule, and a methane molecule to physically see their shapes.</p>
+                  <hr />
+                  <h4>Visual Comparison Table</h4>
+                  <p>Create a table comparing the properties of different structures (Ionic, Simple Covalent, Giant Covalent, Metallic). Use symbols and icons: a ⚡ for conductivity, a thermometer icon for melting point (high/low), and arrows of different thicknesses for the strength of forces.</p>
+                  <hr />
+                  <h4>Carbon Structures: 3D Visualization</h4>
+                  <p>Build or draw the 3D models for diamond, graphite, and a C₆₀ fullerene. For graphite, draw the layers and show how delocalized electrons move between them. This helps explain why it's soft and conducts electricity.</p>
+                  <hr/>
+                  <h4>Nanoparticle Size Diagram</h4>
+                  <p>Draw a large circle to represent a bulk material and then many tiny circles inside another large one to represent nanoparticles of the same mass. This visually explains why nanoparticles have a huge surface area to volume ratio.</p>
+              </div>
+            </ScrollArea>
+          );
+        }
         // Fallback for other decks for visual learners
         return (
           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
@@ -518,5 +552,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
 export default DeckView;
 
+
+    
 
     

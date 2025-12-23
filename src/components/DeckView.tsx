@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText, Sigma, Link, TestTube, ChevronsRightLeft, Thermometer, Rows, Key, CircleDashed, Disc, Gauge, Cloud, TestTube2, Network, PersonStanding, CheckCircle, Handshake, Recycle } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText, Sigma, Link, TestTube, ChevronsRightLeft, Thermometer, Rows, Key, CircleDashed, Disc, Gauge, Cloud, TestTube2, Network, PersonStanding, CheckCircle, Handshake, Recycle, Move, Fingerprint, ChevronsDown } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -58,7 +58,7 @@ const LearnAsReadingWriting = () => (
             <p><strong>Example:</strong> What is an atom? How are atoms represented? How are compounds formed? Why can compounds only be separated chemically? Then write full sentence answers.</p>
 
             <h4>4️⃣ Paragraph chaining (build understanding)</h4>
-            <p><strong>How:</strong> Write linked paragraphs on: atoms & elements, compounds & mixtures, atomic models, subatomic particles, and the periodic table & groups. Use connectives like therefore, because, as a result. This improves 6-mark answers.</p>
+            <p>Write linked paragraphs on: atoms & elements, compounds & mixtures, atomic models, subatomic particles, and the periodic table & groups. Use connectives like therefore, because, as a result. This improves 6-mark answers.</p>
 
             <h4>5️⃣ Tables from memory (structure + clarity)</h4>
             <p>Rewrite key information into tables from memory, e.g., for Subatomic particles (Particle, Charge, Mass) or Group trends (| Group | Outer electrons | Reactivity trend |). Tables help exam organisation.</p>
@@ -80,7 +80,6 @@ const LearnAsReadingWriting = () => (
         </CardContent>
     </Card>
 );
-
 
 const LearnAsKinesthetic = () => (
     <Card>
@@ -195,7 +194,7 @@ const LearnAsVisualDeck2 = () => (
             <p>Draw dot-and-cross diagrams for ions in different colors. Build a 3D ball-and-stick model of a NaCl lattice to see the structure. Use graph paper or LEGOs for a 3D model, highlighting electrostatic forces with arrows.</p>
 
             <h4>Covalent Bonding</h4>
-            <p>Use Venn diagrams or overlapping circles to show shared electron pairs. Build 3D models of H₂O, CH₄, NH₃ with modeling kits. Practice drawing dot-and-cross diagrams in different colors.</p>
+            <p>Use Venn diagrams or overlapping circles to show shared electron pairs. Build 3D models of H₂O, CH₄, NH₃ with modeling kits. Practice drawing dot-and-cross diagrams in different colors for each element.</p>
             
             <h4>Metallic Bonding</h4>
             <p>Draw a layered diagram showing metal atoms in layers and use wavy arrows for delocalised electrons. Stack coins or discs to represent layers, with beads as delocalised electrons.</p>
@@ -208,6 +207,60 @@ const LearnAsVisualDeck2 = () => (
 
             <h4>Nanoparticles</h4>
             <p>Draw a size comparison diagram (nanoparticles vs. bulk materials). Create a visual chart linking nanoparticles to their uses (medicine, electronics, etc.). Design an infographic showing risks vs. benefits with color-coded warnings.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsKinestheticDeck2 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Engage with Bonding and Structure by building, moving, and role-playing.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Role-play atoms</h4>
+            <p>Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices).</p>
+            <h4>Build-and-touch models</h4>
+            <p>Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
+            <h4>Chemical bonds: ionic, covalent, metallic</h4>
+            <p><strong>Electron transfer simulation:</strong> Give students colored balls representing electrons. "Metal atoms" give away balls, "non-metals" take them to show ionic bonding.</p>
+            <p><strong>Covalent bonding handshake:</strong> Two students “share” balls to simulate shared electrons.</p>
+            <p><strong>Metallic bonding:</strong> Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
+            <h4>Layer stacking</h4>
+            <p>Stack coins or discs to simulate layers of metal atoms. Move them slightly to feel malleability.</p>
+            <h4>Model building</h4>
+            <p>Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsReadingWritingDeck2 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master Bonding and Structure through detailed notes, tables, and written explanations.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Summarize in your own words</h4>
+            <p>Write a 3–5 sentence summary for section 4.2. Break down key ideas into bullet points.</p>
+            <h4>Comparison table</h4>
+            <p>Create a written table comparing ionic, covalent, and metallic bonds (atoms involved, electron movement, forces, examples).</p>
+            <h4>Step-by-step notes</h4>
+            <p>Write out the process of electron transfer for ionic bonding. Practice drawing dot-and-cross diagrams for NaCl and MgO.</p>
+            <h4>Written explanation</h4>
+            <p>Describe in words why ionic compounds have high melting points and conduct electricity when molten.</p>
+            <h4>Stepwise instructions</h4>
+            <p>Write step-by-step guides for drawing dot-and-cross diagrams for H₂, HCl, H₂O, CH₄, and NH₃.</p>
+            <h4>Written comparison</h4>
+            <p>Make a table for diamond, graphite, graphene, and fullerenes, detailing bonds, hardness, conductivity, and uses.</p>
+            <h4>Pros and cons list</h4>
+            <p>Create a written table of benefits vs. risks for nanoparticles.</p>
         </CardContent>
     </Card>
 );
@@ -270,7 +323,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   };
   
   const renderLearnContent = () => {
-    if (deck.id === 'deck1' && userDetails?.learningStyle) {
+    if (!userDetails?.learningStyle) return null;
+
+    if (deck.id === 'deck1') {
       switch (userDetails.learningStyle) {
         case 'Kinesthetic':
           return <LearnAsKinesthetic />;
@@ -282,8 +337,17 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
           return null;
       }
     }
-     if (deck.id === 'deck2' && userDetails?.learningStyle === 'Visual') {
-        return <LearnAsVisualDeck2 />;
+     if (deck.id === 'deck2') {
+        switch (userDetails.learningStyle) {
+            case 'Visual':
+                return <LearnAsVisualDeck2 />;
+            case 'Kinesthetic':
+                return <LearnAsKinestheticDeck2 />;
+            case 'Reading/Writing':
+                return <LearnAsReadingWritingDeck2 />;
+            default:
+                return null;
+        }
     }
     return null;
   };
@@ -386,4 +450,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 
 export default DeckView;
 
+    
     

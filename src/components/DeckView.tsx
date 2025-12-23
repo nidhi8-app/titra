@@ -1,10 +1,10 @@
 
 "use client";
 
-import React, { useState, useMemo, useEffect } from 'react';
-import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
+import React, { useState, useMemo } from 'react';
+import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Eye, Footprints, BookOpen } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -14,6 +14,9 @@ import { initialNotesData, parseNotes } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
 import { NestedAccordion } from './NestedAccordion';
+import VisualQuizView from './VisualQuizView';
+import KinestheticQuizView from './KinestheticQuizView';
+import ReadingWritingQuizView from './ReadingWritingQuizView';
 
 
 type DeckViewProps = {
@@ -23,15 +26,63 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
-const NotesSummary = ({ notes }: { notes: Note[] }) => {
+const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
-        <Card className="border-none shadow-none bg-transparent">
-            <CardHeader className="px-2">
+        <Card>
+            <CardHeader>
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
+                 <CardDescription>{deckTitle}</CardDescription>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent>
                 <NestedAccordion sections={parsed} />
+            </CardContent>
+        </Card>
+    );
+};
+
+const LearningStyleContent = ({ deck, userDetails }: { deck: Deck, userDetails: UserDetails | null }) => {
+    if (!userDetails?.learningStyle) return null;
+
+    const style = userDetails.learningStyle;
+
+    let title = `Learn as a ${style} Learner`;
+    let Icon = BookOpen;
+    let QuizComponent;
+
+    switch (style) {
+        case 'Visual':
+            Icon = Eye;
+            QuizComponent = VisualQuizView;
+            break;
+        case 'Kinesthetic':
+            Icon = Footprints;
+            QuizComponent = KinestheticQuizView;
+            break;
+        case 'Reading/Writing':
+            Icon = BookOpen;
+            QuizComponent = ReadingWritingQuizView;
+            break;
+        default:
+            return null; // Don't show for Auditory for now
+    }
+
+    return (
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <Icon className="w-6 h-6" />
+                    {title}
+                </CardTitle>
+                <CardDescription>Engage with this topic using activities tailored to your learning style.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <QuizComponent 
+                    title={deck.title}
+                    deckId={deck.id}
+                    onBack={() => {}} 
+                    isEmbedded={true} 
+                />
             </CardContent>
         </Card>
     );
@@ -117,8 +168,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 
     return (
         <div className="space-y-6">
-            <NotesSummary notes={deckNotes} />
-            
+            <NotesSummary notes={deckNotes} deckTitle={deck.title} />
+
             <div className="flex gap-2 mb-4">
               {examSkillsText && (
                   <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
@@ -131,12 +182,14 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     Periodic Table
                 </Button>
             </div>
+            
+            <LearningStyleContent deck={deck} userDetails={userDetails} />
 
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <BrainCircuit className="w-6 h-6" />
-                        Quiz Me
+                        AI Quiz
                     </CardTitle>
                     <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>

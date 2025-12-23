@@ -17,51 +17,53 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
     let currentSubSubSection: NoteSection | null = null;
 
     notes.forEach(note => {
-        const lines = note.body.split('\n');
-
-        // Check for main title based on note title
-        if (note.title) {
+        // For decks with multiple small notes, treat each note as a top-level section.
+        if (note.title && notes.length > 1) {
             currentSection = {
                 title: note.title,
-                content: '',
+                content: note.body,
                 subsections: [],
             };
-            if(note.examSkills) {
-                currentSection.content += `**Exam Skills:**\n${note.examSkills}\n\n`;
-            }
             sections.push(currentSection);
+        } else { // For decks with one large note, parse its body for sections.
+            const lines = note.body.split('\n');
+            lines.forEach(line => {
+                const trimmedLine = line.trim();
+                if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // Matches 4.2.1
+                     currentSubSubSection = {
+                        title: trimmedLine,
+                        content: '',
+                        subsections: [],
+                    };
+                    if (currentSubsection) {
+                        currentSubsection.subsections.push(currentSubSubSection);
+                    }
+                } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // Matches 4.2
+                    currentSubsection = {
+                        title: trimmedLine,
+                        content: '',
+                        subsections: [],
+                    };
+                    // The first 4.x section creates the main section
+                    if (trimmedLine.startsWith('4.2 ')) {
+                        currentSection = {
+                            title: 'Bonding, structure, and the properties of matter', // Main title
+                            content: '',
+                            subsections: [currentSubsection],
+                        }
+                        sections.push(currentSection);
+                    } else if (currentSection) {
+                        currentSection.subsections.push(currentSubsection);
+                    }
+                    currentSubSubSection = null;
+                } else if (trimmedLine.length > 0) {
+                     const target = currentSubSubSection || currentSubsection;
+                     if (target) {
+                         target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
+                     }
+                }
+            });
         }
-
-        lines.forEach(line => {
-            const trimmedLine = line.trim();
-            if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // Matches 4.2.1
-                currentSubSubSection = {
-                    title: trimmedLine,
-                    content: '',
-                    subsections: [],
-                };
-                if (currentSubsection) {
-                    currentSubsection.subsections.push(currentSubSubSection);
-                } else if(currentSection) {
-                    currentSection.subsections.push(currentSubSubSection);
-                }
-            } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // Matches 4.2
-                currentSubsection = {
-                    title: trimmedLine,
-                    content: '',
-                    subsections: [],
-                };
-                 if (currentSection) {
-                    currentSection.subsections.push(currentSubsection);
-                }
-                currentSubSubSection = null;
-            } else if (trimmedLine.length > 0) {
-                const target = currentSubSubSection || currentSubsection || currentSection;
-                if (target) {
-                   target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
-                }
-            }
-        });
     });
 
     return sections;
@@ -82,12 +84,6 @@ Chemical reactions always involve the formation of one or more new substances, a
 Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae using the symbols of the atoms from which they were formed.
 Compounds can only be separated into elements by chemical reactions.
 Chemical reactions can be represented by word equations or equations using symbols and formulae.`,
-        examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
-- use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
-- name compounds of these elements from given formulae or symbol equations
-- write word equations for the reactions in this specification
-- write formulae and balanced chemical equations for the reactions in this specification
-- (HT only) write balanced half equations and ionic equations where appropriate.`,
         createdAt: new Date(),
         updatedAt: new Date(),
     },
@@ -102,6 +98,12 @@ Mixtures can be separated by physical processes such as:
 - fractional distillation
 - chromatography
 These physical processes do not involve chemical reactions and no new substances are made.`,
+        examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
+- use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
+- name compounds of these elements from given formulae or symbol equations
+- write word equations for the reactions in this specification
+- write formulae and balanced chemical equations for the reactions in this specification
+- (HT only) write balanced half equations and ionic equations where appropriate.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -231,327 +233,82 @@ Many transition elements have ions with different charges, form coloured compoun
   ],
   'deck2': [
     {
-      title: 'Bonding, structure, and the properties of matter',
-      body: `4.2 Bonding, structure, and the properties of matter
-
-Chemists use theories of structure and bonding to explain the physical and chemical properties of materials.
-
-Atoms can be arranged in molecular structures or giant structures.
-
-Bonding theories explain how atoms are held together.
-
-Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.
-
-4.2.1 Chemical bonds: ionic, covalent and metallic
-4.2.1.1 Chemical bonds
-
-There are three types of strong chemical bonds: ionic, covalent and metallic.
-
-Ionic bonding: oppositely charged ions.
-
-Covalent bonding: atoms share pairs of electrons.
-
-Metallic bonding: atoms share delocalised electrons.
-
+      title: 'Chemical bonds: ionic, covalent and metallic',
+      body: `There are three types of strong chemical bonds: ionic, covalent and metallic.
 Ionic bonding occurs in compounds formed from metals and non-metals.
-
 Covalent bonding occurs in non-metallic elements and compounds of non-metals.
-
 Metallic bonding occurs in metals and alloys.
-
-Chemical bonding is explained in terms of electrostatic forces and the transfer or sharing of electrons.
-
-4.2.1.2 Ionic bonding
-
-Electrons are transferred from metal atoms to non-metal atoms.
-
-Metal atoms lose electrons to form positive ions.
-
-Non-metal atoms gain electrons to form negative ions.
-
-Ions formed have the electronic structure of a noble gas.
-
-Electron transfer can be shown using dot and cross diagrams.
-
-The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
-
-4.2.1.3 Ionic compounds
-
-Ionic compounds are giant structures of ions.
-
-They are held together by strong electrostatic forces in all directions (ionic bonding).
-
-Students should be able to:
-
-deduce that a compound is ionic from a diagram
-
-describe limitations of diagrams
-
-work out the empirical formula from a model
-
-Sodium chloride is the required example.
-
-4.2.1.4 Covalent bonding
-
-Covalent bonds form when atoms share pairs of electrons.
-
-Covalent bonds are strong.
-
-Covalently bonded substances may be:
-
-small molecules
-
-very large molecules (polymers)
-
-giant covalent structures (diamond, silicon dioxide)
-
-Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams.
-
-Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
-
-4.2.1.5 Metallic bonding
-
-Metals consist of giant structures of atoms arranged in a regular pattern.
-
-Delocalised electrons move through the structure.
-
-Strong metallic bonds arise from sharing delocalised electrons.
-
-4.2.2 Bonding and structure linked to properties
-4.2.2.1 States of matter
-
-The three states are solid, liquid and gas.
-
-Changes of state occur at melting point and boiling point.
-
-Particle theory explains changes of state.
-
-The strength of forces between particles determines melting and boiling points.
-
-Stronger forces → higher melting and boiling points.
-
-(HT) Particle model limitations:
-
-no forces
-
-particles are solid spheres
-
-4.2.2.2 State symbols
-
-State symbols are: (s), (l), (g), (aq).
-
-Used in chemical equations.
-
-4.2.2.3 Properties of ionic compounds
-
-Ionic compounds have giant ionic lattices.
-
-Strong electrostatic forces give high melting and boiling points.
-
-Conduct electricity when molten or dissolved because ions can move.
-
-4.2.2.4 Properties of small molecules
-
-Usually gases or liquids with low melting and boiling points.
-
-Have weak intermolecular forces.
-
-Do not conduct electricity.
-
-Intermolecular forces increase with molecule size.
-
-4.2.2.5 Polymers
-
-Polymers have very large molecules.
-
-Atoms are linked by strong covalent bonds.
-
-Strong intermolecular forces make polymers solids at room temperature.
-
-4.2.2.6 Giant covalent structures
-
-Giant covalent structures are solids with very high melting points.
-
-All atoms are linked by strong covalent bonds.
-
-Examples: diamond, graphite, silicon dioxide.
-
-4.2.2.7 Properties of metals and alloys
-
-Metals have giant structures with metallic bonding.
-
-High melting and boiling points.
-
-Pure metals are malleable due to layers of atoms.
-
-Alloys are harder because layers are distorted.
-
-4.2.2.8 Metals as conductors
-
-Metals conduct electricity due to delocalised electrons.
-
-Thermal conductivity is also due to delocalised electrons.
-
-4.2.3 Structure and bonding of carbon
-4.2.3.1 Diamond
-
-Each carbon forms four covalent bonds.
-
-Very hard, very high melting point, does not conduct electricity.
-
-4.2.3.2 Graphite
-
-Each carbon forms three covalent bonds in layers.
-
-Delocalised electrons allow electrical conductivity.
-
-4.2.3.3 Graphene and fullerenes
-
-Graphene is a single layer of graphite.
-
-Fullerenes are hollow carbon molecules (e.g. C₆₀).
-
-Carbon nanotubes are cylindrical fullerenes.
-
-Used in electronics, materials and nanotechnology.
-
-4.2.4 Nanoparticles
-4.2.4.1 Sizes and properties
-
-Nanoparticles are 1–100 nm in size.
-
-High surface area to volume ratio.
-
-Can have different properties from bulk materials.
-
-4.2.4.2 Uses of nanoparticles
-
-Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts.
-
-Smaller quantities may be needed due to effectiveness.
-
-There are possible risks associated with their use.`,
+Ionic bonding involves the transfer of electrons from metal atoms to non-metal atoms to form oppositely charged ions with the electronic structure of a noble gas.
+Covalent bonding involves the sharing of electron pairs between atoms.
+Metallic bonding involves giant structures of atoms with delocalised electrons.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'How bonding and structure are related to the properties of substances',
+      body: `The three states of matter are solid, liquid and gas. The strength of forces between particles determines melting and boiling points.
+Ionic compounds have giant ionic lattices with strong electrostatic forces, giving them high melting points and conductivity only when molten or dissolved.
+Small molecules have low melting points due to weak intermolecular forces and do not conduct electricity.
+Polymers are very large molecules with strong covalent bonds and strong intermolecular forces, making them solids.
+Giant covalent structures have very high melting points as all atoms are linked by strong covalent bonds.
+Metals have giant structures with delocalised electrons, allowing them to conduct electricity and heat. Alloys are harder than pure metals because their layers are distorted.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Structure and bonding of carbon',
+      body: `Diamond is very hard, has a very high melting point, and does not conduct electricity because each carbon atom forms four strong covalent bonds.
+Graphite is soft and slippery because it has a layered structure with weak forces between layers. It conducts electricity due to delocalised electrons.
+Graphene is a single layer of graphite and is used in electronics and materials.
+Fullerenes are hollow molecules of carbon atoms, like C₆₀, used in nanotechnology.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Nanoparticles',
+      body: `Nanoparticles are 1–100 nm in size and have a very high surface area to volume ratio.
+This gives them different properties from bulk materials.
+They are used in medicine, electronics, sun creams, and catalysts.
+The long-term effects and potential risks of nanoparticles are not fully understood.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
   ],
   'deck3': [
     {
-      title: 'Quantitative chemistry',
-      body: `4.3.1 Chemical measurements, conservation of mass, and quantitative interpretation of equations
-4.3.1.1 Conservation of mass
-
-No atoms are lost or made during reactions → mass of products = mass of reactants.
-
-Chemical reactions are represented by balanced symbol equations.
-
-Multipliers: normal script before a formula, subscript within a formula.
-
-4.3.1.2 Relative formula mass (Mr)
-
-Sum of relative atomic masses of atoms in a formula.
-
-In balanced equations, sum of Mr of reactants = sum of Mr of products.
-
-Can calculate percentage by mass using Mr and relative atomic masses.
-
-4.3.1.3 Mass changes with gases
-
-Apparent mass changes occur when a reactant or product is a gas.
-
-Examples:
-
-Metal + Oxygen → Oxide (mass increases)
-
-Thermal decomposition of metal carbonates → CO₂ escapes
-
-Explain changes using particle model and balanced equations.
-
-4.3.1.4 Chemical measurements
-
-All measurements have uncertainty.
-
-Represent distribution of results and use range about mean as uncertainty measure.
-
-4.3.2 Use of amount of substance in relation to masses
-4.3.2.1 Moles (HT)
-
-Amount measured in moles (mol).
-
-Mass of 1 mole in grams = relative formula mass.
-
-1 mole contains Avogadro constant = 6.02 × 10²³ particles.
-
-Moles apply to atoms, molecules, ions, electrons, formulae, and equations.
-
-4.3.2.2 Amounts in equations (HT)
-
-Masses of reactants/products calculated from balanced equations.
-
-Example: Mg + 2HCl → MgCl₂ + H₂
-
-1 mole Mg reacts with 2 moles HCl → 1 mole MgCl₂ + 1 mole H₂
-
-Calculate masses of substances from balanced equations.
-
-4.3.2.3 Using moles to balance equations (HT)
-
-Balancing numbers can be found by converting masses → moles → ratios.
-
-4.3.2.4 Limiting reactants (HT)
-
-Limiting reactant = completely used up → limits products formed.
-
-Explain effects in moles or grams.
-
-4.3.2.5 Concentration of solutions
-
-Concentration measured in g/dm³.
-
-Calculate mass of solute in given volume.
-
-(HT) Mass and volume relationship with concentration.
-
-4.3.3 Yield and atom economy
-4.3.3.1 Percentage yield
-
-Actual product may be less than theoretical due to:
-
-Reversible reaction
-
-Loss during separation
-
-Side reactions
-
-% Yield = (Mass actually made ÷ Maximum theoretical mass) × 100
-
-Calculate yield from actual and theoretical mass.
-
-4.3.3.2 Atom economy
-
-Atom economy = (Mr of desired product ÷ Sum of Mr of all reactants) × 100
-
-High atom economy is sustainable and economical.
-
-Choose reactions with high atom economy considering yield, rate, equilibrium, by-products.
-
-4.3.4 Using concentrations in mol/dm³ (HT)
-
-Concentration can be in mol/dm³.
-
-Mass or moles of solute can be calculated from concentration and solution volume.
-
-If volumes of two reacting solutions are known, unknown concentration can be calculated.
-
-4.3.5 Amount of substance and gas volumes (HT)
-
-Equal moles of gases occupy same volume at same temperature and pressure.
-
-1 mole of gas at r.t.p = 24 dm³.
-
-Volumes of gaseous reactants/products calculated from balanced equations and known volumes.
-
-Convert between mass, moles, and volumes of gases.`,
+      title: 'Chemical measurements, conservation of mass and quantitative interpretation',
+      body: `The law of conservation of mass states that no atoms are lost or made during a chemical reaction.
+The relative formula mass (Mr) of a compound is the sum of the relative atomic masses of the atoms in the chemical formula.
+In a balanced chemical equation, the sum of the Mr of the reactants equals the sum of the Mr of the products.
+Apparent mass changes can occur in reactions involving gases if the container is not sealed.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Use of amount of substance in relation to masses of pure substances',
+      body: `The amount of a substance is measured in moles (mol).
+The mass of one mole of a substance in grams is numerically equal to its relative formula mass.
+One mole of any substance contains the Avogadro constant number of particles (6.02 x 10²³).
+The limiting reactant is the reactant that is completely used up in a reaction and determines the amount of product formed.
+The concentration of a solution can be measured in g/dm³.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Yield and atom economy of chemical reactions',
+      body: `The percentage yield of a reaction is calculated by: (Actual yield / Theoretical yield) x 100.
+Yield is always less than 100% due to factors like incomplete reactions, loss of product during separation, or side reactions.
+Atom economy is a measure of the amount of starting materials that end up as useful products. It is calculated by: (Mr of desired product / Sum of Mr of all reactants) x 100.
+High atom economy is important for sustainable development and economic reasons.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+     {
+      title: 'Using concentrations of solutions and amount of substance in relation to volumes of gases',
+      body: `Concentration can also be measured in mol/dm³.
+Equal amounts in moles of gases occupy the same volume at the same temperature and pressure.
+The volume of one mole of any gas at room temperature and pressure (r.t.p.) is 24 dm³.
+The volumes of gaseous reactants and products can be calculated from the balanced equation for the reaction.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },

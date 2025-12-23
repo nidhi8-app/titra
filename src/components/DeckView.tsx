@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Award } from 'lucide-react';
+import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Award, Scale, Sigma, TestTube, Percent, Recycle, FlaskConical, Target, Brain } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
@@ -215,6 +215,47 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
             </ScrollArea>
           );
         }
+        if (deckId === 'deck3') {
+            return (
+              <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+                <div className="prose prose-sm dark:prose-invert max-w-none">
+                  <h4><BrainCircuit className="inline-block mr-2" />1️⃣ Hands-on with Chemical Equations</h4>
+                  <p><strong>Balancing movement activity:</strong> Write chemical equations on sticky notes, each element or molecule on a separate note. Physically move them on a table or board to balance the atoms.</p>
+                  <p><strong>Atom/particle tokens:</strong> Use beads, Lego, or coins to represent atoms/molecules. Build reactants and products physically and rearrange to show conservation of mass.</p>
+                  <hr />
+                  <h4><Scale className="inline-block mr-2" />2️⃣ Relative Formula Mass & Mass Calculations</h4>
+                  <p><strong>Bead/mole model:</strong> Assign beads or blocks to represent relative atomic masses. Combine them to represent molecules and physically calculate the total mass.</p>
+                  <p><strong>Mass scale simulation:</strong> Use a kitchen scale or small weights to represent grams of reactants/products. Physically add/subtract weights to demonstrate mass changes.</p>
+                  <hr />
+                  <h4><Sigma className="inline-block mr-2" />3️⃣ Moles and Avogadro’s Constant</h4>
+                  <p><strong>Mole line-up activity:</strong> Use tokens or scaled-down versions to internalize the large number of particles in a mole.</p>
+                  <p><strong>Conversion practice with objects:</strong> Given a mass in grams, physically count or group objects to represent moles.</p>
+                  <hr />
+                  <h4><TestTube className="inline-block mr-2" />4️⃣ Limiting Reactants</h4>
+                  <p><strong>Hands-on simulation:</strong> Use two types of tokens (e.g., red and blue beads) representing reactants. Create "products" using a fixed ratio (e.g., 1 red + 2 blue) and observe which reactant runs out first.</p>
+                  <hr />
+                  <h4><Percent className="inline-block mr-2" />5️⃣ Percentage Yield</h4>
+                  <p><strong>Product collection simulation:</strong> Use beads or coins to represent the theoretical maximum product. Physically remove some to simulate "lost product" and then calculate the percentage yield from the physical counts.</p>
+                  <hr />
+                  <h4><Recycle className="inline-block mr-2" />6️⃣ Atom Economy</h4>
+                  <p><strong>Sorting game:</strong> Use a mix of tokens for all reactants and products. Physically separate the "desired products" from the "by-products" and count them to calculate the atom economy.</p>
+                  <hr />
+                  <h4><FlaskConical className="inline-block mr-2" />7️⃣ Concentration of Solutions</h4>
+                  <p><strong>Liquid measuring activity:</strong> Use water and colored liquids to measure solute and solvent volumes. Pour known masses into different volumes to visualize how concentration changes.</p>
+                  <hr />
+                  <h4><Award className="inline-block mr-2" />8️⃣ Gas Volumes</h4>
+                  <p><strong>Balloon gas analogy:</strong> Use balloons to represent gases, inflated to a scale where 1 mole = 24 dm³. Add/subtract balloons to simulate volumes in reactions.</p>
+                  <hr />
+                  <h4><Target className="inline-block mr-2" />9️⃣ Revision Games</h4>
+                  <p><strong>Flashcard movement:</strong> Place flashcards with definitions or calculations around the room and walk to the correct card to answer a question.</p>
+                  <p><strong>Reaction lab stations:</strong> Set up mini-stations for different calculations (moles, yield, etc.) and move between them, performing calculations with tokens.</p>
+                  <hr />
+                  <h4><Brain className="inline-block mr-2" />🔟 Build Your Own Lab Models</h4>
+                  <p><strong>DIY lab kits:</strong> Make small-scale physical models for mole conversions or gas reactions using balloons and containers, and "run" the reactions to reinforce memory.</p>
+                </div>
+              </ScrollArea>
+            );
+          }
         // Fallback for other decks
         return (
           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
@@ -611,3 +652,4 @@ export default DeckView;
     
 
     
+

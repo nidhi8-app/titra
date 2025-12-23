@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, Book, BookImage } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Eye, Footprints, BookOpen } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
@@ -31,6 +31,9 @@ const NotesSummary = ({ notes }: { notes: Note[] }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
         <Card className="bg-transparent shadow-none border-none">
+            <CardHeader>
+                <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
+            </CardHeader>
             <CardContent className="p-0">
                 <NestedAccordion sections={parsed} />
             </CardContent>
@@ -97,21 +100,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
       return;
     }
     
-    if (userDetails.learningStyle === 'Visual') {
-        setVisualQuiz(deck.title);
-        return;
-    }
-
-    if (userDetails.learningStyle === 'Kinesthetic') {
-        setKinestheticQuiz(deck.title);
-        return;
-    }
-
-    if (userDetails.learningStyle === 'Reading/Writing') {
-      setReadingWritingQuiz(deck.title);
-      return;
-    }
-    
     if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
         toast({
             variant: "destructive",
@@ -147,6 +135,52 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     }
   };
   
+  const renderLearningStyleActions = () => {
+    const style = userDetails?.learningStyle;
+    
+    let Icon;
+    let actionText = '';
+    let onClickAction = () => {};
+
+    switch(style) {
+        case 'Visual':
+            Icon = Eye;
+            actionText = 'Start Visual Quiz';
+            onClickAction = () => setVisualQuiz(deck.title);
+            break;
+        case 'Kinesthetic':
+            Icon = Footprints;
+            actionText = 'Start Kinesthetic Quiz';
+            onClickAction = () => setKinestheticQuiz(deck.title);
+            break;
+        case 'Reading/Writing':
+            Icon = BookOpen;
+            actionText = 'Start Reading/Writing Quiz';
+            onClickAction = () => setReadingWritingQuiz(deck.title);
+            break;
+        default:
+            return null; // or a default action
+    }
+
+    return (
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <Icon className="w-6 h-6" />
+                    Learn as a {style} Learner
+                </CardTitle>
+                <CardDescription>Engage with this topic in a way that suits your learning style.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Button onClick={onClickAction} className="w-full" size="lg">
+                    {actionText}
+                </Button>
+            </CardContent>
+        </Card>
+    );
+  };
+
+
   if (visualQuiz) {
     return <VisualQuizView title={visualQuiz} onBack={() => setVisualQuiz(null)} deckId={deck.id} />;
   }
@@ -193,6 +227,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     Periodic Table
                 </Button>
             </div>
+            
+            {renderLearningStyleActions()}
 
             <Card>
                 <CardHeader>
@@ -200,14 +236,14 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                         <BrainCircuit className="w-6 h-6" />
                         Quiz Me
                     </CardTitle>
-                    <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
+                    <CardDescription>Test your knowledge with a generic quiz tailored to your learning style.</CardDescription>
                 </CardHeader>
                 <CardContent>
                      <Button onClick={handleGenerateQuiz} disabled={isGeneratingQuiz} className="w-full" size="lg">
                         {isGeneratingQuiz ? (
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         ) : (
-                           "Generate Quiz"
+                           "Generate AI Quiz"
                         )}
                     </Button>
                 </CardContent>
@@ -218,7 +254,11 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 
   return (
     <div className="p-4 md:p-6">
-      {renderContent()}
+      <ScrollArea className="h-[calc(100vh-8rem)]">
+        <div className="pr-4">
+            {renderContent()}
+        </div>
+      </ScrollArea>
 
       {examSkillsText && (
         <Dialog open={isExamSkillsDialogOpen} onOpenChange={setIsExamSkillsDialogOpen}>

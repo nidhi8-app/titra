@@ -17,7 +17,152 @@ Compounds are formed from elements by chemical reactions.
 Chemical reactions always involve the formation of one or more new substances, and often involve a detectable energy change.
 Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae using the symbols of the atoms from which they were formed.
 Compounds can only be separated into elements by chemical reactions.
-Chemical reactions can be represented by word equations or equations using symbols and formulae.`,
+Chemical reactions can be represented by word equations or equations using symbols and formulae.
+
+---
+
+### 4.1.1.2 Mixtures
+
+A mixture consists of two or more elements or compounds not chemically combined together.
+
+The chemical properties of each substance in the mixture are unchanged.
+
+Mixtures can be separated by physical processes such as:
+
+*   filtration
+*   crystallisation
+*   simple distillation
+*   fractional distillation
+*   chromatography
+
+These physical processes do not involve chemical reactions and no new substances are made.
+
+**Students should be able to:**
+
+*   describe, explain and give examples of the specified processes of separation
+*   suggest suitable separation and purification techniques for mixtures when given appropriate information
+
+### 4.1.1.3 The development of the model of the atom
+
+(common content with physics)
+
+New experimental evidence may lead to a scientific model being changed or replaced.
+
+Before the discovery of the electron, atoms were thought to be tiny spheres that could not be divided.
+
+The discovery of the electron led to the plum pudding model of the atom.
+
+The plum pudding model suggested that the atom is a ball of positive charge with negative electrons embedded in it.
+
+The results from the alpha particle scattering experiment led to the conclusion that:
+
+*   the mass of an atom was concentrated at the centre (nucleus)
+*   the nucleus was charged
+
+This nuclear model replaced the plum pudding model.
+
+Niels Bohr adapted the nuclear model by suggesting that electrons orbit the nucleus at specific distances.
+
+The theoretical calculations of Bohr agreed with experimental observations.
+
+Later experiments led to the idea that the positive charge of any nucleus could be subdivided into a whole number of smaller particles, each particle having the same amount of positive charge.
+
+The name proton was given to these particles.
+
+The experimental work of James Chadwick provided the evidence to show the existence of neutrons within the nucleus.
+
+This was about 20 years after the nucleus became an accepted scientific idea.
+
+### 4.1.1.4 Relative electrical charges of subatomic particles
+
+The relative electrical charges of the particles in atoms are:
+
+| Name | Relative charge |
+| :--- | :--- |
+| Proton | +1 |
+| Neutron | 0 |
+| Electron | -1 |
+
+In an atom, the number of electrons is equal to the number of protons in the nucleus.
+
+Atoms have no overall electrical charge.
+
+The number of protons in an atom of an element is its atomic number.
+
+All atoms of a particular element have the same number of protons.
+
+Atoms of different elements have different numbers of protons.
+
+### 4.1.1.5 Size and mass of atoms
+
+Atoms are very small, having a radius of about 0.1 nm (1 × 10⁻¹⁰ m).
+
+The radius of a nucleus is less than 1/10 000 of that of the atom (about 1 × 10⁻¹⁴ m).
+
+Almost all of the mass of an atom is in the nucleus.
+
+The relative masses of protons, neutrons and electrons are:
+
+| Name | Relative mass |
+| :--- | :--- |
+| Proton | 1 |
+| Neutron | 1 |
+| Electron | Very small |
+
+The sum of the protons and neutrons in an atom is its mass number.
+
+Atoms of the same element can have different numbers of neutrons; these atoms are called isotopes of that element.
+
+### 4.1.1.6 Relative atomic mass
+
+The relative atomic mass of an element is an average value that takes account of the abundance of the isotopes of the element.
+
+### 4.1.1.7 Electronic structure
+
+The electrons in an atom occupy the lowest available energy levels (innermost available shells).
+
+The electronic structure of an atom can be represented by numbers or by a diagram.
+
+For example, the electronic structure of sodium is 2,8,1.
+
+### 4.1.2 The periodic table
+
+The elements in the periodic table are arranged in order of atomic (proton) number and so that elements with similar properties are in columns, known as groups.
+
+The table is called a periodic table because similar properties occur at regular intervals.
+
+Elements in the same group have the same number of electrons in their outer shell and this gives them similar chemical properties.
+
+### 4.1.2.2 Development of the periodic table
+
+Before the discovery of protons, neutrons and electrons, scientists attempted to classify the elements by arranging them in order of their atomic weights.
+
+Mendeleev overcame some of the problems by leaving gaps for elements that he thought had not been discovered and in some places changed the order based on atomic weights.
+
+Knowledge of isotopes made it possible to explain why the order based on atomic weights was not always correct.
+
+### 4.1.2.3 Metals and non-metals
+
+Elements that react to form positive ions are metals. Elements that do not form positive ions are non-metals.
+
+Metals are found to the left and towards the bottom of the periodic table. Non-metals are found towards the right and top.
+
+### 4.1.2.4 Group 0
+
+The elements in Group 0 are called the noble gases. They are unreactive and do not easily form molecules because their atoms have stable arrangements of electrons (a full outer shell).
+
+The boiling points of the noble gases increase with increasing relative atomic mass (going down the group).
+
+### 4.1.2.5 Group 1
+
+The elements in Group 1 are known as the alkali metals and have characteristic properties because of the single electron in their outer shell. Reactivity increases going down the group.
+
+### 4.1.2.6 Group 7
+
+The elements in Group 7 are known as the halogens. They are non-metals and consist of molecules made of pairs of atoms. Reactivity decreases going down the group.
+
+A more reactive halogen can displace a less reactive halogen from an aqueous solution of its salt.
+`,
         examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
 - use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
 - name compounds of these elements from given formulae or symbol equations

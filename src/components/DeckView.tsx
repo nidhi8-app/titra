@@ -205,39 +205,42 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
       case 'Visual':
         if (deckId === 'deck1') {
           return (
-              <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
-                  <div className="prose prose-sm dark:prose-invert max-w-none">
-                      <h4>One-page visual map (MOST effective)</h4>
-                      <p><strong>What to do</strong>: Put “All substances are made of atoms” in the centre. Branch out to Atoms, Elements, Compounds, and Chemical reactions. Use arrows for processes, boxes for definitions, and circles for examples. This turns the notes into a mental picture.</p>
-                      <hr />
-                      <h4>Concept boxes (see the differences clearly)</h4>
-                      <p>Draw four large boxes for Atom, Element, Compound, and Chemical reaction. Write key definitions in each. Seeing them side-by-side prevents confusion.</p>
-                      <hr />
-                      <h4>Colour-coded system (consistency matters)</h4>
-                      <p>Use the same colours every time: 🔵 Atoms / elements, 🟢 Compounds, 🔴 Chemical reactions, 🟣 Exam skills. Your brain remembers colour faster than words.</p>
-                      <hr />
-                      <h4>Flow diagrams for processes</h4>
-                      <p>Draw this as a flowchart: Elements ⬇ (chemical reaction) ➡ Compound formed ⬇ (energy change) ➡ New substance. Flow diagrams help understand cause and effect.</p>
-                      <hr />
-                      <h4>Symbol → word → meaning triangles</h4>
-                      <p>For each example, draw a triangle with the symbol (e.g., O), the word (oxygen), and the meaning (atom of an element) at each corner. Linking them visually strengthens recall.</p>
-                      <hr />
-                      <h4>Exam skills checklist (visual layout)</h4>
-                      <p>Create a tick-box list for exam requirements: ☐ Use names and symbols, ☐ Name compounds, ☐ Write word equations, etc. Seeing progress is motivating.</p>
-                      <hr />
-                      <h4>Split-page notes (powerful for understanding)</h4>
-                      <p>On the left side of a page, write key terms (atom, element). On the right side, draw diagrams, arrows, and examples. This forces processing, not just copying.</p>
-                      <hr />
-                      <h4>Redraw from memory (no copying)</h4>
-                      <p><strong>Method</strong>: Look at your diagram for 30 seconds. Cover it. Redraw from memory. Compare and fix gaps in a different colour. This is visual active recall.</p>
-                      <hr />
-                       <h4>Before-and-after diagrams</h4>
-                      <p>Draw: Before reaction → separate elements. After reaction → compound formed. Add arrows and labels like “new substance formed”.</p>
-                      <hr />
-                      <h4>Icon system (quick recognition)</h4>
-                      <p>Use simple icons: ⚛️ atom, 🧱 element, 🔗 compound, ⚡ energy change, 🧪 reaction. Your brain starts recognising ideas instantly.</p>
-                  </div>
-              </ScrollArea>
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <h4>One Master Diagram (Highest Impact)</h4>
+                <p>On a large sheet of paper, create a central hub titled "Structure of Matter". Branch out with main sections in boxes: Atoms & Elements, Compounds & Mixtures, Atomic Structure, and Periodic Table Groups. Use arrows to link related concepts (e.g., atoms → elements → compounds). This creates a single visual anchor for the whole topic.</p>
+                <hr />
+                <h4>Color-Coded Meaning System</h4>
+                <p>Assign a specific color to each core concept and stick to it: 🔵 Atoms/Subatomic Particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Reactions, 🟣 Periodic Table. Your brain will build faster connections based on these visual cues.</p>
+                <hr />
+                <h4>"Before vs. After" Diagrams</h4>
+                <p>Draw paired boxes to compare processes. For a chemical reaction, show "Before: separate elements" and "After: compound formed + energy change". For a mixture, show "Before: substances together" and "After: substances physically separated". This visually solidifies the key difference.</p>
+                <hr />
+                <h4>Atomic Model Timeline</h4>
+                <p>Draw a horizontal timeline showing the evolution of the atomic model: Solid Sphere → Plum Pudding → Nuclear → Bohr → Protons/Neutrons. Add small sketches and arrows labeled "new evidence" to show how scientific understanding developed.</p>
+                <hr />
+                <h4>Particle Tables for Quick Comparison</h4>
+                <p>Instead of writing sentences, organize information into tables. Create one for subatomic particles (Particle, Charge, Mass, Location) and another for atomic numbers and mass numbers. Tables allow for instant visual comparison.</p>
+                <hr />
+                <h4>Scale Diagrams for Size and Mass</h4>
+                <p>Draw a large circle for an atom and a tiny dot in the middle for the nucleus. Label their approximate sizes (0.1 nm vs 1x10⁻¹⁴ m) and add the note "Almost all mass is in the nucleus." Seeing the scale difference makes the concept tangible.</p>
+                <hr />
+                <h4>Electronic Structure Ring Diagrams</h4>
+                <p>For the first 20 elements, draw the nucleus and electron shells as concentric circles. Fill in the electrons and color-code the outer shell. This visually links an element's structure to its group and reactivity.</p>
+                <hr />
+                <h4>Periodic Table Highlighting</h4>
+                <p>Print a periodic table and use highlighters to mark patterns. Shade the areas for metals and non-metals. Circle key groups (0, 1, 7). This turns the table from a list of facts into a map of patterns.</p>
+                <hr />
+                <h4>Group Summary Boxes</h4>
+                <p>For each key group (0, 1, 7), create a small summary box with the most critical information: number of outer electrons, reactivity trend, and key properties. Placing these side-by-side makes comparison effortless.</p>
+                <hr />
+                <h4>Arrow Trend Diagrams</h4>
+                <p>Represent trends using simple arrows instead of words. For example: Group 1 Reactivity ⬇️ INCREASES. Group 7 Reactivity ⬇️ DECREASES. Your brain processes and remembers these directional cues very effectively.</p>
+                <hr />
+                <h4>Redraw-from-Memory Rule</h4>
+                <p><strong>This is the most important technique.</strong> Look at your master diagram or notes for one minute. Cover them up and redraw everything from memory. Then, compare and add any missing information in a different color. If you can draw it, you truly understand it.</p>
+              </div>
+            </ScrollArea>
           );
         }
         // Fallback for other decks for visual learners

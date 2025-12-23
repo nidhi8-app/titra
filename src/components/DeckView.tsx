@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText, Sigma, Link, TestTube, ChevronsRightLeft, Thermometer, Rows, Key, CircleDashed, Disc, Gauge, Cloud, TestTube2, Network } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText, Sigma, Link, TestTube, ChevronsRightLeft, Thermometer, Rows, Key, CircleDashed, Disc, Gauge, Cloud, TestTube2, Network, PersonStanding, CheckCircle, Handshake, Recycle } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -89,47 +89,66 @@ const LearnAsKinesthetic = () => (
             <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4 className="flex items-center gap-2"><Hand className="inline-block h-5 w-5" />Learn by Doing (Active Methods)</h4>
+            <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
+            <p><strong>What you need:</strong> Coins / beads / paper balls / LEGO</p>
+            <p><strong>How:</strong></p>
             <ul>
-                <li><strong>Write it out by hand:</strong> Rewrite notes, summaries, or definitions — handwriting improves memory more than typing.</li>
-                <li><strong>Build or model concepts:</strong> Use objects (LEGO, clay, paper, coins) to represent ideas. Example: atoms = beads, compounds = bead combinations.</li>
-                <li><strong>Act it out:</strong> Physically role-play processes (e.g. particles vibrating, chemical reactions colliding).</li>
+                <li>One object = atom</li>
+                <li>Same objects = element</li>
+                <li>Different objects joined = compound</li>
+                <li>Loose pile = mixture</li>
             </ul>
-
-            <h4 className="flex items-center gap-2"><Footprints className="inline-block h-5 w-5" />Learn with Movement</h4>
-            <ul>
-                <li><strong>Walk while revising:</strong> Read flashcards or explain topics out loud while pacing.</li>
-                <li><strong>Gesture while explaining:</strong> Use your hands to show steps, processes, or cause-and-effect.</li>
-                <li><strong>Stations method:</strong> Set up different spots for different topics and rotate between them.</li>
-            </ul>
-
-            <h4 className="flex items-center gap-2"><Pen className="inline-block h-5 w-5" />Active Recall + Action</h4>
-            <ul>
-                <li><strong>Flashcards you touch and sort:</strong> Physically sort cards into “know / unsure / don’t know” piles.</li>
-                <li><strong>Whiteboard blurting:</strong> Write everything you remember, erase, then rewrite from memory.</li>
-                <li><strong>Teach someone else:</strong> Stand up and explain the topic like a mini lesson.</li>
-            </ul>
-
-            <h4 className="flex items-center gap-2"><Eye className="inline-block h-5 w-5" />Make Learning Physical & Visual</h4>
-            <ul>
-                <li><strong>Draw diagrams and flowcharts:</strong> Redraw them from memory, not copying.</li>
-                <li><strong>Colour-code with purpose:</strong> Same colours = same types of information.</li>
-                <li><strong>Foldable notes / flip tabs:</strong> Opening and closing tabs reinforces memory.</li>
-            </ul>
+            <p>Say out loud while doing it: “Compounds are chemically combined.”, “Mixtures are not chemically combined.”</p>
+            <p>👉 This physically locks in compound vs mixture (huge exam confusion point).</p>
             
-            <h4 className="flex items-center gap-2"><Headphones className="inline-block h-5 w-5" />Use the Body + Voice</h4>
+            <h4>2️⃣ Walk-the-topic method (movement + recall)</h4>
+            <p>Walk around your room. Each step = one fact. Say (from memory):</p>
             <ul>
-                <li><strong>Say it out loud:</strong> Read notes, equations, or definitions aloud.</li>
-                <li><strong>Record yourself:</strong> Listen back while moving or doing chores.</li>
-                <li><strong>Create rhythms or actions:</strong> Match facts to claps, taps, or movements.</li>
+                <li>“All substances are made of atoms.”</li>
+                <li>“An atom is the smallest part of an element.”</li>
+                <li>“Elements are shown in the periodic table.”</li>
+                <li>“Chemical reactions form new substances.”</li>
             </ul>
+            <p>If you stop → check notes → restart walking.</p>
+            
+            <h4>3️⃣ Act out atomic models (model development)</h4>
+            <p>You = the atom.</p>
+            <ul>
+                <li>Stand still → tiny solid sphere</li>
+                <li>Spread arms with dots → plum pudding model</li>
+                <li>Hands tight in centre → nucleus</li>
+                <li>Walk in circles → Bohr model</li>
+                <li>Tap chest → protons</li>
+                <li>Tap head → neutrons</li>
+            </ul>
+            <p>Say the model name while acting it out. 👉 Movement helps remember sequence + reasons models changed.</p>
 
-             <h4 className="flex items-center gap-2"><Microscope className="inline-block h-5 w-5" />For Science</h4>
+            <h4>4️⃣ Human charge game (subatomic particles)</h4>
+            <p>Stand up and use your body:</p>
             <ul>
-                <li>Re-enact experiments or processes.</li>
-                <li>Label diagrams from memory.</li>
-                <li>Use real-life examples you can touch or move.</li>
+                <li>Right hand up → +1 proton</li>
+                <li>Arms out → 0 neutron</li>
+                <li>Left hand down → –1 electron</li>
             </ul>
+            <p>Then say: “Atoms have no overall electrical charge.” and “Number of electrons equals number of protons.”</p>
+
+            <h4>5️⃣ Scale it with your hands (size & mass)</h4>
+            <p>Use your hands: Big circle with arms → atom. Tiny pinch → nucleus. Say: “Almost all of the mass is in the nucleus.” This makes size vs mass intuitive.</p>
+
+            <h4>6️⃣ Electron shell walking</h4>
+            <p>Put objects in circles on the floor. Walk and place Sodium → 2, 8, 1. Say: “Electrons occupy the lowest available energy levels.”</p>
+            
+            <h4>7️⃣ Periodic table floor map</h4>
+            <p>Use tape or paper on the floor. Left side = metals. Right side = non-metals. Stand in Group 1 → say “reactivity increases down the group”. Stand in Group 7 → say “reactivity decreases down the group”. Stand in Group 0 → say “full outer shell, unreactive”.</p>
+
+            <h4>8️⃣ Reactivity direction game</h4>
+            <p>Point DOWN with your hand: Group 1 → “reactivity increases”. Group 7 → “reactivity decreases”. Group 0 → “boiling point increases”.</p>
+            
+            <h4>9️⃣ Separation process stations (mixtures)</h4>
+            <p>Set up 5 “stations” (different spots in the room): Filtration, Crystallisation, Simple distillation, Fractional distillation, Chromatography. Walk to a station and say: what it separates, that it is a physical process, that no new substances are made.</p>
+
+            <h4>🔟 Teach-an-invisible-student method</h4>
+            <p>Stand up and teach the topic out loud like a lesson. Rule: No notes, use hand gestures. If you freeze → that’s a revision gap. Teaching = deepest learning.</p>
         </CardContent>
     </Card>
 );
@@ -215,7 +234,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const examSkillsText = useMemo(() => {
     const noteWithSkills = initialNotesData['deck1']?.find(note => note.examSkills);
     return noteWithSkills?.examSkills || null;
-  }, [deck.id]);
+  }, []);
 
 
   const handleGenerateQuiz = async () => {

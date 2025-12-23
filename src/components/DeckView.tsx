@@ -309,32 +309,54 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
           return (
             <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
               <div className="prose prose-sm dark:prose-invert max-w-none">
-                  <h4>Mind Map Activity</h4>
-                  <p>Create a colorful mind map connecting bonding types (ionic, covalent, metallic) to their structures, properties, and common uses. Use icons or small sketches for atoms, ions, polymers, and nanoparticles to make it more memorable.</p>
+                  <h4>Mind map</h4>
+                  <p>Create a colorful mind map connecting bonding types → structures → properties → uses. Use icons or small sketches for atoms, ions, metals, polymers, and nanoparticles.</p>
                   <hr />
-                  <h4>Color-Coded Bonding Chart</h4>
-                  <p>Make a three-column chart for Ionic, Covalent, and Metallic bonding. Instead of just text, use visual cues:</p>
-                  <ul>
-                      <li><strong>Ionic:</strong> Show electron transfer with a colored arrow (e.g., red electron moving from a blue atom).</li>
-                      <li><strong>Covalent:</strong> Use overlapping colored circles to represent shared electron pairs.</li>
-                      <li><strong>Metallic:</strong> Draw a grid of positive ions with wavy arrows representing the "sea" of delocalized electrons.</li>
-                  </ul>
-                   <p>Also, consider using an online simulation (like PhET) to see these bonds form in 3D.</p>
+                  <h4>Color-coded chart</h4>
+                  <p>Make a table with three columns (Ionic / Covalent / Metallic). Use colors to indicate electron transfer (red → blue), shared electrons (overlapping circles), and delocalised electrons (wavy arrows).</p>
                   <hr />
-                  <h4>Ionic and Covalent Diagram Practice</h4>
-                  <p>Practice drawing dot-and-cross diagrams for ionic compounds (like NaCl) and covalent molecules (like H₂O, CH₄). Use different colors for each element to clearly see where electrons come from or how they are shared.</p>
+                  <h4>Interactive animation</h4>
+                  <p>Use online simulations (e.g., PhET) to see bonding in 3D.</p>
                   <hr />
-                  <h4>Build 3D Models</h4>
-                  <p>Use a modeling kit (or even small balls and sticks) to build 3D structures. Create a simple ionic lattice (NaCl), a water molecule, and a methane molecule to physically see their shapes.</p>
+                  <h4>Dot-and-cross diagrams</h4>
+                  <p>Draw ions in different colors (e.g., metal = blue, non-metal = red). For covalent bonds, use Venn diagrams or sharing diagrams with overlapping colored circles.</p>
                   <hr />
-                  <h4>Visual Comparison Table</h4>
-                  <p>Create a table comparing the properties of different structures (Ionic, Simple Covalent, Giant Covalent, Metallic). Use symbols and icons: a ⚡ for conductivity, a thermometer icon for melting point (high/low), and arrows of different thicknesses for the strength of forces.</p>
+                  <h4>3D models</h4>
+                  <p>Build NaCl or MgO using small balls for ions to see the lattice. Build H₂, H₂O, CH₄, NH₃ using modeling kits.</p>
                   <hr />
-                  <h4>Carbon Structures: 3D Visualization</h4>
-                  <p>Build or draw the 3D models for diamond, graphite, and a C₆₀ fullerene. For graphite, draw the layers and show how delocalized electrons move between them. This helps explain why it's soft and conducts electricity.</p>
+                  <h4>Comparison tables with visuals</h4>
+                  <p>Use symbols to represent properties: ⚡ for conductivity, a thermometer icon for melting point, and arrows of different thicknesses for the strength of forces.</p>
                   <hr/>
+                  <h4>Carbon Structures Visualization</h4>
+                  <p>Build or draw 3D models for diamond, graphite, and C₆₀ fullerene. For graphite, draw the layers and show how delocalised electrons move between them.</p>
+                  <hr />
                   <h4>Nanoparticle Size Diagram</h4>
-                  <p>Draw a large circle to represent a bulk material and then many tiny circles inside another large one to represent nanoparticles of the same mass. This visually explains why nanoparticles have a huge surface area to volume ratio.</p>
+                  <p>Draw a large circle for a bulk material and many tiny circles inside another to represent nanoparticles, visually explaining the huge surface area to volume ratio.</p>
+              </div>
+            </ScrollArea>
+          );
+        }
+        if (deckId === 'deck3') {
+          return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <h4>1. Balance & Conservation of Mass</h4>
+                <p>Use diagrams with color-coded atoms to show that the number of atoms of each element is the same in reactants and products, proving mass is conserved. Example: For Mg + 2HCl → MgCl₂ + H₂, draw Mg, H, and Cl atoms and count them on both sides.</p>
+                <hr />
+                <h4>2. Relative Formula Mass (Mr)</h4>
+                <p>Break down formulas visually. For CaCO₃, draw it as one Ca atom, one C atom, and three O atoms. Assign their masses (40, 12, 16) and add them up. Use a calculator icon to reinforce the calculation.</p>
+                <hr />
+                <h4>3. Moles & Avogadro's Constant</h4>
+                <p>Create a visual analogy for a mole. Draw a box representing '1 mole' and write "6.02 x 10²³ particles" inside it. This turns an abstract number into a container concept.</p>
+                <hr />
+                <h4>4. Limiting Reactants</h4>
+                <p>Draw the 'before' and 'after' of a reaction. In the 'before' state, show all reactant particles. In the 'after' state, show the product formed, the 'leftover' excess reactant, and clearly label the 'used up' limiting reactant.</p>
+                <hr />
+                <h4>5. Percentage Yield</h4>
+                <p>Use a diagram of a beaker representing the 'Maximum theoretical mass'. Draw an arrow showing some product being 'Lost' (e.g., spilled or evaporated) and some turning into 'By-Products'. The remaining amount is the 'Actual' yield. This visually explains why the actual yield is less than the theoretical.</p>
+                <hr />
+                <h4>6. Amounts & Concentrations</h4>
+                <p>Use diagrams of volumetric flasks. To show concentration, use colored dots (solute) in the liquid (solvent). A darker color or more dots means a higher concentration. Label flasks with volumes (e.g., 250 cm³) and amounts to connect the visual with the formula.</p>
               </div>
             </ScrollArea>
           );
@@ -652,4 +674,5 @@ export default DeckView;
     
 
     
+
 

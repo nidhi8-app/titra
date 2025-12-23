@@ -19,6 +19,7 @@ type VisualQuizViewProps = {
 
 const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c8', 'c9'].includes(img.id));
 const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8', 'c9', 'c10', 'c11', 'c12'].includes(img.id));
+const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1', 'c2', 'c13', 'c16'].includes(img.id));
 
 
 const Deck1Quiz = () => (
@@ -350,10 +351,64 @@ const Deck2Quiz = () => (
     </>
 );
 
+const Deck3Quiz = () => (
+    <>
+      <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: DIAGRAMMING EQUATIONS & FORMULAS</h3>
+      <p><strong>1️⃣ Balance & Conservation of Mass:</strong> Draw the reaction `Mg + 2HCl → MgCl₂ + H₂` using color-coded circles for each atom. Show that the number and type of atoms are equal on both sides.</p>
+      <p className="mt-4"><strong>2️⃣ Relative Formula Mass:</strong> For `CaCO₃`, draw a diagram breaking it down into its atoms (Ca, C, O, O, O). Assign the correct relative atomic mass to each and show how they sum to 100.</p>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Check Understanding</AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc pl-6 text-sm">
+                <li>Your diagram for Mg + 2HCl should show 1 Mg, 2 H, and 2 Cl atoms on both the left and right sides, just rearranged.</li>
+                <li>Your CaCO₃ breakdown should visually add 40 + 12 + (3 x 16) to equal 100.</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      
+      <hr />
+
+      <h3 className="flex items-center gap-2"><Sigma className="text-accent" />SECTION 2: VISUALIZING MOLES & LIMITS</h3>
+      <p><strong>3️⃣ Moles as a "Box":</strong> Draw a large box labeled "1 Mole". Inside, write the Avogadro constant (6.02 x 10²³). This helps visualize the mole as a specific quantity.</p>
+      <p className="mt-4"><strong>4️⃣ Limiting Reactants:</strong> Draw a beaker with particles for two reactants before a reaction. Draw a second beaker "after" showing the new product, the leftover excess reactant, and clearly cross out the reactant that was completely used up.</p>
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Check Understanding</AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc pl-6 text-sm">
+                <li>The mole box is a conceptual tool to visualize a large, specific number.</li>
+                <li>The "after" beaker should clearly distinguish between product, leftover reactant, and the completely consumed limiting reactant.</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      
+      <hr />
+
+      <h3 className="flex items-center gap-2"><Thermometer className="text-accent" />SECTION 3: YIELD & CONCENTRATION DIAGRAMS</h3>
+      <p><strong>5️⃣ Percentage Yield Flowchart:</strong> Draw a flowchart. Start with "Maximum Theoretical Mass" in a large beaker. Add arrows pointing away labeled "Lost Product" and "By-Products". The remaining amount should be labeled "Actual Product".</p>
+      <p className="mt-4"><strong>6️⃣ Concentration Flasks:</strong> Draw two flasks of the same volume. In one, draw a few colored dots (low concentration). In the other, draw many colored dots (high concentration). Label them "Low c" and "High c".</p>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Check Understanding</AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc pl-6 text-sm">
+                <li>The yield diagram visually explains why actual yield is always less than theoretical.</li>
+                <li>The flask diagrams provide a quick visual reference for what concentration means at a particle level.</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+);
+
+
 const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
 
-    const diagrams = deckId === 'deck1' ? deck1Diagrams : deck2Diagrams;
+    const diagrams = deckId === 'deck1' ? deck1Diagrams : deckId === 'deck2' ? deck2Diagrams : deck3Diagrams;
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -361,6 +416,9 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
         }
         if (deckId === 'deck2') {
             return <Deck2Quiz />;
+        }
+        if (deckId === 'deck3') {
+            return <Deck3Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }

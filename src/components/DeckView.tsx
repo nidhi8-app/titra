@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -18,7 +18,7 @@ import { NestedAccordion } from './NestedAccordion';
 
 type DeckViewProps = {
   deck: Deck;
-  onQuiz: (deckId: string, deckTitle: string) => void;
+  onQuiz: (deckId: string, deckTitle:string) => void;
   userDetails: UserDetails | null;
   onNoteAdded: () => void;
 };
@@ -37,6 +37,62 @@ const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }
         </Card>
     );
 };
+
+
+const LearnAsKinesthetic = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4 className="flex items-center gap-2"><Hand className="inline-block h-5 w-5" />Learn by Doing (Active Methods)</h4>
+            <ul>
+                <li><strong>Write it out by hand:</strong> Rewrite notes, summaries, or definitions — handwriting improves memory more than typing.</li>
+                <li><strong>Build or model concepts:</strong> Use objects (LEGO, clay, paper, coins) to represent ideas. Example: atoms = beads, compounds = bead combinations.</li>
+                <li><strong>Act it out:</strong> Physically role-play processes (e.g. particles vibrating, chemical reactions colliding).</li>
+            </ul>
+
+            <h4 className="flex items-center gap-2"><Footprints className="inline-block h-5 w-5" />Learn with Movement</h4>
+            <ul>
+                <li><strong>Walk while revising:</strong> Read flashcards or explain topics out loud while pacing.</li>
+                <li><strong>Gesture while explaining:</strong> Use your hands to show steps, processes, or cause-and-effect.</li>
+                <li><strong>Stations method:</strong> Set up different spots for different topics and rotate between them.</li>
+            </ul>
+
+            <h4 className="flex items-center gap-2"><Pen className="inline-block h-5 w-5" />Active Recall + Action</h4>
+            <ul>
+                <li><strong>Flashcards you touch and sort:</strong> Physically sort cards into “know / unsure / don’t know” piles.</li>
+                <li><strong>Whiteboard blurting:</strong> Write everything you remember, erase, then rewrite from memory.</li>
+                <li><strong>Teach someone else:</strong> Stand up and explain the topic like a mini lesson.</li>
+            </ul>
+
+            <h4 className="flex items-center gap-2"><Eye className="inline-block h-5 w-5" />Make Learning Physical & Visual</h4>
+            <ul>
+                <li><strong>Draw diagrams and flowcharts:</strong> Redraw them from memory, not copying.</li>
+                <li><strong>Colour-code with purpose:</strong> Same colours = same types of information.</li>
+                <li><strong>Foldable notes / flip tabs:</strong> Opening and closing tabs reinforces memory.</li>
+            </ul>
+            
+            <h4 className="flex items-center gap-2"><Headphones className="inline-block h-5 w-5" />Use the Body + Voice</h4>
+            <ul>
+                <li><strong>Say it out loud:</strong> Read notes, equations, or definitions aloud.</li>
+                <li><strong>Record yourself:</strong> Listen back while moving or doing chores.</li>
+                <li><strong>Create rhythms or actions:</strong> Match facts to claps, taps, or movements.</li>
+            </ul>
+
+             <h4 className="flex items-center gap-2"><Microscope className="inline-block h-5 w-5" />For Science</h4>
+            <ul>
+                <li>Re-enact experiments or processes.</li>
+                <li>Label diagrams from memory.</li>
+                <li>Use real-life examples you can touch or move.</li>
+            </ul>
+        </CardContent>
+    </Card>
+);
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -69,7 +125,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   }, [deck.id, userNotes, isLoading]);
   
   const examSkillsText = useMemo(() => {
-    // Look for exam skills on any note within the deck.
     const noteWithSkills = (deckNotes || []).find(note => note.examSkills);
     return noteWithSkills?.examSkills || null;
   }, [deckNotes]);
@@ -132,6 +187,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     Periodic Table
                 </Button>
             </div>
+            
+            {deck.id === 'deck1' && userDetails?.learningStyle === 'Kinesthetic' && <LearnAsKinesthetic />}
             
             <Card>
                 <CardHeader>

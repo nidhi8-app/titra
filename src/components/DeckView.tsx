@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -26,17 +26,57 @@ type DeckViewProps = {
 const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
-        <Card>
-            <CardHeader>
+        <Card className="bg-transparent shadow-none border-0">
+            <CardHeader className="p-0 mb-4">
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
-                 <CardDescription>{deckTitle}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
                 <NestedAccordion sections={parsed} />
             </CardContent>
         </Card>
     );
 };
+
+
+const LearnAsReadingWriting = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master this topic through structured writing, definitions, and summarization.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Rewrite → Reduce → Rewrite (very effective)</h4>
+            <p>Rewrite the notes in full sentences. Reduce them to half the length. Reduce again to 5–6 key sentences. This forces understanding, not copying.</p>
+
+            <h4>2️⃣ Definition drilling (exam-focused)</h4>
+            <p>Write each definition clearly: atom, element, compound, chemical reaction. Cover the definitions. Rewrite them from memory. Check and correct. Repeat until accurate.</p>
+            
+            <h4>3️⃣ Turn notes into questions</h4>
+            <p>Convert each line into a question, e.g.: What are all substances made of? What is an atom? How are atoms represented? How are compounds formed? Then write full answers.</p>
+
+            <h4>4️⃣ Sentence stems (controlled writing)</h4>
+            <p>Complete these in writing: “All substances are made of …”, “An atom is …”, “Compounds contain …”, “Chemical reactions always involve …” This helps precise exam wording.</p>
+
+            <h4>5️⃣ Paragraph chaining</h4>
+            <p>Write one paragraph about atoms & elements. Write one paragraph about compounds. Write one paragraph about chemical reactions. Link paragraphs using connectives like because, therefore, however.</p>
+            
+            <h4>6️⃣ Keyword lists + explanations</h4>
+            <p>List keywords from the notes. Under each, write a one-line explanation in your own words. Example: atom → smallest part of an element that can exist.</p>
+
+            <h4>7️⃣ Copy → Cover → Write (classic but powerful)</h4>
+            <p>Copy a section neatly. Cover it. Write it again from memory. Compare and correct in a different colour.</p>
+
+            <h4>8️⃣ Exam command-word practice</h4>
+            <p>Write answers to: Define atom, Describe a compound, Explain a chemical reaction, State two ways reactions can be represented. Stick to clear written responses.</p>
+
+            <h4>9️⃣ Checklist writing</h4>
+            <p>Rewrite the “Students should be able to…” section as a checklist, then rewrite it as sentences, then rewrite from memory.</p>
+        </CardContent>
+    </Card>
+);
 
 
 const LearnAsKinesthetic = () => (
@@ -167,7 +207,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   }, [deck.id, userNotes, isLoading]);
   
   const examSkillsText = useMemo(() => {
-    // For deck1, exam skills are hardcoded. For others, it could be in the note.
     if (deck.id === 'deck1') {
         const noteWithSkills = initialNotesData['deck1'].find(note => note.examSkills);
         return noteWithSkills?.examSkills || null;
@@ -237,6 +276,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
             
             {deck.id === 'deck1' && userDetails?.learningStyle === 'Kinesthetic' && <LearnAsKinesthetic />}
             {deck.id === 'deck1' && userDetails?.learningStyle === 'Visual' && <LearnAsVisual />}
+            {deck.id === 'deck1' && userDetails?.learningStyle === 'Reading/Writing' && <LearnAsReadingWriting />}
             
             <Card>
                 <CardHeader>

@@ -17,6 +17,7 @@ import { initialNotesData, type InitialNoteSeed } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import KinestheticQuizView from './KinestheticQuizView';
 import VisualQuizView from './VisualQuizView';
+import ReadingWritingQuizView from './ReadingWritingQuizView';
 
 
 type DeckViewProps = {
@@ -282,6 +283,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [kinestheticQuiz, setKinestheticQuiz] = useState<string | null>(null);
   const [visualQuiz, setVisualQuiz] = useState<string | null>(null);
+  const [readingWritingQuiz, setReadingWritingQuiz] = useState<string | null>(null);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -345,6 +347,11 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
         setKinestheticQuiz(deck.title);
         return;
     }
+
+    if (userDetails.learningStyle === 'Reading/Writing' && deck.id === 'deck1') {
+      setReadingWritingQuiz(deck.title);
+      return;
+    }
     
     if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
         toast({
@@ -387,6 +394,10 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
   if (kinestheticQuiz) {
     return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} />;
+  }
+
+  if (readingWritingQuiz) {
+    return <ReadingWritingQuizView title={readingWritingQuiz} onBack={() => setReadingWritingQuiz(null)} />;
   }
 
   const renderContent = () => {
@@ -471,3 +482,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+    

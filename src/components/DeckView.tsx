@@ -458,6 +458,48 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
             </ScrollArea>
           );
         }
+        if (deckId === 'deck3') {
+          return (
+            <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                  <h4>1️⃣ Rewrite the Specification in Your Own Words</h4>
+                  <p><strong>Why it works:</strong> rewriting forces processing, not memorising.</p>
+                  <p><strong>How to do it:</strong> Take each sub-heading (e.g. Conservation of mass, Moles, Percentage yield). Rewrite it in 5–6 clear bullet points. Keep the same meaning and key terms from the spec.</p>
+                  <hr />
+                  <h4>2️⃣ Create Definition Flashcards (Text-Only)</h4>
+                  <p><strong>Why it works:</strong> reading/writing learners remember precise wording.</p>
+                  <p><strong>How to do it:</strong> Front: Term. Back: Full definition in sentence form. Key terms: Conservation of mass, Relative formula mass (Mr), Mole, Avogadro constant, Limiting reactant, Percentage yield, Atom economy, Concentration, Molar volume (24 dm³).</p>
+                  <hr />
+                  <h4>3️⃣ Formula Sheets (Written, Not Visual)</h4>
+                  <p><strong>Why it works:</strong> seeing formulas repeatedly in writing builds recall.</p>
+                  <p>Create a formula page and rewrite it daily: Mr = sum of Ar, n = m ÷ Mr, % yield = (actual ÷ theoretical) × 100, etc. Write each formula with one sentence explaining what it does.</p>
+                  <hr />
+                  <h4>4️⃣ Step-by-Step Written Methods</h4>
+                  <p><strong>Why it works:</strong> GCSE marks reward method as much as answers.</p>
+                  <p>For each calculation type, write a numbered method. E.g., for Percentage Yield: 1. Calculate theoretical mass. 2. Use actual mass. 3. Divide actual by theoretical. 4. Multiply by 100.</p>
+                  <hr />
+                  <h4>5️⃣ Tables for Comparisons</h4>
+                  <p><strong>Why it works:</strong> tables organise large amounts of written information. Make tables comparing Yield vs Atom Economy, for example.</p>
+                  <hr />
+                  <h4>6️⃣ Practice Exam-Style Questions (Written Answers)</h4>
+                  <p><strong>Why it works:</strong> reading/writing learners improve by producing text. Do short written questions daily, e.g., “Explain why mass appears to change when a gas is produced.” Use full sentences.</p>
+                  <hr />
+                  <h4>7️⃣ “Blurting” Technique</h4>
+                  <p><strong>Why it works:</strong> active recall through writing.</p>
+                  <p><strong>How:</strong> Read a topic for 10 minutes. Close notes. Write everything you remember. Compare with notes and rewrite missing information in a different colour.</p>
+                  <hr />
+                  <h4>8️⃣ Structured Summaries</h4>
+                  <p>After each topic, write: 5 key facts, 2 key equations, 1 common mistake.</p>
+                  <hr />
+                  <h4>9️⃣ Past Paper Annotation</h4>
+                  <p><strong>Why it works:</strong> improves exam technique through reading. Print questions, underline command words, write notes next to steps, and rewrite model answers in your own words.</p>
+                  <hr />
+                  <h4>🔟 Weekly One-Page Written Summary</h4>
+                  <p>Once per week, write a one-page summary from memory using only text. This builds long-term retention.</p>
+              </div>
+            </ScrollArea>
+          );
+        }
         // Fallback for other decks
         return (
           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
@@ -706,6 +748,7 @@ export default DeckView;
     
 
     
+
 
 
 

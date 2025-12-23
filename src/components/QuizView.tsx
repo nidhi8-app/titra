@@ -4,7 +4,7 @@
 import React from 'react';
 import { initialQuizTopics, quizQuestions, quizMotivationalMessages } from '@/lib/data';
 import { Button } from './ui/button';
-import { Plus, Search, ArrowLeft, ChevronDown, Sparkles, Loader2 } from 'lucide-react';
+import { Plus, Search, ArrowLeft, ChevronDown, Sparkles, Loader2, FileUp } from 'lucide-react';
 import { Progress } from './ui/progress';
 import type { Card as TopicCard, QuizQuestion, UserDetails } from '@/lib/types';
 import QuestionCard from './QuestionCard';
@@ -19,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription }
 import { useToast } from '@/hooks/use-toast';
 import { FillInTheGapDialog } from './FillInTheGapDialog';
 import { generateFillInTheGap } from '@/ai/flows/generate-fill-in-the-gap-flow';
+import { ImportDialog } from './ImportDialog';
 
 type QuizSource = {
   type: 'pre-made',
@@ -56,7 +57,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
     practiceStyle = 'MCQ';
   } else { // fill-in-the-gap
     questions = source.questions;
-    title = source.topic.title;
+    title = `Fill in the Gap: ${source.topic.title}`;
     practiceStyle = source.style;
   }
 
@@ -187,12 +188,14 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
   const [isFillInTheGapDialogOpen, setIsFillInTheGapDialogOpen] = React.useState(false);
   const [fillInTheGapTopic, setFillInTheGapTopic] = React.useState<TopicCard | null>(null);
   const [isGenerating, setIsGenerating] = React.useState(false);
+  const [isImportDialogOpen, setIsImportDialogOpen] = React.useState(false);
   const { toast } = useToast();
 
   React.useEffect(() => {
     const updatedTopics = initialQuizTopics.map(topic => ({
         ...topic,
         progress: quizScores[topic.id] !== undefined ? Math.round(quizScores[topic.id]) : -1,
+        cardCount: quizQuestions[topic.id]?.length || 0,
     }));
     setTopics(updatedTopics);
   }, [quizScores]);
@@ -206,6 +209,14 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
     }
   };
 
+  const handleImportSelect = (option: string) => {
+    setIsImportDialogOpen(false);
+    toast({
+        title: `Importing from ${option}`,
+        description: "This feature is coming soon!",
+    });
+  }
+
   const handleFillInTheGapFormatSelect = async (format: 'MCQ' | 'Writing') => {
     setIsFillInTheGapDialogOpen(false);
     if (!fillInTheGapTopic) return;
@@ -213,6 +224,15 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
     const originalQuestions = quizQuestions[fillInTheGapTopic.id];
     if (!originalQuestions || originalQuestions.length === 0) {
         toast({ title: "No questions available for this topic.", variant: "destructive"});
+        return;
+    }
+
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+        toast({
+            variant: "destructive",
+            title: "AI Feature Disabled",
+            description: "Please add your Gemini API key to the .env file to use this feature.",
+        });
         return;
     }
 
@@ -264,9 +284,9 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">Quizzes</h2>
           <div className="flex items-center gap-2">
-            <Button variant="outline">
-              <Plus className="mr-2 h-4 w-4" />
-              New Quiz
+            <Button variant="outline" onClick={() => setIsImportDialogOpen(true)}>
+              <FileUp className="mr-2 h-4 w-4" />
+              Import
             </Button>
             <Button onClick={() => onSelectTopic(topics[Math.floor(Math.random() * topics.length)], 'MCQ')}>Start Random Quiz</Button>
             <Button variant="ghost" size="icon">
@@ -308,8 +328,8 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
                           <DropdownMenuItem onClick={() => handlePracticeClick(topic, 'MCQ')}>MCQ</DropdownMenuItem>
                           <DropdownMenuItem onClick={() => handlePracticeClick(topic, 'Writing')}>Writing</DropdownMenuItem>
                           <DropdownMenuItem onClick={() => handlePracticeClick(topic, 'Fill in the Gap')}>Fill in the Gap</DropdownMenuItem>
-                          <DropdownMenuItem disabled>Mix</DropdownMenuItem>
-                          <DropdownMenuItem disabled>Flashcard Form</DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handlePracticeClick(topic, 'Mix')}>Mix</DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handlePracticeClick(topic, 'Flashcard Form')}>Flashcard Form</DropdownMenuItem>
                       </DropdownMenuContent>
                   </DropdownMenu>
               </CardFooter>
@@ -322,12 +342,13 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
         onClose={handleCloseDialog}
         onSelectFormat={handleFillInTheGapFormatSelect}
       />
+      <ImportDialog
+        isOpen={isImportDialogOpen}
+        onClose={() => setIsImportDialogOpen(false)}
+        onSelect={handleImportSelect}
+      />
     </>
   );
 };
 
 export default QuizView;
-
-    
-
-    

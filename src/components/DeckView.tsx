@@ -19,6 +19,7 @@ import KinestheticQuizView from './KinestheticQuizView';
 import VisualQuizView from './VisualQuizView';
 import ReadingWritingQuizView from './ReadingWritingQuizView';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { PeriodicTableDialog } from './PeriodicTableDialog';
 
 
 type DeckViewProps = {
@@ -28,15 +29,15 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
-const NotesSummary = ({ notes, deckId }: { notes: (Note | InitialNoteSeed)[], deckId: string }) => {
-    if (deckId === 'deck1') {
-        return (
-            <Card className="mb-6">
-                <CardHeader>
-                    <CardTitle>Topic Notes</CardTitle>
-                    <CardDescription>A quick overview of the key points in this deck.</CardDescription>
-                </CardHeader>
-                <CardContent>
+const NotesSummary = ({ notes }: { notes: (Note | InitialNoteSeed)[] }) => {
+    return (
+        <Card className="mb-6">
+            <CardHeader>
+                <CardTitle>Topic Notes</CardTitle>
+                <CardDescription>A quick overview of the key points in this deck.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                {notes && notes.length > 0 ? (
                     <Accordion type="multiple" className="w-full">
                         {notes.map((note, index) => (
                             <AccordionItem value={`item-${index}`} key={index}>
@@ -49,29 +50,12 @@ const NotesSummary = ({ notes, deckId }: { notes: (Note | InitialNoteSeed)[], de
                             </AccordionItem>
                         ))}
                     </Accordion>
-                </CardContent>
-            </Card>
-        )
-    }
-
-    const combinedNotesText = notes.map(n => n.body).join('\n\n---\n\n');
-
-    return (
-        <Card className="mb-6">
-            <CardHeader>
-                <CardTitle>Topic Notes</CardTitle>
-                <CardDescription>A quick overview of the key points in this deck.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                {!combinedNotesText && <p className="text-destructive text-sm">There are no notes to display.</p>}
-                {combinedNotesText && (
-                    <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
-                        {combinedNotesText}
-                    </div>
+                ) : (
+                    <p className="text-destructive text-sm">There are no notes to display.</p>
                 )}
             </CardContent>
         </Card>
-    )
+    );
 };
 
 
@@ -568,6 +552,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const firestore = useFirestore();
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
+  const [isPeriodicTableDialogOpen, setIsPeriodicTableDialogOpen] = useState(false);
   const [kinestheticQuiz, setKinestheticQuiz] = useState<string | null>(null);
   const [visualQuiz, setVisualQuiz] = useState<string | null>(null);
   const [readingWritingQuiz, setReadingWritingQuiz] = useState<string | null>(null);
@@ -702,7 +687,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
     return (
         <div className="space-y-6">
-            <NotesSummary notes={deckNotes} deckId={deck.id} />
+            <NotesSummary notes={deckNotes} />
             
             <div className="flex gap-2">
               {examSkillsText && (
@@ -712,7 +697,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
                   </Button>
               )}
                {deck.id === 'deck1' && (
-                    <Button variant="outline" className="w-full" onClick={() => toast({ title: 'Coming soon!'})}>
+                    <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableDialogOpen(true)}>
                         <Book className="mr-2 h-4 w-4" />
                         Periodic Table
                     </Button>
@@ -767,20 +752,14 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
           </DialogContent>
         </Dialog>
       )}
+       <PeriodicTableDialog
+        isOpen={isPeriodicTableDialogOpen}
+        onClose={() => setIsPeriodicTableDialogOpen(false)}
+      />
     </div>
   );
 };
 
 export default DeckView;
 
-
     
-
-    
-
-    
-
-
-
-
-

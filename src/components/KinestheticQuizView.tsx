@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -300,6 +300,131 @@ const Deck2Quiz = () => (
     </>
 );
 
+const Deck3Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2"><BrainCircuit className="text-accent" />SECTION 1: BALANCING & CONSERVATION OF MASS</h3>
+        <p><strong>1️⃣ Atom Movement Exercise:</strong> Use beads, coins, or LEGO pieces to represent atoms. Build reactants of a simple reaction like: Mg + 2HCl → MgCl₂ + H₂. Rearrange physically to make products, ensuring all atoms are accounted for.</p>
+        <p>Question: Which “atoms” move to make the products? Explain why mass is conserved.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-1">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">The atoms from the reactants rearrange to form the products. No atoms are created or destroyed, which is why mass is conserved.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        <p className="mt-4"><strong>2️⃣ Equation Sticky Note Challenge:</strong> Write each element in a reaction on a sticky note. Move notes around on a table to balance: Al + O₂ → Al₂O₃.</p>
+        <p>Question: How many O₂ molecules are needed to balance Al₂O₃?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-2">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">You need 3 molecules of O₂ (and 4 atoms of Al) to make 2 molecules of Al₂O₃. The balanced equation is 4Al + 3O₂ → 2Al₂O₃.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Scale className="text-accent" />SECTION 2: RELATIVE FORMULA MASS & PERCENTAGE BY MASS</h3>
+        <p><strong>3️⃣ Build-a-Molecule Activity:</strong> Use beads to represent atoms. Build H₂O and CO₂ molecules.</p>
+        <p>Question: Calculate the relative formula mass using your beads as atomic masses.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-3">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>H₂O: (2 x 1) + 16 = 18</li>
+                        <li>CO₂: 12 + (2 x 16) = 44</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        <p className="mt-4"><strong>4️⃣ Mass Split Simulation:</strong> Use tokens to represent grams of a compound. Physically divide tokens into the proportion of each element.</p>
+        <p>Question: What is the percentage by mass of oxygen in H₂O?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-4">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">Percentage by mass of oxygen in H₂O = (16 / 18) x 100% = 88.9%</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Sigma className="text-accent" />SECTION 3: MOLES AND AVOGADRO’S CONSTANT</h3>
+        <p><strong>5️⃣ Mole Line-up Activity:</strong> Assign 1 token = 1 particle, line up multiple tokens to represent moles.</p>
+        <p>Question: Using your line, how many tokens would represent 1 mole?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-5">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">6.02 x 10²³ tokens (Avogadro's constant).</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        <p className="mt-4"><strong>6️⃣ Moles Matching Game:</strong> Give physical cards: some showing mass of substance, some number of moles. Match mass ↔ moles using M = n × Mr.</p>
+        <p>Question: How many grams of NaCl are in 2 moles?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-6">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">Mr of NaCl = 23 + 35.5 = 58.5. Mass = 2 moles × 58.5 g/mol = 117 g.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><TestTube className="text-accent" />SECTION 4: LIMITING REACTANTS</h3>
+        <p><strong>7️⃣ Token Reaction Simulation:</strong> Use two sets of tokens for reactants (e.g., 5 Mg tokens, 12 HCl tokens). Combine physically to make products.</p>
+        <p>Question: Which reactant runs out first? Identify the limiting reactant and how much product is made.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-7">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">For Mg + 2HCl, you need twice as many HCl tokens as Mg. With 5 Mg, you'd need 10 HCl. Since you have 12 HCl, Mg is the limiting reactant. You can make 5 units of product.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Recycle className="text-accent" />SECTION 5: PERCENTAGE YIELD</h3>
+        <p><strong>8️⃣ Product Collection Game:</strong> Start with 10 beads representing maximum product. Remove some beads to represent loss during reaction.</p>
+        <p>Question: Calculate the percentage yield using your collected beads.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-8">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">If you collected 8 beads, the yield is (8 / 10) x 100% = 80%.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Award className="text-accent" />SECTION 6: ATOM ECONOMY</h3>
+        <p><strong>9️⃣ Atom Sorting Activity:</strong> Use a mix of tokens representing all reactants and products. Physically separate desired products vs by-products.</p>
+        <p>Question: Count tokens to calculate atom economy.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-9">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">Atom Economy = (Total mass of desired products / Total mass of all reactants) x 100%.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><TestTube className="text-accent" />SECTION 7: CONCENTRATION AND VOLUMES</h3>
+        <p><strong>🔟 Liquid Measurement Simulation:</strong> Use colored water or sand to represent solute. Pour into different volumes to create solutions of different concentrations.</p>
+        <p>Question: How much solute is needed to make 250 cm³ of 2 g/dm³ solution?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-10">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">Volume = 250 cm³ = 0.25 dm³. Mass = Concentration x Volume = 2 g/dm³ x 0.25 dm³ = 0.5 g.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        <p className="mt-4"><strong>Bonus:</strong> Use balloons or boxes to represent gas volumes: 1 mole of gas = 24 dm³.</p>
+        <p>Question: How many dm³ of H₂ are produced when 1 mole of Mg reacts with excess HCl?</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d3-item-11">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">From Mg + 2HCl → MgCl₂ + H₂, 1 mole of Mg produces 1 mole of H₂ gas. Therefore, 24 dm³ of H₂ is produced.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 const KinestheticQuizView = ({ title, onBack, deckId }: KinestheticQuizViewProps) => {
     
@@ -309,6 +434,9 @@ const KinestheticQuizView = ({ title, onBack, deckId }: KinestheticQuizViewProps
         }
         if (deckId === 'deck2') {
             return <Deck2Quiz />;
+        }
+        if (deckId === 'deck3') {
+            return <Deck3Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }

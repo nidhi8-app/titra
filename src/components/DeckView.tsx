@@ -33,7 +33,7 @@ const NotesSummary = ({ notes }: { notes: (Note | InitialNoteSeed)[] }) => {
     const parsedNotes = useMemo(() => parseNotes(notes), [notes]);
 
     return (
-        <Card className="mb-6">
+        <Card className="mb-2">
             <CardHeader>
                 <CardTitle>Topic Notes</CardTitle>
                 <CardDescription>A quick overview of the key points in this deck.</CardDescription>
@@ -680,7 +680,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
         <div className="space-y-6">
             <NotesSummary notes={deckNotes} />
             
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               {examSkillsText && (
                   <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
                       <Award className="mr-2 h-4 w-4" />
@@ -750,5 +750,3 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
-
-    

@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Eye, Footprints, BookOpen } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -14,9 +14,6 @@ import { initialNotesData, parseNotes } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
 import { NestedAccordion } from './NestedAccordion';
-import VisualQuizView from './VisualQuizView';
-import KinestheticQuizView from './KinestheticQuizView';
-import ReadingWritingQuizView from './ReadingWritingQuizView';
 
 
 type DeckViewProps = {
@@ -36,53 +33,6 @@ const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }
             </CardHeader>
             <CardContent>
                 <NestedAccordion sections={parsed} />
-            </CardContent>
-        </Card>
-    );
-};
-
-const LearningStyleContent = ({ deck, userDetails }: { deck: Deck, userDetails: UserDetails | null }) => {
-    if (!userDetails?.learningStyle) return null;
-
-    const style = userDetails.learningStyle;
-
-    let title = `Learn as a ${style} Learner`;
-    let Icon = BookOpen;
-    let QuizComponent;
-
-    switch (style) {
-        case 'Visual':
-            Icon = Eye;
-            QuizComponent = VisualQuizView;
-            break;
-        case 'Kinesthetic':
-            Icon = Footprints;
-            QuizComponent = KinestheticQuizView;
-            break;
-        case 'Reading/Writing':
-            Icon = BookOpen;
-            QuizComponent = ReadingWritingQuizView;
-            break;
-        default:
-            return null; // Don't show for Auditory for now
-    }
-
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Icon className="w-6 h-6" />
-                    {title}
-                </CardTitle>
-                <CardDescription>Engage with this topic using activities tailored to your learning style.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <QuizComponent 
-                    title={deck.title}
-                    deckId={deck.id}
-                    onBack={() => {}} 
-                    isEmbedded={true} 
-                />
             </CardContent>
         </Card>
     );
@@ -183,8 +133,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                 </Button>
             </div>
             
-            <LearningStyleContent deck={deck} userDetails={userDetails} />
-
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">

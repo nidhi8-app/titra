@@ -82,7 +82,15 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
             QuizComponent = ReadingWritingQuizView;
             break;
         default:
-             return <p>Invalid learning style.</p>;
+             return (
+                 <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <p className="text-xl">The AI Quiz is not yet available for Auditory learners.</p>
+                     <Button onClick={onBack} className="mt-4">
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      Back
+                    </Button>
+                 </div>
+           );
     }
     return <QuizComponent {...quizProps} />
   }

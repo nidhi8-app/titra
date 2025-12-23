@@ -86,6 +86,12 @@ Compounds can only be separated into elements by chemical reactions.
 Chemical reactions can be represented by word equations or equations using symbols and formulae.`,
         createdAt: new Date(),
         updatedAt: new Date(),
+        examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
+- use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
+- name compounds of these elements from given formulae or symbol equations
+- write word equations for the reactions in this specification
+- write formulae and balanced chemical equations for the reactions in this specification
+- (HT only) write balanced half equations and ionic equations where appropriate.`
     },
     {
       title: 'Mixtures',
@@ -98,12 +104,6 @@ Mixtures can be separated by physical processes such as:
 - fractional distillation
 - chromatography
 These physical processes do not involve chemical reactions and no new substances are made.`,
-        examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
-- use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
-- name compounds of these elements from given formulae or symbol equations
-- write word equations for the reactions in this specification
-- write formulae and balanced chemical equations for the reactions in this specification
-- (HT only) write balanced half equations and ionic equations where appropriate.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -233,85 +233,145 @@ Many transition elements have ions with different charges, form coloured compoun
   ],
   'deck2': [
     {
-      title: 'Chemical bonds: ionic, covalent and metallic',
-      body: `There are three types of strong chemical bonds: ionic, covalent and metallic.
+      title: 'Bonding, structure, and the properties of matter',
+      body: `4.2.1.1 Chemical bonds: ionic, covalent and metallic
+There are three types of strong chemical bonds: ionic, covalent and metallic.
 Ionic bonding occurs in compounds formed from metals and non-metals.
-Covalent bonding occurs in non-metallic elements and compounds of non-metals.
-Metallic bonding occurs in metals and alloys.
-Ionic bonding involves the transfer of electrons from metal atoms to non-metal atoms to form oppositely charged ions with the electronic structure of a noble gas.
-Covalent bonding involves the sharing of electron pairs between atoms.
-Metallic bonding involves giant structures of atoms with delocalised electrons.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'How bonding and structure are related to the properties of substances',
-      body: `The three states of matter are solid, liquid and gas. The strength of forces between particles determines melting and boiling points.
-Ionic compounds have giant ionic lattices with strong electrostatic forces, giving them high melting points and conductivity only when molten or dissolved.
-Small molecules have low melting points due to weak intermolecular forces and do not conduct electricity.
-Polymers are very large molecules with strong covalent bonds and strong intermolecular forces, making them solids.
-Giant covalent structures have very high melting points as all atoms are linked by strong covalent bonds.
-Metals have giant structures with delocalised electrons, allowing them to conduct electricity and heat. Alloys are harder than pure metals because their layers are distorted.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Structure and bonding of carbon',
-      body: `Diamond is very hard, has a very high melting point, and does not conduct electricity because each carbon atom forms four strong covalent bonds.
-Graphite is soft and slippery because it has a layered structure with weak forces between layers. It conducts electricity due to delocalised electrons.
-Graphene is a single layer of graphite and is used in electronics and materials.
-Fullerenes are hollow molecules of carbon atoms, like C₆₀, used in nanotechnology.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Nanoparticles',
-      body: `Nanoparticles are 1–100 nm in size and have a very high surface area to volume ratio.
-This gives them different properties from bulk materials.
-They are used in medicine, electronics, sun creams, and catalysts.
-The long-term effects and potential risks of nanoparticles are not fully understood.`,
+Covalent bonding occurs in non-metallic elements and in compounds of non-metals.
+Metallic bonding occurs in metallic elements and alloys.
+4.2.1.2 Ionic bonding
+When a metal atom reacts with a non-metal atom electrons in the outer shell of the metal atom are transferred.
+Metal atoms lose electrons to become positively charged ions.
+Non-metal atoms gain electrons to become negatively charged ions.
+The ions produced by metals in Groups 1 and 2 and by non-metals in Groups 6 and 7 have the electronic structure of a noble gas (Group 0).
+The electron transfer during the formation of an ionic compound can be represented by a dot and cross diagram.
+The charge on the ions produced by metals in Groups 1 and 2 and by non-metals in Groups 6 and 7 relates to the group number of the element in the periodic table.
+4.2.1.3 Ionic compounds
+An ionic compound is a giant structure of ions.
+Ionic compounds are held together by strong electrostatic forces of attraction between oppositely charged ions. These forces act in all directions in the lattice and this is called ionic bonding.
+4.2.1.4 Covalent bonding
+When atoms share pairs of electrons, they form covalent bonds. These bonds between atoms are strong.
+Covalently bonded substances may consist of small molecules.
+Some covalently bonded substances have very large molecules, such as polymers.
+Some covalently bonded substances have giant covalent structures, such as diamond and silicon dioxide.
+The covalent bonds in molecules and giant structures can be represented in the following forms:
+For ammonia (NH₃)
+Displayed formula, Dot and cross diagram, Three-dimensional model
+4.2.1.5 Metallic bonding
+Metals consist of giant structures of atoms arranged in a regular pattern.
+The electrons in the outer shell of metal atoms are delocalised and so are free to move through the whole structure. The sharing of delocalised electrons gives rise to strong metallic bonds.
+4.2.2 How bonding and structure are related to the properties of substances
+4.2.2.1 The three states of matter
+The three states of matter are solid, liquid and gas.
+In a solid, the particles are held closely together in fixed positions in a regular lattice. The particles can only vibrate in their fixed positions.
+In a liquid, the particles are closely packed but can move past each other.
+In a gas, the particles are far apart and move randomly.
+4.2.2.2 State symbols
+In chemical equations, the three states of matter are shown as (s), (l) and (g), with (aq) for aqueous solutions.
+4.2.2.3 Properties of ionic compounds
+Ionic compounds have regular structures (giant ionic lattices) in which there are strong electrostatic forces of attraction in all directions between oppositely charged ions.
+These compounds have high melting points and high boiling points because of the large amounts of energy needed to break the many strong bonds.
+When melted or dissolved in water, ionic compounds conduct electricity because the ions are free to move and so charge can flow.
+4.2.2.4 Properties of small molecules
+Substances that consist of small molecules are usually gases or liquids that have relatively low melting points and boiling points.
+These substances have only weak forces between the molecules (intermolecular forces). It is these intermolecular forces that are overcome, not the covalent bonds, when the substance melts or boils.
+The intermolecular forces increase with the size of the molecules, so larger molecules have higher melting and boiling points.
+These substances do not conduct electricity because the molecules do not have an overall electric charge.
+4.2.2.5 Polymers
+Polymers have very large molecules. The atoms in the polymer molecules are linked to other atoms by strong covalent bonds.
+The intermolecular forces between polymer molecules are relatively strong and so these substances are solids at room temperature.
+4.2.2.6 Giant covalent structures
+Substances that consist of giant covalent structures are solids with very high melting points.
+All of the atoms in these structures are linked to other atoms by strong covalent bonds.
+These bonds must be overcome to melt or boil these substances.
+4.2.2.7 Properties of metals and alloys
+Metals have giant structures of atoms with strong metallic bonding.
+Most metals have high melting and boiling points.
+In pure metals, the atoms are arranged in layers, which allows metals to be bent and shaped.
+Pure metals are too soft for many uses and are mixed with other metals to make alloys which are harder.
+The different sizes of atoms in an alloy distort the layers so they cannot slide over each other.
+4.2.2.8 Metals as conductors
+Metals are good conductors of electricity because the delocalised electrons in the metal carry electrical charge through the metal.
+Metals are good conductors of thermal energy because energy is transferred by the delocalised electrons.
+4.2.3 Structure and bonding of carbon
+4.2.3.1 Diamond
+In diamond, each carbon atom forms four covalent bonds with other carbon atoms in a giant covalent structure, so diamond is very hard, has a very high melting point and does not conduct electricity.
+4.2.3.2 Graphite
+In graphite, each carbon atom forms three covalent bonds with three other carbon atoms, forming layers of hexagonal rings which have no covalent bonds between the layers.
+The layers can slide over each other due to no covalent bonds between the layers, but weak intermolecular forces. This makes graphite soft and slippery.
+One electron from each carbon atom is delocalised. These delocalised electrons allow graphite to conduct thermal energy and electricity.
+4.2.3.3 Graphene and fullerenes
+Graphene is a single layer of graphite and has properties that make it useful in electronics and composites.
+Fullerenes are molecules of carbon atoms with hollow shapes. The structure of fullerenes is based on hexagonal rings of carbon atoms but they may also contain rings with five or seven carbon atoms.
+The first fullerene to be discovered was Buckminsterfullerene (C₆₀) which has a spherical shape.
+Carbon nanotubes are cylindrical fullerenes with very high length to diameter ratios. Their properties make them useful for nanotechnology, electronics and materials.
+4.2.4 Nanoparticles (chemistry only)
+Nanoscience refers to structures that are 1–100 nm in size, of the order of a few hundred atoms.
+Nanoparticles, are smaller than fine particles (PM₂.₅), which have diameters between 100 and 2 500 nm (1 × 10⁻⁷ m and 2.5 × 10⁻⁶ m).
+Coarse particles (PM₁₀) have diameters between 1 × 10⁻⁷ m and 1 × 10⁻⁵ m. Coarse particles are often referred to as dust.
+As the side of cube decreases by a factor of 10 the surface area to volume ratio increases by a factor of 10.
+Nanoparticles have a high surface area to volume ratio. This may lead to different properties from 'bulk' materials.
+Nanoparticles may have applications in medicine, in electronics, in cosmetics and sun creams, as deodorants, and as catalysts.
+The effects of nanoparticles on health are not fully understood.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
   ],
   'deck3': [
     {
-      title: 'Chemical measurements, conservation of mass and quantitative interpretation',
-      body: `The law of conservation of mass states that no atoms are lost or made during a chemical reaction.
-The relative formula mass (Mr) of a compound is the sum of the relative atomic masses of the atoms in the chemical formula.
-In a balanced chemical equation, the sum of the Mr of the reactants equals the sum of the Mr of the products.
-Apparent mass changes can occur in reactions involving gases if the container is not sealed.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Use of amount of substance in relation to masses of pure substances',
-      body: `The amount of a substance is measured in moles (mol).
+      title: 'Quantitative chemistry',
+      body: `4.3.1 Chemical measurements, conservation of mass and the quantitative interpretation of chemical equations
+4.3.1.1 Conservation of mass and balanced chemical equations
+The law of conservation of mass states that no atoms are lost or made during a chemical reaction so the mass of the products equals the mass of the reactants.
+This means that chemical reactions can be represented by symbol equations which must be balanced in terms of the numbers of atoms of each element involved on both sides of the equation.
+4.3.1.2 Relative formula mass
+The relative formula mass (Mr) of a compound is the sum of the relative atomic masses of the atoms in the numbers shown in the formula.
+In a balanced chemical equation, the sum of the relative formula masses of the reactants in the quantities shown equals the sum of the relative formula masses of the products in the quantities shown.
+4.3.1.3 Mass changes when a reactant or product is a gas
+Some reactions may appear to involve a change in mass but this can usually be explained because a reactant or product is a gas and its mass has not been taken into account.
+For example: when a metal reacts with oxygen the mass of the oxide produced is greater than the mass of the metal or in thermal decompositions of metal carbonates carbon dioxide is produced and escapes into the atmosphere leaving the metal oxide as the only solid product.
+4.3.1.4 Chemical measurements
+Whenever a measurement is made there is always some uncertainty about the result obtained.
+4.3.2 Use of amount of substance in relation to masses of pure substances
+4.3.2.1 Moles (HT only)
+Chemical amounts are measured in moles. The symbol for the unit mole is mol.
 The mass of one mole of a substance in grams is numerically equal to its relative formula mass.
-One mole of any substance contains the Avogadro constant number of particles (6.02 x 10²³).
-The limiting reactant is the reactant that is completely used up in a reaction and determines the amount of product formed.
-The concentration of a solution can be measured in g/dm³.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Yield and atom economy of chemical reactions',
-      body: `The percentage yield of a reaction is calculated by: (Actual yield / Theoretical yield) x 100.
-Yield is always less than 100% due to factors like incomplete reactions, loss of product during separation, or side reactions.
-Atom economy is a measure of the amount of starting materials that end up as useful products. It is calculated by: (Mr of desired product / Sum of Mr of all reactants) x 100.
-High atom economy is important for sustainable development and economic reasons.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-     {
-      title: 'Using concentrations of solutions and amount of substance in relation to volumes of gases',
-      body: `Concentration can also be measured in mol/dm³.
+One mole of a substance contains the Avogadro constant number of particles (atoms, molecules or ions). The Avogadro constant is 6.02 × 10²³ per mole.
+The amount in moles = mass (g) / relative formula mass (Mr)
+4.3.2.2 Amounts of substances in equations (HT only)
+The masses of reactants and products can be calculated from balanced symbol equations.
+Chemical equations can be interpreted in terms of moles. For example:
+Mg + 2HCl → MgCl₂ + H₂
+shows that one mole of magnesium reacts with two moles of hydrochloric acid to produce one mole of magnesium chloride and one mole of hydrogen gas.
+4.3.2.3 Using moles to balance equations (HT only)
+The balancing numbers in a symbol equation can be calculated from the masses of reactants and products by converting the masses in grams to amounts in moles and converting the number of moles to simple whole number ratios.
+4.3.2.4 Limiting reactants (HT only)
+In a chemical reaction involving two reactants, it is common to use an excess of one of the reactants to ensure that all of the other reactant is used.
+The reactant that is completely used up is called the limiting reactant because it limits the amount of products.
+4.3.2.5 Concentration of solutions
+The concentration of a solution can be measured in mass per given volume of solution, eg grams per dm³ (g/dm³).
+4.3.3 Yield and atom economy of chemical reactions (chemistry only)
+4.3.3.1 Percentage yield
+Even though no atoms are gained or lost in a chemical reaction, it is not always possible to obtain the calculated amount of a product because:
+- the reaction may not go to completion because it is reversible
+- some of the product may be lost when it is separated from the reaction mixture
+- some of the reactants may react in ways different to the expected reaction.
+The amount of a product obtained is known as the yield.
+Percentage yield = (Mass of product actually made / Maximum theoretical mass of product) × 100
+4.3.3.2 Atom economy
+The atom economy (atom utilisation) is a measure of the amount of starting materials that end up as useful products.
+It is a theoretical measure of the percentage of reactants that form useful products.
+Atom economy = (Relative formula mass of desired product / Sum of relative formula masses of all reactants) × 100
+4.3.4 Using concentrations of solutions in mol/dm³ (chemistry only) (HT only)
+The concentration of a solution is the amount of solute in a given volume of solution.
+Concentration = amount of substance (mol) / volume (dm³)
+4.3.5 Use of amount of substance in relation to volumes of gases (chemistry only) (HT only)
 Equal amounts in moles of gases occupy the same volume at the same temperature and pressure.
 The volume of one mole of any gas at room temperature and pressure (r.t.p.) is 24 dm³.
 The volumes of gaseous reactants and products can be calculated from the balanced equation for the reaction.`,
       createdAt: new Date(),
       updatedAt: new Date(),
-    },
+    }
   ],
   'deck4': [
     {

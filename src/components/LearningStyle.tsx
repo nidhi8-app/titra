@@ -346,3 +346,4 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
+

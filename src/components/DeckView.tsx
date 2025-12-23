@@ -147,58 +147,51 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
       case 'Auditory':
         return <PodcastPlayer title={deckTitle} notesText={combinedNotes} />;
       case 'Kinesthetic':
+         if (deckId === 'deck1') {
+            return (
+                <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+                    <div className="prose prose-sm dark:prose-invert max-w-none">
+                        <h4>1️⃣ Build-it-with-objects method (Foundation Method)</h4>
+                        <p><strong>What you need:</strong> Coins, beads, paper balls, or LEGO.</p>
+                        <p><strong>How:</strong> One object = atom. Same objects = element. Different objects joined = compound. Loose pile = mixture.</p>
+                        <p>Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.”</p>
+                        <p>👉 This physically locks in compound vs mixture.</p>
+                        <hr />
+                        <h4>2️⃣ Walk-the-topic method (Movement + Recall)</h4>
+                        <p>Walk around your room. Each step = one fact. Say from memory: “All substances are made of atoms.”, “An atom is the smallest part of an element.”, etc. If you stop, check your notes and restart walking.</p>
+                        <hr />
+                        <h4>3️⃣ Act out atomic models</h4>
+                        <p>You are the atom. Stand still (tiny solid sphere) → Spread arms with dots (plum pudding) → Hands tight in center (nucleus) → Walk in circles (Bohr model). Say the model name while acting.</p>
+                        <hr />
+                        <h4>4️⃣ Human charge game</h4>
+                        <p>Stand up. Right hand up = +1 proton. Arms out = 0 neutron. Left hand down = –1 electron. Say: “Atoms have no overall electrical charge.”</p>
+                        <hr />
+                        <h4>5️⃣ Scale it with your hands</h4>
+                        <p>Use your hands: Big circle with arms = atom. Tiny pinch = nucleus. Say: “Almost all of the mass is in the nucleus.”</p>
+                        <hr />
+                        <h4>6️⃣ Electron shell walking</h4>
+                        <p>Put objects in circles on the floor. Walk and place electrons for Sodium (2, 8, 1). Say: “Electrons occupy the lowest available energy levels.”</p>
+                        <hr />
+                        <h4>7️⃣ Periodic table floor map</h4>
+                        <p>Use tape on the floor. Left side = metals. Right side = non-metals. Stand in Group 1 and say its reactivity trend. Do the same for Groups 7 and 0.</p>
+                        <hr />
+                        <h4>8️⃣ Reactivity direction game</h4>
+                        <p>Point DOWN and say: Group 1 reactivity “increases”. Group 7 reactivity “decreases”. Group 0 boiling point “increases”.</p>
+                        <hr />
+                        <h4>9️⃣ Separation process stations</h4>
+                        <p>Set up 5 stations in your room (Filtration, Crystallisation, etc.). Walk to a station and explain what it separates and that it's a physical process.</p>
+                        <hr />
+                        <h4>🔟 Teach-an-invisible-student method</h4>
+                        <p>Stand up and teach the topic out loud without notes, using hand gestures. If you freeze, you've found a revision gap.</p>
+                    </div>
+                </ScrollArea>
+            );
+         }
+        // Fallback for other decks
         return (
-           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
-            <div className="prose prose-sm dark:prose-invert max-w-none">
-              <h4>Tabletop sorting game (great for memory)</h4>
-              <p><strong>What to do</strong></p>
-              <p>Write these on separate pieces of paper:</p>
-              <ul>
-                <li>atom</li>
-                <li>element</li>
-                <li>compound</li>
-                <li>chemical reaction</li>
-                <li>symbol</li>
-                <li>formula</li>
-                <li>word equation</li>
-                <li>periodic table</li>
-              </ul>
-              <p>Physically sort them into groups:</p>
-              <ul>
-                <li>“Things”</li>
-                <li>“Representations”</li>
-                <li>“Processes”</li>
-              </ul>
-              <p>Move them around until it makes sense.</p>
-              <p>👉 This builds understanding, not just memory.</p>
-              <hr />
-              <h4>Teach an imaginary class</h4>
-              <p><strong>What to do</strong></p>
-              <ul>
-                  <li>Stand up.</li>
-                  <li>Explain the topic out loud like you’re teaching Year 7.</li>
-                  <li>Use hand movements and pointing.</li>
-              </ul>
-              <p>If you can teach it without notes, you understand it.</p>
-              <hr />
-              <h4>Rip-and-rebuild notes</h4>
-               <p><strong>What to do</strong></p>
-              <ul>
-                  <li>Write notes once.</li>
-                  <li>Rip the page into strips (each strip = one idea).</li>
-                  <li>Mix them up.</li>
-                  <li>Rebuild them in the correct order.</li>
-                  <li>Say each sentence as you place it.</li>
-              </ul>
-              <hr />
-              <h4>Rubber-band chemistry</h4>
-              <p><strong>What to do</strong></p>
-              <ul>
-                  <li>Rubber bands = chemical bonds</li>
-                  <li>Stretching band → energy change</li>
-                  <li>Breaking band → chemical reaction</li>
-              </ul>
-              <p>Say what’s happening while doing it.</p>
+          <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+            <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+              {combinedNotes}
             </div>
           </ScrollArea>
         );
@@ -527,5 +520,6 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
 
     

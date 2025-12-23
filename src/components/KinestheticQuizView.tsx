@@ -1,13 +1,12 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Pen, Move, PersonStanding, Check, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
-import { Textarea } from './ui/textarea';
 
 type KinestheticQuizViewProps = {
     title: string;
@@ -15,7 +14,6 @@ type KinestheticQuizViewProps = {
 };
 
 const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
-    const [atomDefinition, setAtomDefinition] = useState('');
     
     return (
         <div className="p-4 md:p-6">
@@ -31,43 +29,29 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
                     <CardHeader className="text-center">
                         <Brain className="w-12 h-12 mx-auto text-primary" />
                         <CardTitle className="text-3xl font-bold mt-2">KINESTHETIC QUIZ</CardTitle>
-                        <CardDescription>{title}</CardDescription>
+                        <CardDescription>Do this standing up. Say answers out loud and move!</CardDescription>
                     </CardHeader>
                     <CardContent className="prose prose-lg dark:prose-invert max-w-none mx-auto">
-                        <div className="p-4 bg-primary/10 rounded-lg text-center">
-                            <h3 className="font-bold text-primary">How to use this quiz</h3>
-                            <p className="text-sm">Stand up, say answers out loud, and move/write/build for each question. The instructions are part of the quiz!</p>
-                        </div>
-
-                        <hr />
-
-                        <h3 className="flex items-center gap-2"><Footprints className="text-accent" />ROUND 1: MOVE & SAY (Quick Recall)</h3>
-                        <p className="text-sm italic">Walk one step forward for each answer.</p>
+                        
+                        <h3 className="flex items-center gap-2"><Footprints className="text-accent" />ROUND 1: MOVE & SAY (Quick recall)</h3>
+                        <p className="text-sm italic">Walk one step forward per answer.</p>
                         <ul>
-                            <li>Say the sentence: “All substances are made of ____.”</li>
-                            <li>
-                                Type the definition:
-                                <Textarea 
-                                    placeholder="“An atom is ...”"
-                                    value={atomDefinition}
-                                    onChange={(e) => setAtomDefinition(e.target.value)}
-                                    className="mt-2 text-base"
-                                />
-                            </li>
-                            <li>Point to something in the room and say: “Atoms of each element are represented by a __________ ________.”</li>
-                            <li>Say: “There are about ______ different elements.”</li>
-                            <li>Say where elements are shown: “Elements are shown in the __________ __________.”</li>
+                            <li>What are all substances made of?</li>
+                            <li>What is an atom?</li>
+                            <li>Where are elements shown?</li>
+                            <li>How are compounds formed?</li>
+                            <li>What always happens in a chemical reaction?</li>
                         </ul>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
                             <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
                               <ul className="list-disc pl-6 text-sm">
-                                  <li>“All substances are made of **atoms**.”</li>
-                                  <li>“An atom is **the smallest part of an element that can exist**.”</li>
-                                  <li>“Atoms of each element are represented by a **chemical symbol**.”</li>
-                                  <li>“There are about **100** different elements.”</li>
-                                  <li>“Elements are shown in the **periodic table**.”</li>
+                                  <li>Atoms.</li>
+                                  <li>The smallest part of an element that can exist.</li>
+                                  <li>In the periodic table.</li>
+                                  <li>From elements by chemical reactions.</li>
+                                  <li>Formation of one or more new substances.</li>
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -76,20 +60,20 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
 
                         <hr />
 
-                        <h3 className="flex items-center gap-2"><Hand className="text-accent"/>ROUND 2: BUILD IT (Hands-on)</h3>
-                        <p className="text-sm italic">Use coins, paper, or small objects.</p>
+                        <h3 className="flex items-center gap-2"><Hand className="text-accent"/>ROUND 2: BUILD IT</h3>
+                        <p className="text-sm italic">Use coins or small objects.</p>
                         <ul>
-                            <li>Use one object and say what it represents. (Answer: an atom of an element)</li>
-                            <li>Join two different objects together and say: What is this called? What is it formed from?</li>
-                            <li>Pull them apart and say: “Compounds can only be separated into elements by __________ __________.”</li>
+                            <li>Build: an element, a compound, and a mixture.</li>
+                            <li>Say what makes each different.</li>
                         </ul>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-2">
                             <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
                               <ul className="list-disc pl-6 text-sm">
-                                <li>When you join two objects: "This is a **compound**. It is formed from **two or more elements chemically combined**."</li>
-                                <li>When you pull them apart: “Compounds can only be separated into elements by **chemical reactions**.”</li>
+                                <li><strong>Element:</strong> Same objects (one type of atom).</li>
+                                <li><strong>Compound:</strong> Different objects joined together (chemically combined).</li>
+                                <li><strong>Mixture:</strong> Different objects in a loose pile (not chemically combined).</li>
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -97,23 +81,23 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
 
                          <hr />
                         
-                        <h3 className="flex items-center gap-2"><Move className="text-accent"/>ROUND 3: TRUE or FALSE (Stand & Gesture)</h3>
-                        <p className="text-sm italic">Thumbs 👍 = true | Thumbs 👎 = false. Say the corrected sentence if false.</p>
+                        <h3 className="flex items-center gap-2"><Move className="text-accent"/>ROUND 3: TRUE or FALSE (Body Signals)</h3>
+                        <p className="text-sm italic">Thumbs 👍 = true | Thumbs 👎 = false. Correct false ones out loud.</p>
                         <ul>
-                            <li>Chemical reactions always involve the formation of one or more new substances.</li>
-                            <li>Compounds contain only one element.</li>
-                            <li>Chemical reactions often involve a detectable energy change.</li>
-                            <li>Compounds can be separated into elements by physical processes.</li>
+                            <li>Mixtures are chemically combined.</li>
+                            <li>Compounds can only be separated by chemical reactions.</li>
+                            <li>Atoms have no overall electrical charge.</li>
+                            <li>Electrons have a positive charge.</li>
                         </ul>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-3">
                             <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
                               <ul className="list-disc pl-6 text-sm">
-                                <li>**True**.</li>
-                                <li>**False**. Compounds contain **two or more** elements chemically combined.</li>
-                                <li>**True**.</li>
-                                <li>**False**. Compounds can only be separated into elements by **chemical reactions**.</li>
+                                <li>👎 False. Correct: "Mixtures are NOT chemically combined."</li>
+                                <li>👍 True.</li>
+                                <li>👍 True.</li>
+                                <li>👎 False. Correct: "Electrons have a NEGATIVE charge."</li>
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -121,21 +105,21 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
 
                          <hr />
 
-                        <h3 className="flex items-center gap-2"><Pen className="text-accent"/>ROUND 4: WRITE & ERASE (Active Recall)</h3>
-                        <p className="text-sm italic">Write, then cover your work.</p>
+                        <h3 className="flex items-center gap-2"><PersonStanding className="text-accent"/>ROUND 4: ACT IT OUT</h3>
+                        <p className="text-sm italic">Act out each model and say one key feature.</p>
                         <ul>
-                            <li>Write the chemical symbols for: Oxygen, Sodium</li>
-                            <li>Write one sentence explaining what a compound contains.</li>
-                            <li>Write two ways chemical reactions can be represented.</li>
+                            <li>Plum pudding model</li>
+                            <li>Nuclear model</li>
+                            <li>Bohr model</li>
                         </ul>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-4">
                             <AccordionTrigger>Check Answers</AccordionTrigger>
                             <AccordionContent>
                               <ul className="list-disc pl-6 text-sm">
-                                <li>Oxygen: **O**, Sodium: **Na**</li>
-                                <li>A compound contains **two or more elements chemically combined in fixed proportions**.</li>
-                                <li>Word equations and balanced chemical equations (using symbols).</li>
+                                <li><strong>Plum pudding:</strong> Ball of positive charge with negative electrons embedded.</li>
+                                <li><strong>Nuclear model:</strong> Mass concentrated at the central, charged nucleus.</li>
+                                <li><strong>Bohr model:</strong> Electrons orbit the nucleus at specific distances (shells).</li>
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -143,9 +127,92 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
 
                         <hr />
 
+                        <h3 className="flex items-center gap-2"><Fingerprint className="text-accent"/>ROUND 5: CHARGE & MASS GAME</h3>
+                        <p className="text-sm italic">Use your body to show the charge. Point to where most mass is.</p>
+                         <ul>
+                            <li>Proton charge</li>
+                            <li>Neutron charge</li>
+                            <li>Electron charge</li>
+                            <li>Point to where most of the mass of an atom is.</li>
+                        </ul>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-5">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>Proton: +1 (e.g., right hand up).</li>
+                                <li>Neutron: 0 (e.g., arms out).</li>
+                                <li>Electron: -1 (e.g., left hand down).</li>
+                                <li>Point to your center/core (representing the nucleus).</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+
+                         <h3 className="flex items-center gap-2"><Map className="text-accent"/>ROUND 6: PERIODIC TABLE WALK</h3>
+                        <p className="text-sm italic">Move to different areas of your room.</p>
+                         <ul>
+                            <li>Move to the "Metals area" → say where metals are found.</li>
+                            <li>Move to the "Non-metals area" → say where non-metals are found.</li>
+                        </ul>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-6">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>Metals are found to the left and towards the bottom of the periodic table.</li>
+                                <li>Non-metals are found towards the right and top of the periodic table.</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+
+                        <h3 className="flex items-center gap-2"><ChevronsDown className="text-accent"/>ROUND 7: GROUP ACTIONS</h3>
+                        <p className="text-sm italic">Point DOWN and say the trend.</p>
+                         <ul>
+                            <li>Group 1 reactivity trend</li>
+                            <li>Group 7 reactivity trend</li>
+                            <li>Group 0 boiling point trend</li>
+                        </ul>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-7">
+                            <AccordionTrigger>Check Answers</AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="list-disc pl-6 text-sm">
+                                <li>Group 1 reactivity **increases** down the group.</li>
+                                <li>Group 7 reactivity **decreases** down the group.</li>
+                                <li>Group 0 boiling point **increases** down the group.</li>
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+
+                         <h3 className="flex items-center gap-2"><Handshake className="text-accent"/>ROUND 8: DISPLACEMENT ROLE-PLAY</h3>
+                        <p className="text-sm italic">Act out a more reactive halogen displacing a less reactive one. Say what happens.</p>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-8">
+                            <AccordionTrigger>Check Answer</AccordionTrigger>
+                            <AccordionContent>
+                                <p className="text-sm">A more reactive halogen will take the place of a less reactive halogen in an aqueous solution of its salt. For example, chlorine will displace bromine from potassium bromide solution.</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+
+                        <hr />
+
+                        <h3 className="flex items-center gap-2"><Brain className="text-accent"/>FINAL CHALLENGE: 60-SECOND BLURT</h3>
+                        <p className="text-sm italic">Stand still. Without notes, explain everything you remember about the key topics for 60 seconds.</p>
+
+
                         <div className="p-4 mt-6 bg-green-500/10 border-l-4 border-green-500 text-green-800 dark:text-green-300 rounded-lg">
                             <h4 className="font-bold flex items-center gap-2"><CheckCircle />Self-check rule</h4>
-                            <p>If you can: say it without looking, explain it while moving, and write it from memory, then 👉 <strong>you know it.</strong></p>
+                            <p>If you can do it, say it, and act it out from memory, then you've learned it kinesthetically.</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -155,3 +222,5 @@ const KinestheticQuizView = ({ title, onBack }: KinestheticQuizViewProps) => {
 };
 
 export default KinestheticQuizView;
+
+    

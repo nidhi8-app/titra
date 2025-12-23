@@ -326,7 +326,7 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
                       <h4>5️⃣ Tables from Memory (Structure + Clarity)</h4>
                       <p><strong>How:</strong> Rewrite key information into tables from memory, covering subatomic particles or group trends. Tables help with exam organisation.</p>
                       <hr />
-                      <h4>6️⃣ "Explain Why" Practice (Higher Marks)</h4>
+                      <h4>6️⃣ “Explain Why" Practice (Higher Marks)</h4>
                       <p><strong>How:</strong> Write short answers to questions like "Explain why atoms have no overall charge" or "Explain why Group 1 reactivity increases down the group." This builds AO2/AO3 skills.</p>
                       <hr />
                       <h4>7️⃣ Model Development Summaries</h4>
@@ -460,17 +460,17 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
       return;
     }
     
-    if (userDetails.learningStyle === 'Visual' && deck.id === 'deck1') {
+    if (userDetails.learningStyle === 'Visual') {
         setVisualQuiz(deck.title);
         return;
     }
 
-    if (userDetails.learningStyle === 'Kinesthetic' && deck.id === 'deck1') {
+    if (userDetails.learningStyle === 'Kinesthetic') {
         setKinestheticQuiz(deck.title);
         return;
     }
 
-    if (userDetails.learningStyle === 'Reading/Writing' && deck.id === 'deck1') {
+    if (userDetails.learningStyle === 'Reading/Writing') {
       setReadingWritingQuiz(deck.title);
       return;
     }
@@ -511,15 +511,15 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   };
   
   if (visualQuiz) {
-    return <VisualQuizView title={visualQuiz} onBack={() => setVisualQuiz(null)} />;
+    return <VisualQuizView title={visualQuiz} onBack={() => setVisualQuiz(null)} deckId={deck.id} />;
   }
 
   if (kinestheticQuiz) {
-    return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} />;
+    return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} deckId={deck.id} />;
   }
 
   if (readingWritingQuiz) {
-    return <ReadingWritingQuizView title={readingWritingQuiz} onBack={() => setReadingWritingQuiz(null)} />;
+    return <ReadingWritingQuizView title={readingWritingQuiz} onBack={() => setReadingWritingQuiz(null)} deckId={deck.id} />;
   }
 
   const renderContent = () => {

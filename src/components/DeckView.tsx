@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -94,6 +94,48 @@ const LearnAsKinesthetic = () => (
     </Card>
 );
 
+const LearnAsVisual = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Engage with this topic by drawing, connecting, and organizing information visually.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4 className="flex items-center gap-2"><Map className="inline-block h-5 w-5" />1. One-page visual map (MOST effective)</h4>
+            <p>Put “All substances are made of atoms” in the centre. Branch out to: Atoms, Elements, Compounds, Chemical reactions. Use arrows for processes, boxes for definitions, and circles for examples. This turns the notes into a mental picture.</p>
+
+            <h4 className="flex items-center gap-2"><Boxes className="inline-block h-5 w-5" />2. Concept boxes (see the differences clearly)</h4>
+            <p>Draw four large boxes for Atom, Element, Compound, and Chemical reaction. Seeing them side-by-side prevents confusion.</p>
+
+            <h4 className="flex items-center gap-2"><Palette className="inline-block h-5 w-5" />3. Colour-coded system (consistency matters)</h4>
+            <p>Use the same colours every time: 🔵 Atoms / elements, 🟢 Compounds, 🔴 Chemical reactions, 🟣 Exam skills. Your brain remembers colour faster than words.</p>
+
+            <h4 className="flex items-center gap-2"><GitBranch className="inline-block h-5 w-5" />4. Flow diagrams for processes</h4>
+            <p>Draw a flowchart: Elements ⬇ (chemical reaction) ⬇ Compound formed ⬇ (energy change) ⬇ New substance. Flow diagrams help understand cause and effect.</p>
+
+            <h4 className="flex items-center gap-2"><Triangle className="inline-block h-5 w-5" />5. Symbol → word → meaning triangles</h4>
+            <p>For each example, draw a triangle linking the symbol (O), name (oxygen), and meaning (atom of an element) visually.</p>
+
+            <h4 className="flex items-center gap-2"><ListChecks className="inline-block h-5 w-5" />6. Exam skills checklist (visual layout)</h4>
+            <p>Create a tick-box list for skills like 'Use names and symbols', 'Write word equations', etc. Seeing progress is motivating.</p>
+            
+            <h4 className="flex items-center gap-2"><Columns className="inline-block h-5 w-5" />7. Split-page notes (powerful for understanding)</h4>
+            <p>Use the left side for key terms and the right side for diagrams, arrows, and examples. This forces processing, not just copying.</p>
+
+            <h4 className="flex items-center gap-2"><Brain className="inline-block h-5 w-5" />8. Redraw from memory (no copying)</h4>
+            <p>Look at your diagram for 30 seconds, cover it, and redraw from memory. Compare and fix gaps in a different colour. This is visual active recall.</p>
+
+            <h4 className="flex items-center gap-2"><Highlighter className="inline-block h-5 w-5" />9. Periodic table highlighting</h4>
+            <p>Use a printed periodic table to highlight the first 20 elements, Group 1, and Group 7 in different colours.</p>
+
+            <h4 className="flex items-center gap-2"><DraftingCompass className="inline-block h-5 w-5" />10. Before-and-after diagrams</h4>
+            <p>Draw 'Before reaction' (separate elements) and 'After reaction' (compound formed) diagrams with labels.</p>
+        </CardContent>
+    </Card>
+);
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
@@ -125,9 +167,14 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   }, [deck.id, userNotes, isLoading]);
   
   const examSkillsText = useMemo(() => {
+    // For deck1, exam skills are hardcoded. For others, it could be in the note.
+    if (deck.id === 'deck1') {
+        const noteWithSkills = initialNotesData['deck1'].find(note => note.examSkills);
+        return noteWithSkills?.examSkills || null;
+    }
     const noteWithSkills = (deckNotes || []).find(note => note.examSkills);
     return noteWithSkills?.examSkills || null;
-  }, [deckNotes]);
+  }, [deckNotes, deck.id]);
 
 
   const handleGenerateQuiz = async () => {
@@ -189,6 +236,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
             </div>
             
             {deck.id === 'deck1' && userDetails?.learningStyle === 'Kinesthetic' && <LearnAsKinesthetic />}
+            {deck.id === 'deck1' && userDetails?.learningStyle === 'Visual' && <LearnAsVisual />}
             
             <Card>
                 <CardHeader>

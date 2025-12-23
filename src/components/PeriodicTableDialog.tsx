@@ -24,8 +24,8 @@ const categoryColors: { [key: string]: string } = {
     'alkali-metal': 'bg-red-500/80',
     'alkaline-earth-metal': 'bg-orange-500/80',
     'transition-metal': 'bg-yellow-500/80',
-    'lanthanide': 'bg-yellow-400/80',
-    'actinide': 'bg-yellow-300/80',
+    'lanthanide': 'bg-yellow-400/80 text-black',
+    'actinide': 'bg-yellow-300/80 text-black',
     'post-transition-metal': 'bg-green-500/80',
     'metalloid': 'bg-teal-500/80',
     'reactive-nonmetal': 'bg-sky-500/80',
@@ -36,7 +36,7 @@ const categoryColors: { [key: string]: string } = {
 const ElementTile = ({ element }: { element: ElementData }) => (
   <div
     className={cn(
-      "flex flex-col items-center justify-center p-1 rounded-md text-white text-xs aspect-square",
+      "flex flex-col items-center justify-center p-1 rounded text-white text-xs aspect-square leading-none",
       categoryColors[element.category]
     )}
     style={{
@@ -44,22 +44,46 @@ const ElementTile = ({ element }: { element: ElementData }) => (
       gridRowStart: element.period, 
     }}
   >
+    <div className="text-[0.6rem] sm:text-xs text-left w-full">{element.atomicNumber}</div>
     <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
-    <div className="text-xs">{element.atomicNumber}</div>
+    <div className="text-[0.5rem] sm:text-[0.6rem] truncate w-full text-center">{element.name}</div>
+    <div className="text-[0.5rem] sm:text-[0.6rem]">{element.atomicMass.toFixed(2)}</div>
   </div>
 );
 
+const ElementKey = () => (
+    <div className="border rounded-md p-2 flex flex-col items-center w-28 h-28 justify-center bg-background text-foreground">
+        <div className="text-xs">1</div>
+        <div className="font-bold text-2xl">C</div>
+        <div className="text-sm">Carbon</div>
+        <div className="text-xs">12.01</div>
+    </div>
+);
 
 const Legend = () => (
-    <div className="p-4 border-t">
-        <h4 className="font-bold mb-2 text-center">Legend</h4>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 text-xs">
-            {Object.entries(categoryColors).map(([category, colorClass]) => (
-                <div key={category} className="flex items-center gap-2">
-                    <div className={cn("w-4 h-4 rounded-sm", colorClass)}></div>
-                    <span className="capitalize">{category.replace(/-/g, ' ')}</span>
+    <div className="p-4 border-t grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <h4 className="font-bold mb-2 text-center">Legend</h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                {Object.entries(categoryColors).map(([category, colorClass]) => (
+                    <div key={category} className="flex items-center gap-2">
+                        <div className={cn("w-4 h-4 rounded-sm", colorClass)}></div>
+                        <span className="capitalize">{category.replace(/-/g, ' ')}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+            <h4 className="font-bold mb-2 text-center">Key</h4>
+            <div className="flex items-center gap-4">
+                <ElementKey />
+                <div className="text-sm space-y-2">
+                    <p>← Atomic Number</p>
+                    <p>← Symbol</p>
+                    <p>← Name</p>
+                    <p>← Atomic Mass</p>
                 </div>
-            ))}
+            </div>
         </div>
     </div>
 )
@@ -82,6 +106,10 @@ export const PeriodicTableDialog = ({ isOpen, onClose }: PeriodicTableDialogProp
                     gridTemplateRows: 'repeat(9, minmax(0, 1fr))',
                 }}
             >
+                {Array.from({ length: 18 }, (_, i) => (
+                    <div key={`group-${i}`} className="font-bold text-center text-muted-foreground" style={{ gridColumn: i + 1, gridRow: 0 }}>{i + 1}</div>
+                ))}
+
                 {elements.map(el => (
                     <ElementTile key={el.atomicNumber} element={el} />
                 ))}
@@ -95,5 +123,3 @@ export const PeriodicTableDialog = ({ isOpen, onClose }: PeriodicTableDialogProp
     </Dialog>
   );
 };
-
-    

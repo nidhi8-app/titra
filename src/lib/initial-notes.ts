@@ -492,8 +492,121 @@ There are possible risks associated with their use.`,
   ],
   'deck3': [
     {
-      title: 'The Mole Concept',
-      body: 'A mole is a unit of measurement for the amount of a substance. One mole of any substance contains the same number of particles, known as the Avogadro constant (6.02 x 10^23). The mass of one mole of a substance is its relative formula mass in grams.',
+      title: 'Quantitative chemistry',
+      body: `4.3.1 Chemical measurements, conservation of mass, and quantitative interpretation of equations
+4.3.1.1 Conservation of mass
+
+No atoms are lost or made during reactions → mass of products = mass of reactants.
+
+Chemical reactions are represented by balanced symbol equations.
+
+Multipliers: normal script before a formula, subscript within a formula.
+
+4.3.1.2 Relative formula mass (Mr)
+
+Sum of relative atomic masses of atoms in a formula.
+
+In balanced equations, sum of Mr of reactants = sum of Mr of products.
+
+Can calculate percentage by mass using Mr and relative atomic masses.
+
+4.3.1.3 Mass changes with gases
+
+Apparent mass changes occur when a reactant or product is a gas.
+
+Examples:
+
+Metal + Oxygen → Oxide (mass increases)
+
+Thermal decomposition of metal carbonates → CO₂ escapes
+
+Explain changes using particle model and balanced equations.
+
+4.3.1.4 Chemical measurements
+
+All measurements have uncertainty.
+
+Represent distribution of results and use range about mean as uncertainty measure.
+
+4.3.2 Use of amount of substance in relation to masses
+4.3.2.1 Moles (HT)
+
+Amount measured in moles (mol).
+
+Mass of 1 mole in grams = relative formula mass.
+
+1 mole contains Avogadro constant = 6.02 × 10²³ particles.
+
+Moles apply to atoms, molecules, ions, electrons, formulae, and equations.
+
+4.3.2.2 Amounts in equations (HT)
+
+Masses of reactants/products calculated from balanced equations.
+
+Example: Mg + 2HCl → MgCl₂ + H₂
+
+1 mole Mg reacts with 2 moles HCl → 1 mole MgCl₂ + 1 mole H₂
+
+Calculate masses of substances from balanced equations.
+
+4.3.2.3 Using moles to balance equations (HT)
+
+Balancing numbers can be found by converting masses → moles → ratios.
+
+4.3.2.4 Limiting reactants (HT)
+
+Limiting reactant = completely used up → limits products formed.
+
+Explain effects in moles or grams.
+
+4.3.2.5 Concentration of solutions
+
+Concentration measured in g/dm³.
+
+Calculate mass of solute in given volume.
+
+(HT) Mass and volume relationship with concentration.
+
+4.3.3 Yield and atom economy
+4.3.3.1 Percentage yield
+
+Actual product may be less than theoretical due to:
+
+Reversible reaction
+
+Loss during separation
+
+Side reactions
+
+% Yield = (Mass actually made ÷ Maximum theoretical mass) × 100
+
+Calculate yield from actual and theoretical mass.
+
+4.3.3.2 Atom economy
+
+Atom economy = (Mr of desired product ÷ Sum of Mr of all reactants) × 100
+
+High atom economy is sustainable and economical.
+
+Choose reactions with high atom economy considering yield, rate, equilibrium, by-products.
+
+4.3.4 Using concentrations in mol/dm³ (HT)
+
+Concentration can be in mol/dm³.
+
+Mass or moles of solute can be calculated from concentration and solution volume.
+
+If volumes of two reacting solutions are known, unknown concentration can be calculated.
+
+4.3.5 Amount of substance and gas volumes (HT)
+
+Equal moles of gases occupy same volume at same temperature and pressure.
+
+1 mole of gas at r.t.p = 24 dm³.
+
+Volumes of gaseous reactants/products calculated from balanced equations and known volumes.
+
+Convert between mass, moles, and volumes of gases.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },

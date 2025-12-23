@@ -64,7 +64,7 @@ const LearnAsReadingWriting = () => (
             <p>Rewrite key information into tables from memory, e.g., for Subatomic particles (Particle, Charge, Mass) or Group trends (| Group | Outer electrons | Reactivity trend |). Tables help exam organisation.</p>
             
             <h4>6️⃣ “Explain why” practice (higher marks)</h4>
-            <p>Write short answers to: Explain why atoms have no overall charge. Explain why Group 0 elements are unreactive. Explain why Group 1 reactivity increases down the group. This builds AO2/AO3 skills.</p>
+            <p>Write short answers to: Explain why atoms have no overall charge. Explain why Group 0 elements are unreactive. Explain why Group 1 reactivity increases down the group. Explain why mixtures can be separated physically. This builds AO2/AO3 skills.</p>
             
             <h4>7️⃣ Model development summaries</h4>
             <p>Write one paragraph explaining how atomic models changed and why experimental evidence caused those changes. This targets common GCSE questions.</p>
@@ -94,7 +94,7 @@ const LearnAsKinesthetic = () => (
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
             <p><strong>What you need:</strong> Coins / beads / paper balls / LEGO</p>
-            <p><strong>How:</strong> One object = atom, Same objects = element, Different objects joined = compound, Loose pile = mixture. Say out loud while doing it: “Compounds are chemically combined.” This physically locks in the concept.</p>
+            <p><strong>How:</strong> One object = atom, Same objects = element, Different objects joined = compound, Loose pile = mixture. Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.” This physically locks in the concept.</p>
             
             <h4>2️⃣ Walk-the-topic method (movement + recall)</h4>
             <p>Walk around your room. Each step = one fact. Say from memory: “All substances are made of atoms,” “An atom is the smallest part of an element,” etc. If you stop, check notes, then restart walking.</p>
@@ -137,19 +137,19 @@ const LearnAsVisual = () => (
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ One MASTER DIAGRAM (highest impact)</h4>
-            <p>Create one A3 sheet titled “Structure of Matter (GCSE Chemistry)”. Split it into sections for Atoms & Elements, Compounds & Mixtures, etc. Use arrows to show links (e.g., atoms → elements → compounds). Seeing everything connected prevents topic confusion.</p>
+            <p>Create one A3 sheet titled “Structure of Matter (GCSE Chemistry)”. Split it into sections with boxes for Atoms & Elements, Compounds & Mixtures, Atomic Structure, Periodic Table, and Groups 0, 1, 7. Use arrows to show links (e.g., atoms → elements → compounds, atomic structure → periodic table position → reactivity). Seeing everything connected prevents topic confusion.</p>
 
             <h4>2️⃣ Colour-coded meaning system (never change colours)</h4>
-            <p>Use consistent colours: 🔵 Atoms/subatomic particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Chemical reactions, 🟣 Periodic table. Your brain remembers colour patterns faster than text.</p>
+            <p>Use consistent colours: 🔵 Atoms/subatomic particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Chemical reactions, 🟣 Periodic table/groups. Your brain remembers colour patterns faster than text.</p>
 
             <h4>3️⃣ “Before vs After” diagrams (for reactions & mixtures)</h4>
-            <p>Draw paired boxes for a chemical reaction (Before: elements, After: compound) and a mixture (Before: substances together, After: separated physically). Label with ✔ new substance or ✖ no new substance. This visually locks in the difference.</p>
+            <p>Draw paired boxes for a chemical reaction (Before: elements, After: compound + energy change) and a mixture (Before: substances together, After: substances separated physically). Label with ✔ new substance or ✖ no new substance. This visually locks in the difference.</p>
 
             <h4>4️⃣ Timeline strip for atomic models</h4>
-            <p>Draw a horizontal timeline: Tiny solid sphere → Plum pudding → Nuclear model → Bohr model → Protons → Neutrons. Add small sketches and arrows showing “new evidence → new model”.</p>
+            <p>Draw a horizontal timeline: Tiny solid sphere → Plum pudding model → Nuclear model → Bohr model → Protons → Neutrons. Add small sketches and arrows showing “new evidence → new model”.</p>
 
             <h4>5️⃣ Particle tables instead of sentences</h4>
-            <p>Turn facts into tables for Subatomic particles (Particle, Charge, Mass, Location) and Atom facts (Feature, What it shows). Tables help visual learners compare instantly.</p>
+            <p>Turn facts into tables for Subatomic particles (Particle, Charge, Mass, Location) and Atom facts (Feature, What it shows - Atomic number, Mass number). Tables help visual learners compare instantly.</p>
             
             <h4>6️⃣ Scale diagrams (size & mass)</h4>
             <p>Draw a large circle for an atom and a tiny dot for the nucleus. Write the radii (0.1 nm vs 1 × 10⁻¹⁴ m) and label “Almost all mass in nucleus”. Seeing the scale difference builds understanding.</p>
@@ -171,6 +171,43 @@ const LearnAsVisual = () => (
 
             <h4>1️⃣2️⃣ Redraw-from-memory rule (most important)</h4>
             <p>Daily routine: Look at your diagrams for 1 minute. Close notes. Redraw everything from memory. Add missing parts in a different colour. If you can redraw it, you understand it.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsVisualDeck2 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Engage with Bonding and Structure by drawing, modeling, and mapping concepts.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Mind Map Activity</h4>
+            <p>Create a colorful mind map connecting bonding types → structures → properties → uses. Use icons or small sketches for atoms, ions, metals, polymers, and nanoparticles.</p>
+            
+            <h4>Chemical Bonds (Ionic, Covalent, Metallic)</h4>
+            <p>Make a color-coded chart with three columns. Use colors to show electron transfer (Ionic), shared electrons (Covalent), and delocalised electrons (Metallic). Use online simulations (e.g., PhET) to see bonding in 3D.</p>
+
+            <h4>Ionic Bonding & Compounds</h4>
+            <p>Draw dot-and-cross diagrams for ions in different colors. Build a 3D ball-and-stick model of a NaCl lattice to see the structure. Use graph paper or LEGOs for a 3D model, highlighting electrostatic forces with arrows.</p>
+
+            <h4>Covalent Bonding</h4>
+            <p>Use Venn diagrams or overlapping circles to show shared electron pairs. Build 3D models of H₂O, CH₄, NH₃ with modeling kits. Practice drawing dot-and-cross diagrams in different colors.</p>
+            
+            <h4>Metallic Bonding</h4>
+            <p>Draw a layered diagram showing metal atoms in layers and use wavy arrows for delocalised electrons. Stack coins or discs to represent layers, with beads as delocalised electrons.</p>
+
+            <h4>States of Matter & Properties</h4>
+            <p>Draw particle diagrams for solids, liquids, and gases with arrows for movement. Create a comparison table using symbols for conductivity (⚡), melting point (🌡️), and force strength (arrows of different thickness).</p>
+
+            <h4>Structure and Bonding of Carbon</h4>
+            <p>Build 3D models of diamond, graphite, graphene, and C₆₀ fullerenes. Create a compare/contrast chart for their properties using small icons for hardness, conductivity, etc.</p>
+
+            <h4>Nanoparticles</h4>
+            <p>Draw a size comparison diagram (nanoparticles vs. bulk materials). Create a visual chart linking nanoparticles to their uses (medicine, electronics, etc.). Design an infographic showing risks vs. benefits with color-coded warnings.</p>
         </CardContent>
     </Card>
 );
@@ -232,6 +269,25 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     onQuiz(deck.id, deck.title);
   };
   
+  const renderLearnContent = () => {
+    if (deck.id === 'deck1' && userDetails?.learningStyle) {
+      switch (userDetails.learningStyle) {
+        case 'Kinesthetic':
+          return <LearnAsKinesthetic />;
+        case 'Visual':
+          return <LearnAsVisual />;
+        case 'Reading/Writing':
+          return <LearnAsReadingWriting />;
+        default:
+          return null;
+      }
+    }
+     if (deck.id === 'deck2' && userDetails?.learningStyle === 'Visual') {
+        return <LearnAsVisualDeck2 />;
+    }
+    return null;
+  };
+
 
   const renderContent = () => {
     if (isLoading && !userNotes) {
@@ -268,9 +324,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                 </Button>
             </div>
             
-            {deck.id === 'deck1' && userDetails?.learningStyle === 'Kinesthetic' && <LearnAsKinesthetic />}
-            {deck.id === 'deck1' && userDetails?.learningStyle === 'Visual' && <LearnAsVisual />}
-            {deck.id === 'deck1' && userDetails?.learningStyle === 'Reading/Writing' && <LearnAsReadingWriting />}
+            {renderLearnContent()}
             
             <Card>
                 <CardHeader>

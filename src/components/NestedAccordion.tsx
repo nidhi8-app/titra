@@ -4,6 +4,7 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import type { NoteSection } from '@/lib/initial-notes';
+import { cn } from '@/lib/utils';
 
 type NestedAccordionProps = {
     sections: NoteSection[];
@@ -18,9 +19,18 @@ export const NestedAccordion = ({ sections, level = 0 }: NestedAccordionProps) =
     return (
         <Accordion type="multiple" className="w-full">
             {sections.map((section, index) => (
-                <AccordionItem value={`${level}-${index}`} key={`${level}-${index}`} className={level > 0 ? "border-none" : ""}>
+                <AccordionItem 
+                    value={`${level}-${index}`} 
+                    key={`${level}-${index}`}
+                    className={cn(level > 0 ? "border-b" : "", "border-border/50")}
+                >
                     <AccordionTrigger 
-                        className={`font-semibold ${level === 1 ? 'pl-4' : ''} ${level > 1 ? 'pl-8' : ''}`}
+                        className={cn(
+                            'font-semibold', 
+                            level === 0 && 'p-4 border rounded-md bg-card',
+                            level === 1 && 'pl-4 text-base', 
+                            level > 1 && 'pl-8 text-sm'
+                        )}
                     >
                         {section.title}
                     </AccordionTrigger>

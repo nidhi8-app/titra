@@ -33,7 +33,7 @@ const NotesSummary = ({ notes }: { notes: (Note | InitialNoteSeed)[] }) => {
     const parsedNotes = useMemo(() => parseNotes(notes), [notes]);
 
     return (
-        <Card className="mb-2">
+        <Card className="mb-2 bg-transparent shadow-none border-none">
             <CardHeader>
                 <CardTitle>Topic Notes</CardTitle>
                 <CardDescription>A quick overview of the key points in this deck.</CardDescription>
@@ -750,3 +750,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+    

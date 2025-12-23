@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Deck, Note, QuizQuestion, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Award, Scale, Sigma, TestTube, Percent, Recycle, FlaskConical, Target, Brain } from 'lucide-react';
+import { BrainCircuit, Loader2, Lightbulb, BookOpen, Mic, Footprints, MessageSquare, Award, Scale, Sigma, TestTube, Percent, Recycle, FlaskConical, Target, Brain, Book } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
@@ -18,6 +18,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import KinestheticQuizView from './KinestheticQuizView';
 import VisualQuizView from './VisualQuizView';
 import ReadingWritingQuizView from './ReadingWritingQuizView';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
 
 type DeckViewProps = {
@@ -27,7 +28,34 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
-const NotesSummary = ({ notesText }: { notesText: string }) => {
+const NotesSummary = ({ notes, deckId }: { notes: (Note | InitialNoteSeed)[], deckId: string }) => {
+    if (deckId === 'deck1') {
+        return (
+            <Card className="mb-6">
+                <CardHeader>
+                    <CardTitle>Topic Notes</CardTitle>
+                    <CardDescription>A quick overview of the key points in this deck.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Accordion type="multiple" className="w-full">
+                        {notes.map((note, index) => (
+                            <AccordionItem value={`item-${index}`} key={index}>
+                                <AccordionTrigger className="font-semibold">{note.title}</AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                                        {note.body}
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </CardContent>
+            </Card>
+        )
+    }
+
+    const combinedNotesText = notes.map(n => n.body).join('\n\n---\n\n');
+
     return (
         <Card className="mb-6">
             <CardHeader>
@@ -35,10 +63,10 @@ const NotesSummary = ({ notesText }: { notesText: string }) => {
                 <CardDescription>A quick overview of the key points in this deck.</CardDescription>
             </CardHeader>
             <CardContent>
-                {!notesText && <p className="text-destructive text-sm">There are no notes to display.</p>}
-                {notesText && (
+                {!combinedNotesText && <p className="text-destructive text-sm">There are no notes to display.</p>}
+                {combinedNotesText && (
                     <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
-                        {notesText}
+                        {combinedNotesText}
                     </div>
                 )}
             </CardContent>
@@ -566,11 +594,6 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
     return initial;
   }, [deck.id, userNotes, isLoading]);
   
-  const combinedNotesText = useMemo(() => {
-    if (!deckNotes) return "";
-    return deckNotes.map(n => n.body).join('\n\n---\n\n');
-  }, [deckNotes]);
-
   const examSkillsText = useMemo(() => {
     if (!deckNotes) return null;
     // Assuming the exam skills are on the first note of the deck for simplicity
@@ -679,14 +702,22 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
     return (
         <div className="space-y-6">
-            <NotesSummary notesText={combinedNotesText} />
+            <NotesSummary notes={deckNotes} deckId={deck.id} />
             
-            {examSkillsText && (
-                <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
-                    <Award className="mr-2 h-4 w-4" />
-                    Exam Skills
-                </Button>
-            )}
+            <div className="flex gap-2">
+              {examSkillsText && (
+                  <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
+                      <Award className="mr-2 h-4 w-4" />
+                      Exam Skills
+                  </Button>
+              )}
+               {deck.id === 'deck1' && (
+                    <Button variant="outline" className="w-full" onClick={() => toast({ title: 'Coming soon!'})}>
+                        <Book className="mr-2 h-4 w-4" />
+                        Periodic Table
+                    </Button>
+                )}
+            </div>
 
             <LearningStyleContent notes={deckNotes} learningStyle={userDetails?.learningStyle || 'Reading/Writing'} deckTitle={deck.title} deckId={deck.id} />
             <Card>
@@ -748,6 +779,7 @@ export default DeckView;
     
 
     
+
 
 
 

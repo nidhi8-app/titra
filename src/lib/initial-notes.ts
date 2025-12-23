@@ -17,269 +17,151 @@ Compounds are formed from elements by chemical reactions.
 Chemical reactions always involve the formation of one or more new substances, and often involve a detectable energy change.
 Compounds contain two or more elements chemically combined in fixed proportions and can be represented by formulae using the symbols of the atoms from which they were formed.
 Compounds can only be separated into elements by chemical reactions.
-Chemical reactions can be represented by word equations or equations using symbols and formulae.
-
----
-
-4.1.1.2 Mixtures
-
-A mixture consists of two or more elements or compounds not chemically combined together.
-
-The chemical properties of each substance in the mixture are unchanged.
-
-Mixtures can be separated by physical processes such as:
-
-filtration
-
-crystallisation
-
-simple distillation
-
-fractional distillation
-
-chromatography
-
-These physical processes do not involve chemical reactions and no new substances are made.
-
-Students should be able to:
-
-describe, explain and give examples of the specified processes of separation
-
-suggest suitable separation and purification techniques for mixtures when given appropriate information
-
-Safe use of a range of equipment to separate chemical mixtures.
-
-4.1.1.3 The development of the model of the atom
-
-(common content with physics)
-
-New experimental evidence may lead to a scientific model being changed or replaced.
-
-Before the discovery of the electron, atoms were thought to be tiny spheres that could not be divided.
-
-The discovery of the electron led to the plum pudding model of the atom.
-
-The plum pudding model suggested that the atom is a ball of positive charge with negative electrons embedded in it.
-
-The results from the alpha particle scattering experiment led to the conclusion that:
-
-the mass of an atom was concentrated at the centre (nucleus)
-
-the nucleus was charged
-
-This nuclear model replaced the plum pudding model.
-
-Niels Bohr adapted the nuclear model by suggesting that electrons orbit the nucleus at specific distances.
-
-The theoretical calculations of Bohr agreed with experimental observations.
-
-Later experiments led to the idea that the positive charge of any nucleus could be subdivided into a whole number of smaller particles, each particle having the same amount of positive charge.
-
-The name proton was given to these particles.
-
-The experimental work of James Chadwick provided the evidence to show the existence of neutrons within the nucleus.
-
-This was about 20 years after the nucleus became an accepted scientific idea.
-
-This historical context provides an opportunity for students to show an understanding of why and describe how scientific methods and theories develop over time.
-
-• why the new evidence from the scattering experiment led to a
-change in the atomic model
-WS 1.1
-• the difference between the plum pudding model of the atom
-and the nuclear model of the atom.
-WS 1.2
-Details of experimental work supporting the Bohr model are not
-required.
-Details of Chadwick’s experimental work are not required.
-
-4.1.1.4 Relative electrical charges of subatomic particles
-
-The relative electrical charges of the particles in atoms are:
-
-In an atom, the number of electrons is equal to the number of protons in the nucleus.
-
-Atoms have no overall electrical charge.
-
-The number of protons in an atom of an element is its atomic number.
-
-All atoms of a particular element have the same number of protons.
-
-Atoms of different elements have different numbers of protons.
-
-Students should be able to use the nuclear model to describe atoms.
-
-4.1.1.5 Size and mass of atoms
-
-Atoms are very small, having a radius of about 0.1 nm (1 × 10⁻¹⁰ m).
-
-The radius of a nucleus is less than 1/10 000 of that of the atom (about 1 × 10⁻¹⁴ m).
-
-Almost all of the mass of an atom is in the nucleus.
-
-The relative masses of protons, neutrons and electrons are:
-
-The sum of the protons and neutrons in an atom is its mass number.
-
-Atoms of the same element can have different numbers of neutrons; these atoms are called isotopes of that element.
-
-Atoms can be represented as shown in this example:
-
-Students should be able to calculate the numbers of protons, neutrons and electrons in an atom or ion, given its atomic number and mass number.
-
-Use SI units and the prefix nano.
-
-Recognise expressions in standard form.
-
-Students should be able to relate size and scale of atoms to objects in the physical world.
-
-4.1.1.6 Relative atomic mass
-
-The relative atomic mass of an element is an average value that takes account of the abundance of the isotopes of the element.
-
-Students should be able to calculate the relative atomic mass of an element given the percentage abundance of its isotopes.
-
-4.1.1.7 Electronic structure
-
-The electrons in an atom occupy the lowest available energy levels (innermost available shells).
-
-The electronic structure of an atom can be represented by numbers or by a diagram.
-
-The electronic structure of sodium is 2,8,1, showing two electrons in the lowest energy level, eight in the second energy level and one in the third energy level.
-
-Students may answer questions in terms of either energy levels or shells.
-
-Students should be able to represent the electronic structures of the first twenty elements of the periodic table in both forms.
-
-Visualise and represent 2D and 3D forms, including two-dimensional representations of 3D objects.
-
-4.1.2 The periodic table
-4.1.2.1 The periodic table
-
-The elements in the periodic table are arranged in order of atomic (proton) number and so that elements with similar properties are in columns, known as groups.
-
-The table is called a periodic table because similar properties occur at regular intervals.
-
-Elements in the same group have the same number of electrons in their outer shell (outer electrons) and this gives them similar chemical properties.
-
-Students should be able to:
-
-explain how the position of an element in the periodic table is related to the arrangement of electrons in its atoms and hence to its atomic number
-
-predict possible reactions and probable reactivity of elements from their positions in the periodic table
-
-4.1.2.2 Development of the periodic table
-
-Before the discovery of protons, neutrons and electrons, scientists attempted to classify the elements by arranging them in order of their atomic weights.
-
-The early periodic tables were incomplete and some elements were placed in inappropriate groups if the strict order of atomic weights was followed.
-
-Mendeleev overcame some of the problems by leaving gaps for elements that he thought had not been discovered and in some places changed the order based on atomic weights.
-
-Elements with properties predicted by Mendeleev were discovered and filled the gaps.
-
-Knowledge of isotopes made it possible to explain why the order based on atomic weights was not always correct.
-
-Students should be able to describe these steps in the development of the periodic table.
-
-4.1.2.3 Metals and non-metals
-
-Elements that react to form positive ions are metals.
-
-Elements that do not form positive ions are non-metals.
-
-The majority of elements are metals.
-
-Metals are found to the left and towards the bottom of the periodic table.
-
-Non-metals are found towards the right and top of the periodic table.
-
-Students should be able to:
-
-explain the differences between metals and non-metals on the basis of their characteristic physical and chemical properties
-
-explain how the atomic structure of metals and non-metals relates to their position in the periodic table
-
-explain how the reactions of elements are related to the arrangement of electrons in their atoms and hence to their atomic number
-
-The elements in Group 0 are called the noble gases.
-
-They are unreactive and do not easily form molecules because their atoms have stable arrangements of electrons.
-
-The noble gases have eight electrons in their outer shell, except for helium, which has only two electrons.
-
-The boiling points of the noble gases increase with increasing relative atomic mass (going down the group).
-
-Students should be able to:
-
-explain how properties of the elements in Group 0 depend on the outer shell of electrons
-
-predict properties from given trends down the group
-
-4.1.2.5 Group 1
-
-The elements in Group 1 are known as the alkali metals and have characteristic properties because of the single electron in their outer shell.
-
-Students should be able to describe the reactions of the first three alkali metals with oxygen, chlorine and water.
-
-In Group 1, the reactivity of the elements increases going down the group.
-
-Students should be able to:
-
-explain how properties of the elements in Group 1 depend on the outer shell of electrons
-
-predict properties from given trends down the group
-
-4.1.2.6 Group 7
-
-The elements in Group 7 are known as the halogens and have similar reactions because they all have seven electrons in their outer shell.
-
-The halogens are non-metals and consist of molecules made of pairs of atoms.
-
-Students should be able to describe the nature of the compounds formed when chlorine, bromine and iodine react with metals and non-metals.
-
-In Group 7, the further down the group an element is the higher its relative molecular mass, melting point and boiling point.
-
-In Group 7, the reactivity of the elements decreases going down the group.
-
-A more reactive halogen can displace a less reactive halogen from an aqueous solution of its salt.
-
-Students should be able to:
-
-explain how properties of the elements in Group 7 depend on the outer shell of electrons
-
-predict properties from given trends down the group
-
-4.1.3 Properties of transition metals (chemistry only)
-4.1.3.1 Comparison with Group 1 elements
-
-The transition elements are metals with similar properties which are different from those of the elements in Group 1.
-
-Students should be able to describe the difference compared with Group 1 in:
-
-melting points
-
-densities
-
-strength
-
-hardness
-
-reactivity with oxygen, water and halogens
-
-Students should be able to exemplify these general properties by reference to Cr, Mn, Fe, Co, Ni, Cu.
-
-4.1.3.2 Typical properties
-
-Many transition elements have ions with different charges, form coloured compounds and are useful as catalysts.
-
-Students should be able to exemplify these general properties by reference to compounds of Cr, Mn, Fe, Co, Ni, Cu.`,
+Chemical reactions can be represented by word equations or equations using symbols and formulae.`,
         examSkills: `Students will be supplied with a periodic table for the exam and should be able to:
 - use the names and symbols of the first 20 elements in the periodic table, the elements in Groups 1 and 7, and other elements in this specification
 - name compounds of these elements from given formulae or symbol equations
 - write word equations for the reactions in this specification
 - write formulae and balanced chemical equations for the reactions in this specification
 - (HT only) write balanced half equations and ionic equations where appropriate.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+      title: 'Mixtures',
+      body: `A mixture consists of two or more elements or compounds not chemically combined together.
+The chemical properties of each substance in the mixture are unchanged.
+Mixtures can be separated by physical processes such as:
+- filtration
+- crystallisation
+- simple distillation
+- fractional distillation
+- chromatography
+These physical processes do not involve chemical reactions and no new substances are made.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'The development of the model of the atom',
+      body: `New experimental evidence may lead to a scientific model being changed or replaced.
+Before the discovery of the electron, atoms were thought to be tiny spheres that could not be divided.
+The discovery of the electron led to the plum pudding model of the atom.
+The plum pudding model suggested that the atom is a ball of positive charge with negative electrons embedded in it.
+The results from the alpha particle scattering experiment led to the conclusion that:
+- the mass of an atom was concentrated at the centre (nucleus)
+- the nucleus was charged
+This nuclear model replaced the plum pudding model.
+Niels Bohr adapted the nuclear model by suggesting that electrons orbit the nucleus at specific distances.
+The theoretical calculations of Bohr agreed with experimental observations.
+Later experiments led to the idea that the positive charge of any nucleus could be subdivided into a whole number of smaller particles, each particle having the same amount of positive charge.
+The name proton was given to these particles.
+The experimental work of James Chadwick provided the evidence to show the existence of neutrons within the nucleus.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Relative electrical charges of subatomic particles',
+      body: `The relative electrical charges of the particles in atoms are:
+- Proton: +1
+- Neutron: 0
+- Electron: -1
+In an atom, the number of electrons is equal to the number of protons in the nucleus. Atoms have no overall electrical charge.
+The number of protons in an atom of an element is its atomic number.
+All atoms of a particular element have the same number of protons.
+Atoms of different elements have different numbers of protons.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+        title: 'Size and mass of atoms',
+        body: `Atoms are very small, having a radius of about 0.1 nm (1 × 10⁻¹⁰ m).
+The radius of a nucleus is less than 1/10 000 of that of the atom (about 1 × 10⁻¹⁴ m).
+Almost all of the mass of an atom is in the nucleus.
+The relative masses of protons, neutrons and electrons are:
+- Proton: 1
+- Neutron: 1
+- Electron: Very small
+The sum of the protons and neutrons in an atom is its mass number.
+Atoms of the same element can have different numbers of neutrons; these atoms are called isotopes of that element.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Relative atomic mass',
+        body: 'The relative atomic mass of an element is an average value that takes account of the abundance of the isotopes of the element.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Electronic structure',
+        body: `The electrons in an atom occupy the lowest available energy levels (innermost available shells).
+The electronic structure of an atom can be represented by numbers or by a diagram.
+For example, the electronic structure of sodium is 2,8,1.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'The periodic table',
+        body: `The elements in the periodic table are arranged in order of atomic (proton) number and so that elements with similar properties are in columns, known as groups.
+The table is called a periodic table because similar properties occur at regular intervals.
+Elements in the same group have the same number of electrons in their outer shell (outer electrons) and this gives them similar chemical properties.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Development of the periodic table',
+        body: `Before the discovery of protons, neutrons and electrons, scientists attempted to classify the elements by arranging them in order of their atomic weights.
+The early periodic tables were incomplete and some elements were placed in inappropriate groups if the strict order of atomic weights was followed.
+Mendeleev overcame some of the problems by leaving gaps for elements that he thought had not been discovered and in some places changed the order based on atomic weights.
+Elements with properties predicted by Mendeleev were discovered and filled the gaps.
+Knowledge of isotopes made it possible to explain why the order based on atomic weights was not always correct.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Metals and non-metals',
+        body: `Elements that react to form positive ions are metals.
+Elements that do not form positive ions are non-metals.
+The majority of elements are metals.
+Metals are found to the left and towards the bottom of the periodic table.
+Non-metals are found towards the right and top of the periodic table.`,
+        createdAt: new Date(),
+        updatedAt: new Date("2024-01-01T10:00:00.000Z"),
+    },
+    {
+        title: 'Group 0 (Noble Gases)',
+        body: `The elements in Group 0 are called the noble gases.
+They are unreactive and do not easily form molecules because their atoms have stable arrangements of electrons.
+The noble gases have eight electrons in their outer shell, except for helium, which has only two electrons.
+The boiling points of the noble gases increase with increasing relative atomic mass (going down the group).`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Group 1 (Alkali Metals)',
+        body: `The elements in Group 1 are known as the alkali metals and have characteristic properties because of the single electron in their outer shell.
+In Group 1, the reactivity of the elements increases going down the group.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Group 7 (Halogens)',
+        body: `The elements in Group 7 are known as the halogens and have similar reactions because they all have seven electrons in their outer shell.
+The halogens are non-metals and consist of molecules made of pairs of atoms.
+In Group 7, the further down the group an element is the higher its relative molecular mass, melting point and boiling point.
+In Group 7, the reactivity of the elements decreases going down the group.
+A more reactive halogen can displace a less reactive halogen from an aqueous solution of its salt.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        title: 'Properties of transition metals (chemistry only)',
+        body: `The transition elements are metals with similar properties which are different from those of the elements in Group 1.
+Compared to Group 1, transition metals have:
+- higher melting points and densities
+- greater strength and hardness
+- lower reactivity with oxygen, water and halogens
+Many transition elements have ions with different charges, form coloured compounds and are useful as catalysts.`,
         createdAt: new Date(),
         updatedAt: new Date(),
     }
@@ -684,5 +566,3 @@ Convert between mass, moles, and volumes of gases.`,
     },
   ],
 };
-
-    

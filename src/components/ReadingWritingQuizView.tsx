@@ -359,6 +359,118 @@ const Deck2Quiz = () => (
     </>
 );
 
+const Deck3Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2"><Pen className="text-accent" />SECTION A: DEFINITIONS</h3>
+        <p className="mt-2">1. Define the law of conservation of mass. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">No atoms are lost or made during a chemical reaction, so the mass of the products equals the mass of the reactants.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">2. What is meant by relative formula mass (Mr)? (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The sum of the relative atomic masses of all the atoms shown in the chemical formula.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">3. State the unit used to measure amount of substance and give its symbol. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The unit is the mole, and the symbol is mol.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">4. State the value of the Avogadro constant. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">6.02 x 10²³ per mole.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">5. What is meant by the limiting reactant in a chemical reaction? (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The reactant that is completely used up in a reaction and therefore stops the reaction.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">6. State the molar volume of a gas at room temperature and pressure. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-a6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">24 dm³ or 24,000 cm³.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+        
+        <h3 className="flex items-center gap-2"><FileText className="text-accent" />SECTION B: BALANCED EQUATIONS & MASS</h3>
+        <p className="mt-2">7. Balance the following chemical equation: __Al + __O₂ → __Al₂O₃ (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-b7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">4Al + 3O₂ → 2Al₂O₃</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">8. Explain why chemical equations must be balanced. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-b8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">To show the law of conservation of mass; the number of atoms of each element must be the same on both sides of the equation.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">9. CaCO₃ → CaO + CO₂. Explain why the mass of solid decreases during this reaction if carried out in an open container. (4 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-b9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbon dioxide (CO₂) is a gas. In an open container, the gas escapes, so its mass is no longer measured, leading to an apparent decrease in the total mass of the solid.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">10. Calculate the relative formula mass of calcium carbonate (CaCO₃). (Ca = 40, C = 12, O = 16) (4 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-b10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Mr(CaCO₃) = 40 + 12 + (3 × 16) = 100</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Microscope className="text-accent" />SECTION C: MOLES & AMOUNTS</h3>
+         <p className="mt-2">11. Calculate the number of moles in 22 g of carbon dioxide (CO₂). (Mr of CO₂ = 44) (3 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-c11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Moles = Mass / Mr = 22 g / 44 = 0.5 mol</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">12. Mg + 2HCl → MgCl₂ + H₂</p>
+        <p className="ml-4">a) How many moles of hydrochloric acid react with 1 mole of magnesium? (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-c12a"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">2 moles.</p></AccordionContent></AccordionItem></Accordion>
+        <p className="ml-4 mt-2">b) Calculate the mass of magnesium chloride produced when 1 mole of magnesium reacts completely. (Mr of MgCl₂ = 95) (3 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-c12b"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">From the equation, 1 mole of Mg produces 1 mole of MgCl₂. Mass = Moles × Mr = 1 mol × 95 = 95 g.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">13. Explain why moles are useful when comparing amounts of different substances. (3 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-c13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Moles allow for a direct comparison of the number of particles (atoms, molecules) of different substances, which is what reacts in a chemical equation, rather than just their mass.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Key className="text-accent" />SECTION D: LIMITING REACTANTS</h3>
+        <p className="mt-2">14. 5.0 g of magnesium reacts with 10.0 g of hydrochloric acid.</p>
+        <p className="ml-4">a) Identify the limiting reactant. (2 marks)</p>
+        <Textarea />
+        <p className="ml-4 mt-2">b) Explain how the limiting reactant affects the amount of product formed. (3 marks)</p>
+        <Textarea />
+        <p className="ml-4 mt-2">c) State what happens to the excess reactant. (3 marks)</p>
+        <Textarea />
+         <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-d14"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent><p className="text-sm">a) Hydrochloric acid (HCl) is the limiting reactant. <br/>b) The amount of product formed is directly proportional to the amount of the limiting reactant. Once it is used up, the reaction stops. <br/>c) The excess reactant (Magnesium) is left over and unreacted.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+        
+        <h3 className="flex items-center gap-2"><TestTube className="text-accent" />SECTION E: CONCENTRATION & SOLUTIONS</h3>
+        <p className="mt-2">15. Calculate the concentration, in g/dm³, of a solution containing 5 g of solute dissolved in 250 cm³ of solution. (4 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-e15"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Volume = 250 cm³ = 0.25 dm³. Concentration = Mass / Volume = 5 g / 0.25 dm³ = 20 g/dm³.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">16. Explain how the mass of solute and the volume of solution affect concentration. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-e16"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Increasing the mass of solute increases concentration. Increasing the volume of the solution decreases concentration.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+        
+        <h3 className="flex items-center gap-2"><CheckCircle className="text-accent" />SECTION F: YIELD & ATOM ECONOMY</h3>
+        <p className="mt-2">17. Define percentage yield. (2 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-f17"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The actual yield of product divided by the maximum theoretical yield, multiplied by 100.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">18. A reaction produces 6.0 g of product. The theoretical maximum mass is 10.0 g. Calculate the percentage yield. (3 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-f18"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">% Yield = (6.0 g / 10.0 g) × 100 = 60%.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">19. Explain two reasons why the percentage yield of a reaction may be less than 100%. (3 marks)</p>
+        <Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-f19"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. Some product may be lost during separation/purification (e.g., filtering). 2. The reaction may be reversible and not go to completion. 3. Unexpected side reactions may occur, forming different products.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Brain className="text-accent" />SECTION G: EXTENDED RESPONSE</h3>
+        <p className="mt-2">20. Explain how percentage yield and atom economy are used to decide which reaction is most suitable. Refer to sustainability, waste, efficiency, and economic considerations. (6 marks)</p>
+        <Textarea className="min-h-[150px]" />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d3-g20"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Atom economy measures the efficiency of a reaction in converting reactants into the desired product, indicating how sustainable it is by minimizing waste. A high atom economy is good for sustainability and reduces costs associated with waste treatment. Percentage yield measures how much product is actually obtained compared to the maximum possible (efficiency). A high yield is economically important as it maximizes the amount of product made from expensive reactants. Both are considered; a reaction with high atom economy but low yield might be less economically viable than one with a slightly lower atom economy but a very high yield.</p></AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
 
 const ReadingWritingQuizView = ({ title, onBack, deckId }: ReadingWritingQuizViewProps) => {
 
@@ -368,6 +480,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId }: ReadingWritingQuizVie
         }
         if (deckId === 'deck2') {
             return <Deck2Quiz />;
+        }
+        if (deckId === 'deck3') {
+            return <Deck3Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }

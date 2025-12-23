@@ -72,10 +72,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   }, [deck.id, userNotes, isLoading]);
   
   const examSkillsText = useMemo(() => {
-    if (!deckNotes) return null;
-    // Assuming the exam skills are on the first note of the deck for simplicity
-    const deck1Note = initialNotesData['deck1'] ? initialNotesData['deck1'][0] : undefined;
-    return deck1Note?.examSkills || null;
+    // Look for exam skills on any note within the deck.
+    const noteWithSkills = (deckNotes || []).find(note => note.examSkills);
+    return noteWithSkills?.examSkills || null;
   }, [deckNotes]);
 
 

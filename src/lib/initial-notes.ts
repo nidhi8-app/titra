@@ -12,17 +12,25 @@ export type NoteSection = {
 
 export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
     const sections: NoteSection[] = [];
+    let currentSection: NoteSection | null = null;
+    let currentSubsection: NoteSection | null = null;
+    let currentSubSubSection: NoteSection | null = null;
 
     notes.forEach(note => {
         const lines = note.body.split('\n');
-        let currentSection: NoteSection | null = {
-            title: note.title,
-            content: note.examSkills ? `**Exam Skills:**\n${note.examSkills}` : '',
-            subsections: [],
-        };
-        sections.push(currentSection);
-        let currentSubsection: NoteSection | null = null;
-        let currentSubSubSection: NoteSection | null = null;
+
+        // Check for main title based on note title
+        if (note.title) {
+            currentSection = {
+                title: note.title,
+                content: '',
+                subsections: [],
+            };
+            if(note.examSkills) {
+                currentSection.content += `**Exam Skills:**\n${note.examSkills}\n\n`;
+            }
+            sections.push(currentSection);
+        }
 
         lines.forEach(line => {
             const trimmedLine = line.trim();
@@ -35,7 +43,7 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
                 if (currentSubsection) {
                     currentSubsection.subsections.push(currentSubSubSection);
                 } else if(currentSection) {
-                    currentSection.subsections.push(currentSubSubSection)
+                    currentSection.subsections.push(currentSubSubSection);
                 }
             } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // Matches 4.2
                 currentSubsection = {
@@ -181,8 +189,7 @@ Elements that do not form positive ions are non-metals.
 The majority of elements are metals.
 Metals are found to the left and towards the bottom of the periodic table.
 Non-metals are found towards the right and top of the periodic table.`,
-        createdAt: new Date(),
-        updatedAt: new Date("2024-01-01T10:00:00.000Z"),
+        createdAt: new Date("2024-01-01T10:00:00.000Z"),
     },
     {
         title: 'Group 0 (Noble Gases)',

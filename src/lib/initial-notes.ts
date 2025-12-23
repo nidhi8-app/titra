@@ -4,6 +4,62 @@ import type { Note } from './types';
 // Omit 'id' and 'deckId' as they will be assigned dynamically
 export type InitialNoteSeed = Omit<Note, 'id' | 'deckId'>;
 
+export type NoteSection = {
+    title: string;
+    content: string;
+    subsections: NoteSection[];
+};
+
+export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
+    const sections: NoteSection[] = [];
+
+    notes.forEach(note => {
+        const lines = note.body.split('\n');
+        let currentSection: NoteSection | null = {
+            title: note.title,
+            content: note.examSkills ? `**Exam Skills:**\n${note.examSkills}` : '',
+            subsections: [],
+        };
+        sections.push(currentSection);
+        let currentSubsection: NoteSection | null = null;
+        let currentSubSubSection: NoteSection | null = null;
+
+        lines.forEach(line => {
+            const trimmedLine = line.trim();
+            if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // Matches 4.2.1
+                currentSubSubSection = {
+                    title: trimmedLine,
+                    content: '',
+                    subsections: [],
+                };
+                if (currentSubsection) {
+                    currentSubsection.subsections.push(currentSubSubSection);
+                } else if(currentSection) {
+                    currentSection.subsections.push(currentSubSubSection)
+                }
+            } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // Matches 4.2
+                currentSubsection = {
+                    title: trimmedLine,
+                    content: '',
+                    subsections: [],
+                };
+                 if (currentSection) {
+                    currentSection.subsections.push(currentSubsection);
+                }
+                currentSubSubSection = null;
+            } else if (trimmedLine.length > 0) {
+                const target = currentSubSubSection || currentSubsection || currentSection;
+                if (target) {
+                   target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
+                }
+            }
+        });
+    });
+
+    return sections;
+}
+
+
 export const initialNotesData: { [deckId: string]: InitialNoteSeed[] } = {
   'deck1': [
     {
@@ -228,7 +284,7 @@ work out the empirical formula from a model
 
 Sodium chloride is the required example.
 
-Covalent bonding
+4.2.1.4 Covalent bonding
 
 Covalent bonds form when atoms share pairs of electrons.
 
@@ -330,19 +386,19 @@ Metals conduct electricity due to delocalised electrons.
 Thermal conductivity is also due to delocalised electrons.
 
 4.2.3 Structure and bonding of carbon
-Diamond
+4.2.3.1 Diamond
 
 Each carbon forms four covalent bonds.
 
 Very hard, very high melting point, does not conduct electricity.
 
-Graphite
+4.2.3.2 Graphite
 
 Each carbon forms three covalent bonds in layers.
 
 Delocalised electrons allow electrical conductivity.
 
-Graphene and fullerenes
+4.2.3.3 Graphene and fullerenes
 
 Graphene is a single layer of graphite.
 
@@ -353,7 +409,7 @@ Carbon nanotubes are cylindrical fullerenes.
 Used in electronics, materials and nanotechnology.
 
 4.2.4 Nanoparticles
-Sizes and properties
+4.2.4.1 Sizes and properties
 
 Nanoparticles are 1–100 nm in size.
 
@@ -361,7 +417,7 @@ High surface area to volume ratio.
 
 Can have different properties from bulk materials.
 
-Uses of nanoparticles
+4.2.4.2 Uses of nanoparticles
 
 Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts.
 
@@ -566,3 +622,5 @@ Convert between mass, moles, and volumes of gases.`,
     },
   ],
 };
+
+    

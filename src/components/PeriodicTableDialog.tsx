@@ -30,21 +30,22 @@ const categoryColors: { [key: string]: string } = {
     'metalloid': 'bg-teal-500/80',
     'reactive-nonmetal': 'bg-sky-500/80',
     'noble-gas': 'bg-blue-500/80',
+    'unknown': 'bg-gray-500/80',
 };
 
 const ElementTile = ({ element }: { element: ElementData }) => (
   <div
     className={cn(
-      "flex flex-col items-center justify-center p-1 rounded-md text-white text-xs",
+      "flex flex-col items-center justify-center p-1 rounded-md text-white text-xs aspect-square",
       categoryColors[element.category]
     )}
     style={{
       gridColumnStart: element.group,
-      gridRowStart: element.period + 1, // +1 to account for header row
+      gridRowStart: element.period, 
     }}
   >
-    <div className="font-bold text-lg">{element.symbol}</div>
-    <div>{element.atomicNumber}</div>
+    <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
+    <div className="text-xs">{element.atomicNumber}</div>
   </div>
 );
 
@@ -52,7 +53,7 @@ const ElementTile = ({ element }: { element: ElementData }) => (
 const Legend = () => (
     <div className="p-4 border-t">
         <h4 className="font-bold mb-2 text-center">Legend</h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 text-xs">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 text-xs">
             {Object.entries(categoryColors).map(([category, colorClass]) => (
                 <div key={category} className="flex items-center gap-2">
                     <div className={cn("w-4 h-4 rounded-sm", colorClass)}></div>
@@ -73,24 +74,14 @@ export const PeriodicTableDialog = ({ isOpen, onClose }: PeriodicTableDialogProp
             An interactive periodic table to help you with your studies.
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="flex-1">
+        <ScrollArea className="flex-1 -mx-4 sm:-mx-6 px-4 sm:px-6">
             <div 
-                className="grid gap-1 p-2"
+                className="grid gap-1 py-2 pr-2"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     gridTemplateRows: 'repeat(9, minmax(0, 1fr))',
                 }}
             >
-                 {/* Group Numbers */}
-                {Array.from({ length: 18 }, (_, i) => i + 1).map(group => (
-                    <div key={`group-${group}`} className="font-bold text-center text-xs" style={{ gridColumn: group, gridRow: 1 }}>{group}</div>
-                ))}
-
-                {/* Period Numbers */}
-                {Array.from({ length: 7 }, (_, i) => i + 1).map(period => (
-                    <div key={`period-${period}`} className="font-bold text-center text-xs flex items-center justify-center" style={{ gridColumn: 0, gridRow: period + 1 }}>{period}</div>
-                ))}
-                
                 {elements.map(el => (
                     <ElementTile key={el.atomicNumber} element={el} />
                 ))}
@@ -104,3 +95,5 @@ export const PeriodicTableDialog = ({ isOpen, onClose }: PeriodicTableDialogProp
     </Dialog>
   );
 };
+
+    

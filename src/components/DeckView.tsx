@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Hand, Footprints, Pen, Headphones, Eye, Microscope, Map, Boxes, Palette, GitBranch, Triangle, ListChecks, Columns, Brain, Highlighter, DraftingCompass, BookCopy, BookText, Sigma, Link, TestTube, ChevronsRightLeft, Thermometer, Rows, Key, CircleDashed, Disc, Gauge, Cloud, TestTube2, Network } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -26,11 +26,11 @@ type DeckViewProps = {
 const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
-        <Card className="bg-transparent shadow-none border-0">
-            <CardHeader className="p-0 mb-4">
+        <Card className="bg-background/50 border-2">
+            <CardHeader>
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent>
                 <NestedAccordion sections={parsed} />
             </CardContent>
         </Card>
@@ -144,35 +144,41 @@ const LearnAsVisual = () => (
             <CardDescription>Engage with this topic by drawing, connecting, and organizing information visually.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4 className="flex items-center gap-2"><Map className="inline-block h-5 w-5" />1. One-page visual map (MOST effective)</h4>
-            <p>Put “All substances are made of atoms” in the centre. Branch out to: Atoms, Elements, Compounds, Chemical reactions. Use arrows for processes, boxes for definitions, and circles for examples. This turns the notes into a mental picture.</p>
+            <h4>1️⃣ One MASTER DIAGRAM (highest impact)</h4>
+            <p>Create one A3 sheet titled: “Structure of Matter (GCSE Chemistry)”. Split it into sections with boxes for Atoms & Elements, Compounds & Mixtures, Atomic Structure, Periodic Table, and Groups 0, 1, 7. Use arrows to show links. 👉 Seeing everything connected prevents topic confusion.</p>
 
-            <h4 className="flex items-center gap-2"><Boxes className="inline-block h-5 w-5" />2. Concept boxes (see the differences clearly)</h4>
-            <p>Draw four large boxes for Atom, Element, Compound, and Chemical reaction. Seeing them side-by-side prevents confusion.</p>
+            <h4>2️⃣ Colour-coded meaning system (never change colours)</h4>
+            <p>Use the same colours every time: 🔵 Atoms / subatomic particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Chemical reactions, 🟣 Periodic table / groups. Your brain remembers colour patterns faster than text.</p>
 
-            <h4 className="flex items-center gap-2"><Palette className="inline-block h-5 w-5" />3. Colour-coded system (consistency matters)</h4>
-            <p>Use the same colours every time: 🔵 Atoms / elements, 🟢 Compounds, 🔴 Chemical reactions, 🟣 Exam skills. Your brain remembers colour faster than words.</p>
+            <h4>3️⃣ “Before vs After” diagrams (for reactions & mixtures)</h4>
+            <p>Draw paired boxes for a chemical reaction (Before: elements, After: compound + energy change) and a mixture (Before: substances together, After: substances separated physically). Label with ✔ new substance or ✖ no new substance. This visually locks in the difference.</p>
 
-            <h4 className="flex items-center gap-2"><GitBranch className="inline-block h-5 w-5" />4. Flow diagrams for processes</h4>
-            <p>Draw a flowchart: Elements ⬇ (chemical reaction) ⬇ Compound formed ⬇ (energy change) ⬇ New substance. Flow diagrams help understand cause and effect.</p>
+            <h4>4️⃣ Timeline strip for atomic models</h4>
+            <p>Draw a horizontal timeline: Tiny solid sphere → Plum pudding model → Nuclear model → Bohr model → Protons → Neutrons. Add small sketches and arrows showing “new evidence → new model”. This helps with exam questions about scientific development.</p>
 
-            <h4 className="flex items-center gap-2"><Triangle className="inline-block h-5 w-5" />5. Symbol → word → meaning triangles</h4>
-            <p>For each example, draw a triangle linking the symbol (O), name (oxygen), and meaning (atom of an element) visually.</p>
-
-            <h4 className="flex items-center gap-2"><ListChecks className="inline-block h-5 w-5" />6. Exam skills checklist (visual layout)</h4>
-            <p>Create a tick-box list for skills like 'Use names and symbols', 'Write word equations', etc. Seeing progress is motivating.</p>
+            <h4>5️⃣ Particle tables instead of sentences</h4>
+            <p>Turn facts into tables for Subatomic particles (Particle, Charge, Mass, Location) and Atom facts (Feature, What it shows - Atomic number, Mass number). Tables help visual learners compare instantly.</p>
             
-            <h4 className="flex items-center gap-2"><Columns className="inline-block h-5 w-5" />7. Split-page notes (powerful for understanding)</h4>
-            <p>Use the left side for key terms and the right side for diagrams, arrows, and examples. This forces processing, not just copying.</p>
+            <h4>6️⃣ Scale diagrams (size & mass)</h4>
+            <p>Draw a large circle for an atom and a tiny dot in the centre for the nucleus. Write the atom radius (0.1 nm) and nucleus radius (1 × 10⁻¹⁴ m). Add “Almost all mass in nucleus”. Seeing the scale difference builds understanding.</p>
 
-            <h4 className="flex items-center gap-2"><Brain className="inline-block h-5 w-5" />8. Redraw from memory (no copying)</h4>
-            <p>Look at your diagram for 30 seconds, cover it, and redraw from memory. Compare and fix gaps in a different colour. This is visual active recall.</p>
+            <h4>7️⃣ Electronic structure ring diagrams</h4>
+            <p>For the first 20 elements, draw shells as circles, add electrons as dots, and colour the outer shell. Then label the group number and reactivity trend. This visually links electrons → group → properties.</p>
 
-            <h4 className="flex items-center gap-2"><Highlighter className="inline-block h-5 w-5" />9. Periodic table highlighting</h4>
-            <p>Use a printed periodic table to highlight the first 20 elements, Group 1, and Group 7 in different colours.</p>
+            <h4>8️⃣ Periodic table highlighting (pattern spotting)</h4>
+            <p>Print a periodic table. Highlight groups vertically. Shade metals (left & bottom) and non-metals (right & top). Circle Groups 0, 1, and 7. Patterns = memory.</p>
 
-            <h4 className="flex items-center gap-2"><DraftingCompass className="inline-block h-5 w-5" />10. Before-and-after diagrams</h4>
-            <p>Draw 'Before reaction' (separate elements) and 'After reaction' (compound formed) diagrams with labels.</p>
+            <h4>9️⃣ Group summary boxes (exam gold)</h4>
+            <p>Create one box per group (0, 1, and 7) and list their key properties (e.g., outer electrons, reactivity trend, boiling point trend). Seeing trends side-by-side is key.</p>
+
+            <h4>🔟 Arrow trend diagrams (reactivity & boiling point)</h4>
+            <p>Instead of words, use arrows: Group 1 reactivity ⬇️ increases, Group 7 reactivity ⬇️ decreases, Group 0 boiling point ⬇️ increases. Your brain remembers directional arrows very well.</p>
+
+            <h4>1️⃣1️⃣ Comparison grids (metals vs non-metals)</h4>
+            <p>Draw a split box for Metals (positive ions, left/bottom) vs Non-metals (do not form positive ions, right/top). Quick visual contrast = exam clarity.</p>
+
+            <h4>1️⃣2️⃣ Redraw-from-memory rule (most important)</h4>
+            <p>Daily routine: Look at your diagrams for 1 minute. Close notes. Redraw everything from memory. Add missing parts in a different colour. If you can redraw it → you understand it.</p>
         </CardContent>
     </Card>
 );
@@ -207,13 +213,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   }, [deck.id, userNotes, isLoading]);
   
   const examSkillsText = useMemo(() => {
-    if (deck.id === 'deck1') {
-        const noteWithSkills = initialNotesData['deck1'].find(note => note.examSkills);
-        return noteWithSkills?.examSkills || null;
-    }
-    const noteWithSkills = (deckNotes || []).find(note => note.examSkills);
+    const noteWithSkills = initialNotesData['deck1']?.find(note => note.examSkills);
     return noteWithSkills?.examSkills || null;
-  }, [deckNotes, deck.id]);
+  }, [deck.id]);
 
 
   const handleGenerateQuiz = async () => {
@@ -337,5 +339,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

@@ -12,6 +12,7 @@ type KinestheticQuizViewProps = {
     title: string;
     onBack: () => void;
     deckId: string;
+    isEmbedded?: boolean;
 };
 
 const Deck1Quiz = () => (
@@ -426,7 +427,7 @@ const Deck3Quiz = () => (
 );
 
 
-const KinestheticQuizView = ({ title, onBack, deckId }: KinestheticQuizViewProps) => {
+const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: KinestheticQuizViewProps) => {
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -439,6 +440,14 @@ const KinestheticQuizView = ({ title, onBack, deckId }: KinestheticQuizViewProps
             return <Deck3Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
+    }
+    
+    if (isEmbedded) {
+        return (
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+                {renderQuizContent()}
+            </div>
+        );
     }
 
     return (
@@ -467,3 +476,5 @@ const KinestheticQuizView = ({ title, onBack, deckId }: KinestheticQuizViewProps
 };
 
 export default KinestheticQuizView;
+
+    

@@ -14,6 +14,7 @@ type ReadingWritingQuizViewProps = {
     title: string;
     onBack: () => void;
     deckId: string;
+    isEmbedded?: boolean;
 };
 
 const Deck1Quiz = () => (
@@ -472,7 +473,7 @@ const Deck3Quiz = () => (
 );
 
 
-const ReadingWritingQuizView = ({ title, onBack, deckId }: ReadingWritingQuizViewProps) => {
+const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -485,6 +486,14 @@ const ReadingWritingQuizView = ({ title, onBack, deckId }: ReadingWritingQuizVie
             return <Deck3Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
+    }
+    
+    if (isEmbedded) {
+        return (
+             <div className="prose prose-sm dark:prose-invert max-w-none">
+                {renderQuizContent()}
+            </div>
+        )
     }
 
     return (
@@ -518,3 +527,5 @@ const ReadingWritingQuizView = ({ title, onBack, deckId }: ReadingWritingQuizVie
 };
 
 export default ReadingWritingQuizView;
+
+    

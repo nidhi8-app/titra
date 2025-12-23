@@ -15,6 +15,7 @@ type VisualQuizViewProps = {
     title: string;
     onBack: () => void;
     deckId: string;
+    isEmbedded?: boolean;
 };
 
 const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c8', 'c9'].includes(img.id));
@@ -405,7 +406,7 @@ const Deck3Quiz = () => (
 );
 
 
-const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
+const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
 
     const diagrams = deckId === 'deck1' ? deck1Diagrams : deckId === 'deck2' ? deck2Diagrams : deck3Diagrams;
@@ -421,6 +422,35 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
             return <Deck3Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
+    }
+    
+    const quizSection = (
+      <>
+        <div className="p-4 bg-primary/10 rounded-lg text-center">
+            <h3 className="font-bold text-primary">How to use this quiz</h3>
+            <p className="text-sm">Draw, connect, and organize the information visually. Use pen and paper.</p>
+             <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
+        </div>
+        <hr />
+        {renderQuizContent()}
+      </>
+    );
+
+    if (isEmbedded) {
+        return (
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+                {quizSection}
+                <DiagramsDialog 
+                    isOpen={isDiagramsOpen} 
+                    onClose={() => setIsDiagramsOpen(false)} 
+                    diagrams={diagrams}
+                    title={`Diagrams for ${title}`}
+                />
+            </div>
+        );
     }
 
     return (
@@ -440,16 +470,7 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
                         <CardDescription>{title}</CardDescription>
                     </CardHeader>
                     <CardContent className="prose prose-lg dark:prose-invert max-w-none mx-auto">
-                        <div className="p-4 bg-primary/10 rounded-lg text-center">
-                            <h3 className="font-bold text-primary">How to use this quiz</h3>
-                            <p className="text-sm">Draw, connect, and organize the information visually. Use pen and paper.</p>
-                             <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
-                                <BookImage className="mr-2 h-4 w-4" />
-                                View Diagrams
-                            </Button>
-                        </div>
-                        <hr />
-                        {renderQuizContent()}
+                        {quizSection}
                     </CardContent>
                 </Card>
             </ScrollArea>
@@ -464,7 +485,5 @@ const VisualQuizView = ({ title, onBack, deckId }: VisualQuizViewProps) => {
 };
 
 export default VisualQuizView;
-
-    
 
     

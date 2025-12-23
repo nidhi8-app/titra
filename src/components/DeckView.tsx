@@ -30,11 +30,11 @@ type DeckViewProps = {
 const NotesSummary = ({ notes }: { notes: Note[] }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     return (
-        <Card className="bg-transparent shadow-none border-none">
+        <Card>
             <CardHeader>
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent>
                 <NestedAccordion sections={parsed} />
             </CardContent>
         </Card>
@@ -48,9 +48,6 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [isPeriodicTableDialogOpen, setIsPeriodicTableDialogOpen] = useState(false);
-  const [kinestheticQuiz, setKinestheticQuiz] = useState<string | null>(null);
-  const [visualQuiz, setVisualQuiz] = useState<string | null>(null);
-  const [readingWritingQuiz, setReadingWritingQuiz] = useState<string | null>(null);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -77,7 +74,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const examSkillsText = useMemo(() => {
     if (!deckNotes) return null;
     // Assuming the exam skills are on the first note of the deck for simplicity
-    return deckNotes.map(note => note.examSkills).filter(Boolean).join('\n\n');
+    const deck1Note = initialNotesData['deck1'] ? initialNotesData['deck1'][0] : undefined;
+    return deck1Note?.examSkills || null;
   }, [deckNotes]);
 
 
@@ -139,24 +137,28 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     const style = userDetails?.learningStyle;
     
     let Icon;
-    let actionText = '';
-    let onClickAction = () => {};
+    let titleText = '';
+    let descriptionText = '';
+    let quizContent = null;
 
     switch(style) {
         case 'Visual':
             Icon = Eye;
-            actionText = 'Start Visual Quiz';
-            onClickAction = () => setVisualQuiz(deck.title);
+            titleText = 'Learn as a Visual Learner';
+            descriptionText = 'Engage with this topic by drawing, connecting, and organizing information visually.';
+            quizContent = <VisualQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
             break;
         case 'Kinesthetic':
             Icon = Footprints;
-            actionText = 'Start Kinesthetic Quiz';
-            onClickAction = () => setKinestheticQuiz(deck.title);
+            titleText = 'Learn as a Kinesthetic Learner';
+            descriptionText = 'Engage with this topic by doing, moving, and interacting with your environment.';
+            quizContent = <KinestheticQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
             break;
         case 'Reading/Writing':
             Icon = BookOpen;
-            actionText = 'Start Reading/Writing Quiz';
-            onClickAction = () => setReadingWritingQuiz(deck.title);
+            titleText = 'Learn as a Reading/Writing Learner';
+            descriptionText = 'Engage with this topic by writing, summarizing, and organizing text.';
+            quizContent = <ReadingWritingQuizView title={deck.title} onBack={() => {}} deckId={deck.id} isEmbedded={true} />;
             break;
         default:
             return null; // or a default action
@@ -167,31 +169,16 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Icon className="w-6 h-6" />
-                    Learn as a {style} Learner
+                    {titleText}
                 </CardTitle>
-                <CardDescription>Engage with this topic in a way that suits your learning style.</CardDescription>
+                <CardDescription>{descriptionText}</CardDescription>
             </CardHeader>
             <CardContent>
-                <Button onClick={onClickAction} className="w-full" size="lg">
-                    {actionText}
-                </Button>
+                {quizContent}
             </CardContent>
         </Card>
     );
   };
-
-
-  if (visualQuiz) {
-    return <VisualQuizView title={visualQuiz} onBack={() => setVisualQuiz(null)} deckId={deck.id} />;
-  }
-
-  if (kinestheticQuiz) {
-    return <KinestheticQuizView title={kinestheticQuiz} onBack={() => setKinestheticQuiz(null)} deckId={deck.id} />;
-  }
-
-  if (readingWritingQuiz) {
-    return <ReadingWritingQuizView title={readingWritingQuiz} onBack={() => setReadingWritingQuiz(null)} deckId={deck.id} />;
-  }
 
   const renderContent = () => {
     if (isLoading && !userNotes) {

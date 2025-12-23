@@ -11,13 +11,13 @@ import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
-import { initialNotesData } from '@/lib/initial-notes';
+import { initialNotesData, parseNotes } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import KinestheticQuizView from './KinestheticQuizView';
 import VisualQuizView from './VisualQuizView';
 import ReadingWritingQuizView from './ReadingWritingQuizView';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
-import { TopicList } from './TopicList';
+import { NestedAccordion } from './NestedAccordion';
 
 
 type DeckViewProps = {
@@ -27,8 +27,19 @@ type DeckViewProps = {
   onNoteAdded: () => void;
 };
 
+const NotesSummary = ({ notes }: { notes: Note[] }) => {
+    const parsed = React.useMemo(() => parseNotes(notes), [notes]);
+    return (
+        <Card className="bg-transparent shadow-none border-none">
+            <CardContent className="p-0">
+                <NestedAccordion sections={parsed} />
+            </CardContent>
+        </Card>
+    );
+};
 
-const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
+
+const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
@@ -63,7 +74,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
   const examSkillsText = useMemo(() => {
     if (!deckNotes) return null;
     // Assuming the exam skills are on the first note of the deck for simplicity
-    return deckNotes[0]?.examSkills || null;
+    return deckNotes.map(note => note.examSkills).filter(Boolean).join('\n\n');
   }, [deckNotes]);
 
 
@@ -168,7 +179,7 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 
     return (
         <div className="space-y-6">
-            <TopicList notes={deckNotes} />
+            <NotesSummary notes={deckNotes} />
             
             <div className="flex gap-2 mb-4">
               {examSkillsText && (
@@ -238,3 +249,5 @@ const DeckView = ({ deck, onQuiz, userDetails }: DeckViewProps) => {
 };
 
 export default DeckView;
+
+    

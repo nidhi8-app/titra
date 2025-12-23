@@ -30,8 +30,8 @@
 
     --border: 27 25% 75%; /* Lighter brown for borders */
     --input: 27 25% 85%; /* Even lighter for input background */
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -48,7 +48,7 @@
     --sidebar-accent: 27 30% 90%;
     --sidebar-accent-foreground: 27 29% 30%;
     --sidebar-border: 27 25% 85%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .theme-auditory {
@@ -78,8 +78,8 @@
 
     --border: 210 20% 85%;
     --input: 210 20% 90%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
     
     --radius: 0.5rem;
 
@@ -90,7 +90,7 @@
     --sidebar-accent: 210 40% 90%;
     --sidebar-accent-foreground: 210 40% 20%;
     --sidebar-border: 210 20% 90%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .theme-kinesthetic {
@@ -120,8 +120,8 @@
 
     --border: 30 50% 88%;
     --input: 30 50% 92%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --radius: 0.5rem;
 
@@ -132,7 +132,7 @@
     --sidebar-accent: 24 96% 92%;
     --sidebar-accent-foreground: 24 96% 20%;
     --sidebar-border: 30 50% 90%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .theme-reading-writing {
@@ -162,8 +162,8 @@
 
     --border: 30 15% 85%;
     --input: 30 15% 90%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --radius: 0.5rem;
 
@@ -174,7 +174,7 @@
     --sidebar-accent: 45 90% 92%;
     --sidebar-accent-foreground: 45 90% 25%;
     --sidebar-border: 30 15% 90%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
 
@@ -205,8 +205,8 @@
 
     --border: 27 10% 25%;
     --input: 27 10% 25%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -221,7 +221,7 @@
     --sidebar-accent: 27 10% 20%;
     --sidebar-accent-foreground: 27 29% 80%;
     --sidebar-border: 27 10% 25%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .dark.theme-auditory {
@@ -251,8 +251,8 @@
 
     --border: 210 20% 30%;
     --input: 210 20% 30%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --sidebar-background: 220 20% 14%;
     --sidebar-foreground: 210 20% 92%;
@@ -261,7 +261,7 @@
     --sidebar-accent: 210 40% 25%;
     --sidebar-accent-foreground: 210 40% 90%;
     --sidebar-border: 210 20% 30%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .dark.theme-kinesthetic {
@@ -291,8 +291,8 @@
 
     --border: 30 20% 30%;
     --input: 30 20% 30%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --sidebar-background: 25 15% 14%;
     --sidebar-foreground: 30 20% 92%;
@@ -301,7 +301,7 @@
     --sidebar-accent: 24 90% 25%;
     --sidebar-accent-foreground: 24 90% 90%;
     --sidebar-border: 30 20% 30%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 
   .dark.theme-reading-writing {
@@ -331,8 +331,8 @@
 
     --border: 45 15% 35%;
     --input: 45 15% 35%;
-    --ring: 240 50% 25%;
-    --progress-ring: 240 50% 25%;
+    --ring: 240 50% 60%;
+    --progress-ring: 240 50% 60%;
 
     --sidebar-background: 45 10% 17%;
     --sidebar-foreground: 45 25% 85%;
@@ -341,7 +341,7 @@
     --sidebar-accent: 45 80% 25%;
     --sidebar-accent-foreground: 45 80% 85%;
     --sidebar-border: 45 15% 35%;
-    --sidebar-ring: 240 50% 25%;
+    --sidebar-ring: 240 50% 60%;
   }
 }
 

@@ -67,20 +67,6 @@ export const initialDecks: Deck[] = [
         { id: 'topic9', title: 'Chemistry of the atmosphere', color: 'bg-teal-400', cardCount: 0, progress: 0, imageId: 'c22', emoji: Cloud },
     ]
   },
-  {
-    id: 'deck10',
-    title: 'Using resources',
-    cards: [
-        { id: 'topic10', title: 'Using resources', color: 'bg-lime-400', cardCount: 0, progress: 0, imageId: 'c11', emoji: Recycle },
-    ]
-  },
-  {
-    id: 'deck11',
-    title: 'Key ideas',
-    cards: [
-        { id: 'topic11', title: 'Key ideas', color: 'bg-cyan-400', cardCount: 0, progress: 0, imageId: 'c15', emoji: Key },
-    ]
-  },
 ];
 
 export const initialQuizTopics: Omit<Card, 'color' | 'emoji' | 'imageId'>[] = [
@@ -93,8 +79,6 @@ export const initialQuizTopics: Omit<Card, 'color' | 'emoji' | 'imageId'>[] = [
     { id: 'deck7', title: 'Organic chemistry', cardCount: 10, progress: -1 },
     { id: 'deck8', title: 'Chemical analysis', cardCount: 10, progress: -1 },
     { id: 'deck9', title: 'Chemistry of the atmosphere', cardCount: 10, progress: -1 },
-    { id: 'deck10', title: 'Using resources', cardCount: 10, progress: -1 },
-    { id: 'deck11', title: 'Key ideas', cardCount: 10, progress: -1 },
 ];
 
 export const initialNotes: Note[] = [
@@ -296,6 +280,4 @@ export const quizQuestions: { [key: string]: QuizQuestion[] } = {
   'deck7': Array.from({ length: 10 }, (_, i) => ({ id: `d7-q${i + 1}`, question: `Organic chemistry Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
   'deck8': Array.from({ length: 10 }, (_, i) => ({ id: `d8-q${i + 1}`, question: `Chemical analysis Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
   'deck9': Array.from({ length: 10 }, (_, i) => ({ id: `d9-q${i + 1}`, question: `Chemistry of the atmosphere Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
-  'deck10': Array.from({ length: 10 }, (_, i) => ({ id: `d10-q${i + 1}`, question: `Using resources Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
-  'deck11': Array.from({ length: 10 }, (_, i) => ({ id: `d11-q${i + 1}`, question: `Key ideas Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
 };

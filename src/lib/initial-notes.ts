@@ -570,28 +570,6 @@ There are possible risks associated with their use.`,
       updatedAt: new Date("2024-10-06T12:00:00.000Z"),
     },
   ],
-  'deck10': [
-    {
-      title: 'Using the Earth\'s Resources',
-      body: 'Humans use the Earth\'s resources to provide warmth, shelter, food, and transport. Natural resources, supplemented by agriculture, provide food, timber, clothing, and fuels. Finite resources from the Earth, oceans, and atmosphere are processed to make synthetic products.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Sustainability and Recycling',
-      body: 'Sustainable development involves meeting the needs of the present generation without compromising the ability of future generations to meet their own needs. It is important to reduce the use of finite resources, reuse materials, and recycle where possible. This reduces waste, pollution, and the need to extract new raw materials.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
-  'deck11': [
-    {
-      title: 'Key Ideas in Chemistry',
-      body: 'This section brings together the fundamental principles of chemistry. It includes the idea that matter is made of atoms, which are rearranged during chemical reactions. The periodic table is a key tool for understanding the properties of elements. The energy changes and rates of these reactions are also central concepts.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
 };
 
     

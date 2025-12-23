@@ -249,6 +249,48 @@ const LearningStyleContent = ({ notes, learningStyle, deckTitle, deckId }: { not
           </ScrollArea>
         );
       case 'Reading/Writing':
+        if (deckId === 'deck1') {
+            return (
+              <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+                  <div className="prose prose-sm dark:prose-invert max-w-none">
+                      <h4>1️⃣ Rewrite → Reduce → Rewrite (very effective)</h4>
+                      <p><strong>How</strong>: Rewrite the notes in full sentences. Reduce them to half the length. Reduce again to 5–6 key sentences. This forces understanding, not copying.</p>
+                      <hr />
+                      <h4>2️⃣ Definition drilling (exam-focused)</h4>
+                      <p><strong>How</strong>: Write each definition clearly: atom, element, compound, chemical reaction. Cover the definitions. Rewrite them from memory. Check and correct. Repeat until accurate.</p>
+                      <hr />
+                      <h4>3️⃣ Turn notes into questions</h4>
+                      <p><strong>How</strong>: Convert each line into a question, e.g.: What are all substances made of? What is an atom? How are atoms represented? How are compounds formed? Then write full answers.</p>
+                      <hr />
+                      <h4>4️⃣ Sentence stems (controlled writing)</h4>
+                      <p>Complete these in writing: “All substances are made of …”, “An atom is …”, “Compounds contain …”, “Chemical reactions always involve …”. This helps precise exam wording.</p>
+                      <hr />
+                      <h4>5️⃣ Paragraph chaining</h4>
+                      <p><strong>How</strong>: Write one paragraph about atoms & elements. Write one paragraph about compounds. Write one paragraph about chemical reactions. Link paragraphs using connectives like because, therefore, however.</p>
+                      <hr />
+                      <h4>6️⃣ Keyword lists + explanations</h4>
+                      <p><strong>How</strong>: List keywords from the notes. Under each, write a one-line explanation in your own words. Example: atom → smallest part of an element that can exist.</p>
+                      <hr />
+                      <h4>7️⃣ Copy → Cover → Write (classic but powerful)</h4>
+                      <p><strong>How</strong>: Copy a section neatly. Cover it. Write it again from memory. Compare and correct in a different colour.</p>
+                      <hr />
+                      <h4>8️⃣ Exam command-word practice</h4>
+                      <p><strong>How</strong>: Write answers to: Define atom, Describe a compound, Explain a chemical reaction, State two ways reactions can be represented. Stick to clear written responses.</p>
+                      <hr />
+                      <h4>9️⃣ Checklist writing</h4>
+                      <p><strong>How</strong>: Rewrite the “Students should be able to…” section as a checklist, then rewrite it as sentences, then rewrite from memory.</p>
+                  </div>
+              </ScrollArea>
+            );
+        }
+        // Fallback for other decks
+        return (
+          <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">
+            <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+              {combinedNotes}
+            </div>
+          </ScrollArea>
+        );
       default:
         return (
           <ScrollArea className="h-72 border rounded-md p-4 bg-muted/20">

@@ -235,39 +235,20 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const renderLearnContent = () => {
     if (!userDetails?.learningStyle) return null;
     
-    let learnComponent = null;
-
     if (deck.id === 'deck1') {
         switch (userDetails.learningStyle) {
             case 'Kinesthetic':
-                learnComponent = <LearnAsKinestheticDeck1 />;
-                break;
+                return <LearnAsKinestheticDeck1 />;
             case 'Visual':
-                learnComponent = <LearnAsVisualDeck1 />;
-                break;
+                return <LearnAsVisualDeck1 />;
             case 'Reading/Writing':
-                learnComponent = <LearnAsReadingWritingDeck1 />;
-                break;
+                return <LearnAsReadingWritingDeck1 />;
             default:
                 return null;
         }
     }
     
-    if (!learnComponent) return null;
-
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Learn the Content</CardTitle>
-                <CardDescription>
-                    Here are some revision tasks tailored to your learning style.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                {learnComponent}
-            </CardContent>
-        </Card>
-    );
+    return null;
   };
 
 

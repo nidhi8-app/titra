@@ -194,15 +194,6 @@ Many transition elements have ions with different charges, form coloured compoun
   ],
   'deck2': [
     {
-      title: 'Bonding, structure, and the properties of matter',
-      body: `Chemists use theories of structure and bonding to explain the physical and chemical properties of materials.
-Atoms can be arranged in molecular structures or giant structures.
-Bonding theories explain how atoms are held together.
-Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
       title: 'Chemical bonds',
       body: `There are three types of strong chemical bonds: ionic, covalent and metallic.
 Ionic bonding: oppositely charged ions.

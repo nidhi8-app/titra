@@ -26,9 +26,24 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
             };
             sections.push(currentSection);
         } else { // For decks with one large note, parse its body for sections.
-            const lines = note.body.split('\n');
+             const lines = note.body.split('\n');
+            let mainTitleProcessed = false;
+
             lines.forEach(line => {
                 const trimmedLine = line.trim();
+
+                // Check for a main title in deck2
+                if (!mainTitleProcessed && trimmedLine.match(/^\d+\.\d+\s/)) {
+                    const sectionTitle = notes[0]?.title || 'Topic Summary'; // Use note title or a default
+                    currentSection = {
+                        title: sectionTitle,
+                        content: '',
+                        subsections: [],
+                    };
+                    sections.push(currentSection);
+                    mainTitleProcessed = true;
+                }
+
                 if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // Matches 4.2.1
                      currentSubSubSection = {
                         title: trimmedLine,
@@ -44,15 +59,7 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
                         content: '',
                         subsections: [],
                     };
-                    // The first 4.x section creates the main section
-                    if (trimmedLine.startsWith('4.2 ')) {
-                        currentSection = {
-                            title: 'Bonding, structure, and the properties of matter', // Main title
-                            content: '',
-                            subsections: [currentSubsection],
-                        }
-                        sections.push(currentSection);
-                    } else if (currentSection) {
+                    if (currentSection) {
                         currentSection.subsections.push(currentSubsection);
                     }
                     currentSubSubSection = null;
@@ -446,5 +453,3 @@ The volumes of gaseous reactants and products can be calculated from the balance
     },
   ],
 };
-
-    

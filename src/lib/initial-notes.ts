@@ -356,58 +356,102 @@ There are possible risks associated with their use.`,
   ],
   'deck3': [
     {
-      title: 'Quantitative chemistry',
-      body: `4.3.1 Chemical measurements, conservation of mass and the quantitative interpretation of chemical equations
-4.3.1.1 Conservation of mass and balanced chemical equations
-The law of conservation of mass states that no atoms are lost or made during a chemical reaction so the mass of the products equals the mass of the reactants.
-This means that chemical reactions can be represented by symbol equations which must be balanced in terms of the numbers of atoms of each element involved on both sides of the equation.
-4.3.1.2 Relative formula mass
-The relative formula mass (Mr) of a compound is the sum of the relative atomic masses of the atoms in the numbers shown in the formula.
-In a balanced chemical equation, the sum of the relative formula masses of the reactants in the quantities shown equals the sum of the relative formula masses of the products in the quantities shown.
-4.3.1.3 Mass changes when a reactant or product is a gas
-Some reactions may appear to involve a change in mass but this can usually be explained because a reactant or product is a gas and its mass has not been taken into account.
-For example: when a metal reacts with oxygen the mass of the oxide produced is greater than the mass of the metal or in thermal decompositions of metal carbonates carbon dioxide is produced and escapes into the atmosphere leaving the metal oxide as the only solid product.
-4.3.1.4 Chemical measurements
-Whenever a measurement is made there is always some uncertainty about the result obtained.
-4.3.2 Use of amount of substance in relation to masses of pure substances
-4.3.2.1 Moles (HT only)
-Chemical amounts are measured in moles. The symbol for the unit mole is mol.
+        title: 'Conservation of mass and balanced chemical equations',
+        body: `The law of conservation of mass states that no atoms are lost or made during a chemical reaction so the mass of the products equals the mass of the reactants.
+This means that chemical reactions can be represented by symbol equations which must be balanced in terms of the numbers of atoms of each element involved on both sides of the equation.`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Relative formula mass',
+        body: `The relative formula mass (Mr) of a compound is the sum of the relative atomic masses of the atoms in the numbers shown in the formula.
+In a balanced chemical equation, the sum of the relative formula masses of the reactants in the quantities shown equals the sum of the relative formula masses of the products in the quantities shown.`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Mass changes when a reactant or product is a gas',
+        body: `Some reactions may appear to involve a change in mass but this can usually be explained because a reactant or product is a gas and its mass has not been taken into account.
+For example: when a metal reacts with oxygen the mass of the oxide produced is greater than the mass of the metal or in thermal decompositions of metal carbonates carbon dioxide is produced and escapes into the atmosphere leaving the metal oxide as the only solid product.`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Chemical measurements',
+        body: 'Whenever a measurement is made there is always some uncertainty about the result obtained.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Moles (HT only)',
+        body: `Chemical amounts are measured in moles. The symbol for the unit mole is mol.
 The mass of one mole of a substance in grams is numerically equal to its relative formula mass.
 One mole of a substance contains the Avogadro constant number of particles (atoms, molecules or ions). The Avogadro constant is 6.02 × 10²³ per mole.
-The amount in moles = mass (g) / relative formula mass (Mr)
-4.3.2.2 Amounts of substances in equations (HT only)
-The masses of reactants and products can be calculated from balanced symbol equations.
+The amount in moles = mass (g) / relative formula mass (Mr)`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Amounts of substances in equations (HT only)',
+        body: `The masses of reactants and products can be calculated from balanced symbol equations.
 Chemical equations can be interpreted in terms of moles. For example:
 Mg + 2HCl → MgCl₂ + H₂
-shows that one mole of magnesium reacts with two moles of hydrochloric acid to produce one mole of magnesium chloride and one mole of hydrogen gas.
-4.3.2.3 Using moles to balance equations (HT only)
-The balancing numbers in a symbol equation can be calculated from the masses of reactants and products by converting the masses in grams to amounts in moles and converting the number of moles to simple whole number ratios.
-4.3.2.4 Limiting reactants (HT only)
-In a chemical reaction involving two reactants, it is common to use an excess of one of the reactants to ensure that all of the other reactant is used.
-The reactant that is completely used up is called the limiting reactant because it limits the amount of products.
-4.3.2.5 Concentration of solutions
-The concentration of a solution can be measured in mass per given volume of solution, eg grams per dm³ (g/dm³).
-4.3.3 Yield and atom economy of chemical reactions (chemistry only)
-4.3.3.1 Percentage yield
-Even though no atoms are gained or lost in a chemical reaction, it is not always possible to obtain the calculated amount of a product because:
+shows that one mole of magnesium reacts with two moles of hydrochloric acid to produce one mole of magnesium chloride and one mole of hydrogen gas.`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Using moles to balance equations (HT only)',
+        body: 'The balancing numbers in a symbol equation can be calculated from the masses of reactants and products by converting the masses in grams to amounts in moles and converting the number of moles to simple whole number ratios.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Limiting reactants (HT only)',
+        body: `In a chemical reaction involving two reactants, it is common to use an excess of one of the reactants to ensure that all of the other reactant is used.
+The reactant that is completely used up is called the limiting reactant because it limits the amount of products.`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Concentration of solutions',
+        body: 'The concentration of a solution can be measured in mass per given volume of solution, eg grams per dm³ (g/dm³).',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Percentage yield',
+        body: `Even though no atoms are gained or lost in a chemical reaction, it is not always possible to obtain the calculated amount of a product because:
 - the reaction may not go to completion because it is reversible
 - some of the product may be lost when it is separated from the reaction mixture
 - some of the reactants may react in ways different to the expected reaction.
 The amount of a product obtained is known as the yield.
-Percentage yield = (Mass of product actually made / Maximum theoretical mass of product) × 100
-4.3.3.2 Atom economy
-The atom economy (atom utilisation) is a measure of the amount of starting materials that end up as useful products.
+Percentage yield = (Mass of product actually made / Maximum theoretical mass of product) × 100`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Atom economy',
+        body: `The atom economy (atom utilisation) is a measure of the amount of starting materials that end up as useful products.
 It is a theoretical measure of the percentage of reactants that form useful products.
-Atom economy = (Relative formula mass of desired product / Sum of relative formula masses of all reactants) × 100
-4.3.4 Using concentrations of solutions in mol/dm³ (chemistry only) (HT only)
-The concentration of a solution is the amount of solute in a given volume of solution.
-Concentration = amount of substance (mol) / volume (dm³)
-4.3.5 Use of amount of substance in relation to volumes of gases (chemistry only) (HT only)
-Equal amounts in moles of gases occupy the same volume at the same temperature and pressure.
+Atom economy = (Relative formula mass of desired product / Sum of relative formula masses of all reactants) × 100`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Using concentrations of solutions in mol/dm³ (chemistry only) (HT only)',
+        body: `The concentration of a solution is the amount of solute in a given volume of solution.
+Concentration = amount of substance (mol) / volume (dm³)`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Use of amount of substance in relation to volumes of gases (chemistry only) (HT only)',
+        body: `Equal amounts in moles of gases occupy the same volume at the same temperature and pressure.
 The volume of one mole of any gas at room temperature and pressure (r.t.p.) is 24 dm³.
 The volumes of gaseous reactants and products can be calculated from the balanced equation for the reaction.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date()
     }
   ],
   'deck4': [
@@ -483,5 +527,7 @@ The volumes of gaseous reactants and products can be calculated from the balance
     },
   ],
 };
+
+    
 
     

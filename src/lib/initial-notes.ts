@@ -234,69 +234,50 @@ Many transition elements have ions with different charges, form coloured compoun
   ],
   'deck2': [
     {
-        title: '4.2.1 Chemical bonds: ionic, covalent and metallic',
-        body: `There are three types of strong chemical bonds: ionic, covalent and metallic.
+      title: 'Chemical bonds: ionic, covalent and metallic',
+      body: `Chemists use theories of structure and bonding to explain the physical and chemical properties of materials. Atoms can be arranged in molecular structures or giant structures. Bonding theories explain how atoms are held together. Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.
+There are three types of strong chemical bonds: ionic, covalent and metallic.
+Ionic bonding: oppositely charged ions.
+Covalent bonding: atoms share pairs of electrons.
+Metallic bonding: atoms share delocalised electrons.
 Ionic bonding occurs in compounds formed from metals and non-metals.
-Covalent bonding occurs in non-metallic elements and in compounds of non-metals.
-Metallic bonding occurs in metallic elements and alloys.
-Chemical bonding involves either transferring or sharing electrons in the outer shells of atoms. The way atoms bond is explained by electrostatic forces.
-
-Ionic bonding involves the transfer of electrons from metal atoms to non-metal atoms. Metal atoms lose electrons to become positively charged ions, while non-metal atoms gain electrons to become negatively charged ions. The resulting ions have the electronic structure of a noble gas. The electrostatic attraction between these oppositely charged ions is what forms the ionic bond.
-
-Ionic compounds have giant ionic lattices, where ions are held together by strong electrostatic forces in all directions.
-
-Covalent bonding involves the sharing of pairs of electrons between atoms. These shared pairs create strong covalent bonds. Substances with covalent bonds can be small molecules, very large molecules (polymers), or giant covalent structures (like diamond).
-
-Metallic bonding consists of giant structures of atoms arranged in a regular pattern. The electrons in the outer shell of metal atoms are delocalised and free to move through the whole structure, creating a 'sea' of delocalised electrons. The sharing of these electrons results in strong metallic bonds.`,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+Covalent bonding occurs in non-metallic elements and compounds of non-metals.
+Metallic bonding occurs in metals and alloys.
+Chemical bonding is explained in terms of electrostatic forces and the transfer or sharing of electrons.
+Electrons are transferred from metal atoms to non-metal atoms. Metal atoms lose electrons to form positive ions. Non-metal atoms gain electrons to form negative ions. Ions formed have the electronic structure of a noble gas. Electron transfer can be shown using dot and cross diagrams. The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
+Ionic compounds are giant structures of ions. They are held together by strong electrostatic forces in all directions (ionic bonding). Students should be able to: deduce that a compound is ionic from a diagram describe limitations of diagrams work out the empirical formula from a model Sodium chloride is the required example. Covalent bonding Covalent bonds form when atoms share pairs of electrons. Covalent bonds are strong. Covalently bonded substances may be: small molecules very large molecules (polymers) giant covalent structures (diamond, silicon dioxide) Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams. Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
+Metals consist of giant structures of atoms arranged in a regular pattern. Delocalised electrons move through the structure. Strong metallic bonds arise from sharing delocalised electrons.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-        title: '4.2.2 Bonding and structure linked to properties',
-        body: `The three states of matter—solid, liquid, and gas—are determined by the strength of forces between particles. Stronger forces require more energy to overcome, leading to higher melting and boiling points.
-
-Ionic compounds have high melting and boiling points due to the strong electrostatic forces in their giant ionic lattices. They can conduct electricity when molten or dissolved because the ions are free to move.
-
-Substances with small molecules (like water) typically have low melting and boiling points because they have weak intermolecular forces that require little energy to overcome. They do not conduct electricity.
-
-Polymers are very large molecules with atoms linked by strong covalent bonds. The intermolecular forces between polymer chains are relatively strong, making them solids at room temperature.
-
-Giant covalent structures, such as diamond and graphite, are solids with very high melting points because all atoms are linked by strong covalent bonds that must be broken.
-
-Metals have high melting and boiling points due to strong metallic bonding. They are good conductors of heat and electricity because of the delocalised electrons that can move and carry charge or energy. The layers of atoms in pure metals can slide over each other, making them malleable. Alloys, which are mixtures containing a metal, are harder because the different-sized atoms distort the layers.`,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+      title: 'Bonding and structure linked to properties',
+      body: `The three states are solid, liquid and gas. Changes of state occur at melting point and boiling point. Particle theory explains changes of state. The strength of forces between particles determines melting and boiling points. Stronger forces → higher melting and boiling points. (HT) Particle model limitations: no forces particles are solid spheres
+State symbols are: (s), (l), (g), (aq). Used in chemical equations.
+Ionic compounds have giant ionic lattices. Strong electrostatic forces give high melting and boiling points. Conduct electricity when molten or dissolved because ions can move.
+Properties of small molecules Usually gases or liquids with low melting and boiling points. Have weak intermolecular forces. Do not conduct electricity. Intermolecular forces increase with molecule size.
+Polymers have very large molecules. Atoms are linked by strong covalent bonds. Strong intermolecular forces make polymers solids at room temperature.
+Giant covalent structures are solids with very high melting points. All atoms are linked by strong covalent bonds. Examples: diamond, graphite, silicon dioxide.
+Metals have giant structures with metallic bonding. High melting and boiling points. Pure metals are malleable due to layers of atoms. Alloys are harder because layers are distorted.
+Metals conduct electricity due to delocalised electrons. Thermal conductivity is also due to delocalised electrons.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-        title: '4.2.3 Structure and bonding of carbon',
-        body: `Carbon can form several giant covalent structures.
-
-In diamond, each carbon atom forms four strong covalent bonds with other carbon atoms, creating a very hard, rigid structure with a very high melting point. It does not conduct electricity.
-
-In graphite, each carbon atom forms three covalent bonds, creating layers of hexagonal rings. There are no covalent bonds between the layers, only weak intermolecular forces, so they can slide over each other, making graphite soft and slippery. Graphite conducts electricity because one electron from each carbon atom is delocalised and can move between the layers.
-
-Graphene is a single layer of graphite and has properties that make it useful in electronics and composite materials.
-
-Fullerenes are molecules of carbon atoms with hollow shapes. Their structures are based on hexagonal rings of carbon atoms, but they may also contain rings with five or seven carbon atoms. The first fullerene to be discovered was Buckminsterfullerene (C₆₀), which has a spherical shape.
-
-Carbon nanotubes are cylindrical fullerenes with very high length-to-diameter ratios. Their properties make them useful for nanotechnology, electronics, and materials.`,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+      title: 'Structure and bonding of carbon',
+      body: `Diamond Each carbon forms four covalent bonds. Very hard, very high melting point, does not conduct electricity.
+Graphite Each carbon forms three covalent bonds in layers. Delocalised electrons allow electrical conductivity.
+Graphene and fullerenes Graphene is a single layer of graphite. Fullerenes are hollow carbon molecules (e.g. C₆₀). Carbon nanotubes are cylindrical fullerenes. Used in electronics, materials and nanotechnology.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-        title: '4.2.4 Nanoparticles',
-        body: `Nanoscience refers to structures that are 1–100 nm in size.
-
-Nanoparticles are smaller than fine particles (PM₂.₅), which have diameters between 100 and 2,500 nm. Coarse particles (PM₁₀) have diameters between 2,500 and 10,000 nm.
-
-Nanoparticles have a very high surface area to volume ratio. This means a smaller quantity of nanoparticles may be needed to be as effective as materials with normal particle sizes.
-
-This property gives them different properties from the same materials in bulk and makes them useful as catalysts. Nanoparticles are used in medicine, electronics, cosmetics (like sun creams and deodorants), and catalysts.
-
-However, the long-term effects of nanoparticles on health and the environment are not fully understood, and they may have unforeseen risks.`,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    }
+      title: 'Nanoparticles',
+      body: `Nanoparticles are 1–100 nm in size. High surface area to volume ratio. Can have different properties from bulk materials.
+Uses of nanoparticles Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts. Smaller quantities may be needed due to effectiveness. There are possible risks associated with their use.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ],
   'deck3': [
     {

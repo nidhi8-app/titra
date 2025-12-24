@@ -28,7 +28,7 @@ export const NestedAccordion = ({ sections, level = 0 }: NestedAccordionProps) =
                 >
                     <AccordionTrigger 
                         className={cn(
-                            'font-semibold text-left hover:no-underline py-2',
+                            'text-left hover:no-underline py-2',
                             level === 0 && 'text-lg',
                             level === 1 && 'pl-4 text-base', 
                             level > 1 && 'pl-8 text-sm'
@@ -47,5 +47,3 @@ export const NestedAccordion = ({ sections, level = 0 }: NestedAccordionProps) =
         </Accordion>
     );
 };
-
-    

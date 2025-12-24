@@ -225,32 +225,32 @@ const LearnAsKinestheticDeck2 = () => (
             <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>Bonding, structure, and the properties of matter</h4>
+            <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
             <p><strong>Activity:</strong> Role-play atoms: Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices). Build-and-touch models: Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
             
-            <h4>Chemical bonds: ionic, covalent, metallic</h4>
+            <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
             <p><strong>Activity:</strong> Electron transfer simulation: Give students colored balls representing electrons. "Metal atoms" give away balls, "non-metals" take them to show ionic bonding. Covalent bonding handshake: Two students “share” balls to simulate shared electrons. Metallic bonding: Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
 
-            <h4>Ionic bonding</h4>
+            <h4>3️⃣ Ionic bonding</h4>
             <p><strong>Activity:</strong> Dot-and-cross tactile exercise: Use beads or stickers to create dot-and-cross diagrams on sticky boards. 3D lattice building: Build a NaCl or MgO lattice using LEGO or magnetic balls to feel the structure.</p>
 
-            <h4>Ionic compounds</h4>
+            <h4>4️⃣ Ionic compounds</h4>
             <p><strong>Activity:</strong> Empirical formula activity: Use colored beads for different ions. Build mini-compounds and physically count the ratio of ions to determine the formula. Electrostatic forces demonstration: Use magnets to mimic attraction between ions in a lattice.</p>
 
-            <h4>Covalent bonding</h4>
+            <h4>5️⃣ Covalent bonding</h4>
             <p><strong>Activity:</strong> Molecule building: Use clay or sticks to make hydrogen, water, ammonia, methane, etc. Sharing simulation: Pair up and “share” balls representing electrons to build covalent molecules. Polymer chain activity: Link paper clips or chains to model polymer chains.</p>
 
-            <h4>Metallic bonding</h4>
+            <h4>6️⃣ Metallic bonding</h4>
             <p><strong>Activity:</strong> Layer stacking: Stack coins or discs to simulate layers of metal atoms. Move them slightly to feel malleability. Delocalised electron race: Have “electrons” (students) move through a “metal lattice” formed by other students holding hands in a grid.</p>
 
-            <h4>Bonding and structure linked to properties</h4>
+            <h4>7️⃣ Bonding and structure linked to properties</h4>
             <p><strong>States of matter Activity:</strong> Movement simulation: Students act as particles. Solid = tightly packed, vibrating; liquid = moving past each other; gas = moving fast and far apart. Melting/boiling demo: Heat ice cubes and feel the phase change; relate movement of molecules to state.</p>
             <p><strong>Properties Activity:</strong> Hands-on comparison: Touch samples (metal, polymer, sugar/crystals) and test conductivity with a simple circuit to feel differences. Strength demonstration: Stack objects to mimic lattice strength; shake gently to represent weak vs. strong bonds.</p>
 
-            <h4>Structure and bonding of carbon</h4>
+            <h4>8️⃣ Structure and bonding of carbon</h4>
             <p><strong>Activity:</strong> Model building: Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits. Layer movement: Slide graphite layers over each other to feel why it’s slippery; try the same with a “diamond lattice” (rigid model) to feel hardness.</p>
             
-            <h4>Nanoparticles</h4>
+            <h4>9️⃣ Nanoparticles</h4>
             <p><strong>Activity:</strong> Size comparison: Use balls of different sizes to represent nanoparticles vs. bulk materials; feel how many small balls fit into a container compared to large ones (surface area effect). Application demo: Handle models representing nanoparticles in medicine, electronics, or sunscreens to visualize and “use” them safely in simulations.</p>
         </CardContent>
     </Card>
@@ -266,32 +266,32 @@ const LearnAsReadingWritingDeck2 = () => (
             <CardDescription>Master this topic through structured writing, definitions, and summarization.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>Bonding, structure, and the properties of matter</h4>
+            <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
             <p><strong>Activity:</strong> Summarize in your own words: Write a 3–5 sentence summary for this section. Bullet-point notes: Break down the key ideas: “Atoms can form molecules or giant structures,” “Bonding explains properties,” etc. Glossary: Write definitions for key terms: structure, bonding, properties, material engineering.</p>
             
-            <h4>Chemical bonds: ionic, covalent, metallic</h4>
+            <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
             <p><strong>Activity:</strong> Comparison table: Create a written table comparing ionic, covalent, and metallic bonds: Type of atoms involved, Electron movement, Forces involved, Examples. Flashcards: One side = bond type, other side = characteristics/examples.</p>
 
-            <h4>Ionic bonding</h4>
+            <h4>3️⃣ Ionic bonding</h4>
             <p><strong>Activity:</strong> Step-by-step notes: Write out the process of electron transfer, forming positive and negative ions. Dot-and-cross practice: Write multiple examples (NaCl, MgO) and label ions. Group number rule: Write a table linking group numbers to ion charges.</p>
 
-            <h4>Ionic compounds</h4>
+            <h4>4️⃣ Ionic compounds</h4>
             <p><strong>Activity:</strong> Written explanation: Describe in words why ionic compounds have high melting points and conduct when molten. Empirical formula exercises: Write down formulas from given ions. Limitations of diagrams: Write short notes explaining why diagrams don’t show 3D structures or forces clearly.</p>
 
-            <h4>Covalent bonding</h4>
+            <h4>5️⃣ Covalent bonding</h4>
             <p><strong>Activity:</strong> Stepwise instructions: Write step-by-step guides for drawing dot-and-cross diagrams for H₂, HCl, H₂O, CH₄, NH₃. Compare molecule types: Write a chart comparing small molecules, polymers, and giant covalent structures: bonds, states, melting points.</p>
 
-            <h4>Metallic bonding</h4>
+            <h4>6️⃣ Metallic bonding</h4>
             <p><strong>Activity:</strong> Written notes: Describe structure, delocalised electrons, and malleability in your own words. Comparison table: Write a table comparing metals vs. alloys: hardness, layers, conductivity.</p>
 
-            <h4>Bonding and structure linked to properties</h4>
+            <h4>7️⃣ Bonding and structure linked to properties</h4>
             <p><strong>States of matter Activity:</strong> Written explanation: Describe how particle theory explains solids, liquids, and gases. Melting/boiling points: Write notes linking strength of forces to temperature changes.</p>
             <p><strong>Properties of compounds Activity:</strong> Table/chart: For ionic compounds, small molecules, polymers, metals, and alloys: list melting/boiling points, conductivity, and reasons. Short-answer practice: Write answers to questions like: “Why can metals conduct electricity?” or “Why do polymers stay solid at room temp?”</p>
 
-            <h4>Structure and bonding of carbon</h4>
+            <h4>8️⃣ Structure and bonding of carbon</h4>
             <p><strong>Activity:</strong> Written comparison: Make a table for diamond, graphite, graphene, and fullerenes: bonds, hardness, conductivity, uses. Notes on nanostructures: Write descriptions of carbon nanotubes and graphene, including applications.</p>
             
-            <h4>Nanoparticles</h4>
+            <h4>9️⃣ Nanoparticles</h4>
             <p><strong>Activity:</strong> Summary sheet: Write down size, properties, and uses of nanoparticles in your own words. Pros and cons list: Create a written table of benefits vs. risks. Examples: List at least 3 products or applications for nanoparticles.</p>
         </CardContent>
     </Card>
@@ -484,3 +484,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

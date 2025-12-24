@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, LinkIcon, Atom, Sigma, ChevronsRightLeft, Rows, CircleDashed, Disc, Thermometer, TestTube, Key, Microscope, Pen, List } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -29,6 +29,7 @@ const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }
         <Card className="bg-background/50 border">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
+                <p className="text-muted-foreground pt-2 font-semibold">{deckTitle}:</p>
             </CardHeader>
             <CardContent>
                 <NestedAccordion sections={parsed} />
@@ -484,5 +485,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

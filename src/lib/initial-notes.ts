@@ -21,30 +21,41 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
         if (notes.length === 1) { 
              const lines = note.body.split('\n');
             let mainSection: NoteSection | null = null;
+            let currentParent: NoteSection | null = null;
 
             lines.forEach(line => {
                 const trimmedLine = line.trim();
                 
-                if (trimmedLine.match(/^(\d+\.){2,}\d*\s/)) { 
-                    if (!mainSection) {
-                         mainSection = { title: note.title, content: '', subsections: [] };
-                         sections.push(mainSection);
+                if (trimmedLine.match(/^(\d+\.){3,}\d*\s/)) { // e.g., 4.2.1.1
+                     if (currentSubsection) {
+                        const subSubSection = { title: trimmedLine.replace(/^(\d+\.){3,}\d*\s/, ''), content: '', subsections: [] };
+                        currentSubsection.subsections.push(subSubSection);
+                        currentSubSubSection = subSubSection;
+                        currentParent = subSubSection;
                     }
-                    // This is a subsection, create a new one
-                    currentSubsection = { title: trimmedLine, content: '', subsections: [] };
-                    mainSection.subsections.push(currentSubsection);
-
-                } else if (trimmedLine.match(/^(\d+\.)+\d*\s/)) { // Main section title
+                } else if (trimmedLine.match(/^(\d+\.){2,}\d*\s/)) { // e.g., 4.2.1
+                     if (mainSection) {
+                        const subSection = { title: trimmedLine.replace(/^(\d+\.){2,}\d*\s/, ''), content: '', subsections: [] };
+                        mainSection.subsections.push(subSection);
+                        currentSubsection = subSection;
+                        currentSubSubSection = null;
+                        currentParent = subSection;
+                    }
+                } else if (trimmedLine.match(/^(\d+\.)+\d*\s/)) { // Main section title e.g. 4.2
                      if (!mainSection) {
                          mainSection = { title: note.title, content: '', subsections: [] };
                          sections.push(mainSection);
-                    }
-                     mainSection.subsections.push({ title: trimmedLine, content: '', subsections: [] });
-                     currentSubsection = mainSection.subsections[mainSection.subsections.length - 1];
+                     }
+                     const newMainSection = { title: trimmedLine.replace(/^(\d+\.)+\d*\s/, ''), content: '', subsections: [] };
+                     mainSection.subsections.push(newMainSection);
+                     currentSubsection = newMainSection;
+                     currentSubSubSection = null;
+                     currentParent = newMainSection;
 
                 }
                 else if (trimmedLine.length > 0) {
-                     const target = currentSubsection || mainSection;
+                     // Add content to the most recently created section
+                     const target = currentSubSubSection || currentSubsection || mainSection;
                      if (target) {
                          target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
                      }
@@ -53,7 +64,7 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
 
         } else { // For decks with multiple small notes, treat each note as a top-level section.
             currentSection = {
-                title: note.title,
+                title: note.title.replace(/^(\d+\.)+\d*\s/, ''),
                 content: note.body,
                 subsections: [],
             };
@@ -246,7 +257,6 @@ Ionic bonding occurs in compounds formed from metals and non-metals.
 Covalent bonding occurs in non-metallic elements and compounds of non-metals.
 Metallic bonding occurs in metals and alloys.
 Chemical bonding is explained in terms of electrostatic forces and the transfer or sharing of electrons.
-
 4.2.1.2 Ionic bonding
 Electrons are transferred from metal atoms to non-metal atoms.
 Metal atoms lose electrons to form positive ions.
@@ -254,7 +264,6 @@ Non-metal atoms gain electrons to form negative ions.
 Ions formed have the electronic structure of a noble gas.
 Electron transfer can be shown using dot and cross diagrams.
 The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
-
 4.2.1.3 Ionic compounds
 Ionic compounds are giant structures of ions.
 They are held together by strong electrostatic forces in all directions (ionic bonding).
@@ -272,7 +281,6 @@ very large molecules (polymers)
 giant covalent structures (diamond, silicon dioxide)
 Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams.
 Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
-
 4.2.1.5 Metallic bonding
 Metals consist of giant structures of atoms arranged in a regular pattern.
 Delocalised electrons move through the structure.
@@ -288,38 +296,31 @@ Stronger forces → higher melting and boiling points.
 (HT) Particle model limitations:
 no forces
 particles are solid spheres
-
 4.2.2.2 State symbols
 State symbols are: (s), (l), (g), (aq).
 Used in chemical equations.
-
 4.2.2.3 Properties of ionic compounds
 Ionic compounds have giant ionic lattices.
 Strong electrostatic forces give high melting and boiling points.
 Conduct electricity when molten or dissolved because ions can move.
-
 4.2.2.4 Properties of small molecules
 Usually gases or liquids with low melting and boiling points.
 Have weak intermolecular forces.
 Do not conduct electricity.
 Intermolecular forces increase with molecule size.
-
 4.2.2.5 Polymers
 Polymers have very large molecules.
 Atoms are linked by strong covalent bonds.
 Strong intermolecular forces make polymers solids at room temperature.
-
 4.2.2.6 Giant covalent structures
 Giant covalent structures are solids with very high melting points.
 All atoms are linked by strong covalent bonds.
 Examples: diamond, graphite, silicon dioxide.
-
 4.2.2.7 Properties of metals and alloys
 Metals have giant structures with metallic bonding.
 High melting and boiling points.
 Pure metals are malleable due to layers of atoms.
 Alloys are harder because layers are distorted.
-
 4.2.2.8 Metals as conductors
 Metals conduct electricity due to delocalised electrons.
 Thermal conductivity is also due to delocalised electrons.

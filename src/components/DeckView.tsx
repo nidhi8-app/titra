@@ -38,7 +38,7 @@ const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }
 };
 
 
-const LearnAsReadingWriting = () => (
+const LearnAsReadingWritingDeck1 = () => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -81,7 +81,7 @@ const LearnAsReadingWriting = () => (
     </Card>
 );
 
-const LearnAsKinesthetic = () => (
+const LearnAsKinestheticDeck1 = () => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -91,7 +91,7 @@ const LearnAsKinesthetic = () => (
             <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
+             <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
             <p><strong>What you need:</strong> Coins / beads / paper balls / LEGO</p>
             <p><strong>How:</strong> One object = atom, Same objects = element, Different objects joined = compound, Loose pile = mixture. Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.” This physically locks in the concept.</p>
             
@@ -125,7 +125,7 @@ const LearnAsKinesthetic = () => (
     </Card>
 );
 
-const LearnAsVisual = () => (
+const LearnAsVisualDeck1 = () => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -233,22 +233,27 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   };
   
   const renderLearnContent = () => {
-    if (!userDetails?.learningStyle || deck.id !== 'deck1') return null;
-
+    if (!userDetails?.learningStyle) return null;
+    
     let learnComponent = null;
-    switch (userDetails.learningStyle) {
-        case 'Kinesthetic':
-            learnComponent = <LearnAsKinesthetic />;
-            break;
-        case 'Visual':
-            learnComponent = <LearnAsVisual />;
-            break;
-        case 'Reading/Writing':
-            learnComponent = <LearnAsReadingWriting />;
-            break;
-        default:
-            return null;
+
+    if (deck.id === 'deck1') {
+        switch (userDetails.learningStyle) {
+            case 'Kinesthetic':
+                learnComponent = <LearnAsKinestheticDeck1 />;
+                break;
+            case 'Visual':
+                learnComponent = <LearnAsVisualDeck1 />;
+                break;
+            case 'Reading/Writing':
+                learnComponent = <LearnAsReadingWritingDeck1 />;
+                break;
+            default:
+                return null;
+        }
     }
+    
+    if (!learnComponent) return null;
 
     return (
         <Card>

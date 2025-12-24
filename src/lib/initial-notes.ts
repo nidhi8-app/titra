@@ -17,59 +17,52 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
     let currentSubSubSection: NoteSection | null = null;
 
     notes.forEach(note => {
-        // For decks with multiple small notes, treat each note as a top-level section.
-        if (note.title && notes.length > 1) {
+        // For decks with one large note, parse its body for sections.
+        if (notes.length === 1) {
+             const lines = note.body.split('\n');
+            let mainSection: NoteSection | null = null;
+
+            lines.forEach(line => {
+                const trimmedLine = line.trim();
+                
+                if (trimmedLine.match(/^\d+\.\d+\.\d+\.\d+\s/)) { // 4.2.1.1
+                    if (!mainSection) {
+                         mainSection = { title: note.title, content: '', subsections: [] };
+                         sections.push(mainSection);
+                    }
+                    currentSubSubSection = { title: trimmedLine, content: '', subsections: [] };
+                    if (currentSubsection) {
+                        currentSubsection.subsections.push(currentSubSubSection);
+                    }
+                } else if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // 4.2.1
+                     if (!mainSection) {
+                         mainSection = { title: note.title, content: '', subsections: [] };
+                         sections.push(mainSection);
+                    }
+                    currentSubsection = { title: trimmedLine, content: '', subsections: [] };
+                    mainSection.subsections.push(currentSubsection);
+                    currentSubSubSection = null;
+                } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // 4.2 (Ignore, it's the main title)
+                    if (!mainSection) {
+                         mainSection = { title: note.title, content: '', subsections: [] };
+                         sections.push(mainSection);
+                    }
+                }
+                else if (trimmedLine.length > 0) {
+                     const target = currentSubSubSection || currentSubsection || mainSection;
+                     if (target) {
+                         target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
+                     }
+                }
+            });
+
+        } else { // For decks with multiple small notes, treat each note as a top-level section.
             currentSection = {
                 title: note.title,
                 content: note.body,
                 subsections: [],
             };
             sections.push(currentSection);
-        } else { // For decks with one large note, parse its body for sections.
-             const lines = note.body.split('\n');
-            let mainTitleProcessed = false;
-
-            lines.forEach(line => {
-                const trimmedLine = line.trim();
-
-                // Check for a main title in deck2
-                if (!mainTitleProcessed && trimmedLine.match(/^\d+\.\d+\s/)) {
-                    const sectionTitle = notes[0]?.title || 'Topic Summary'; // Use note title or a default
-                    currentSection = {
-                        title: sectionTitle,
-                        content: '',
-                        subsections: [],
-                    };
-                    sections.push(currentSection);
-                    mainTitleProcessed = true;
-                }
-
-                if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // Matches 4.2.1
-                     currentSubSubSection = {
-                        title: trimmedLine,
-                        content: '',
-                        subsections: [],
-                    };
-                    if (currentSubsection) {
-                        currentSubsection.subsections.push(currentSubSubSection);
-                    }
-                } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // Matches 4.2
-                    currentSubsection = {
-                        title: trimmedLine,
-                        content: '',
-                        subsections: [],
-                    };
-                    if (currentSection) {
-                        currentSection.subsections.push(currentSubsection);
-                    }
-                    currentSubSubSection = null;
-                } else if (trimmedLine.length > 0) {
-                     const target = currentSubSubSection || currentSubsection;
-                     if (target) {
-                         target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
-                     }
-                }
-            });
         }
     });
 
@@ -241,85 +234,105 @@ Many transition elements have ions with different charges, form coloured compoun
   'deck2': [
     {
       title: 'Bonding, structure, and the properties of matter',
-      body: `4.2.1.1 Chemical bonds: ionic, covalent and metallic
+      body: `4.2 Bonding, structure, and the properties of matter
+Chemists use theories of structure and bonding to explain the physical and chemical properties of materials. Atoms can be arranged in molecular structures or giant structures. Bonding theories explain how atoms are held together. Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.
+4.2.1 Chemical bonds: ionic, covalent and metallic
+4.2.1.1 Chemical bonds
 There are three types of strong chemical bonds: ionic, covalent and metallic.
+Ionic bonding: oppositely charged ions.
+Covalent bonding: atoms share pairs of electrons.
+Metallic bonding: atoms share delocalised electrons.
 Ionic bonding occurs in compounds formed from metals and non-metals.
-Covalent bonding occurs in non-metallic elements and in compounds of non-metals.
-Metallic bonding occurs in metallic elements and alloys.
+Covalent bonding occurs in non-metallic elements and compounds of non-metals.
+Metallic bonding occurs in metals and alloys.
+Chemical bonding is explained in terms of electrostatic forces and the transfer or sharing of electrons.
 4.2.1.2 Ionic bonding
-When a metal atom reacts with a non-metal atom electrons in the outer shell of the metal atom are transferred.
-Metal atoms lose electrons to become positively charged ions.
-Non-metal atoms gain electrons to become negatively charged ions.
-The ions produced by metals in Groups 1 and 2 and by non-metals in Groups 6 and 7 have the electronic structure of a noble gas (Group 0).
-The electron transfer during the formation of an ionic compound can be represented by a dot and cross diagram.
-The charge on the ions produced by metals in Groups 1 and 2 and by non-metals in Groups 6 and 7 relates to the group number of the element in the periodic table.
+Electrons are transferred from metal atoms to non-metal atoms.
+Metal atoms lose electrons to form positive ions.
+Non-metal atoms gain electrons to form negative ions.
+Ions formed have the electronic structure of a noble gas.
+Electron transfer can be shown using dot and cross diagrams.
+The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
 4.2.1.3 Ionic compounds
-An ionic compound is a giant structure of ions.
-Ionic compounds are held together by strong electrostatic forces of attraction between oppositely charged ions. These forces act in all directions in the lattice and this is called ionic bonding.
-4.2.1.4 Covalent bonding
-When atoms share pairs of electrons, they form covalent bonds. These bonds between atoms are strong.
-Covalently bonded substances may consist of small molecules.
-Some covalently bonded substances have very large molecules, such as polymers.
-Some covalently bonded substances have giant covalent structures, such as diamond and silicon dioxide.
-The covalent bonds in molecules and giant structures can be represented in the following forms:
-For ammonia (NH₃)
-Displayed formula, Dot and cross diagram, Three-dimensional model
+Ionic compounds are giant structures of ions.
+They are held together by strong electrostatic forces in all directions (ionic bonding).
+Students should be able to:
+- deduce that a compound is ionic from a diagram
+- describe limitations of diagrams
+- work out the empirical formula from a model
+Sodium chloride is the required example.
+Covalent bonding
+Covalent bonds form when atoms share pairs of electrons.
+Covalent bonds are strong.
+Covalently bonded substances may be:
+- small molecules
+- very large molecules (polymers)
+- giant covalent structures (diamond, silicon dioxide)
+Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams.
+Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
 4.2.1.5 Metallic bonding
 Metals consist of giant structures of atoms arranged in a regular pattern.
-The electrons in the outer shell of metal atoms are delocalised and so are free to move through the whole structure. The sharing of delocalised electrons gives rise to strong metallic bonds.
-4.2.2 How bonding and structure are related to the properties of substances
-4.2.2.1 The three states of matter
-The three states of matter are solid, liquid and gas.
-In a solid, the particles are held closely together in fixed positions in a regular lattice. The particles can only vibrate in their fixed positions.
-In a liquid, the particles are closely packed but can move past each other.
-In a gas, the particles are far apart and move randomly.
+Delocalised electrons move through the structure.
+Strong metallic bonds arise from sharing delocalised electrons.
+4.2.2 Bonding and structure linked to properties
+4.2.2.1 States of matter
+The three states are solid, liquid and gas.
+Changes of state occur at melting point and boiling point.
+Particle theory explains changes of state.
+The strength of forces between particles determines melting and boiling points.
+Stronger forces → higher melting and boiling points.
+(HT) Particle model limitations:
+- no forces
+- particles are solid spheres
 4.2.2.2 State symbols
-In chemical equations, the three states of matter are shown as (s), (l) and (g), with (aq) for aqueous solutions.
+State symbols are: (s), (l), (g), (aq).
+Used in chemical equations.
 4.2.2.3 Properties of ionic compounds
-Ionic compounds have regular structures (giant ionic lattices) in which there are strong electrostatic forces of attraction in all directions between oppositely charged ions.
-These compounds have high melting points and high boiling points because of the large amounts of energy needed to break the many strong bonds.
-When melted or dissolved in water, ionic compounds conduct electricity because the ions are free to move and so charge can flow.
+Ionic compounds have giant ionic lattices.
+Strong electrostatic forces give high melting and boiling points.
+Conduct electricity when molten or dissolved because ions can move.
 4.2.2.4 Properties of small molecules
-Substances that consist of small molecules are usually gases or liquids that have relatively low melting points and boiling points.
-These substances have only weak forces between the molecules (intermolecular forces). It is these intermolecular forces that are overcome, not the covalent bonds, when the substance melts or boils.
-The intermolecular forces increase with the size of the molecules, so larger molecules have higher melting and boiling points.
-These substances do not conduct electricity because the molecules do not have an overall electric charge.
+Usually gases or liquids with low melting and boiling points.
+Have weak intermolecular forces.
+Do not conduct electricity.
+Intermolecular forces increase with molecule size.
 4.2.2.5 Polymers
-Polymers have very large molecules. The atoms in the polymer molecules are linked to other atoms by strong covalent bonds.
-The intermolecular forces between polymer molecules are relatively strong and so these substances are solids at room temperature.
+Polymers have very large molecules.
+Atoms are linked by strong covalent bonds.
+Strong intermolecular forces make polymers solids at room temperature.
 4.2.2.6 Giant covalent structures
-Substances that consist of giant covalent structures are solids with very high melting points.
-All of the atoms in these structures are linked to other atoms by strong covalent bonds.
-These bonds must be overcome to melt or boil these substances.
+Giant covalent structures are solids with very high melting points.
+All atoms are linked by strong covalent bonds.
+Examples: diamond, graphite, silicon dioxide.
 4.2.2.7 Properties of metals and alloys
-Metals have giant structures of atoms with strong metallic bonding.
-Most metals have high melting and boiling points.
-In pure metals, the atoms are arranged in layers, which allows metals to be bent and shaped.
-Pure metals are too soft for many uses and are mixed with other metals to make alloys which are harder.
-The different sizes of atoms in an alloy distort the layers so they cannot slide over each other.
+Metals have giant structures with metallic bonding.
+High melting and boiling points.
+Pure metals are malleable due to layers of atoms.
+Alloys are harder because layers are distorted.
 4.2.2.8 Metals as conductors
-Metals are good conductors of electricity because the delocalised electrons in the metal carry electrical charge through the metal.
-Metals are good conductors of thermal energy because energy is transferred by the delocalised electrons.
+Metals conduct electricity due to delocalised electrons.
+Thermal conductivity is also due to delocalised electrons.
 4.2.3 Structure and bonding of carbon
-4.2.3.1 Diamond
-In diamond, each carbon atom forms four covalent bonds with other carbon atoms in a giant covalent structure, so diamond is very hard, has a very high melting point and does not conduct electricity.
-4.2.3.2 Graphite
-In graphite, each carbon atom forms three covalent bonds with three other carbon atoms, forming layers of hexagonal rings which have no covalent bonds between the layers.
-The layers can slide over each other due to no covalent bonds between the layers, but weak intermolecular forces. This makes graphite soft and slippery.
-One electron from each carbon atom is delocalised. These delocalised electrons allow graphite to conduct thermal energy and electricity.
-4.2.3.3 Graphene and fullerenes
-Graphene is a single layer of graphite and has properties that make it useful in electronics and composites.
-Fullerenes are molecules of carbon atoms with hollow shapes. The structure of fullerenes is based on hexagonal rings of carbon atoms but they may also contain rings with five or seven carbon atoms.
-The first fullerene to be discovered was Buckminsterfullerene (C₆₀) which has a spherical shape.
-Carbon nanotubes are cylindrical fullerenes with very high length to diameter ratios. Their properties make them useful for nanotechnology, electronics and materials.
-4.2.4 Nanoparticles (chemistry only)
-Nanoscience refers to structures that are 1–100 nm in size, of the order of a few hundred atoms.
-Nanoparticles, are smaller than fine particles (PM₂.₅), which have diameters between 100 and 2 500 nm (1 × 10⁻⁷ m and 2.5 × 10⁻⁶ m).
-Coarse particles (PM₁₀) have diameters between 1 × 10⁻⁷ m and 1 × 10⁻⁵ m. Coarse particles are often referred to as dust.
-As the side of cube decreases by a factor of 10 the surface area to volume ratio increases by a factor of 10.
-Nanoparticles have a high surface area to volume ratio. This may lead to different properties from 'bulk' materials.
-Nanoparticles may have applications in medicine, in electronics, in cosmetics and sun creams, as deodorants, and as catalysts.
-The effects of nanoparticles on health are not fully understood.`,
+Diamond
+Each carbon forms four covalent bonds.
+Very hard, very high melting point, does not conduct electricity.
+Graphite
+Each carbon forms three covalent bonds in layers.
+Delocalised electrons allow electrical conductivity.
+Graphene and fullerenes
+Graphene is a single layer of graphite.
+Fullerenes are hollow carbon molecules (e.g. C₆₀).
+Carbon nanotubes are cylindrical fullerenes.
+Used in electronics, materials and nanotechnology.
+4.2.4 Nanoparticles
+Sizes and properties
+Nanoparticles are 1–100 nm in size.
+High surface area to volume ratio.
+Can have different properties from bulk materials.
+Uses of nanoparticles
+Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts.
+Smaller quantities may be needed due to effectiveness.
+There are possible risks associated with their use.`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }

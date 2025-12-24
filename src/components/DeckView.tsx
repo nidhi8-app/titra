@@ -52,13 +52,13 @@ const LearnAsReadingWritingDeck1 = () => (
             <p><strong>How:</strong> Rewrite the notes in full sentences. Rewrite again, cutting it to half the length. Rewrite again into 10–12 key sentences. This forces you to identify what actually matters.</p>
 
             <h4>2️⃣ Definition mastery (exam gold)</h4>
-            <p><strong>How:</strong> Create a page titled “GCSE Chemistry Definitions”. Write and memorise: atom, element, compound, mixture, chemical reaction, isotope, atomic number, mass number, relative atomic mass. Cover → rewrite → check → correct.</p>
+            <p>Create a page titled “GCSE Chemistry Definitions”. Write and memorise: atom, element, compound, mixture, chemical reaction, isotope, atomic number, mass number, relative atomic mass. Cover → rewrite → check → correct.</p>
             
             <h4>3️⃣ Turn every fact into a question</h4>
             <p><strong>Example:</strong> What is an atom? How are atoms represented? How are compounds formed? Why can compounds only be separated chemically? Then write full sentence answers.</p>
 
             <h4>4️⃣ Paragraph chaining (build understanding)</h4>
-            <p>Write linked paragraphs on: atoms & elements, compounds & mixtures, atomic models, subatomic particles, and the periodic table & groups. Use connectives like therefore, because, as a result. This improves 6-mark answers.</p>
+            <p>Write linked paragraphs on: Paragraph 1: atoms & elements, Paragraph 2: compounds & mixtures, Paragraph 3: atomic models, Paragraph 4: subatomic particles, Paragraph 5: periodic table & groups. Use connectives: therefore, because, as a result. This improves 6-mark answers.</p>
 
             <h4>5️⃣ Tables from memory (structure + clarity)</h4>
             <p>Rewrite key information into tables from memory, e.g., for Subatomic particles (Particle, Charge, Mass) or Group trends (| Group | Outer electrons | Reactivity trend |). Tables help exam organisation.</p>
@@ -67,16 +67,16 @@ const LearnAsReadingWritingDeck1 = () => (
             <p>Write short answers to: Explain why atoms have no overall charge. Explain why Group 0 elements are unreactive. Explain why Group 1 reactivity increases down the group. Explain why mixtures can be separated physically. This builds AO2/AO3 skills.</p>
             
             <h4>7️⃣ Model development summaries</h4>
-            <p>Write one paragraph explaining how atomic models changed and why experimental evidence caused those changes. This targets common GCSE questions.</p>
+            <p>Write one paragraph explaining: how atomic models changed and why experimental evidence caused changes. This targets common GCSE questions.</p>
 
             <h4>8️⃣ Bullet → sentence → paragraph method</h4>
-            <p>Take bullet points and turn them into sentences, then combine sentences into a paragraph. Finally, rewrite the paragraph from memory.</p>
+            <p>Take bullet points and: Turn them into sentences, Turn sentences into a paragraph, Rewrite the paragraph from memory.</p>
 
             <h4>9️⃣ Exam command-word practice</h4>
             <p><strong>How:</strong> Write answers using command words: define, describe, explain, compare, state. Stick to clear, concise language.</p>
 
             <h4>🔟 Daily 15-minute routine (reading/writing)</h4>
-            <p>Read notes (5 mins), write from memory (5 mins), then check and correct in a different colour (5 mins).</p>
+            <p>Read notes (5 mins), Write from memory (5 mins), Check and correct in a different colour (5 mins).</p>
         </CardContent>
     </Card>
 );
@@ -91,36 +91,36 @@ const LearnAsKinestheticDeck1 = () => (
             <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-             <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
+            <h4>1️⃣ Build-it-with-objects method (FOUNDATION METHOD)</h4>
             <p><strong>What you need:</strong> Coins / beads / paper balls / LEGO</p>
-            <p><strong>How:</strong> One object = atom, Same objects = element, Different objects joined = compound, Loose pile = mixture. Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.” This physically locks in the concept.</p>
+            <p><strong>How:</strong> One object = atom, Same objects = element, Different objects joined = compound, Loose pile = mixture. Say out loud while doing it: “Compounds are chemically combined.” “Mixtures are not chemically combined.” 👉 This physically locks in compound vs mixture (huge exam confusion point).</p>
             
             <h4>2️⃣ Walk-the-topic method (movement + recall)</h4>
-            <p>Walk around your room. Each step = one fact. Say from memory: “All substances are made of atoms,” “An atom is the smallest part of an element,” etc. If you stop, check notes, then restart walking.</p>
+            <p>Walk around your room. Each step = one fact. Say (from memory): “All substances are made of atoms.”, “An atom is the smallest part of an element.”, “Elements are shown in the periodic table.”, “Chemical reactions form new substances.” If you stop → check notes → restart walking.</p>
             
             <h4>3️⃣ Act out atomic models (model development)</h4>
-            <p>You are the atom. Stand still (solid sphere), spread arms with dots (plum pudding), hands in center (nucleus), walk in circles (Bohr model). Say the model name while acting. Movement helps remember the sequence.</p>
+            <p>You = the atom. Stand still → tiny solid sphere, Spread arms with dots → plum pudding model, Hands tight in centre → nucleus, Walk in circles → Bohr model, Tap chest → protons, Tap head → neutrons. Say the model name while acting it out. 👉 Movement helps remember sequence + reasons models changed.</p>
 
             <h4>4️⃣ Human charge game (subatomic particles)</h4>
-            <p>Stand up: Right hand up = +1 proton, Arms out = 0 neutron, Left hand down = –1 electron. Then say: “Atoms have no overall electrical charge.”</p>
+            <p>Stand up and use your body: Right hand up → +1 proton, Arms out → 0 neutron, Left hand down → –1 electron. Then say: “Atoms have no overall electrical charge.”, “Number of electrons equals number of protons.” Your body becomes the atom.</p>
 
             <h4>5️⃣ Scale it with your hands (size & mass)</h4>
-            <p>Use your hands: Big circle with arms = atom, Tiny pinch = nucleus. Say: “Almost all of the mass is in the nucleus.” This makes the size vs. mass concept intuitive.</p>
+            <p>Use your hands: Big circle with arms → atom, Tiny pinch → nucleus. Say: “Almost all of the mass is in the nucleus.” This makes size vs mass intuitive.</p>
 
             <h4>6️⃣ Electron shell walking</h4>
-            <p>Put objects in circles on the floor. Walk and place electrons for Sodium (2, 8, 1), saying: “Electrons occupy the lowest available energy levels.”</p>
+            <p>Put objects in circles on the floor. First circle = first shell, Second = second shell, Third = third shell. Walk and place: Sodium → 2, 8, 1. Say: “Electrons occupy the lowest available energy levels.”</p>
             
             <h4>7️⃣ Periodic table floor map</h4>
-            <p>Use tape on the floor. Left side = metals, Right side = non-metals. Stand in Group 1 and say its reactivity trend. Do the same for Group 7 and Group 0.</p>
+            <p>Use tape or paper on the floor. Left side = metals, Right side = non-metals. Stand in: Group 1 → say “reactivity increases down the group”, Group 7 → say “reactivity decreases down the group”, Group 0 → say “full outer shell, unreactive”. Movement + position = memory.</p>
 
             <h4>8️⃣ Reactivity direction game</h4>
-            <p>Point DOWN with your hand for Group 1 reactivity (increases), Group 7 reactivity (decreases), and Group 0 boiling point (increases). Directional movement helps recall trends.</p>
+            <p>Point DOWN with your hand: Group 1 → “reactivity increases”, Group 7 → “reactivity decreases”, Group 0 → “boiling point increases”. Directional movement helps recall trends fast in exams.</p>
             
             <h4>9️⃣ Separation process stations (mixtures)</h4>
-            <p>Set up 5 stations (Filtration, Crystallisation, etc.). Walk to a station and state what it separates and that it's a physical process.</p>
+            <p>Set up 5 “stations” (different spots in the room): Filtration, Crystallisation, Simple distillation, Fractional distillation, Chromatography. Walk to a station and say: what it separates, that it is a physical process, that no new substances are made.</p>
 
             <h4>🔟 Teach-an-invisible-student method</h4>
-            <p>Stand up and teach the topic out loud with hand gestures but no notes. If you freeze, you've found a revision gap. Teaching is the deepest form of learning.</p>
+            <p>Stand up and teach the topic out loud like a lesson. Rule: No notes, Use hand gestures. If you freeze → that’s a revision gap. Teaching = deepest learning.</p>
         </CardContent>
     </Card>
 );
@@ -136,40 +136,40 @@ const LearnAsVisualDeck1 = () => (
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ One MASTER DIAGRAM (highest impact)</h4>
-            <p>Create one A3 sheet titled “Structure of Matter (GCSE Chemistry)”. Split it into sections with boxes for Atoms & Elements, Compounds & Mixtures, Atomic Structure, Periodic Table, and Groups 0, 1, 7. Use arrows to show links (e.g., atoms → elements → compounds, atomic structure → periodic table position → reactivity). Seeing everything connected prevents topic confusion.</p>
+            <p>Create one A3 sheet titled: “Structure of Matter (GCSE Chemistry)”. Split it into sections with boxes: Atoms & Elements, Compounds & Mixtures, Atomic Structure, Periodic Table, Groups 0, 1, 7. Use arrows to show links: atoms → elements → compounds, atomic structure → periodic table position → reactivity. 👉 Seeing everything connected prevents topic confusion.</p>
 
             <h4>2️⃣ Colour-coded meaning system (never change colours)</h4>
-            <p>Use consistent colours: 🔵 Atoms / subatomic particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Chemical reactions, 🟣 Periodic table / groups. Your brain remembers colour patterns faster than text.</p>
+            <p>Use the same colours every time: 🔵 Atoms / subatomic particles, 🟢 Compounds, 🟡 Mixtures, 🔴 Chemical reactions, 🟣 Periodic table / groups. Your brain remembers colour patterns faster than text.</p>
 
             <h4>3️⃣ “Before vs After” diagrams (for reactions & mixtures)</h4>
-            <p>Draw paired boxes for a chemical reaction (Before: elements, After: compound + energy change) and a mixture (Before: substances together, After: substances separated physically). Label with ✔ new substance or ✖ no new substance. This visually locks in the difference.</p>
+            <p>Draw paired boxes: Chemical reaction (Before: elements, After: compound + energy change) and Mixture (Before: substances together, After: substances separated physically). Label with: ✔ new substance, ✖ no new substance. This visually locks in the difference between mixtures and compounds.</p>
 
             <h4>4️⃣ Timeline strip for atomic models</h4>
-            <p>Draw a horizontal timeline: Tiny solid sphere → Plum pudding model → Nuclear model → Bohr model → Protons → Neutrons. Add small sketches and arrows showing “new evidence → new model”.</p>
+            <p>Draw a horizontal timeline: Tiny solid sphere, Plum pudding model, Nuclear model, Bohr model, Protons, Neutrons. Add: small sketches, arrows showing “new evidence → new model”. This helps exam questions about scientific development over time.</p>
 
             <h4>5️⃣ Particle tables instead of sentences</h4>
-            <p>Turn facts into tables for Subatomic particles (Particle, Charge, Mass, Location) and Atom facts (Feature, What it shows - Atomic number, Mass number). Tables help visual learners compare instantly.</p>
+            <p>Turn facts into tables only: Subatomic particles (Particle, Charge, Mass, Location) and Atom facts (Feature, What it shows - Atomic number, Mass number). Tables help visual learners compare instantly.</p>
             
             <h4>6️⃣ Scale diagrams (size & mass)</h4>
-            <p>Draw a large circle for an atom and a tiny dot for the nucleus. Write the radii (0.1 nm vs 1 × 10⁻¹⁴ m) and label “Almost all mass in nucleus”. Seeing the scale difference builds understanding.</p>
+            <p>Draw: a large circle = atom, a tiny dot in the centre = nucleus. Write: atom radius: 0.1 nm, nucleus radius: 1 × 10⁻¹⁴ m. Then add: “Almost all mass in nucleus”. Seeing the scale difference builds understanding.</p>
 
             <h4>7️⃣ Electronic structure ring diagrams</h4>
-            <p>For the first 20 elements, draw shells as circles, add electrons as dots, and colour the outer shell. Label the group number and reactivity trend. This visually links electrons → group → properties.</p>
+            <p>For the first 20 elements: draw shells as circles, add electrons as dots, colour the outer shell. Then label: group number, reactivity trend. This visually links: electrons → group → properties.</p>
 
             <h4>8️⃣ Periodic table highlighting (pattern spotting)</h4>
-            <p>Print a periodic table. Highlight groups vertically, shade metals vs. non-metals, and circle Groups 0, 1, and 7. Patterns equal memory.</p>
+            <p>Print a periodic table and: Highlight groups vertically, Shade: metals (left & bottom), non-metals (right & top). Circle: Group 0, Group 1, Group 7. Patterns = memory.</p>
 
             <h4>9️⃣ Group summary boxes (exam gold)</h4>
-            <p>Create one box per group (0, 1, 7) and list key properties (e.g., outer electrons, reactivity trend, boiling point trend). Seeing trends side-by-side is key.</p>
+            <p>Create one box per group: Group 0 (full outer shell, unreactive, boiling point increases down group), Group 1 (1 outer electron, reactivity increases down group), Group 7 (7 outer electrons, reactivity decreases down group, displacement reactions). Seeing trends side-by-side is key.</p>
 
             <h4>🔟 Arrow trend diagrams (reactivity & boiling point)</h4>
-            <p>Instead of words, use arrows: Group 1 reactivity ⬇️ increases, Group 7 reactivity ⬇️ decreases. Your brain remembers directional arrows well.</p>
+            <p>Instead of words, use arrows: Group 1 reactivity ⬇️ increases, Group 7 reactivity ⬇️ decreases, Group 0 boiling point ⬇️ increases. Your brain remembers directional arrows very well.</p>
 
             <h4>1️⃣1️⃣ Comparison grids (metals vs non-metals)</h4>
-            <p>Draw a split box for Metals (positive ions, left/bottom) vs Non-metals (do not form positive ions, right/top). Quick visual contrast provides exam clarity.</p>
+            <p>Draw a split box: Metals (positive ions, left/bottom) vs Non-metals (do not form positive ions, right/top). Quick visual contrast = exam clarity.</p>
 
             <h4>1️⃣2️⃣ Redraw-from-memory rule (most important)</h4>
-            <p>Daily routine: Look at your diagrams for 1 minute. Close notes. Redraw everything from memory. Add missing parts in a different colour. If you can redraw it, you understand it.</p>
+            <p>Daily routine: Look at your diagrams for 1 minute, Close notes, Redraw everything from memory, Add missing parts in a different colour. If you can redraw it → you understand it.</p>
         </CardContent>
     </Card>
 );
@@ -188,48 +188,111 @@ const LearnAsVisualDeck2 = () => (
             <p><strong>Activity:</strong> Mind map: Create a colorful mind map connecting bonding types → structures → properties → uses. Use icons or small sketches for atoms, ions, metals, polymers, and nanoparticles.</p>
 
             <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
-            <p><strong>Activity:</strong> Color-coded chart: Make a table with three columns (Ionic / Covalent / Metallic). Use colors to indicate:</p>
-            <ul className="list-disc pl-5">
-                <li>Electron transfer (red → blue)</li>
-                <li>Shared electrons (overlapping circles)</li>
-                <li>Delocalised electrons (wavy arrows)</li>
-            </ul>
-            <p><strong>Activity:</strong> Interactive animation: Use online simulations (e.g., PhET) to see bonding in 3D.</p>
-
+            <p><strong>Activity:</strong> Color-coded chart: Make a table with three columns (Ionic / Covalent / Metallic). Use colors to indicate: Electron transfer (red → blue), Shared electrons (overlapping circles), Delocalised electrons (wavy arrows). Interactive animation: Use online simulations (e.g., PhET) to see bonding in 3D.</p>
+            
             <h4>3️⃣ Ionic bonding</h4>
-            <p><strong>Activity:</strong> Dot-and-cross diagrams: Draw ions in different colors (e.g., metal = blue, non-metal = red).</p>
-            <p><strong>Activity:</strong> 3D ball-and-stick model: Build NaCl or MgO using small balls for ions to see the lattice.</p>
-            <p><strong>Activity:</strong> Group activity: Physically "transfer electrons" with colored balls between students acting as atoms.</p>
+            <p><strong>Activity:</strong> Dot-and-cross diagrams: Draw ions in different colors (e.g., metal = blue, non-metal = red). 3D ball-and-stick model: Build NaCl or MgO using small balls for ions to see the lattice. Group activity: Physically "transfer electrons" with colored balls between students acting as atoms.</p>
 
             <h4>4️⃣ Ionic compounds</h4>
-            <p><strong>Activity:</strong> Ionic lattice diagram: Use graph paper or LEGO to create a 3D model of NaCl lattice.</p>
-            <p><strong>Activity:</strong> Highlight electrostatic forces using arrows between ions.</p>
-            <p><strong>Activity:</strong> Empirical formula exercise: Build mini-models of compounds, then deduce formulas visually.</p>
+            <p><strong>Activity:</strong> Ionic lattice diagram: Use graph paper or LEGO to create a 3D model of NaCl lattice. Highlight electrostatic forces using arrows between ions. Empirical formula exercise: Build mini-models of compounds, then deduce formulas visually.</p>
 
             <h4>5️⃣ Covalent bonding</h4>
-            <p><strong>Activity:</strong> Venn diagram or sharing diagrams: Use overlapping colored circles to show shared electron pairs.</p>
-            <p><strong>Activity:</strong> 3D molecular models: Build hydrogen, water, methane, ammonia using modeling kits.</p>
-            <p><strong>Activity:</strong> Drawing practice: Dot-and-cross and line diagrams in different colors for each element.</p>
+            <p><strong>Activity:</strong> Venn diagram or sharing diagrams: Use overlapping colored circles to show shared electron pairs. 3D molecular models: Build hydrogen, water, methane, ammonia using modeling kits. Drawing practice: Dot-and-cross and line diagrams in different colors for each element.</p>
 
             <h4>6️⃣ Metallic bonding</h4>
-            <p><strong>Activity:</strong> Layered diagram: Show metal atoms in layers and wavy arrows for delocalised electrons.</p>
-            <p><strong>Activity:</strong> Animation: Show how electrons move freely through the metal lattice.</p>
-            <p><strong>Activity:</strong> Hands-on: Stack coins or discs to represent layers of atoms, with beads representing delocalised electrons.</p>
+            <p><strong>Activity:</strong> Layered diagram: Show metal atoms in layers and wavy arrows for delocalised electrons. Animation: Show how electrons move freely through the metal lattice. Hands-on: Stack coins or discs to represent layers of atoms, with beads representing delocalised electrons.</p>
             
             <h4>7️⃣ Bonding and structure linked to properties</h4>
-            <p><strong>States of matter Activity:</strong> Particle diagrams: Draw solids, liquids, and gases using colored dots; show movement with arrows.</p>
-            <p><strong>Melting/boiling demonstration:</strong> Use ice and water to visually connect particle movement with state changes.</p>
+            <p><strong>States of matter Activity:</strong> Particle diagrams: Draw solids, liquids, and gases using colored dots; show movement with arrows. Melting/boiling demonstration: Use ice and water to visually connect particle movement with state changes.</p>
             <p><strong>Properties Activity:</strong> Comparison table: Use visuals and symbols to represent: Conductivity (⚡), Melting point (🌡️), Strength of forces (arrows of different thickness). Molecule model building: Build small molecules vs. polymer chains vs. metallic lattice.</p>
             
             <h4>8️⃣ Structure and bonding of carbon</h4>
-            <p><strong>Activity:</strong> 3D models: Build diamond, graphite layers, graphene sheets, and C₆₀ fullerenes using colored balls and sticks.</p>
-            <p><strong>Activity:</strong> Layered diagrams: Show graphite’s layers and how delocalised electrons move.</p>
-            <p><strong>Activity:</strong> Compare and contrast chart: Include hardness, conductivity, melting points with small icons.</p>
+            <p><strong>Activity:</strong> 3D models: Build diamond, graphite layers, graphene sheets, and C₆₀ fullerenes using colored balls and sticks. Layered diagrams: Show graphite’s layers and how delocalised electrons move. Compare and contrast chart: Include hardness, conductivity, melting points with small icons.</p>
 
             <h4>9️⃣ Nanoparticles</h4>
-            <p><strong>Activity:</strong> Size comparison diagram: Draw nanoparticles vs. bulk materials to illustrate surface area.</p>
-            <p><strong>Activity:</strong> Visual uses chart: Draw icons for medicine, electronics, cosmetics, etc., linking them to nanoparticles.</p>
-            <p><strong>Activity:</strong> Infographic: Show risks vs. benefits visually, with color-coded warnings and benefits.</p>
+            <p><strong>Activity:</strong> Size comparison diagram: Draw nanoparticles vs. bulk materials to illustrate surface area. Visual uses chart: Draw icons for medicine, electronics, cosmetics, etc., linking them to nanoparticles. Infographic: Show risks vs. benefits visually, with color-coded warnings and benefits.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsKinestheticDeck2 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Engage with this topic using action, movement, and real-world examples.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Bonding, structure, and the properties of matter</h4>
+            <p><strong>Activity:</strong> Role-play atoms: Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices). Build-and-touch models: Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
+            
+            <h4>Chemical bonds: ionic, covalent, metallic</h4>
+            <p><strong>Activity:</strong> Electron transfer simulation: Give students colored balls representing electrons. "Metal atoms" give away balls, "non-metals" take them to show ionic bonding. Covalent bonding handshake: Two students “share” balls to simulate shared electrons. Metallic bonding: Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
+
+            <h4>Ionic bonding</h4>
+            <p><strong>Activity:</strong> Dot-and-cross tactile exercise: Use beads or stickers to create dot-and-cross diagrams on sticky boards. 3D lattice building: Build a NaCl or MgO lattice using LEGO or magnetic balls to feel the structure.</p>
+
+            <h4>Ionic compounds</h4>
+            <p><strong>Activity:</strong> Empirical formula activity: Use colored beads for different ions. Build mini-compounds and physically count the ratio of ions to determine the formula. Electrostatic forces demonstration: Use magnets to mimic attraction between ions in a lattice.</p>
+
+            <h4>Covalent bonding</h4>
+            <p><strong>Activity:</strong> Molecule building: Use clay or sticks to make hydrogen, water, ammonia, methane, etc. Sharing simulation: Pair up and “share” balls representing electrons to build covalent molecules. Polymer chain activity: Link paper clips or chains to model polymer chains.</p>
+
+            <h4>Metallic bonding</h4>
+            <p><strong>Activity:</strong> Layer stacking: Stack coins or discs to simulate layers of metal atoms. Move them slightly to feel malleability. Delocalised electron race: Have “electrons” (students) move through a “metal lattice” formed by other students holding hands in a grid.</p>
+
+            <h4>Bonding and structure linked to properties</h4>
+            <p><strong>States of matter Activity:</strong> Movement simulation: Students act as particles. Solid = tightly packed, vibrating; liquid = moving past each other; gas = moving fast and far apart. Melting/boiling demo: Heat ice cubes and feel the phase change; relate movement of molecules to state.</p>
+            <p><strong>Properties Activity:</strong> Hands-on comparison: Touch samples (metal, polymer, sugar/crystals) and test conductivity with a simple circuit to feel differences. Strength demonstration: Stack objects to mimic lattice strength; shake gently to represent weak vs. strong bonds.</p>
+
+            <h4>Structure and bonding of carbon</h4>
+            <p><strong>Activity:</strong> Model building: Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits. Layer movement: Slide graphite layers over each other to feel why it’s slippery; try the same with a “diamond lattice” (rigid model) to feel hardness.</p>
+            
+            <h4>Nanoparticles</h4>
+            <p><strong>Activity:</strong> Size comparison: Use balls of different sizes to represent nanoparticles vs. bulk materials; feel how many small balls fit into a container compared to large ones (surface area effect). Application demo: Handle models representing nanoparticles in medicine, electronics, or sunscreens to visualize and “use” them safely in simulations.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsReadingWritingDeck2 = () => (
+     <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master this topic through structured writing, definitions, and summarization.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Bonding, structure, and the properties of matter</h4>
+            <p><strong>Activity:</strong> Summarize in your own words: Write a 3–5 sentence summary for this section. Bullet-point notes: Break down the key ideas: “Atoms can form molecules or giant structures,” “Bonding explains properties,” etc. Glossary: Write definitions for key terms: structure, bonding, properties, material engineering.</p>
+            
+            <h4>Chemical bonds: ionic, covalent, metallic</h4>
+            <p><strong>Activity:</strong> Comparison table: Create a written table comparing ionic, covalent, and metallic bonds: Type of atoms involved, Electron movement, Forces involved, Examples. Flashcards: One side = bond type, other side = characteristics/examples.</p>
+
+            <h4>Ionic bonding</h4>
+            <p><strong>Activity:</strong> Step-by-step notes: Write out the process of electron transfer, forming positive and negative ions. Dot-and-cross practice: Write multiple examples (NaCl, MgO) and label ions. Group number rule: Write a table linking group numbers to ion charges.</p>
+
+            <h4>Ionic compounds</h4>
+            <p><strong>Activity:</strong> Written explanation: Describe in words why ionic compounds have high melting points and conduct when molten. Empirical formula exercises: Write down formulas from given ions. Limitations of diagrams: Write short notes explaining why diagrams don’t show 3D structures or forces clearly.</p>
+
+            <h4>Covalent bonding</h4>
+            <p><strong>Activity:</strong> Stepwise instructions: Write step-by-step guides for drawing dot-and-cross diagrams for H₂, HCl, H₂O, CH₄, NH₃. Compare molecule types: Write a chart comparing small molecules, polymers, and giant covalent structures: bonds, states, melting points.</p>
+
+            <h4>Metallic bonding</h4>
+            <p><strong>Activity:</strong> Written notes: Describe structure, delocalised electrons, and malleability in your own words. Comparison table: Write a table comparing metals vs. alloys: hardness, layers, conductivity.</p>
+
+            <h4>Bonding and structure linked to properties</h4>
+            <p><strong>States of matter Activity:</strong> Written explanation: Describe how particle theory explains solids, liquids, and gases. Melting/boiling points: Write notes linking strength of forces to temperature changes.</p>
+            <p><strong>Properties of compounds Activity:</strong> Table/chart: For ionic compounds, small molecules, polymers, metals, and alloys: list melting/boiling points, conductivity, and reasons. Short-answer practice: Write answers to questions like: “Why can metals conduct electricity?” or “Why do polymers stay solid at room temp?”</p>
+
+            <h4>Structure and bonding of carbon</h4>
+            <p><strong>Activity:</strong> Written comparison: Make a table for diamond, graphite, graphene, and fullerenes: bonds, hardness, conductivity, uses. Notes on nanostructures: Write descriptions of carbon nanotubes and graphene, including applications.</p>
+            
+            <h4>Nanoparticles</h4>
+            <p><strong>Activity:</strong> Summary sheet: Write down size, properties, and uses of nanoparticles in your own words. Pros and cons list: Create a written table of benefits vs. risks. Examples: List at least 3 products or applications for nanoparticles.</p>
         </CardContent>
     </Card>
 );
@@ -312,6 +375,10 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         switch (userDetails.learningStyle) {
             case 'Visual':
                 return <LearnAsVisualDeck2 />;
+            case 'Kinesthetic':
+                return <LearnAsKinestheticDeck2 />;
+            case 'Reading/Writing':
+                return <LearnAsReadingWritingDeck2 />;
             default:
                 return null;
         }
@@ -417,3 +484,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

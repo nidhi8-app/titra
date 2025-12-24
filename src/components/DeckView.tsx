@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, LinkIcon, Atom, Sigma, ChevronsRightLeft, Rows, CircleDashed, Disc, Thermometer, TestTube, Key, Microscope, Pen, List } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -174,6 +174,66 @@ const LearnAsVisualDeck1 = () => (
     </Card>
 );
 
+const LearnAsVisualDeck2 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master this topic with diagrams, models, and color-coding.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
+            <p><strong>Activity:</strong> Mind map: Create a colorful mind map connecting bonding types → structures → properties → uses. Use icons or small sketches for atoms, ions, metals, polymers, and nanoparticles.</p>
+
+            <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
+            <p><strong>Activity:</strong> Color-coded chart: Make a table with three columns (Ionic / Covalent / Metallic). Use colors to indicate:</p>
+            <ul className="list-disc pl-5">
+                <li>Electron transfer (red → blue)</li>
+                <li>Shared electrons (overlapping circles)</li>
+                <li>Delocalised electrons (wavy arrows)</li>
+            </ul>
+            <p><strong>Activity:</strong> Interactive animation: Use online simulations (e.g., PhET) to see bonding in 3D.</p>
+
+            <h4>3️⃣ Ionic bonding</h4>
+            <p><strong>Activity:</strong> Dot-and-cross diagrams: Draw ions in different colors (e.g., metal = blue, non-metal = red).</p>
+            <p><strong>Activity:</strong> 3D ball-and-stick model: Build NaCl or MgO using small balls for ions to see the lattice.</p>
+            <p><strong>Activity:</strong> Group activity: Physically "transfer electrons" with colored balls between students acting as atoms.</p>
+
+            <h4>4️⃣ Ionic compounds</h4>
+            <p><strong>Activity:</strong> Ionic lattice diagram: Use graph paper or LEGO to create a 3D model of NaCl lattice.</p>
+            <p><strong>Activity:</strong> Highlight electrostatic forces using arrows between ions.</p>
+            <p><strong>Activity:</strong> Empirical formula exercise: Build mini-models of compounds, then deduce formulas visually.</p>
+
+            <h4>5️⃣ Covalent bonding</h4>
+            <p><strong>Activity:</strong> Venn diagram or sharing diagrams: Use overlapping colored circles to show shared electron pairs.</p>
+            <p><strong>Activity:</strong> 3D molecular models: Build hydrogen, water, methane, ammonia using modeling kits.</p>
+            <p><strong>Activity:</strong> Drawing practice: Dot-and-cross and line diagrams in different colors for each element.</p>
+
+            <h4>6️⃣ Metallic bonding</h4>
+            <p><strong>Activity:</strong> Layered diagram: Show metal atoms in layers and wavy arrows for delocalised electrons.</p>
+            <p><strong>Activity:</strong> Animation: Show how electrons move freely through the metal lattice.</p>
+            <p><strong>Activity:</strong> Hands-on: Stack coins or discs to represent layers of atoms, with beads representing delocalised electrons.</p>
+            
+            <h4>7️⃣ Bonding and structure linked to properties</h4>
+            <p><strong>States of matter Activity:</strong> Particle diagrams: Draw solids, liquids, and gases using colored dots; show movement with arrows.</p>
+            <p><strong>Melting/boiling demonstration:</strong> Use ice and water to visually connect particle movement with state changes.</p>
+            <p><strong>Properties Activity:</strong> Comparison table: Use visuals and symbols to represent: Conductivity (⚡), Melting point (🌡️), Strength of forces (arrows of different thickness). Molecule model building: Build small molecules vs. polymer chains vs. metallic lattice.</p>
+            
+            <h4>8️⃣ Structure and bonding of carbon</h4>
+            <p><strong>Activity:</strong> 3D models: Build diamond, graphite layers, graphene sheets, and C₆₀ fullerenes using colored balls and sticks.</p>
+            <p><strong>Activity:</strong> Layered diagrams: Show graphite’s layers and how delocalised electrons move.</p>
+            <p><strong>Activity:</strong> Compare and contrast chart: Include hardness, conductivity, melting points with small icons.</p>
+
+            <h4>9️⃣ Nanoparticles</h4>
+            <p><strong>Activity:</strong> Size comparison diagram: Draw nanoparticles vs. bulk materials to illustrate surface area.</p>
+            <p><strong>Activity:</strong> Visual uses chart: Draw icons for medicine, electronics, cosmetics, etc., linking them to nanoparticles.</p>
+            <p><strong>Activity:</strong> Infographic: Show risks vs. benefits visually, with color-coded warnings and benefits.</p>
+        </CardContent>
+    </Card>
+);
+
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
@@ -243,6 +303,15 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                 return <LearnAsVisualDeck1 />;
             case 'Reading/Writing':
                 return <LearnAsReadingWritingDeck1 />;
+            default:
+                return null;
+        }
+    }
+
+    if (deck.id === 'deck2') {
+        switch (userDetails.learningStyle) {
+            case 'Visual':
+                return <LearnAsVisualDeck2 />;
             default:
                 return null;
         }

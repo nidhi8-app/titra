@@ -25,11 +25,16 @@ type DeckViewProps = {
 
 const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }) => {
     const parsed = React.useMemo(() => parseNotes(notes), [notes]);
+    
+    const displayTitle = deckTitle === 'Atomic structure and the periodic table' 
+        ? 'Atomic structure and the periodic table:'
+        : 'Bonding, structure, and the properties of matter:';
+
     return (
         <Card className="bg-background/50 border">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold font-headline">Topic Summary</CardTitle>
-                <p className="text-muted-foreground pt-2 font-semibold">{deckTitle}:</p>
+                <p className="text-muted-foreground pt-2 font-semibold">{displayTitle}</p>
             </CardHeader>
             <CardContent>
                 <NestedAccordion sections={parsed} />
@@ -485,3 +490,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

@@ -18,38 +18,33 @@ export function parseNotes(notes: (Note | InitialNoteSeed)[]): NoteSection[] {
 
     notes.forEach(note => {
         // For decks with one large note, parse its body for sections.
-        if (notes.length === 1 && note.deckId === 'deck2-temp') { // special handling for old deck2 structure
+        if (notes.length === 1) { 
              const lines = note.body.split('\n');
             let mainSection: NoteSection | null = null;
 
             lines.forEach(line => {
                 const trimmedLine = line.trim();
                 
-                if (trimmedLine.match(/^\d+\.\d+\.\d+\.\d+\s/)) { // 4.2.1.1
+                if (trimmedLine.match(/^(\d+\.){2,}\d*\s/)) { 
                     if (!mainSection) {
                          mainSection = { title: note.title, content: '', subsections: [] };
                          sections.push(mainSection);
                     }
-                    currentSubSubSection = { title: trimmedLine, content: '', subsections: [] };
-                    if (currentSubsection) {
-                        currentSubsection.subsections.push(currentSubSubSection);
-                    }
-                } else if (trimmedLine.match(/^\d+\.\d+\.\d+\s/)) { // 4.2.1
+                    // This is a subsection, create a new one
+                    currentSubsection = { title: trimmedLine, content: '', subsections: [] };
+                    mainSection.subsections.push(currentSubsection);
+
+                } else if (trimmedLine.match(/^(\d+\.)+\d*\s/)) { // Main section title
                      if (!mainSection) {
                          mainSection = { title: note.title, content: '', subsections: [] };
                          sections.push(mainSection);
                     }
-                    currentSubsection = { title: trimmedLine, content: '', subsections: [] };
-                    mainSection.subsections.push(currentSubsection);
-                    currentSubSubSection = null;
-                } else if (trimmedLine.match(/^\d+\.\d+\s/)) { // 4.2 (Ignore, it's the main title)
-                    if (!mainSection) {
-                         mainSection = { title: note.title, content: '', subsections: [] };
-                         sections.push(mainSection);
-                    }
+                     mainSection.subsections.push({ title: trimmedLine, content: '', subsections: [] });
+                     currentSubsection = mainSection.subsections[mainSection.subsections.length - 1];
+
                 }
                 else if (trimmedLine.length > 0) {
-                     const target = currentSubSubSection || currentSubsection || mainSection;
+                     const target = currentSubsection || mainSection;
                      if (target) {
                          target.content = target.content ? `${target.content}\n${trimmedLine}` : trimmedLine;
                      }
@@ -234,8 +229,15 @@ Many transition elements have ions with different charges, form coloured compoun
   ],
   'deck2': [
     {
-      title: 'Chemical bonds: ionic, covalent and metallic',
-      body: `Chemists use theories of structure and bonding to explain the physical and chemical properties of materials. Atoms can be arranged in molecular structures or giant structures. Bonding theories explain how atoms are held together. Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.
+      title: 'Bonding, structure, and the properties of matter',
+      body: `4.2 Bonding, structure, and the properties of matter
+Chemists use theories of structure and bonding to explain the physical and chemical properties of materials.
+Atoms can be arranged in molecular structures or giant structures.
+Bonding theories explain how atoms are held together.
+Knowledge of structure and bonding is used to engineer new materials with desirable properties for different technologies.
+
+4.2.1 Chemical bonds: ionic, covalent and metallic
+4.2.1.1 Chemical bonds
 There are three types of strong chemical bonds: ionic, covalent and metallic.
 Ionic bonding: oppositely charged ions.
 Covalent bonding: atoms share pairs of electrons.
@@ -244,40 +246,109 @@ Ionic bonding occurs in compounds formed from metals and non-metals.
 Covalent bonding occurs in non-metallic elements and compounds of non-metals.
 Metallic bonding occurs in metals and alloys.
 Chemical bonding is explained in terms of electrostatic forces and the transfer or sharing of electrons.
-Electrons are transferred from metal atoms to non-metal atoms. Metal atoms lose electrons to form positive ions. Non-metal atoms gain electrons to form negative ions. Ions formed have the electronic structure of a noble gas. Electron transfer can be shown using dot and cross diagrams. The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
-Ionic compounds are giant structures of ions. They are held together by strong electrostatic forces in all directions (ionic bonding). Students should be able to: deduce that a compound is ionic from a diagram describe limitations of diagrams work out the empirical formula from a model Sodium chloride is the required example. Covalent bonding Covalent bonds form when atoms share pairs of electrons. Covalent bonds are strong. Covalently bonded substances may be: small molecules very large molecules (polymers) giant covalent structures (diamond, silicon dioxide) Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams. Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
-Metals consist of giant structures of atoms arranged in a regular pattern. Delocalised electrons move through the structure. Strong metallic bonds arise from sharing delocalised electrons.`,
+
+4.2.1.2 Ionic bonding
+Electrons are transferred from metal atoms to non-metal atoms.
+Metal atoms lose electrons to form positive ions.
+Non-metal atoms gain electrons to form negative ions.
+Ions formed have the electronic structure of a noble gas.
+Electron transfer can be shown using dot and cross diagrams.
+The charge on ions relates to the group number (Groups 1, 2, 6 and 7).
+
+4.2.1.3 Ionic compounds
+Ionic compounds are giant structures of ions.
+They are held together by strong electrostatic forces in all directions (ionic bonding).
+Students should be able to:
+deduce that a compound is ionic from a diagram
+describe limitations of diagrams
+work out the empirical formula from a model
+Sodium chloride is the required example.
+Covalent bonding
+Covalent bonds form when atoms share pairs of electrons.
+Covalent bonds are strong.
+Covalently bonded substances may be:
+small molecules
+very large molecules (polymers)
+giant covalent structures (diamond, silicon dioxide)
+Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams.
+Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.
+
+4.2.1.5 Metallic bonding
+Metals consist of giant structures of atoms arranged in a regular pattern.
+Delocalised electrons move through the structure.
+Strong metallic bonds arise from sharing delocalised electrons.
+
+4.2.2 Bonding and structure linked to properties
+4.2.2.1 States of matter
+The three states are solid, liquid and gas.
+Changes of state occur at melting point and boiling point.
+Particle theory explains changes of state.
+The strength of forces between particles determines melting and boiling points.
+Stronger forces → higher melting and boiling points.
+(HT) Particle model limitations:
+no forces
+particles are solid spheres
+
+4.2.2.2 State symbols
+State symbols are: (s), (l), (g), (aq).
+Used in chemical equations.
+
+4.2.2.3 Properties of ionic compounds
+Ionic compounds have giant ionic lattices.
+Strong electrostatic forces give high melting and boiling points.
+Conduct electricity when molten or dissolved because ions can move.
+
+4.2.2.4 Properties of small molecules
+Usually gases or liquids with low melting and boiling points.
+Have weak intermolecular forces.
+Do not conduct electricity.
+Intermolecular forces increase with molecule size.
+
+4.2.2.5 Polymers
+Polymers have very large molecules.
+Atoms are linked by strong covalent bonds.
+Strong intermolecular forces make polymers solids at room temperature.
+
+4.2.2.6 Giant covalent structures
+Giant covalent structures are solids with very high melting points.
+All atoms are linked by strong covalent bonds.
+Examples: diamond, graphite, silicon dioxide.
+
+4.2.2.7 Properties of metals and alloys
+Metals have giant structures with metallic bonding.
+High melting and boiling points.
+Pure metals are malleable due to layers of atoms.
+Alloys are harder because layers are distorted.
+
+4.2.2.8 Metals as conductors
+Metals conduct electricity due to delocalised electrons.
+Thermal conductivity is also due to delocalised electrons.
+
+4.2.3 Structure and bonding of carbon
+Diamond
+Each carbon forms four covalent bonds.
+Very hard, very high melting point, does not conduct electricity.
+Graphite
+Each carbon forms three covalent bonds in layers.
+Delocalised electrons allow electrical conductivity.
+Graphene and fullerenes
+Graphene is a single layer of graphite.
+Fullerenes are hollow carbon molecules (e.g. C₆₀).
+Carbon nanotubes are cylindrical fullerenes.
+Used in electronics, materials and nanotechnology.
+
+4.2.4 Nanoparticles
+Sizes and properties
+Nanoparticles are 1–100 nm in size.
+High surface area to volume ratio.
+Can have different properties from bulk materials.
+Uses of nanoparticles
+Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts.
+Smaller quantities may be needed due to effectiveness.
+There are possible risks associated with their use.`,
       createdAt: new Date(),
       updatedAt: new Date(),
-    },
-    {
-      title: 'Bonding and structure linked to properties',
-      body: `The three states are solid, liquid and gas. Changes of state occur at melting point and boiling point. Particle theory explains changes of state. The strength of forces between particles determines melting and boiling points. Stronger forces → higher melting and boiling points. (HT) Particle model limitations: no forces particles are solid spheres
-State symbols are: (s), (l), (g), (aq). Used in chemical equations.
-Ionic compounds have giant ionic lattices. Strong electrostatic forces give high melting and boiling points. Conduct electricity when molten or dissolved because ions can move.
-Properties of small molecules Usually gases or liquids with low melting and boiling points. Have weak intermolecular forces. Do not conduct electricity. Intermolecular forces increase with molecule size.
-Polymers have very large molecules. Atoms are linked by strong covalent bonds. Strong intermolecular forces make polymers solids at room temperature.
-Giant covalent structures are solids with very high melting points. All atoms are linked by strong covalent bonds. Examples: diamond, graphite, silicon dioxide.
-Metals have giant structures with metallic bonding. High melting and boiling points. Pure metals are malleable due to layers of atoms. Alloys are harder because layers are distorted.
-Metals conduct electricity due to delocalised electrons. Thermal conductivity is also due to delocalised electrons.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Structure and bonding of carbon',
-      body: `Diamond Each carbon forms four covalent bonds. Very hard, very high melting point, does not conduct electricity.
-Graphite Each carbon forms three covalent bonds in layers. Delocalised electrons allow electrical conductivity.
-Graphene and fullerenes Graphene is a single layer of graphite. Fullerenes are hollow carbon molecules (e.g. C₆₀). Carbon nanotubes are cylindrical fullerenes. Used in electronics, materials and nanotechnology.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      title: 'Nanoparticles',
-      body: `Nanoparticles are 1–100 nm in size. High surface area to volume ratio. Can have different properties from bulk materials.
-Uses of nanoparticles Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts. Smaller quantities may be needed due to effectiveness. There are possible risks associated with their use.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
+    }
   ],
   'deck3': [
     {

@@ -230,8 +230,8 @@ Sodium chloride is the required example.`,
       updatedAt: new Date(),
     },
     {
-      title: 'Covalent bonding',
-      body: `Covalent bonds form when atoms share pairs of electrons.
+        title: 'Covalent bonding',
+        body: `Covalent bonds form when atoms share pairs of electrons.
 Covalent bonds are strong.
 Covalently bonded substances may be:
 small molecules
@@ -239,8 +239,8 @@ very large molecules (polymers)
 giant covalent structures (diamond, silicon dioxide)
 Bonds can be shown using dot and cross, line diagrams, ball-and-stick and 3D diagrams.
 Students should be able to draw diagrams for hydrogen, chlorine, oxygen, nitrogen, hydrogen chloride, water, ammonia and methane.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
       title: 'Metallic bonding',
@@ -251,8 +251,8 @@ Strong metallic bonds arise from sharing delocalised electrons.`,
       updatedAt: new Date(),
     },
     {
-      title: 'States of matter',
-      body: `The three states are solid, liquid and gas.
+        title: 'States of matter',
+        body: `The three states are solid, liquid and gas.
 Changes of state occur at melting point and boiling point.
 Particle theory explains changes of state.
 The strength of forces between particles determines melting and boiling points.
@@ -260,98 +260,98 @@ Stronger forces → higher melting and boiling points.
 (HT) Particle model limitations:
 no forces
 particles are solid spheres`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'State symbols',
-      body: `State symbols are: (s), (l), (g), (aq).
+        title: 'State symbols',
+        body: `State symbols are: (s), (l), (g), (aq).
 Used in chemical equations.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Properties of ionic compounds',
-      body: `Ionic compounds have giant ionic lattices.
+        title: 'Properties of ionic compounds',
+        body: `Ionic compounds have giant ionic lattices.
 Strong electrostatic forces give high melting and boiling points.
 Conduct electricity when molten or dissolved because ions can move.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Properties of small molecules',
-      body: `Usually gases or liquids with low melting and boiling points.
+        title: 'Properties of small molecules',
+        body: `Usually gases or liquids with low melting and boiling points.
 Have weak intermolecular forces.
 Do not conduct electricity.
 Intermolecular forces increase with molecule size.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Polymers',
-      body: `Polymers have very large molecules.
+        title: 'Polymers',
+        body: `Polymers have very large molecules.
 Atoms are linked by strong covalent bonds.
 Strong intermolecular forces make polymers solids at room temperature.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Giant covalent structures',
-      body: `Giant covalent structures are solids with very high melting points.
+        title: 'Giant covalent structures',
+        body: `Giant covalent structures are solids with very high melting points.
 All atoms are linked by strong covalent bonds.
 Examples: diamond, graphite, silicon dioxide.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Properties of metals and alloys',
-      body: `Metals have giant structures with metallic bonding.
+        title: 'Properties of metals and alloys',
+        body: `Metals have giant structures with metallic bonding.
 High melting and boiling points.
 Pure metals are malleable due to layers of atoms.
 Alloys are harder because layers are distorted.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Metals as conductors',
-      body: `Metals conduct electricity due to delocalised electrons.
+        title: 'Metals as conductors',
+        body: `Metals conduct electricity due to delocalised electrons.
 Thermal conductivity is also due to delocalised electrons.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Diamond',
-      body: `Each carbon forms four covalent bonds.
+        title: 'Diamond',
+        body: `Each carbon forms four covalent bonds.
 Very hard, very high melting point, does not conduct electricity.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Graphite',
-      body: `Each carbon forms three covalent bonds in layers.
+        title: 'Graphite',
+        body: `Each carbon forms three covalent bonds in layers.
 Delocalised electrons allow electrical conductivity.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Graphene and fullerenes',
-      body: `Graphene is a single layer of graphite.
+        title: 'Graphene and fullerenes',
+        body: `Graphene is a single layer of graphite.
 Fullerenes are hollow carbon molecules (e.g. C₆₀).
 Carbon nanotubes are cylindrical fullerenes.
 Used in electronics, materials and nanotechnology.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Nanoparticles',
-      body: `Nanoparticles are 1–100 nm in size.
+        title: 'Nanoparticles',
+        body: `Nanoparticles are 1–100 nm in size.
 High surface area to volume ratio.
 Can have different properties from bulk materials.
 Used in medicine, electronics, cosmetics, sun creams, deodorants and catalysts.
 Smaller quantities may be needed due to effectiveness.
 There are possible risks associated with their use.`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
     }
   ],
   'deck3': [
@@ -456,14 +456,142 @@ The volumes of gaseous reactants and products can be calculated from the balance
   ],
   'deck4': [
     {
-      title: 'Reactivity of Metals',
-      body: 'The reactivity of metals is determined by their tendency to lose electrons and form positive ions. The reactivity series lists metals in order of their reactivity. A more reactive metal can displace a less reactive metal from its compound.',
+      title: 'Reactivity of metals',
+      body: `Metals react with oxygen to form metal oxides.
+These are oxidation reactions (gain of oxygen).
+Reduction = loss of oxygen
+Oxidation = gain of oxygen
+Metals form positive ions when they react.
+More reactive metals form positive ions more easily.
+Reactivity order (most → least):
+Potassium → Sodium → Lithium → Calcium → Magnesium → Zinc → Iron → Copper
+Hydrogen and carbon are often included for comparison.
+A more reactive metal displaces a less reactive metal from its compound.
+Reactivity is tested using water and dilute acids (room temperature only).`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Acids and Bases',
-      body: 'Acids are substances that produce H+ ions in aqueous solution. Bases are substances that can neutralise an acid. Alkalis are soluble bases that produce OH- ions in aqueous solution. The reaction between an acid and a base is called neutralisation, which produces a salt and water.',
+      title: 'Extraction of metals',
+      body: `Unreactive metals (e.g. gold) are found native.
+Most metals are found as compounds and must be extracted.
+Metals less reactive than carbon are extracted by reduction with carbon.
+Reduction = loss of oxygen.
+Students must identify which substances are oxidised or reduced.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Oxidation and reduction (electrons – HT)',
+      body: `Oxidation = loss of electrons
+Reduction = gain of electrons
+Displacement reactions can be written as ionic equations.
+Species oxidised/reduced must be identified.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Reactions of acids',
+      body: `Acid + metal → salt + hydrogen
+Limited to Mg, Zn, Fe with HCl or H₂SO₄.
+(HT) These are redox reactions involving electron transfer.
+Acid + alkali/base → salt + water
+Acid + carbonate → salt + water + CO₂
+Salt formed depends on:
+The acid (chlorides, nitrates, sulfates)
+The metal ion
+Students must predict products and write correct formulae.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Making soluble salts',
+      body: `React acid with insoluble metal / oxide / hydroxide / carbonate.
+Add excess solid → filter → evaporate → crystallise.
+Required practical: making a pure, dry soluble salt.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'pH scale and neutralisation',
+      body: `Acids produce H⁺ ions, alkalis produce OH⁻ ions.
+pH scale: 0–14
+pH < 7 = acidic
+pH = 7 = neutral
+pH > 7 = alkaline
+Neutralisation:
+H⁺ + OH⁻ → H₂O
+Measured using universal indicator or pH probe.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Titrations (Chemistry only)',
+      body: `Used to find exact reacting volumes of strong acids and alkalis.
+Uses an indicator.
+(HT) Calculate concentrations in mol/dm³ and g/dm³.
+Required practical: acid–alkali titration.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Strong and weak acids (HT)',
+      body: `Strong acids fully ionise (HCl, HNO₃, H₂SO₄).
+Weak acids partially ionise (ethanoic, citric).
+Lower pH = higher H⁺ concentration.
+Each pH unit = ×10 change in H⁺ concentration.
+Strong vs weak ≠ concentrated vs dilute.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Electrolysis',
+      body: `Ionic compounds must be molten or dissolved to conduct electricity.
+Cathode (−): positive ions move here
+Anode (+): negative ions move here
+Electrolysis decomposes compounds into elements.
+(HT) Half equations must be written and balanced.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Molten ionic compounds',
+      body: `Metal forms at the cathode, non-metal at the anode.
+Example: molten lead bromide → lead + bromine.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Electrolysis to extract metals',
+      body: `Used for very reactive metals (e.g. aluminium).
+Aluminium extracted from molten aluminium oxide + cryolite.
+Cryolite lowers melting point.
+Carbon anodes wear away and must be replaced.
+Process uses large amounts of energy.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Electrolysis of aqueous solutions',
+      body: `Products depend on reactivity.
+Cathode:
+Hydrogen produced if metal is more reactive than hydrogen.
+Anode:
+Oxygen produced unless halide ions present (then halogen forms).
+Water provides H⁺ and OH⁻ ions.
+Required practical: electrolysis of aqueous solutions.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Half equations at electrodes (HT)',
+      body: `Cathode (reduction):
+2H⁺ + 2e⁻ → H₂
+Missing equation (aqueous solutions):
+2H₂O + 2e⁻ → H₂ + 2OH⁻
+
+Anode (oxidation):
+4OH⁻ → O₂ + 2H₂O + 4e⁻`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -494,8 +622,8 @@ The volumes of gaseous reactants and products can be calculated from the balance
     {
       title: 'Crude Oil and Hydrocarbons',
       body: 'Crude oil is a finite resource and a complex mixture of hydrocarbons. It is separated into fractions with different boiling points by fractional distillation. Many hydrocarbons are alkanes, which are a homologous series of saturated hydrocarbons with the general formula CnH2n+2.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date("2024-10-06T12:00:00.000Z"),
+      updatedAt: new Date("2024-10-06T12:00:00.000Z"),
     },
   ],
   'deck8': [

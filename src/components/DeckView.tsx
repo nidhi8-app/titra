@@ -347,53 +347,80 @@ const LearnAsKinestheticDeck3 = () => (
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Hands-on with Chemical Equations</h4>
             <p><strong>Balancing movement activity:</strong></p>
-            <p>Write chemical equations on sticky notes, each element or molecule on a separate note. Physically move them on a table or board to balance the atoms. Repeat with multiple equations until balancing becomes intuitive.</p>
+            <p>Write chemical equations on sticky notes, each element or molecule on a separate note.</p>
+            <p>Physically move them on a table or board to balance the atoms.</p>
+            <p>Repeat with multiple equations until balancing becomes intuitive.</p>
             <p><strong>Atom/particle tokens:</strong></p>
-            <p>Use beads, Lego, or coins to represent atoms/molecules. Build reactants and products physically. Rearrange to show conservation of mass in reactions.</p>
+            <p>Use beads, Lego, or coins to represent atoms/molecules.</p>
+            <p>Build reactants and products physically.</p>
+            <p>Rearrange to show conservation of mass in reactions.</p>
             
             <h4>2️⃣ Relative Formula Mass & Mass Calculations</h4>
             <p><strong>Bead/mole model:</strong></p>
-            <p>Assign beads or blocks to represent relative atomic masses. Combine beads to represent molecules and calculate total mass physically. Helps visualize how relative formula mass is built from atoms.</p>
+            <p>Assign beads or blocks to represent relative atomic masses.</p>
+            <p>Combine beads to represent molecules and calculate total mass physically.</p>
+            <p>Helps visualize how relative formula mass is built from atoms.</p>
             <p><strong>Mass scale simulation:</strong></p>
-            <p>Use a kitchen scale or small weights to represent grams of reactants/products. Physically add/subtract weights to demonstrate mass changes in reactions, including gases escaping.</p>
+            <p>Use a kitchen scale or small weights to represent grams of reactants/products.</p>
+            <p>Physically add/subtract weights to demonstrate mass changes in reactions, including gases escaping.</p>
 
             <h4>3️⃣ Moles and Avogadro’s Constant</h4>
             <p><strong>Mole line-up activity:</strong></p>
-            <p>Each student represents a particle (atom, molecule, ion). Line up 6.02 × 10²³ objects represented by tokens or use scaled-down versions. Helps internalize large numbers and concept of moles.</p>
+            <p>Each student represents a particle (atom, molecule, ion).</p>
+            <p>Line up 6.02 × 10²³ objects represented by tokens or use scaled-down versions.</p>
+            <p>Helps internalize large numbers and concept of moles.</p>
             <p><strong>Conversion practice with objects:</strong></p>
             <p>Give a mass in grams and physically count or group objects to represent moles.</p>
 
             <h4>4️⃣ Limiting Reactants</h4>
             <p><strong>Hands-on limiting reactant simulation:</strong></p>
-            <p>Give two types of tokens representing two reactants. Create products using fixed ratios, remove tokens as used. Observe which reactant runs out first → limiting reactant.</p>
+            <p>Give two types of tokens representing two reactants.</p>
+            <p>Create products using fixed ratios, remove tokens as used.</p>
+            <p>Observe which reactant runs out first → limiting reactant.</p>
             
             <h4>5️⃣ Percentage Yield</h4>
             <p><strong>Product collection simulation:</strong></p>
-            <p>Use beads, coins, or balls to represent theoretical maximum product. Physically remove “lost product” beads to simulate actual yield. Calculate percentage yield using physical counts.</p>
+            <p>Use beads, coins, or balls to represent theoretical maximum product.</p>
+            <p>Physically remove “lost product” beads to simulate actual yield.</p>
+            <p>Calculate percentage yield using physical counts.</p>
 
             <h4>6️⃣ Atom Economy</h4>
             <p><strong>Sorting game:</strong></p>
-            <p>Give a mix of tokens representing all reactants and possible products. Physically separate desired products from by-products. Count tokens to calculate atom economy.</p>
+            <p>Give a mix of tokens representing all reactants and possible products.</p>
+            <p>Physically separate desired products from by-products.</p>
+            <p>Count tokens to calculate atom economy.</p>
 
             <h4>7️⃣ Concentration of Solutions</h4>
             <p><strong>Liquid measuring activity:</strong></p>
-            <p>Use water or colored liquids to measure solute and solvent volumes. Pour known masses into different volumes to visualize concentration. Practice adjusting mass or volume to see how concentration changes.</p>
+            <p>Use water or colored liquids to measure solute and solvent volumes.</p>
+            <p>Pour known masses into different volumes to visualize concentration.</p>
+            <p>Practice adjusting mass or volume to see how concentration changes.</p>
             
             <h4>8️⃣ Gas Volumes</h4>
             <p><strong>Balloon gas analogy:</strong></p>
-            <p>Use balloons to represent gases. Inflate to scale 1 mole = 24 dm³. Practice adding/subtracting balloons to simulate volumes of gaseous reactants/products.</p>
+            <p>Use balloons to represent gases.</p>
+            <p>Inflate to scale 1 mole = 24 dm³.</p>
+            <p>Practice adding/subtracting balloons to simulate volumes of gaseous reactants/products.</p>
             <p><strong>Volume simulation with containers:</strong></p>
-            <p>Use boxes or containers of fixed size to simulate gas volumes at r.t.p. Combine “reactant boxes” to form “product boxes” physically.</p>
+            <p>Use boxes or containers of fixed size to simulate gas volumes at r.t.p.</p>
+            <p>Combine “reactant boxes” to form “product boxes” physically.</p>
             
             <h4>9️⃣ Revision Games</h4>
             <p><strong>Flashcard movement:</strong></p>
-            <p>Write equation types, definitions, or calculations on flashcards. Place cards around the room, walk to the correct card to answer a question. Movement helps kinesthetic memory.</p>
+            <p>Write equation types, definitions, or calculations on flashcards.</p>
+            <p>Place cards around the room, walk to the correct card to answer a question.</p>
+            <p>Movement helps kinesthetic memory.</p>
             <p><strong>Reaction lab stations:</strong></p>
-            <p>Set up mini “stations” with different calculations: moles, yield, concentration, atom economy. Move from station to station performing calculations physically with tokens or counters.</p>
+            <p>Set up mini “stations” with different calculations: moles, yield, concentration, atom economy.</p>
+            <p>Move from station to station performing calculations physically with tokens or counters.</p>
             
             <h4>🔟 Build Your Own Lab Models</h4>
             <p><strong>DIY lab kits or simulations:</strong></p>
-            <p>Make a small-scale physical model of: Reactants → Products, Mole conversions, Gaseous reactions using balloons or containers. Repeatedly “run” reactions using your models to reinforce memory.</p>
+            <p>Make a small-scale physical model of:</p>
+            <p>Reactants → Products</p>
+            <p>Mole conversions</p>
+            <p>Gaseous reactions using balloons or containers</p>
+            <p>Repeatedly “run” reactions using your models to reinforce memory.</p>
         </CardContent>
     </Card>
 );
@@ -444,12 +471,15 @@ const LearnAsVisualDeck3 = () => (
 
             <h4>7️⃣ Sketch Your Equations</h4>
             <p><strong>Activity:</strong> For each chemical equation:</p>
-            <p>Use colored dots for atoms. Draw arrows showing electron transfer, bonds forming, or moles.</p>
+            <p>Use colored dots for atoms</p>
+            <p>Draw arrows showing electron transfer, bonds forming, or moles.</p>
             <p><strong>Tip:</strong> The act of drawing helps reinforce memory.</p>
 
             <h4>8️⃣ Mind Maps for Exam Preparation</h4>
             <p><strong>Activity:</strong> Create a mind map with main topics as branches.</p>
-            <p>Add examples (e.g., Mg + HCl → MgCl₂ + H₂). Use icons (e.g., beaker for solutions, balloon for gas volumes). Add mini flow charts inside branches for steps in calculations.</p>
+            <p>Add examples (e.g., Mg + HCl → MgCl₂ + H₂).</p>
+            <p>Use icons (e.g., beaker for solutions, balloon for gas volumes).</p>
+            <p>Add mini flow charts inside branches for steps in calculations.</p>
 
             <h4>9️⃣ Flashcards with Diagrams</h4>
             <p><strong>Activity:</strong> Make flashcards with:</p>
@@ -671,7 +701,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <BrainCircuit className="w-6 h-6" />
-                        AI Quiz
+                        Quiz
                     </CardTitle>
                     <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>

@@ -680,7 +680,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                         {isGeneratingQuiz ? (
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         ) : (
-                           "Generate AI Quiz"
+                           "Quiz Me!"
                         )}
                     </Button>
                 </CardContent>

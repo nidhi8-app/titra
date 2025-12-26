@@ -545,7 +545,7 @@ Strong vs weak ≠ concentrated vs dilute.`,
       updatedAt: new Date(),
     },
     {
-      title: 'Electrolysis',
+      title: 'Process of electrolysis',
       body: `Ionic compounds must be molten or dissolved to conduct electricity.
 Cathode (−): positive ions move here
 Anode (+): negative ions move here
@@ -599,10 +599,89 @@ Anode (oxidation):
   'deck5': [
     {
       title: 'Exothermic and Endothermic Reactions',
-      body: 'An exothermic reaction is one that transfers energy to the surroundings, usually in the form of heat, causing a temperature increase. An endothermic reaction is one that takes in energy from the surroundings, causing a temperature decrease. Bond breaking is an endothermic process, while bond making is an exothermic process.',
+      body: `Energy is conserved in chemical reactions.
+If energy is transferred to the surroundings, the products have less energy than the reactants.
+Temperature change of the surroundings shows energy transfer.
+Exothermic reactions
+Transfer energy to surroundings → temperature increases.
+Products have less energy than reactants.
+Examples:
+Combustion
+Many oxidation reactions
+Neutralisation
+Uses:
+Hand warmers
+Self-heating cans
+Endothermic reactions
+Take in energy from surroundings → temperature decreases.
+Products have more energy than reactants.
+Examples:
+Thermal decomposition
+Citric acid + sodium hydrogencarbonate
+Uses:
+Sports injury cold packs
+📌 Calculations of ΔH are not required (temperature change only).`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+      title: 'Reaction profiles',
+      body: `Reactions only occur when particles collide with enough energy.
+Activation energy = minimum energy needed for a reaction to start.
+Reaction profiles show:
+- Energy of reactants
+- Energy of products
+- Activation energy
+- Overall energy change
+Exothermic: products lower than reactants.
+Endothermic: products higher than reactants.
+Students must be able to draw and interpret simple energy level diagrams.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Energy change of reactions (HT only)',
+      body: `Energy is needed to break bonds.
+Energy is released when new bonds form.
+Overall energy change =
+Energy to break bonds − energy released forming bonds
+Exothermic:
+More energy released than absorbed
+Endothermic:
+More energy absorbed than released
+Students can calculate energy changes using bond energies.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Cells and batteries',
+      body: `Cells produce electricity from chemical reactions.
+Voltage depends on:
+- Metals used
+- Electrolyte
+Simple cell:
+Two different metals + electrolyte
+Batteries:
+Two or more cells in series
+Non-rechargeable cells:
+Reactions stop when reactants run out
+Example: alkaline batteries
+Rechargeable cells:
+Reactions can be reversed by supplying electrical energy`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Fuel cells',
+      body: `Fuel cells use a continuous supply of fuel (e.g. hydrogen) and oxygen.
+Hydrogen fuel cell overall reaction:
+Hydrogen + oxygen → water
+Fuel cells produce electricity without running out as long as fuel is supplied.
+Hydrogen fuel cells are an alternative to batteries.
+(HT only) Students must write half equations for hydrogen fuel cells.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
   ],
   'deck6': [
     {
@@ -655,6 +734,8 @@ Anode (oxidation):
     },
   ],
 };
+
+    
 
     
 

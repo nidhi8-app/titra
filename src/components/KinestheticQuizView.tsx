@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -550,6 +550,107 @@ const Deck4Quiz = () => (
     </>
 );
 
+const Deck5Quiz = () => (
+    <>
+        <h3>🔥 ROUND 1: EXOTHERMIC VS ENDOTHERMIC (MOVE & FEEL)</h3>
+        <p className="text-sm italic">Use your body to show temperature changes. Step forward for exothermic, backward for endothermic.</p>
+        <ul>
+            <li>Neutralisation of acid + alkali</li>
+            <li>Combustion of methane</li>
+            <li>Thermal decomposition of calcium carbonate</li>
+            <li>Citric acid + sodium hydrogencarbonate</li>
+            <li>Hand warmers</li>
+        </ul>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-q1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Exothermic (Forward)</li>
+                        <li>Exothermic (Forward)</li>
+                        <li>Endothermic (Backward)</li>
+                        <li>Endothermic (Backward)</li>
+                        <li>Exothermic (Forward)</li>
+                    </ul>
+                    <p className="text-xs italic mt-2">Bonus: Clap hands each time you step forward (energy released) or hug yourself when stepping back (energy absorbed).</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+        
+        <h3>📈 ROUND 2: REACTION PROFILES (ACT THE GRAPH)</h3>
+        <p className="text-sm italic">Floor = energy axis. Start low = reactants. Step up = activation energy. Step down = products.</p>
+        <ul>
+            <li>Act out an exothermic reaction: step up, then end lower</li>
+            <li>Act out an endothermic reaction: step up, then end higher</li>
+        </ul>
+        <p className="text-xs italic mt-2">Extra: Stretch arms up at the peak to represent activation energy.</p>
+        
+        <hr />
+
+        <h3>🧱 ROUND 3: BOND ENERGY (BUILD & BREAK)</h3>
+        <p className="text-sm italic">Use LEGO, paper clips, or pens.</p>
+        <ul>
+            <li>Snap pieces apart → bond breaking (energy in)</li>
+            <li>Snap pieces together → bond forming (energy out)</li>
+        </ul>
+        <p className="mt-2">Challenge: Act out a reaction where more energy is released than absorbed. Is it exothermic or endothermic?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-q3">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent><p className="text-sm">Exothermic. More red than blue.</p></AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>⚡ ROUND 4: CELLS & BATTERIES (BUILD & FLOW)</h3>
+        <p className="text-sm italic">Use two different coins, a wet paper towel, and a wire/clip.</p>
+        <ul>
+            <li>Build a simple cell and pass a ball representing electrons from metal A → metal B.</li>
+            <li>Combine 2–3 cells in series to feel larger voltage.</li>
+            <li>Act out non-rechargeable: walk until reactants are “used up.”</li>
+            <li>Act out rechargeable: reverse direction of walk to recharge.</li>
+        </ul>
+
+        <hr />
+
+        <h3>💨 ROUND 5: FUEL CELLS (CONTINUOUS MOVEMENT)</h3>
+        <p className="text-sm italic">One person = hydrogen, one person = oxygen. Walk continuously into a “cell” area.</p>
+        <ul>
+            <li>Clap when water is produced.</li>
+            <li>Act out continuous fuel supply → electricity flows.</li>
+            <li>Explain half-reactions while moving.</li>
+            <li>Compare motion of rechargeable cell vs hydrogen fuel cell.</li>
+        </ul>
+
+        <hr />
+        
+        <h3>🌡️ ROUND 6: TEMPERATURE PRACTICAL (MINI EXPERIMENT)</h3>
+        <p className="text-sm italic">Mix small safe chemicals (e.g., vinegar + baking soda, or neutralisation).</p>
+        <ul>
+            <li>Measure temperature change.</li>
+            <li>Step forward if exothermic, step back if endothermic.</li>
+            <li>Predict before measuring.</li>
+            <li>Record your movement with hands to show energy transfer.</li>
+        </ul>
+        
+        <hr />
+        
+        <h3>🏁 ROUND 7: EXAM SIMULATION</h3>
+        <p className="text-sm italic">Walk and teach a topic to a “wall” or an imaginary class. Move or gesture for each concept.</p>
+        <ul>
+            <li>🔥 Exothermic (arms out, energy released)</li>
+            <li>❄️ Endothermic (hug yourself, energy absorbed)</li>
+            <li>⛰️ Activation energy (hands high peak)</li>
+            <li>🔋 Cell flow (ball / coin movement for electrons)</li>
+            <li>🔄 Rechargeable vs continuous flow</li>
+        </ul>
+        <p className="mt-2">Teach one full reaction profile and one cell + fuel cell comparison.</p>
+    </>
+);
+
 
 const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: KinestheticQuizViewProps) => {
     
@@ -565,6 +666,9 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
         }
         if (deckId === 'deck4') {
             return <Deck4Quiz />;
+        }
+        if (deckId === 'deck5') {
+            return <Deck5Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }

@@ -9,6 +9,7 @@ import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Textarea } from './ui/textarea';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { Input } from './ui/input';
 
 type ReadingWritingQuizViewProps = {
     title: string;
@@ -586,7 +587,7 @@ const Deck4Quiz = () => (
                 <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
-                        <li>{"The pH scale measures acidity/alkalinity. Acidic is pH < 7, neutral is pH 7, alkaline is pH > 7."}</li>
+                        <li>The pH scale measures acidity/alkalinity. Acidic is pH &lt; 7, neutral is pH 7, alkaline is pH &gt; 7.</li>
                         <li>A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</li>
                     </ul>
                 </AccordionContent>
@@ -640,6 +641,134 @@ const Deck4Quiz = () => (
     </>
 );
 
+const Deck5Quiz = () => (
+    <>
+        <h3>🟦 SECTION A: DEFINITIONS (1 mark each)</h3>
+        <p>Define an exothermic reaction.</p><Textarea />
+        <p className="mt-2">Define an endothermic reaction.</p><Textarea />
+        <p className="mt-2">What is activation energy?</p><Textarea />
+        <p className="mt-2">Define a fuel cell.</p><Textarea />
+        <p className="mt-2">Define a rechargeable cell.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>A reaction that transfers energy to the surroundings, usually causing a temperature increase.</li>
+                        <li>A reaction that takes in energy from the surroundings, usually causing a temperature decrease.</li>
+                        <li>The minimum amount of energy that particles must have to react.</li>
+                        <li>An electrical cell that's supplied with a fuel and oxygen, and uses energy from the reaction between them to produce electrical energy efficiently.</li>
+                        <li>A cell where the chemical reactions can be reversed by applying an external electrical current.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        
+        <hr />
+
+        <h3>🟩 SECTION B: Exothermic and Endothermic (2–3 marks)</h3>
+        <p>Give two everyday examples of exothermic reactions.</p><Textarea />
+        <p className="mt-2">Give two examples of endothermic reactions.</p><Textarea />
+        <p className="mt-2">Explain why the temperature increases in an exothermic reaction.</p><Textarea />
+        <p className="mt-2">Explain why the temperature decreases in an endothermic reaction.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-b1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Combustion (burning fuels), neutralisation reactions, hand warmers.</li>
+                        <li>Thermal decomposition, reaction of citric acid and sodium hydrogencarbonate, sports injury packs.</li>
+                        <li>Energy is transferred from the reaction to the surroundings.</li>
+                        <li>Energy is taken in by the reaction from the surroundings.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+        
+        <h3>🟨 SECTION C: Reaction Profiles (3–4 marks)</h3>
+        <p>Draw a simple reaction profile for an exothermic and an endothermic reaction. Label: reactants, products, activation energy, overall energy change.</p><Textarea className="min-h-[100px]" placeholder="Describe your drawing or key features." />
+        <p className="mt-2">Explain how you can tell if a reaction is exothermic or endothermic from the profile.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-c1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Check your diagrams against standard reaction profiles. Ensure all labels are correct.</li>
+                        <li>In an exothermic profile, the products are at a lower energy level than the reactants. In an endothermic profile, the products are at a higher energy level.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+        
+        <h3>🟥 SECTION D: Bond Energy (HT only) (3–4 marks)</h3>
+        <p>In a chemical reaction: a) Explain what happens when bonds break. b) Explain what happens when bonds form.</p><Textarea />
+        <p className="mt-2">State the energy change for an exothermic reaction in terms of bond breaking/forming.</p><Textarea />
+        <p className="mt-2">State the energy change for an endothermic reaction in terms of bond breaking/forming.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-d1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <ul className="list-disc pl-6 text-sm">
+                        <li>a) Energy must be supplied to break existing bonds. b) Energy is released when new bonds are formed.</li>
+                        <li>The energy released from forming new bonds is greater than the energy used to break existing bonds.</li>
+                        <li>The energy used to break existing bonds is greater than the energy released from forming new bonds.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🟪 SECTION E: Cells and Batteries (3–4 marks)</h3>
+        <p>Explain how a simple cell produces electricity.</p><Textarea />
+        <p className="mt-2">Explain the difference between non-rechargeable and rechargeable cells.</p><Textarea />
+        <p className="mt-2">Why do batteries in series produce a higher voltage than a single cell?</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-e1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Two different metals are placed in an electrolyte, creating a potential difference that drives a current.</li>
+                        <li>In non-rechargeable cells, the chemical reactions stop when one reactant is used up. In rechargeable cells, the reactions can be reversed by an external current.</li>
+                        <li>The total voltage is the sum of the individual voltages of each cell in the series.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🟧 SECTION F: Fuel Cells (3–5 marks)</h3>
+        <p>Describe how a hydrogen fuel cell works. Include: Reactants and products, Electrode reactions (HT: half-equations), Flow of electrons.</p><Textarea />
+        <p className="mt-2">Compare the advantages of hydrogen fuel cells to rechargeable batteries.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-f1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <ul className="list-disc pl-6 text-sm">
+                        <li>Hydrogen and oxygen are supplied. Hydrogen is oxidised at the anode (H₂ → 2H⁺ + 2e⁻), and electrons flow through an external circuit. Oxygen is reduced at the cathode, reacting with H⁺ ions to form water (O₂ + 4H⁺ + 4e⁻ → 2H₂O). The only product is water.</li>
+                        <li>Advantages of fuel cells: no pollutants produced (just water), can run continuously with fuel supply. Disadvantages: hydrogen is difficult to store safely. Batteries can be more compact but store less energy and can contain toxic chemicals.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🟫 SECTION G: EXAM-TYPE QUESTIONS (6 marks)</h3>
+        <p>“Explain why the reaction between hydrochloric acid and sodium hydroxide is exothermic. Draw a reaction profile to support your answer.”</p><Textarea className="min-h-[100px]" />
+        <p className="mt-2">“Compare a rechargeable cell and a hydrogen fuel cell. Include how electricity is produced, whether the reaction can be reversed, and practical advantages.”</p><Textarea className="min-h-[100px]" />
+        <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <h4 className="font-bold flex items-center gap-2">✅ Self-check writing prompts</h4>
+            <p className="text-sm">Have I included keywords in every answer? Have I explained why, not just what? Have I written examples for every reaction type? Have I labelled all diagrams clearly?</p>
+        </div>
+    </>
+);
+
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
@@ -655,6 +784,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck4') {
             return <Deck4Quiz />;
+        }
+        if (deckId === 'deck5') {
+            return <Deck5Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }
@@ -698,5 +830,3 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
 };
 
 export default ReadingWritingQuizView;
-
-    

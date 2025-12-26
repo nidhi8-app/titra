@@ -22,6 +22,9 @@ type VisualQuizViewProps = {
 const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c8', 'c9'].includes(img.id));
 const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8', 'c9', 'c10', 'c11', 'c12'].includes(img.id));
 const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1', 'c2', 'c13', 'c16'].includes(img.id));
+const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c6', 'c7', 'c18', 'c20'].includes(img.id));
+const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
+
 
 
 const Deck1Quiz = () => (
@@ -408,7 +411,7 @@ const Deck3Quiz = () => (
 
 const Deck4Quiz = () => (
     <>
-        <h3 className="flex items-center gap-2">🟦 ROUND 1: REACTIVITY SERIES (DRAW & LABEL)</h3>
+        <h3>🟦 ROUND 1: REACTIVITY SERIES (DRAW & LABEL)</h3>
         <p>Draw a vertical ladder. Place these metals in the correct order (top → bottom): Copper, Magnesium, Potassium, Iron. Shade: 🔴 metals that react with water, 🟠 metals that react with acid only.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q1">
@@ -421,7 +424,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟩 ROUND 2: DISPLACEMENT (ARROWS QUIZ)</h3>
+        <h3>🟩 ROUND 2: DISPLACEMENT (ARROWS QUIZ)</h3>
         <p>Draw arrows to show what happens when: Zinc + Copper sulfate. Circle the metal that moves, cross out the metal that is displaced. Next to the diagram, write: “More reactive → ______ reactive”</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q2">
@@ -434,7 +437,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟨 ROUND 3: OXIDATION & REDUCTION (COLOUR CODE)</h3>
+        <h3>🟨 ROUND 3: OXIDATION & REDUCTION (COLOUR CODE)</h3>
         <p>Draw two boxes: Box A: Metal + oxygen, Box B: Metal oxide. Use: 🔴 arrows for oxygen, 🔵 arrows for electrons. Label: Oxidation, Reduction.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q3">
@@ -447,7 +450,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟥 ROUND 4: EXTRACTION FLOWCHART</h3>
+        <h3>🟥 ROUND 4: EXTRACTION FLOWCHART</h3>
         <p>Complete this flowchart in your book: Is the metal more reactive than carbon? YES → _________, NO → _________. Add: Aluminium → (which path?), Iron → (which path?)</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q4">
@@ -460,7 +463,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟪 ROUND 5: ACIDS & SALTS (PICTURE EQUATIONS)</h3>
+        <h3>🟪 ROUND 5: ACIDS & SALTS (PICTURE EQUATIONS)</h3>
         <p>Draw three reaction maps using arrows and symbols: Acid + Metal → ?, Acid + Alkali → ?, Acid + Carbonate → ?. 👉 Draw bubbles for gases.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q5">
@@ -473,7 +476,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟧 ROUND 6: pH SCALE (COLOUR BAR)</h3>
+        <h3>🟧 ROUND 6: pH SCALE (COLOUR BAR)</h3>
         <p>Draw a long bar from 0 → 14. Colour: Red = acid, Green = neutral, Purple = alkali. Place: Stomach acid, Water, Sodium hydroxide.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q6">
@@ -486,7 +489,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟫 ROUND 7: ELECTROLYSIS DIRECTION TEST</h3>
+        <h3>🟫 ROUND 7: ELECTROLYSIS DIRECTION TEST</h3>
         <p>Draw a cell with: Anode (+), Cathode (−). Draw arrows showing: Positive ions movement, Negative ions movement. Label: Reduction, Oxidation.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q7">
@@ -499,7 +502,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟨 ROUND 8: PRODUCTS AT ELECTRODES (MATCHING)</h3>
+        <h3>🟨 ROUND 8: PRODUCTS AT ELECTRODES (MATCHING)</h3>
         <p>Draw two columns: Cathode (−) | Anode (+). Place: Hydrogen, Oxygen, Chlorine (Assume aqueous solution with halides).</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q8">
@@ -512,7 +515,7 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🟥 ROUND 9: HALF-EQUATION BOXES (HT)</h3>
+        <h3>🟥 ROUND 9: HALF-EQUATION BOXES (HT)</h3>
         <p>Draw two large boxes: Cathode, Anode. Fill in missing products and electrons for: 2H⁺ + 2e⁻ → ?, and 4OH⁻ → ?.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d4-q9">
@@ -525,8 +528,70 @@ const Deck4Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🏁 FINAL VISUAL MEMORY CHALLENGE</h3>
+        <h3>🏁 FINAL VISUAL MEMORY CHALLENGE</h3>
         <p>Close your notes. From memory, redraw ONE full page showing: Reactivity ladder, Extraction decision, Electrolysis diagram. If you can see the page in your head, you’re exam-ready.</p>
+    </>
+);
+
+const Deck5Quiz = () => (
+    <>
+        <h3>🟦 ROUND 1: EXOTHERMIC VS ENDOTHERMIC</h3>
+        <p><strong>Task:</strong> Draw two boxes side by side.</p>
+        <ul>
+            <li><strong>Left box = Exothermic:</strong> Draw arrows going out (red) to surroundings, thermometer showing temperature ↑, and 1–2 examples inside.</li>
+            <li><strong>Right box = Endothermic:</strong> Draw arrows going in (blue) from surroundings, thermometer showing temperature ↓, and 1–2 examples inside.</li>
+        </ul>
+
+        <hr />
+
+        <h3>🟩 ROUND 2: REACTION PROFILES</h3>
+        <p><strong>Task:</strong> Draw two energy level diagrams.</p>
+        <ul>
+            <li><strong>Exothermic reaction:</strong> Reactants → peak → products (products lower). Colour the peak for activation energy.</li>
+            <li><strong>Endothermic reaction:</strong> Same diagram but products higher than reactants.</li>
+        </ul>
+        <p className="text-xs italic mt-2">Extra: Add a smiley face for exothermic, sad face for endothermic for memory cue.</p>
+
+        <hr />
+
+        <h3>🟨 ROUND 3: BOND ENERGY (HT)</h3>
+        <p><strong>Task:</strong> Make a simple diagram.</p>
+        <ul>
+            <li>Show bonds breaking → arrows in (blue, energy absorbed).</li>
+            <li>Show bonds forming → arrows out (red, energy released).</li>
+        </ul>
+        <p className="mt-2">Use different arrow lengths to indicate exothermic vs endothermic reactions.</p>
+        
+        <hr />
+
+        <h3>🟥 ROUND 4: CELLS & BATTERIES</h3>
+        <p><strong>Task:</strong> Draw labelled diagrams.</p>
+        <ul>
+            <li><strong>Simple cell:</strong> Two metals + electrolyte, arrow for electron flow.</li>
+            <li><strong>Battery:</strong> 2–3 cells in series, show larger voltage.</li>
+            <li><strong>Rechargeable vs non-rechargeable:</strong> Single direction arrow for non-rechargeable (➡️), circular arrows for rechargeable (🔄).</li>
+        </ul>
+
+        <hr />
+        
+        <h3>🟪 ROUND 5: FUEL CELLS</h3>
+        <p><strong>Task:</strong> Draw hydrogen fuel cell diagram.</p>
+        <ul>
+            <li>Show: Hydrogen enters → electrons flow → oxygen enters → water leaves.</li>
+            <li>Use colours for hydrogen, oxygen, water.</li>
+            <li>(HT only) Add half-equations in boxes at electrodes.</li>
+        </ul>
+
+        <hr />
+        
+        <h3>🟧 ROUND 6: COMBINED SUMMARY POSTER</h3>
+        <p><strong>Task:</strong> Make a one-page visual summary including diagrams for all main topics: Exo/Endo, Reaction Profiles, Bond Energy, Simple/Rechargeable/Fuel Cells.</p>
+        <p className="text-xs italic mt-2">Tip: Use colour coding consistently (Red for energy out, Blue for energy in).</p>
+
+        <hr />
+
+        <h3>🟫 ROUND 7: VISUAL MEMORY CHALLENGE</h3>
+        <p>Close your notes. Redraw all diagrams from memory on a blank sheet. Check colours, arrows, labels, and shapes. Repeat until you can reproduce the full page without looking.</p>
     </>
 );
 
@@ -535,7 +600,11 @@ const Deck4Quiz = () => (
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
 
-    const diagrams = deckId === 'deck1' ? deck1Diagrams : deckId === 'deck2' ? deck2Diagrams : deck3Diagrams;
+    const diagrams = deckId === 'deck1' ? deck1Diagrams :
+                     deckId === 'deck2' ? deck2Diagrams :
+                     deckId === 'deck3' ? deck3Diagrams :
+                     deckId === 'deck4' ? deck4Diagrams :
+                     deckId === 'deck5' ? deck5Diagrams : [];
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -549,6 +618,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         }
         if (deckId === 'deck4') {
             return <Deck4Quiz />;
+        }
+        if (deckId === 'deck5') {
+            return <Deck5Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }
@@ -614,5 +686,3 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
-
-    

@@ -115,9 +115,9 @@ const Deck1Quiz = () => (
         <Table>
             <TableHeader><TableRow><TableHead>Particle</TableHead><TableHead>Charge</TableHead><TableHead>Relative mass</TableHead></TableRow></TableHeader>
             <TableBody>
-                <TableRow><TableCell>Proton</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Neutron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Electron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                <TableRow><TableCell>Proton</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Neutron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Electron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
             </TableBody>
         </Table>
         <p className="mt-4">Explain why atoms have no overall electrical charge.</p>
@@ -269,9 +269,9 @@ const Deck2Quiz = () => (
         <Table>
             <TableHeader><TableRow><TableHead>Compound type</TableHead><TableHead>Bond type</TableHead><TableHead>Conducts?</TableHead><TableHead>Melting point</TableHead></TableRow></TableHeader>
             <TableBody>
-                <TableRow><TableCell>Ionic compound</TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Small molecule</TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Metal</TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                <TableRow><TableCell>Ionic compound</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Small molecule</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Metal</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
             </TableBody>
         </Table>
         <Accordion type="single" collapsible className="w-full">
@@ -586,7 +586,7 @@ const Deck4Quiz = () => (
                 <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
-                        <li>{'The pH scale measures acidity/alkalinity. Acidic is pH < 7, neutral is pH 7, alkaline is pH > 7.'}</li>
+                        <li>{"The pH scale measures acidity/alkalinity. Acidic is pH < 7, neutral is pH 7, alkaline is pH > 7."}</li>
                         <li>A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</li>
                     </ul>
                 </AccordionContent>
@@ -698,3 +698,5 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
 };
 
 export default ReadingWritingQuizView;
+
+    

@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { DiagramsDialog } from './DiagramsDialog';
+import { Input } from './ui/input';
 
 type VisualQuizViewProps = {
     title: string;
@@ -86,9 +87,9 @@ const Deck1Quiz = () => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow><TableCell>Proton</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Neutron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Electron</TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                <TableRow><TableCell>Proton</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Neutron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Electron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
             </TableBody>
         </Table>
          <Accordion type="single" collapsible className="w-full">
@@ -274,8 +275,8 @@ const Deck2Quiz = () => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow><TableCell>Conducts when molten?</TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
-                <TableRow><TableCell>Melting point</TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell></TableRow>
+                <TableRow><TableCell>Conducts when molten?</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
+                <TableRow><TableCell>Melting point</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow>
             </TableBody>
         </Table>
         <Accordion type="single" collapsible className="w-full">
@@ -517,7 +518,7 @@ const Deck4Quiz = () => (
             <AccordionItem value="d4-q9">
                 <AccordionTrigger>Check Answer</AccordionTrigger>
                 <AccordionContent>
-                    <p className="text-sm">Cathode: 2H⁺ + 2e⁻ → H₂. Anode: 4OH⁻ → O₂ + 2H₂O + 4e⁻.</p>
+                    <p className="text-sm">Cathode: 2H⁺ + 2e⁻ → H₂<br />Anode: 4OH⁻ → O₂ + 2H₂O + 4e⁻.</p>
                 </AccordionContent>
             </AccordionItem>
         </Accordion>
@@ -613,3 +614,5 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
+
+    

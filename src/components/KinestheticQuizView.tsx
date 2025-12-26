@@ -426,6 +426,130 @@ const Deck3Quiz = () => (
     </>
 );
 
+const Deck4Quiz = () => (
+    <>
+        <h3>🟩 ROUND 1: REACTIVITY SERIES (MOVE TO ANSWER)</h3>
+        <p className="text-sm italic">Stand up. If the statement is TRUE, step forward. If FALSE, step back.</p>
+        <ul>
+            <li>Copper reacts vigorously with cold water.</li>
+            <li>Magnesium is more reactive than zinc.</li>
+            <li>A more reactive metal can displace a less reactive metal.</li>
+            <li>Gold is found naturally as a compound.</li>
+            <li>Metals form positive ions when they react.</li>
+        </ul>
+        <p>👉 Say WHY out loud after each move.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-item-1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li><strong>False:</strong> Copper is unreactive with water.</li>
+                        <li><strong>True:</strong> Magnesium is higher in the reactivity series.</li>
+                        <li><strong>True:</strong> This is the definition of a displacement reaction.</li>
+                        <li><strong>False:</strong> Gold is very unreactive and found native (as the element).</li>
+                        <li><strong>True:</strong> They lose electrons to become positive ions.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🟦 ROUND 2: OXIDATION & REDUCTION (HAND ACTIONS)</h3>
+        <p className="text-sm italic">Hold an imaginary ball = oxygen. Hold imaginary coins = electrons.</p>
+        <p>A metal gains oxygen → 👉 Move the ball towards your chest. Say: “This is <strong>Oxidation</strong>”</p>
+        <p>A species loses electrons → 👉 Drop coins to the floor. Say: “This is <strong>Oxidation</strong>”</p>
+        <p>In a displacement reaction, the more reactive metal is: 👉 Give away coins. It is <strong>oxidised</strong> (loses electrons).</p>
+        
+        <hr />
+
+        <h3>🟨 ROUND 3: EXTRACTION DECISION GAME (STEP LEFT / RIGHT)</h3>
+        <p className="text-sm italic">Step LEFT for carbon reduction. Step RIGHT for electrolysis.</p>
+        <ul>
+            <li>Iron</li>
+            <li>Aluminium</li>
+            <li>Zinc</li>
+            <li>Potassium</li>
+        </ul>
+        <p>After each step, say: “This metal is extracted by ______ because ______”</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-item-3">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li><strong>Iron:</strong> Step LEFT. Extracted by carbon reduction because it is less reactive than carbon.</li>
+                        <li><strong>Aluminium:</strong> Step RIGHT. Extracted by electrolysis because it is more reactive than carbon.</li>
+                        <li><strong>Zinc:</strong> Step LEFT. Extracted by carbon reduction because it is less reactive than carbon.</li>
+                        <li><strong>Potassium:</strong> Step RIGHT. Extracted by electrolysis because it is more reactive than carbon.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+        
+        <h3>🟥 ROUND 4: ACIDS & METALS (ACT IT OUT)</h3>
+        <p className="text-sm italic">One hand = acid, other hand = metal.</p>
+        <p>Clap your hands together → 👉 Blow air out of your mouth. The gas released is <strong>Hydrogen</strong>.</p>
+        <p>Shout the word equation while clapping: Acid + metal → <strong>Salt</strong> + <strong>Hydrogen</strong></p>
+        <p>If the metal is copper, do you: 👉 Stop. Explain why: Copper is less reactive than hydrogen and does not react with acids.</p>
+        
+        <hr />
+        
+        <h3>🟪 ROUND 5: NEUTRALISATION BUILD (USE OBJECTS)</h3>
+        <p className="text-sm italic">Use pens, coins, or paper to represent ions.</p>
+        <p>Build sodium chloride using ions. 👉 Say which acid made it: <strong>Hydrochloric acid</strong>.</p>
+        <p>Build calcium sulfate. 👉 Say the acid and the metal/base used: <strong>Sulfuric acid</strong> and <strong>Calcium</strong> (or calcium oxide/hydroxide/carbonate).</p>
+        <p>Acid + carbonate → 👉 Clap → stomp → blow air. Name the three products: <strong>Salt, Water, Carbon Dioxide</strong>.</p>
+        
+        <hr />
+
+        <h3>🟧 ROUND 6: pH SCALE WALK</h3>
+        <p className="text-sm italic">Imagine a line from 0 to 14.</p>
+        <p>Walk LEFT and crouch = strong acid</p>
+        <p>Stand in the MIDDLE = neutral</p>
+        <p>Walk RIGHT and stretch tall = strong alkali</p>
+        <p>Which side has more H⁺ ions? The <strong>left</strong> (acidic) side.</p>
+        <p>What happens to H⁺ when pH drops by 1? It <strong>increases by 10 times</strong>.</p>
+
+        <hr />
+        
+        <h3>🟫 ROUND 7: ELECTROLYSIS – BE THE ION</h3>
+        <p className="text-sm italic">Write + on one hand, – on the other.</p>
+        <p>Positive ion → walk to which electrode? The <strong>cathode</strong> (which is <strong>negative</strong>).</p>
+        <p>Negative ion → walk to which electrode? The <strong>anode</strong> (which is <strong>positive</strong>).</p>
+        <p>At the cathode, do ions: 👉 GAIN or LOSE electrons? <strong>Gain</strong> (take coins). This is reduction.</p>
+
+        <hr />
+        
+        <h3>🟨 ROUND 8: PRODUCTS CHALLENGE (POINT FAST)</h3>
+        <p className="text-sm italic">Point DOWN for cathode. Point UP for anode.</p>
+        <ul>
+            <li>Hydrogen in aqueous electrolysis (Point DOWN)</li>
+            <li>Oxygen in aqueous electrolysis (Point UP)</li>
+            <li>Bromine from molten lead bromide (Point UP)</li>
+        </ul>
+        <p>Say the half-equation while pointing (HT).</p>
+        
+        <hr />
+        
+        <h3>🟥 ROUND 9: QUICK-FIRE BODY SIGNALS</h3>
+        <p className="text-sm italic">Thumbs 👍 = TRUE, Thumbs 👎 = FALSE</p>
+        <ul>
+            <li>Reduction is loss of oxygen (👍)</li>
+            <li>Electrolysis uses electricity to break compounds (👍)</li>
+            <li>Strong acids partially ionise (👎)</li>
+            <li>pH 7 is alkaline (👎)</li>
+            <li>Aluminium oxide is molten during electrolysis (👍)</li>
+        </ul>
+
+        <hr />
+        
+        <h3>🏁 FINAL CHALLENGE: TEACH THE WALL</h3>
+        <p>Walk to a wall and teach it (out loud): One reaction, One equation, One electrolysis rule. If you can teach it without notes → you know it.</p>
+    </>
+);
+
 
 const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: KinestheticQuizViewProps) => {
     
@@ -438,6 +562,9 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
         }
         if (deckId === 'deck3') {
             return <Deck3Quiz />;
+        }
+        if (deckId === 'deck4') {
+            return <Deck4Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }
@@ -476,5 +603,3 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
 };
 
 export default KinestheticQuizView;
-
-    

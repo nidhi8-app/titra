@@ -643,7 +643,7 @@ const Deck4Quiz = () => (
 
 const Deck5Quiz = () => (
     <>
-        <h3>🟦 SECTION A: DEFINITIONS (1 mark each)</h3>
+        <h3 className="flex items-center gap-2">🟦 SECTION A: DEFINITIONS (1 mark each)</h3>
         <p>Define an exothermic reaction.</p><Textarea />
         <p className="mt-2">Define an endothermic reaction.</p><Textarea />
         <p className="mt-2">What is activation energy?</p><Textarea />
@@ -666,7 +666,7 @@ const Deck5Quiz = () => (
         
         <hr />
 
-        <h3>🟩 SECTION B: Exothermic and Endothermic (2–3 marks)</h3>
+        <h3 className="flex items-center gap-2">🟩 SECTION B: Exothermic and Endothermic (2–3 marks)</h3>
         <p>Give two everyday examples of exothermic reactions.</p><Textarea />
         <p className="mt-2">Give two examples of endothermic reactions.</p><Textarea />
         <p className="mt-2">Explain why the temperature increases in an exothermic reaction.</p><Textarea />
@@ -677,7 +677,7 @@ const Deck5Quiz = () => (
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
                         <li>Combustion (burning fuels), neutralisation reactions, hand warmers.</li>
-                        <li>Thermal decomposition, reaction of citric acid and sodium hydrogencarbonate, sports injury packs.</li>
+                        <li>Thermal decomposition, reaction of citric acid and sodium hydrogencarbonate, sports injury cold packs.</li>
                         <li>Energy is transferred from the reaction to the surroundings.</li>
                         <li>Energy is taken in by the reaction from the surroundings.</li>
                     </ul>
@@ -687,8 +687,8 @@ const Deck5Quiz = () => (
 
         <hr />
         
-        <h3>🟨 SECTION C: Reaction Profiles (3–4 marks)</h3>
-        <p>Draw a simple reaction profile for an exothermic and an endothermic reaction. Label: reactants, products, activation energy, overall energy change.</p><Textarea className="min-h-[100px]" placeholder="Describe your drawing or key features." />
+        <h3 className="flex items-center gap-2">🟨 SECTION C: Reaction Profiles (3–4 marks)</h3>
+        <p>Draw a simple reaction profile for: One exothermic reaction, One endothermic reaction. Label: reactants, products, activation energy, overall energy change.</p><Textarea className="min-h-[100px]" placeholder="Describe your drawing or key features." />
         <p className="mt-2">Explain how you can tell if a reaction is exothermic or endothermic from the profile.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d5-c1">
@@ -704,7 +704,7 @@ const Deck5Quiz = () => (
 
         <hr />
         
-        <h3>🟥 SECTION D: Bond Energy (HT only) (3–4 marks)</h3>
+        <h3 className="flex items-center gap-2">🟥 SECTION D: Bond Energy (HT only) (3–4 marks)</h3>
         <p>In a chemical reaction: a) Explain what happens when bonds break. b) Explain what happens when bonds form.</p><Textarea />
         <p className="mt-2">State the energy change for an exothermic reaction in terms of bond breaking/forming.</p><Textarea />
         <p className="mt-2">State the energy change for an endothermic reaction in terms of bond breaking/forming.</p><Textarea />
@@ -723,7 +723,7 @@ const Deck5Quiz = () => (
 
         <hr />
 
-        <h3>🟪 SECTION E: Cells and Batteries (3–4 marks)</h3>
+        <h3 className="flex items-center gap-2">🟪 SECTION E: Cells and Batteries (3–4 marks)</h3>
         <p>Explain how a simple cell produces electricity.</p><Textarea />
         <p className="mt-2">Explain the difference between non-rechargeable and rechargeable cells.</p><Textarea />
         <p className="mt-2">Why do batteries in series produce a higher voltage than a single cell?</p><Textarea />
@@ -742,7 +742,7 @@ const Deck5Quiz = () => (
 
         <hr />
 
-        <h3>🟧 SECTION F: Fuel Cells (3–5 marks)</h3>
+        <h3 className="flex items-center gap-2">🟧 SECTION F: Fuel Cells (3–5 marks)</h3>
         <p>Describe how a hydrogen fuel cell works. Include: Reactants and products, Electrode reactions (HT: half-equations), Flow of electrons.</p><Textarea />
         <p className="mt-2">Compare the advantages of hydrogen fuel cells to rechargeable batteries.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
@@ -759,7 +759,7 @@ const Deck5Quiz = () => (
 
         <hr />
 
-        <h3>🟫 SECTION G: EXAM-TYPE QUESTIONS (6 marks)</h3>
+        <h3 className="flex items-center gap-2">🟫 SECTION G: EXAM-TYPE QUESTIONS (6 marks)</h3>
         <p>“Explain why the reaction between hydrochloric acid and sodium hydroxide is exothermic. Draw a reaction profile to support your answer.”</p><Textarea className="min-h-[100px]" />
         <p className="mt-2">“Compare a rechargeable cell and a hydrogen fuel cell. Include how electricity is produced, whether the reaction can be reversed, and practical advantages.”</p><Textarea className="min-h-[100px]" />
         <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">

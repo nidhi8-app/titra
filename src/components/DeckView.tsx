@@ -590,6 +590,125 @@ const LearnAsVisualDeck4 = () => (
     </Card>
 );
 
+const LearnAsKinestheticDeck5 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master "Energy changes" with hands-on activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Exothermic vs Endothermic — “Feel the energy”</h4>
+            <p><strong>🔥 Hot–Cold hand test:</strong> Rub your hands together quickly → feel heat. Say: “Energy released → exothermic”. Hold a cold bottle or ice → feel cold. Say: “Energy taken in → endothermic”. 👉 Physical sensation locks in the concept.</p>
+            <p><strong>🎭 Body temperature acting:</strong> Exothermic: raise arms, step forward, say “temperature rises”. Endothermic: crouch, hug yourself, say “temperature falls”. Repeat every time you revise.</p>
+            
+            <h4>2️⃣ Energy conservation — “Pass the energy”</h4>
+            <p><strong>⚡ Energy transfer game:</strong> Use a ball = energy. Pass ball from “reaction” to “surroundings”. Say: “Energy is conserved — it’s transferred, not lost”. 👉 Helps avoid exam misconceptions.</p>
+
+            <h4>3️⃣ Reaction profiles — “Be the graph”</h4>
+            <p><strong>📈 Walk the energy diagram:</strong> Floor = energy axis. Start low = reactants. Walk up a chair/step = activation energy. Walk down: End lower → exothermic, End higher → endothermic. Say out loud: “This peak is the activation energy”.</p>
+
+            <h4>4️⃣ Activation energy — “Barrier challenge”</h4>
+            <p><strong>🚧 Push-to-start demo:</strong> Try pushing a door lightly → no movement. Push harder → door opens. Say: “Reactions need a minimum energy to start”. 👉 This mirrors activation energy perfectly.</p>
+
+            <h4>5️⃣ Bond breaking & forming (HT) — “Build and snap”</h4>
+            <p><strong>🧱 Bond model:</strong> Use LEGO, pens, or paper clips. Pull apart = breaking bonds (energy in). Snap together = forming bonds (energy out). Say: “Breaking bonds needs energy”, “Making bonds releases energy”.</p>
+
+            <h4>6️⃣ Practical reactions — “Do the chemistry”</h4>
+            <p><strong>🌡 Mini temperature practical:</strong> Mix: Vinegar + baking soda (endothermic), Neutralisation (exothermic). Measure temperature change. 👉 Hands-on = exam confidence.</p>
+
+            <h4>7️⃣ Cells & batteries — “Build a cell”</h4>
+            <p><strong>🔋 Paper cell model:</strong> Two different coins = metals. Paper towel + salt water = electrolyte. Connect with wire. Say: “Different metals + electrolyte produce voltage”.</p>
+            <p><strong>🔄 Rechargeable vs non-rechargeable acting:</strong> Walk forward = reaction happening. Hit a wall = non-rechargeable (reactants used up). Turn around and walk back = rechargeable (reaction reversed).</p>
+
+            <h4>8️⃣ Fuel cells — “Flow of fuel”</h4>
+            <p><strong>🚶 Continuous movement model:</strong> One person = hydrogen, one person = oxygen. Walk continuously into a “cell” area. Clap when water is produced. Say: “Fuel supplied continuously → electricity keeps flowing”.</p>
+
+            <h4>9️⃣ Half-equations (HT) — “Electron passing”</h4>
+            <p><strong>⚡ Electron transfer game:</strong> Coins = electrons. Oxidation = give away coins. Reduction = receive coins. At hydrogen fuel cell: Hydrogen gives electrons, Oxygen gains electrons.</p>
+
+            <h4>🔟 Memory-locking routines (VERY effective)</h4>
+            <p><strong>🔁 5-minute movement recap:</strong> Each day: Walk reaction profile, Act exo vs endo, Pass energy ball, Build a cell. 👉 Short, physical repetition = long-term memory.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsReadingWritingDeck5 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master "Energy changes" with structured writing and definitions.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Turn the spec into your own notes (foundation step)</h4>
+            <p>Take each heading and rewrite it in your own words in short paragraphs. Example: An exothermic reaction releases energy to the surroundings, causing the temperature to increase. The products have less energy than the reactants. 👉 Rewriting = understanding.</p>
+
+            <h4>2️⃣ Learn by definitions (non-negotiable)</h4>
+            <p>Create a definitions page and memorise: Exothermic reaction, Endothermic reaction, Activation energy, Reaction profile, Electrolyte, Rechargeable cell. Rewrite each definition from memory daily.</p>
+
+            <h4>3️⃣ Use “blurting” (top-grade technique)</h4>
+            <p>Read one subtopic (e.g. reaction profiles). Close notes. Write everything you remember. Check and correct in a different colour. Do this for: Exo vs endo, Reaction profiles, Cells & batteries.</p>
+
+            <h4>4️⃣ Write perfect exam paragraphs</h4>
+            <p>For each big idea, write one model answer you could reproduce in an exam. Example (reaction profiles): A reaction profile shows the energy changes during a reaction. The peak represents the activation energy, which is the minimum energy needed for a reaction to occur. Memorise these paragraphs.</p>
+
+            <h4>5️⃣ Tables instead of long text</h4>
+            <p>Convert notes into comparison tables. Exothermic vs Endothermic: Energy released/absorbed, Temperature increases/decreases, Products lower/higher energy. Tables improve recall and reduce errors.</p>
+
+            <h4>6️⃣ Sentence starters (exam gold)</h4>
+            <p>Practise using: “Energy is conserved because…”, “This reaction is exothermic as…”, “The activation energy is…”. Rewrite answers using these starters.</p>
+
+            <h4>7️⃣ Reaction profiles – written explanation</h4>
+            <p>Draw the graph, then write a short explanation underneath: Where reactants are, Where products are, What the peak represents. Writing + labelling strengthens memory.</p>
+
+            <h4>8️⃣ Bond energy calculations (HT)</h4>
+            <p>Write out the steps every time: Bonds broken → energy in, Bonds formed → energy out, Calculate difference. Repeat until the method is automatic.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsVisualDeck5 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master "Energy changes" with diagrams, arrows, and color-coding.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Exothermic vs Endothermic — see the energy move</h4>
+            <p>Draw two big boxes. Use arrows: 🔴 Outward arrows = exothermic (energy released), 🔵 Inward arrows = endothermic (energy absorbed). Add a thermometer icon showing temperature up or down. 👉 In the exam, picture the arrows.</p>
+
+            <h4>2️⃣ Memory colour code (use this everywhere)</h4>
+            <p>🔴 Red = energy released, 🔵 Blue = energy absorbed, 🟢 Green = reactants, 🟣 Purple = products. Use the same colours in all diagrams to lock memory.</p>
+
+            <h4>3️⃣ Reaction profiles — picture the hill</h4>
+            <p>Draw profiles for exothermic (products lower) and endothermic (products higher). Colour the peak for activation energy. Draw a smiley face for exothermic and a sad face for endothermic as a memory cue.</p>
+
+            <h4>4️⃣ Activation energy — visual barrier</h4>
+            <p>Draw a wall or hill between reactants and products. Label it: Activation Energy. A bigger hill means a harder reaction to start. 👉 One image = full definition.</p>
+
+            <h4>5️⃣ Bond breaking & forming (HT) — arrows tell the story</h4>
+            <p>Draw: Breaking bonds → 🔵 arrow in, Forming bonds → 🔴 arrow out. More red than blue = exothermic. More blue than red = endothermic.</p>
+
+            <h4>6️⃣ Cells & batteries — simple block diagrams</h4>
+            <p>Draw diagrams for: a simple cell (two metals, electrolyte, electron flow arrow), a battery (multiple cells in series showing larger voltage), and use ➡️ (one direction) for non-rechargeable vs. 🔄 (circular) for rechargeable.</p>
+
+            <h4>7️⃣ Fuel cells — continuous flow diagram</h4>
+            <p>Draw: Hydrogen entering → electrons flowing → oxygen entering → water leaving. Colour-code H₂, O₂, and H₂O. (HT) Add half-equations in boxes at electrodes.</p>
+
+            <h4>8️⃣ One-page visual summaries (VERY powerful)</h4>
+            <p>Create summary pages with NO paragraphs, only diagrams, arrows, symbols, and labels. Make pages for: 1. Exothermic vs endothermic, 2. Reaction profiles & activation energy, 3. Cells & fuel cells. If you can see the page in your head, you’ve learned it.</p>
+        </CardContent>
+    </Card>
+);
+
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
@@ -675,6 +794,11 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck4 />;
         if (style === 'Visual') return <LearnAsVisualDeck4 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck4 />;
+    }
+     if (deckId === 'deck5') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck5 />;
+        if (style === 'Visual') return <LearnAsVisualDeck5 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck5 />;
     }
     
     return null;

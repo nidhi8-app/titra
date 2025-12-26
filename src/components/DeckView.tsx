@@ -24,7 +24,6 @@ type DeckViewProps = {
 };
 
 const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }) => {
-    const parsed = React.useMemo(() => parseNotes(notes), [notes]);
     
     const displayTitle = deckTitle === 'Atomic structure and the periodic table' 
         ? 'Atomic structure and the periodic table:'
@@ -39,7 +38,7 @@ const NotesSummary = ({ notes, deckTitle }: { notes: Note[], deckTitle: string }
                 <p className="text-muted-foreground pt-2 font-semibold">{displayTitle}</p>
             </CardHeader>
             <CardContent>
-                <NestedAccordion sections={parsed} />
+                <NestedAccordion sections={parseNotes(notes)} />
             </CardContent>
         </Card>
     );
@@ -505,6 +504,92 @@ const LearnAsKinestheticDeck4 = () => (
     </Card>
 );
 
+const LearnAsReadingWritingDeck4 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical changes" with structured writing and text-based drills.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Rewrite the syllabus in your own words (core method)</h4>
+            <p>Take each sub-heading (e.g. Reactivity series). Rewrite it as 3–5 short bullet points using simple language. Avoid copying — rephrasing = learning. <strong>Example:</strong> Metals high in the reactivity series lose electrons easily and form positive ions, so they react more violently.</p>
+
+            <h4>2️⃣ Create “perfect exam paragraphs”</h4>
+            <p>For every big idea, write one model paragraph you could memorise. <strong>Example (oxidation & reduction):</strong> Oxidation is the gain of oxygen or the loss of electrons, while reduction is the loss of oxygen or gain of electrons. In metal reactions, the metal is oxidised because it loses electrons to form positive ions. 👉 This trains AO1 + AO2.</p>
+
+            <h4>3️⃣ Cornell notes (very effective)</h4>
+            <p>Split your page: Left column: key terms/questions, Right column: explanations, Bottom: 2–3 sentence summary. <strong>Example questions:</strong> What is oxidation? Why is aluminium extracted by electrolysis?</p>
+
+            <h4>4️⃣ Keyword definition drills</h4>
+            <p>Make a list of command-word-ready definitions: Oxidation, Reduction, Electrolyte, Neutralisation, Strong vs weak acid. Rewrite each daily until you can do it from memory.</p>
+
+            <h4>5️⃣ Tables instead of paragraphs</h4>
+            <p>Convert long content into comparison tables. <strong>Example:</strong> Concept: Strong acid, Key points: Fully ionised, lower pH. Concept: Weak acid, Key points: Partially ionised, higher pH. 👉 Writing tables improves recall and exam clarity.</p>
+
+            <h4>6️⃣ “Blurting” (top-grade technique)</h4>
+            <p>Read a section. Close your notes. Write everything you remember. Check and correct in a different colour. Do this for: Reactivity series, Electrolysis rules, Acid reactions.</p>
+
+            <h4>7️⃣ Write word → symbol → ionic equations</h4>
+            <p>For every reaction: Word equation, Balanced symbol equation, Ionic / half equation (HT). Writing repeatedly builds automatic recall in exams.</p>
+
+            <h4>8️⃣ Use exam sentence starters</h4>
+            <p>Memorise and practise starters like: “This metal is more reactive because…”, “The product formed at the cathode is…”, “Neutralisation occurs when…”. These unlock method marks.</p>
+
+            <h4>9️⃣ “Explain like the mark scheme”</h4>
+            <p>After writing an answer, ask: Have I named ions? Have I mentioned electrons or oxygen? Have I linked cause → effect? Rewrite answers until they sound mark-scheme accurate.</p>
+
+            <h4>🔟 Summarise each topic onto ONE page</h4>
+            <p>Force yourself to reduce: Reactivity of metals → 1 page, Acids → 1 page, Electrolysis → 1 page. Shorter notes = stronger memory.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsVisualDeck4 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical changes" with diagrams, flowcharts, and color-coding.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Reactivity series as a visual ladder (must-do)</h4>
+            <p><strong>How to use it:</strong> Draw a vertical ladder. Top = most reactive, bottom = least. Colour code: 🔴 reacts with water, 🟠 reacts with acids, ⚫ no reaction. 👉 The height of the metal helps you remember reactivity instantly.</p>
+
+            <h4>2️⃣ Colour-coded oxidation & reduction</h4>
+            <p><strong>Visual rule:</strong> Oxidation = red arrow IN (oxygen in / electrons out), Reduction = blue arrow OUT. Write next to every reaction: OX = gain O / lose e⁻, RED = lose O / gain e⁻. 👉 Colour = meaning (no memorising sentences).</p>
+
+            <h4>3️⃣ Metal extraction flowchart</h4>
+            <p>Draw this decision tree: Is metal more reactive than carbon? → YES → Electrolysis; NO → Reduction with carbon. Add examples in boxes: Aluminium → electrolysis, Iron → carbon. 👉 One glance = full method recall.</p>
+
+            <h4>4️⃣ Acid reactions as equation maps</h4>
+            <p>Use arrows, not sentences: Acid + metal → salt + hydrogen ↑, Acid + alkali → salt + water, Acid + carbonate → salt + water + CO₂ ↑. Draw gas bubbles for H₂ and CO₂.</p>
+
+            <h4>5️⃣ Salt formation visual grid</h4>
+            <p>Create a 2-way table: Acid ↓ / Base → | Sodium | Calcium | Copper. Then fill in with salts like NaCl, CaSO₄, etc. 👉 Patterns jump out visually → fewer mistakes.</p>
+
+            <h4>6️⃣ pH scale as a colour bar</h4>
+            <p>Draw a long rectangle: Red (0–2) → strong acid, Green (7) → neutral, Purple (12–14) → strong alkali. Label real examples on the bar. 👉 Colour = acidity strength.</p>
+
+            <h4>7️⃣ Titration as a storyboard</h4>
+            <p>Draw 4 boxes: 1. Burette setup, 2. Adding acid, 3. Colour change, 4. End point. 👉 You remember the process, not steps.</p>
+
+            <h4>8️⃣ Electrolysis direction diagrams (essential)</h4>
+            <p><strong>Visual rules:</strong> ➕ ions → cathode (−), ➖ ions → anode (+). Hydrogen at cathode if metal is reactive. Oxygen at anode unless halides present. Use big arrows and symbols.</p>
+            
+            <h4>9️⃣ Half-equations in boxes (HT)</h4>
+            <p>Draw two boxes every time: Cathode (reduction): 2H⁺ + 2e⁻ → H₂. Anode (oxidation): 4OH⁻ → O₂ + 2H₂O + 4e⁻. 👉 Box layout = automatic recall.</p>
+
+            <h4>🔟 One-page visual summaries (power move)</h4>
+            <p>For each topic create a page with no paragraphs, only diagrams, arrows, boxes, and color. 👉 If you can “see the page” in the exam, you win.</p>
+        </CardContent>
+    </Card>
+);
+
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
@@ -588,7 +673,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     
     if (deckId === 'deck4') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck4 />;
-        // Add Visual and Reading/Writing for deck 4 when ready
+        if (style === 'Visual') return <LearnAsVisualDeck4 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck4 />;
     }
     
     return null;

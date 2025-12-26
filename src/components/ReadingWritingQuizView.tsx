@@ -472,6 +472,174 @@ const Deck3Quiz = () => (
     </>
 );
 
+const Deck4Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2">🟦 SECTION A: Key Definitions (1 mark each)</h3>
+        <p>Define oxidation in terms of oxygen.</p><Textarea />
+        <p className="mt-2">Define reduction in terms of electrons.</p><Textarea />
+        <p className="mt-2">What is meant by a reactivity series?</p><Textarea />
+        <p className="mt-2">Define electrolyte.</p><Textarea />
+        <p className="mt-2">What is neutralisation?</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-a1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Oxidation is the gain of oxygen.</li>
+                        <li>Reduction is the gain of electrons.</li>
+                        <li>A list of metals in order of their reactivity.</li>
+                        <li>An ionic compound that conducts electricity when molten or dissolved in water.</li>
+                        <li>The reaction between an acid and a base.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟩 SECTION B: Reactivity Series & Displacement (2–3 marks)</h3>
+        <p>State the order of reactivity of magnesium, copper, iron and potassium from most to least reactive.</p><Textarea />
+        <p className="mt-2">Explain why potassium reacts more vigorously with water than magnesium.</p><Textarea />
+        <p className="mt-2">A strip of zinc is placed into copper sulfate solution.
+            <br />a) What happens?
+            <br />b) Explain your answer using the reactivity series.
+        </p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-b1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Potassium, Magnesium, Iron, Copper.</li>
+                        <li>Potassium is higher in the reactivity series, meaning it loses its outer electron more easily.</li>
+                        <li>a) The zinc strip becomes coated with copper, and the blue solution fades. b) Zinc is more reactive than copper, so it displaces copper from the copper sulfate solution.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟨 SECTION C: Oxidation & Reduction (3 marks)</h3>
+        <p>In the reaction: Mg + CuO → MgO + Cu</p>
+        <p>a) Which substance is oxidised?</p><Textarea />
+        <p>b) Which substance is reduced?</p><Textarea />
+        <p>c) Explain your answers.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-c1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>a) Magnesium (Mg) is oxidised.</li>
+                        <li>b) Copper(II) oxide (CuO) is reduced.</li>
+                        <li>c) Magnesium gains oxygen (oxidation). Copper(II) oxide loses oxygen (reduction).</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟥 SECTION D: Extraction of Metals (3–4 marks)</h3>
+        <p>Explain why iron can be extracted using carbon but aluminium cannot.</p><Textarea />
+        <p className="mt-2">State two reasons why electrolysis uses large amounts of energy.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-d1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Iron is less reactive than carbon, so carbon can displace it (reduce the iron oxide). Aluminium is more reactive than carbon, so it must be extracted by electrolysis.</li>
+                        <li>1. A lot of energy is needed to melt the ionic compound. 2. A large amount of electricity is required to carry out the decomposition.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟪 SECTION E: Acids & Salts (3–4 marks)</h3>
+        <p>Write the word equation for the reaction between: Zinc and hydrochloric acid</p><Textarea />
+        <p className="mt-2">Name the salt formed when:<br />
+            a) Sulfuric acid reacts with sodium hydroxide<br />
+            b) Nitric acid reacts with calcium carbonate
+        </p><Textarea />
+        <p className="mt-2">Explain how a pure, dry sample of copper sulfate can be prepared from copper oxide.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-e1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>Zinc + Hydrochloric acid → Zinc chloride + Hydrogen</li>
+                        <li>a) Sodium sulfate, b) Calcium nitrate</li>
+                        <li>Add excess copper oxide to sulfuric acid and warm. Filter out the excess solid. Gently heat the solution to evaporate some water (crystallisation point). Leave to cool and crystallise. Filter the crystals and dry them.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟧 SECTION F: pH Scale & Acids (3 marks)</h3>
+        <p>Describe the pH scale and state the pH values of: An acid, A neutral solution, An alkali</p><Textarea />
+        <p className="mt-2">Explain the difference between a strong acid and a weak acid.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-f1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>{'The pH scale measures acidity/alkalinity. Acidic is pH < 7, neutral is pH 7, alkaline is pH > 7.'}</li>
+                        <li>A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟫 SECTION G: Electrolysis (4–6 marks)</h3>
+        <p>Describe what happens during the electrolysis of molten lead bromide.</p><Textarea />
+        <p className="mt-2">Explain why:<br />
+            a) Hydrogen forms at the cathode<br />
+            b) Oxygen forms at the anode during electrolysis of aqueous solutions.
+        </p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-g1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <ul className="list-disc pl-6 text-sm">
+                        <li>Lead ions (Pb²⁺) move to the cathode and gain electrons to form lead metal. Bromide ions (Br⁻) move to the anode and lose electrons to form bromine gas.</li>
+                        <li>a) Hydrogen forms if the metal in the solution is more reactive than hydrogen. b) Oxygen forms if halide ions are not present in the solution.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟥 SECTION H: Half Equations (HT – 4 marks)</h3>
+        <p>Write the half-equation for:<br />
+            a) Hydrogen forming at the cathode<br />
+            b) Oxygen forming at the anode
+        </p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-h1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">a) 2H⁺ + 2e⁻ → H₂<br />b) 4OH⁻ → O₂ + 2H₂O + 4e⁻</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🏁 SECTION I: Extended Response (6 marks)</h3>
+        <p>Explain how aluminium is extracted from aluminium oxide by electrolysis. Include: Type of compound, Electrolyte used, Electrode reactions, Energy use.</p><Textarea className="min-h-[150px]" />
+        <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <h4 className="font-bold flex items-center gap-2">✅ Self-check Writing Frame (use after answering)</h4>
+            <p className="text-sm">For each answer, ask: Have I used key terminology? Have I explained why, not just what? Have I linked cause → effect?</p>
+        </div>
+    </>
+);
+
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
@@ -484,6 +652,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck3') {
             return <Deck3Quiz />;
+        }
+        if (deckId === 'deck4') {
+            return <Deck4Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }
@@ -527,5 +698,3 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
 };
 
 export default ReadingWritingQuizView;
-
-    

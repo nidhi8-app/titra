@@ -405,6 +405,131 @@ const Deck3Quiz = () => (
     </>
 );
 
+const Deck4Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2">🟦 ROUND 1: REACTIVITY SERIES (DRAW & LABEL)</h3>
+        <p>Draw a vertical ladder. Place these metals in the correct order (top → bottom): Copper, Magnesium, Potassium, Iron. Shade: 🔴 metals that react with water, 🟠 metals that react with acid only.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q1">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Order: Potassium (🔴), Magnesium (🟠), Iron (🟠), Copper (no shade). Potassium and Magnesium should be shaded for reacting with water (though Mg is slow), Iron with acid, and Copper with neither.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟩 ROUND 2: DISPLACEMENT (ARROWS QUIZ)</h3>
+        <p>Draw arrows to show what happens when: Zinc + Copper sulfate. Circle the metal that moves, cross out the metal that is displaced. Next to the diagram, write: “More reactive → ______ reactive”</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q2">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">An arrow should show Zinc going into the solution, and another arrow showing Copper coming out. Zinc is circled, Copper is crossed out. The phrase is "More reactive → less reactive".</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟨 ROUND 3: OXIDATION & REDUCTION (COLOUR CODE)</h3>
+        <p>Draw two boxes: Box A: Metal + oxygen, Box B: Metal oxide. Use: 🔴 arrows for oxygen, 🔵 arrows for electrons. Label: Oxidation, Reduction.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q3">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">For oxidation: A red arrow (oxygen) points to the metal. A blue arrow (electrons) points away from the metal. For reduction: A red arrow points away from the metal oxide. A blue arrow points towards the metal ion.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟥 ROUND 4: EXTRACTION FLOWCHART</h3>
+        <p>Complete this flowchart in your book: Is the metal more reactive than carbon? YES → _________, NO → _________. Add: Aluminium → (which path?), Iron → (which path?)</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q4">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">YES → Electrolysis, NO → Reduction with carbon. Aluminium → Electrolysis. Iron → Reduction with carbon.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟪 ROUND 5: ACIDS & SALTS (PICTURE EQUATIONS)</h3>
+        <p>Draw three reaction maps using arrows and symbols: Acid + Metal → ?, Acid + Alkali → ?, Acid + Carbonate → ?. 👉 Draw bubbles for gases.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q5">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">1. → salt + hydrogen (H₂ bubble). 2. → salt + water. 3. → salt + water + carbon dioxide (CO₂ bubble).</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟧 ROUND 6: pH SCALE (COLOUR BAR)</h3>
+        <p>Draw a long bar from 0 → 14. Colour: Red = acid, Green = neutral, Purple = alkali. Place: Stomach acid, Water, Sodium hydroxide.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q6">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Stomach acid should be in the red section (pH 1-2). Water in the green (pH 7). Sodium hydroxide in the purple (pH 13-14).</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟫 ROUND 7: ELECTROLYSIS DIRECTION TEST</h3>
+        <p>Draw a cell with: Anode (+), Cathode (−). Draw arrows showing: Positive ions movement, Negative ions movement. Label: Reduction, Oxidation.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q7">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Positive ions move to the cathode (Reduction happens here). Negative ions move to the anode (Oxidation happens here).</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟨 ROUND 8: PRODUCTS AT ELECTRODES (MATCHING)</h3>
+        <p>Draw two columns: Cathode (−) | Anode (+). Place: Hydrogen, Oxygen, Chlorine (Assume aqueous solution with halides).</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q8">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Cathode (−): Hydrogen. Anode (+): Oxygen, Chlorine.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🟥 ROUND 9: HALF-EQUATION BOXES (HT)</h3>
+        <p>Draw two large boxes: Cathode, Anode. Fill in missing products and electrons for: 2H⁺ + 2e⁻ → ?, and 4OH⁻ → ?.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d4-q9">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Cathode: 2H⁺ + 2e⁻ → H₂. Anode: 4OH⁻ → O₂ + 2H₂O + 4e⁻.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🏁 FINAL VISUAL MEMORY CHALLENGE</h3>
+        <p>Close your notes. From memory, redraw ONE full page showing: Reactivity ladder, Extraction decision, Electrolysis diagram. If you can see the page in your head, you’re exam-ready.</p>
+    </>
+);
+
+
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
@@ -420,6 +545,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         }
         if (deckId === 'deck3') {
             return <Deck3Quiz />;
+        }
+        if (deckId === 'deck4') {
+            return <Deck4Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }
@@ -485,5 +613,3 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
-
-    

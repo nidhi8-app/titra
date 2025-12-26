@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -244,42 +244,32 @@ const LearnAsKinestheticDeck2 = () => (
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Role-play atoms: Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices). Build-and-touch models: Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
+            <p><strong>Activity:</strong> Role-play atoms: Use small balls or beads to represent atoms. Move around the room to show how atoms form different structures (molecules vs. giant lattices). Build-and-touch models: Use modeling clay, LEGO, or ball-and-stick kits to physically construct molecules, polymers, metals, and ionic lattices.</p>
             
             <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Electron transfer simulation: Give students colored balls representing electrons. "Metal atoms" give away balls, "non-metals" take them to show ionic bonding. Covalent bonding handshake: Two students “share” balls to simulate shared electrons. Metallic bonding: Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
+            <p><strong>Activity:</strong> Electron transfer simulation: Give students colored balls representing electrons. "Metal atoms" give away balls, "non-metals" take them to show ionic bonding. Covalent bonding handshake: Two students “share” balls to simulate shared electrons. Metallic bonding: Students form a “grid” holding hands loosely while “delocalised electrons” (other students) move around freely between them.</p>
 
             <h4>3️⃣ Ionic bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Dot-and-cross tactile exercise: Use beads or stickers to create dot-and-cross diagrams on sticky boards. 3D lattice building: Build a NaCl or MgO lattice using LEGO or magnetic balls to feel the structure.</p>
+            <p><strong>Activity:</strong> Dot-and-cross tactile exercise: Use beads or stickers to create dot-and-cross diagrams on sticky boards. 3D lattice building: Build a NaCl or MgO lattice using LEGO or magnetic balls to feel the structure.</p>
 
             <h4>4️⃣ Ionic compounds</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Empirical formula activity: Use colored beads for different ions. Build mini-compounds and physically count the ratio of ions to determine the formula. Electrostatic forces demonstration: Use magnets to mimic attraction between ions in a lattice.</p>
+            <p><strong>Activity:</strong> Empirical formula activity: Use colored beads for different ions. Build mini-compounds and physically count the ratio of ions to determine the formula. Electrostatic forces demonstration: Use magnets to mimic attraction between ions in a lattice.</p>
 
             <h4>5️⃣ Covalent bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Molecule building: Use clay or sticks to make hydrogen, water, ammonia, methane, etc. Sharing simulation: Pair up and “share” balls representing electrons to build covalent molecules. Polymer chain activity: Link paper clips or chains to model polymer chains.</p>
+            <p><strong>Activity:</strong> Molecule building: Use clay or sticks to make hydrogen, water, ammonia, methane, etc. Sharing simulation: Pair up and “share” balls representing electrons to build covalent molecules. Polymer chain activity: Link paper clips or chains to model polymer chains.</p>
 
             <h4>6️⃣ Metallic bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Layer stacking: Stack coins or discs to simulate layers of metal atoms. Move them slightly to feel malleability. Delocalised electron race: Have “electrons” (students) move through a “metal lattice” formed by other students holding hands in a grid.</p>
+            <p><strong>Activity:</strong> Layer stacking: Stack coins or discs to simulate layers of metal atoms. Move them slightly to feel malleability. Delocalised electron race: Have “electrons” (students) move through a “metal lattice” formed by other students holding hands in a grid.</p>
 
             <h4>7️⃣ Bonding and structure linked to properties</h4>
-            <p><strong>States of matter Activity:</strong></p>
-            <p>Movement simulation: Students act as particles. Solid = tightly packed, vibrating; liquid = moving past each other; gas = moving fast and far apart. Melting/boiling demo: Heat ice cubes and feel the phase change; relate movement of molecules to state.</p>
-            <p><strong>Properties Activity:</strong></p>
-            <p>Hands-on comparison: Touch samples (metal, polymer, sugar/crystals) and test conductivity with a simple circuit to feel differences. Strength demonstration: Stack objects to mimic lattice strength; shake gently to represent weak vs. strong bonds.</p>
+            <p><strong>States of matter Activity:</strong> Movement simulation: Students act as particles. Solid = tightly packed, vibrating; liquid = moving past each other; gas = moving fast and far apart. Melting/boiling demo: Heat ice cubes and feel the phase change; relate movement of molecules to state.</p>
+            <p><strong>Properties Activity:</strong> Hands-on comparison: Touch samples (metal, polymer, sugar/crystals) and test conductivity with a simple circuit to feel differences. Strength demonstration: Stack objects to mimic lattice strength; shake gently to represent weak vs. strong bonds.</p>
 
             <h4>8️⃣ Structure and bonding of carbon</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Model building: Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits. Layer movement: Slide graphite layers over each other to feel why it’s slippery; try the same with a “diamond lattice” (rigid model) to feel hardness.</p>
+            <p><strong>Activity:</strong> Model building: Make diamond, graphite, graphene, and fullerene structures using clay or 3D kits. Layer movement: Slide graphite layers over each other to feel why it’s slippery; try the same with a “diamond lattice” (rigid model) to feel hardness.</p>
             
             <h4>9️⃣ Nanoparticles</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Size comparison: Use balls of different sizes to represent nanoparticles vs. bulk materials; feel how many small balls fit into a container compared to large ones (surface area effect). Application demo: Handle models representing nanoparticles in medicine, electronics, or sunscreens to visualize and “use” them safely in simulations.</p>
+            <p><strong>Activity:</strong> Size comparison: Use balls of different sizes to represent nanoparticles vs. bulk materials; feel how many small balls fit into a container compared to large ones (surface area effect). Application demo: Handle models representing nanoparticles in medicine, electronics, or sunscreens to visualize and “use” them safely in simulations.</p>
         </CardContent>
     </Card>
 );
@@ -295,42 +285,32 @@ const LearnAsReadingWritingDeck2 = () => (
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Summarize in your own words: Write a 3–5 sentence summary for this section. Bullet-point notes: Break down the key ideas: “Atoms can form molecules or giant structures,” “Bonding explains properties,” etc. Glossary: Write definitions for key terms: structure, bonding, properties, material engineering.</p>
+            <p><strong>Activity:</strong> Summarize in your own words: Write a 3–5 sentence summary for this section. Bullet-point notes: Break down the key ideas: “Atoms can form molecules or giant structures,” “Bonding explains properties,” etc. Glossary: Write definitions for key terms: structure, bonding, properties, material engineering.</p>
             
             <h4>2️⃣ Chemical bonds: ionic, covalent, metallic</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Comparison table: Create a written table comparing ionic, covalent, and metallic bonds: Type of atoms involved, Electron movement, Forces involved, Examples. Flashcards: One side = bond type, other side = characteristics/examples.</p>
+            <p><strong>Activity:</strong> Comparison table: Create a written table comparing ionic, covalent, and metallic bonds: Type of atoms involved, Electron movement, Forces involved, Examples. Flashcards: One side = bond type, other side = characteristics/examples.</p>
 
             <h4>3️⃣ Ionic bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Step-by-step notes: Write out the process of electron transfer, forming positive and negative ions. Dot-and-cross practice: Write multiple examples (NaCl, MgO) and label ions. Group number rule: Write a table linking group numbers to ion charges.</p>
+            <p><strong>Activity:</strong> Step-by-step notes: Write out the process of electron transfer, forming positive and negative ions. Dot-and-cross practice: Write multiple examples (NaCl, MgO) and label ions. Group number rule: Write a table linking group numbers to ion charges.</p>
 
             <h4>4️⃣ Ionic compounds</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Written explanation: Describe in words why ionic compounds have high melting points and conduct when molten. Empirical formula exercises: Write down formulas from given ions. Limitations of diagrams: Write short notes explaining why diagrams don’t show 3D structures or forces clearly.</p>
+            <p><strong>Activity:</strong> Written explanation: Describe in words why ionic compounds have high melting points and conduct when molten. Empirical formula exercises: Write down formulas from given ions. Limitations of diagrams: Write short notes explaining why diagrams don’t show 3D structures or forces clearly.</p>
 
             <h4>5️⃣ Covalent bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Stepwise instructions: Write step-by-step guides for drawing dot-and-cross diagrams for H₂, HCl, H₂O, CH₄, NH₃. Compare molecule types: Write a chart comparing small molecules, polymers, and giant covalent structures: bonds, states, melting points.</p>
+            <p><strong>Activity:</strong> Stepwise instructions: Write step-by-step guides for drawing dot-and-cross diagrams for H₂, HCl, H₂O, CH₄, NH₃. Compare molecule types: Write a chart comparing small molecules, polymers, and giant covalent structures: bonds, states, melting points.</p>
 
             <h4>6️⃣ Metallic bonding</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Written notes: Describe structure, delocalised electrons, and malleability in your own words. Comparison table: Write a table comparing metals vs. alloys: hardness, layers, conductivity.</p>
+            <p><strong>Activity:</strong> Written notes: Describe structure, delocalised electrons, and malleability in your own words. Comparison table: Write a table comparing metals vs. alloys: hardness, layers, conductivity.</p>
 
             <h4>7️⃣ Bonding and structure linked to properties</h4>
-            <p><strong>States of matter Activity:</strong></p>
-            <p>Written explanation: Describe how particle theory explains solids, liquids, and gases. Melting/boiling points: Write notes linking strength of forces to temperature changes.</p>
-            <p><strong>Properties of compounds Activity:</strong></p>
-            <p>Table/chart: For ionic compounds, small molecules, polymers, metals, and alloys: list melting/boiling points, conductivity, and reasons. Short-answer practice: Write answers to questions like: “Why can metals conduct electricity?” or “Why do polymers stay solid at room temp?”</p>
+            <p><strong>States of matter Activity:</strong> Written explanation: Describe how particle theory explains solids, liquids, and gases. Melting/boiling points: Write notes linking strength of forces to temperature changes.</p>
+            <p><strong>Properties of compounds Activity:</strong> Table/chart: For ionic compounds, small molecules, polymers, metals, and alloys: list melting/boiling points, conductivity, and reasons. Short-answer practice: Write answers to questions like: “Why can metals conduct electricity?” or “Why do polymers stay solid at room temp?”</p>
 
             <h4>8️⃣ Structure and bonding of carbon</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Written comparison: Make a table for diamond, graphite, graphene, and fullerenes: bonds, hardness, conductivity, uses. Notes on nanostructures: Write descriptions of carbon nanotubes and graphene, including applications.</p>
+            <p><strong>Activity:</strong> Written comparison: Make a table for diamond, graphite, graphene, and fullerenes: bonds, hardness, conductivity, uses. Notes on nanostructures: Write descriptions of carbon nanotubes and graphene, including applications.</p>
             
             <h4>9️⃣ Nanoparticles</h4>
-            <p><strong>Activity:</strong></p>
-            <p>Summary sheet: Write down size, properties, and uses of nanoparticles in your own words. Pros and cons list: Create a written table of benefits vs. risks. Examples: List at least 3 products or applications for nanoparticles.</p>
+            <p><strong>Activity:</strong> Summary sheet: Write down size, properties, and uses of nanoparticles in your own words. Pros and cons list: Create a written table of benefits vs. risks. Examples: List at least 3 products or applications for nanoparticles.</p>
         </CardContent>
     </Card>
 );
@@ -346,81 +326,39 @@ const LearnAsKinestheticDeck3 = () => (
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Hands-on with Chemical Equations</h4>
-            <p><strong>Balancing movement activity:</strong></p>
-            <p>Write chemical equations on sticky notes, each element or molecule on a separate note.</p>
-            <p>Physically move them on a table or board to balance the atoms.</p>
-            <p>Repeat with multiple equations until balancing becomes intuitive.</p>
-            <p><strong>Atom/particle tokens:</strong></p>
-            <p>Use beads, Lego, or coins to represent atoms/molecules.</p>
-            <p>Build reactants and products physically.</p>
-            <p>Rearrange to show conservation of mass in reactions.</p>
+            <p><strong>Balancing movement activity:</strong> Write chemical equations on sticky notes, each element or molecule on a separate note. Physically move them on a table or board to balance the atoms. Repeat with multiple equations until balancing becomes intuitive.</p>
+            <p><strong>Atom/particle tokens:</strong> Use beads, Lego, or coins to represent atoms/molecules. Build reactants and products physically. Rearrange to show conservation of mass in reactions.</p>
             
             <h4>2️⃣ Relative Formula Mass & Mass Calculations</h4>
-            <p><strong>Bead/mole model:</strong></p>
-            <p>Assign beads or blocks to represent relative atomic masses.</p>
-            <p>Combine beads to represent molecules and calculate total mass physically.</p>
-            <p>Helps visualize how relative formula mass is built from atoms.</p>
-            <p><strong>Mass scale simulation:</strong></p>
-            <p>Use a kitchen scale or small weights to represent grams of reactants/products.</p>
-            <p>Physically add/subtract weights to demonstrate mass changes in reactions, including gases escaping.</p>
+            <p><strong>Bead/mole model:</strong> Assign beads or blocks to represent relative atomic masses. Combine beads to represent molecules and calculate total mass physically. Helps visualize how relative formula mass is built from atoms.</p>
+            <p><strong>Mass scale simulation:</strong> Use a kitchen scale or small weights to represent grams of reactants/products. Physically add/subtract weights to demonstrate mass changes in reactions, including gases escaping.</p>
 
             <h4>3️⃣ Moles and Avogadro’s Constant</h4>
-            <p><strong>Mole line-up activity:</strong></p>
-            <p>Each student represents a particle (atom, molecule, ion).</p>
-            <p>Line up 6.02 × 10²³ objects represented by tokens or use scaled-down versions.</p>
-            <p>Helps internalize large numbers and concept of moles.</p>
-            <p><strong>Conversion practice with objects:</strong></p>
-            <p>Give a mass in grams and physically count or group objects to represent moles.</p>
+            <p><strong>Mole line-up activity:</strong> Each student represents a particle (atom, molecule, ion). Line up 6.02 × 10²³ objects represented by tokens or use scaled-down versions. Helps internalize large numbers and concept of moles.</p>
+            <p><strong>Conversion practice with objects:</strong> Give a mass in grams and physically count or group objects to represent moles.</p>
 
             <h4>4️⃣ Limiting Reactants</h4>
-            <p><strong>Hands-on limiting reactant simulation:</strong></p>
-            <p>Give two types of tokens representing two reactants.</p>
-            <p>Create products using fixed ratios, remove tokens as used.</p>
-            <p>Observe which reactant runs out first → limiting reactant.</p>
+            <p><strong>Hands-on limiting reactant simulation:</strong> Give two types of tokens representing two reactants. Create products using fixed ratios, remove tokens as used. Observe which reactant runs out first → limiting reactant.</p>
             
             <h4>5️⃣ Percentage Yield</h4>
-            <p><strong>Product collection simulation:</strong></p>
-            <p>Use beads, coins, or balls to represent theoretical maximum product.</p>
-            <p>Physically remove “lost product” beads to simulate actual yield.</p>
-            <p>Calculate percentage yield using physical counts.</p>
+            <p><strong>Product collection simulation:</strong> Use beads, coins, or balls to represent theoretical maximum product. Physically remove “lost product” beads to simulate actual yield. Calculate percentage yield using physical counts.</p>
 
             <h4>6️⃣ Atom Economy</h4>
-            <p><strong>Sorting game:</strong></p>
-            <p>Give a mix of tokens representing all reactants and possible products.</p>
-            <p>Physically separate desired products from by-products.</p>
-            <p>Count tokens to calculate atom economy.</p>
+            <p><strong>Sorting game:</strong> Give a mix of tokens representing all reactants and possible products. Physically separate desired products from by-products. Count tokens to calculate atom economy.</p>
 
             <h4>7️⃣ Concentration of Solutions</h4>
-            <p><strong>Liquid measuring activity:</strong></p>
-            <p>Use water or colored liquids to measure solute and solvent volumes.</p>
-            <p>Pour known masses into different volumes to visualize concentration.</p>
-            <p>Practice adjusting mass or volume to see how concentration changes.</p>
+            <p><strong>Liquid measuring activity:</strong> Use water or colored liquids to measure solute and solvent volumes. Pour known masses into different volumes to visualize concentration. Practice adjusting mass or volume to see how concentration changes.</p>
             
             <h4>8️⃣ Gas Volumes</h4>
-            <p><strong>Balloon gas analogy:</strong></p>
-            <p>Use balloons to represent gases.</p>
-            <p>Inflate to scale 1 mole = 24 dm³.</p>
-            <p>Practice adding/subtracting balloons to simulate volumes of gaseous reactants/products.</p>
-            <p><strong>Volume simulation with containers:</strong></p>
-            <p>Use boxes or containers of fixed size to simulate gas volumes at r.t.p.</p>
-            <p>Combine “reactant boxes” to form “product boxes” physically.</p>
+            <p><strong>Balloon gas analogy:</strong> Use balloons to represent gases. Inflate to scale 1 mole = 24 dm³. Practice adding/subtracting balloons to simulate volumes of gaseous reactants/products.</p>
+            <p><strong>Volume simulation with containers:</strong> Use boxes or containers of fixed size to simulate gas volumes at r.t.p. Combine “reactant boxes” to form “product boxes” physically.</p>
             
             <h4>9️⃣ Revision Games</h4>
-            <p><strong>Flashcard movement:</strong></p>
-            <p>Write equation types, definitions, or calculations on flashcards.</p>
-            <p>Place cards around the room, walk to the correct card to answer a question.</p>
-            <p>Movement helps kinesthetic memory.</p>
-            <p><strong>Reaction lab stations:</strong></p>
-            <p>Set up mini “stations” with different calculations: moles, yield, concentration, atom economy.</p>
-            <p>Move from station to station performing calculations physically with tokens or counters.</p>
+            <p><strong>Flashcard movement:</strong> Write equation types, definitions, or calculations on flashcards. Place cards around the room, walk to the correct card to answer a question. Movement helps kinesthetic memory.</p>
+            <p><strong>Reaction lab stations:</strong> Set up mini “stations” with different calculations: moles, yield, concentration, atom economy. Move from station to station performing calculations physically with tokens or counters.</p>
             
             <h4>🔟 Build Your Own Lab Models</h4>
-            <p><strong>DIY lab kits or simulations:</strong></p>
-            <p>Make a small-scale physical model of:</p>
-            <p>Reactants → Products</p>
-            <p>Mole conversions</p>
-            <p>Gaseous reactions using balloons or containers</p>
-            <p>Repeatedly “run” reactions using your models to reinforce memory.</p>
+            <p><strong>DIY lab kits or simulations:</strong> Make a small-scale physical model of: Reactants → Products, Mole conversions, Gaseous reactions using balloons or containers. Repeatedly “run” reactions using your models to reinforce memory.</p>
         </CardContent>
     </Card>
 );
@@ -441,55 +379,33 @@ const LearnAsVisualDeck3 = () => (
             <p><strong>Visual cues:</strong> Use colors for each branch, small icons or simple drawings (e.g., a balance for conservation of mass, flasks for concentration).</p>
 
             <h4>2️⃣ Flow Diagrams</h4>
-            <p><strong>Activity:</strong> Create step-by-step flow diagrams for processes:</p>
-            <p>Balancing chemical equations → Mass calculations → Moles → Limiting reactants → Percentage yield.</p>
+            <p><strong>Activity:</strong> Create step-by-step flow diagrams for processes: Balancing chemical equations → Mass calculations → Moles → Limiting reactants → Percentage yield.</p>
             <p><strong>Tip:</strong> Use arrows, different colors, and numbered steps to make the sequence easy to follow.</p>
             
             <h4>3️⃣ Infographics</h4>
-            <p><strong>Activity:</strong> Turn your notes into a one-page infographic. Include:</p>
-            <p><strong>Equations:</strong> Draw atoms as colored spheres or balls.</p>
-            <p><strong>Moles & Avogadro’s Constant:</strong> Illustrate 1 mole as a cluster of 6.02×10²³ particles.</p>
-            <p><strong>Limiting Reactants:</strong> Show tokens being used up.</p>
-            <p><strong>Percentage Yield & Atom Economy:</strong> Draw “before and after” with lost products visually.</p>
+            <p><strong>Activity:</strong> Turn your notes into a one-page infographic. Include: Equations (draw atoms as colored spheres or balls), Moles & Avogadro’s Constant (illustrate 1 mole as a cluster of 6.02×10²³ particles), Limiting Reactants (show tokens being used up), Percentage Yield & Atom Economy (draw “before and after” with lost products visually).</p>
 
             <h4>4️⃣ Tables & Charts</h4>
-            <p><strong>Activity:</strong></p>
-            <p><strong>Mass calculations:</strong> Table with columns: Reactant → Relative Formula Mass → Mass in grams → Moles → Products.</p>
-            <p><strong>Concentration:</strong> Beaker diagrams showing volume and solute, color-coded for clarity.</p>
-            <p><strong>Gas Volumes:</strong> Draw balloons representing molar volume (24 dm³).</p>
+            <p><strong>Activity:</strong> Mass calculations (Table with columns: Reactant → Relative Formula Mass → Mass in grams → Moles → Products), Concentration (Beaker diagrams showing volume and solute, color-coded for clarity), Gas Volumes (Draw balloons representing molar volume, 24 dm³).</p>
 
             <h4>5️⃣ Color-Coding</h4>
-            <p><strong>Activity:</strong> Assign a color to each concept:</p>
-            <p>Conservation of Mass → Blue, Moles → Yellow, Limiting Reactants → Orange, Percentage Yield → Purple, Atom Economy → Green, Concentration → Pink</p>
+            <p><strong>Activity:</strong> Assign a color to each concept: Conservation of Mass → Blue, Moles → Yellow, Limiting Reactants → Orange, Percentage Yield → Purple, Atom Economy → Green, Concentration → Pink.</p>
             <p><strong>Tip:</strong> Always highlight formulas, key numbers, and steps in their assigned color.</p>
             
             <h4>6️⃣ Visual Mnemonics</h4>
-            <p><strong>Activity:</strong> Create visual memory aids for tricky ideas:</p>
-            <p><strong>Conservation of Mass:</strong> Draw a balance scale with equal atoms on each side.</p>
-            <p><strong>Limiting Reactants:</strong> Draw a funnel filling products until one reactant is used up.</p>
-            <p><strong>Atom Economy:</strong> Draw a pie chart showing “useful product” vs “waste”.</p>
+            <p><strong>Activity:</strong> Create visual memory aids for tricky ideas: Conservation of Mass (draw a balance scale with equal atoms on each side), Limiting Reactants (draw a funnel filling products until one reactant is used up), Atom Economy (draw a pie chart showing “useful product” vs “waste”).</p>
 
             <h4>7️⃣ Sketch Your Equations</h4>
-            <p><strong>Activity:</strong> For each chemical equation:</p>
-            <p>Use colored dots for atoms</p>
-            <p>Draw arrows showing electron transfer, bonds forming, or moles.</p>
-            <p><strong>Tip:</strong> The act of drawing helps reinforce memory.</p>
+            <p><strong>Activity:</strong> For each chemical equation, use colored dots for atoms and draw arrows showing electron transfer, bonds forming, or moles. <strong>Tip:</strong> The act of drawing helps reinforce memory.</p>
 
             <h4>8️⃣ Mind Maps for Exam Preparation</h4>
-            <p><strong>Activity:</strong> Create a mind map with main topics as branches.</p>
-            <p>Add examples (e.g., Mg + HCl → MgCl₂ + H₂).</p>
-            <p>Use icons (e.g., beaker for solutions, balloon for gas volumes).</p>
-            <p>Add mini flow charts inside branches for steps in calculations.</p>
+            <p><strong>Activity:</strong> Create a mind map with main topics as branches. Add examples (e.g., Mg + HCl → MgCl₂ + H₂). Use icons (e.g., beaker for solutions, balloon for gas volumes). Add mini flow charts inside branches for steps in calculations.</p>
 
             <h4>9️⃣ Flashcards with Diagrams</h4>
-            <p><strong>Activity:</strong> Make flashcards with:</p>
-            <p><strong>Front:</strong> Question/concept (e.g., “Calculate % yield”)</p>
-            <p><strong>Back:</strong> Colored visual solution, small diagram showing steps.</p>
+            <p><strong>Activity:</strong> Make flashcards with: Front (Question/concept, e.g., “Calculate % yield”), Back (Colored visual solution, small diagram showing steps).</p>
 
             <h4>🔟 “Redraw Without Notes” Practice</h4>
-            <p><strong>Activity:</strong> Once confident, take a blank sheet and try to redraw:</p>
-            <p>Concept maps, equations, diagrams of moles, limiting reactants, atom economy, concentration.</p>
-            <p><strong>Tip:</strong> Use different colored pens to mark missing or incorrect parts and compare with your notes.</p>
+            <p><strong>Activity:</strong> Once confident, take a blank sheet and try to redraw concept maps, equations, and diagrams. <strong>Tip:</strong> Use different colored pens to mark missing or incorrect parts and compare with your notes.</p>
         </CardContent>
     </Card>
 );
@@ -506,49 +422,33 @@ const LearnAsReadingWritingDeck3 = () => (
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
             <h4>1️⃣ Rewrite the Specification in Your Own Words</h4>
             <p><strong>Why it works:</strong> rewriting forces processing, not memorising.</p>
-            <p><strong>How to do it:</strong></p>
-            <ul>
-                <li>Take each sub-heading (e.g. Conservation of mass, Moles, Percentage yield).</li>
-                <li>Rewrite it in 5–6 clear bullet points.</li>
-                <li>Keep the same meaning and key terms from the spec.</li>
-            </ul>
-            <p><strong>Example:</strong> The law of conservation of mass states that no atoms are lost or made during a chemical reaction. Rewrite as:</p>
-            <ul>
-                <li>No atoms are created or destroyed in chemical reactions</li>
-                <li>Total mass of reactants equals total mass of products</li>
-                <li>Equations must be balanced to show this</li>
-            </ul>
+            <p><strong>How to do it:</strong> Take each sub-heading (e.g. Conservation of mass, Moles, Percentage yield). Rewrite it in 5–6 clear bullet points. Keep the same meaning and key terms from the spec.</p>
+            <p><strong>Example:</strong> The law of conservation of mass states that no atoms are lost or made during a chemical reaction. Rewrite as: No atoms are created or destroyed in chemical reactions, Total mass of reactants equals total mass of products, Equations must be balanced to show this.</p>
 
             <h4>2️⃣ Create Definition Flashcards (Text-Only)</h4>
             <p><strong>Why it works:</strong> reading/writing learners remember precise wording.</p>
-            <p><strong>How to do it:</strong> Front: Term, Back: Full definition in sentence form. Key terms to include: Conservation of mass, Relative formula mass (Mr), Mole, Avogadro constant, Limiting reactant, Percentage yield, Atom economy, Concentration (g/dm³ and mol/dm³), Molar volume (24 dm³). 👉 Rewrite the definition every time you get one wrong.</p>
+            <p><strong>How to do it:</strong> Front: Term, Back: Full definition in sentence form. Key terms: Conservation of mass, Relative formula mass (Mr), Mole, Avogadro constant, Limiting reactant, Percentage yield, Atom economy, Concentration (g/dm³ and mol/dm³), Molar volume (24 dm³). 👉 Rewrite the definition every time you get one wrong.</p>
             
             <h4>3️⃣ Formula Sheets (Written, Not Visual)</h4>
-            <p><strong>Why it works:</strong> seeing formulas repeatedly in writing builds recall.</p>
-            <p>Create a formula page and rewrite it daily: Mr = sum of relative atomic masses, n = m ÷ Mr, m = n × Mr, % yield = (actual ÷ theoretical) × 100, Atom economy = (Mr of desired product ÷ total Mr of reactants) × 100, Concentration (g/dm³) = mass ÷ volume, Gas volume at r.t.p = moles × 24. ✍️ Write each formula with one sentence explaining what it does.</p>
+            <p><strong>Why it works:</strong> seeing formulas repeatedly in writing builds recall. Create a formula page and rewrite it daily: Mr = sum of relative atomic masses, n = m ÷ Mr, m = n × Mr, % yield = (actual ÷ theoretical) × 100, Atom economy = (Mr of desired product ÷ total Mr of reactants) × 100, Concentration (g/dm³) = mass ÷ volume, Gas volume at r.t.p = moles × 24. ✍️ Write each formula with one sentence explaining what it does.</p>
 
             <h4>4️⃣ Step-by-Step Written Methods</h4>
-            <p><strong>Why it works:</strong> GCSE marks reward method as much as answers.</p>
-            <p>For each calculation type, write a numbered method. Example: Percentage Yield: 1. Calculate the theoretical mass using the balanced equation. 2. Use the actual mass given in the question. 3. Divide actual mass by theoretical mass. 4. Multiply by 100. 5. Give answer to correct significant figures. Do this for: Mr calculations, Moles, Limiting reactants, Concentration, Gas volumes.</p>
+            <p><strong>Why it works:</strong> GCSE marks reward method as much as answers. For each calculation type, write a numbered method. Example: Percentage Yield: 1. Calculate the theoretical mass using the balanced equation. 2. Use the actual mass given in the question. 3. Divide actual mass by theoretical mass. 4. Multiply by 100. 5. Give answer to correct significant figures. Do this for: Mr calculations, Moles, Limiting reactants, Concentration, Gas volumes.</p>
 
             <h4>5️⃣ Tables for Comparisons</h4>
-            <p><strong>Why it works:</strong> tables organise large amounts of written information.</p>
-            <p>Make tables like: Yield vs Atom Economy (Feature, Percentage Yield, Atom Economy). Measures: How much product is actually made vs. How much reactant becomes useful product. Depends on: Losses, reversibility, side reactions vs. Balanced equation. Important for: Efficiency of reaction vs. Sustainability.</p>
+            <p><strong>Why it works:</strong> tables organise large amounts of written information. Make tables like: Yield vs Atom Economy (Feature, Percentage Yield, Atom Economy). Measures: How much product is actually made vs. How much reactant becomes useful product. Depends on: Losses, reversibility, side reactions vs. Balanced equation. Important for: Efficiency of reaction vs. Sustainability.</p>
             
             <h4>6️⃣ Practice Exam-Style Questions (Written Answers)</h4>
-            <p><strong>Why it works:</strong> reading/writing learners improve by producing text.</p>
-            <p>Do short written questions daily, such as: “Explain why mass appears to change when a gas is produced.”, “Explain why a reaction may have a low percentage yield.”, “Explain why reactions with high atom economy are preferred.” ✍️ Use full sentences and mark them against mark schemes.</p>
+            <p><strong>Why it works:</strong> reading/writing learners improve by producing text. Do short written questions daily, such as: “Explain why mass appears to change when a gas is produced.”, “Explain why a reaction may have a low percentage yield.”, “Explain why reactions with high atom economy are preferred.” ✍️ Use full sentences and mark them against mark schemes.</p>
             
             <h4>7️⃣ “Blurting” Technique</h4>
-            <p><strong>Why it works:</strong> active recall through writing.</p>
-            <p><strong>How:</strong> Read a topic (e.g. moles) for 10 minutes. Close notes. Write everything you remember. Compare with notes. Rewrite missing information in a different colour. This is one of the best techniques for reading/writing learners.</p>
+            <p><strong>Why it works:</strong> active recall through writing. <strong>How:</strong> Read a topic (e.g. moles) for 10 minutes. Close notes. Write everything you remember. Compare with notes. Rewrite missing information in a different colour. This is one of the best techniques for reading/writing learners.</p>
 
             <h4>8️⃣ Structured Summaries</h4>
-            <p>After each topic, write: 5 key facts, 2 key equations, 1 common mistake. Example (Limiting Reactants): The limiting reactant is completely used up. It limits the amount of product formed. Excess reactant remains unused.</p>
+            <p>After each topic, write: 5 key facts, 2 key equations, 1 common mistake. Example (Limiting Reactants): The limiting reactant is completely used up, It limits the amount of product formed, Excess reactant remains unused.</p>
 
             <h4>9️⃣ Past Paper Annotation</h4>
-            <p><strong>Why it works:</strong> improves exam technique through reading.</p>
-            <p>Print or copy questions. Underline command words (calculate, explain, describe). Write short notes next to each step of the solution. Rewrite the model answer in your own words.</p>
+            <p><strong>Why it works:</strong> improves exam technique through reading. Print or copy questions. Underline command words (calculate, explain, describe). Write short notes next to each step of the solution. Rewrite the model answer in your own words.</p>
 
             <h4>🔟 Weekly One-Page Written Summary</h4>
             <p>Once per week: Write one page only. No diagrams. Bullet points, tables, equations, definitions. Aim to explain everything from memory. This builds long-term retention.</p>
@@ -556,10 +456,58 @@ const LearnAsReadingWritingDeck3 = () => (
     </Card>
 );
 
+const LearnAsKinestheticDeck4 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical changes" with hands-on, movement-based activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Reactivity of Metals – “Do it with your body”</h4>
+            <p><strong>🔼 Human reactivity line:</strong> Write metal names on paper/cards. Physically line them up from most → least reactive. Walk along the line and say what each reacts with: “Potassium – water, very violent”, “Copper – no reaction”. 👉 Memory trigger: position + movement</p>
+            <p><strong>🪨 Displacement role-play:</strong> You = more reactive metal, Chair = compound, Sit someone (less reactive metal) on the chair. You “push them out” → displacement. If you can’t push them → no reaction. 👉 Helps you feel why displacement works</p>
+            
+            <h4>2️⃣ Oxidation & Reduction – “Take and give”</h4>
+            <p><strong>🟢 Oxygen swap game:</strong> Hold a ball = oxygen. Metal gains ball → oxidation. Metal loses ball → reduction. Say it out loud every time: “GAIN oxygen = OXIDATION”.</p>
+            <p><strong>⚡ Electron trading (HT):</strong> Coins = electrons. Losing coins → oxidation. Gaining coins → reduction. Physically pass coins during reactions. 👉 Works really well for redox + electrolysis</p>
+
+            <h4>3️⃣ Extraction of Metals – “Build it, break it”</h4>
+            <p><strong>🔥 Carbon reduction demo (safe version):</strong> Stack blocks: metal + oxygen. Remove oxygen block using a “carbon” card. Say: “Carbon reduces the metal oxide”. 👉 Reinforces reduction = loss of oxygen</p>
+            <p><strong>❌ Decision movement:</strong> Stand up. Step left if “carbon extraction”, Step right if “electrolysis”. Example: Iron → left, Aluminium → right. 👉 Links reactivity → extraction method</p>
+
+            <h4>4️⃣ Acids & Metals – “Act it out”</h4>
+            <p><strong>💥 Reaction acting:</strong> Acid = one hand, Metal = other hand. Clap → hydrogen escapes (blow air). Say the word equation while acting. 👉 Movement locks in equations</p>
+
+            <h4>5️⃣ Neutralisation & Salts – “Hands-on matching”</h4>
+            <p><strong>🧂 Salt building:</strong> Write ions on small cards (Na⁺, Cl⁻, SO₄²⁻). Physically join the right ions. Swap acids and watch the salt change. 👉 Makes salt formation intuitive</p>
+            <p><strong>🎈 Carbonate reaction demo:</strong> Bottle + vinegar + baking soda. Feel the balloon inflate → CO₂. 👉 You feel the gas being made</p>
+            
+            <h4>6️⃣ pH Scale – “Walk the scale”</h4>
+            <p><strong>🚶‍♀️ pH floor line:</strong> Write numbers 0–14 on paper. Walk along: Left = acidic, Middle = neutral, Right = alkaline. Say examples as you step: “pH 1 – stomach acid”, “pH 7 – water”. 👉 Movement + numbers = strong recall</p>
+            
+            <h4>7️⃣ Titrations – “Real control”</h4>
+            <p><strong>🧪 Dry-run titration:</strong> Use water + food colouring. Practise: Turn tap slowly, Swirl, Stop at colour change. 👉 Builds muscle memory for practical marks</p>
+
+            <h4>8️⃣ Electrolysis – “Be the ion”</h4>
+            <p><strong>⚡ Ion walking game:</strong> You = ion. Positive sign on chest → walk to cathode. Negative sign → walk to anode. Say: “Opposites attract”.</p>
+            <p><strong>🔄 Half-equation acting (HT):</strong> Hold electrons (coins). Cathode: gain coins. Anode: lose coins. Act out: Gain → reduction, Lose → oxidation. 👉 Almost impossible to forget after this</p>
+
+            <h4>9️⃣ Revision that involves movement</h4>
+            <p><strong>🟩 Post-it wall revision:</strong> One concept per post-it. Stick them around your room. Walk to answer questions.</p>
+            <p><strong>🎤 Teach while pacing:</strong> Walk around and teach the topic out loud. If you can say it while moving → you know it.</p>
+
+            <h4>🔟 Exam memory triggers (very important)</h4>
+            <p>Before the exam: Tap desk twice → say “OIL RIG”. Move finger left → carbon extraction. Move finger right → electrolysis. 👉 Small movements = instant recall</p>
+        </CardContent>
+    </Card>
+);
+
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
-  const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [isPeriodicTableDialogOpen, setIsPeriodicTableDialogOpen] = useState(false);
   const { toast } = useToast();
@@ -617,43 +565,30 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const renderLearnContent = () => {
     if (!userDetails?.learningStyle) return null;
     
-    if (deck.id === 'deck1') {
-        switch (userDetails.learningStyle) {
-            case 'Kinesthetic':
-                return <LearnAsKinestheticDeck1 />;
-            case 'Visual':
-                return <LearnAsVisualDeck1 />;
-            case 'Reading/Writing':
-                return <LearnAsReadingWritingDeck1 />;
-            default:
-                return null;
-        }
+    const style = userDetails.learningStyle;
+    const deckId = deck.id;
+
+    if (deckId === 'deck1') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck1 />;
+        if (style === 'Visual') return <LearnAsVisualDeck1 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck1 />;
     }
 
-    if (deck.id === 'deck2') {
-        switch (userDetails.learningStyle) {
-            case 'Visual':
-                return <LearnAsVisualDeck2 />;
-            case 'Kinesthetic':
-                return <LearnAsKinestheticDeck2 />;
-            case 'Reading/Writing':
-                return <LearnAsReadingWritingDeck2 />;
-            default:
-                return null;
-        }
+    if (deckId === 'deck2') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck2 />;
+        if (style === 'Visual') return <LearnAsVisualDeck2 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck2 />;
     }
 
-    if (deck.id === 'deck3') {
-        switch (userDetails.learningStyle) {
-            case 'Kinesthetic':
-                return <LearnAsKinestheticDeck3 />;
-            case 'Visual':
-                return <LearnAsVisualDeck3 />;
-            case 'Reading/Writing':
-                return <LearnAsReadingWritingDeck3 />;
-            default:
-                return null;
-        }
+    if (deckId === 'deck3') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck3 />;
+        if (style === 'Visual') return <LearnAsVisualDeck3 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck3 />;
+    }
+    
+    if (deckId === 'deck4') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck4 />;
+        // Add Visual and Reading/Writing for deck 4 when ready
     }
     
     return null;
@@ -706,12 +641,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                     <Button onClick={handleGenerateQuiz} disabled={isGeneratingQuiz} className="w-full" size="lg">
-                        {isGeneratingQuiz ? (
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        ) : (
-                           "Quiz Me!"
-                        )}
+                     <Button onClick={handleGenerateQuiz} className="w-full" size="lg">
+                        Quiz Me!
                     </Button>
                 </CardContent>
             </Card>
@@ -756,5 +687,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

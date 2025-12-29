@@ -776,21 +776,43 @@ const LearnAsReadingWritingDeck6 = () => (
                 <BookText className="w-6 h-6" />
                 Learn as a Reading/Writing Learner
             </CardTitle>
-            <CardDescription>Master this topic with structured notes and written practice.</CardDescription>
+            <CardDescription>Master reaction rates with structured notes and written practice.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>1️⃣ Definition Lists</h4>
-            <p>Write precise definitions for: Rate of reaction, Activation energy, Catalyst, Reversible reaction, and Dynamic equilibrium. Review them daily.</p>
-            <h4>2️⃣ Factor Summaries</h4>
-            <p>For each factor (temperature, concentration, etc.), write a short paragraph explaining *how* it affects the rate, using the keywords from collision theory.</p>
-            <h4>3️⃣ Graph Analysis</h4>
-            <p>Draw and label graphs of quantity vs. time. Write a step-by-step guide on how to calculate the mean rate and (HT) the rate at a specific point using a tangent.</p>
-            <h4>4️⃣ Catalyst Fact Sheet</h4>
-            <p>Create a fact sheet for catalysts, including their definition, how they work (lowering activation energy), and that they are not used up. Include a written description of a reaction profile with and without a catalyst.</p>
-            <h4>5️⃣ Reversible Reaction Rules</h4>
-            <p>Write out the rules for reversible reactions and equilibrium. Use the ⇌ symbol correctly in written examples.</p>
-            <h4>6️⃣ Le Chatelier’s Principle Cheat Sheet (HT)</h4>
-            <p>Create a summary table for Le Chatelier's Principle. Columns: Change (e.g., Increase Temp), Direction of Shift, and Reason. This organizes the rules for concentration, temperature, and pressure.</p>
+            <h4>🧪 RATE OF REACTION (4.6.1)</h4>
+            <h4>1️⃣ Rewrite into CLEAN NOTES</h4>
+            <p>Rewrite the notes in your own words using headings and bullet points. Example: Rate of reaction: the change in quantity of reactant or product per unit time. Formula: Rate = quantity ÷ time. Units: g/s, cm³/s, mol/s (HT). 🧠 Writing = processing = memory</p>
+            
+            <h4>2️⃣ Definition Drills</h4>
+            <p>Create a definitions page and rewrite each definition 3 times. Key definitions: Rate of reaction, Activation energy, Catalyst, Reversible reaction, Dynamic equilibrium. 📌 Aim to write them from memory by the 3rd time.</p>
+            
+            <h4>3️⃣ Formula Practice Pages</h4>
+            <p>Write the formula at the top of a page: Rate = quantity ÷ time. Under it, do at least 5 worked examples using mass, volume, and moles (HT). 📖 This trains exam calculation accuracy.</p>
+
+            <h4>4️⃣ Describe Graphs in WORDS</h4>
+            <p>Take a reaction graph and describe it in sentences: “The reaction is fastest at the start because the gradient is steep. As time increases, the gradient decreases, showing the rate slows down.” 🧠 Examiners reward clear written explanations.</p>
+
+            <h4>5️⃣ Write EXAM SENTENCES</h4>
+            <p>Practise writing full-mark answers using keywords. Example: “Increasing temperature increases the rate of reaction because particles move faster, causing more frequent and more energetic collisions, so more particles have energy greater than the activation energy.” ✍️ Repeat until fluent.</p>
+
+            <h4>6️⃣ Catalyst Paragraph Builder</h4>
+            <p>Write a perfect catalyst paragraph with this template: “A catalyst increases the rate of reaction by providing an alternative reaction pathway with a lower activation energy. This means a greater proportion of particles have sufficient energy to react. The catalyst is not used up in the reaction.” Memorise this paragraph.</p>
+
+            <h4>🔁 REVERSIBLE REACTIONS & EQUILIBRIUM (4.6.2)</h4>
+            <h4>7️⃣ Word Equation Lists</h4>
+            <p>Write and rewrite word equations like: Nitrogen + hydrogen ⇌ ammonia, Hydrated copper sulfate ⇌ anhydrous copper sulfate + water. 📌 Writing equations improves recall.</p>
+
+            <h4>8️⃣ Le Chatelier Sentence Frames</h4>
+            <p>Use sentence starters and complete them: “If the temperature is increased, the equilibrium position shifts in the __________ direction.” “Increasing pressure shifts equilibrium towards the side with __________ gas molecules.”</p>
+            
+            <h4>9️⃣ Comparison Tables (Text-based)</h4>
+            <p>Create written tables for Temperature Increase (Endothermic → more products, Exothermic → fewer products) and Pressure Increase (Shifts to side with fewer gas molecules). ✍️ Writing tables reinforces structure.</p>
+
+            <h4>🔟 Blur–Write–Check Method</h4>
+            <p>1️⃣ Read notes 2️⃣ Cover them 3️⃣ Write everything you remember 4️⃣ Check and correct in a different colour. 🧠 This is one of the most effective revision techniques.</p>
+
+            <h4>🧠 EXAM-SPECIFIC STRATEGIES</h4>
+            <p>✔️ Keyword Lists: Write a must-use keywords list (Collision frequency, Activation energy, etc.) and tick them off as you revise.</p>
         </CardContent>
     </Card>
 );
@@ -843,6 +865,7 @@ const LearnAsVisualDeck6 = () => (
         </CardContent>
     </Card>
 );
+
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -1038,5 +1061,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

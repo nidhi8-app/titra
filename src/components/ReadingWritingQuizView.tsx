@@ -477,46 +477,34 @@ const Deck4Quiz = () => (
     <>
         <h3 className="flex items-center gap-2">🟦 SECTION A: Key Definitions (1 mark each)</h3>
         <p>Define oxidation in terms of oxygen.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-a1-1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxidation is the gain of oxygen.</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">Define reduction in terms of electrons.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-a1-2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Reduction is the gain of electrons.</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">What is meant by a reactivity series?</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-a1-3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A list of metals in order of their reactivity.</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">Define electrolyte.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-a1-4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">An ionic compound that conducts electricity when molten or dissolved in water.</p></AccordionContent></AccordionItem></Accordion>
+        
         <p className="mt-2">What is neutralisation?</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-a1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Oxidation is the gain of oxygen.</li>
-                        <li>Reduction is the gain of electrons.</li>
-                        <li>A list of metals in order of their reactivity.</li>
-                        <li>An ionic compound that conducts electricity when molten or dissolved in water.</li>
-                        <li>The reaction between an acid and a base.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-a1-5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The reaction between an acid and a base.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟩 SECTION B: Reactivity Series & Displacement (2–3 marks)</h3>
         <p>State the order of reactivity of magnesium, copper, iron and potassium from most to least reactive.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-b1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Potassium, Magnesium, Iron, Copper.</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">Explain why potassium reacts more vigorously with water than magnesium.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-b2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Potassium is higher in the reactivity series, meaning it loses its outer electron more easily.</p></AccordionContent></AccordionItem></Accordion>
+        
         <p className="mt-2">A strip of zinc is placed into copper sulfate solution.
             <br />a) What happens?
             <br />b) Explain your answer using the reactivity series.
         </p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-b1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Potassium, Magnesium, Iron, Copper.</li>
-                        <li>Potassium is higher in the reactivity series, meaning it loses its outer electron more easily.</li>
-                        <li>a) The zinc strip becomes coated with copper, and the blue solution fades. b) Zinc is more reactive than copper, so it displaces copper from the copper sulfate solution.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-b3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">a) The zinc strip becomes coated with copper, and the blue solution fades. b) Zinc is more reactive than copper, so it displaces copper from the copper sulfate solution.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
@@ -542,77 +530,46 @@ const Deck4Quiz = () => (
 
         <h3 className="flex items-center gap-2">🟥 SECTION D: Extraction of Metals (3–4 marks)</h3>
         <p>Explain why iron can be extracted using carbon but aluminium cannot.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-d1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Iron is less reactive than carbon, so carbon can displace it (reduce the iron oxide). Aluminium is more reactive than carbon, so it must be extracted by electrolysis.</p></AccordionContent></AccordionItem></Accordion>
+        
         <p className="mt-2">State two reasons why electrolysis uses large amounts of energy.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-d1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Iron is less reactive than carbon, so carbon can displace it (reduce the iron oxide). Aluminium is more reactive than carbon, so it must be extracted by electrolysis.</li>
-                        <li>1. A lot of energy is needed to melt the ionic compound. 2. A large amount of electricity is required to carry out the decomposition.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-d2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. A lot of energy is needed to melt the ionic compound. 2. A large amount of electricity is required to carry out the decomposition.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟪 SECTION E: Acids & Salts (3–4 marks)</h3>
         <p>Write the word equation for the reaction between: Zinc and hydrochloric acid</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-e1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Zinc + Hydrochloric acid → Zinc chloride + Hydrogen</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">Name the salt formed when:<br />
             a) Sulfuric acid reacts with sodium hydroxide<br />
             b) Nitric acid reacts with calcium carbonate
         </p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-e2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">a) Sodium sulfate, b) Calcium nitrate</p></AccordionContent></AccordionItem></Accordion>
+
         <p className="mt-2">Explain how a pure, dry sample of copper sulfate can be prepared from copper oxide.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-e1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Zinc + Hydrochloric acid → Zinc chloride + Hydrogen</li>
-                        <li>a) Sodium sulfate, b) Calcium nitrate</li>
-                        <li>Add excess copper oxide to sulfuric acid and warm. Filter out the excess solid. Gently heat the solution to evaporate some water (crystallisation point). Leave to cool and crystallise. Filter the crystals and dry them.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-e3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Add excess copper oxide to sulfuric acid and warm. Filter out the excess solid. Gently heat the solution to evaporate some water (crystallisation point). Leave to cool and crystallise. Filter the crystals and dry them.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟧 SECTION F: pH Scale & Acids (3 marks)</h3>
         <p>Describe the pH scale and state the pH values of: An acid, A neutral solution, An alkali</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-f1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The pH scale measures acidity/alkalinity. Acidic is pH {`<`} 7, neutral is pH 7, alkaline is pH {`>`} 7.</p></AccordionContent></AccordionItem></Accordion>
+        
         <p className="mt-2">Explain the difference between a strong acid and a weak acid.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-f1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>The pH scale measures acidity/alkalinity. Acidic is pH {`<`} 7, neutral is pH 7, alkaline is pH {`>`} 7.</li>
-                        <li>A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-f2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟫 SECTION G: Electrolysis (4–6 marks)</h3>
         <p>Describe what happens during the electrolysis of molten lead bromide.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-g1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Lead ions (Pb²⁺) move to the cathode and gain electrons to form lead metal. Bromide ions (Br⁻) move to the anode and lose electrons to form bromine gas.</p></AccordionContent></AccordionItem></Accordion>
+        
         <p className="mt-2">Explain why:<br />
             a) Hydrogen forms at the cathode<br />
             b) Oxygen forms at the anode during electrolysis of aqueous solutions.
         </p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-g1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <ul className="list-disc pl-6 text-sm">
-                        <li>Lead ions (Pb²⁺) move to the cathode and gain electrons to form lead metal. Bromide ions (Br⁻) move to the anode and lose electrons to form bromine gas.</li>
-                        <li>a) Hydrogen forms if the metal in the solution is more reactive than hydrogen. b) Oxygen forms if halide ions are not present in the solution.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-g2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">a) Hydrogen forms if the metal in the solution is more reactive than hydrogen. b) Oxygen forms if halide ions are not present in the solution.</p></AccordionContent></AccordionItem></Accordion>
         
         <hr />
 
@@ -645,116 +602,151 @@ const Deck5Quiz = () => (
     <>
         <h3 className="flex items-center gap-2">🟦 SECTION A: DEFINITIONS (1 mark each)</h3>
         <p>Define an exothermic reaction.</p><Textarea />
-        <p className="mt-2">Define an endothermic reaction.</p><Textarea />
-        <p className="mt-2">What is activation energy?</p><Textarea />
-        <p className="mt-2">Define a fuel cell.</p><Textarea />
-        <p className="mt-2">Define a rechargeable cell.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-a1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>A reaction that transfers energy to the surroundings, usually causing a temperature increase.</li>
-                        <li>A reaction that takes in energy from the surroundings, usually causing a temperature decrease.</li>
-                        <li>The minimum amount of energy that particles must have to react.</li>
-                        <li>An electrical cell that's supplied with a fuel and oxygen, and uses energy from the reaction between them to produce electrical energy efficiently.</li>
-                        <li>A cell where the chemical reactions can be reversed by applying an external electrical current.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d5-a1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">A reaction that transfers energy to the surroundings, usually causing a temperature increase.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-2">Define an endothermic reaction.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">A reaction that takes in energy from the surroundings, usually causing a temperature decrease.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-2">What is activation energy?</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">The minimum amount of energy that particles must have to react.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-2">Define a fuel cell.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">An electrical cell that's supplied with a fuel and oxygen, and uses energy from the reaction between them to produce electrical energy efficiently.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-2">Define a rechargeable cell.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">A cell where the chemical reactions can be reversed by applying an external electrical current.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
         
         <hr />
 
         <h3 className="flex items-center gap-2">🟩 SECTION B: Exothermic and Endothermic (2–3 marks)</h3>
         <p>Give two everyday examples of exothermic reactions.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-b1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Combustion (burning fuels), neutralisation reactions, hand warmers.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
         <p className="mt-2">Give two examples of endothermic reactions.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-b2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Thermal decomposition, reaction of citric acid and sodium hydrogencarbonate, sports injury cold packs.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
         <p className="mt-2">Explain why the temperature increases in an exothermic reaction.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-b3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Energy is transferred from the reaction to the surroundings.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
         <p className="mt-2">Explain why the temperature decreases in an endothermic reaction.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-b1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Combustion (burning fuels), neutralisation reactions, hand warmers.</li>
-                        <li>Thermal decomposition, reaction of citric acid and sodium hydrogencarbonate, sports injury cold packs.</li>
-                        <li>Energy is transferred from the reaction to the surroundings.</li>
-                        <li>Energy is taken in by the reaction from the surroundings.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d5-b4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                 <p className="text-sm">Energy is taken in by the reaction from the surroundings.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
         
         <h3 className="flex items-center gap-2">🟨 SECTION C: Reaction Profiles (3–4 marks)</h3>
         <p>Draw a simple reaction profile for: One exothermic reaction, One endothermic reaction. Label: reactants, products, activation energy, overall energy change.</p><Textarea className="min-h-[100px]" placeholder="Describe your drawing or key features." />
-        <p className="mt-2">Explain how you can tell if a reaction is exothermic or endothermic from the profile.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-c1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Check your diagrams against standard reaction profiles. Ensure all labels are correct.</li>
-                        <li>In an exothermic profile, the products are at a lower energy level than the reactants. In an endothermic profile, the products are at a higher energy level.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d5-c1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Check your diagrams against standard reaction profiles. Ensure all labels are correct.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-2">Explain how you can tell if a reaction is exothermic or endothermic from the profile.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-c2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">In an exothermic profile, the products are at a lower energy level than the reactants. In an endothermic profile, the products are at a higher energy level.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
         
         <h3 className="flex items-center gap-2">🟥 SECTION D: Bond Energy (HT only) (3–4 marks)</h3>
         <p>In a chemical reaction: a) Explain what happens when bonds break. b) Explain what happens when bonds form.</p><Textarea />
-        <p className="mt-2">State the energy change for an exothermic reaction in terms of bond breaking/forming.</p><Textarea />
-        <p className="mt-2">State the energy change for an endothermic reaction in terms of bond breaking/forming.</p><Textarea />
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-d1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <ul className="list-disc pl-6 text-sm">
-                        <li>a) Energy must be supplied to break existing bonds. b) Energy is released when new bonds are formed.</li>
-                        <li>The energy released from forming new bonds is greater than the energy used to break existing bonds.</li>
-                        <li>The energy used to break existing bonds is greater than the energy released from forming new bonds.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d5-d1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">a) Energy must be supplied to break existing bonds. b) Energy is released when new bonds are formed.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-2">State the energy change for an exothermic reaction in terms of bond breaking/forming.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-d2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">The energy released from forming new bonds is greater than the energy used to break existing bonds.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-2">State the energy change for an endothermic reaction in terms of bond breaking/forming.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-d3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">The energy used to break existing bonds is greater than the energy released from forming new bonds.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟪 SECTION E: Cells and Batteries (3–4 marks)</h3>
         <p>Explain how a simple cell produces electricity.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-e1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Two different metals are placed in an electrolyte, creating a potential difference that drives a current.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
         <p className="mt-2">Explain the difference between non-rechargeable and rechargeable cells.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-e2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">In non-rechargeable cells, the chemical reactions stop when one reactant is used up. In rechargeable cells, the reactions can be reversed by an external current.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
         <p className="mt-2">Why do batteries in series produce a higher voltage than a single cell?</p><Textarea />
          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-e1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>Two different metals are placed in an electrolyte, creating a potential difference that drives a current.</li>
-                        <li>In non-rechargeable cells, the chemical reactions stop when one reactant is used up. In rechargeable cells, the reactions can be reversed by an external current.</li>
-                        <li>The total voltage is the sum of the individual voltages of each cell in the series.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d5-e3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">The total voltage is the sum of the individual voltages of each cell in the series.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
 
         <h3 className="flex items-center gap-2">🟧 SECTION F: Fuel Cells (3–5 marks)</h3>
         <p>Describe how a hydrogen fuel cell works. Include: Reactants and products, Electrode reactions (HT: half-equations), Flow of electrons.</p><Textarea />
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-f1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Hydrogen and oxygen are supplied. Hydrogen is oxidised at the anode (H₂ → 2H⁺ + 2e⁻), and electrons flow through an external circuit. Oxygen is reduced at the cathode, reacting with H⁺ ions to form water (O₂ + 4H⁺ + 4e⁻ → 2H₂O). The only product is water.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+        
         <p className="mt-2">Compare the advantages of hydrogen fuel cells to rechargeable batteries.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d5-f1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <ul className="list-disc pl-6 text-sm">
-                        <li>Hydrogen and oxygen are supplied. Hydrogen is oxidised at the anode (H₂ → 2H⁺ + 2e⁻), and electrons flow through an external circuit. Oxygen is reduced at the cathode, reacting with H⁺ ions to form water (O₂ + 4H⁺ + 4e⁻ → 2H₂O). The only product is water.</li>
-                        <li>Advantages of fuel cells: no pollutants produced (just water), can run continuously with fuel supply. Disadvantages: hydrogen is difficult to store safely. Batteries can be more compact but store less energy and can contain toxic chemicals.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-f2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Advantages of fuel cells: no pollutants produced (just water), can run continuously with fuel supply. Disadvantages: hydrogen is difficult to store safely. Batteries can be more compact but store less energy and can contain toxic chemicals.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
@@ -771,82 +763,75 @@ const Deck5Quiz = () => (
 
 const Deck6Quiz = () => (
     <>
-        <h3 className="flex items-center gap-2"><Pen className="text-accent" />SECTION A: DEFINITIONS (1 mark each)</h3>
-        <p>Define 'rate of reaction'.</p><Textarea />
-        <p className="mt-4">What is activation energy?</p><Textarea />
-        <p className="mt-4">What is a catalyst?</p><Textarea />
-        <p className="mt-4">Define 'dynamic equilibrium'.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-a1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc pl-6 text-sm">
-                        <li>The measure of how fast reactants are used up or products are formed.</li>
-                        <li>The minimum amount of energy particles must have to react when they collide.</li>
-                        <li>A substance that increases the rate of a reaction but is not used up in the process.</li>
-                        <li>When the forward and reverse reactions occur at the same rate in a closed system, and concentrations of reactants and products are constant.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <h3 className="flex items-center gap-2">🧪 SECTION 1: RATE OF REACTION</h3>
+        <p>Q1 (2 marks): Define the rate of reaction.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The rate of reaction is the measure of how fast the reactants are used up or how fast the products are formed.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q2 (2 marks): Write the formula for calculating the mean rate of reaction.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Mean rate of reaction = Quantity of reactant used or product formed / Time taken.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q3 (3 marks): A reaction produces 30 cm³ of gas in 15 seconds. Calculate the mean rate of reaction and include units.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Working: Rate = 30 cm³ / 15 s. Answer: 2 cm³/s.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q4 (3 marks): Describe how you would use a graph of product formed against time to determine the rate of reaction at a specific time.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Draw a tangent to the curve at that specific time. The gradient (slope) of the tangent gives the rate of reaction at that point.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
-        <h3 className="flex items-center gap-2"><Gauge className="text-accent" />SECTION B: FACTORS AFFECTING RATE (2-3 marks each)</h3>
-        <p>List the four main factors that can increase the rate of a reaction.</p><Textarea />
-        <p className="mt-4">Using collision theory, explain how increasing temperature increases the rate of reaction.</p><Textarea />
-        <p className="mt-4">Explain how a catalyst increases the rate of reaction.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-b1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <ul className="list-disc pl-6 text-sm">
-                        <li>Temperature, concentration (or pressure for gases), surface area, presence of a catalyst.</li>
-                        <li>Increasing temperature gives particles more kinetic energy, so they move faster. This leads to more frequent collisions, and more of the collisions have energy equal to or greater than the activation energy.</li>
-                        <li>A catalyst provides an alternative reaction pathway with a lower activation energy, so more colliding particles have enough energy to react.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <h3 className="flex items-center gap-2">💥 SECTION 2: FACTORS AFFECTING RATE</h3>
+        <p>Q5 (4 marks): Explain why increasing temperature increases the rate of reaction. Use collision theory in your answer.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Increasing temperature gives particles more kinetic energy. This leads to more frequent collisions, and a greater proportion of these collisions have energy equal to or greater than the activation energy, resulting in more successful collisions.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q6 (3 marks): Explain why powdered calcium carbonate reacts faster than large chips.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The powder has a larger surface area to volume ratio, which increases the frequency of collisions between reactant particles, thus increasing the rate of reaction.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
-        <h3 className="flex items-center gap-2"><Zap className="text-accent" />SECTION C: REVERSIBLE REACTIONS & EQUILIBRIUM (2-3 marks each)</h3>
-        <p>What does the symbol '⇌' mean in a chemical equation?</p><Textarea />
-        <p className="mt-4">If the forward reaction of a reversible reaction is exothermic, what is the reverse reaction?</p><Textarea />
-        <p className="mt-4">(HT) State Le Chatelier’s Principle.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-c1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <ul className="list-disc pl-6 text-sm">
-                        <li>The reaction is reversible.</li>
-                        <li>The reverse reaction is endothermic.</li>
-                        <li>If a change is made to the conditions of a system at equilibrium, the system will respond to counteract the change.</li>
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <h3 className="flex items-center gap-2">✂️ SECTION 3: CATALYSTS</h3>
+        <p>Q7 (4 marks): Describe how a catalyst increases the rate of reaction.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A catalyst provides an alternative reaction pathway with a lower activation energy. This means more particles have sufficient energy to react upon collision, increasing the rate of successful collisions.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q8 (2 marks): State two characteristics of a catalyst.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. It is not used up in the reaction. 2. It does not appear in the overall chemical equation.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
-        <h3 className="flex items-center gap-2"><FileText className="text-accent" />SECTION D: LE CHATELIER'S PRINCIPLE (HT ONLY) (4-6 marks)</h3>
-        <p>Consider the reaction: N₂(g) + 3H₂(g) ⇌ 2NH₃(g) (The forward reaction is exothermic)</p>
-        <p className="mt-2">a) What happens to the yield of ammonia (NH₃) if you increase the temperature? Explain your answer.</p><Textarea />
-        <p className="mt-2">b) What happens to the yield of ammonia (NH₃) if you increase the pressure? Explain your answer.</p><Textarea />
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-d1">
-                <AccordionTrigger>Check Answers</AccordionTrigger>
-                <AccordionContent>
-                     <p className="text-sm">a) The yield of ammonia decreases. Increasing the temperature favours the endothermic (reverse) reaction to absorb the added heat.</p>
-                     <p className="mt-2 text-sm">b) The yield of ammonia increases. Increasing the pressure favours the side with fewer moles of gas (the right side, with 2 moles) to reduce the pressure.</p>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <h3 className="flex items-center gap-2">🔁 SECTION 4: REVERSIBLE REACTIONS & EQUILIBRIUM</h3>
+        <p>Q9 (2 marks): What is meant by a reversible reaction?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A reaction where the products can react to re-form the original reactants.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q10 (2 marks): Define dynamic equilibrium.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">When the forward and reverse reactions occur at the same rate in a closed system, and the concentrations of reactants and products remain constant.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🔥 SECTION 5: LE CHATELIER’S PRINCIPLE (HT)</h3>
+        <p>Q11 (3 marks): State Le Chatelier’s Principle.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">If a change is made to the conditions of a system at equilibrium, the system will respond to counteract the change.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q12 (4 marks): Consider the reaction: Nitrogen + hydrogen ⇌ ammonia. Explain what happens to the equilibrium position when: a) Temperature is increased b) Pressure is increased</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">a) The forward reaction is exothermic, so increasing temperature shifts equilibrium to the left (endothermic direction), decreasing ammonia yield. b) There are fewer moles of gas on the right (2) than the left (4), so increasing pressure shifts equilibrium to the right, increasing ammonia yield.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2">🧠 EXTENDED WRITING (6 marks)</h3>
+        <p>Q13 (6 marks): Explain how changing concentration affects a system at equilibrium. Use an example in your answer.</p>
+        <Textarea className="min-h-[150px]" />
+        <Accordion type="single" collapsible><AccordionItem value="q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">According to Le Chatelier's principle, if the concentration of a reactant is increased, the equilibrium will shift to the right to use up the added reactant and produce more products. If the concentration of a product is decreased (removed), the equilibrium will also shift to the right to replace the lost product. For example, in the reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g), increasing the concentration of N₂ or H₂ would shift the equilibrium to favor the production of more NH₃.</p></AccordionContent></AccordionItem></Accordion>
     </>
 );
-
-
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
@@ -911,5 +896,3 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
 };
 
 export default ReadingWritingQuizView;
-
-    

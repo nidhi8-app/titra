@@ -105,7 +105,7 @@
     {
       "id": "c18",
       "description": "Theories of acids and bases",
-      "imageUrl": "https://images.unsplash.com/photo-1628863353691-0071c8c1874c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGVtaXN0cnklMjBnbGFzc3dhcmV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1628863353691-0071c8c1874c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGVtaXN0cnklMjBnbGFzc3dhcmV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "chemistry glassware"
     },
     {
@@ -117,20 +117,26 @@
     {
       "id": "c20",
       "description": "The pH scale",
-      "imageUrl": "https://images.unsplash.com/photo-1648566777018-31e5201f9ced?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaCUyMHNjYWxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1648566777018-31e5201f9ced?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaCUyMHNjYWxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "ph scale"
     },
     {
       "id": "c21",
       "description": "Strong and weak acids",
-      "imageUrl": "https://images.unsplash.com/photo-1758685734062-165cc0094e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFrZXJzJTIwbGlxdWlkc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1758685734062-165cc0094e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFrZXJzJTIwbGlxdWlkc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "beakers liquids"
     },
     {
       "id": "c22",
       "description": "Acid deposition effects",
-      "imageUrl": "https://images.unsplash.com/photo-1664783366257-ed2a579eea86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb3Jlc3QlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664783366257-ed2a579eea86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb3Jlc3QlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "forest pollution"
+    },
+    {
+      "id": "c23",
+      "description": "Reaction profile diagram",
+      "imageUrl": "https://images.unsplash.com/photo-1675627453075-0f170b02186a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxlbmVyZ3klMjBkaWFncmFtfGVufDB8fHx8MTc2Njk4MTI0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "energy diagram"
     }
   ]
 }

@@ -24,7 +24,7 @@ const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8',
 const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1', 'c2', 'c13', 'c16'].includes(img.id));
 const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c6', 'c7', 'c18', 'c20'].includes(img.id));
 const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
-const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16'].includes(img.id));
+const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16', 'c23'].includes(img.id));
 
 
 
@@ -542,6 +542,17 @@ const Deck5Quiz = () => (
             <li><strong>Left box = Exothermic:</strong> Draw arrows going out (red) to surroundings, thermometer showing temperature ↑, and 1–2 examples inside.</li>
             <li><strong>Right box = Endothermic:</strong> Draw arrows going in (blue) from surroundings, thermometer showing temperature ↓, and 1–2 examples inside.</li>
         </ul>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a1">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li><strong>Exothermic Examples:</strong> Combustion, neutralisation.</li>
+                        <li><strong>Endothermic Examples:</strong> Thermal decomposition, sports injury packs.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
 
         <hr />
 
@@ -551,7 +562,14 @@ const Deck5Quiz = () => (
             <li><strong>Exothermic reaction:</strong> Reactants → peak → products (products lower). Colour the peak for activation energy.</li>
             <li><strong>Endothermic reaction:</strong> Same diagram but products higher than reactants.</li>
         </ul>
-        <p className="text-xs italic mt-2">Extra: Add a smiley face for exothermic, sad face for endothermic for memory cue.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a2">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                   <p className="text-sm">Ensure your diagrams correctly label reactants, products, activation energy, and show the overall energy change (ΔH) with an arrow pointing down for exothermic and up for endothermic.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
 
         <hr />
 
@@ -562,6 +580,14 @@ const Deck5Quiz = () => (
             <li>Show bonds forming → arrows out (red, energy released).</li>
         </ul>
         <p className="mt-2">Use different arrow lengths to indicate exothermic vs endothermic reactions.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a3">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                   <p className="text-sm">For an exothermic reaction, the red 'energy out' arrow should be longer than the blue 'energy in' arrow. For endothermic, the blue arrow should be longer.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
         
         <hr />
 
@@ -572,6 +598,14 @@ const Deck5Quiz = () => (
             <li><strong>Battery:</strong> 2–3 cells in series, show larger voltage.</li>
             <li><strong>Rechargeable vs non-rechargeable:</strong> Single direction arrow for non-rechargeable (➡️), circular arrows for rechargeable (🔄).</li>
         </ul>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a4">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                   <p className="text-sm">Check that your simple cell shows electrons flowing from the more reactive to the less reactive metal. The battery diagram should show cells connected in a chain (+ to -).</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
 
         <hr />
         
@@ -582,17 +616,14 @@ const Deck5Quiz = () => (
             <li>Use colours for hydrogen, oxygen, water.</li>
             <li>(HT only) Add half-equations in boxes at electrodes.</li>
         </ul>
-
-        <hr />
-        
-        <h3>🟧 ROUND 6: COMBINED SUMMARY POSTER</h3>
-        <p><strong>Task:</strong> Make a one-page visual summary including diagrams for all main topics: Exo/Endo, Reaction Profiles, Bond Energy, Simple/Rechargeable/Fuel Cells.</p>
-        <p className="text-xs italic mt-2">Tip: Use colour coding consistently (Red for energy out, Blue for energy in).</p>
-
-        <hr />
-
-        <h3>🟫 ROUND 7: VISUAL MEMORY CHALLENGE</h3>
-        <p>Close your notes. Redraw all diagrams from memory on a blank sheet. Check colours, arrows, labels, and shapes. Repeat until you can reproduce the full page without looking.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d5-a5">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                   <p className="text-sm">Anode (HT): H₂ → 2H⁺ + 2e⁻. Cathode (HT): O₂ + 4H⁺ + 4e⁻ → 2H₂O. The overall reaction is 2H₂ + O₂ → 2H₂O.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
     </>
 );
 
@@ -665,7 +696,7 @@ const Deck6Quiz = () => (
         <h3 className="flex items-center gap-2">🔥 SECTION 5: LE CHATELIER (FOLLOW THE ARROWS – HT)</h3>
         <p className="mt-2"><strong>Q11 🔥</strong> You see this flow: Temperature ↑ ➡️ Endothermic direction. What happens to the amount of products at equilibrium?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ Increases (as it's favouring the endothermic reaction to make more products in this case)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The answer depends on which direction is endothermic. If the forward reaction is endothermic, the yield of products increases. If the reverse is endothermic, the yield of products decreases.</p></AccordionContent></AccordionItem>
         </Accordion>
         
         <p className="mt-4"><strong>Q12 💨</strong> You see a gaseous reaction: Left side (4 molecules), Right side (2 molecules). Pressure is increased ⬆️. Which side is favoured?</p>
@@ -775,3 +806,5 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
+
+    

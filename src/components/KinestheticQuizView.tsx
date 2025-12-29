@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer, Zap } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer, Zap, Gauge } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -439,7 +439,7 @@ const Deck4Quiz = () => (
         </ul>
         <p>👉 Say WHY out loud after each move.</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-item-1">
+            <AccordionItem value="d4-q1">
                 <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
@@ -473,7 +473,7 @@ const Deck4Quiz = () => (
         </ul>
         <p>After each step, say: “This metal is extracted by ______ because ______”</p>
          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-item-3">
+            <AccordionItem value="d4-q3">
                 <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
@@ -653,62 +653,96 @@ const Deck5Quiz = () => (
 
 const Deck6Quiz = () => (
     <>
-        <h3>⏱️ ROUND 1: RATE OF REACTION (MOVE & TIME)</h3>
-        <p className="text-sm italic">Use a stopwatch (your phone is fine).</p>
-        <p>Time how long it takes to do 10 star jumps. That's your "reaction time." Now, do 10 star jumps as fast as you can. Did the "rate" increase? Explain why.</p>
+        <h3>🔴 ROUND 1: COLLISION THEORY (MOVE!)</h3>
+        <p className="mt-2"><strong>Q1 💥</strong> Walk slowly around the room 🐢. What condition are you showing?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q1">
-                <AccordionTrigger>Check Answer</AccordionTrigger>
-                <AccordionContent>
-                    <p className="text-sm">Yes, the rate increased because you completed the same "quantity" of work (10 jumps) in less time.</p>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d6-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">LOW temperature</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q2 🔥</strong> Now jog or move fast 🏃. Why does the reaction rate increase? (Shout TWO reasons)</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q2"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent>
+                <ul className="list-disc pl-6 text-sm">
+                    <li>More frequent collisions</li>
+                    <li>More collisions have energy ≥ activation energy</li>
+                </ul>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q3 🧊</strong> Pretend you are ONE big solid block. Is the rate FAST or SLOW? Now pretend you are MANY small pieces. Is the rate FAST or SLOW?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q3"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent>
+                <p className="text-sm">Big block = SLOW. Small pieces = FAST.</p>
+            </AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
 
-        <h3>💥 ROUND 2: COLLISION THEORY (BE THE PARTICLE)</h3>
-        <p className="text-sm italic">Walk around your room.</p>
-        <ul>
-            <li><strong>Temperature:</strong> Walk slowly (low temp), then walk quickly (high temp). You should collide with things more often and with more energy.</li>
-            <li><strong>Concentration:</strong> Walk alone. Now, have a friend or family member walk in the same space. You will collide more frequently.</li>
-        </ul>
+        <h3>🟠 ROUND 2: RATE OF REACTION (HANDS-ON)</h3>
+        <p className="mt-2"><strong>Q4 ⏱️</strong> Grab 5 small objects. Move them from left hand ➡️ right hand in 10 seconds, then 5 seconds. Which has the greater rate?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">5 seconds</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q5 📈</strong> Use your arm as a graph line. Is a steep arm a FAST or SLOW rate? Place your finger halfway on your arm. What does this point represent?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q5"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent>
+                <p className="text-sm">FAST rate. It represents the rate at a specific time.</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
         
         <hr />
-        
-        <h3>🧊 ROUND 3: SURFACE AREA (CRUMBLE IT)</h3>
-        <p className="text-sm italic">You need a biscuit or a sugar cube.</p>
-        <p>Imagine dropping the whole biscuit in water. Now, crush it into crumbs and imagine dropping that in. Which one dissolves faster? Physically crumble it and explain why.</p>
+
+        <h3>🟡 ROUND 3: CATALYST ACTION (PATH GAME)</h3>
+        <p className="mt-2"><strong>Q6 ✂️</strong> Walk the LONG way across the room, then walk a SHORTCUT. The shortcut represents what?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A catalyst</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q7 🧠</strong> Touch your head when you answer. Does a catalyst: A) Get used up ❌ or B) Lower activation energy ✅?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">B) Lower activation energy.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🟢 ROUND 4: REVERSIBLE REACTIONS (ROLE-PLAY)</h3>
+        <p className="mt-2"><strong>Q8 🔁</strong> Stretch arms left ↔ right. What symbol shows a reversible reaction?</p>
          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q3">
-                <AccordionTrigger>Check Answer</AccordionTrigger>
-                <AccordionContent>
-                    <p className="text-sm">The crumbs dissolve faster because there is a larger surface area exposed to the water, leading to more frequent collisions.</p>
-                </AccordionContent>
-            </AccordionItem>
+            <AccordionItem value="d6-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">⇌</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q9 ⚖️</strong> Stand still with arms balanced. What does this position represent?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Equilibrium (Forward rate = reverse rate)</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
 
-        <h3>⛰️ ROUND 4: CATALYSTS (FIND A SHORTCUT)</h3>
-        <p className="text-sm italic">Find an obstacle in your room (like a chair).</p>
-        <p>Walk over the chair (high activation energy). Now, walk around it (the catalyst pathway). Which was faster and required less energy? Act it out and say "A catalyst provides an alternative reaction pathway with lower activation energy."</p>
-        
+        <h3>🔵 ROUND 5: LE CHATELIER (MOVE SIDES)</h3>
+        <p className="mt-2"><strong>Q10 🔥</strong> Take ONE step forward. Temperature is increased. Which direction is favoured?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Endothermic</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q11 💨</strong> Clap your hands together tightly. Pressure has increased. Which side does equilibrium shift to?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Side with fewer gas molecules.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q12 🧪</strong> Take a step AWAY from where you’re standing. Concentration of a reactant increased. Which way does equilibrium move?</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Towards the products.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
         <hr />
 
-        <h3>🔄 ROUND 5: REVERSIBLE REACTIONS & EQUILIBRIUM (BALANCE BEAM)</h3>
-        <p className="text-sm italic">Stand on one leg.</p>
-        <p>Lean slightly to the left (favoring reactants). Now lean to the right (favoring products). Find your balance point in the middle – this is <strong>equilibrium</strong>, where the forward and reverse "wobbles" are equal.</p>
-        
-        <hr />
-        
-        <h3>✋ ROUND 6: LE CHATELIER'S PRINCIPLE (PUSH & PULL - HT)</h3>
-        <p className="text-sm italic">Stand up and use your hands.</p>
-        <ul>
-            <li><strong>Concentration:</strong> Push your right hand with your left. Your right hand automatically pushes back to resist the change. This is the equilibrium shifting.</li>
-            <li><strong>Temperature:</strong> Rub your hands together (exothermic). To "oppose" this, the equilibrium would shift to the endothermic side (cool down). Mime getting cold.</li>
-            <li><strong>Pressure:</strong> Squeeze your hands together tightly (increase pressure). The system shifts to the side with fewer "moles" (less space). Unclench your fists to show this.</li>
-        </ul>
+        <h3>🟣 BONUS CHALLENGE (ACT IT OUT!)</h3>
+        <p className="mt-2"><strong>Q13 🎭</strong> Act out this sentence using actions: “Increasing temperature increases collision frequency and energy.”</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q13"><AccordionTrigger>Check Action</AccordionTrigger><AccordionContent><p className="text-sm">You should be moving faster (higher temperature) and therefore bumping into things more often (frequency) and harder (energy). If you can act it, you know it! 💪</p></AccordionContent></AccordionItem>
+        </Accordion>
+
     </>
 );
 

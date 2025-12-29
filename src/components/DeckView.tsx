@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -719,20 +719,52 @@ const LearnAsKinestheticDeck6 = () => (
             <CardDescription>Master reaction rates and equilibrium with hands-on activities.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>1️⃣ Rate of Reaction – “Time it yourself”</h4>
-            <p>Use a stopwatch to time how long it takes for a fizzy tablet to dissolve in cold vs. hot water. Feel the difference in speed.</p>
-            <h4>2️⃣ Collision Theory – “Be the particle”</h4>
-            <p>Walk around a room slowly (low temp). Now walk faster (high temp) – you'll bump into walls more often and harder. Add more people (high concentration) – you'll collide more frequently.</p>
-            <h4>3️⃣ Surface Area – “Break it up”</h4>
-            <p>Compare dissolving a whole biscuit vs. crushed biscuit crumbs in water. The crumbs dissolve faster because more of the biscuit is exposed.</p>
-            <h4>4️⃣ Catalysts – “Find the shortcut”</h4>
-            <p>Imagine walking over a big hill (high activation energy). Now imagine finding a tunnel through it (the catalyst). You get to the other side faster and with less effort.</p>
-            <h4>5️⃣ Reversible Reactions – “Walk back and forth”</h4>
-            <p>Walk from one side of a room to the other (forward reaction). Then, walk back (reverse reaction). This physical movement helps you feel the two-way nature of the reaction.</p>
-            <h4>6️⃣ Equilibrium – “The balancing act”</h4>
-            <p>Get two friends. You and one friend walk forward, while the other walks backward at the same speed. The number of people on each side stays the same, even though everyone is moving.</p>
-            <h4>7️⃣ Le Chatelier’s Principle (HT) – “Push and pull”</h4>
-            <p>Stand with a friend, pushing against each other's hands (equilibrium). If they push harder (change in concentration), you naturally push back to restore the balance. Act this out for temperature and pressure changes too.</p>
+            <h4>🧪🔴 RATE OF REACTION (4.6.1)</h4>
+            <h4>🟠 1️⃣ Collision Theory Role-Play</h4>
+            <p><strong>🚶‍♂️🚶‍♀️ Be the particles:</strong> 🟦 Low temperature → walk slowly. 🟥 High temperature → move fast. 💥 Light bump = ❌ no reaction. 💥💥 Hard bump = ✅ reaction.</p>
+            <p>🧠 <strong>Remember:</strong> Reactions need collisions + enough energy. Hotter = faster + harder collisions 🔥</p>
+
+            <h4>🟡 2️⃣ Surface Area Hands-On</h4>
+            <p><strong>🧊 Take a sugar cube / chalk:</strong> 🔵 One big piece = slow. 🟢 Crushed pieces = fast. ✋ Touch all the surfaces.</p>
+            <p>🧠 <strong>Memory hook:</strong> More surface area = more collisions = faster rate ⚡</p>
+
+            <h4>🟢 3️⃣ Rate of Reaction Relay</h4>
+            <p><strong>⏱️ Timer ON. 🥄 Move coins from Cup A (reactants) to Cup B (products).</strong> 🐢 Slow round = low rate. 🐇 Fast round = high rate.</p>
+            <p>🧠 <strong>Exam link:</strong> 📌 Rate = quantity ÷ time</p>
+
+            <h4>🔵 4️⃣ Walk the Graph</h4>
+            <p><strong>📈 Tape a giant graph on the floor. 👣 Walk the line:</strong> Steep = FAST rate ⚡. Flat = SLOW rate 🐌. 📏 Lay a ruler/string as a tangent.</p>
+            <p>🧠 <strong>Lock it in:</strong> Gradient = rate. Tangent = rate at ONE moment (HT).</p>
+
+            <h4>🟣 5️⃣ Catalyst Shortcut Game</h4>
+            <p><strong>🚶 Long path = ❌ no catalyst. 🏃 Shortcut = ✅ catalyst.</strong> ⏱️ Time both paths.</p>
+            <p>🧠 <strong>Key idea:</strong> Catalyst = lower activation energy (start & end same, just quicker ⚡).</p>
+
+            <hr className="my-4" />
+
+            <h4>🔁🟠 REVERSIBLE REACTIONS & EQUILIBRIUM (4.6.2)</h4>
+            <h4>🔴 6️⃣ Equilibrium Tug-of-War</h4>
+            <p><strong>👈 Forward reaction vs 👉 Reverse reaction.</strong> ⚖️ Equal pull = equilibrium. ➕ Add people to one side → shift occurs.</p>
+            <p>🧠 <strong>Exam phrase:</strong> Forward rate = reverse rate</p>
+
+            <h4>🟡 7️⃣ Le Chatelier Reaction Game</h4>
+            <p><strong>One person SHOUTS 🗣️:</strong> 🔥 “Increase temperature!”, 💨 “Increase pressure!”, 🧪 “Increase concentration!”. <strong>Everyone MOVES 🏃 to correct side.</strong></p>
+            <p>🧠 <strong>Rules to chant while moving:</strong> 🔥 Heat ↑ → endothermic direction. 💨 Pressure ↑ → fewer gas molecules. 🧪 Concentration ↑ → move away.</p>
+
+            <h4>🟢 8️⃣ Pressure Squeeze Demo</h4>
+            <p><strong>🟢 Sticky notes = gas molecules. ✋ Squeeze them together.</strong></p>
+            <p>🧠 <strong>Sticky memory:</strong> Pressure ↑ → fewer molecules side wins 🏆</p>
+
+            <h4>🔵 9️⃣ Activation Energy Build</h4>
+            <p><strong>📚 Stack books/blocks:</strong> 🔴 Tall stack = high activation energy. 🟢 Short stack = catalysed reaction.</p>
+            <p>🧠 <strong>Say it while building:</strong> “Catalysts LOWER activation energy!”</p>
+
+            <hr className="my-4" />
+            
+            <h4>🧠🟣 MEMORY-BOOST MOVEMENTS</h4>
+            <p><strong>✋ Hand Signals:</strong> ⚡ Fast hand = fast rate, ✂️ Cutting motion = catalyst, ⚖️ Flat hands = equilibrium.</p>
+            <p><strong>🚶 Walk & Talk:</strong> Pace while saying answers OUT LOUD 🗣️. Movement = memory 🔁.</p>
+            <p><strong>✍️ Before Exams:</strong> 1️⃣ Act it out for 5 seconds. 2️⃣ Then write the answer.</p>
         </CardContent>
     </Card>
 );

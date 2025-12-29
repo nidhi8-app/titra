@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer, Zap } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -651,6 +651,67 @@ const Deck5Quiz = () => (
     </>
 );
 
+const Deck6Quiz = () => (
+    <>
+        <h3>⏱️ ROUND 1: RATE OF REACTION (MOVE & TIME)</h3>
+        <p className="text-sm italic">Use a stopwatch (your phone is fine).</p>
+        <p>Time how long it takes to do 10 star jumps. That's your "reaction time." Now, do 10 star jumps as fast as you can. Did the "rate" increase? Explain why.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q1">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">Yes, the rate increased because you completed the same "quantity" of work (10 jumps) in less time.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>💥 ROUND 2: COLLISION THEORY (BE THE PARTICLE)</h3>
+        <p className="text-sm italic">Walk around your room.</p>
+        <ul>
+            <li><strong>Temperature:</strong> Walk slowly (low temp), then walk quickly (high temp). You should collide with things more often and with more energy.</li>
+            <li><strong>Concentration:</strong> Walk alone. Now, have a friend or family member walk in the same space. You will collide more frequently.</li>
+        </ul>
+        
+        <hr />
+        
+        <h3>🧊 ROUND 3: SURFACE AREA (CRUMBLE IT)</h3>
+        <p className="text-sm italic">You need a biscuit or a sugar cube.</p>
+        <p>Imagine dropping the whole biscuit in water. Now, crush it into crumbs and imagine dropping that in. Which one dissolves faster? Physically crumble it and explain why.</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q3">
+                <AccordionTrigger>Check Answer</AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm">The crumbs dissolve faster because there is a larger surface area exposed to the water, leading to more frequent collisions.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>⛰️ ROUND 4: CATALYSTS (FIND A SHORTCUT)</h3>
+        <p className="text-sm italic">Find an obstacle in your room (like a chair).</p>
+        <p>Walk over the chair (high activation energy). Now, walk around it (the catalyst pathway). Which was faster and required less energy? Act it out and say "A catalyst provides an alternative reaction pathway with lower activation energy."</p>
+        
+        <hr />
+
+        <h3>🔄 ROUND 5: REVERSIBLE REACTIONS & EQUILIBRIUM (BALANCE BEAM)</h3>
+        <p className="text-sm italic">Stand on one leg.</p>
+        <p>Lean slightly to the left (favoring reactants). Now lean to the right (favoring products). Find your balance point in the middle – this is <strong>equilibrium</strong>, where the forward and reverse "wobbles" are equal.</p>
+        
+        <hr />
+        
+        <h3>✋ ROUND 6: LE CHATELIER'S PRINCIPLE (PUSH & PULL - HT)</h3>
+        <p className="text-sm italic">Stand up and use your hands.</p>
+        <ul>
+            <li><strong>Concentration:</strong> Push your right hand with your left. Your right hand automatically pushes back to resist the change. This is the equilibrium shifting.</li>
+            <li><strong>Temperature:</strong> Rub your hands together (exothermic). To "oppose" this, the equilibrium would shift to the endothermic side (cool down). Mime getting cold.</li>
+            <li><strong>Pressure:</strong> Squeeze your hands together tightly (increase pressure). The system shifts to the side with fewer "moles" (less space). Unclench your fists to show this.</li>
+        </ul>
+    </>
+);
+
 
 const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: KinestheticQuizViewProps) => {
     
@@ -669,6 +730,9 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
         }
         if (deckId === 'deck5') {
             return <Deck5Quiz />;
+        }
+        if (deckId === 'deck6') {
+            return <Deck6Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }
@@ -707,3 +771,5 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
 };
 
 export default KinestheticQuizView;
+
+    

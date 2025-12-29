@@ -685,17 +685,127 @@ Hydrogen fuel cells are an alternative to batteries.
   ],
   'deck6': [
     {
-      title: 'Rates of Reaction',
-      body: 'The rate of a chemical reaction can be affected by several factors: temperature, concentration (or pressure for gases), surface area, and the presence of a catalyst. The collision theory states that for a reaction to occur, particles must collide with sufficient energy (activation energy).',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        title: 'Calculating rates of reactions',
+        body: `Rate of reaction = how fast reactants are used up or products are formed.
+Mean rate of reaction:
+= quantity of reactant used ÷ time taken
+= quantity of product formed ÷ time taken
+Quantity can be measured by:
+mass (g) or volume (cm³)
+Units of rate:
+g/s, cm³/s
+Higher Tier: mol/s`,
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
-      title: 'Reversible Reactions and Equilibrium',
-      body: 'Some reactions are reversible, meaning the products can react to re-form the reactants. In a closed system, a reversible reaction can reach a state of dynamic equilibrium, where the forward and reverse reactions occur at the same rate, and the concentrations of reactants and products remain constant.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        title: 'Factors affecting rate of reaction',
+        body: `Factors that increase rate:
+Higher concentration (solutions)
+Higher pressure (gases)
+Larger surface area (smaller pieces of solid)
+Higher temperature
+Presence of a catalyst`,
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
+    {
+        title: 'Collision theory and activation energy',
+        body: `Reactions occur when particles:
+Collide
+With enough energy
+Activation energy = minimum energy needed for a reaction
+Increasing concentration, pressure, or surface area:
+Increases collision frequency
+Increasing temperature:
+Increences collision frequency and energy`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Catalysts',
+        body: `Catalysts:
+Increase reaction rate
+Are not used up
+Are not included in chemical equations
+They work by:
+Providing a pathway with lower activation energy
+Enzymes are biological catalysts`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Reversible reactions',
+        body: `Reversible reactions can go forwards and backwards
+Represented by: ⇌
+General equation: A + B ⇌ C + D
+Changing conditions changes the direction of reaction
+Example (word equation):
+Hydrated copper sulfate ⇌ anhydrous copper sulfate + water`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Energy changes and reversible reactions',
+        body: `If one direction is exothermic, the reverse is endothermic
+Same amount of energy is transferred in both directions
+Example (word equation):
+Nitrogen dioxide ⇌ dinitrogen tetroxide
+Formation of dinitrogen tetroxide is exothermic
+Breakdown is endothermic`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Equilibrium',
+        body: `Occurs in a closed system
+At equilibrium:
+Forward rate = reverse rate
+Amounts of reactants and products stay constant (not equal)`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Effect of changing conditions (HT only)',
+        body: `Systems at equilibrium respond to oppose changes
+This is called Le Chatelier’s Principle`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Effect of concentration changes (HT only)',
+        body: `Increasing reactant concentration:
+Shifts equilibrium to form more products
+Decreasing product concentration:
+More reactants react to replace products
+Example (word equation):
+Hydrogen + iodine ⇌ hydrogen iodide`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Effect of temperature changes (HT only)',
+        body: `Increasing temperature:
+Favours endothermic direction
+Decreasing temperature:
+Favours exothermic direction
+Example (word equation):
+Nitrogen + hydrogen ⇌ ammonia (exothermic forward reaction)`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+    {
+        title: 'Effect of pressure changes (HT only)',
+        body: `Applies only to gases
+Increasing pressure:
+Shifts equilibrium to side with fewer gas molecules
+Decreasing pressure:
+Shifts to side with more gas molecules
+Example (word equation):
+Nitrogen + hydrogen ⇌ ammonia`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    }
   ],
   'deck7': [
     {
@@ -734,6 +844,8 @@ Hydrogen fuel cells are an alternative to batteries.
     },
   ],
 };
+
+    
 
     
 

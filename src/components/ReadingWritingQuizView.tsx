@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Brain, BookOpen, CheckCircle, FileText, Key, List, Microscope, Pen, TestTube, ChevronsRightLeft, LinkIcon, Thermometer } from 'lucide-react';
+import { ArrowLeft, Brain, BookOpen, CheckCircle, FileText, Key, List, Microscope, Pen, TestTube, ChevronsRightLeft, LinkIcon, Thermometer, Zap, Gauge } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Textarea } from './ui/textarea';
@@ -587,7 +587,7 @@ const Deck4Quiz = () => (
                 <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
                     <ul className="list-disc pl-6 text-sm">
-                        <li>The pH scale measures acidity/alkalinity. Acidic is pH &lt; 7, neutral is pH 7, alkaline is pH &gt; 7.</li>
+                        <li>The pH scale measures acidity/alkalinity. Acidic is pH {`<`} 7, neutral is pH 7, alkaline is pH {`>`} 7.</li>
                         <li>A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</li>
                     </ul>
                 </AccordionContent>
@@ -758,7 +758,7 @@ const Deck5Quiz = () => (
         </Accordion>
 
         <hr />
-
+        
         <h3 className="flex items-center gap-2">🟫 SECTION G: EXAM-TYPE QUESTIONS (6 marks)</h3>
         <p>“Explain why the reaction between hydrochloric acid and sodium hydroxide is exothermic. Draw a reaction profile to support your answer.”</p><Textarea className="min-h-[100px]" />
         <p className="mt-2">“Compare a rechargeable cell and a hydrogen fuel cell. Include how electricity is produced, whether the reaction can be reversed, and practical advantages.”</p><Textarea className="min-h-[100px]" />
@@ -768,6 +768,84 @@ const Deck5Quiz = () => (
         </div>
     </>
 );
+
+const Deck6Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2"><Pen className="text-accent" />SECTION A: DEFINITIONS (1 mark each)</h3>
+        <p>Define 'rate of reaction'.</p><Textarea />
+        <p className="mt-4">What is activation energy?</p><Textarea />
+        <p className="mt-4">What is a catalyst?</p><Textarea />
+        <p className="mt-4">Define 'dynamic equilibrium'.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-a1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                    <ul className="list-disc pl-6 text-sm">
+                        <li>The measure of how fast reactants are used up or products are formed.</li>
+                        <li>The minimum amount of energy particles must have to react when they collide.</li>
+                        <li>A substance that increases the rate of a reaction but is not used up in the process.</li>
+                        <li>When the forward and reverse reactions occur at the same rate in a closed system, and concentrations of reactants and products are constant.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Gauge className="text-accent" />SECTION B: FACTORS AFFECTING RATE (2-3 marks each)</h3>
+        <p>List the four main factors that can increase the rate of a reaction.</p><Textarea />
+        <p className="mt-4">Using collision theory, explain how increasing temperature increases the rate of reaction.</p><Textarea />
+        <p className="mt-4">Explain how a catalyst increases the rate of reaction.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-b1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <ul className="list-disc pl-6 text-sm">
+                        <li>Temperature, concentration (or pressure for gases), surface area, presence of a catalyst.</li>
+                        <li>Increasing temperature gives particles more kinetic energy, so they move faster. This leads to more frequent collisions, and more of the collisions have energy equal to or greater than the activation energy.</li>
+                        <li>A catalyst provides an alternative reaction pathway with a lower activation energy, so more colliding particles have enough energy to react.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Zap className="text-accent" />SECTION C: REVERSIBLE REACTIONS & EQUILIBRIUM (2-3 marks each)</h3>
+        <p>What does the symbol '⇌' mean in a chemical equation?</p><Textarea />
+        <p className="mt-4">If the forward reaction of a reversible reaction is exothermic, what is the reverse reaction?</p><Textarea />
+        <p className="mt-4">(HT) State Le Chatelier’s Principle.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-c1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <ul className="list-disc pl-6 text-sm">
+                        <li>The reaction is reversible.</li>
+                        <li>The reverse reaction is endothermic.</li>
+                        <li>If a change is made to the conditions of a system at equilibrium, the system will respond to counteract the change.</li>
+                    </ul>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2"><FileText className="text-accent" />SECTION D: LE CHATELIER'S PRINCIPLE (HT ONLY) (4-6 marks)</h3>
+        <p>Consider the reaction: N₂(g) + 3H₂(g) ⇌ 2NH₃(g) (The forward reaction is exothermic)</p>
+        <p className="mt-2">a) What happens to the yield of ammonia (NH₃) if you increase the temperature? Explain your answer.</p><Textarea />
+        <p className="mt-2">b) What happens to the yield of ammonia (NH₃) if you increase the pressure? Explain your answer.</p><Textarea />
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-d1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
+                <AccordionContent>
+                     <p className="text-sm">a) The yield of ammonia decreases. Increasing the temperature favours the endothermic (reverse) reaction to absorb the added heat.</p>
+                     <p className="mt-2 text-sm">b) The yield of ammonia increases. Increasing the pressure favours the side with fewer moles of gas (the right side, with 2 moles) to reduce the pressure.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
@@ -787,6 +865,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck5') {
             return <Deck5Quiz />;
+        }
+        if (deckId === 'deck6') {
+            return <Deck6Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }
@@ -830,3 +911,5 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
 };
 
 export default ReadingWritingQuizView;
+
+    

@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -698,13 +698,93 @@ const LearnAsVisualDeck5 = () => (
             <p>Draw: Breaking bonds → 🔵 arrow in, Forming bonds → 🔴 arrow out. More red than blue = exothermic. More blue than red = endothermic.</p>
 
             <h4>6️⃣ Cells & batteries — simple block diagrams</h4>
-            <p>Draw diagrams for: a simple cell (two metals, electrolyte, electron flow arrow), a battery (multiple cells in series showing larger voltage), and use ➡️ (one direction) for non-rechargeable vs. 🔄 (circular) for rechargeable.</p>
+            <p>Draw diagrams for: a simple cell (two different metals, electrolyte, electron flow arrow), a battery (multiple cells in series showing larger voltage), and use ➡️ (one direction) for non-rechargeable vs. 🔄 (circular) for rechargeable.</p>
 
             <h4>7️⃣ Fuel cells — continuous flow diagram</h4>
             <p>Draw: Hydrogen entering → electrons flowing → oxygen entering → water leaving. Colour-code H₂, O₂, and H₂O. (HT) Add half-equations in boxes at electrodes.</p>
 
             <h4>8️⃣ One-page visual summaries (VERY powerful)</h4>
             <p>Create summary pages with NO paragraphs, only diagrams, arrows, symbols, and labels. Make pages for: 1. Exothermic vs endothermic, 2. Reaction profiles & activation energy, 3. Cells & fuel cells. If you can see the page in your head, you’ve learned it.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsKinestheticDeck6 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master reaction rates and equilibrium with hands-on activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Rate of Reaction – “Time it yourself”</h4>
+            <p>Use a stopwatch to time how long it takes for a fizzy tablet to dissolve in cold vs. hot water. Feel the difference in speed.</p>
+            <h4>2️⃣ Collision Theory – “Be the particle”</h4>
+            <p>Walk around a room slowly (low temp). Now walk faster (high temp) – you'll bump into walls more often and harder. Add more people (high concentration) – you'll collide more frequently.</p>
+            <h4>3️⃣ Surface Area – “Break it up”</h4>
+            <p>Compare dissolving a whole biscuit vs. crushed biscuit crumbs in water. The crumbs dissolve faster because more of the biscuit is exposed.</p>
+            <h4>4️⃣ Catalysts – “Find the shortcut”</h4>
+            <p>Imagine walking over a big hill (high activation energy). Now imagine finding a tunnel through it (the catalyst). You get to the other side faster and with less effort.</p>
+            <h4>5️⃣ Reversible Reactions – “Walk back and forth”</h4>
+            <p>Walk from one side of a room to the other (forward reaction). Then, walk back (reverse reaction). This physical movement helps you feel the two-way nature of the reaction.</p>
+            <h4>6️⃣ Equilibrium – “The balancing act”</h4>
+            <p>Get two friends. You and one friend walk forward, while the other walks backward at the same speed. The number of people on each side stays the same, even though everyone is moving.</p>
+            <h4>7️⃣ Le Chatelier’s Principle (HT) – “Push and pull”</h4>
+            <p>Stand with a friend, pushing against each other's hands (equilibrium). If they push harder (change in concentration), you naturally push back to restore the balance. Act this out for temperature and pressure changes too.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsReadingWritingDeck6 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master this topic with structured notes and written practice.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Definition Lists</h4>
+            <p>Write precise definitions for: Rate of reaction, Activation energy, Catalyst, Reversible reaction, and Dynamic equilibrium. Review them daily.</p>
+            <h4>2️⃣ Factor Summaries</h4>
+            <p>For each factor (temperature, concentration, etc.), write a short paragraph explaining *how* it affects the rate, using the keywords from collision theory.</p>
+            <h4>3️⃣ Graph Analysis</h4>
+            <p>Draw and label graphs of quantity vs. time. Write a step-by-step guide on how to calculate the mean rate and (HT) the rate at a specific point using a tangent.</p>
+            <h4>4️⃣ Catalyst Fact Sheet</h4>
+            <p>Create a fact sheet for catalysts, including their definition, how they work (lowering activation energy), and that they are not used up. Include a written description of a reaction profile with and without a catalyst.</p>
+            <h4>5️⃣ Reversible Reaction Rules</h4>
+            <p>Write out the rules for reversible reactions and equilibrium. Use the ⇌ symbol correctly in written examples.</p>
+            <h4>6️⃣ Le Chatelier’s Principle Cheat Sheet (HT)</h4>
+            <p>Create a summary table for Le Chatelier's Principle. Columns: Change (e.g., Increase Temp), Direction of Shift, and Reason. This organizes the rules for concentration, temperature, and pressure.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsVisualDeck6 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master this topic by drawing, connecting, and organizing information visually.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1️⃣ Rate Graphs</h4>
+            <p>Draw graphs of product vs. time for fast and slow reactions. The steepness of the line visually represents the rate. Draw a tangent on a curve to "see" the rate at one point.</p>
+            <h4>2️⃣ Collision Theory Diagrams</h4>
+            <p>Draw "before and after" boxes. For high concentration, draw more particles in the box. For high temperature, draw longer "whoosh" lines behind the particles to show they're moving faster.</p>
+            <h4>3️⃣ Surface Area Sketch</h4>
+            <p>Draw a large solid cube. Then, draw the same cube broken into many smaller pieces. Visually compare the total exposed surface area in both drawings.</p>
+            <h4>4️⃣ Catalyst Reaction Profile</h4>
+            <p>Draw a standard reaction profile. Then, using a different color, draw a second line from reactants to products that has a lower activation energy "hill." Label this line "With Catalyst."</p>
+            <h4>5️⃣ Equilibrium Seesaw</h4>
+            <p>Draw a seesaw. Label one side "Reactants" and the other "Products." Imagine adding weight (concentration) to one side and see how the seesaw tips to restore balance. This is a great visual for Le Chatelier's Principle.</p>
+            <h4>6️⃣ Reversible Reaction Arrows</h4>
+            <p>For reversible reactions, always use the ⇌ symbol. You can even draw one arrow larger than the other to show which direction the equilibrium has shifted.</p>
         </CardContent>
     </Card>
 );
@@ -799,6 +879,11 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck5 />;
         if (style === 'Visual') return <LearnAsVisualDeck5 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck5 />;
+    }
+    if (deckId === 'deck6') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck6 />;
+        if (style === 'Visual') return <LearnAsVisualDeck6 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck6 />;
     }
     
     return null;
@@ -897,3 +982,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

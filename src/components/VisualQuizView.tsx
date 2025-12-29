@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key, Atom, TestTube, Thermometer, Sigma, Link as LinkIcon, CircleDashed, Disc, BookImage } from 'lucide-react';
+import { ArrowLeft, Brain, Eye, CheckCircle, Pencil, Rows, ChevronsRightLeft, Key, Atom, TestTube, Thermometer, Sigma, Link as LinkIcon, CircleDashed, Disc, BookImage, Zap } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
@@ -24,6 +24,7 @@ const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8',
 const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1', 'c2', 'c13', 'c16'].includes(img.id));
 const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c6', 'c7', 'c18', 'c20'].includes(img.id));
 const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
+const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16'].includes(img.id));
 
 
 
@@ -595,6 +596,53 @@ const Deck5Quiz = () => (
     </>
 );
 
+const Deck6Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: RATE GRAPHS</h3>
+        <p>Draw a graph of "Product Formed" (y-axis) vs. "Time" (x-axis). On the same axes, draw one line for a fast reaction and another for a slow reaction. Label them.</p>
+        <p className="mt-4">On the "fast reaction" curve, draw a tangent at an early time point and another at a later time point. What do the different gradients show?</p>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="d6-q1">
+            <AccordionTrigger>Check Answer</AccordionTrigger>
+            <AccordionContent>
+              <p className="text-sm">The steeper the line, the faster the reaction. The tangent at the start should be much steeper than the tangent later on, showing the rate decreases as reactants are used up.</p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 2: COLLISION THEORY DIAGRAMS</h3>
+        <p>Draw two boxes to represent a reaction mixture.</p>
+        <ul>
+            <li><strong>Box 1 (Low Concentration):</strong> Draw a few particles scattered far apart.</li>
+            <li><strong>Box 2 (High Concentration):</strong> Draw many particles crowded together.</li>
+        </ul>
+        <p className="mt-2">Below the boxes, draw an arrow from Box 2 and write "More frequent collisions".</p>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2"><Zap className="text-accent" />SECTION 3: CATALYST REACTION PROFILE</h3>
+        <p>Draw a reaction profile diagram for an exothermic reaction. Label the axes, reactants, products, and activation energy (Ea).</p>
+        <p className="mt-2">Now, using a dashed line or a different color, draw the pathway for the same reaction but with a catalyst added. Label the new, lower activation energy.</p>
+        
+        <hr />
+
+        <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 4: EQUILIBRIUM & LE CHATELIER'S PRINCIPLE (HT)</h3>
+        <p>Draw a seesaw. Label one end "Reactants" and the other "Products."</p>
+        <p className="mt-2">Now, show what happens if you add more "Reactants" by drawing a large weight on that side. Draw a second seesaw showing how it re-balances by shifting towards the "Products" side.</p>
+        <p className="mt-2">For the reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g), draw a diagram showing 4 "gas molecules" on the left and 2 on the right. Use this to explain why increasing pressure favors the right side.</p>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="d6-q4">
+            <AccordionTrigger>Check Answer</AccordionTrigger>
+            <AccordionContent>
+                <p className="text-sm">Increasing pressure favors the side with fewer gas molecules (the right side) to reduce the pressure.</p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
@@ -604,7 +652,8 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
                      deckId === 'deck2' ? deck2Diagrams :
                      deckId === 'deck3' ? deck3Diagrams :
                      deckId === 'deck4' ? deck4Diagrams :
-                     deckId === 'deck5' ? deck5Diagrams : [];
+                     deckId === 'deck5' ? deck5Diagrams :
+                     deckId === 'deck6' ? deck6Diagrams : [];
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -621,6 +670,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         }
         if (deckId === 'deck5') {
             return <Deck5Quiz />;
+        }
+        if (deckId === 'deck6') {
+            return <Deck6Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }
@@ -686,3 +738,5 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
+
+    

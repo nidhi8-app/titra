@@ -805,5 +805,3 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
 };
 
 export default KinestheticQuizView;
-
-    

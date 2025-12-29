@@ -598,47 +598,84 @@ const Deck5Quiz = () => (
 
 const Deck6Quiz = () => (
     <>
-        <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: RATE GRAPHS</h3>
-        <p>Draw a graph of "Product Formed" (y-axis) vs. "Time" (x-axis). On the same axes, draw one line for a fast reaction and another for a slow reaction. Label them.</p>
-        <p className="mt-4">On the "fast reaction" curve, draw a tangent at an early time point and another at a later time point. What do the different gradients show?</p>
+        <h3 className="flex items-center gap-2">🧪 SECTION 1: RATE OF REACTION (SEE IT)</h3>
+        <p className="mt-2"><strong>Q1 📊</strong> You see two curves on a graph (product formed vs time): Curve A is very steep at the start, Curve B has a gentle slope. Which reaction has the greater rate at the start?</p>
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="d6-q1">
-            <AccordionTrigger>Check Answer</AccordionTrigger>
-            <AccordionContent>
-              <p className="text-sm">The steeper the line, the faster the reaction. The tangent at the start should be much steeper than the tangent later on, showing the rate decreases as reactants are used up.</p>
-            </AccordionContent>
-          </AccordionItem>
+            <AccordionItem value="d6-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ A (Steeper gradient means a faster rate)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q2 📈</strong> A tangent is drawn to a curve at 5 seconds. What does the slope of this tangent represent?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Rate of reaction at that moment</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>Q3 ⚖️</strong> You see this formula in a box: RATE = QUANTITY ÷ TIME. Which unit matches a rate calculated using volume?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ cm³/s</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">💥 SECTION 2: COLLISION THEORY (PICTURE IT)</h3>
+        <p className="mt-2"><strong>Q4 🔴</strong> Picture particles: Spread far apart, small arrows, few collisions. Which condition is shown?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Low temperature</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q5 🔵</strong> You see two diagrams of solids: One big block vs. many small blocks. Which diagram shows a faster reaction?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Small blocks (larger surface area)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q6 🔥</strong> You see particles with: More arrows, faster movement, harder collisions. Which TWO things increase?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q6"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent>
+                <p className="text-sm">🅰️ Collision frequency & 🅱️ Collision energy</p>
+            </AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">✂️ SECTION 3: CATALYSTS (COMPARE THE PICTURES)</h3>
+        <p className="mt-2"><strong>Q7 ⛰️</strong> Two energy profile diagrams are shown: Diagram 1 has a tall peak, Diagram 2 has a shorter peak. Which shows a catalysed reaction?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Diagram 2 (lower activation energy)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q8 🧠</strong> Looking at the diagrams again, what stays the same in both reactions?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Energy change overall</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🔁 SECTION 4: REVERSIBLE REACTIONS & EQUILIBRIUM</h3>
+        <p className="mt-2"><strong>Q9 🔄</strong> You see this symbol: ⇌. What does it mean?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Reaction goes both ways</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q10 ⚖️</strong> A balance diagram shows: Reactants ⚖️ Products (equal level). Which statement is correct?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Rates are equal</p></AccordionContent></AccordionItem>
         </Accordion>
         
         <hr />
 
-        <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 2: COLLISION THEORY DIAGRAMS</h3>
-        <p>Draw two boxes to represent a reaction mixture.</p>
-        <ul>
-            <li><strong>Box 1 (Low Concentration):</strong> Draw a few particles scattered far apart.</li>
-            <li><strong>Box 2 (High Concentration):</strong> Draw many particles crowded together.</li>
-        </ul>
-        <p className="mt-2">Below the boxes, draw an arrow from Box 2 and write "More frequent collisions".</p>
-        
-        <hr />
-
-        <h3 className="flex items-center gap-2"><Zap className="text-accent" />SECTION 3: CATALYST REACTION PROFILE</h3>
-        <p>Draw a reaction profile diagram for an exothermic reaction. Label the axes, reactants, products, and activation energy (Ea).</p>
-        <p className="mt-2">Now, using a dashed line or a different color, draw the pathway for the same reaction but with a catalyst added. Label the new, lower activation energy.</p>
-        
-        <hr />
-
-        <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 4: EQUILIBRIUM & LE CHATELIER'S PRINCIPLE (HT)</h3>
-        <p>Draw a seesaw. Label one end "Reactants" and the other "Products."</p>
-        <p className="mt-2">Now, show what happens if you add more "Reactants" by drawing a large weight on that side. Draw a second seesaw showing how it re-balances by shifting towards the "Products" side.</p>
-        <p className="mt-2">For the reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g), draw a diagram showing 4 "gas molecules" on the left and 2 on the right. Use this to explain why increasing pressure favors the right side.</p>
+        <h3 className="flex items-center gap-2">🔥 SECTION 5: LE CHATELIER (FOLLOW THE ARROWS – HT)</h3>
+        <p className="mt-2"><strong>Q11 🔥</strong> You see this flow: Temperature ↑ ➡️ Endothermic direction. What happens to the amount of products at equilibrium?</p>
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="d6-q4">
-            <AccordionTrigger>Check Answer</AccordionTrigger>
-            <AccordionContent>
-                <p className="text-sm">Increasing pressure favors the side with fewer gas molecules (the right side) to reduce the pressure.</p>
-            </AccordionContent>
-          </AccordionItem>
+            <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ Increases (as it's favouring the endothermic reaction to make more products in this case)</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>Q12 💨</strong> You see a gaseous reaction: Left side (4 molecules), Right side (2 molecules). Pressure is increased ⬆️. Which side is favoured?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Right (fewer molecules)</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>Q13 🧪</strong> You see extra reactant added to a system at equilibrium. Arrow points ➡️ towards products. Why?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d6-q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ To use up added reactant (oppose the change)</p></AccordionContent></AccordionItem>
         </Accordion>
     </>
 );
@@ -738,5 +775,3 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
-
-    

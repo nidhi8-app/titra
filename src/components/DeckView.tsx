@@ -805,21 +805,45 @@ const LearnAsVisualDeck6 = () => (
             <CardDescription>Master this topic by drawing, connecting, and organizing information visually.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h4>1️⃣ Rate Graphs</h4>
-            <p>Draw graphs of product vs. time for fast and slow reactions. The steepness of the line visually represents the rate. Draw a tangent on a curve to "see" the rate at one point.</p>
-            <h4>2️⃣ Collision Theory Diagrams</h4>
-            <p>Draw "before and after" boxes. For high concentration, draw more particles in the box. For high temperature, draw longer "whoosh" lines behind the particles to show they're moving faster.</p>
-            <h4>3️⃣ Surface Area Sketch</h4>
-            <p>Draw a large solid cube. Then, draw the same cube broken into many smaller pieces. Visually compare the total exposed surface area in both drawings.</p>
-            <h4>4️⃣ Catalyst Reaction Profile</h4>
-            <p>Draw a standard reaction profile. Then, using a different color, draw a second line from reactants to products that has a lower activation energy "hill." Label this line "With Catalyst."</p>
-            <h4>5️⃣ Equilibrium Seesaw</h4>
-            <p>Draw a seesaw. Label one side "Reactants" and the other "Products." Imagine adding weight (concentration) to one side and see how the seesaw tips to restore balance. This is a great visual for Le Chatelier's Principle.</p>
-            <h4>6️⃣ Reversible Reaction Arrows</h4>
-            <p>For reversible reactions, always use the ⇌ symbol. You can even draw one arrow larger than the other to show which direction the equilibrium has shifted.</p>
+            <h4>🧪 RATE OF REACTION (4.6.1)</h4>
+            <h4>🟥 1️⃣ Use COLOUR-CODED NOTES</h4>
+            <p>Rewrite the notes using the same colours every time: 🔴 Definitions (rate, activation energy), 🔵 Equations & formulas, 🟢 Factors, 🟣 Graphs, 🟠 Exam keywords. Your brain links colour = meaning 🧠✨</p>
+
+            <h4>📊 2️⃣ Picture the RATE FORMULA</h4>
+            <p>Draw a big box: ⬇️ 🟦 RATE = QUANTITY ÷ TIME ⬆️. Under it, draw: ⚖️ Mass (g), 🧪 Volume (cm³), ⚛️ Moles (HT). ➡️ One formula = many uses</p>
+
+            <h4>📈 3️⃣ Graphs = STORIES</h4>
+            <p>Always draw two graphs side by side: 🟢 Fast reaction (Steep curve, Finishes quickly), 🔴 Slow reaction (Shallow curve, Takes longer). ✏️ Draw a tangent and label: ➡️ “Rate at this moment”. 📌 Visual rule: Steeper = faster ⚡</p>
+
+            <h4>💥 4️⃣ Collision Theory as CARTOONS</h4>
+            <p>Draw particles as circles: 🟦 Low temperature (Far apart, Slow arrows ➡️), 🔥 High temperature (Close together, Big arrows ➡️➡️➡️). ❌ Small arrows = no reaction. ✅ Big arrows = reaction. Your brain remembers movement lines better than words.</p>
+
+            <h4>🧊 5️⃣ Surface Area Sketch</h4>
+            <p>Draw: One big cube ❌, Many small cubes ✅. Label: 🟢 More surface area, ⚡ Faster reaction. 📌 Exam phrase to write under drawing: “Greater surface area increases collision frequency”</p>
+
+            <h4>✂️ 6️⃣ Catalyst Energy Profile</h4>
+            <p>Draw two hills: 🔴 Tall hill = no catalyst, 🟢 Short hill = catalyst. Same start & end level ✔️, Lower peak ✔️. 🧠 Visual memory: Catalyst = shorter hill</p>
+
+            <hr/>
+            <h4>🔁 REVERSIBLE REACTIONS & EQUILIBRIUM (4.6.2)</h4>
+            <h4>🔄 7️⃣ Reversible Reaction Arrows</h4>
+            <p>Always draw: ⬅️ ⇌ ➡️. Write: Left = forward, Right = reverse. Under it: ⚖️ Equilibrium = same rate</p>
+
+            <h4>⚖️ 8️⃣ Equilibrium Balance Diagram</h4>
+            <p>Draw a balance scale: ⚪ Reactants | Products ⚪. Label: ❌ Amounts NOT equal, ✅ Rates ARE equal. This stops common exam mistakes 🚫</p>
+
+            <h4>🔥 9️⃣ Temperature Change FLOWCHART (HT)</h4>
+            <p>Draw arrows: 🔥 Temp ↑ ➡️ Endothermic direction ➡️ More products (endo). ❄️ Temp ↓ ➡️ Exothermic direction ➡️ More products (exo). 📌 Use red for exothermic, blue for endothermic</p>
+
+            <h4>💨 🔢 1️⃣0️⃣ Pressure Change DIAGRAM (HT)</h4>
+            <p>Draw gas particles: 🔴 Left side: 4 particles, 🟢 Right side: 2 particles. ⬆️ Pressure ↑ ➡️ Arrow to fewer particles side. 🧠 Picture beats memorising every time.</p>
+
+            <h4>🧪 1️⃣1️⃣ Concentration Change MAP (HT)</h4>
+            <p>Draw a box reaction: Add reactant ➕ ➡️ Arrow AWAY ➡️ Towards products. Remove product ➖ ➡️ Arrow TOWARDS products. Label: “System acts to oppose change”</p>
         </CardContent>
     </Card>
 );
+
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
@@ -1014,5 +1038,3 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
-
-    

@@ -866,6 +866,50 @@ const LearnAsVisualDeck6 = () => (
     </Card>
 );
 
+const LearnAsVisualDeck7 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master Organic Chemistry by drawing structures and visualizing reactions.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Crude Oil, Hydrocarbons & Alkanes 🛢️</h4>
+            <p><strong>Draw a ladder diagram:</strong> Each rung adds +1 carbon. Write the formula pattern CnH₂n+₂. Colour carbons black and hydrogens blue. Make a one-box-per-alkane strip: Methane | Ethane | Propane | Butane. 👁️ <strong>Visual cue:</strong> Every step adds one carbon and two hydrogens.</p>
+
+            <h4>2. Fractional Distillation 🧪</h4>
+            <p><strong>Draw a tall column:</strong> Red at the bottom (hot), blue at the top (cool). Use short arrows for small molecules (go high) and long arrows for large molecules (stay low). 🧠 <strong>Visual sentence:</strong> Small = top = low boiling point.</p>
+
+            <h4>3. Properties of Hydrocarbons 🔥</h4>
+            <p><strong>Turn into a visual table:</strong> Use up/down arrows to show trends for Boiling Point, Viscosity, and Flammability as molecule size increases. Highlight arrows in different colours.</p>
+
+            <h4>4. Combustion of Hydrocarbons 🔥</h4>
+            <p><strong>Draw a reaction strip:</strong> Hydrocarbon → CO₂ + H₂O. Circle oxygen in red to represent oxidation. 💡 <strong>Sticky-note rule:</strong> Complete combustion = only CO₂ + H₂O.</p>
+
+            <h4>5. Cracking & Alkenes 🪓</h4>
+            <p><strong>Draw a long zig-zag chain</strong> and split it in the middle. Label one side 'alkane' and the other 'alkene' (draw the double bond boldly). For the bromine water test, draw an orange box → an arrow → a clear box, and label "alkene present."</p>
+
+            <h4>6. Alkenes & Addition Reactions ➕</h4>
+            <p><strong>Draw the C=C double bond</strong> with a thick line. Draw arrows going across the bond to show where new atoms are added. The final product should have a single bond. Write once: "Addition = atoms added across C=C."</p>
+
+            <h4>7. Alcohols 🍺</h4>
+            <p><strong>Highlight the –OH group</strong> in a bright colour in all alcohol structures. Create a reaction wheel with "Alcohol" in the center and spokes for: Burn 🔥, Sodium ⚡, Water 💧, Oxidation 🧪.</p>
+
+            <h4>8. Carboxylic Acids 🍋</h4>
+            <p><strong>Draw the –COOH functional group</strong> as a distinct block shape and attach it to your acid molecules. For esterification, draw: Acid + Alcohol → Ester + Water, using colors and arrows to track the atoms.</p>
+
+            <h4>9. Polymers 🧵</h4>
+            <p><strong>Addition Polymerisation:</strong> Highlight the C=C double bond in the monomer. Draw the repeating unit in a box, showing no atoms are lost. <strong>Condensation Polymerisation (HT):</strong> Draw the two different monomers and circle the small molecule (like H₂O) that is removed in a bright colour.</p>
+
+            <h4>10. DNA & Natural Polymers 🧬</h4>
+            <p><strong>Draw DNA as a twisted ladder</strong> and colour-code the base pairs. For proteins, draw a chain of different coloured circles and label them "amino acids." Create a simple diagram: DNA → (made of) → nucleotides, Proteins → (made of) → amino acids.</p>
+        </CardContent>
+    </Card>
+);
+
+
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -963,6 +1007,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck6 />;
         if (style === 'Visual') return <LearnAsVisualDeck6 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck6 />;
+    }
+    if (deckId === 'deck7') {
+        if (style === 'Visual') return <LearnAsVisualDeck7 />;
     }
     
     return null;

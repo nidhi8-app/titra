@@ -25,7 +25,7 @@ const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1',
 const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c6', 'c7', 'c18', 'c20'].includes(img.id));
 const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
 const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16', 'c23'].includes(img.id));
-
+const deck7Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c9', 'c10', 'c11'].includes(img.id));
 
 
 const Deck1Quiz = () => (
@@ -519,10 +519,10 @@ const Deck4Quiz = () => (
         <h3>🟥 ROUND 9: HALF-EQUATION BOXES (HT)</h3>
         <p>Draw two large boxes: Cathode, Anode. Fill in missing products and electrons for: 2H⁺ + 2e⁻ → ?, and 4OH⁻ → ?.</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d4-q9">
-                <AccordionTrigger>Check Answer</AccordionTrigger>
+            <AccordionItem value="d4-h1">
+                <AccordionTrigger>Check Answers</AccordionTrigger>
                 <AccordionContent>
-                    <p className="text-sm">Cathode: 2H⁺ + 2e⁻ → H₂<br />Anode: 4OH⁻ → O₂ + 2H₂O + 4e⁻.</p>
+                    <p className="text-sm">a) 2H⁺ + 2e⁻ → H₂<br />b) 4OH⁻ → O₂ + 2H₂O + 4e⁻</p>
                 </AccordionContent>
             </AccordionItem>
         </Accordion>
@@ -694,7 +694,7 @@ const Deck6Quiz = () => (
         <hr />
 
         <h3 className="flex items-center gap-2">🔥 SECTION 5: LE CHATELIER (FOLLOW THE ARROWS – HT)</h3>
-        <p className="mt-2"><strong>Q11 🔥</strong> You see this flow: Temperature ↑ ➡️ Endothermic direction. What happens to the amount of products at equilibrium?</p>
+        <p className="mt-2"><strong>Q11 🔥</strong> You see this flow: Temperature ↑  ➡️  Endothermic direction. What happens to the amount of products at equilibrium?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The answer depends on which direction is endothermic. If the forward reaction is endothermic, the yield of products increases. If the reverse is endothermic, the yield of products decreases.</p></AccordionContent></AccordionItem>
         </Accordion>
@@ -711,6 +711,117 @@ const Deck6Quiz = () => (
     </>
 );
 
+const Deck7Quiz = () => (
+    <>
+        <h3>🛢️ ROUND 1: ALKANES</h3>
+        <p className="mt-2"><strong>Q1:</strong> Draw four boxes in a row. In each box, write: CH₄, C₂H₆, C₃H₈, C₄H₁₀. 👉 Circle the pattern you see in the formulae.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The pattern is CnH₂n+₂. Each step adds CH₂.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q2:</strong> Under your boxes, draw arrows: ↑ under boiling point, ↓ under flammability. 👉 Which direction do the arrows go as the chain gets longer?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Boiling point arrow goes UP (↑). Flammability arrow goes DOWN (↓).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🧪 ROUND 2: FRACTIONAL DISTILLATION</h3>
+        <p className="mt-2"><strong>Q3:</strong> Draw a tall rectangle. Colour-code or label: Bottom = HOT, Top = COOL. 👉 Draw small circles at the top and large circles at the bottom. What do the circles represent?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The circles represent hydrocarbon molecules. Small circles = small molecules, Large circles = large molecules.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q4:</strong> Next to the bottom circles write: High BP or Low BP? (Circle one)</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">High BP should be circled.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🔥 ROUND 3: COMBUSTION</h3>
+        <p className="mt-2"><strong>Q5:</strong> Draw: Hydrocarbon + O₂ → ? 👉 Add two product boxes only.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The two product boxes should be CO₂ (Carbon Dioxide) and H₂O (Water).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q6:</strong> Draw two flames: One clean, One smoky. 👉 Label which one is complete combustion.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The clean flame should be labeled "complete combustion."</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🪓 ROUND 4: CRACKING</h3>
+        <p className="mt-2"><strong>Q7:</strong> Draw a long zig-zag chain. Now split it into two shorter chains. 👉 Add one double line (=) to one chain. What type of hydrocarbon is this?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">An alkene.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q8:</strong> Draw a box labelled Br₂ (orange). Draw an arrow to a clear box. 👉 What test is this showing?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The test for an alkene (unsaturated hydrocarbon) using bromine water.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>➕ ROUND 5: ALKENES</h3>
+        <p className="mt-2"><strong>Q9:</strong> Draw: C = C. Then draw arrows across the bond and add atoms. 👉 What type of reaction is this?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">An addition reaction.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q10:</strong> Write: CnH₂n. 👉 Circle the letter that shows alkenes are unsaturated.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The general formula itself (CnH₂n vs CnH₂n+₂) indicates it is unsaturated, but the double bond is the key feature. Visually, you'd circle the C=C in a structural formula.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🍺 ROUND 6: ALCOHOLS</h3>
+        <p className="mt-2"><strong>Q11:</strong> Draw: —OH. 👉 Circle the functional group.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The —OH group should be circled. It is the hydroxyl group.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q12:</strong> Draw four small boxes: Burn 🔥, Sodium ⚡, Water 💧, Oxidation 🧪. 👉 These boxes represent what?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The main reactions of alcohols.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🍋 ROUND 7: CARBOXYLIC ACIDS</h3>
+        <p className="mt-2"><strong>Q13:</strong> Draw: —COOH. 👉 Label it.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">This is the carboxyl functional group.</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>Q14:</strong> Draw: Acid + Carbonate → Salt + ? + ?. 👉 Fill in the two missing products.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q14"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Water (H₂O) and Carbon Dioxide (CO₂).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🧵 ROUND 8: POLYMERS</h3>
+        <p className="mt-2"><strong>Q15:</strong> Draw repeating boxes linked together. Do NOT cross anything out. 👉 Name the polymerisation type.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q15"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Addition polymerisation.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q16 (HT):</strong> Draw repeating boxes again. This time cross out H₂O. 👉 Name this polymerisation.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q16"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Condensation polymerisation.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr/>
+        <h3>🧬 ROUND 9: DNA & PROTEINS</h3>
+        <p className="mt-2"><strong>Q17:</strong> Draw a twisted ladder. 👉 What molecule does this represent?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q17"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">DNA (Deoxyribonucleic acid).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q18:</strong> Draw small circles linked in a chain. Label one circle. 👉 What is the monomer called?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d7-q18"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Amino acid (for proteins) or nucleotide (for DNA).</p></AccordionContent></AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
@@ -721,7 +832,8 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
                      deckId === 'deck3' ? deck3Diagrams :
                      deckId === 'deck4' ? deck4Diagrams :
                      deckId === 'deck5' ? deck5Diagrams :
-                     deckId === 'deck6' ? deck6Diagrams : [];
+                     deckId === 'deck6' ? deck6Diagrams : 
+                     deckId === 'deck7' ? deck7Diagrams : [];
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -741,6 +853,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         }
         if (deckId === 'deck6') {
             return <Deck6Quiz />;
+        }
+        if (deckId === 'deck7') {
+            return <Deck7Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }
@@ -806,5 +921,3 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
-
-    

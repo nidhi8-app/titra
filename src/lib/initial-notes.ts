@@ -971,17 +971,62 @@ Instrumental Methods:
   ],
   'deck9': [
     {
-      title: 'The Earth\'s Atmosphere',
-      body: 'The Earth\'s early atmosphere was very different from today. It was likely formed by volcanic activity and consisted mainly of carbon dioxide with little or no oxygen. The evolution of the atmosphere involved processes like the condensation of water vapour to form oceans and the increase of oxygen due to photosynthesis by algae and plants.',
+      title: 'Composition and evolution of the Earth\'s atmosphere',
+      body: `Proportions of gases today:
+~80% nitrogen
+~20% oxygen
+Small amounts of carbon dioxide, water vapour, noble gases
+
+Early atmosphere:
+Formed ~4.6 billion years ago, initially mostly carbon dioxide, little/no oxygen
+Volcanic activity released gases including nitrogen, small amounts of methane & ammonia
+
+Formation of oceans dissolved CO₂ → reduced atmospheric CO₂; carbonates formed sediments
+
+Rise of oxygen:
+Algae began producing oxygen via photosynthesis ~2.7 billion years ago
+Over time, plants increased oxygen levels → animals could evolve
+
+Decrease in carbon dioxide:
+Photosynthesis by algae and plants removed CO₂
+Formation of sedimentary rocks (limestone) and fossil fuels (coal, oil, gas) also reduced CO₂`,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Climate Change',
-      body: 'Greenhouse gases, such as carbon dioxide, methane, and water vapour, maintain temperatures on Earth high enough to support life. Human activities, particularly burning fossil fuels, are increasing the levels of these gases, leading to an enhanced greenhouse effect and global climate change.',
-      createdAt: new Date("2024-10-06T12:00:00.000Z"),
-      updatedAt: new Date("2024-10-06T12:00:00.000Z"),
+      title: 'Greenhouse gases and climate change',
+      body: `Greenhouse gases:
+Water vapour, carbon dioxide, methane
+Maintain Earth’s temperature suitable for life
+
+Human contributions:
+Activities increase CO₂ (e.g., burning fossil fuels) and methane (e.g., agriculture)
+Leads to potential global warming and climate change
+Evidence can be uncertain, models simplified; peer-reviewed research is more reliable
+
+Effects of global climate change:
+Rise in average global temperature
+Impacts include: rising sea levels, extreme weather, habitat loss, changes in agriculture
+
+Carbon footprint:
+Total greenhouse gases emitted from product/service life cycle
+Can be reduced by lowering CO₂ and methane emissions, though there are limits`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
+    {
+      title: 'Atmospheric pollutants',
+      body: `Pollutants from fuels:
+Burning fuels releases: CO₂, H₂O, CO, SO₂, NOx, particulates
+Soot (carbon particles) and unburned hydrocarbons contribute to particulates
+
+Effects of pollutants:
+Carbon monoxide: toxic, colourless, odourless
+SO₂ & NOx: respiratory problems, acid rain
+Particulates: global dimming, health issues`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
   ],
 };
 
@@ -992,4 +1037,5 @@ Instrumental Methods:
     
 
     
+
 

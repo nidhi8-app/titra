@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 import { Button } from './ui/button';
-import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer, Zap, Gauge } from 'lucide-react';
+import { ArrowLeft, Footprints, Brain, Hand, Move, PersonStanding, CheckCircle, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, Sigma, TestTube, Recycle, Award, BrainCircuit, Thermometer, Zap, Gauge, Flame } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -463,7 +463,7 @@ const Deck4Quiz = () => (
         
         <hr />
 
-        <h3>🟨 ROUND 3: EXTRACTION DECISION GAME (STEP LEFT / RIGHT)</h3>
+        <h3 className="flex items-center gap-2"><Footprints className="text-accent" />ROUND 3: EXTRACTION DECISION GAME (STEP LEFT / RIGHT)</h3>
         <p className="text-sm italic">Step LEFT for carbon reduction. Step RIGHT for electrolysis.</p>
         <ul>
             <li>Iron</li>
@@ -496,7 +496,7 @@ const Deck4Quiz = () => (
         
         <hr />
         
-        <h3>🟪 ROUND 5: NEUTRALISATION BUILD (USE OBJECTS)</h3>
+        <h3 className="flex items-center gap-2"><Footprints className="text-accent" />ROUND 5: NEUTRALISATION BUILD (USE OBJECTS)</h3>
         <p className="text-sm italic">Use pens, coins, or paper to represent ions.</p>
         <p>Build sodium chloride using ions. 👉 Say which acid made it: <strong>Hydrochloric acid</strong>.</p>
         <p>Build calcium sulfate. 👉 Say the acid and the metal/base used: <strong>Sulfuric acid</strong> and <strong>Calcium</strong> (or calcium oxide/hydroxide/carbonate).</p>
@@ -742,9 +742,76 @@ const Deck6Quiz = () => (
          <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q13"><AccordionTrigger>Check Action</AccordionTrigger><AccordionContent><p className="text-sm">You should be moving faster (higher temperature) and therefore bumping into things more often (frequency) and harder (energy). If you can act it, you know it! 💪</p></AccordionContent></AccordionItem>
         </Accordion>
-
     </>
 );
+
+const Deck8Quiz = () => (
+    <>
+        <h3>✅❌ ROUND 1: PURE OR MIXTURE?</h3>
+        <p className="mt-2"><strong>Q1:</strong> Ice (solid H₂O) melts into pure water. Is pure water a pure substance or a mixture? Move to the ✅ (Pure) or ❌ (Mixture) side of the room.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. It contains only H₂O molecules.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q2:</strong> You have chocolate with nuts in it. Is this a pure substance or a mixture? Move to the ✅ or ❌ side.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">❌ Mixture. It contains multiple substances not chemically combined.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🧪✅ ROUND 2: FORMULATIONS</h3>
+        <p className="mt-2"><strong>Q3:</strong> A medicine pill contains the active drug, a filler, and a flavouring. Is this a pure substance or a formulation? Pick up an object representing 🧪 (Formulation) or ✅ (Pure).</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🧪 Formulation. It's a mixture designed for a specific purpose.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🖌️ ROUND 3: CHROMATOGRAPHY</h3>
+        <p className="mt-2"><strong>Q4:</strong> A substance is tested and shows only one spot on the chromatography paper. Is it pure or a mixture? Move to the ✅ (Pure) or ❌ (Mixture) side.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. A pure substance produces a single spot.</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>Q5:</strong> A molecule moves 3 cm and the solvent moves 6 cm. Walk 3 steps for the molecule, then 6 steps for the solvent. What is the Rf value?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rf = 3 cm / 6 cm = 0.5</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>💨 ROUND 4: GAS TESTS</h3>
+        <p className="mt-2"><strong>Q6:</strong> You put a burning splint into a test tube of gas and it makes a 'pop'. What is the gas? Act out the pop! 💥</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Hydrogen (H₂)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q7:</strong> You put a glowing splint into a test tube and it relights. What is the gas? Act out the splint relighting 🔥.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxygen (O₂)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🔥 ROUND 5: ION TESTS</h3>
+        <p className="mt-2"><strong>Q8:</strong> A flame test produces a crimson red flame. Which metal ion is present? Run to a card labelled 'Lithium'.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Lithium (Li⁺)</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q9:</strong> You add sodium hydroxide to a solution containing Copper(II) ions. What do you see? Physically combine cards representing Cu²⁺ and NaOH.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A blue precipitate (Copper(II) hydroxide).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>Q10:</strong> You add acid to a substance and see bubbles. You test the gas and it turns limewater cloudy. What ion was present? Act out the bubbling ☁️.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d8-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbonate (CO₃²⁻)</p></AccordionContent></AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 
 const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: KinestheticQuizViewProps) => {
@@ -767,6 +834,9 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
         }
         if (deckId === 'deck6') {
             return <Deck6Quiz />;
+        }
+        if (deckId === 'deck8') {
+            return <Deck8Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }

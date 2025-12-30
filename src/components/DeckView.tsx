@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge, Cloud, FlaskConical, Beaker, Atom, Puzzle, Swords, FileText, List, Microscope, Pen, CheckCircle, Flame } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -952,6 +952,41 @@ const LearnAsReadingWritingDeck7 = () => (
     </Card>
 );
 
+const LearnAsKinestheticDeck8 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical analysis" with hands-on activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>Pure Substances 🧪</h4>
+            <p><strong>Melting/Boiling Point Demo 🌡️:</strong> Ice ❄️ → melts to water 💧. Chocolate 🍫 → melts slowly. Action: Feel temperature changes and note melting point.</p>
+            <p><strong>Sorting Game 🎴:</strong> Cards: Pure ✅ / Mixture ❌. Action: Walk to the correct corner of the room.</p>
+            
+            <h4>Formulations 🥼</h4>
+            <p><strong>Mixing Activity 🥄:</strong> Sugar + Water 🍬💧, Salt + Water 🧂💧, Colored Water 🌈. Action: Measure, mix, and test properties.</p>
+            <p><strong>Role-Play 👩‍🔬👨‍🔬:</strong> Act as a chemist mixing chemicals carefully.</p>
+
+            <h4>Chromatography 🖌️</h4>
+            <p><strong>Paper Chromatography Demo 🟦🟩🟥:</strong> Use inks or markers to separate colours. Action: Dip paper, watch colours move, calculate Rf.</p>
+            <p><strong>Human Molecule Game 🏃‍♂️🏃‍♀️:</strong> Draw start line (origin) and solvent line. Students walk different distances to represent different molecules.</p>
+
+            <h4>Identification of Common Gases</h4>
+            <p>Act out each test with props (sticks, paper, bottles) and make the reaction motion: pop 💥, relight 🔥, cloud ☁️, bleach ⚪.</p>
+            
+            <h4>Identification of Ions</h4>
+            <p><strong>Flame Tests 🔥:</strong> Run to the right coloured card 🏃‍♂️ when the metal is called.</p>
+            <p><strong>Metal Hydroxides + Carbonates + Halides + Sulfates 🧴:</strong> Use cards/props for ions and reagents. Combine physically to “form precipitates” 💙💚🟤. Bubble CO₂ through limewater 🥛 → make cloud motion ☁️. Match halides with silver nitrate cards 💛🟨🟫.</p>
+
+            <h4>Flame Emission Spectroscopy 🌈🔬</h4>
+            <p>Use coloured strips for spectra 🌈. Students walk to match unknown to reference spectrum 🏃‍♀️. Act it out: Ions → flame → spectroscope → colour observation 👀.</p>
+        </CardContent>
+    </Card>
+);
+
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -1053,6 +1088,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     if (deckId === 'deck7') {
         if (style === 'Visual') return <LearnAsVisualDeck7 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck7 />;
+    }
+     if (deckId === 'deck8') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck8 />;
     }
     
     return null;

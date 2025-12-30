@@ -1049,6 +1049,45 @@ const LearnAsReadingWritingDeck8 = () => (
     </Card>
 );
 
+const LearnAsKinestheticDeck9 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master "Chemistry of the atmosphere" with hands-on activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Composition of the atmosphere 🌬️</h4>
+            <p><strong>Activity:</strong> Use colored balls or tokens: 🔵 = Nitrogen (8 balls), 🔴 = Oxygen (2 balls), 🟡🟢 = CO₂, water vapour, noble gases. <strong>Task:</strong> Sort them into a “mini-atmosphere” bag or jar. Handling them helps you remember the 80:20 ratio.</p>
+
+            <h4>2. Early atmosphere & volcanic activity 🌋</h4>
+            <p><strong>Activity:</strong> Make a mini “volcano” with baking soda + vinegar. <strong>Task:</strong> Pretend the gas released is CO₂, methane (CH₄), or ammonia (NH₃) 🟤💨. <strong>Tip:</strong> Move the “lava” and shout out which gases are being released—helps your body remember the sequence of events.</p>
+
+            <h4>3. Rise of oxygen 🍃</h4>
+            <p><strong>Activity:</strong> Act out photosynthesis: One person = algae/plant 🌱, Others = sunlight ☀️, water 💧, CO₂ 💨. Produce oxygen by handing out green tokens 🍏 to “atmosphere” area 🌬️. <strong>Task:</strong> Move oxygen tokens from “plants” to “atmosphere” repeatedly to remember oxygen build-up over billions of years.</p>
+            
+            <h4>4. Decrease in carbon dioxide 🪨</h4>
+            <p><strong>Activity:</strong> Simulate carbon being trapped: Clay or stones 🪨 = limestone, CO₂ tokens 💨 are “trapped” in rocks or fossil fuels (coal 🟫, oil 🛢️, gas 🔵). <strong>Task:</strong> Physically move CO₂ tokens from “air” to “rocks/fossil fuels” to remember how CO₂ decreased.</p>
+            
+            <h4>5. Greenhouse gases & human impact 🌡️</h4>
+            <p><strong>Activity:</strong> Use a box or blanket to simulate the greenhouse effect: Heat source 🔥 under box, Cover with blanket 🛌 to trap heat → mimics CO₂, CH₄, H₂O trapping energy. <strong>Task:</strong> Add extra “blankets” for human emissions 🚗🏭🐄 → feel how more greenhouse gases trap more heat.</p>
+            
+            <h4>6. Global climate change effects 🌍</h4>
+            <p><strong>Activity:</strong> Role-play effects: Assign roles: sea 🌊, crops 🌾, animals 🐘🦜, humans 🧑‍🤝‍🧑. Move pieces around as temperature rises 🌡️ → floods, habitat loss, crop failure. <strong>Task:</strong> Physically act out the impacts to reinforce cause → effect relationships.</p>
+            
+            <h4>7. Carbon footprint 👣</h4>
+            <p><strong>Activity:</strong> Track your “personal carbon tokens” for daily actions: Walk 🚶‍♀️ = 1 token, Bike 🚴‍♂️ = 0.5 token, Car 🚗 = 3 tokens, Eat meat 🥩 = 2 tokens, plant-based 🥗 = 0.5 token. <strong>Task:</strong> Move tokens from your “activity” pile to “atmosphere” pile 💨 to feel the impact of choices.</p>
+            
+            <h4>8. Pollutants from fuels 🔥</h4>
+            <p><strong>Activity:</strong> Burn “fuel cards” with symbols: Coal 🟫, oil 🛢️, gas 🔵. Release tokens for CO₂ 💨, CO ☠️, SO₂ 🌫️, NOx 💨, particulates ⚫. <strong>Task:</strong> Physically sort tokens into “air” or “trapped” piles to understand pollution sources and effects.</p>
+            
+            <h4>9. Effects of pollutants 😷</h4>
+            <p><strong>Activity:</strong> Use tokens to simulate health/environmental impacts: CO ☠️ → cover “lungs” tokens 💖💨 to simulate poisoning, SO₂ 🌫️ / NOx 💨 → touch “plants” 🌱 and “water” 💧 to show acid rain, Particulates ⚫ → cover sun ☀️ partially → show global dimming. <strong>Task:</strong> Physically move tokens to see cause → effect in action.</p>
+        </CardContent>
+    </Card>
+);
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
@@ -1154,6 +1193,9 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck8 />;
         if (style === 'Visual') return <LearnAsVisualDeck8 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck8 />;
+    }
+    if (deckId === 'deck9') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck9 />;
     }
     
     return null;

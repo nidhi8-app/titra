@@ -749,65 +749,112 @@ const Deck8Quiz = () => (
     <>
         <h3>✅❌ ROUND 1: PURE OR MIXTURE?</h3>
         <p className="mt-2"><strong>Q1:</strong> Ice (solid H₂O) melts into pure water. Is pure water a pure substance or a mixture? Move to the ✅ (Pure) or ❌ (Mixture) side of the room.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. It contains only H₂O molecules.</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. It contains only H₂O molecules.</p></AccordionContent></AccordionItem></Accordion>
 
         <p className="mt-4"><strong>Q2:</strong> You have chocolate with nuts in it. Is this a pure substance or a mixture? Move to the ✅ or ❌ side.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">❌ Mixture. It contains multiple substances not chemically combined.</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">❌ Mixture. It contains multiple substances not chemically combined.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3>🧪✅ ROUND 2: FORMULATIONS</h3>
         <p className="mt-2"><strong>Q3:</strong> A medicine pill contains the active drug, a filler, and a flavouring. Is this a pure substance or a formulation? Pick up an object representing 🧪 (Formulation) or ✅ (Pure).</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🧪 Formulation. It's a mixture designed for a specific purpose.</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🧪 Formulation. It's a mixture designed for a specific purpose.</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3>🖌️ ROUND 3: CHROMATOGRAPHY</h3>
         <p className="mt-2"><strong>Q4:</strong> A substance is tested and shows only one spot on the chromatography paper. Is it pure or a mixture? Move to the ✅ (Pure) or ❌ (Mixture) side.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. A pure substance produces a single spot.</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">✅ Pure. A pure substance produces a single spot.</p></AccordionContent></AccordionItem></Accordion>
         
         <p className="mt-4"><strong>Q5:</strong> A molecule moves 3 cm and the solvent moves 6 cm. Walk 3 steps for the molecule, then 6 steps for the solvent. What is the Rf value?</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rf = 3 cm / 6 cm = 0.5</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rf = 3 cm / 6 cm = 0.5</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3>💨 ROUND 4: GAS TESTS</h3>
         <p className="mt-2"><strong>Q6:</strong> You put a burning splint into a test tube of gas and it makes a 'pop'. What is the gas? Act out the pop! 💥</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Hydrogen (H₂)</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Hydrogen (H₂)</p></AccordionContent></AccordionItem></Accordion>
 
         <p className="mt-4"><strong>Q7:</strong> You put a glowing splint into a test tube and it relights. What is the gas? Act out the splint relighting 🔥.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxygen (O₂)</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxygen (O₂)</p></AccordionContent></AccordionItem></Accordion>
 
         <hr />
 
         <h3>🔥 ROUND 5: ION TESTS</h3>
         <p className="mt-2"><strong>Q8:</strong> A flame test produces a crimson red flame. Which metal ion is present? Run to a card labelled 'Lithium'.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Lithium (Li⁺)</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Lithium (Li⁺)</p></AccordionContent></AccordionItem></Accordion>
 
         <p className="mt-4"><strong>Q9:</strong> You add sodium hydroxide to a solution containing Copper(II) ions. What do you see? Physically combine cards representing Cu²⁺ and NaOH.</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A blue precipitate (Copper(II) hydroxide).</p></AccordionContent></AccordionItem>
-        </Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A blue precipitate (Copper(II) hydroxide).</p></AccordionContent></AccordionItem></Accordion>
 
         <p className="mt-4"><strong>Q10:</strong> You add acid to a substance and see bubbles. You test the gas and it turns limewater cloudy. What ion was present? Act out the bubbling ☁️.</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbonate (CO₃²⁻)</p></AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
+const Deck9Quiz = () => (
+    <>
+        <h3>🌍 ROUND 1: ATMOSPHERE COMPOSITION</h3>
+        <p className="mt-2"><strong>1️⃣ Gas Ratios:</strong> Use colored balls or tokens: 🔵 = Nitrogen, 🔴 = Oxygen, 🟡 = CO₂. Task: Show the correct proportion of gases in today’s atmosphere. Question: How many blue balls would you use if you have 10 balls in total?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d8-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbonate (CO₃²⁻)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d9-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">You would use 8 blue balls (80% Nitrogen).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>2️⃣ Early Atmosphere Simulation 🌋:</strong> Using a mini-volcano or pretend eruption: Question: Act out the gases released by volcanoes 4.6 billion years ago. Which gases were there the most? Which were rare?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Mostly carbon dioxide. Very little or no oxygen.</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <hr />
+
+        <h3>🍃 ROUND 2: OXYGEN & CO₂ CHANGES</h3>
+        <p className="mt-2"><strong>3️⃣ Photosynthesis Oxygen Production:</strong> Act out algae or plants producing oxygen using green tokens 🍏. Question: Move the oxygen tokens from plants to atmosphere. How did this change oxygen levels over time?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxygen levels increased significantly.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>4️⃣ Carbon Dioxide Decrease 🪨:</strong> Use clay/stones/fossil fuel tokens to trap CO₂ 💨. Task: Move 5 CO₂ tokens into rocks/fossil fuels. Question: What process is being simulated here?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The formation of sedimentary rocks and fossil fuels, which locked up carbon from the atmosphere.</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <hr />
+
+        <h3>🌡️ ROUND 3: CLIMATE CHANGE</h3>
+        <p className="mt-2"><strong>5️⃣ Greenhouse Effect:</strong> Using a blanket 🛌 and heat source 🔥. Task: Trap heat under the blanket. Question: Which gases does this represent, and what human activities add extra “blankets”? 🚗🏭🐄</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Gases: Carbon dioxide, methane, water vapour. Activities: Burning fossil fuels, agriculture.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>6️⃣ Role-play Global Climate Change 🌍:</strong> Assign roles: sea 🌊, crops 🌾, animals 🐘, humans 🧑‍🤝‍🧑. Question: Act out one effect of rising temperature for each role. Name at least 2 effects.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Effects include: rising sea levels, more extreme weather, changes to ecosystems, challenges for agriculture.</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>7️⃣ Carbon Footprint 👣:</strong> Move tokens for daily actions: walk 🚶‍♀️ = 1, bike 🚴‍♂️ = 0.5, car 🚗 = 3, meat 🥩 = 2. Question: Act out your day and calculate your carbon footprint. Which actions add the most?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Typically, driving a car and eating meat have a higher carbon footprint compared to walking or cycling.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>🔥 ROUND 4: POLLUTANTS</h3>
+        <p className="mt-2"><strong>8️⃣ Fuel Combustion:</strong> Use fuel cards 🟫🛢️🔵 and release tokens for pollutants 💨⚫☠️🌫️. Question: Act out burning coal. Which pollutants are released?</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbon dioxide, sulfur dioxide, and particulates (soot).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>9️⃣ Effects of Pollutants 😷:</strong> Move CO ☠️ tokens to lungs 💖, SO₂ 🌫️ to water 💧 and plants 🌱, particulates ⚫ to sun ☀️. Question: Act out and describe 1 human health effect, 1 environmental effect.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Health effect: Carbon monoxide is toxic; SO₂/NOx cause respiratory problems. Environmental effect: SO₂/NOx cause acid rain; particulates cause global dimming.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+
+        <h3>⏳ FINAL CHALLENGE</h3>
+        <p className="mt-2"><strong>🔟 Sequence Challenge:</strong> Arrange tokens or cards to show: Early atmosphere 🌋, Oxygen produced by algae 🍃, CO₂ trapped in rocks 🪨, Humans adding greenhouse gases 🚗🏭. Question: Act out each step and explain the change in the atmosphere.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. Volcanoes release CO₂, N₂. 2. Algae photosynthesises, releasing O₂. 3. CO₂ is locked away in rocks/oceans. 4. Humans burn fossil fuels, releasing trapped CO₂.</p></AccordionContent></AccordionItem>
         </Accordion>
     </>
 );
@@ -837,6 +884,9 @@ const KinestheticQuizView = ({ title, onBack, deckId, isEmbedded = false }: Kine
         }
         if (deckId === 'deck8') {
             return <Deck8Quiz />;
+        }
+        if (deckId === 'deck9') {
+            return <Deck9Quiz />;
         }
         return <p>No kinesthetic quiz available for this topic yet.</p>;
     }

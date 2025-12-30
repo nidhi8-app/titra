@@ -738,7 +738,8 @@ Enzymes are biological catalysts`,
         title: 'Reversible reactions',
         body: `Reversible reactions can go forwards and backwards
 Represented by: ⇌
-General equation: A + B ⇌ C + D
+General equation:
+A + B ⇌ C + D
 Changing conditions changes the direction of reaction
 Example (word equation):
 Hydrated copper sulfate ⇌ anhydrous copper sulfate + water`,
@@ -921,17 +922,52 @@ Other natural polymers: proteins, starch, cellulose.`,
   ],
   'deck8': [
     {
-      title: 'Purity and Formulations',
-      body: 'In chemistry, a pure substance consists of only one element or one compound. Melting and boiling point data can be used to distinguish pure substances from mixtures. A formulation is a mixture that has been designed as a useful product, such as fuels, paints, and medicines.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        title: 'Purity, Formulations, and Chromatography',
+        body: `A pure substance is a single element or compound, not mixed with anything else.
+Pure substances have specific melting and boiling points, which can distinguish them from mixtures.
+A formulation is a carefully designed mixture with useful properties. Each component has a specific purpose (examples: fuels, medicines, paints).
+Chromatography is used to separate mixtures. It involves a stationary phase and a mobile phase.
+Separation depends on distribution between phases.
+Rf value = (distance moved by substance) / (distance moved by solvent). A pure compound gives a single spot.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
-      title: 'Identification of Ions',
-      body: 'Flame tests are used to identify metal ions (cations) by the colour they produce in a flame. For example, lithium produces a crimson flame. Anions, such as carbonate or sulfate ions, can be identified using specific chemical tests that often produce a precipitate.',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+        title: 'Identification of Common Gases',
+        body: `Hydrogen: Burns with a pop using a burning splint.
+Oxygen: Relights a glowing splint.
+Carbon dioxide: Turns limewater milky when bubbled through.
+Chlorine: Bleaches damp litmus paper (turns it white).`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
+    {
+        title: 'Identification of Ions',
+        body: `Flame Tests for metal cations:
+- Lithium (Li⁺): Crimson
+- Sodium (Na⁺): Yellow
+- Potassium (K⁺): Lilac
+- Calcium (Ca²⁺): Orange-red
+- Copper (Cu²⁺): Green
+
+Metal Hydroxides (with NaOH solution):
+- Al³⁺: White precipitate, dissolves in excess NaOH.
+- Ca²⁺, Mg²⁺: White precipitate, insoluble in excess.
+- Cu²⁺: Blue precipitate.
+- Fe²⁺: Green precipitate.
+- Fe³⁺: Brown precipitate.
+
+Anion Tests:
+- Carbonates (CO₃²⁻): React with dilute acids to produce CO₂, which turns limewater milky.
+- Halides (Cl⁻, Br⁻, I⁻): Add dilute nitric acid, then silver nitrate solution. Precipitates form: White (Cl⁻), Cream (Br⁻), Yellow (I⁻).
+- Sulfates (SO₄²⁻): Add dilute hydrochloric acid, then barium chloride solution, which forms a white precipitate.
+
+Instrumental Methods:
+- More accurate, sensitive, and faster.
+- Flame emission spectroscopy: Metal ions produce a line spectrum. Used to identify ions and measure concentrations.`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    }
   ],
   'deck9': [
     {
@@ -956,3 +992,4 @@ Other natural polymers: proteins, starch, cellulose.`,
     
 
     
+

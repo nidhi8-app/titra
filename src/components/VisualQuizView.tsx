@@ -629,7 +629,7 @@ const Deck5Quiz = () => (
 
 const Deck6Quiz = () => (
     <>
-        <h3 className="flex items-center gap-2">🧪 SECTION 1: RATE OF REACTION (SEE IT)</h3>
+        <h3>🧪 SECTION 1: RATE OF REACTION (SEE IT)</h3>
         <p className="mt-2"><strong>Q1 📊</strong> You see two curves on a graph (product formed vs time): Curve A is very steep at the start, Curve B has a gentle slope. Which reaction has the greater rate at the start?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A (Steeper gradient means a faster rate)</p></AccordionContent></AccordionItem>
@@ -647,7 +647,7 @@ const Deck6Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">💥 SECTION 2: COLLISION THEORY (PICTURE IT)</h3>
+        <h3>💥 SECTION 2: COLLISION THEORY (PICTURE IT)</h3>
         <p className="mt-2"><strong>Q4 🔴</strong> Picture particles: Spread far apart, small arrows, few collisions. Which condition is shown?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Low temperature</p></AccordionContent></AccordionItem>
@@ -667,7 +667,7 @@ const Deck6Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">✂️ SECTION 3: CATALYSTS (COMPARE THE PICTURES)</h3>
+        <h3>✂️ SECTION 3: CATALYSTS (COMPARE THE PICTURES)</h3>
         <p className="mt-2"><strong>Q7 ⛰️</strong> Two energy profile diagrams are shown: Diagram 1 has a tall peak, Diagram 2 has a shorter peak. Which shows a catalysed reaction?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Diagram 2 (lower activation energy)</p></AccordionContent></AccordionItem>
@@ -680,7 +680,7 @@ const Deck6Quiz = () => (
 
         <hr />
 
-        <h3 className="flex items-center gap-2">🔁 SECTION 4: REVERSIBLE REACTIONS & EQUILIBRIUM</h3>
+        <h3>🔁 SECTION 4: REVERSIBLE REACTIONS & EQUILIBRIUM</h3>
         <p className="mt-2"><strong>Q9 🔄</strong> You see this symbol: ⇌. What does it mean?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Reaction goes both ways</p></AccordionContent></AccordionItem>
@@ -693,7 +693,7 @@ const Deck6Quiz = () => (
         
         <hr />
 
-        <h3 className="flex items-center gap-2">🔥 SECTION 5: LE CHATELIER (FOLLOW THE ARROWS – HT)</h3>
+        <h3>🔥 SECTION 5: LE CHATELIER (FOLLOW THE ARROWS – HT)</h3>
         <p className="mt-2"><strong>Q11 🔥</strong> You see this flow: Temperature ↑  ➡️  Endothermic direction. What happens to the amount of products at equilibrium?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The answer depends on which direction is endothermic. If the forward reaction is endothermic, the yield of products increases. If the reverse is endothermic, the yield of products decreases.</p></AccordionContent></AccordionItem>
@@ -822,6 +822,46 @@ const Deck7Quiz = () => (
     </>
 );
 
+const Deck8Quiz = () => (
+    <>
+        <h3>ROUND 1: PURE OR MIXTURE?</h3>
+        <p className="mt-2"><strong>Q1:</strong> Which is pure: Ice (❄️💧) or Chocolate with nuts (🍫🥜)?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Ice (Pure)</p></AccordionContent></AccordionItem></Accordion>
+        
+        <h3>ROUND 2: FORMULATIONS</h3>
+        <p className="mt-4"><strong>Q2:</strong> A medicine pill (💊) contains an active ingredient, a filler, and a flavour. Is it a formulation or a pure substance?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Formulation</p></AccordionContent></AccordionItem></Accordion>
+        
+        <h3>ROUND 3: CHROMATOGRAPHY</h3>
+        <p className="mt-4"><strong>Q3:</strong> Which represents a pure substance on a chromatogram: a single spot or multiple spots?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A single spot</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>Q4:</strong> If a substance moves 4 cm and the solvent moves 8 cm, what is the Rf value?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rf = 4 cm / 8 cm = 0.5</p></AccordionContent></AccordionItem></Accordion>
+        
+        <h3>ROUND 4: GAS TESTS</h3>
+        <p className="mt-4"><strong>Q5:</strong> A burning splint makes a 'pop' sound. Which gas is it?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Hydrogen (H₂)</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>Q6:</strong> A glowing splint relights. Which gas is it?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Oxygen (O₂)</p></AccordionContent></AccordionItem></Accordion>
+        
+        <h3>ROUND 5: ION TESTS</h3>
+        <p className="mt-4"><strong>Q7:</strong> Match the flame colour to the metal: Crimson, Yellow, Lilac, Green.</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Crimson → Lithium (Li⁺), Yellow → Sodium (Na⁺), Lilac → Potassium (K⁺), Green → Copper (Cu²⁺)</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>Q8:</strong> Match the precipitate colour to the metal ion: White, Blue, Green, Brown.</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">White → Al³⁺, Ca²⁺, or Mg²⁺; Blue → Cu²⁺; Green → Fe²⁺; Brown → Fe³⁺</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>Q9:</strong> Bubbles form when acid is added. Which ion is likely present?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbonate (CO₃²⁻)</p></AccordionContent></AccordionItem></Accordion>
+        
+        <h3>ROUND 6: SPECTROSCOPY</h3>
+        <p className="mt-4"><strong>Q10:</strong> A flame emission spectrum shows a strong yellow line. Which metal is present?</p>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d8-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Sodium (Na⁺)</p></AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
 
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
@@ -856,6 +896,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         }
         if (deckId === 'deck7') {
             return <Deck7Quiz />;
+        }
+        if (deckId === 'deck8') {
+            return <Deck8Quiz />;
         }
         return <p>No visual quiz available for this topic yet.</p>;
     }
@@ -921,5 +964,3 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
-
-    

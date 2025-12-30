@@ -987,6 +987,34 @@ const LearnAsKinestheticDeck8 = () => (
     </Card>
 );
 
+const LearnAsVisualDeck8 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical analysis" with diagrams, tables, and visual cues.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Pure Substances vs Mixtures</h4>
+            <p><strong>Draw a table:</strong> Pure (✅) vs. Mixture (❌). Use icons: Ice cube ❄️ (Pure), Chocolate with nuts 🍫🥜 (Mixture). Tip: Highlight pure substances in blue and mixtures in red.</p>
+            <h4>2. Formulations</h4>
+            <p><strong>Draw a layered diagram:</strong> Medicine 💊 = [Active Ingredient] + [Filler] + [Flavour]. Use different colours for each layer to remember their purpose.</p>
+            <h4>3. Chromatography</h4>
+            <p><strong>Draw paper chromatography:</strong> Label origin, solvent front, and spots. Show a single spot for pure substances and multiple spots for mixtures. Write the Rf formula visually: Rf = (distance of substance) / (distance of solvent).</p>
+            <h4>4. Gas Tests</h4>
+            <p><strong>Create a visual chart:</strong> Gas (H₂, O₂, CO₂, Cl₂) | Test (splint, limewater) | Result (pop, relights, cloudy, bleaches) | Visual Cue (💥, 🔥, ☁️, ⚪).</p>
+            <h4>5. Flame Tests</h4>
+            <p><strong>Use a flame color chart:</strong> Draw flames and color them: Crimson ❤️ (Li⁺), Yellow 💛 (Na⁺), Lilac 💜 (K⁺), Green 💚 (Cu²⁺).</p>
+            <h4>6. Metal Hydroxides & Other Ion Tests</h4>
+            <p><strong>Draw test tubes with colored precipitates:</strong> White ⚪ (Al³⁺), Blue 💙 (Cu²⁺), Green 💚 (Fe²⁺), Brown 🟤 (Fe³⁺). Add visual cues for other tests: Bubbles ☁️ (CO₃²⁻), White precipitate ⚪ (Cl⁻).</p>
+            <h4>7. Flame Emission Spectroscopy</h4>
+            <p><strong>Draw a diagram:</strong> Sample → Flame → Spectroscope → Line spectrum 🌈. Show how a specific line color (e.g., yellow) corresponds to an element (Sodium).</p>
+        </CardContent>
+    </Card>
+);
+
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -1091,6 +1119,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     }
      if (deckId === 'deck8') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck8 />;
+        if (style === 'Visual') return <LearnAsVisualDeck8 />;
     }
     
     return null;

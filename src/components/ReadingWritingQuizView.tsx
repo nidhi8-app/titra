@@ -554,7 +554,7 @@ const Deck4Quiz = () => (
 
         <h3 className="flex items-center gap-2">🟧 SECTION F: pH Scale & Acids (3 marks)</h3>
         <p>Describe the pH scale and state the pH values of: An acid, A neutral solution, An alkali</p><Textarea />
-        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-f1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The pH scale measures acidity/alkalinity. Acidic is pH {`<`} 7, neutral is pH 7, alkaline is pH {`>`} 7.</p></AccordionContent></AccordionItem></Accordion>
+        <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-f1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The pH scale measures acidity/alkalinity. Acidic is pH &lt; 7, neutral is pH 7, alkaline is pH &gt; 7.</p></AccordionContent></AccordionItem></Accordion>
         
         <p className="mt-2">Explain the difference between a strong acid and a weak acid.</p><Textarea />
         <Accordion type="single" collapsible className="w-full"><AccordionItem value="d4-f2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A strong acid is fully ionised in aqueous solution, whereas a weak acid is only partially ionised.</p></AccordionContent></AccordionItem></Accordion>
@@ -833,6 +833,116 @@ const Deck6Quiz = () => (
     </>
 );
 
+const Deck7Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2">🛢️ SECTION 1: CRUDE OIL & ALKANES</h3>
+        <p>Q1 (2 marks): Define the term hydrocarbon.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A compound consisting of hydrogen and carbon atoms only.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q2 (2 marks): State the general formula for: a) Alkanes b) Alkenes</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">a) Alkanes: CnH₂n+₂ <br/> b) Alkenes: CnH₂n</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q3 (3 marks): Name the first four alkanes.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Methane, Ethane, Propane, Butane.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q4 (3 marks): Explain why crude oil is described as a finite resource.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">It is formed from the remains of ancient biomass over millions of years and is not being made anymore, or is being used up faster than it is formed.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr/>
+        <h3 className="flex items-center gap-2">🧪 SECTION 2: FRACTIONAL DISTILLATION</h3>
+        <p>Q5 (4 marks): Describe how fractional distillation separates crude oil into fractions.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. Crude oil is heated until it evaporates. 2. The vapours rise up a fractionating column which is hot at the bottom and cool at the top. 3. Hydrocarbons condense at different levels according to their boiling points. 4. Fractions with low boiling points are collected at the top, and those with high boiling points are collected at the bottom.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q6 (2 marks): Why do different hydrocarbons condense at different heights in the fractionating column?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Because they have different boiling points. Larger molecules have stronger intermolecular forces and higher boiling points, so they condense lower down.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr/>
+        <h3 className="flex items-center gap-2">🔥 SECTION 3: PROPERTIES & COMBUSTION</h3>
+        <p>Q7 (3 marks): Describe how the following properties change as molecular size increases: Boiling point, Viscosity, Flammability</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Boiling point increases, Viscosity increases, Flammability decreases.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q8 (2 marks): Write a word equation for the complete combustion of a hydrocarbon.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Hydrocarbon + Oxygen → Carbon Dioxide + Water</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr/>
+        <h3 className="flex items-center gap-2">✂️ SECTION 4: CRACKING & ALKENES</h3>
+        <p>Q9 (3 marks): What is cracking and why is it useful?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Cracking is the process of breaking down large hydrocarbon molecules into smaller, more useful ones. It is useful because it produces more petrol and alkenes, which are in high demand.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q10 (2 marks): State two products formed during cracking.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A shorter chain alkane and an alkene.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q11 (2 marks): Describe the test for alkenes and state the result.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q11"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Add the substance to bromine water. If an alkene is present, the bromine water will be decolourised (turn from orange to colourless).</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr/>
+        <h3 className="flex items-center gap-2">➕ SECTION 5: ALKENES (REACTIONS)</h3>
+        <p>Q12 (3 marks): Explain what happens during an addition reaction of an alkene.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The carbon-carbon double bond (C=C) breaks and atoms are added across it to form a single, saturated product.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q13 (2 marks): Why do alkenes burn with a smoky flame?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Due to incomplete combustion, which produces unburnt carbon particles (soot).</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr/>
+        <h3 className="flex items-center gap-2">🍺 SECTION 6: ALCOHOLS</h3>
+        <p>Q14 (2 marks): Name the functional group found in alcohols.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q14"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The hydroxyl group (–OH).</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q15 (4 marks): Describe two reactions of ethanol.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q15"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. Complete combustion: Ethanol burns in air to produce carbon dioxide and water. 2. Oxidation: Can be oxidised to form ethanoic acid. (Also reacts with sodium or mixes with water).</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q16 (2 marks): How is ethanol produced by fermentation?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q16"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">By the action of yeast on sugar solutions in the absence of oxygen and at a warm temperature.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr/>
+        <h3 className="flex items-center gap-2">🍋 SECTION 7: CARBOXYLIC ACIDS</h3>
+        <p>Q17 (2 marks): Name the functional group found in carboxylic acids.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q17"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The carboxyl group (–COOH).</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q18 (3 marks): Describe what happens when a carboxylic acid reacts with a carbonate.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q18"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">It produces a salt, water, and carbon dioxide gas (effervescence).</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr/>
+        <h3 className="flex items-center gap-2">🧵 SECTION 8: POLYMERS</h3>
+        <p>Q19 (3 marks): Explain what addition polymerisation is.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q19"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A reaction where many small, unsaturated monomer molecules (alkenes) join together to form a very large saturated molecule (a polymer), with no other products formed.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4">Q20 (HT – 4 marks): Compare addition polymerisation and condensation polymerisation.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q20"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Addition polymerisation involves one type of monomer (alkene) and produces only the polymer. Condensation polymerisation involves monomers with two functional groups and produces the polymer plus a small molecule (like water).</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr/>
+        <h3 className="flex items-center gap-2">🧬 SECTION 9: NATURAL POLYMERS</h3>
+        <p>Q21 (2 marks): What are proteins made from?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q21"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Amino acid monomers joined together.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4">Q22 (2 marks): Describe the structure of DNA.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d7q22"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">DNA is a polymer made from four different nucleotide monomers, arranged in two polymer chains that form a double helix structure.</p></AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
+
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
     const renderQuizContent = () => {
@@ -853,6 +963,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck6') {
             return <Deck6Quiz />;
+        }
+        if (deckId === 'deck7') {
+            return <Deck7Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }

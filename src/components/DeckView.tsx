@@ -909,6 +909,48 @@ const LearnAsVisualDeck7 = () => (
     </Card>
 );
 
+const LearnAsReadingWritingDeck7 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master Organic Chemistry with structured notes and written practice.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>🛢️ 1. Rewrite into MINI NOTES</h4>
+            <p>✍️ Take ONE topic at a time. Example: Alkanes. 🧪 Hydrocarbons (C + H only). 🔗 Saturated (single bonds). 📐 Formula: CnH₂n+₂. 🧍 First four: methane, ethane, propane, butane. 👉 Close your notes and rewrite this from memory 🔁</p>
+            
+            <h4>🧠 2. Learn by DEFINITIONS (Exam Gold 💰)</h4>
+            <p>Write these out DAILY 📖✍️. 🛢️ Crude oil – finite resource from ancient biomass. ⚛️ Hydrocarbon – compound of only carbon and hydrogen. 🔗 Alkane – saturated hydrocarbon (CnH₂n+₂). ✂️ Cracking – breaking large hydrocarbons into smaller ones. ➕ Addition polymerisation – monomers join, no by-products. 💡 Rewrite → cover → rewrite again!</p>
+
+            <h4>📊 3. TABLES = MEMORY BOOSTER 🚀</h4>
+            <p>Properties of Hydrocarbons: Recreate a table showing how boiling point, viscosity, and flammability change with molecule size. ✍️ Recreate this table from memory!</p>
+
+            <h4>🔥 4. WRITE EQUATIONS (Over & Over 🔁)</h4>
+            <p>📐 General formulae: Alkanes ➝ CnH₂n+₂, Alkenes ➝ CnH₂n. 🔥 Complete combustion: Hydrocarbon + O₂ → CO₂ + H₂O. 📝 Write it → cover → write again!</p>
+
+            <h4>🧪 5. STEP LISTS for 6-MARK QUESTIONS 📝</h4>
+            <p>Fractional Distillation 🏭: 1️⃣ Crude oil is heated. 2️⃣ Hydrocarbons evaporate. 3️⃣ Vapours rise. 4️⃣ Condense at different heights. 5️⃣ Fractions collected. 💡 Memorise as a numbered list 🔢</p>
+
+            <h4>➕ 6. REACTION PAGES (One Page = One Topic 📄)</h4>
+            <p>🟢 Alkenes: 🔗 Functional group: C=C. ➕ Reactions: Hydrogen, Water, Halogens. 🧪 Test: bromine water → 🟧➡️⚪. Rewrite this page from memory ✍️</p>
+
+            <h4>🍺 7. FUNCTIONAL GROUP PAGES</h4>
+            <p>Alcohols 🍷: 🧩 Functional group: –OH. 🔥 Burn in air. ⚡ React with sodium. 💧 Mix with water. 🧪 Oxidation. 🧬 Fermentation makes ethanol. 📖 Write → cover → rewrite!</p>
+
+            <h4>🍋 8. MEMORY TRICKS 🧠✨</h4>
+            <p>Mnemonics 🎵: COOH → Carbon 🍎 Oxygen 🫧 Oxygen 🫧 Hydrogen 💧. Complete combustion → CO₂ + H₂O ONLY 🚫. Keyword Lists 📝: Write keywords → cover definitions → rewrite ✍️</p>
+            
+            <h4>⏰ 9. WEEKLY REVISION PLAN 📆</h4>
+            <p>📅 Follow a structured plan: Mon: Rewrite notes, Tue: Blurt method, Wed: Tables + equations, Thu: Exam answers, Fri: Fix mistakes, Sat: Full recall, Sun: Light review 😌</p>
+
+            <h4>🎯 10. NIGHT BEFORE EXAM 🌙</h4>
+            <p>✍️ Write EVERYTHING you remember. 🟨 Highlight gaps. 🔁 Rewrite gaps 3 times. 😴 Sleep = memory boost</p>
+        </CardContent>
+    </Card>
+);
 
 
 
@@ -1010,6 +1052,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     }
     if (deckId === 'deck7') {
         if (style === 'Visual') return <LearnAsVisualDeck7 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck7 />;
     }
     
     return null;

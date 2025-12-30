@@ -632,17 +632,17 @@ const Deck6Quiz = () => (
         <h3 className="flex items-center gap-2">🧪 SECTION 1: RATE OF REACTION (SEE IT)</h3>
         <p className="mt-2"><strong>Q1 📊</strong> You see two curves on a graph (product formed vs time): Curve A is very steep at the start, Curve B has a gentle slope. Which reaction has the greater rate at the start?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ A (Steeper gradient means a faster rate)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A (Steeper gradient means a faster rate)</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <p className="mt-4"><strong>Q2 📈</strong> A tangent is drawn to a curve at 5 seconds. What does the slope of this tangent represent?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Rate of reaction at that moment</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rate of reaction at that moment</p></AccordionContent></AccordionItem>
         </Accordion>
         
         <p className="mt-4"><strong>Q3 ⚖️</strong> You see this formula in a box: RATE = QUANTITY ÷ TIME. Which unit matches a rate calculated using volume?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ cm³/s</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">cm³/s</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
@@ -650,18 +650,18 @@ const Deck6Quiz = () => (
         <h3 className="flex items-center gap-2">💥 SECTION 2: COLLISION THEORY (PICTURE IT)</h3>
         <p className="mt-2"><strong>Q4 🔴</strong> Picture particles: Spread far apart, small arrows, few collisions. Which condition is shown?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Low temperature</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Low temperature</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <p className="mt-4"><strong>Q5 🔵</strong> You see two diagrams of solids: One big block vs. many small blocks. Which diagram shows a faster reaction?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Small blocks (larger surface area)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Small blocks (larger surface area)</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <p className="mt-4"><strong>Q6 🔥</strong> You see particles with: More arrows, faster movement, harder collisions. Which TWO things increase?</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d6-q6"><AccordionTrigger>Check Answers</AccordionTrigger><AccordionContent>
-                <p className="text-sm">🅰️ Collision frequency & 🅱️ Collision energy</p>
+                <p className="text-sm">Collision frequency & Collision energy</p>
             </AccordionContent></AccordionItem>
         </Accordion>
 
@@ -670,12 +670,12 @@ const Deck6Quiz = () => (
         <h3 className="flex items-center gap-2">✂️ SECTION 3: CATALYSTS (COMPARE THE PICTURES)</h3>
         <p className="mt-2"><strong>Q7 ⛰️</strong> Two energy profile diagrams are shown: Diagram 1 has a tall peak, Diagram 2 has a shorter peak. Which shows a catalysed reaction?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Diagram 2 (lower activation energy)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Diagram 2 (lower activation energy)</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <p className="mt-4"><strong>Q8 🧠</strong> Looking at the diagrams again, what stays the same in both reactions?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Energy change overall</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Energy change overall</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <hr />
@@ -683,12 +683,12 @@ const Deck6Quiz = () => (
         <h3 className="flex items-center gap-2">🔁 SECTION 4: REVERSIBLE REACTIONS & EQUILIBRIUM</h3>
         <p className="mt-2"><strong>Q9 🔄</strong> You see this symbol: ⇌. What does it mean?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Reaction goes both ways</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Reaction goes both ways</p></AccordionContent></AccordionItem>
         </Accordion>
 
         <p className="mt-4"><strong>Q10 ⚖️</strong> A balance diagram shows: Reactants ⚖️ Products (equal level). Which statement is correct?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Rates are equal</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rates are equal</p></AccordionContent></AccordionItem>
         </Accordion>
         
         <hr />
@@ -701,12 +701,12 @@ const Deck6Quiz = () => (
         
         <p className="mt-4"><strong>Q12 💨</strong> You see a gaseous reaction: Left side (4 molecules), Right side (2 molecules). Pressure is increased ⬆️. Which side is favoured?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅱️ Right (fewer molecules)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q12"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Right (fewer molecules)</p></AccordionContent></AccordionItem>
         </Accordion>
         
         <p className="mt-4"><strong>Q13 🧪</strong> You see extra reactant added to a system at equilibrium. Arrow points ➡️ towards products. Why?</p>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="d6-q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">🅰️ To use up added reactant (oppose the change)</p></AccordionContent></AccordionItem>
+            <AccordionItem value="d6-q13"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">To use up added reactant (oppose the change)</p></AccordionContent></AccordionItem>
         </Accordion>
     </>
 );
@@ -921,3 +921,5 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 };
 
 export default VisualQuizView;
+
+    

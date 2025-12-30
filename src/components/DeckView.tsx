@@ -734,7 +734,7 @@ const LearnAsKinestheticDeck6 = () => (
 
             <h4>🔵 4️⃣ Walk the Graph</h4>
             <p><strong>📈 Tape a giant graph on the floor. 👣 Walk the line:</strong> Steep = FAST rate ⚡. Flat = SLOW rate 🐌. 📏 Lay a ruler/string as a tangent.</p>
-            <p>🧠 <strong>Lock it in:</strong> Gradient = rate. Tangent = rate at ONE moment (HT).</p>
+            <p>🧠 <strong>Lock it in:</strong> ➡️ Gradient = rate. ➡️ Tangent = rate at ONE moment (HT).</p>
 
             <h4>🟣 5️⃣ Catalyst Shortcut Game</h4>
             <p><strong>🚶 Long path = ❌ no catalyst. 🏃 Shortcut = ✅ catalyst.</strong> ⏱️ Time both paths.</p>
@@ -812,7 +812,7 @@ const LearnAsReadingWritingDeck6 = () => (
             <p>1️⃣ Read notes 2️⃣ Cover them 3️⃣ Write everything you remember 4️⃣ Check and correct in a different colour. 🧠 This is one of the most effective revision techniques.</p>
 
             <h4>🧠 EXAM-SPECIFIC STRATEGIES</h4>
-            <p>✔️ Keyword Lists: Write a must-use keywords list (Collision frequency, Activation energy, etc.) and tick them off as you revise.</p>
+            <p>✔️ Keyword Lists: Write a must-use keywords list (Collision frequency, Activation energy, Gradient, etc.) and tick them off as you revise.</p>
         </CardContent>
     </Card>
 );
@@ -948,6 +948,49 @@ const LearnAsReadingWritingDeck7 = () => (
 
             <h4>🎯 10. NIGHT BEFORE EXAM 🌙</h4>
             <p>✍️ Write EVERYTHING you remember. 🟨 Highlight gaps. 🔁 Rewrite gaps 3 times. 😴 Sleep = memory boost</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsKinestheticDeck7 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Footprints className="w-6 h-6" />
+                Learn as a Kinesthetic Learner
+            </CardTitle>
+            <CardDescription>Master Organic Chemistry with hands-on activities.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Crude Oil & Alkanes 🛢️</h4>
+            <p><strong>Build molecules:</strong> Use a modeling kit to build methane, ethane, propane, and butane. Feel how the chain gets longer. Walk a "ladder" on the floor, adding a "carbon" and two "hydrogens" with each step.</p>
+
+            <h4>2. Fractional Distillation 🧪</h4>
+            <p><strong>Act it out:</strong> Use different sized balls. Heat them up (shake them) and let the small ones "rise" higher in a "column" (a corner of the room) than the big ones.</p>
+
+            <h4>3. Properties of Hydrocarbons 🔥</h4>
+            <p><strong>Feel the properties:</strong> Compare water (low viscosity) and honey (high viscosity) to feel the difference. Safely observe a candle (small hydrocarbon) burning vs. trying to light a piece of wood (large hydrocarbon).</p>
+
+            <h4>4. Combustion 🔥</h4>
+            <p><strong>Act out the equation:</strong> Start as a hydrocarbon molecule, grab "oxygen" molecules, and then break apart to form "CO₂" and "H₂O" molecules. This physicalizes the rearrangement of atoms.</p>
+
+            <h4>5. Cracking & Alkenes 🪓</h4>
+            <p><strong>Break a chain:</strong> Use a paper clip chain or LEGOs to represent a long alkane. Physically break it into two smaller pieces. Turn one piece into an "alkene" by bending it or adding a special marker for the double bond.</p>
+
+            <h4>6. Addition Reactions ➕</h4>
+            <p><strong>Add to the molecule:</strong> Start with your alkene model. Physically open the "double bond" and attach new atoms (e.g., hydrogen atoms) to the carbons.</p>
+
+            <h4>7. Alcohols 🍺</h4>
+            <p><strong>Build and modify:</strong> Build an ethane molecule, then remove one hydrogen and add an "-OH" group (a different colored object) to make ethanol. This shows it's a modification of an alkane.</p>
+
+            <h4>8. Carboxylic Acids 🍋</h4>
+            <p><strong>Model the reaction:</strong> Build an ethanol molecule and an oxidizing agent. Act out the "oxidation" to form ethanoic acid by changing the structure of the functional group.</p>
+
+            <h4>9. Polymers 🧵</h4>
+            <p><strong>Make a polymer chain:</strong> Use many paper clips (monomers) and link them all together to form a long chain (polymer). For condensation, have two different types of paper clips and remove a small object (like a bead) for every link you make.</p>
+
+            <h4>10. DNA & Natural Polymers 🧬</h4>
+            <p><strong>Build a helix:</strong> Use pipe cleaners, candy, or a modeling kit to build a small section of a DNA double helix. Feel the twist and see how the base pairs fit together.</p>
         </CardContent>
     </Card>
 );
@@ -1089,6 +1132,93 @@ const LearnAsKinestheticDeck9 = () => (
     </Card>
 );
 
+const LearnAsVisualDeck9 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <Eye className="w-6 h-6" />
+                Learn as a Visual Learner
+            </CardTitle>
+            <CardDescription>Master "Chemistry of the atmosphere" with diagrams and charts.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Composition of the atmosphere 🌬️</h4>
+            <p><strong>Visual tool: Pie chart.</strong> Draw a pie chart with 🔵 Nitrogen = 80%, 🔴 Oxygen = 20%, and 🟡🟢 CO₂, water vapour, noble gases = tiny slices. Tip: Color-code the gases and label them clearly.</p>
+
+            <h4>2. Early atmosphere 🌋</h4>
+            <p><strong>Visual tool: Timeline diagram.</strong> Draw a timeline from 4.6 billion years ago to the formation of oceans. Use icons for volcanoes, water, and gases for easier recall.</p>
+
+            <h4>3. Rise of oxygen 🍃</h4>
+            <p><strong>Visual tool: Flowchart / arrows.</strong> Show Algae 🌱 → photosynthesis (☀️💧 + CO₂) → O₂ released 🍏. Use green for plants, blue for water, and red for oxygen to reinforce memory.</p>
+            
+            <h4>4. Decrease in carbon dioxide 🪨</h4>
+            <p><strong>Visual tool: Diagram of carbon sinks.</strong> Use arrows showing CO₂ moving from the air to plants 🌱, limestone 🪨, and fossil fuels (coal 🟫, oil 🛢️, gas 🔵).</p>
+            
+            <h4>5. Greenhouse gases 🌡️</h4>
+            <p><strong>Visual tool: Simple schematic.</strong> Show the Sun ☀️ → Earth 🌍, with some heat escaping ↗️ and some being trapped by CO₂ 💨, CH₄ 🟤, and H₂O 💧. Color-code shortwave vs longwave radiation.</p>
+            
+            <h4>6. Human contributions 🚗🏭</h4>
+            <p><strong>Visual tool: Infographic.</strong> Use icons + arrows to show gas flow into the atmosphere: Car 🚗 → CO₂ 💨, Agriculture 🐄 → CH₄ 🟤, Industry 🏭 → CO₂ 💨.</p>
+            
+            <h4>7. Global climate change 🌍</h4>
+            <p><strong>Visual tool: Cause-effect diagram.</strong> Rising temperature 🌡️ → sea levels 🌊, extreme weather 🌪️, habitat loss 🐘, agriculture impacts 🌾. Use colors: red for danger, blue for water, green for plants.</p>
+            
+            <h4>8. Carbon footprint 👣</h4>
+            <p><strong>Visual tool: Icon chart or bar graph.</strong> Compare CO₂ emissions of different actions: car 🚗 &gt; meat 🥩 &gt; plane ✈️ &gt; bike 🚴‍♂️. Make it colorful and comparative.</p>
+            
+            <h4>9. Pollutants from fuels 🔥</h4>
+            <p><strong>Visual tool: Table with icons.</strong> Create a table for fuels (Coal 🟫, Oil 🛢️, Gas 🔵), their pollutants, and effects. Use color + emojis.</p>
+            
+            <h4>10. Effects of pollutants 😷</h4>
+            <p><strong>Visual tool: Concept map.</strong> Connect pollutants to their effects: CO ☠️ → human poisoning 💖, SO₂ 🌫️/NOx 💨 → acid rain 💧, Particulates ⚫ → global dimming 🌥️.</p>
+        </CardContent>
+    </Card>
+);
+
+const LearnAsReadingWritingDeck9 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master "Chemistry of the atmosphere" with structured notes and written practice.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Composition of the atmosphere 🌬️</h4>
+            <p><strong>Method:</strong> Write a clear sentence: “Today’s atmosphere is 80% nitrogen, 20% oxygen, and tiny amounts of CO₂, water vapour, and noble gases.” Use bullet points for clarity.</p>
+
+            <h4>2. Early atmosphere 🌋</h4>
+            <p><strong>Method:</strong> Make a timeline in words: 4.6 billion years ago – Earth forms. 4.6–3.6 billion years – volcanoes release CO₂, N₂, CH₄, NH₃. Oceans form → CO₂ dissolves → limestone deposits. Rewrite this in your own words.</p>
+
+            <h4>3. Rise of oxygen 🍃</h4>
+            <p><strong>Method:</strong> Write a step-by-step explanation: 1. Algae appeared ~2.7 billion years ago. 2. Photosynthesis (CO₂ + H₂O + sunlight → O₂ + glucose). 3. Oxygen levels gradually increased, allowing animals to evolve. Use mnemonics.</p>
+            
+            <h4>4. Decrease in carbon dioxide 🪨</h4>
+            <p><strong>Method:</strong> Make a cause-effect list: Photosynthesis by plants 🌱 → CO₂ decreases. CO₂ trapped in rocks/fossil fuels → CO₂ decreases. Write short sentences for each process.</p>
+            
+            <h4>5. Greenhouse gases 🌡️</h4>
+            <p><strong>Method:</strong> Make a table for Gas, Source, and Effect of CO₂, CH₄, and H₂O. Tables help organize info clearly.</p>
+            
+            <h4>6. Human contributions 🚗🏭</h4>
+            <p><strong>Method:</strong> Write short paragraphs explaining human impacts: Cars and industry release CO₂. Agriculture releases methane. These add to the greenhouse effect.</p>
+            
+            <h4>7. Global climate change 🌍</h4>
+            <p><strong>Method:</strong> Make a cause → effect list: Rising temperature → sea levels rise, extreme weather, habitat loss, impacts on crops.</p>
+            
+            <h4>8. Carbon footprint 👣</h4>
+            <p><strong>Method:</strong> Write a personal reflection. List daily activities and their CO₂ emissions. Write sentences on how you could reduce them.</p>
+            
+            <h4>9. Pollutants from fuels 🔥</h4>
+            <p><strong>Method:</strong> Make a table with written effects for pollutants from Coal, Oil, and Gas.</p>
+            
+            <h4>10. Effects of pollutants 😷</h4>
+            <p><strong>Method:</strong> Write a cause-effect paragraph for each pollutant: CO, SO₂, NOx, and particulates, explaining their impact.</p>
+        </CardContent>
+    </Card>
+);
+
+
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
@@ -1186,6 +1316,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck6 />;
     }
     if (deckId === 'deck7') {
+        if (style === 'Kinesthetic') return <LearnAsKinestheticDeck7 />;
         if (style === 'Visual') return <LearnAsVisualDeck7 />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck7 />;
     }
@@ -1196,6 +1327,8 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     }
     if (deckId === 'deck9') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck9 />;
+        if (style === 'Visual') return <LearnAsVisualDeck9 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck9 />;
     }
     
     return null;
@@ -1294,3 +1427,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
+    

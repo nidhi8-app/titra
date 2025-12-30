@@ -26,6 +26,7 @@ const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3',
 const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
 const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16', 'c23'].includes(img.id));
 const deck7Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c9', 'c10', 'c11'].includes(img.id));
+const deck9Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c22'].includes(img.id));
 
 
 const Deck1Quiz = () => (
@@ -862,6 +863,64 @@ const Deck8Quiz = () => (
     </>
 );
 
+const Deck9Quiz = () => (
+    <>
+        <h3>🌍 ROUND 1: ATMOSPHERE COMPOSITION & EVOLUTION</h3>
+        <p className="mt-2"><strong>1️⃣ Gas Proportions:</strong> Draw a pie chart of the Earth’s current atmosphere. Label nitrogen, oxygen, and other gases in their correct proportions.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The chart should show ~80% Nitrogen, ~20% Oxygen, and a small slice for other gases.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>2️⃣ Early Atmosphere:</strong> Draw a timeline from 4.6 billion years ago to the formation of oceans. Include volcanoes, CO₂, N₂, CH₄, NH₃, and the oceans.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Timeline should show early volcanic eruptions releasing gases, leading to a CO₂-rich atmosphere, followed by oceans forming and dissolving CO₂.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>3️⃣ Oxygen Rise:</strong> Make a flow diagram of photosynthesis, showing how algae and plants increased O₂ in the atmosphere over time.</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Diagram should show Algae/Plants taking in CO₂ and H₂O with sunlight, and releasing O₂.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>4️⃣ Carbon Dioxide Reduction:</strong> Draw a diagram of carbon sinks. Include CO₂ moving from the air into plants, limestone, and fossil fuels.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Your diagram should visually represent the trapping of atmospheric CO₂ in various long-term stores.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <hr />
+        
+        <h3>🌡️ ROUND 2: CLIMATE CHANGE & POLLUTANTS</h3>
+        <p className="mt-2"><strong>5️⃣ Greenhouse Effect:</strong> Draw a schematic showing the Earth, Sun, and greenhouse gases. Show which gases trap heat and which radiation escapes.</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The diagram should show incoming solar radiation and outgoing infrared radiation, with gases like CO₂, CH₄, and H₂O trapping some of the outgoing heat.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>6️⃣ Human Contributions:</strong> Draw arrows from human activities (cars, industry, agriculture) to the greenhouse gases they produce (CO₂, CH₄).</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Ensure arrows correctly link sources to their primary emissions (e.g., Cars → CO₂, Agriculture → CH₄).</p></AccordionContent></AccordionItem>
+        </Accordion>
+        
+        <p className="mt-4"><strong>7️⃣ Climate Change Effects:</strong> Create a cause-effect diagram showing how rising temperatures lead to sea-level rise, extreme weather, habitat loss, and crop failure.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The diagram should clearly link the central cause (rising temp) to multiple distinct effects.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>8️⃣ Carbon Footprint:</strong> Draw a bar graph or icon chart comparing emissions of different activities. Rank them from highest to lowest carbon footprint.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A correct ranking would generally show activities like flying and driving as high, and walking/cycling as very low.</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>9️⃣ Pollutants from Fuels:</strong> Make a table with icons for fuels (coal, oil, gas), the pollutants they produce, and their effects.</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Coal: SO₂, Particulates. Oil: NOx, CO. Gas: CO₂. Effects should match (e.g., SO₂ → Acid Rain).</p></AccordionContent></AccordionItem>
+        </Accordion>
+
+        <p className="mt-4"><strong>🔟 Effects of Pollutants:</strong> Draw a concept map connecting pollutants (CO, SO₂, NOx, particulates) to their outcomes on humans, plants, and climate.</p>
+         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="d9-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Map should link CO to poisoning, SO₂/NOx to acid rain, and particulates to global dimming/health issues.</p></AccordionContent></AccordionItem>
+        </Accordion>
+    </>
+);
+
 
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
@@ -873,7 +932,8 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
                      deckId === 'deck4' ? deck4Diagrams :
                      deckId === 'deck5' ? deck5Diagrams :
                      deckId === 'deck6' ? deck6Diagrams : 
-                     deckId === 'deck7' ? deck7Diagrams : [];
+                     deckId === 'deck7' ? deck7Diagrams : 
+                     deckId === 'deck9' ? deck9Diagrams : [];
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
@@ -900,6 +960,9 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         if (deckId === 'deck8') {
             return <Deck8Quiz />;
         }
+        if (deckId === 'deck9') {
+            return <Deck9Quiz />;
+        }
         return <p>No visual quiz available for this topic yet.</p>;
     }
     
@@ -908,10 +971,12 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         <div className="p-4 bg-primary/10 rounded-lg text-center">
             <h3 className="font-bold text-primary">How to use this quiz</h3>
             <p className="text-sm">Draw, connect, and organize the information visually. Use pen and paper.</p>
-             <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
-                <BookImage className="mr-2 h-4 w-4" />
-                View Diagrams
-            </Button>
+            {diagrams.length > 0 && (
+                <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
+                    <BookImage className="mr-2 h-4 w-4" />
+                    View Diagrams
+                </Button>
+            )}
         </div>
         <hr />
         {renderQuizContent()}

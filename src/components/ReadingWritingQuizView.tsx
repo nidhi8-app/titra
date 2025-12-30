@@ -993,6 +993,68 @@ const Deck8Quiz = () => (
     </>
 );
 
+const Deck9Quiz = () => (
+    <>
+        <h3>🌍 ROUND 1: ATMOSPHERE COMPOSITION & EVOLUTION</h3>
+        <p className="mt-2"><strong>1️⃣ Gas Composition:</strong> List the main gases in the atmosphere today and their approximate percentages.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Nitrogen (~80%), Oxygen (~20%), with small amounts of other gases like CO₂ and argon.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>2️⃣ Early Atmosphere:</strong> Write a short paragraph explaining what gases were in the early atmosphere and how they were released.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The early atmosphere was mostly carbon dioxide, with little to no oxygen. These gases were released by intense volcanic activity.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4"><strong>3️⃣ Formation of Oceans:</strong> Explain in 2–3 sentences how the formation of oceans reduced carbon dioxide in the atmosphere.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">As the Earth cooled, water vapour condensed to form oceans. Carbon dioxide dissolved in the water, and was then used to form carbonate precipitates, which became sediments on the seabed.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>4️⃣ Rise of Oxygen:</strong> Describe how oxygen levels increased in the atmosphere and why this was important for animals.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Algae and plants produced oxygen via photosynthesis. This increase in oxygen allowed for the evolution of complex life, including animals that use oxygen for respiration.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4"><strong>5️⃣ Carbon Dioxide Reduction:</strong> List 3 ways in which the percentage of CO₂ in the atmosphere decreased over time.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">1. Photosynthesis by algae and plants. 2. Dissolving in oceans. 3. Formation of fossil fuels and sedimentary rocks.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+
+        <h3>🌡️ ROUND 2: CLIMATE CHANGE & POLLUTANTS</h3>
+        <p className="mt-2"><strong>6️⃣ Greenhouse Gases:</strong> Create a table listing the main greenhouse gases, their sources, and their effect on the Earth’s temperature.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+            <Table><TableHeader><TableRow><TableHead>Gas</TableHead><TableHead>Source</TableHead><TableHead>Effect</TableHead></TableRow></TableHeader><TableBody>
+                <TableRow><TableCell>CO₂</TableCell><TableCell>Fossil fuels</TableCell><TableCell>Traps heat</TableCell></TableRow>
+                <TableRow><TableCell>CH₄</TableCell><TableCell>Agriculture</TableCell><TableCell>Traps heat</TableCell></TableRow>
+                <TableRow><TableCell>H₂O</TableCell><TableCell>Evaporation</TableCell><TableCell>Traps heat</TableCell></TableRow>
+            </TableBody></Table>
+        </AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>7️⃣ Human Contributions:</strong> Write 2–3 sentences explaining how humans increase greenhouse gases in the atmosphere. Include examples.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Humans burn fossil fuels for energy (releasing CO₂) and engage in large-scale farming (releasing methane). These activities increase the concentration of greenhouse gases, enhancing the greenhouse effect.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-4"><strong>8️⃣ Global Climate Change:</strong> Make a bullet list of 4 potential effects of climate change on the environment.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+            <ul className="list-disc pl-6 text-sm"><li>Rising sea levels</li><li>More frequent and severe weather events</li><li>Changes in the distribution of wildlife species</li><li>Challenges to food production</li></ul>
+        </AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>9️⃣ Carbon Footprint:</strong> Write a short paragraph explaining what a carbon footprint is and how it can be reduced.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A carbon footprint is the total amount of greenhouse gases emitted over the full life cycle of a product, service, or event. It can be reduced by using renewable energy, improving energy efficiency, and reducing consumption.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-4"><strong>🔟 Atmospheric Pollutants:</strong> Create a table listing 3 pollutants produced by burning fuels, their sources, and their harmful effects.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d9q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+             <Table><TableHeader><TableRow><TableHead>Pollutant</TableHead><TableHead>Source</TableHead><TableHead>Effect</TableHead></TableRow></TableHeader><TableBody>
+                <TableRow><TableCell>Carbon Monoxide (CO)</TableCell><TableCell>Incomplete combustion</TableCell><TableCell>Toxic gas</TableCell></TableRow>
+                <TableRow><TableCell>Sulfur Dioxide (SO₂)</TableCell><TableCell>Burning coal</TableCell><TableCell>Acid rain</TableCell></TableRow>
+                <TableRow><TableCell>Particulates (soot)</TableCell><TableCell>Incomplete combustion</TableCell><TableCell>Global dimming, health issues</TableCell></TableRow>
+            </TableBody></Table>
+        </AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
@@ -1020,6 +1082,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck8') {
             return <Deck8Quiz />;
+        }
+        if (deckId === 'deck9') {
+            return <Deck9Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }

@@ -942,6 +942,57 @@ const Deck7Quiz = () => (
     </>
 );
 
+const Deck8Quiz = () => (
+    <>
+        <h3 className="flex items-center gap-2">🧪 SECTION 1: PURITY, FORMULATIONS & CHROMATOGRAPHY</h3>
+        <p>Q1: Is pure water (H₂O) a pure substance or a mixture?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Pure substance.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-2">Q2: A medicine contains the active drug, a filler, and flavouring. Is it a formulation or a pure substance?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Formulation.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-2">Q3: In chromatography, does a single spot indicate a pure or impure substance?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Pure substance.</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-2">Q4: Calculate the Rf value if a substance moves 4 cm and the solvent moves 8 cm.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Rf = 4 / 8 = 0.5</p></AccordionContent></AccordionItem></Accordion>
+        
+        <hr />
+        
+        <h3 className="flex items-center gap-2">🌬️ SECTION 2: GAS TESTS</h3>
+        <p>Q5: What is the test and result for hydrogen gas?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Test: Burning splint. Result: Squeaky pop.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-2">Q6: What is the test and result for oxygen gas?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Test: Glowing splint. Result: Relights.</p></AccordionContent></AccordionItem></Accordion>
+
+        <hr />
+
+        <h3 className="flex items-center gap-2">🔥 SECTION 3: ION TESTS</h3>
+        <p>Q7: Match the metal ion to its flame test colour: Li⁺, Na⁺, K⁺, Cu²⁺.</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Li⁺: Crimson, Na⁺: Yellow, K⁺: Lilac, Cu²⁺: Green.</p></AccordionContent></AccordionItem></Accordion>
+        
+        <p className="mt-2">Q8: A blue precipitate forms when sodium hydroxide is added. Which ion is present?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Copper(II) (Cu²⁺).</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-2">Q9: Bubbles are produced when dilute acid is added to a substance. Which anion is likely present?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Carbonate (CO₃²⁻).</p></AccordionContent></AccordionItem></Accordion>
+
+        <p className="mt-2">Q10: An analyst observes a line spectrum with a strong yellow line. Which metal ion is present?</p>
+        <Textarea />
+        <Accordion type="single" collapsible><AccordionItem value="d8q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Sodium (Na⁺).</p></AccordionContent></AccordionItem></Accordion>
+    </>
+);
+
 
 const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: ReadingWritingQuizViewProps) => {
 
@@ -966,6 +1017,9 @@ const ReadingWritingQuizView = ({ title, onBack, deckId, isEmbedded = false }: R
         }
         if (deckId === 'deck7') {
             return <Deck7Quiz />;
+        }
+        if (deckId === 'deck8') {
+            return <Deck8Quiz />;
         }
         return <p>No reading/writing quiz available for this topic yet.</p>;
     }

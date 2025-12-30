@@ -1015,6 +1015,39 @@ const LearnAsVisualDeck8 = () => (
     </Card>
 );
 
+const LearnAsReadingWritingDeck8 = () => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <BookText className="w-6 h-6" />
+                Learn as a Reading/Writing Learner
+            </CardTitle>
+            <CardDescription>Master "Chemical analysis" with structured notes and written practice.</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h4>1. Pure Substances vs Mixtures ✅❌</h4>
+            <p><strong>Pure substance:</strong> Single element or compound, fixed melting/boiling point. <strong>Mixture:</strong> Two or more substances combined, no fixed melting/boiling point. Create a table and rewrite it several times to memorize.</p>
+            
+            <h4>2. Formulations 🧪</h4>
+            <p><strong>Definition:</strong> A carefully designed mixture where each component has a purpose. Write bullet points for the components and roles in examples like medicine or paint. Create mnemonics to remember them.</p>
+
+            <h4>3. Chromatography 🖌️</h4>
+            <p><strong>Definition:</strong> Separates mixtures into components using stationary & mobile phases. Remember: Single spot → Pure, Multiple spots → Mixture. Write out the Rf value calculation repeatedly and diagram it in your notes.</p>
+
+            <h4>4. Gas Tests 🌬️</h4>
+            <p>Create flashcards for each gas (H₂, O₂, CO₂, Cl₂), with the test and result on the back. Rewrite them daily to strengthen recall.</p>
+            
+            <h4>5. Flame Tests 🔥</h4>
+            <p>Make a color chart in your notebook for Li⁺, Na⁺, K⁺, and Cu²⁺. Use mnemonics like “Li❤️kes Na💛pkins K💜l Cu💚s” to remember the colors.</p>
+            
+            <h4>6. Other Ion Tests 🧴</h4>
+            <p>Rewrite the tables for testing metal hydroxides, carbonates, halides, and sulfates multiple times. Make short summaries for each test in your own words.</p>
+
+            <h4>7. Flame Emission Spectroscopy 🌈🔬</h4>
+            <p>Write a flowchart for the steps: Sample in flame → Light through spectroscope → Output line spectrum → Compare to identify. Use line spectrum sketches in your notes.</p>
+        </CardContent>
+    </Card>
+);
 
 
 const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
@@ -1120,6 +1153,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
      if (deckId === 'deck8') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck8 />;
         if (style === 'Visual') return <LearnAsVisualDeck8 />;
+        if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck8 />;
     }
     
     return null;

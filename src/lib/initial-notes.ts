@@ -809,11 +809,115 @@ Nitrogen + hydrogen ⇌ ammonia`,
   ],
   'deck7': [
     {
-      title: 'Crude Oil and Hydrocarbons',
-      body: 'Crude oil is a finite resource and a complex mixture of hydrocarbons. It is separated into fractions with different boiling points by fractional distillation. Many hydrocarbons are alkanes, which are a homologous series of saturated hydrocarbons with the general formula CnH2n+2.',
-      createdAt: new Date("2024-10-06T12:00:00.000Z"),
-      updatedAt: new Date("2024-10-06T12:00:00.000Z"),
+      title: 'Crude oil, hydrocarbons & alkanes',
+      body: `Crude oil is a finite resource formed from ancient plankton.
+It is a mixture of hydrocarbons (made of carbon and hydrogen only).
+Most hydrocarbons in crude oil are alkanes with formula CnH₂n+₂.
+First four alkanes: methane, ethane, propane, butane.
+You must be able to recognise alkanes from their formulae.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
+    {
+      title: 'Fractional distillation & petrochemicals',
+      body: `Crude oil is separated into fractions by fractional distillation.
+Fractions have similar-sized molecules.
+Used to make fuels (petrol, diesel, kerosene, LPG) and feedstock.
+Petrochemicals make polymers, solvents, detergents, lubricants.
+Fractional distillation works by evaporation and condensation.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Properties of hydrocarbons',
+      body: `As molecule size increases:
+Boiling point ↑
+Viscosity ↑
+Flammability ↓
+Complete combustion produces carbon dioxide and water.
+You must be able to write balanced combustion equations.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Cracking & alkenes',
+      body: `Cracking breaks large hydrocarbons into smaller ones.
+Produces alkanes and alkenes.
+Methods: catalytic cracking and steam cracking.
+Alkenes are more reactive and decolourise bromine water (orange → colourless).
+Alkenes are used to make polymers and other chemicals.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Alkenes',
+      body: `Contain a C=C double bond.
+General formula: CnH₂n (unsaturated).
+First four: ethene, propene, butene, pentene.
+React by addition reactions with:
+Hydrogen
+Water
+Halogens
+Burn with smoky flames due to incomplete combustion.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Alcohols',
+      body: `Contain the functional group –OH.
+First four: methanol, ethanol, propanol, butanol.
+Reactions:
+Burn in air
+React with sodium
+Mix with water
+Oxidation
+Ethanol is made by fermentation using yeast.
+Know uses and recognise from names/formulae.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Carboxylic acids',
+      body: `Functional group: –COOH.
+First four: methanoic, ethanoic, propanoic, butanoic acid.
+React with:
+Carbonates
+Alcohols (to form esters)
+HT only: weak acids due to partial ionisation.
+Recognise from names and formulae.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Addition polymerisation',
+      body: `Uses alkenes as monomers.
+Many monomers join to form a polymer.
+No by-products formed.
+Examples: poly(ethene), poly(propene).
+Repeating unit contains the same atoms as the monomer.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Condensation polymerisation (HT only)',
+      body: `Monomers have two functional groups.
+A small molecule (e.g. water) is lost.
+Produces polyesters and polyamides.
+You must relate functional groups → repeating units.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Amino acids & natural polymers (HT only)',
+      body: `Amino acids have –NH₂ and –COOH groups.
+Join by condensation polymerisation to form polypeptides (proteins).
+DNA is a natural polymer:
+Made of nucleotides
+Has a double helix structure
+Other natural polymers: proteins, starch, cellulose.`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
   ],
   'deck8': [
     {

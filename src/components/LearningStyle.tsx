@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from './ui/card';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Folder, Music, Mic, Beaker, Atom, Puzzle, Swords } from 'lucide-react';
+import { Folder, Music, Mic, Beaker, Atom, Puzzle, Swords, FileText, BotMessageSquare, GraduationCap } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { Label } from './ui/label';
 import {
@@ -88,6 +88,28 @@ const gamificationFolders: Resource[] = [
   { id: '7', title: 'Le Chatelier\'s Principle Game', icon: Swords, description: 'Predict which way the equilibrium will shift in this fast-paced game.' },
   { id: '8', title: 'pH Scale Target Practice', icon: Puzzle, description: 'Drag and drop substances onto the correct position on the pH scale.' },
 ];
+
+const examPracticeResources: Resource[] = [
+    { id: 'rw1', title: 'Past Paper Questions', icon: FileText, description: 'Practice with real exam questions from previous years.' },
+    { id: 'rw2', title: 'Command Word Drills', icon: BotMessageSquare, description: 'Learn to identify and answer questions based on command words like "Explain" vs. "Describe".' },
+    { id: 'rw3', title: 'Timed Essay Practice', icon: FileText, description: 'Practice writing long-form answers under timed conditions.' },
+    { id: 'rw4', title: 'Mark Scheme Analysis', icon: GraduationCap, description: 'Understand how exams are marked to maximize your score.' },
+];
+
+const modelAnswerResources: Resource[] = [
+    { id: 'rw5', title: '6-Mark Question Examples', icon: FileText, description: 'Review perfect-score answers for extended response questions.' },
+    { id: 'rw6', title: 'Definition Bank', icon: BotMessageSquare, description: 'A comprehensive list of key terms and their perfect definitions.' },
+    { id: 'rw7', title: 'Equation Walkthroughs', icon: GraduationCap, description: 'Step-by-step written guides for solving complex chemical equations.' },
+    { id: 'rw8', title: 'Practical Write-ups', icon: FileText, description: 'Model examples of how to write up a practical experiment report.' },
+];
+
+const formulaResources: Resource[] = [
+    { id: 'rw9', title: 'Core Chemistry Formulas', icon: FileText, description: 'A list of essential formulas for general chemistry.' },
+    { id: 'rw10', title: 'Organic Chemistry Formulas', icon: FileText, description: 'Key formulas and structures for organic chemistry.' },
+    { id: 'rw11', title: 'Physical Chemistry Formulas', icon: FileText, description: 'Formulas related to thermodynamics, kinetics, and quantum mechanics.' },
+    { id: 'rw12', title: 'Formula Triangle Cheatsheet', icon: GraduationCap, description: 'Visual aids to help you rearrange and remember important formulas.' },
+];
+
 
 type LearningStyleProps = {
   userDetails: UserDetails | null;
@@ -234,14 +256,56 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
       </Tabs>
   );
 
+  const renderReadingWritingContent = () => (
+    <Tabs defaultValue="exam-practices" className="flex-1 flex flex-col mt-8">
+      <TabsList className="grid w-full grid-cols-3">
+        <TabsTrigger value="exam-practices">Exam Practices</TabsTrigger>
+        <TabsTrigger value="model-answers">Model Answers</TabsTrigger>
+        <TabsTrigger value="formulas">Formulas</TabsTrigger>
+      </TabsList>
+      <TabsContent value="exam-practices" className="flex-1 flex flex-col pt-4">
+        <Card className="flex-1 flex flex-col">
+          <CardHeader><CardTitle>Exam Practices</CardTitle></CardHeader>
+          <CardContent className="flex-1">
+            <ScrollArea className="h-full">
+              {renderFolderList(examPracticeResources, (r) => setSelectedResource(r))}
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="model-answers" className="flex-1 flex flex-col pt-4">
+        <Card className="flex-1 flex flex-col">
+          <CardHeader><CardTitle>Model Answers</CardTitle></CardHeader>
+          <CardContent className="flex-1">
+            <ScrollArea className="h-full">
+              {renderFolderList(modelAnswerResources, (r) => setSelectedResource(r))}
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="formulas" className="flex-1 flex flex-col pt-4">
+        <Card className="flex-1 flex flex-col">
+          <CardHeader><CardTitle>Formulas</CardTitle></CardHeader>
+          <CardContent className="flex-1">
+            <ScrollArea className="h-full">
+              {renderFolderList(formulaResources, (r) => setSelectedResource(r))}
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  );
+
+
   const renderContentForLearner = () => {
     switch (learnerType) {
         case 'Auditory':
             return renderAuditoryContent();
         case 'Kinesthetic':
             return renderKinestheticContent();
-        case 'Visual':
         case 'Reading/Writing':
+            return renderReadingWritingContent();
+        case 'Visual':
         default:
             return renderVisualContent();
     }
@@ -347,3 +411,4 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
 
 export default LearningStyle;
 
+    

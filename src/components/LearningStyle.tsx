@@ -28,6 +28,7 @@ import {
 import LearningStyleQuiz from './LearningStyleQuiz';
 import { ResourceDialog, Resource } from './ResourceDialog';
 import type { UserDetails } from '@/lib/types';
+import FormulasView from './FormulasView';
 
 
 const diagramFolders: Resource[] = [
@@ -103,12 +104,7 @@ const modelAnswerResources: Resource[] = [
     { id: 'rw8', title: 'Practical Write-ups', icon: FileText, description: 'Model examples of how to write up a practical experiment report.' },
 ];
 
-const formulaResources: Resource[] = [
-    { id: 'rw9', title: 'Core Chemistry Formulas', icon: FileText, description: 'A list of essential formulas for general chemistry.' },
-    { id: 'rw10', title: 'Organic Chemistry Formulas', icon: FileText, description: 'Key formulas and structures for organic chemistry.' },
-    { id: 'rw11', title: 'Physical Chemistry Formulas', icon: FileText, description: 'Formulas related to thermodynamics, kinetics, and quantum mechanics.' },
-    { id: 'rw12', title: 'Formula Triangle Cheatsheet', icon: GraduationCap, description: 'Visual aids to help you rearrange and remember important formulas.' },
-];
+const formulaResources: Resource[] = [];
 
 
 type LearningStyleProps = {
@@ -161,9 +157,10 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
   
   const renderVisualContent = () => (
     <Tabs defaultValue="diagrams" className="flex-1 flex flex-col mt-8">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="diagrams">Diagrams of Chemistry</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="diagrams">Diagrams</TabsTrigger>
           <TabsTrigger value="mindmaps">Mindmaps</TabsTrigger>
+          <TabsTrigger value="formulas">Formulas</TabsTrigger>
         </TabsList>
         <TabsContent value="diagrams" className="flex-1 flex flex-col pt-4">
           <Card className="flex-1 flex flex-col">
@@ -189,6 +186,9 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
             </CardContent>
           </Card>
         </TabsContent>
+         <TabsContent value="formulas" className="flex-1 flex flex-col pt-4">
+          <FormulasView learningStyle='Visual' />
+        </TabsContent>
       </Tabs>
   );
 
@@ -207,25 +207,37 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
     }
 
      return (
-        <Card className="flex-1 flex flex-col mt-8">
-        <CardHeader>
-            <CardTitle>Audio Resources</CardTitle>
-            <CardDescription>Listen to recordings, podcasts, and rhymes about chemistry.</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1">
-            <ScrollArea className="h-[300px]">
-                {renderFolderList(auditoryResources, handleAudioResourceClick)}
-            </ScrollArea>
-        </CardContent>
-        </Card>
+        <Tabs defaultValue="resources" className="flex-1 flex flex-col mt-8">
+            <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="resources">Audio Resources</TabsTrigger>
+                <TabsTrigger value="formulas">Formulas</TabsTrigger>
+            </TabsList>
+            <TabsContent value="resources" className="flex-1 flex flex-col pt-4">
+                <Card className="flex-1 flex flex-col">
+                <CardHeader>
+                    <CardTitle>Audio Resources</CardTitle>
+                    <CardDescription>Listen to recordings, podcasts, and rhymes about chemistry.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1">
+                    <ScrollArea className="h-[300px]">
+                        {renderFolderList(auditoryResources, handleAudioResourceClick)}
+                    </ScrollArea>
+                </CardContent>
+                </Card>
+            </TabsContent>
+            <TabsContent value="formulas" className="flex-1 flex flex-col pt-4">
+                <FormulasView learningStyle='Auditory' />
+            </TabsContent>
+        </Tabs>
      )
   };
 
   const renderKinestheticContent = () => (
     <Tabs defaultValue="simulations" className="flex-1 flex flex-col mt-8">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="simulations">Simulations</TabsTrigger>
           <TabsTrigger value="gamification">Gamification</TabsTrigger>
+           <TabsTrigger value="formulas">Formulas</TabsTrigger>
         </TabsList>
         <TabsContent value="simulations" className="flex-1 flex flex-col pt-4">
           <Card className="flex-1 flex flex-col">
@@ -252,6 +264,9 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
               </ScrollArea>
             </CardContent>
           </Card>
+        </TabsContent>
+        <TabsContent value="formulas" className="flex-1 flex flex-col pt-4">
+            <FormulasView learningStyle='Kinesthetic' />
         </TabsContent>
       </Tabs>
   );
@@ -284,14 +299,7 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
         </Card>
       </TabsContent>
       <TabsContent value="formulas" className="flex-1 flex flex-col pt-4">
-        <Card className="flex-1 flex flex-col">
-          <CardHeader><CardTitle>Formulas</CardTitle></CardHeader>
-          <CardContent className="flex-1">
-            <ScrollArea className="h-full">
-              {renderFolderList(formulaResources, (r) => setSelectedResource(r))}
-            </ScrollArea>
-          </CardContent>
-        </Card>
+          <FormulasView learningStyle='Reading/Writing' />
       </TabsContent>
     </Tabs>
   );
@@ -410,5 +418,3 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
-
-    

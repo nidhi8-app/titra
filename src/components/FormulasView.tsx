@@ -23,51 +23,48 @@ type FormulasViewProps = {
 };
 
 const formulaCategories = {
-    'Key Concepts & Calculations': [
-        { text: "Avogadro’s number (HT): There are 6.02 x 10²³ particles of a substance in 1 mole.", html: "Avogadro’s number (HT): 6.02 x 10²³ particles/mol" },
-        { text: "Concentration in grams per decimeter cubed equals mass in grams divided by volume in decimeters cubed.", html: "Concentration (g/dm³) = <frac>mass (g) / volume (dm³)</frac>" },
-        { text: "Concentration in moles per decimeter cubed equals moles divided by volume in decimeters cubed.", html: "Concentration (mol/dm³) = <frac>moles (mol) / volume (dm³)</frac>" },
-        { text: "Gas Volume (HT): 1 mole of any gas has a volume of 24 decimeters cubed.", html: "Volume (dm³) = moles × 24 dm³" },
-        { text: "To convert from centimeters cubed to decimeters cubed, divide by one thousand.", html: "1 dm³ = 1000 cm³" },
-        { text: "Rate of reaction equals quantity of reactant used divided by time taken.", html: "Mean rate = <frac>quantity of reactant used / time taken</frac>" },
-        { text: "Chromatography Rf value equals distance moved by substance divided by distance moved by solvent.", html: "R<sub>f</sub> = <frac>distance moved by substance / distance moved by solvent</frac>" },
+    'Amount of Substance': [
+        { text: "moles equals mass divided by Mr", html: "moles = <frac>mass / Mr</frac>" },
+        { text: "mass equals moles times Mr", html: "mass = moles × Mr" },
+        { text: "concentration in mass equals mass divided by volume", html: "concentration (mass) = <frac>mass / volume</frac>" },
+        { text: "concentration in moles equals moles divided by volume", html: "concentration (moles) = <frac>moles / volume</frac>" },
     ],
-    'Yield & Economy (HT)': [
-        { text: "Percentage Yield equals mass of product actually made, divided by maximum theoretical mass of product, times one hundred.", html: "% Yield = <frac>Mass of product actually made / Maximum theoretical mass</frac> × 100" },
-        { text: "Atom Economy equals the relative formula mass of the desired product, divided by the sum of the relative formula masses of all reactants, times one hundred.", html: "Atom Economy = <frac>RFM of desired product / Sum of RFMs of all reactants</frac> × 100" },
+    'Percentage Yield & Atom Economy': [
+        { text: "percentage yield equals actual yield divided by theoretical yield, times one hundred", html: "% Yield = <frac>actual yield / theoretical yield</frac> × 100" },
+        { text: "atom economy equals Mr of desired product divided by Mr of all reactants, times one hundred", html: "Atom Economy = <frac>Mr of desired product / Mr of all reactants</frac> × 100" },
     ],
-    'Energy Changes (HT)': [
-        { text: "Energy change in a reaction equals the total energy needed to break bonds in reactants minus the total energy released when bonds in the products are formed.", html: "Energy change = Energy to break bonds - Energy released forming bonds" },
+    'Gas Volumes (HT only)': [
+        { text: "volume equals moles times twenty-four", html: "volume = moles × 24" },
     ],
-    'Combustion Reactions': [
-        { text: "Combustion of carbon: Carbon plus Oxygen gives Carbon dioxide.", html: "C(s) + O₂(g) → CO₂(g)" },
-        { text: "Combustion of hydrogen: Hydrogen plus Oxygen gives Water.", html: "2H₂(g) + O₂(g) → 2H₂O(g)" },
-        { text: "Combustion of methane: Methane plus Oxygen gives Carbon dioxide plus Water.", html: "CH₄ + 2O₂ → CO₂ + 2H₂O" },
+    'Energy Changes': [
+        { text: "energy equals mass times specific heat capacity times temperature change", html: "q = mcΔT" },
     ],
-    'Reactions of Metals': [
-        { text: "Oxidation of copper: Copper plus Oxygen gives Copper (II) oxide.", html: "2Cu(s) + O₂(g) → 2CuO(s)" },
-        { text: "Reaction of sodium with water: Sodium plus Water gives Sodium hydroxide plus Hydrogen.", html: "2Na(s) + 2H₂O(l) → 2NaOH(aq) + H₂(g)" },
-        { text: "Displacement of metals: Copper (II) sulfate plus Magnesium gives Magnesium sulfate plus Copper.", html: "CuSO₄(aq) + Mg(s) → MgSO₄(aq) + Cu(s)" },
+    'Rates of Reaction': [
+        { text: "mean rate of reaction equals quantity of reactant used divided by time taken", html: "Mean Rate = <frac>quantity of reactant used / time taken</frac>" },
+        { text: "mean rate of reaction equals quantity of product formed divided by time taken", html: "Mean Rate = <frac>quantity of product formed / time taken</frac>" },
     ],
-    'Acid Reactions': [
-        { text: "Reaction of metal with acid: Magnesium plus Hydrochloric acid gives Magnesium chloride plus Hydrogen.", html: "Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)" },
-        { text: "Reaction of metal oxide with acid: Copper (II) oxide plus Hydrochloric acid gives Copper (II) chloride plus Water.", html: "CuO(s) + 2HCl(aq) → CuCl₂(aq) + H₂O(l)" },
-        { text: "Neutralisation: Sodium hydroxide plus Hydrochloric acid gives Sodium chloride plus Water.", html: "NaOH(aq) + HCl(aq) → NaCl(aq) + H₂O(l)" },
-        { text: "Ionic equation for neutralisation (HT): H plus plus OH minus gives H2O.", html: "H⁺(aq) + OH⁻(aq) → H₂O(l)" },
-        { text: "Marble chips and acid: Calcium carbonate plus Hydrochloric acid gives Calcium chloride plus Water plus Carbon dioxide.", html: "CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)" },
+    'Electrolysis (HT only)': [
+        { text: "charge equals current times time", html: "Q = It" },
     ],
-    'Other Key Reactions': [
-        { text: "Displacement of halogens: Sodium bromide plus Chlorine gives Bromine plus Sodium chloride.", html: "2NaBr(aq) + Cl₂(aq) → Br₂(aq) + 2NaCl(aq)" },
-        { text: "Electrolysis of molten lead bromide: Lead bromide gives lead plus Bromine.", html: "PbBr₂(l) → Pb(l) + Br₂(g)" },
-        { text: "Cracking of decane: Decane gives Pentene plus Pentane.", html: "C₁₀H₂₂ → C₅H₁₀ + C₅H₁₂" },
-        { text: "Electrolysis of aqueous sodium chloride: Sodium chloride plus Water gives Sodium hydroxide plus Hydrogen plus Chlorine.", html: "2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + H₂(g) + Cl₂(g)" },
-        { text: "The Haber process: Nitrogen plus Hydrogen gives Ammonia.", html: "N₂(g) + 3H₂(g) ⇌ 2NH₃(g)" },
-        { text: "Bromine test for alkenes: Ethene plus Bromine gives Dibromoethane.", html: "C₂H₄ + Br₂ → C₂H₄Br₂" },
+    'Acids, Bases and Salts': [
+        { text: "pH equals minus log base ten of the hydrogen ion concentration", html: "pH = -log₁₀[H⁺]" },
     ],
-     'Half Equations (HT)': [
-        { text: "Cathode half equation for electrolysis: two H plus plus two e minus gives H two.", html: "2H⁺(aq) + 2e⁻ → H₂(g)"},
-        { text: "Anode half equation for electrolysis: two C L minus gives C L two plus two e minus.", html: "2Cl⁻(aq) → Cl₂(g) + 2e⁻"},
-    ]
+    'Earth & Atmospheric Science': [
+        { text: "percentage by mass of an element equals Ar times number of atoms, divided by Mr of compound, times one hundred", html: "% by mass = <frac>(Ar × no. of atoms) / Mr of compound</frac> × 100" },
+    ],
+    'Organic Chemistry': [
+        { text: "Alkanes general formula is C n H two n plus two", html: "Alkanes: CₙH₂ₙ₊₂" },
+        { text: "Alkenes general formula is C n H two n", html: "Alkenes: CₙH₂ₙ" },
+    ],
+    'Chemical Analysis': [
+        { text: "concentration one times volume one equals concentration two times volume two", html: "C₁V₁ = C₂V₂" },
+    ],
+    'Physics–Chemistry Cross-Over': [
+        { text: "density equals mass divided by volume", html: "density = <frac>mass / volume</frac>" },
+    ],
+    'Required Mathematics in Chemistry': [
+        { text: "surface area to volume ratio equals surface area divided by volume", html: "SA:V ratio = <frac>surface area / volume</frac>" },
+    ],
 };
 
 const allFormulas = Object.values(formulaCategories).flat();
@@ -120,7 +117,8 @@ const VisualFormulas = () => (
                 catIndex % 4 === 1 && "bg-green-500/10 border-green-500/30",
                 catIndex % 4 === 2 && "bg-purple-500/10 border-purple-500/30",
                 catIndex % 4 === 3 && "bg-orange-500/10 border-orange-500/30",
-                (category === 'Yield & Economy (HT)' || category === 'Energy Changes (HT)') && "md:col-span-2",
+                Object.keys(formulaCategories).length > 8 && (category === 'Energy Changes' || category === 'Rates of Reaction' || category === 'Acids, Bases and Salts' || category === 'Earth & Atmospheric Science') && "md:col-span-1",
+                (category === 'Physics–Chemistry Cross-Over' || category === 'Required Mathematics in Chemistry') && "md:col-span-2",
              )}>
                 <CardHeader>
                     <CardTitle className={cn(
@@ -133,7 +131,7 @@ const VisualFormulas = () => (
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {formulas.map((formula, index) => (
-                        <p key={index} className="text-base" dangerouslySetInnerHTML={{ __html: formula.html }} />
+                        <p key={index} className="text-base" dangerouslySetInnerHTML={{ __html: formula.html.replace(/<frac>(.*)\/(.*)<\/frac>/g, '<span class="inline-flex flex-col items-center"><span>$1</span><span class="border-t border-current w-full"></span><span>$2</span></span>') }} />
                     ))}
                 </CardContent>
             </Card>
@@ -162,7 +160,7 @@ const ReadingWritingFormulas = () => (
                 <AccordionContent>
                     <ul className="list-disc pl-6 space-y-2">
                         {formulas.map((formula, index) => (
-                            <li key={index} dangerouslySetInnerHTML={{ __html: formula.html.replace(/<frac>/g, '<div class="flex items-center"><span>').replace(/\//g, '</span><span class="text-xl mx-2">/</span><span>').replace(/<\/frac>/g, '</div>') }} />
+                           <li key={index} dangerouslySetInnerHTML={{ __html: formula.html.replace(/<frac>(.*)\/(.*)<\/frac>/g, '<div class="flex items-center"><span>$1</span><span class="text-xl mx-2">/</span><span>$2</span></div>') }} />
                         ))}
                     </ul>
                 </AccordionContent>
@@ -177,7 +175,7 @@ const KinestheticFormulas = () => (
         {allFormulas.map((formula, index) => (
             <Card key={index} className="p-6 shadow-md hover:shadow-lg transition-shadow">
                 <p className="text-2xl font-semibold mb-2 text-primary">Step {index + 1}:</p>
-                <p className="text-xl leading-relaxed" dangerouslySetInnerHTML={{ __html: formula.html.replace(/→/g, '→<br/>').replace('⇌', '⇌<br/>') }} />
+                <p className="text-xl leading-relaxed" dangerouslySetInnerHTML={{ __html: formula.html.replace(/<frac>(.*)\/(.*)<\/frac>/g, '<span class="inline-flex flex-col items-center"><span>$1</span><span class="border-t border-current w-full"></span><span>$2</span></span>') }} />
             </Card>
         ))}
     </div>
@@ -212,3 +210,5 @@ const FormulasView = ({ learningStyle }: FormulasViewProps) => {
 };
 
 export default FormulasView;
+
+    

@@ -85,5 +85,3 @@ export async function generateFillInTheGap(input: GenerateFillInTheGapInput): Pr
     }
     return generateFillInTheGapFlow(input);
 }
-
-    

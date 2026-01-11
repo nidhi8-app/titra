@@ -59,51 +59,58 @@ const DeckList = ({
       </Button>
       <ScrollArea className="flex-1 w-full">
         <div className="space-y-2 pr-2">
-          {decks.map((deck) => (
-            <div key={deck.id} className="group relative">
-              <button
-                onClick={() => onSelectDeck(deck.id)}
-                className={`w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 ${
-                  selectedDeckId === deck.id
-                    ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-inner'
-                    : 'hover:bg-sidebar-accent/50'
-                }`}
-              >
-                <Folder className="w-6 h-6 flex-shrink-0" />
-                <h3 className="font-bold truncate flex-1">{deck.title}</h3>
-              </button>
+          {decks.map((deck) => {
+            const isPrebuilt = deck.id.startsWith('deck');
+            return (
+              <div key={deck.id} className="group relative">
+                <button
+                  onClick={() => onSelectDeck(deck.id)}
+                  className={`w-full p-3 text-left rounded-2xl transition-colors duration-200 font-sidebar text-lg flex items-center gap-3 ${
+                    selectedDeckId === deck.id
+                      ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-inner'
+                      : 'hover:bg-sidebar-accent/50'
+                  }`}
+                >
+                  <Folder className="w-6 h-6 flex-shrink-0" />
+                  <h3 className="font-bold truncate flex-1">{deck.title}</h3>
+                </button>
 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-1/2 right-2 -translate-y-1/2 h-8 w-8 rounded-full opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
-                  >
-                    <MoreHorizontal className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent side="right" align="start">
-                  <DropdownMenuItem onClick={() => setDeckToRename(deck)}>
-                    <Pencil className="mr-2 h-4 w-4" />
-                    <span>Rename</span>
-                  </DropdownMenuItem>
-                   <DropdownMenuItem onClick={() => onArchiveDeck(deck.id)}>
-                    <Archive className="mr-2 h-4 w-4" />
-                    <span>Archive</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() => setDeckToDelete(deck)}
-                    className="text-red-500 focus:text-red-500 focus:bg-red-500/10"
-                  >
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    <span>Delete</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          ))}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="absolute top-1/2 right-2 -translate-y-1/2 h-8 w-8 rounded-full opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
+                    >
+                      <MoreHorizontal className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent side="right" align="start">
+                    <DropdownMenuItem onClick={() => setDeckToRename(deck)}>
+                      <Pencil className="mr-2 h-4 w-4" />
+                      <span>Rename</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => onArchiveDeck(deck.id)}>
+                      <Archive className="mr-2 h-4 w-4" />
+                      <span>Archive</span>
+                    </DropdownMenuItem>
+                    {!isPrebuilt && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          onClick={() => setDeckToDelete(deck)}
+                          className="text-red-500 focus:text-red-500 focus:bg-red-500/10"
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Delete</span>
+                        </DropdownMenuItem>
+                      </>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            )
+          })}
         </div>
       </ScrollArea>
       {deckToRename && (

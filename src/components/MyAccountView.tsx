@@ -6,7 +6,7 @@ import type { UserDetails, Deck } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
-import { Pencil, BookImage, Folder } from 'lucide-react';
+import { Pencil, BookImage, Folder, Archive } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { AvatarSelectionDialog } from './AvatarSelectionDialog';
@@ -23,6 +23,7 @@ type MyAccountViewProps = {
   userDetails: UserDetails | null;
   setUserDetails: (details: UserDetails | null) => void;
   archivedDecks: Deck[];
+  onUnarchiveDeck: (deckId: string) => void;
 };
 
 const DetailItem = ({ label, value }: { label: string, value: string | number | undefined }) => (
@@ -46,7 +47,7 @@ const EditableDetailItem = ({ label, value, name, onChange, type = "text" }: { l
     </div>
 );
 
-const MyAccountView = ({ userDetails, setUserDetails, archivedDecks }: MyAccountViewProps) => {
+const MyAccountView = ({ userDetails, setUserDetails, archivedDecks, onUnarchiveDeck }: MyAccountViewProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
   const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
@@ -200,7 +201,7 @@ const MyAccountView = ({ userDetails, setUserDetails, archivedDecks }: MyAccount
                 </CardContent>
             </Card>
 
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full" defaultValue="archived-decks">
                 <AccordionItem value="archived-decks">
                     <AccordionTrigger className="text-lg font-semibold">Archived Decks</AccordionTrigger>
                     <AccordionContent>
@@ -210,7 +211,7 @@ const MyAccountView = ({ userDetails, setUserDetails, archivedDecks }: MyAccount
                                     <div key={deck.id} className="flex items-center gap-3 p-2 rounded-md border">
                                         <Folder className="w-5 h-5 text-muted-foreground" />
                                         <span className="flex-1 truncate">{deck.title}</span>
-                                        <Button variant="ghost" size="sm">Unarchive</Button>
+                                        <Button variant="ghost" size="sm" onClick={() => onUnarchiveDeck(deck.id)}>Unarchive</Button>
                                     </div>
                                 ))}
                             </div>

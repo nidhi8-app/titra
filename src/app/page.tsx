@@ -258,6 +258,19 @@ export default function Home() {
         description: `"${deckToArchive.title}" has been moved to your archive.`,
     });
   }, [decks, toast, selectedDeckId]);
+  
+  const handleUnarchiveDeck = React.useCallback((deckId: string) => {
+    const deckToUnarchive = archivedDecks.find(d => d.id === deckId);
+    if (!deckToUnarchive) return;
+
+    setArchivedDecks(archivedDecks.filter(d => d.id !== deckId));
+    setDecks(prev => [deckToUnarchive, ...prev]);
+
+    toast({
+        title: "Deck Unarchived",
+        description: `"${deckToUnarchive.title}" has been restored.`,
+    });
+}, [archivedDecks, toast]);
 
 
   const handleOnboardingComplete = React.useCallback((details: UserDetails) => {
@@ -474,7 +487,7 @@ export default function Home() {
       case "friends":
         return <FriendsView />;
       case "account":
-        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} archivedDecks={archivedDecks} />;
+        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} archivedDecks={archivedDecks} onUnarchiveDeck={handleUnarchiveDeck} />;
       default:
         return null;
     }

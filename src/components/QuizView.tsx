@@ -26,6 +26,7 @@ import KinestheticQuizView from './KinestheticQuizView';
 import ReadingWritingQuizView from './ReadingWritingQuizView';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
 
+type MixedQuizQuestion = QuizQuestion & { format: 'MCQ' | 'Writing' | 'Fill-in-the-gap' };
 
 const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source: NonNullable<QuizSource>, onBack: () => void, userDetails: UserDetails | null, onQuizCompleted: (score: number, total: number, topicId?: string) => void }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
@@ -33,6 +34,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   const [quizFinished, setQuizFinished] = React.useState(false);
   const { toast } = useToast();
   const [isPeriodicTableOpen, setIsPeriodicTableOpen] = React.useState(false);
+  const [mixedQuestions, setMixedQuestions] = React.useState<MixedQuizQuestion[]>([]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -50,6 +52,42 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
 
     return () => clearInterval(interval);
   }, [toast]);
+  
+   React.useEffect(() => {
+    if (source.type === 'pre-made' && source.style === 'Mix') {
+      const originalQuestions = quizQuestions[source.topic.id] || [];
+      const shuffled = [...originalQuestions].sort(() => 0.5 - Math.random());
+      
+      const formats: ('MCQ' | 'Writing' | 'Fill-in-the-gap')[] = ['MCQ', 'Writing', 'Fill-in-the-gap'];
+      
+      const questionsWithFormats = shuffled.map((q, i) => ({
+        ...q,
+        format: formats[i % formats.length]
+      }));
+
+      // Find fill-in-the-gap questions and generate them
+      const fillInTheGapQuestions = questionsWithFormats.filter(q => q.format === 'Fill-in-the-gap');
+      if (fillInTheGapQuestions.length > 0) {
+        generateFillInTheGap({ questions: fillInTheGapQuestions }).then(result => {
+           const generatedMap = new Map(result.questions.map(q => [q.id, q]));
+           const finalMixed = questionsWithFormats.map(q => {
+             if (q.format === 'Fill-in-the-gap' && generatedMap.has(q.id)) {
+               return { ...generatedMap.get(q.id)!, format: 'Fill-in-the-gap' };
+             }
+             return q;
+           });
+           setMixedQuestions(finalMixed);
+        }).catch(err => {
+            console.error("Failed to generate fill-in-the-gap questions for mix mode:", err);
+            // Fallback: convert fill-in-the-gap to MCQ
+            const finalMixed = questionsWithFormats.map(q => q.format === 'Fill-in-the-gap' ? {...q, format: 'MCQ'} : q);
+            setMixedQuestions(finalMixed);
+        });
+      } else {
+        setMixedQuestions(questionsWithFormats);
+      }
+    }
+  }, [source]);
 
   if (source.type === 'style-based') {
     if (!userDetails?.learningStyle) {
@@ -95,12 +133,12 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
     return <QuizComponent {...quizProps} />
   }
   
-  let questions: QuizQuestion[];
+  let questions: QuizQuestion[] | MixedQuizQuestion[];
   let title: string;
   let practiceStyle: string;
 
   if (source.type === 'pre-made') {
-    questions = quizQuestions[source.topic.id] || [];
+    questions = source.style === 'Mix' ? mixedQuestions : (quizQuestions[source.topic.id] || []);
     title = source.topic.title;
     practiceStyle = source.style;
   } else if (source.type === 'generated') {
@@ -151,15 +189,20 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
   }
 
   const renderQuestion = () => {
-    if (!currentQuestion || !userDetails) {
-      return (
-        <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
-          <p className="text-xl">{!userDetails ? "Loading user details..." : "No questions available for this topic yet."}</p>
-        </div>
-      );
+    if ((practiceStyle === 'Mix' && mixedQuestions.length === 0) || !currentQuestion || !userDetails) {
+        return (
+            <div className="p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
+                <p className="text-xl">
+                    {!userDetails ? "Loading user details..." : practiceStyle === 'Mix' ? "Shuffling questions..." : "Loading..."}
+                </p>
+            </div>
+        );
     }
 
-    if (practiceStyle === 'Writing') {
+    const questionFormat = practiceStyle === 'Mix' ? (currentQuestion as MixedQuizQuestion).format : practiceStyle;
+
+    if (questionFormat === 'Writing' || questionFormat === 'Fill-in-the-gap') {
       return (
         <WritingQuestionCard
           question={currentQuestion}
@@ -170,7 +213,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
       );
     }
 
-    if (practiceStyle === 'MCQ') {
+    if (questionFormat === 'MCQ') {
       return (
         <QuestionCard
           question={currentQuestion}
@@ -251,12 +294,8 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
     }
   };
 
-  const handleImportSelect = (option: string) => {
-    setIsImportDialogOpen(false);
-    toast({
-        title: `Importing from ${option}`,
-        description: "This feature is coming soon!",
-    });
+  const handleImportSelect = () => {
+    setIsImportDialogOpen(true);
   }
 
   const handleFillInTheGapFormatSelect = async (format: 'MCQ' | 'Writing') => {
@@ -326,7 +365,7 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">Quizzes</h2>
           <div className="flex items-center gap-2">
-            <Button variant="outline" onClick={() => setIsImportDialogOpen(true)}>
+            <Button variant="outline" onClick={handleImportSelect}>
               <FileUp className="mr-2 h-4 w-4" />
               Import
             </Button>
@@ -387,7 +426,6 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
       <ImportDialog
         isOpen={isImportDialogOpen}
         onClose={() => setIsImportDialogOpen(false)}
-        onSelect={handleImportSelect}
       />
     </>
   );
@@ -396,3 +434,4 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
 export default QuizView;
 
     
+

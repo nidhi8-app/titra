@@ -33,6 +33,7 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
   const [explanation, setExplanation] = useState<string | null>(null);
   const [isExplanationLoading, setIsExplanationLoading] = useState(false);
   const [isExplanationDialogOpen, setIsExplanationDialogOpen] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
     setIsAnswered(false);
     setIsCorrect(false);
     setExplanation(null);
+    setShowHint(false);
   }, [question]);
 
   const handleOptionClick = (option: string) => {
@@ -96,6 +98,12 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
     }
     return 'bg-primary/50';
   };
+  
+  const getHint = () => {
+      // Find the option that is not the correct answer.
+      const incorrectOption = question.options.find(opt => opt !== question.correctAnswer);
+      return `It's not "${incorrectOption}".`;
+  }
 
   return (
     <>
@@ -116,6 +124,14 @@ const QuestionCard = ({ question, onNextQuestion, onCorrectAnswer, learningStyle
               </Button>
             ))}
           </div>
+            <div className="mt-4">
+                 <Button variant="outline" size="sm" onClick={() => setShowHint(true)} disabled={isAnswered || showHint}>
+                    Hint
+                </Button>
+                {showHint && !isAnswered && (
+                     <p className="text-sm text-muted-foreground p-2 bg-muted rounded-md mt-2">Hint: {getHint()}</p>
+                )}
+            </div>
           <div className="mt-6 flex justify-end">
             {isAnswered ? (
               <div className="flex w-full justify-between items-center">

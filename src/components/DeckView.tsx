@@ -14,6 +14,8 @@ import { initialNotesData, parseNotes } from '@/lib/initial-notes';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
 import { NestedAccordion } from './NestedAccordion';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+import { DiagramsDialog } from './DiagramsDialog';
 
 
 type DeckViewProps = {
@@ -132,7 +134,7 @@ const LearnAsKinestheticDeck1 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck1 = () => (
+const LearnAsVisualDeck1 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -142,6 +144,10 @@ const LearnAsVisualDeck1 = () => (
             <CardDescription>Engage with this topic by drawing, connecting, and organizing information visually.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1️⃣ One MASTER DIAGRAM (highest impact)</h4>
             <p>Create one A3 sheet titled: “Structure of Matter (GCSE Chemistry)”. Split it into sections with boxes: Atoms & Elements, Compounds & Mixtures, Atomic Structure, Periodic Table, Groups 0, 1, 7. Use arrows to show links: atoms → elements → compounds, atomic structure → periodic table position → reactivity. 👉 Seeing everything connected prevents topic confusion.</p>
 
@@ -181,7 +187,7 @@ const LearnAsVisualDeck1 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck2 = () => (
+const LearnAsVisualDeck2 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -191,6 +197,10 @@ const LearnAsVisualDeck2 = () => (
             <CardDescription>Master this topic with diagrams, models, and color-coding.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1️⃣ Bonding, structure, and the properties of matter</h4>
             <p><strong>Activity:</strong></p>
             <p>Mind map: Create a colorful mind map connecting bonding types → structures → properties → uses. Use icons or small sketches for atoms, ions, metals, polymers, and nanoparticles.</p>
@@ -362,7 +372,7 @@ const LearnAsKinestheticDeck3 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck3 = () => (
+const LearnAsVisualDeck3 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -372,6 +382,10 @@ const LearnAsVisualDeck3 = () => (
             <CardDescription>Master this topic by drawing, connecting, and organizing information visually.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1️⃣ Concept Maps</h4>
             <p><strong>Activity:</strong> Draw a large concept map starting with Quantitative Chemistry in the center.</p>
             <p><strong>Branches:</strong> Include “Conservation of Mass”, “Moles”, “Limiting Reactants”, “Percentage Yield”, “Atom Economy”, “Concentration of Solutions”, “Gas Volumes”.</p>
@@ -547,7 +561,7 @@ const LearnAsReadingWritingDeck4 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck4 = () => (
+const LearnAsVisualDeck4 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -557,6 +571,10 @@ const LearnAsVisualDeck4 = () => (
             <CardDescription>Master "Chemical changes" with diagrams, flowcharts, and color-coding.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1️⃣ Reactivity series as a visual ladder (must-do)</h4>
             <p><strong>How to use it:</strong> Draw a vertical ladder. Top = most reactive, bottom = least. Colour code: 🔴 reacts with water, 🟠 reacts with acids, ⚫ no reaction. 👉 The height of the metal helps you remember reactivity instantly.</p>
 
@@ -672,7 +690,7 @@ const LearnAsReadingWritingDeck5 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck5 = () => (
+const LearnAsVisualDeck5 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -682,6 +700,10 @@ const LearnAsVisualDeck5 = () => (
             <CardDescription>Master "Energy changes" with diagrams, arrows, and color-coding.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1️⃣ Exothermic vs Endothermic — see the energy move</h4>
             <p>Draw two big boxes. Use arrows: 🔴 Outward arrows = exothermic (energy released), 🔵 Inward arrows = endothermic (energy absorbed). Add a thermometer icon showing temperature up or down. 👉 In the exam, picture the arrows.</p>
 
@@ -817,7 +839,7 @@ const LearnAsReadingWritingDeck6 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck6 = () => (
+const LearnAsVisualDeck6 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -827,6 +849,10 @@ const LearnAsVisualDeck6 = () => (
             <CardDescription>Master this topic by drawing, connecting, and organizing information visually.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>🧪 RATE OF REACTION (4.6.1)</h4>
             <h4>🟥 1️⃣ Use COLOUR-CODED NOTES</h4>
             <p>Rewrite the notes using the same colours every time: 🔴 Definitions (rate, activation energy), 🔵 Equations & formulas, 🟢 Factors, 🟣 Graphs, 🟠 Exam keywords. Your brain links colour = meaning 🧠✨</p>
@@ -866,7 +892,7 @@ const LearnAsVisualDeck6 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck7 = () => (
+const LearnAsVisualDeck7 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -876,6 +902,10 @@ const LearnAsVisualDeck7 = () => (
             <CardDescription>Master Organic Chemistry by drawing structures and visualizing reactions.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1. Crude Oil, Hydrocarbons & Alkanes 🛢️</h4>
             <p><strong>Draw a ladder diagram:</strong> Each rung adds +1 carbon. Write the formula pattern CnH₂n+₂. Colour carbons black and hydrogens blue. Make a one-box-per-alkane strip: Methane | Ethane | Propane | Butane. 👁️ <strong>Visual cue:</strong> Every step adds one carbon and two hydrogens.</p>
 
@@ -1030,7 +1060,7 @@ const LearnAsKinestheticDeck8 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck8 = () => (
+const LearnAsVisualDeck8 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -1040,6 +1070,10 @@ const LearnAsVisualDeck8 = () => (
             <CardDescription>Master "Chemical analysis" with diagrams, tables, and visual cues.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+             <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1. Pure Substances vs Mixtures</h4>
             <p><strong>Draw a table:</strong> Pure (✅) vs. Mixture (❌). Use icons: Ice cube ❄️ (Pure), Chocolate with nuts 🍫🥜 (Mixture). Tip: Highlight pure substances in blue and mixtures in red.</p>
             <h4>2. Formulations</h4>
@@ -1132,7 +1166,7 @@ const LearnAsKinestheticDeck9 = () => (
     </Card>
 );
 
-const LearnAsVisualDeck9 = () => (
+const LearnAsVisualDeck9 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) => (
     <Card>
         <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -1142,6 +1176,10 @@ const LearnAsVisualDeck9 = () => (
             <CardDescription>Master "Chemistry of the atmosphere" with diagrams and charts.</CardDescription>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <Button variant="outline" className="w-full mb-4" onClick={onOpenDiagrams}>
+                <BookImage className="mr-2 h-4 w-4" />
+                View Diagrams
+            </Button>
             <h4>1. Composition of the atmosphere 🌬️</h4>
             <p><strong>Visual tool: Pie chart.</strong> Draw a pie chart with 🔵 Nitrogen = 80%, 🔴 Oxygen = 20%, and 🟡🟢 CO₂, water vapour, noble gases = tiny slices. Tip: Color-code the gases and label them clearly.</p>
 
@@ -1224,6 +1262,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   const firestore = useFirestore();
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [isPeriodicTableDialogOpen, setIsPeriodicTableDialogOpen] = useState(false);
+  const [isDiagramsOpen, setIsDiagramsOpen] = useState(false);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -1252,7 +1291,22 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     const noteWithSkills = initialNotesData['deck1']?.find(note => note.examSkills);
     return noteWithSkills?.examSkills || null;
   }, []);
-
+  
+  const diagramsForDeck: ImagePlaceholder[] = useMemo(() => {
+    const imageIdMap: { [key: string]: string[] } = {
+        'deck1': ['c4', 'c5', 'c6', 'c7'],
+        'deck2': ['c8', 'c9', 'c10', 'c11', 'c12'],
+        'deck3': ['c1', 'c2', 'c13', 'c16'],
+        'deck4': ['c3', 'c6', 'c7', 'c18', 'c20'],
+        'deck5': ['c13', 'c14', 'c15'],
+        'deck6': ['c7', 'c14', 'c16', 'c23'],
+        'deck7': ['c9', 'c10', 'c11'],
+        'deck8': ['c3', 'c18', 'c19', 'c20'],
+        'deck9': ['c22'],
+    };
+    const imageIds = imageIdMap[deck.id] || [];
+    return PlaceHolderImages.filter(img => imageIds.includes(img.id));
+  }, [deck.id]);
 
   const handleGenerateQuiz = async () => {
     if (!deckNotes || deckNotes.length === 0) {
@@ -1284,50 +1338,50 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 
     if (deckId === 'deck1') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck1 />;
-        if (style === 'Visual') return <LearnAsVisualDeck1 />;
+        if (style === 'Visual') return <LearnAsVisualDeck1 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck1 />;
     }
 
     if (deckId === 'deck2') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck2 />;
-        if (style === 'Visual') return <LearnAsVisualDeck2 />;
+        if (style === 'Visual') return <LearnAsVisualDeck2 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck2 />;
     }
 
     if (deckId === 'deck3') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck3 />;
-        if (style === 'Visual') return <LearnAsVisualDeck3 />;
+        if (style === 'Visual') return <LearnAsVisualDeck3 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck3 />;
     }
     
     if (deckId === 'deck4') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck4 />;
-        if (style === 'Visual') return <LearnAsVisualDeck4 />;
+        if (style === 'Visual') return <LearnAsVisualDeck4 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck4 />;
     }
      if (deckId === 'deck5') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck5 />;
-        if (style === 'Visual') return <LearnAsVisualDeck5 />;
+        if (style === 'Visual') return <LearnAsVisualDeck5 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck5 />;
     }
     if (deckId === 'deck6') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck6 />;
-        if (style === 'Visual') return <LearnAsVisualDeck6 />;
+        if (style === 'Visual') return <LearnAsVisualDeck6 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck6 />;
     }
     if (deckId === 'deck7') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck7 />;
-        if (style === 'Visual') return <LearnAsVisualDeck7 />;
+        if (style === 'Visual') return <LearnAsVisualDeck7 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck7 />;
     }
      if (deckId === 'deck8') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck8 />;
-        if (style === 'Visual') return <LearnAsVisualDeck8 />;
+        if (style === 'Visual') return <LearnAsVisualDeck8 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck8 />;
     }
     if (deckId === 'deck9') {
         if (style === 'Kinesthetic') return <LearnAsKinestheticDeck9 />;
-        if (style === 'Visual') return <LearnAsVisualDeck9 />;
+        if (style === 'Visual') return <LearnAsVisualDeck9 onOpenDiagrams={() => setIsDiagramsOpen(true)} />;
         if (style === 'Reading/Writing') return <LearnAsReadingWritingDeck9 />;
     }
     
@@ -1422,10 +1476,18 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         isOpen={isPeriodicTableDialogOpen}
         onClose={() => setIsPeriodicTableDialogOpen(false)}
       />
+       <DiagramsDialog
+            isOpen={isDiagramsOpen}
+            onClose={() => setIsDiagramsOpen(false)}
+            diagrams={diagramsForDeck}
+            title={`Diagrams for ${deck.title}`}
+        />
     </div>
   );
 };
 
 export default DeckView;
+
+    
 
     

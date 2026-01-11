@@ -975,12 +975,6 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
         <div className="p-4 bg-primary/10 rounded-lg text-center">
             <h3 className="font-bold text-primary">How to use this quiz</h3>
             <p className="text-sm">Draw, connect, and organize the information visually. Use pen and paper.</p>
-            {diagrams.length > 0 && (
-                <Button variant="outline" size="sm" className="mt-4" onClick={() => setIsDiagramsOpen(true)}>
-                    <BookImage className="mr-2 h-4 w-4" />
-                    View Diagrams
-                </Button>
-            )}
         </div>
         <hr />
         {renderQuizContent()}
@@ -1044,3 +1038,6 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 
 export default VisualQuizView;
 
+
+
+    

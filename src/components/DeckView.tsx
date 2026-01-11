@@ -5,8 +5,8 @@ import React, { useState, useMemo } from 'react';
 import type { Deck, Note, UserDetails, QuizQuestion } from '@/lib/types';
 import { Button } from './ui/button';
 import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge, Cloud, FlaskConical, Beaker, Atom, Puzzle, Swords, FileText, List, Microscope, Pen, CheckCircle, Flame, FileUp } from 'lucide-react';
-import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { useUser, useFirestore, useCollection, useMemoFirebase, setDocumentNonBlocking, addDocumentNonBlocking } from '@/firebase';
+import { collection, query, where, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ScrollArea } from './ui/scroll-area';
@@ -17,6 +17,7 @@ import { NestedAccordion } from './NestedAccordion';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { DiagramsDialog } from './DiagramsDialog';
 import { ImportDialog } from './ImportDialog';
+import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
 
 
 type DeckViewProps = {
@@ -1333,6 +1334,24 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
     onQuiz(deck.id, deck.title, difficulty);
   };
   
+  const handleImportedNotes = async (notesContent: string) => {
+    if (!user || !firestore) return;
+    const notesCollectionRef = collection(firestore, `users/${user.uid}/notes`);
+    const noteData = {
+        title: `Imported Notes for ${deck.title}`,
+        body: notesContent,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        deckId: deck.id,
+    }
+    await addDocumentNonBlocking(notesCollectionRef, noteData);
+    onNoteAdded();
+    toast({
+        title: "Notes Imported!",
+        description: "Your notes have been added to this deck."
+    })
+  }
+
   const renderLearnContent = () => {
     if (!userDetails?.learningStyle) return null;
     
@@ -1431,7 +1450,18 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                 </Button>
             </div>
             
-            {renderLearnContent()}
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <GraduationCap className="w-6 h-6" />
+                        Learn
+                    </CardTitle>
+                    <CardDescription>Engage with this topic using activities tailored to your learning style.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    {renderLearnContent()}
+                </CardContent>
+            </Card>
             
             <Card>
                 <CardHeader>
@@ -1439,20 +1469,13 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                         <BrainCircuit className="w-6 h-6" />
                         Quiz
                     </CardTitle>
-                    <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
+                    <CardDescription>Test your knowledge with a quiz.</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2">
-                    {isPrebuilt ? (
-                        <div className="grid grid-cols-2 gap-4">
-                            <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Easy Quiz</Button>
-                            <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
-                        </div>
-                    ) : (
-                         <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
-                            <FileUp className="mr-2 h-4 w-4" />
-                            Import Quiz/Notes
-                        </Button>
-                    )}
+                     <div className="grid grid-cols-2 gap-4">
+                        <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Easy Quiz</Button>
+                        <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
+                    </div>
                 </CardContent>
             </Card>
         </div>
@@ -1500,9 +1523,12 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         <ImportDialog
             isOpen={isImportDialogOpen}
             onClose={() => setIsImportDialogOpen(false)}
+            onImportNotes={handleImportedNotes}
         />
     </div>
   );
 };
 
 export default DeckView;
+
+    

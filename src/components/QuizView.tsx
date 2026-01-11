@@ -430,7 +430,7 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
       <ImportDialog
         isOpen={isImportDialogOpen}
         onClose={() => setIsImportDialogOpen(false)}
-        onQuizGenerated={(title, questions) => {
+        onGenerateQuiz={(title, questions) => {
           setQuizSource({ type: 'generated', deckTitle: title, questions });
         }}
       />
@@ -442,4 +442,4 @@ export default QuizView;
 
     
 
-
+    

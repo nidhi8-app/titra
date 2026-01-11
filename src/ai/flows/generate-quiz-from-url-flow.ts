@@ -2,9 +2,9 @@
 'use server';
 
 /**
- * @fileOverview An AI flow to generate a quiz from a URL.
+ * @fileOverview An AI flow to generate a quiz from a URL or raw text content.
  *
- * - generateQuizFromUrl - A function that handles the quiz generation from a URL.
+ * - generateQuizFromUrl - A function that handles the quiz generation from a URL or text.
  * - GenerateQuizFromUrlInput - The input type for the function.
  * - GenerateQuizFromUrlOutput - The return type for the function.
  */
@@ -13,7 +13,7 @@ import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
 const GenerateQuizFromUrlInputSchema = z.object({
-  url: z.string().url().describe('The URL of the content to generate a quiz from (e.g., YouTube, article).'),
+  content: z.string().describe('The URL or raw text content to generate a quiz from.'),
 });
 export type GenerateQuizFromUrlInput = z.infer<typeof GenerateQuizFromUrlInputSchema>;
 
@@ -25,7 +25,7 @@ const QuizQuestionSchema = z.object({
 });
 
 const GenerateQuizFromUrlOutputSchema = z.object({
-  title: z.string().describe('A concise and relevant title for the generated quiz, based on the content of the URL.'),
+  title: z.string().describe('A concise and relevant title for the generated quiz, based on the content.'),
   questions: z.array(QuizQuestionSchema).describe('An array of 5 generated multiple-choice quiz questions.'),
 });
 export type GenerateQuizFromUrlOutput = z.infer<typeof GenerateQuizFromUrlOutputSchema>;
@@ -48,11 +48,14 @@ const generateQuizFromUrlFlow = ai.defineFlow(
       name: 'generateQuizFromUrlPrompt',
       input: { schema: GenerateQuizFromUrlInputSchema },
       output: { schema: GenerateQuizFromUrlOutputSchema },
-      prompt: `You are an expert in creating educational quizzes. Your task is to generate a 5-question multiple-choice quiz and a suitable title based on the content found at the provided URL.
+      prompt: `You are an expert in creating educational quizzes. Your task is to generate a 5-question multiple-choice quiz and a suitable title based on the content provided. The content could be a URL or raw text.
 
-URL: {{{url}}}
+Content:
+---
+{{{content}}}
+---
 
-Please analyze the content at the URL and generate 5 relevant multiple-choice questions. Each question must have 4 options and a clearly identified correct answer. The questions should cover the key topics and concepts presented in the content.
+Please analyze the content and generate 5 relevant multiple-choice questions. Each question must have 4 options and a clearly identified correct answer. The questions should cover the key topics and concepts presented in the content.
 
 Also, create a short, descriptive title for the quiz that accurately reflects the content.
 
@@ -63,3 +66,5 @@ Generate the output in the specified JSON format.`,
     return output!;
   }
 );
+
+    

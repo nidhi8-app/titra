@@ -55,9 +55,11 @@ const ImportSourceDialog = ({ onSelect }: { onSelect: (source: ImportSource) => 
 type ImportActionDialogProps = {
     source: ImportSource;
     onClose: () => void;
+    onGenerateQuiz?: (title: string, questions: QuizQuestion[]) => void;
+    onImportNotes?: (notes: string) => void;
 };
 
-const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
+const ImportActionDialog = ({ source, onClose, onGenerateQuiz, onImportNotes }: ImportActionDialogProps) => {
     const { toast } = useToast();
     const [url, setUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -66,14 +68,12 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
     const isUrlBased = source === 'YouTube' || source === 'Quizlet';
     const isFileBased = source === 'PDF' || source === 'PowerPoint' || source === 'Record lecture';
 
-    const handleGenerate = async () => {
-        if (isUrlBased && !url) {
-            toast({ variant: 'destructive', title: 'Please enter a URL.' });
-            return;
-        }
+    const generateTitle = onGenerateQuiz ? 'Generate Quiz' : 'Generate Learning Material';
 
-        if (source === 'Notes' && !pastedNotes) {
-             toast({ variant: 'destructive', title: 'Please paste your notes.' });
+    const handleGenerate = async () => {
+        const contentToProcess = isUrlBased ? url : pastedNotes;
+        if (!contentToProcess) {
+            toast({ variant: 'destructive', title: 'Please provide some content.' });
             return;
         }
 
@@ -88,29 +88,25 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
 
         setIsLoading(true);
         try {
-            // This part needs a generic content-to-quiz flow.
-            // For now, we use the URL flow as a stand-in for demonstration.
-            const contentToProcess = isUrlBased ? url : pastedNotes;
-            if (!contentToProcess) {
-                throw new Error("No content to process.");
+            if (onGenerateQuiz) {
+                const { title, questions } = await generateQuizFromUrl({ content: contentToProcess });
+                if (!title || !questions || questions.length === 0) {
+                     throw new Error("The AI could not generate a quiz from this content. Please try different content.");
+                }
+                onGenerateQuiz(title, questions);
+                toast({
+                    title: "Quiz Generated!",
+                    description: `Your quiz "${title}" is ready.`,
+                });
+            } else if (onImportNotes) {
+                onImportNotes(pastedNotes);
             }
-
-            const { title, questions } = await generateQuizFromUrl({ url: contentToProcess });
-            if (!title || !questions || questions.length === 0) {
-                 throw new Error("The AI could not generate a quiz from this content. Please try different content.");
-            }
-            // In a real app, we'd add this to a new deck or the current one.
-            // For this prototype, we'll just show a success toast.
-            toast({
-                title: "Quiz Generated!",
-                description: `Your quiz "${title}" would be ready here.`,
-            });
             onClose();
         } catch (error: any) {
-            console.error("Error generating quiz:", error);
+            console.error("Error generating content:", error);
             toast({
                 variant: 'destructive',
-                title: 'Quiz Generation Failed',
+                title: 'Generation Failed',
                 description: error.message || 'An unknown error occurred.',
             });
         } finally {
@@ -121,11 +117,20 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            toast({
-                title: "File Uploaded",
-                description: `Generating a quiz from "${file.name}"...`,
-            });
-            // Here you would process the file and call handleGenerate with its content
+            // This is a placeholder for file processing
+            if (onGenerateQuiz) {
+                toast({
+                    title: "File Uploaded",
+                    description: `Generating a quiz from "${file.name}"... (Feature coming soon)`,
+                });
+            } else if (onImportNotes) {
+                 const reader = new FileReader();
+                 reader.onload = (e) => {
+                     const text = e.target?.result as string;
+                     onImportNotes(text);
+                 };
+                 reader.readAsText(file);
+            }
             onClose();
         }
     };
@@ -166,7 +171,7 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
                         <Upload className="mr-2 h-5 w-5" />
                         Select File
                     </Button>
-                    <input type="file" id="file-upload-input" className="hidden" onChange={handleFileUpload} />
+                    <input type="file" id="file-upload-input" className="hidden" onChange={handleFileUpload} accept=".txt,.md,.rtf"/>
                      <div className="relative">
                         <div className="absolute inset-0 flex items-center">
                             <span className="w-full border-t" />
@@ -199,8 +204,8 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
                 <DialogTitle>Import from {source}</DialogTitle>
                 <DialogDescription>
                    {isUrlBased
-                    ? `Paste the URL below to generate a quiz from your ${source}.`
-                    : `Upload your ${source} to generate a quiz.`
+                    ? `Paste the URL below to ${onGenerateQuiz ? 'generate a quiz' : 'import content'}.`
+                    : `Upload your ${source} to ${onGenerateQuiz ? 'generate a quiz' : 'import notes'}.`
                    }
                 </DialogDescription>
             </DialogHeader>
@@ -211,7 +216,7 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
                  <Button variant="ghost" onClick={onClose}>Cancel</Button>
                  <Button onClick={handleGenerate} disabled={isLoading}>
                     {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Generate Quiz
+                    {generateTitle}
                  </Button>
             </DialogFooter>
         </>
@@ -222,10 +227,12 @@ const ImportActionDialog = ({ source, onClose }: ImportActionDialogProps) => {
 type ImportDialogProps = {
     isOpen: boolean;
     onClose: () => void;
+    onGenerateQuiz?: (title: string, questions: QuizQuestion[]) => void;
+    onImportNotes?: (notes: string) => void;
 };
 
 
-export const ImportDialog = ({ isOpen, onClose }: ImportDialogProps) => {
+export const ImportDialog = ({ isOpen, onClose, onGenerateQuiz, onImportNotes }: ImportDialogProps) => {
   const [selectedSource, setSelectedSource] = useState<ImportSource | null>(null);
 
   const handleSelect = (source: ImportSource) => {
@@ -241,13 +248,18 @@ export const ImportDialog = ({ isOpen, onClose }: ImportDialogProps) => {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-md">
         {selectedSource ? (
-            <ImportActionDialog source={selectedSource} onClose={handleClose} />
+            <ImportActionDialog 
+                source={selectedSource} 
+                onClose={handleClose} 
+                onGenerateQuiz={onGenerateQuiz}
+                onImportNotes={onImportNotes}
+            />
         ) : (
             <>
             <DialogHeader>
                 <DialogTitle>Import</DialogTitle>
                 <DialogDescription>
-                    Generate a quiz from various sources using AI.
+                    { onGenerateQuiz ? "Generate a quiz from various sources using AI." : "Import your notes to start learning."}
                 </DialogDescription>
             </DialogHeader>
             <ImportSourceDialog onSelect={handleSelect} />
@@ -257,3 +269,5 @@ export const ImportDialog = ({ isOpen, onClose }: ImportDialogProps) => {
     </Dialog>
   );
 };
+
+    

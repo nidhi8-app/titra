@@ -78,6 +78,7 @@ const LiveClock = () => {
 
 export default function Home() {
   const [decks, setDecks] = React.useState<Deck[]>(initialDecks);
+  const [archivedDecks, setArchivedDecks] = React.useState<Deck[]>([]);
   const [selectedDeckId, setSelectedDeckId] = React.useState<string | null>(
     null
   );
@@ -240,6 +241,24 @@ export default function Home() {
       variant: 'destructive',
     });
   }, [decks, toast, selectedDeckId]);
+
+  const handleArchiveDeck = React.useCallback((deckId: string) => {
+    const deckToArchive = decks.find(d => d.id === deckId);
+    if (!deckToArchive) return;
+
+    setDecks(decks.filter(d => d.id !== deckId));
+    setArchivedDecks(prev => [...prev, deckToArchive]);
+
+    if (selectedDeckId === deckId) {
+        setSelectedDeckId(null);
+    }
+
+    toast({
+        title: "Deck Archived",
+        description: `"${deckToArchive.title}" has been moved to your archive.`,
+    });
+  }, [decks, toast, selectedDeckId]);
+
 
   const handleOnboardingComplete = React.useCallback((details: UserDetails) => {
     setUserDetails(details);
@@ -455,7 +474,7 @@ export default function Home() {
       case "friends":
         return <FriendsView />;
       case "account":
-        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} />;
+        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} archivedDecks={archivedDecks} />;
       default:
         return null;
     }
@@ -526,6 +545,7 @@ export default function Home() {
             onCreateDeck={handleCreateDeck}
             onRenameDeck={handleRenameDeck}
             onDeleteDeck={handleDeleteDeck}
+            onArchiveDeck={handleArchiveDeck}
           />
         </SidebarContent>
         <SidebarFooter>
@@ -562,6 +582,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
-    
-    

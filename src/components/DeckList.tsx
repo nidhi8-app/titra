@@ -4,13 +4,14 @@
 import React, { useState } from 'react';
 import type { Deck } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Folder, MoreHorizontal, Pencil, Plus, Trash2 } from 'lucide-react';
+import { Folder, MoreHorizontal, Pencil, Plus, Trash2, Archive } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { RenameDeckDialog } from './RenameDeckDialog';
 import { DeleteDeckDialog } from './DeleteDeckDialog';
@@ -22,6 +23,7 @@ type DeckListProps = {
   onCreateDeck: () => void;
   onRenameDeck: (deckId: string, newTitle: string) => void;
   onDeleteDeck: (deckId: string) => void;
+  onArchiveDeck: (deckId: string) => void;
 };
 
 const DeckList = ({
@@ -31,6 +33,7 @@ const DeckList = ({
   onCreateDeck,
   onRenameDeck,
   onDeleteDeck,
+  onArchiveDeck,
 }: DeckListProps) => {
   const [deckToRename, setDeckToRename] = useState<Deck | null>(null);
   const [deckToDelete, setDeckToDelete] = useState<Deck | null>(null);
@@ -85,6 +88,11 @@ const DeckList = ({
                     <Pencil className="mr-2 h-4 w-4" />
                     <span>Rename</span>
                   </DropdownMenuItem>
+                   <DropdownMenuItem onClick={() => onArchiveDeck(deck.id)}>
+                    <Archive className="mr-2 h-4 w-4" />
+                    <span>Archive</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={() => setDeckToDelete(deck)}
                     className="text-red-500 focus:text-red-500 focus:bg-red-500/10"

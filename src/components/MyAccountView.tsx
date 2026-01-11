@@ -2,20 +2,27 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import type { UserDetails } from '@/lib/types';
+import type { UserDetails, Deck } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
-import { Pencil, BookImage } from 'lucide-react';
+import { Pencil, BookImage, Folder } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { AvatarSelectionDialog } from './AvatarSelectionDialog';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
   setUserDetails: (details: UserDetails | null) => void;
+  archivedDecks: Deck[];
 };
 
 const DetailItem = ({ label, value }: { label: string, value: string | number | undefined }) => (
@@ -39,7 +46,7 @@ const EditableDetailItem = ({ label, value, name, onChange, type = "text" }: { l
     </div>
 );
 
-const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
+const MyAccountView = ({ userDetails, setUserDetails, archivedDecks }: MyAccountViewProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
   const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
@@ -117,93 +124,117 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
 
   return (
     <div className="p-4 md:p-8">
-        <Card className="max-w-2xl mx-auto">
-            <CardHeader className="text-center">
-                <div className="flex justify-center mb-4 relative w-fit mx-auto">
-                    <Avatar className="w-32 h-32 border-4 border-primary">
-                        <AvatarImage src={avatarUrl} alt={userDetails.name} />
-                        <AvatarFallback>{userDetails.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                     <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={() => setIsAvatarDialogOpen(true)}>
-                        <Pencil className="h-5 w-5"/>
-                    </Button>
-                </div>
-                {isEditing ? (
-                     <EditableDetailItem label="Name" name="name" value={editedDetails?.name || ''} onChange={handleChange} />
-                ) : (
-                    <>
-                        <CardTitle className="text-3xl">{userDetails.name}</CardTitle>
-                        <CardDescription>{userDetails.email}</CardDescription>
-                    </>
-                )}
-            </CardHeader>
-            <CardContent>
-                 {isEditing && editedDetails ? (
-                    <div className="space-y-4">
-                        <EditableDetailItem label="Email" name="email" value={editedDetails.email || ''} onChange={handleChange} />
-                        <div className="grid grid-cols-2 gap-4">
-                            <EditableDetailItem label="Age" name="age" value={editedDetails.age || ''} onChange={handleChange} type="number" />
-                            <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup || ''} onChange={handleChange} />
-                        </div>
-                        <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName || ''} onChange={handleChange} />
-                        <div className="grid grid-cols-2 gap-4">
-                            <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum || ''} onChange={handleChange} />
-                            <EditableDetailItem label="Country" name="country" value={editedDetails.country || ''} onChange={handleChange} />
-                        </div>
-                         <div>
-                            <Label className="text-sm text-muted-foreground">Science Set</Label>
-                            <RadioGroup
-                                value={editedDetails.scienceSet}
-                                onValueChange={handleRadioChange}
-                                className="flex space-x-4 mt-1"
-                            >
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="separate" id="separate" />
-                                    <Label htmlFor="separate">Separate</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="combined" id="combined" />
-                                    <Label htmlFor="combined">Combined</Label>
-                                </div>
-                            </RadioGroup>
-                        </div>
+        <div className="max-w-2xl mx-auto space-y-4">
+            <Card>
+                <CardHeader className="text-center">
+                    <div className="flex justify-center mb-4 relative w-fit mx-auto">
+                        <Avatar className="w-32 h-32 border-4 border-primary">
+                            <AvatarImage src={avatarUrl} alt={userDetails.name} />
+                            <AvatarFallback>{userDetails.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <Button variant="ghost" size="icon" className="absolute -bottom-2 -right-2 bg-background rounded-full h-10 w-10" onClick={() => setIsAvatarDialogOpen(true)}>
+                            <Pencil className="h-5 w-5"/>
+                        </Button>
                     </div>
-                ) : (
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
-                        <DetailItem label="Learning Style" value={userDetails.learningStyle} />
-                        <DetailItem label="Age" value={userDetails.age} />
-                        <DetailItem label="Year Group" value={userDetails.yearGroup} />
-                        <DetailItem label="School" value={userDetails.schoolName} />
-                        <DetailItem label="Curriculum" value={userDetails.curriculum} />
-                        <DetailItem label="Country" value={userDetails.country} />
-                        <DetailItem label="Science Set" value={userDetails.scienceSet === 'separate' ? 'Separate' : 'Combined'} />
-                    </div>
-                )}
-                 <div className="mt-8 flex justify-end gap-2">
                     {isEditing ? (
-                        <>
-                            <Button variant="outline" onClick={handleCancelClick}>Cancel</Button>
-                            <Button onClick={handleSaveClick}>Save</Button>
-                        </>
+                        <EditableDetailItem label="Name" name="name" value={editedDetails?.name || ''} onChange={handleChange} />
                     ) : (
-                        <Button variant="outline" onClick={handleEditClick}>Edit Profile</Button>
+                        <>
+                            <CardTitle className="text-3xl">{userDetails.name}</CardTitle>
+                            <CardDescription>{userDetails.email}</CardDescription>
+                        </>
                     )}
-                </div>
-            </CardContent>
-        </Card>
-        <div className="max-w-2xl mx-auto mt-4">
-             <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableOpen(true)}>
+                </CardHeader>
+                <CardContent>
+                    {isEditing && editedDetails ? (
+                        <div className="space-y-4">
+                            <EditableDetailItem label="Email" name="email" value={editedDetails.email || ''} onChange={handleChange} />
+                            <div className="grid grid-cols-2 gap-4">
+                                <EditableDetailItem label="Age" name="age" value={editedDetails.age || ''} onChange={handleChange} type="number" />
+                                <EditableDetailItem label="Year Group" name="yearGroup" value={editedDetails.yearGroup || ''} onChange={handleChange} />
+                            </div>
+                            <EditableDetailItem label="School" name="schoolName" value={editedDetails.schoolName || ''} onChange={handleChange} />
+                            <div className="grid grid-cols-2 gap-4">
+                                <EditableDetailItem label="Curriculum" name="curriculum" value={editedDetails.curriculum || ''} onChange={handleChange} />
+                                <EditableDetailItem label="Country" name="country" value={editedDetails.country || ''} onChange={handleChange} />
+                            </div>
+                            <div>
+                                <Label className="text-sm text-muted-foreground">Science Set</Label>
+                                <RadioGroup
+                                    value={editedDetails.scienceSet}
+                                    onValueChange={handleRadioChange}
+                                    className="flex space-x-4 mt-1"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="separate" id="separate" />
+                                        <Label htmlFor="separate">Separate</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="combined" id="combined" />
+                                        <Label htmlFor="combined">Combined</Label>
+                                    </div>
+                                </RadioGroup>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-6">
+                            <DetailItem label="Learning Style" value={userDetails.learningStyle} />
+                            <DetailItem label="Age" value={userDetails.age} />
+                            <DetailItem label="Year Group" value={userDetails.yearGroup} />
+                            <DetailItem label="School" value={userDetails.schoolName} />
+                            <DetailItem label="Curriculum" value={userDetails.curriculum} />
+                            <DetailItem label="Country" value={userDetails.country} />
+                            <DetailItem label="Science Set" value={userDetails.scienceSet === 'separate' ? 'Separate' : 'Combined'} />
+                        </div>
+                    )}
+                    <div className="mt-8 flex justify-end gap-2">
+                        {isEditing ? (
+                            <>
+                                <Button variant="outline" onClick={handleCancelClick}>Cancel</Button>
+                                <Button onClick={handleSaveClick}>Save</Button>
+                            </>
+                        ) : (
+                            <Button variant="outline" onClick={handleEditClick}>Edit Profile</Button>
+                        )}
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="archived-decks">
+                    <AccordionTrigger className="text-lg font-semibold">Archived Decks</AccordionTrigger>
+                    <AccordionContent>
+                        {archivedDecks.length > 0 ? (
+                            <div className="space-y-2">
+                                {archivedDecks.map(deck => (
+                                    <div key={deck.id} className="flex items-center gap-3 p-2 rounded-md border">
+                                        <Folder className="w-5 h-5 text-muted-foreground" />
+                                        <span className="flex-1 truncate">{deck.title}</span>
+                                        <Button variant="ghost" size="sm">Unarchive</Button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-muted-foreground text-center py-4">You have no archived decks.</p>
+                        )}
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
+
+
+            <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableOpen(true)}>
                 <BookImage className="mr-2 h-4 w-4" />
                 Periodic Table
             </Button>
         </div>
+        
         {isAvatarDialogOpen && (
-             <AvatarSelectionDialog 
+            <AvatarSelectionDialog 
                 isOpen={isAvatarDialogOpen}
                 onClose={() => setIsAvatarDialogOpen(false)}
                 onAvatarSelect={handleAvatarSelect}
                 currentAvatar={avatarUrl}
-             />
+            />
         )}
         <PeriodicTableDialog
             isOpen={isPeriodicTableOpen}
@@ -214,5 +245,3 @@ const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
 };
 
 export default MyAccountView;
-
-    

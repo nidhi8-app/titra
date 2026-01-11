@@ -22,7 +22,6 @@ import { ImportDialog } from './ImportDialog';
 type DeckViewProps = {
   deck: Deck;
   onQuiz: (deckId: string, deckTitle:string, difficulty: 'easy' | 'hard') => void;
-  onGeneratedQuiz: (title: string, questions: QuizQuestion[]) => void;
   userDetails: UserDetails | null;
   onNoteAdded: () => void;
 };
@@ -1259,7 +1258,7 @@ const LearnAsReadingWritingDeck9 = () => (
 );
 
 
-const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
+const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
@@ -1409,7 +1408,7 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
           <p className="mt-1 text-sm text-muted-foreground">Add some notes to get started.</p>
            <Button variant="outline" className="mt-4" onClick={() => setIsImportDialogOpen(true)}>
                 <FileUp className="mr-2 h-4 w-4" />
-                Import to Generate a Quiz
+                Import Quiz/Notes
             </Button>
         </div>
       );
@@ -1449,15 +1448,10 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
                             <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
                         </div>
                     ) : (
-                        <>
-                            <Button onClick={() => handleGenerateQuiz('easy')} className="w-full" size="lg">
-                                Quiz Me!
-                            </Button>
-                            <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
-                                <FileUp className="mr-2 h-4 w-4" />
-                                Import to Generate a Quiz
-                            </Button>
-                        </>
+                         <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
+                            <FileUp className="mr-2 h-4 w-4" />
+                            Import Quiz/Notes
+                        </Button>
                     )}
                 </CardContent>
             </Card>
@@ -1506,7 +1500,6 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
         <ImportDialog
             isOpen={isImportDialogOpen}
             onClose={() => setIsImportDialogOpen(false)}
-            onQuizGenerated={onGeneratedQuiz}
         />
     </div>
   );

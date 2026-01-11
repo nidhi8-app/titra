@@ -14,6 +14,9 @@ import { Button } from './ui/button';
 import { ChevronRight, FileText, Mic, Layers, Baseline, Presentation, Youtube, Upload, Link, Loader2 } from 'lucide-react';
 import { Input } from './ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { generateQuizFromUrl } from '@/ai/flows/generate-quiz-from-url-flow';
+import type { QuizQuestion } from '@/lib/types';
+
 
 type ImportSource = 'PDF' | 'Record lecture' | 'Quizlet' | 'Notes' | 'PowerPoint' | 'YouTube';
 
@@ -47,24 +50,72 @@ const ImportSourceDialog = ({ onSelect }: { onSelect: (source: ImportSource) => 
     </div>
 );
 
-const ImportActionDialog = ({ source, onClose }: { source: ImportSource; onClose: () => void; }) => {
+type ImportActionDialogProps = {
+    source: ImportSource;
+    onClose: () => void;
+    onQuizGenerated: (title: string, questions: QuizQuestion[]) => void;
+};
+
+const ImportActionDialog = ({ source, onClose, onQuizGenerated }: ImportActionDialogProps) => {
     const { toast } = useToast();
     const [url, setUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    const isUrlBased = source === 'YouTube' || source === 'Quizlet';
+    const isUrlBased = source === 'YouTube' || source === 'Quizlet' || source === 'PDF';
 
-    const handleGenerate = () => {
-        setIsLoading(true);
-        // In a real app, you would call an AI flow here.
-        setTimeout(() => {
-            setIsLoading(false);
+    const handleGenerate = async () => {
+        if (isUrlBased && !url) {
+            toast({ variant: 'destructive', title: 'Please enter a URL.' });
+            return;
+        }
+
+        if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
             toast({
-                title: "Quiz Generation Started",
-                description: `We're creating a quiz from your ${source}. This feature is coming soon!`,
+                variant: "destructive",
+                title: "AI Feature Disabled",
+                description: "Please add your Gemini API key to the .env file to use this feature.",
+            });
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            const { title, questions } = await generateQuizFromUrl({ url });
+            if (!title || !questions || questions.length === 0) {
+                 throw new Error("The AI could not generate a quiz from this URL. Please try a different one.");
+            }
+            onQuizGenerated(title, questions);
+            toast({
+                title: "Quiz Generated!",
+                description: `Your quiz "${title}" is ready.`,
             });
             onClose();
-        }, 1500);
+        } catch (error: any) {
+            console.error("Error generating quiz from URL:", error);
+            toast({
+                variant: 'destructive',
+                title: 'Quiz Generation Failed',
+                description: error.message || 'An unknown error occurred.',
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            // For now, we just show a toast. Real implementation would require file processing.
+            toast({
+                title: "File Uploaded",
+                description: `Processing for "${file.name}" is coming soon!`,
+            });
+             onClose();
+        }
+    };
+
+    const triggerFileUpload = () => {
+        document.getElementById('file-upload-input')?.click();
     }
 
     return (
@@ -90,10 +141,13 @@ const ImportActionDialog = ({ source, onClose }: { source: ImportSource; onClose
                         />
                      </div>
                 ) : (
-                     <Button variant="outline" className="w-full">
+                    <>
+                     <Button variant="outline" className="w-full" onClick={triggerFileUpload}>
                         <Upload className="mr-2 h-5 w-5" />
                         Select File
                      </Button>
+                     <input type="file" id="file-upload-input" className="hidden" onChange={handleFileUpload} />
+                    </>
                 )}
             </div>
             <DialogFooter>
@@ -108,7 +162,14 @@ const ImportActionDialog = ({ source, onClose }: { source: ImportSource; onClose
 }
 
 
-export const ImportDialog = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+type ImportDialogProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    onQuizGenerated: (title: string, questions: QuizQuestion[]) => void;
+};
+
+
+export const ImportDialog = ({ isOpen, onClose, onQuizGenerated }: ImportDialogProps) => {
   const [selectedSource, setSelectedSource] = useState<ImportSource | null>(null);
 
   const handleSelect = (source: ImportSource) => {
@@ -124,13 +185,13 @@ export const ImportDialog = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-md">
         {selectedSource ? (
-            <ImportActionDialog source={selectedSource} onClose={handleClose} />
+            <ImportActionDialog source={selectedSource} onClose={handleClose} onQuizGenerated={onQuizGenerated} />
         ) : (
             <>
             <DialogHeader>
                 <DialogTitle>Import</DialogTitle>
                 <DialogDescription>
-                    Add information to your deck from various sources.
+                    Generate a quiz from various sources using AI.
                 </DialogDescription>
             </DialogHeader>
             <ImportSourceDialog onSelect={handleSelect} />

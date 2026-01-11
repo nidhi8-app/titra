@@ -2,9 +2,9 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import type { Deck, Note, UserDetails } from '@/lib/types';
+import type { Deck, Note, UserDetails, QuizQuestion } from '@/lib/types';
 import { Button } from './ui/button';
-import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge, Cloud, FlaskConical, Beaker, Atom, Puzzle, Swords, FileText, List, Microscope, Pen, CheckCircle, Flame } from 'lucide-react';
+import { BrainCircuit, Loader2, Award, BookImage, Footprints, Eye, BookText, PersonStanding, Hand, Move, Fingerprint, Map, ChevronsDown, Handshake, Link as LinkIcon, Disc, Scale, TestTube, Recycle, Brain, Key, ChevronsRightLeft, Rows, Thermometer, Sigma, CircleDashed, Zap, Gauge, Cloud, FlaskConical, Beaker, Atom, Puzzle, Swords, FileText, List, Microscope, Pen, CheckCircle, Flame, FileUp } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -16,11 +16,13 @@ import { PeriodicTableDialog } from './PeriodicTableDialog';
 import { NestedAccordion } from './NestedAccordion';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { DiagramsDialog } from './DiagramsDialog';
+import { ImportDialog } from './ImportDialog';
 
 
 type DeckViewProps = {
   deck: Deck;
   onQuiz: (deckId: string, deckTitle:string) => void;
+  onGeneratedQuiz: (title: string, questions: QuizQuestion[]) => void;
   userDetails: UserDetails | null;
   onNoteAdded: () => void;
 };
@@ -1193,7 +1195,7 @@ const LearnAsVisualDeck9 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) 
             <p><strong>Visual tool: Diagram of carbon sinks.</strong> Use arrows showing CO₂ moving from the air to plants 🌱, limestone 🪨, and fossil fuels (coal 🟫, oil 🛢️, gas 🔵).</p>
             
             <h4>5. Greenhouse gases 🌡️</h4>
-            <p><strong>Visual tool: Simple schematic.</strong> Show the Sun ☀️ → Earth 🌍, with some heat escaping ↗️ and some being trapped by CO₂ 💨, CH₄ 🟤, and H₂O 💧. Color-code shortwave vs longwave radiation.</p>
+            <p><strong>Visual tool: Simple schematic.</strong> Show the Sun ☀️ → Earth 🌍, with some heat escaping ↗️ and some trapped by CO₂ 💨, CH₄ 🟤, and H₂O 💧. Color-code shortwave vs longwave radiation.</p>
             
             <h4>6. Human contributions 🚗🏭</h4>
             <p><strong>Visual tool: Infographic.</strong> Use icons + arrows to show gas flow into the atmosphere: Car 🚗 → CO₂ 💨, Agriculture 🐄 → CH₄ 🟤, Industry 🏭 → CO₂ 💨.</p>
@@ -1257,12 +1259,13 @@ const LearnAsReadingWritingDeck9 = () => (
 );
 
 
-const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
+const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: DeckViewProps) => {
   const { user } = useUser();
   const firestore = useFirestore();
   const [isExamSkillsDialogOpen, setIsExamSkillsDialogOpen] = useState(false);
   const [isPeriodicTableDialogOpen, setIsPeriodicTableDialogOpen] = useState(false);
   const [isDiagramsOpen, setIsDiagramsOpen] = useState(false);
+  const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
   const { toast } = useToast();
 
   const notesQuery = useMemoFirebase(() => {
@@ -1403,6 +1406,10 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         <div className="text-center col-span-full py-16">
           <h3 className="mt-4 text-lg font-semibold">This deck is empty</h3>
           <p className="mt-1 text-sm text-muted-foreground">Add some notes to get started.</p>
+           <Button variant="outline" className="mt-4" onClick={() => setIsImportDialogOpen(true)}>
+                <FileUp className="mr-2 h-4 w-4" />
+                Import to Generate a Quiz
+            </Button>
         </div>
       );
     }
@@ -1434,9 +1441,13 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     </CardTitle>
                     <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col gap-2">
                      <Button onClick={handleGenerateQuiz} className="w-full" size="lg">
                         Quiz Me!
+                    </Button>
+                     <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
+                        <FileUp className="mr-2 h-4 w-4" />
+                        Import to Generate a Quiz
                     </Button>
                 </CardContent>
             </Card>
@@ -1482,12 +1493,13 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
             diagrams={diagramsForDeck}
             title={`Diagrams for ${deck.title}`}
         />
+        <ImportDialog
+            isOpen={isImportDialogOpen}
+            onClose={() => setIsImportDialogOpen(false)}
+            onQuizGenerated={onGeneratedQuiz}
+        />
     </div>
   );
 };
 
 export default DeckView;
-
-    
-
-    

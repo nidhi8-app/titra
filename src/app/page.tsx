@@ -35,9 +35,10 @@ import { signOut } from "firebase/auth";
 import { collection, doc } from 'firebase/firestore';
 import { QuizSelectionDialog } from "@/components/QuizSelectionDialog";
 import { format, isSameDay, parseISO, subDays, differenceInCalendarDays } from "date-fns";
+import ArchivedDecksView from "@/components/ArchivedDecksView";
 
 
-type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account";
+type ActiveView = "dashboard" | "learning-style" | "quizzes" | "friends" | "account" | "archived";
 type AuthView = 'login' | 'signup';
 export type QuizSource = {
   type: 'pre-made',
@@ -488,7 +489,9 @@ export default function Home() {
       case "friends":
         return <FriendsView />;
       case "account":
-        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} archivedDecks={archivedDecks} onUnarchiveDeck={handleUnarchiveDeck} />;
+        return <MyAccountView userDetails={userDetails} setUserDetails={handleUpdateUserDetails} />;
+      case "archived":
+        return <ArchivedDecksView archivedDecks={archivedDecks} onUnarchiveDeck={handleUnarchiveDeck} />;
       default:
         return null;
     }
@@ -508,6 +511,7 @@ export default function Home() {
       case 'learning-style': return 'Learning Style';
       case 'friends': return 'Friends';
       case 'account': return 'My Account';
+      case 'archived': return 'Archived Decks';
       default: return 'Titra';
     }
   }

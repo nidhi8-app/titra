@@ -12,18 +12,10 @@ import { Label } from './ui/label';
 import { AvatarSelectionDialog } from './AvatarSelectionDialog';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { PeriodicTableDialog } from './PeriodicTableDialog';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 type MyAccountViewProps = {
   userDetails: UserDetails | null;
   setUserDetails: (details: UserDetails | null) => void;
-  archivedDecks: Deck[];
-  onUnarchiveDeck: (deckId: string) => void;
 };
 
 const DetailItem = ({ label, value }: { label: string, value: string | number | undefined }) => (
@@ -47,7 +39,7 @@ const EditableDetailItem = ({ label, value, name, onChange, type = "text" }: { l
     </div>
 );
 
-const MyAccountView = ({ userDetails, setUserDetails, archivedDecks, onUnarchiveDeck }: MyAccountViewProps) => {
+const MyAccountView = ({ userDetails, setUserDetails }: MyAccountViewProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDetails, setEditedDetails] = useState<UserDetails | null>(userDetails);
   const [avatarUrl, setAvatarUrl] = useState(userDetails?.avatarUrl || `https://api.dicebear.com/8.x/bottts/svg?seed=${userDetails?.name || 'default'}`);
@@ -201,28 +193,6 @@ const MyAccountView = ({ userDetails, setUserDetails, archivedDecks, onUnarchive
                 </CardContent>
             </Card>
 
-            <Accordion type="single" collapsible className="w-full" defaultValue="archived-decks">
-                <AccordionItem value="archived-decks">
-                    <AccordionTrigger className="text-lg font-semibold">Archived Decks</AccordionTrigger>
-                    <AccordionContent>
-                        {archivedDecks.length > 0 ? (
-                            <div className="space-y-2">
-                                {archivedDecks.map(deck => (
-                                    <div key={deck.id} className="flex items-center gap-3 p-2 rounded-md border">
-                                        <Folder className="w-5 h-5 text-muted-foreground" />
-                                        <span className="flex-1 truncate">{deck.title}</span>
-                                        <Button variant="ghost" size="sm" onClick={() => onUnarchiveDeck(deck.id)}>Unarchive</Button>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-muted-foreground text-center py-4">You have no archived decks.</p>
-                        )}
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
-
-
             <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableOpen(true)}>
                 <BookImage className="mr-2 h-4 w-4" />
                 Periodic Table
@@ -246,5 +216,3 @@ const MyAccountView = ({ userDetails, setUserDetails, archivedDecks, onUnarchive
 };
 
 export default MyAccountView;
-
-    

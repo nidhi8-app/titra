@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { DiagramsDialog } from './DiagramsDialog';
 import { Input } from './ui/input';
+import { PeriodicTableDialog } from './PeriodicTableDialog';
 
 type VisualQuizViewProps = {
     title: string;
@@ -19,13 +20,14 @@ type VisualQuizViewProps = {
     isEmbedded?: boolean;
 };
 
-const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c8', 'c9'].includes(img.id));
+const deck1Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c4', 'c5', 'c6', 'c7'].includes(img.id));
 const deck2Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c8', 'c9', 'c10', 'c11', 'c12'].includes(img.id));
 const deck3Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c1', 'c2', 'c13', 'c16'].includes(img.id));
 const deck4Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c6', 'c7', 'c18', 'c20'].includes(img.id));
 const deck5Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c13', 'c14', 'c15'].includes(img.id));
 const deck6Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c7', 'c14', 'c16', 'c23'].includes(img.id));
 const deck7Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c9', 'c10', 'c11'].includes(img.id));
+const deck8Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3', 'c18', 'c19', 'c20'].includes(img.id));
 const deck9Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c22'].includes(img.id));
 
 
@@ -866,22 +868,22 @@ const Deck8Quiz = () => (
 const Deck9Quiz = () => (
     <>
         <h3>🌍 ROUND 1: ATMOSPHERE COMPOSITION & EVOLUTION</h3>
-        <p className="mt-2"><strong>1️⃣ Gas Proportions:</strong> Draw a pie chart of the Earth’s current atmosphere. Label nitrogen, oxygen, and other gases in their correct proportions.</p>
+        <p className="mt-2"><strong>1️⃣ Gas Proportions:</strong> Draw a pie chart of the Earth’s current atmosphere. Question: Label nitrogen, oxygen, and other gases in the correct proportions.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The chart should show ~80% Nitrogen, ~20% Oxygen, and a small slice for other gases.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>2️⃣ Early Atmosphere:</strong> Draw a timeline from 4.6 billion years ago to the formation of oceans. Include volcanoes, CO₂, N₂, CH₄, NH₃, and the oceans.</p>
+        <p className="mt-4"><strong>2️⃣ Early Atmosphere:</strong> Draw a timeline from 4.6 billion years ago to the formation of oceans. Question: Include volcanoes, CO₂, N₂, CH₄, NH₃, and the oceans.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Timeline should show early volcanic eruptions releasing gases, leading to a CO₂-rich atmosphere, followed by oceans forming and dissolving CO₂.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>3️⃣ Oxygen Rise:</strong> Make a flow diagram of photosynthesis, showing how algae and plants increased O₂ in the atmosphere over time.</p>
+        <p className="mt-4"><strong>3️⃣ Oxygen Rise:</strong> Make a flow diagram of photosynthesis. Question: Show how algae and plants increased O₂ in the atmosphere over time.</p>
          <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Diagram should show Algae/Plants taking in CO₂ and H₂O with sunlight, and releasing O₂.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>4️⃣ Carbon Dioxide Reduction:</strong> Draw a diagram of carbon sinks. Include CO₂ moving from the air into plants, limestone, and fossil fuels.</p>
+        <p className="mt-4"><strong>4️⃣ Carbon Dioxide Reduction:</strong> Draw a diagram of carbon sinks. Question: Include CO₂ moving from air → plants → limestone, coal, oil, natural gas.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Your diagram should visually represent the trapping of atmospheric CO₂ in various long-term stores.</p></AccordionContent></AccordionItem>
         </Accordion>
@@ -889,32 +891,32 @@ const Deck9Quiz = () => (
         <hr />
         
         <h3>🌡️ ROUND 2: CLIMATE CHANGE & POLLUTANTS</h3>
-        <p className="mt-2"><strong>5️⃣ Greenhouse Effect:</strong> Draw a schematic showing the Earth, Sun, and greenhouse gases. Show which gases trap heat and which radiation escapes.</p>
+        <p className="mt-2"><strong>5️⃣ Greenhouse Effect:</strong> Draw a schematic showing the Earth, Sun, and greenhouse gases. Question: Show which gases trap heat and which radiation escapes.</p>
          <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q5"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The diagram should show incoming solar radiation and outgoing infrared radiation, with gases like CO₂, CH₄, and H₂O trapping some of the outgoing heat.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>6️⃣ Human Contributions:</strong> Draw arrows from human activities (cars, industry, agriculture) to the greenhouse gases they produce (CO₂, CH₄).</p>
+        <p className="mt-4"><strong>6️⃣ Human Contributions:</strong> Draw arrows from human activities to greenhouse gases. Question: Include cars, industry, agriculture, and the gases they produce (CO₂, CH₄).</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Ensure arrows correctly link sources to their primary emissions (e.g., Cars → CO₂, Agriculture → CH₄).</p></AccordionContent></AccordionItem>
         </Accordion>
         
-        <p className="mt-4"><strong>7️⃣ Climate Change Effects:</strong> Create a cause-effect diagram showing how rising temperatures lead to sea-level rise, extreme weather, habitat loss, and crop failure.</p>
+        <p className="mt-4"><strong>7️⃣ Climate Change Effects:</strong> Create a cause-effect diagram. Question: Include rising temperature → sea levels, extreme weather, habitat loss, crop failure.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q7"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">The diagram should clearly link the central cause (rising temp) to multiple distinct effects.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>8️⃣ Carbon Footprint:</strong> Draw a bar graph or icon chart comparing emissions of different activities. Rank them from highest to lowest carbon footprint.</p>
+        <p className="mt-4"><strong>8️⃣ Carbon Footprint:</strong> Draw a bar graph or icon chart comparing emissions of different activities. Question: Rank actions from highest to lowest carbon footprint.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q8"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">A correct ranking would generally show activities like flying and driving as high, and walking/cycling as very low.</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>9️⃣ Pollutants from Fuels:</strong> Make a table with icons for fuels (coal, oil, gas), the pollutants they produce, and their effects.</p>
+        <p className="mt-4"><strong>9️⃣ Pollutants from Fuels:</strong> Make a table with icons for fuel → pollutants → effects. Question: Include coal, oil, and gas. Show which pollutants are produced and their impacts.</p>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q9"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Coal: SO₂, Particulates. Oil: NOx, CO. Gas: CO₂. Effects should match (e.g., SO₂ → Acid Rain).</p></AccordionContent></AccordionItem>
         </Accordion>
 
-        <p className="mt-4"><strong>🔟 Effects of Pollutants:</strong> Draw a concept map connecting pollutants (CO, SO₂, NOx, particulates) to their outcomes on humans, plants, and climate.</p>
+        <p className="mt-4"><strong>🔟 Effects of Pollutants:</strong> Draw a concept map connecting pollutants → affected systems → outcomes. Question: Include CO, SO₂, NOx, particulates, and their effects on humans, plants, water, and climate.</p>
          <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="d9-q10"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent><p className="text-sm">Map should link CO to poisoning, SO₂/NOx to acid rain, and particulates to global dimming/health issues.</p></AccordionContent></AccordionItem>
         </Accordion>
@@ -925,6 +927,7 @@ const Deck9Quiz = () => (
 
 const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
+    const [isPeriodicTableOpen, setIsPeriodicTableOpen] = React.useState(false);
 
     const diagrams = deckId === 'deck1' ? deck1Diagrams :
                      deckId === 'deck2' ? deck2Diagrams :
@@ -933,6 +936,7 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
                      deckId === 'deck5' ? deck5Diagrams :
                      deckId === 'deck6' ? deck6Diagrams : 
                      deckId === 'deck7' ? deck7Diagrams : 
+                     deckId === 'deck8' ? deck8Diagrams : 
                      deckId === 'deck9' ? deck9Diagrams : [];
     
     const renderQuizContent = () => {
@@ -999,12 +1003,18 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
 
     return (
         <div className="p-4 md:p-6">
-            <div className="flex items-center mb-6">
-                <Button variant="ghost" onClick={onBack} className="mr-4">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back
+            <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                    <Button variant="ghost" onClick={onBack}>
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Back
+                    </Button>
+                    <h2 className="text-2xl font-bold">{title}</h2>
+                </div>
+                <Button variant="outline" onClick={() => setIsPeriodicTableOpen(true)}>
+                    <BookImage className="mr-2 h-4 w-4" />
+                    Periodic Table
                 </Button>
-                <h2 className="text-2xl font-bold">{title}</h2>
             </div>
             <ScrollArea className="h-[calc(100vh-12rem)]">
                 <Card className="max-w-3xl mx-auto">
@@ -1024,8 +1034,13 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
                 diagrams={diagrams}
                 title={`Diagrams for ${title}`}
             />
+            <PeriodicTableDialog
+                isOpen={isPeriodicTableOpen}
+                onClose={() => setIsPeriodicTableOpen(false)}
+            />
         </div>
     );
 };
 
 export default VisualQuizView;
+

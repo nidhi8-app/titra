@@ -29,29 +29,32 @@ import LearningStyleQuiz from './LearningStyleQuiz';
 import { ResourceDialog, Resource } from './ResourceDialog';
 import type { UserDetails } from '@/lib/types';
 import FormulasView from './FormulasView';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+import { DiagramsDialog } from './DiagramsDialog';
 
 
 const diagramFolders: Resource[] = [
-  { id: '1', title: 'Stoichiometry Diagrams', description: 'Visual breakdowns of mole ratios and reaction balancing.' },
-  { id: '2', title: 'Atomic Structure Visuals', description: 'Charts showing electron shells, orbitals, and subatomic particles.' },
-  { id: '3', title: 'Periodicity Charts', description: 'Graphs illustrating trends like atomic radius and ionization energy.' },
-  { id: '4', title: 'Chemical Bonding Models', description: '3D models of ionic lattices and covalent molecules.' },
-  { id: '5', title: 'Energetics & Thermochemistry Flowcharts', description: 'Diagrams explaining enthalpy changes and Hess\'s Law.' },
-  { id: '6', title: 'Chemical Kinetics Graphs', description: 'Plots of reaction rates vs. concentration or temperature.' },
-  { id: '7', title: 'Equilibrium Models', description: 'Visual representations of Le Chatelier\'s Principle.' },
-  { id: '8', title: 'Acids and Bases pH Scale Diagrams', description: 'Colorful charts showing the pH of common substances.' },
+  { id: '1', title: 'Stoichiometry Diagrams', description: 'Visual breakdowns of mole ratios and reaction balancing.', imageIds: ['c1', 'c2', 'c3'] },
+  { id: '2', title: 'Atomic Structure Visuals', description: 'Charts showing electron shells, orbitals, and subatomic particles.', imageIds: ['c4', 'c5'] },
+  { id: '3', title: 'Periodicity Charts', description: 'Graphs illustrating trends like atomic radius and ionization energy.', imageIds: ['c6', 'c7'] },
+  { id: '4', title: 'Chemical Bonding Models', description: '3D models of ionic lattices and covalent molecules.', imageIds: ['c8', 'c9', 'c12'] },
+  { id: '5', title: 'Energetics & Thermochemistry Flowcharts', description: 'Diagrams explaining enthalpy changes and Hess\'s Law.', imageIds: ['c13', 'c14', 'c15'] },
+  { id: '6', title: 'Chemical Kinetics Graphs', description: 'Plots of reaction rates vs. concentration or temperature.', imageIds: ['c16', 'c23'] },
+  { id: '7', title: 'Equilibrium Models', description: 'Visual representations of Le Chatelier\'s Principle.', imageIds: ['c17'] },
+  { id: '8', title: 'Acids and Bases pH Scale Diagrams', description: 'Colorful charts showing the pH of common substances.', imageIds: ['c18', 'c19', 'c20', 'c21'] },
 ];
 
 const mindmapFolders: Resource[] = [
-  { id: '1', title: 'Stoichiometric Relationships', description: 'A mindmap connecting moles, mass, and volume calculations.' },
-  { id: '2', title: 'Electron Configuration Maps', description: 'Hierarchical maps for filling electron orbitals (Aufbau, Hund, Pauli).' },
-  { id: '3', title: 'Periodic Trends Mindmap', description: 'A map linking electronegativity, ionization energy, and atomic radius.' },
-  { id: '4', title: 'Intermolecular Forces Map', description: 'Visual connections between London dispersion, dipole-dipole, and hydrogen bonds.' },
-  { id: '5', title: 'Enthalpy and Entropy', description: 'A map exploring the concepts of thermochemistry and spontaneity.' },
-  { id: '6', title: 'Reaction Rate Factors', description: 'A mindmap covering temperature, concentration, surface area, and catalysts.' },
-  { id: '7', title: 'Le Chatelier\'s Principle', description: 'A visual guide to how equilibrium shifts with changes in conditions.' },
-  { id: '8', title: 'Acid-Base Titration Curves', description: 'Mindmaps showing the shapes of different titration curves.' },
+  { id: 'm1', title: 'Stoichiometric Relationships', description: 'A mindmap connecting moles, mass, and volume calculations.', imageIds: ['c1', 'c2'] },
+  { id: 'm2', title: 'Electron Configuration Maps', description: 'Hierarchical maps for filling electron orbitals (Aufbau, Hund, Pauli).', imageIds: ['c5'] },
+  { id: 'm3', title: 'Periodic Trends Mindmap', description: 'A map linking electronegativity, ionization energy, and atomic radius.', imageIds: ['c7'] },
+  { id: 'm4', title: 'Intermolecular Forces Map', description: 'Visual connections between London dispersion, dipole-dipole, and hydrogen bonds.', imageIds: ['c11'] },
+  { id: 'm5', title: 'Enthalpy and Entropy', description: 'A map exploring the concepts of thermochemistry and spontaneity.', imageIds: ['c14'] },
+  { id: 'm6', title: 'Reaction Rate Factors', description: 'A mindmap covering temperature, concentration, surface area, and catalysts.', imageIds: ['c16'] },
+  { id: 'm7', title: 'Le Chatelier\'s Principle', description: 'A visual guide to how equilibrium shifts with changes in conditions.', imageIds: ['c17'] },
+  { id: 'm8', title: 'Acid-Base Titration Curves', description: 'Mindmaps showing the shapes of different titration curves.', imageIds: ['c21'] },
 ];
+
 
 const podcastEpisodes: Resource[] = [
   { id: 'p1', title: 'Podcast: The Mole Concept', description: 'An audio deep-dive into Avogadro\'s number and its importance.' },
@@ -119,6 +122,9 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [isPodcastListOpen, setIsPodcastListOpen] = useState(false);
+  const [isDiagramsOpen, setIsDiagramsOpen] = useState(false);
+  const [diagramsToShow, setDiagramsToShow] = useState<ImagePlaceholder[]>([]);
+  const [diagramsTitle, setDiagramsTitle] = useState('');
   const learningStyles = ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"];
 
   const setLearnerType = (style: string) => {
@@ -136,6 +142,15 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
     setLearnerType(style);
     setShowQuiz(false);
   };
+  
+  const handleVisualResourceClick = (resource: Resource) => {
+    if (resource.imageIds) {
+      const images = PlaceHolderImages.filter(img => resource.imageIds?.includes(img.id));
+      setDiagramsToShow(images);
+      setDiagramsTitle(resource.title);
+      setIsDiagramsOpen(true);
+    }
+  }
 
   const renderFolderList = (folders: Resource[], onFolderClick: (folder: Resource) => void, icon: React.ElementType = Folder) => (
     <div className="space-y-2 pr-4">
@@ -169,7 +184,7 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(diagramFolders, (r) => setSelectedResource(r))}
+                {renderFolderList(diagramFolders, handleVisualResourceClick)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -181,7 +196,7 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
             </CardHeader>
             <CardContent className="flex-1">
               <ScrollArea className="h-full">
-                {renderFolderList(mindmapFolders, (r) => setSelectedResource(r))}
+                {renderFolderList(mindmapFolders, handleVisualResourceClick)}
               </ScrollArea>
             </CardContent>
           </Card>
@@ -395,6 +410,13 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
         isOpen={selectedResource !== null}
         onClose={() => setSelectedResource(null)}
         resource={selectedResource}
+      />
+      
+      <DiagramsDialog
+        isOpen={isDiagramsOpen}
+        onClose={() => setIsDiagramsOpen(false)}
+        diagrams={diagramsToShow}
+        title={diagramsTitle}
       />
 
        <Dialog open={isPodcastListOpen} onOpenChange={setIsPodcastListOpen}>

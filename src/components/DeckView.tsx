@@ -21,7 +21,7 @@ import { ImportDialog } from './ImportDialog';
 
 type DeckViewProps = {
   deck: Deck;
-  onQuiz: (deckId: string, deckTitle:string) => void;
+  onQuiz: (deckId: string, deckTitle:string, difficulty: 'easy' | 'hard') => void;
   onGeneratedQuiz: (title: string, questions: QuizQuestion[]) => void;
   userDetails: UserDetails | null;
   onNoteAdded: () => void;
@@ -1195,13 +1195,13 @@ const LearnAsVisualDeck9 = ({ onOpenDiagrams }: { onOpenDiagrams: () => void }) 
             <p><strong>Visual tool: Diagram of carbon sinks.</strong> Use arrows showing CO₂ moving from the air to plants 🌱, limestone 🪨, and fossil fuels (coal 🟫, oil 🛢️, gas 🔵).</p>
             
             <h4>5. Greenhouse gases 🌡️</h4>
-            <p><strong>Visual tool: Simple schematic.</strong> Show the Sun ☀️ → Earth 🌍, with some heat escaping ↗️ and some trapped by CO₂ 💨, CH₄ 🟤, and H₂O 💧. Color-code shortwave vs longwave radiation.</p>
+            <p><strong>Visual tool: Simple schematic.</strong> Show the Sun ☀️ → Earth 🌍, with some heat escaping ↗️ and some trapped by CO₂ 💨, CH₄ 🟤, and H₂O 💧. Tip: Color-code shortwave vs longwave radiation.</p>
             
             <h4>6. Human contributions 🚗🏭</h4>
-            <p><strong>Visual tool: Infographic.</strong> Use icons + arrows to show gas flow into the atmosphere: Car 🚗 → CO₂ 💨, Agriculture 🐄 → CH₄ 🟤, Industry 🏭 → CO₂ 💨.</p>
+            <p><strong>Visual tool: Infographic.</strong> Use icons + arrows to show gas flow into the atmosphere: Car 🚗 → CO₂ 💨, Agriculture 🐄 → CH₄ 🟤, Industry 🏭 → CO₂ 💨. Tip: Use icons + arrows to show gas flow into the atmosphere.</p>
             
             <h4>7. Global climate change 🌍</h4>
-            <p><strong>Visual tool: Cause-effect diagram.</strong> Rising temperature 🌡️ → sea levels 🌊, extreme weather 🌪️, habitat loss 🐘, agriculture impacts 🌾. Use colors: red for danger, blue for water, green for plants.</p>
+            <p><strong>Visual tool: Cause-effect diagram.</strong> Rising temperature 🌡️ → sea levels 🌊, extreme weather 🌪️, habitat loss 🐘, agriculture impacts 🌾. Tip: Use colors: red for danger, blue for water, green for plants.</p>
             
             <h4>8. Carbon footprint 👣</h4>
             <p><strong>Visual tool: Icon chart or bar graph.</strong> Compare CO₂ emissions of different actions: car 🚗 &gt; meat 🥩 &gt; plane ✈️ &gt; bike 🚴‍♂️. Make it colorful and comparative.</p>
@@ -1267,6 +1267,7 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
   const [isDiagramsOpen, setIsDiagramsOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
   const { toast } = useToast();
+  const isPrebuilt = deck.id.startsWith('deck');
 
   const notesQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
@@ -1311,7 +1312,7 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
     return PlaceHolderImages.filter(img => imageIds.includes(img.id));
   }, [deck.id]);
 
-  const handleGenerateQuiz = async () => {
+  const handleGenerateQuiz = async (difficulty: 'easy' | 'hard') => {
     if (!deckNotes || deckNotes.length === 0) {
       toast({
         variant: "destructive",
@@ -1330,7 +1331,7 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
       return;
     }
     
-    onQuiz(deck.id, deck.title);
+    onQuiz(deck.id, deck.title, difficulty);
   };
   
   const renderLearnContent = () => {
@@ -1442,13 +1443,22 @@ const DeckView = ({ deck, onQuiz, onGeneratedQuiz, userDetails, onNoteAdded }: D
                     <CardDescription>Test your knowledge with a quiz tailored to your learning style.</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2">
-                     <Button onClick={handleGenerateQuiz} className="w-full" size="lg">
-                        Quiz Me!
-                    </Button>
-                     <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
-                        <FileUp className="mr-2 h-4 w-4" />
-                        Import to Generate a Quiz
-                    </Button>
+                    {isPrebuilt ? (
+                        <div className="grid grid-cols-2 gap-4">
+                            <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Easy Quiz</Button>
+                            <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
+                        </div>
+                    ) : (
+                        <>
+                            <Button onClick={() => handleGenerateQuiz('easy')} className="w-full" size="lg">
+                                Quiz Me!
+                            </Button>
+                            <Button variant="outline" className="w-full" onClick={() => setIsImportDialogOpen(true)}>
+                                <FileUp className="mr-2 h-4 w-4" />
+                                Import to Generate a Quiz
+                            </Button>
+                        </>
+                    )}
                 </CardContent>
             </Card>
         </div>

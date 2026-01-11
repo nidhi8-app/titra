@@ -105,7 +105,8 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
     const quizProps = {
         title: source.deckTitle,
         deckId: source.deckId,
-        onBack: onBack
+        onBack: onBack,
+        difficulty: source.difficulty
     };
 
     let QuizComponent;
@@ -143,7 +144,7 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
     practiceStyle = source.style;
   } else if (source.type === 'generated') {
     questions = source.questions;
-    title = source.deckTitle;
+    title = `Quiz: ${source.deckTitle}`;
     practiceStyle = 'MCQ';
   } else { // fill-in-the-gap
     questions = source.questions;
@@ -168,7 +169,10 @@ const QuizSession = ({ source, onBack, userDetails, onQuizCompleted }: { source:
 
   React.useEffect(() => {
     if (quizFinished) {
-      onQuizCompleted(score, questions.length, source.type !== 'generated' ? source.topic.id : undefined);
+      const topicId = source.type === 'pre-made' ? source.topic.id :
+                      source.type === 'fill-in-the-gap' ? source.topic.id :
+                      undefined;
+      onQuizCompleted(score, questions.length, topicId);
     }
   }, [quizFinished, score, questions.length, source, onQuizCompleted]);
   
@@ -426,6 +430,9 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
       <ImportDialog
         isOpen={isImportDialogOpen}
         onClose={() => setIsImportDialogOpen(false)}
+        onQuizGenerated={(title, questions) => {
+          setQuizSource({ type: 'generated', deckTitle: title, questions });
+        }}
       />
     </>
   );
@@ -434,4 +441,5 @@ const QuizView = ({ quizSource, setQuizSource, userDetails, quizScores, onBack, 
 export default QuizView;
 
     
+
 

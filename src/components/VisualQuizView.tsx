@@ -17,6 +17,7 @@ type VisualQuizViewProps = {
     title: string;
     onBack: () => void;
     deckId: string;
+    difficulty: 'easy' | 'hard';
     isEmbedded?: boolean;
 };
 
@@ -31,7 +32,7 @@ const deck8Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c3',
 const deck9Diagrams: ImagePlaceholder[] = PlaceHolderImages.filter(img => ['c22'].includes(img.id));
 
 
-const Deck1Quiz = () => (
+const Deck1EasyQuiz = () => (
     <>
         <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: BIG-PICTURE DIAGRAMS</h3>
         <p><strong>1️⃣ Concept map (draw, don’t write paragraphs)</strong></p>
@@ -222,6 +223,69 @@ const Deck1Quiz = () => (
             <h4 className="font-bold flex items-center gap-2"><CheckCircle />Self-check rule</h4>
             <p>If you can draw it from memory, you understand the connections. This is the best way to revise for a visual learner.</p>
         </div>
+    </>
+);
+
+const Deck1HardQuiz = () => (
+    <>
+        <h3 className="flex items-center gap-2"><Pencil className="text-accent" />SECTION 1: BIG-PICTURE DIAGRAMS (ANALYSIS)</h3>
+        <p><strong>1️⃣ Concept map challenge:</strong> Draw a concept map starting with 'Atoms'. Add branches for Elements, Compounds, Mixtures, and Chemical reactions. For each, include examples and key properties (e.g., ionic vs. covalent, homogeneous vs. heterogeneous, exothermic vs. endothermic).</p>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="hard-1-1"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+              <ul className="list-disc pl-6 text-sm">
+                  <li><strong>Elements:</strong> Should show examples like 'Na (metal)' and 'O (non-metal)'.</li>
+                  <li><strong>Compounds:</strong> Should branch into 'Ionic' (e.g., NaCl diagram) and 'Covalent' (e.g., H₂O diagram).</li>
+                  <li><strong>Mixtures:</strong> Should branch into 'Homogeneous' (e.g., salt water) and 'Heterogeneous' (e.g., sand and water).</li>
+                  <li><strong>Reactions:</strong> Should indicate energy change, e.g., 'Combustion (exothermic)'.</li>
+                  <li><strong>Extra:</strong> Arrows should show physical separation for mixtures and chemical reaction for compound formation.</li>
+              </ul>
+          </AccordionContent></AccordionItem>
+        </Accordion>
+        <p className="mt-4"><strong>2️⃣ Compare & explain:</strong> Draw three sets of "Before" and "After" boxes for a Mixture, a Chemical Reaction, and a Physical Change. Show particle arrangement and note energy/bonding changes.</p>
+         <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="hard-1-2"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+             <ul className="list-disc pl-6 text-sm">
+                  <li><strong>Mixture:</strong> Particles are just mixed, no rearrangement of atoms, no significant energy change.</li>
+                  <li><strong>Chemical Reaction:</strong> Atoms are rearranged to form new substances, significant energy change (exo/endo).</li>
+                  <li><strong>Physical Change:</strong> State of matter changes (e.g., solid to liquid), but chemical identity doesn't. Energy change relates to intermolecular forces.</li>
+              </ul>
+          </AccordionContent></AccordionItem>
+        </Accordion>
+        <hr />
+        <h3 className="flex items-center gap-2"><ChevronsRightLeft className="text-accent" />SECTION 2: ATOMIC MODELS (TIMELINE & ANALYSIS)</h3>
+        <p><strong>3️⃣ Timeline + critique:</strong> Draw a timeline for atomic models (Dalton, Thomson, Rutherford, Bohr, Quantum). For each, add one limitation or one key piece of experimental evidence.</p>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="hard-2-3"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+              <ul className="list-disc pl-6 text-sm">
+                  <li><strong>Dalton:</strong> Limitation - Didn't know about subatomic particles.</li>
+                  <li><strong>Thomson:</strong> Evidence - Cathode ray experiments. Limitation - Didn't explain scattering results.</li>
+                  <li><strong>Rutherford:</strong> Evidence - Gold foil experiment. Limitation - Didn't explain why electrons don't spiral into the nucleus.</li>
+                  <li><strong>Bohr:</strong> Evidence - Explained atomic emission spectra. Limitation - Only worked well for hydrogen.</li>
+                  <li><strong>Quantum:</strong> Describes electrons in probability clouds (orbitals).</li>
+              </ul>
+          </AccordionContent></AccordionItem>
+        </Accordion>
+        <hr />
+        <h3 className="flex items-center gap-2"><Rows className="text-accent" />SECTION 3: SUBATOMIC PARTICLES (DEEP DIVE)</h3>
+        <p><strong>4️⃣ Advanced table completion:</strong> Complete the table including location and role in bonding.</p>
+        <Table><TableHeader><TableRow><TableHead>Particle</TableHead><TableHead>Charge</TableHead><TableHead>Mass</TableHead><TableHead>Location</TableHead><TableHead>Role in Bonding</TableHead></TableRow></TableHeader><TableBody><TableRow><TableCell>Proton</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow><TableRow><TableCell>Neutron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow><TableRow><TableCell>Electron</TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell><TableCell><Input /></TableCell></TableRow></TableBody></Table>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="hard-3-4"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+              <Table><TableBody>
+                  <TableRow><TableCell>Proton</TableCell><TableCell>+1</TableCell><TableCell>1</TableCell><TableCell>Nucleus</TableCell><TableCell>None</TableCell></TableRow>
+                  <TableRow><TableCell>Neutron</TableCell><TableCell>0</TableCell><TableCell>1</TableCell><TableCell>Nucleus</TableCell><TableCell>None</TableCell></TableRow>
+                  <TableRow><TableCell>Electron</TableCell><TableCell>-1</TableCell><TableCell>~0</TableCell><TableCell>Shells/Orbitals</TableCell><TableCell>Transferred/Shared</TableCell></TableRow>
+              </TableBody></Table>
+          </AccordionContent></AccordionItem>
+        </Accordion>
+        <hr />
+        <h3 className="flex items-center gap-2"><Atom className="text-accent" />SECTION 5: ELECTRONIC STRUCTURE (APPLIED)</h3>
+        <p><strong>6️⃣ Shell diagrams for bonding:</strong> Draw shell diagrams for Mg and Cl. Use an arrow to show the transfer of electrons to form MgCl₂.</p>
+         <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="hard-5-6"><AccordionTrigger>Check Answer</AccordionTrigger><AccordionContent>
+              <p className="text-sm">Your diagram should show the Mg atom giving away its 2 outer electrons, one to each of two Cl atoms. The result should be an Mg²⁺ ion and two Cl⁻ ions, all with full outer shells.</p>
+          </AccordionContent></AccordionItem>
+        </Accordion>
     </>
 );
 
@@ -925,7 +989,7 @@ const Deck9Quiz = () => (
 
 
 
-const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQuizViewProps) => {
+const VisualQuizView = ({ title, onBack, deckId, difficulty, isEmbedded = false }: VisualQuizViewProps) => {
     const [isDiagramsOpen, setIsDiagramsOpen] = React.useState(false);
     const [isPeriodicTableOpen, setIsPeriodicTableOpen] = React.useState(false);
 
@@ -941,7 +1005,7 @@ const VisualQuizView = ({ title, onBack, deckId, isEmbedded = false }: VisualQui
     
     const renderQuizContent = () => {
         if (deckId === 'deck1') {
-            return <Deck1Quiz />;
+            return difficulty === 'hard' ? <Deck1HardQuiz /> : <Deck1EasyQuiz />;
         }
         if (deckId === 'deck2') {
             return <Deck2Quiz />;

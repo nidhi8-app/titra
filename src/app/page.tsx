@@ -56,6 +56,7 @@ export type QuizSource = {
     type: 'style-based',
     deckId: string,
     deckTitle: string,
+    difficulty: 'easy' | 'hard',
 } | null;
 
 const LiveClock = () => {
@@ -338,8 +339,8 @@ export default function Home() {
     }
   }, [handleStartQuizFromDashboard]);
   
-  const handleGeneratedQuiz = React.useCallback((deckId: string, deckTitle: string) => {
-    setQuizSource({ type: 'style-based', deckId, deckTitle });
+  const handleGeneratedQuiz = React.useCallback((deckId: string, deckTitle: string, difficulty: 'easy' | 'hard') => {
+    setQuizSource({ type: 'style-based', deckId, deckTitle, difficulty });
     setActiveView('quizzes');
     setSelectedDeckId(null);
     markTaskComplete('startQuiz');

@@ -1437,18 +1437,20 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
         <div className="space-y-6">
             <NotesSummary notes={deckNotes} deckTitle={deck.title} />
 
-            <div className="flex gap-2 mb-4">
-              {examSkillsText && deck.id === 'deck1' && (
-                  <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
-                      <Award className="mr-2 h-4 w-4" />
-                      Exam Skills
-                  </Button>
-              )}
-               <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableDialogOpen(true)}>
-                    <BookImage className="mr-2 h-4 w-4" />
-                    Periodic Table
-                </Button>
-            </div>
+            {isPrebuilt && (
+                <div className="flex gap-2 mb-4">
+                    {examSkillsText && deck.id === 'deck1' && (
+                        <Button variant="outline" className="w-full" onClick={() => setIsExamSkillsDialogOpen(true)}>
+                            <Award className="mr-2 h-4 w-4" />
+                            Exam Skills
+                        </Button>
+                    )}
+                    <Button variant="outline" className="w-full" onClick={() => setIsPeriodicTableDialogOpen(true)}>
+                        <BookImage className="mr-2 h-4 w-4" />
+                        Periodic Table
+                    </Button>
+                </div>
+            )}
             
             <Card>
                 <CardHeader>
@@ -1472,10 +1474,14 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                     <CardDescription>Test your knowledge with a quiz.</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2">
-                     <div className="grid grid-cols-2 gap-4">
-                        <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Easy Quiz</Button>
-                        <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
-                    </div>
+                    {isPrebuilt ? (
+                        <div className="grid grid-cols-2 gap-4">
+                            <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Easy Quiz</Button>
+                            <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
+                        </div>
+                    ) : (
+                        <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Generate Quiz</Button>
+                    )}
                 </CardContent>
             </Card>
         </div>
@@ -1530,4 +1536,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 };
 
 export default DeckView;
+
 

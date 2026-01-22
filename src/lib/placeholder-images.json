@@ -20,27 +20,9 @@
     },
     {
       "id": "c4",
-      "description": "GCSE AQA: Atomic Structure & Periodicity",
-      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/44365a6c-4861-460d-8549-37e42d7658c3.jpg",
-      "imageHint": "atomic structure"
-    },
-    {
-      "id": "c5",
-      "description": "GCSE AQA: Atomic Structure & Periodicity",
-      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/44365a6c-4861-460d-8549-37e42d7658c3.jpg",
-      "imageHint": "electron shell"
-    },
-    {
-      "id": "c6",
-      "description": "GCSE AQA: Atomic Structure & Periodicity",
-      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/44365a6c-4861-460d-8549-37e42d7658c3.jpg",
-      "imageHint": "periodic table"
-    },
-    {
-      "id": "c7",
-      "description": "Periodic trends graph",
-      "imageUrl": "https://images.unsplash.com/photo-1647032713701-a80d2b69e502?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxncmFwaCUyMGFycm93fGVufDB8fHx8MTc2NjA4NjU2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "graph arrow"
+      "description": "Atoms, Elements, & Compounds Overview",
+      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/d59178f7-8728-4033-8a35-24072f531393.jpg",
+      "imageHint": "atoms compounds"
     },
     {
       "id": "c8",
@@ -87,7 +69,7 @@
     {
       "id": "c15",
       "description": "Bond enthalpies diagram",
-      "imageUrl": "https://images.unsplash.com/photo-1765726951362-df46f5a74cdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaGVtaWNhbCUyMGJvbmRzfGVufDB8fHx8MTc2NjE0NDc5OXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1765726951362-df46f5a74cdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaGVtaWNhbCUyMGJvbmRzfGVufDB8fHx8MTc2NjE0NDc5OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemical bonds"
     },
     {
@@ -99,7 +81,7 @@
     {
       "id": "c17",
       "description": "Chemical equilibrium",
-      "imageUrl": "https://images.unsplash.com/photo-1587740896339-96a76170508d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYWxhbmNlJTIwc2NhbGV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1587740896339-96a76170508d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYWxhbmNlJTIwc2NhbGV8ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "balance scale"
     },
     {
@@ -111,25 +93,25 @@
     {
       "id": "c19",
       "description": "Properties of acids and bases",
-      "imageUrl": "https://images.unsplash.com/photo-1727195077380-1c0f7e7a3456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXRtdXMlMjBwYXBlcnxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1727195077380-1c0f7e7a3456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXRtdXMlMjBwYXBlcnxlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "litmus paper"
     },
     {
       "id": "c20",
       "description": "The pH scale",
-      "imageUrl": "https://images.unsplash.com/photo-1648566777018-31e5201f9ced?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaCUyMHNjYWxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1648566777018-31e5201f9ced?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaCUyMHNjYWxlfGVufDB8fHx8MTc2NjE2NDQzNHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "ph scale"
     },
     {
       "id": "c21",
       "description": "Strong and weak acids",
-      "imageUrl": "https://images.unsplash.com/photo-1758685734062-165cc0094e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFrZXJzJTIwbGlxdWlkc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1758685734062-165cc0094e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFrZXJzJTIwbGlxdWlkc3xlbnwwfHx8fDE3NjYxNjQ0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "beakers liquids"
     },
     {
       "id": "c22",
       "description": "Acid deposition effects",
-      "imageUrl": "https://images.unsplash.com/photo-1664783366257-ed2a579eea86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb3Jlc3QlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664783366257-ed2a579eea86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb3Jlc3QlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY2MTY0NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "forest pollution"
     },
     {

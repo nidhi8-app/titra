@@ -1298,7 +1298,7 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
   
   const diagramsForDeck: ImagePlaceholder[] = useMemo(() => {
     const imageIdMap: { [key: string]: string[] } = {
-        'deck1': ['c4', 'c5', 'c6', 'c7'],
+        'deck1': ['c4'],
         'deck2': ['c8', 'c9', 'c10', 'c11', 'c12'],
         'deck3': ['c1', 'c2', 'c13', 'c16'],
         'deck4': ['c3', 'c6', 'c7', 'c18', 'c20'],
@@ -1480,7 +1480,10 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
                             <Button onClick={() => handleGenerateQuiz('hard')} variant="outline" size="lg">Hard Quiz</Button>
                         </div>
                     ) : (
-                        <Button onClick={() => handleGenerateQuiz('easy')} size="lg">Generate Quiz</Button>
+                         <Button variant="outline" className="mt-4" onClick={() => setIsImportDialogOpen(true)}>
+                            <FileUp className="mr-2 h-4 w-4" />
+                            Generate Learning Material
+                        </Button>
                     )}
                 </CardContent>
             </Card>
@@ -1538,3 +1541,5 @@ const DeckView = ({ deck, onQuiz, userDetails, onNoteAdded }: DeckViewProps) => 
 export default DeckView;
 
 
+
+    

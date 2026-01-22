@@ -34,14 +34,14 @@ import { DiagramsDialog } from './DiagramsDialog';
 
 
 const diagramFolders: Resource[] = [
-  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'Visual breakdowns of atomic models, electron shells, and periodic trends.', imageIds: ['c4', 'c5', 'c6', 'c7'] },
+  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'An overview of Atoms, Elements, Compounds, and the development of the atomic model.', imageIds: ['c4'] },
   { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: '3D models of ionic lattices, covalent molecules, and metallic structures.', imageIds: ['c8', 'c9', 'c10', 'c11', 'c12'] },
   { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams explaining mole calculations, stoichiometry, and reacting masses.', imageIds: ['c1', 'c2', 'c13', 'c16'] },
-  { id: 'd4', title: 'Chemical changes', description: 'Visuals of reactivity series, electrolysis, and acid-base reactions.', imageIds: ['c3', 'c6', 'c7', 'c18', 'c20'] },
+  { id: 'd4', title: 'Chemical changes', description: 'Visuals of reactivity series, electrolysis, and acid-base reactions.', imageIds: ['c3', 'c18', 'c20'] },
   { id: 'd5', title: 'Energy changes', description: 'Flowcharts explaining enthalpy changes, Hess\'s Law, and reaction profiles.', imageIds: ['c13', 'c14', 'c15'] },
-  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Graphs and models for reaction rates and chemical equilibrium.', imageIds: ['c7', 'c14', 'c16', 'c23'] },
+  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Graphs and models for reaction rates and chemical equilibrium.', imageIds: ['c16', 'c23'] },
   { id: 'd7', title: 'Organic chemistry', description: 'Structures of hydrocarbons, functional groups, and polymerization.', imageIds: ['c9', 'c10', 'c11'] },
-  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography, spectroscopy, and ion tests.', imageIds: ['c3', 'c18', 'c19', 'c20'] },
+  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography, spectroscopy, and ion tests.', imageIds: ['c19', 'c21'] },
   { id: 'd9', title: 'Chemistry of the atmosphere', description: 'Visuals explaining atmospheric composition, greenhouse effect, and pollution.', imageIds: ['c22'] },
 ];
 
@@ -442,3 +442,5 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
+
+    

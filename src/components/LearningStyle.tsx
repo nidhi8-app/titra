@@ -34,27 +34,27 @@ import { DiagramsDialog } from './DiagramsDialog';
 
 
 const diagramFolders: Resource[] = [
-  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'An overview of Atoms, Elements, Compounds, and the development of the atomic model.', imageIds: ['c4'] },
-  { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: '3D models of ionic lattices, covalent molecules, and metallic structures.', imageIds: ['c8', 'c9', 'c10', 'c11', 'c12'] },
-  { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams explaining mole calculations, stoichiometry, and reacting masses.', imageIds: ['c1', 'c2', 'c13', 'c16'] },
-  { id: 'd4', title: 'Chemical changes', description: 'Visuals of reactivity series, electrolysis, and acid-base reactions.', imageIds: ['c3', 'c18', 'c20'] },
-  { id: 'd5', title: 'Energy changes', description: 'Flowcharts explaining enthalpy changes, Hess\'s Law, and reaction profiles.', imageIds: ['c13', 'c14', 'c15'] },
-  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Graphs and models for reaction rates and chemical equilibrium.', imageIds: ['c16', 'c23'] },
-  { id: 'd7', title: 'Organic chemistry', description: 'Structures of hydrocarbons, functional groups, and polymerization.', imageIds: ['c9', 'c10', 'c11'] },
-  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography, spectroscopy, and ion tests.', imageIds: ['c19', 'c21'] },
-  { id: 'd9', title: 'Chemistry of the atmosphere', description: 'Visuals explaining atmospheric composition, greenhouse effect, and pollution.', imageIds: ['c22'] },
+  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'Diagrams covering atomic models, structure, and periodic trends.', imageIds: ['d1-diag1', 'd1-diag2', 'd1-diag3'] },
+  { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: 'Visuals of ionic, covalent, and metallic bonds, plus carbon allotropes.', imageIds: ['d2-diag1', 'd2-diag2', 'd2-diag3'] },
+  { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams for the mole concept, reacting masses, and limiting reactants.', imageIds: ['d3-diag1', 'd3-diag2'] },
+  { id: 'd4', title: 'Chemical changes', description: 'Diagrams for reactivity series, electrolysis, and acid reactions.', imageIds: ['d4-diag1', 'd4-diag2'] },
+  { id: 'd5', title: 'Energy changes', description: 'Visuals for reaction profiles, cells, and fuel cells.', imageIds: ['d5-diag1', 'd5-diag2'] },
+  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Diagrams for collision theory, catalysts, and equilibrium.', imageIds: ['d6-diag1', 'd6-diag2'] },
+  { id: 'd7', title: 'Organic chemistry', description: 'Visuals for fractional distillation, polymerization, and hydrocarbon families.', imageIds: ['d7-diag1', 'd7-diag2'] },
+  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography and chemical identification tests.', imageIds: ['d8-diag1', 'd8-diag2'] },
+  { id: 'd9', title: 'Chemistry of the atmosphere', description: 'Visuals explaining atmospheric evolution and the greenhouse effect.', imageIds: ['d9-diag1', 'd9-diag2'] },
 ];
 
 const mindmapFolders: Resource[] = [
-  { id: 'm1', title: 'Atomic structure and the periodic table', description: 'A mindmap connecting moles, mass, and volume calculations.', imageIds: ['c4', 'c6', 'c7'] },
-  { id: 'm2', title: 'Bonding, structure, and the properties of matter', description: 'Hierarchical maps for filling electron orbitals (Aufbau, Hund, Pauli).', imageIds: ['c8', 'c9', 'c12'] },
-  { id: 'm3', title: 'Quantitative chemistry', description: 'A map linking electronegativity, ionization energy, and atomic radius.', imageIds: ['c1', 'c2'] },
-  { id: 'm4', title: 'Chemical changes', description: 'Visual connections between London dispersion, dipole-dipole, and hydrogen bonds.', imageIds: ['c3', 'c18', 'c20'] },
-  { id: 'm5', title: 'Energy changes', description: 'A map exploring the concepts of thermochemistry and spontaneity.', imageIds: ['c14', 'c15'] },
-  { id: 'm6', title: 'The rate and extent of chemical change', description: 'A mindmap covering temperature, concentration, surface area, and catalysts.', imageIds: ['c16', 'c23'] },
-  { id: 'm7', title: 'Organic chemistry', description: 'A visual guide to how equilibrium shifts with changes in conditions.', imageIds: ['c9', 'c10', 'c11'] },
-  { id: 'm8', title: 'Chemical analysis', description: 'Mindmaps showing the shapes of different titration curves.', imageIds: ['c19', 'c21'] },
-  { id: 'm9', title: 'Chemistry of the atmosphere', description: 'A mindmap covering the composition, greenhouse effect, and pollutants.', imageIds: ['c22'] },
+  { id: 'm1', title: 'Atomic structure and the periodic table', description: 'A mindmap connecting atoms, elements, compounds, and mixtures.', imageIds: ['d1-mind1'] },
+  { id: 'm2', title: 'Bonding, structure, and the properties of matter', description: 'Flowchart linking chemical structures to their physical properties.', imageIds: ['d2-mind1'] },
+  { id: 'm3', title: 'Quantitative chemistry', description: 'Flowcharts for mole calculations and reacting masses.', imageIds: ['d3-mind1'] },
+  { id: 'm4', title: 'Chemical changes', description: 'A mindmap of different acid reactions and metal extraction processes.', imageIds: ['d4-mind1'] },
+  { id: 'm5', title: 'Energy changes', description: 'A flowchart for calculating bond energy changes in reactions.', imageIds: ['d5-mind1'] },
+  { id: 'm6', title: 'The rate and extent of chemical change', description: 'A mindmap illustrating Le Chatelier\'s Principle.', imageIds: ['d6-mind1'] },
+  { id: 'm7', title: 'Organic chemistry', description: 'A mindmap showing the relationships between different hydrocarbon families.', imageIds: ['d7-mind1'] },
+  { id: 'm8', title: 'Chemical analysis', description: 'A flowchart for the process of identifying an unknown substance.', imageIds: ['d8-mind1'] },
+  { id: 'm9', title: 'Chemistry of the atmosphere', description: 'A mindmap of atmospheric pollutants and their environmental effects.', imageIds: ['d9-mind1'] },
 ];
 
 

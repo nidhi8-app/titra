@@ -34,7 +34,7 @@ import { DiagramsDialog } from './DiagramsDialog';
 
 
 const diagramFolders: Resource[] = [
-  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'Diagrams covering atomic models, structure, and periodic trends.', imageIds: ['d1-diag1', 'd1-diag2', 'd1-diag3'] },
+  { id: 'd1', title: 'Atomic structure and the periodic table', description: 'Diagrams covering atomic models, structure, and periodic trends.', imageIds: ['d1-diag1'] },
   { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: 'Visuals of ionic, covalent, and metallic bonds, plus carbon allotropes.', imageIds: ['d2-diag1', 'd2-diag2', 'd2-diag3'] },
   { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams for the mole concept, reacting masses, and limiting reactants.', imageIds: ['d3-diag1', 'd3-diag2'] },
   { id: 'd4', title: 'Chemical changes', description: 'Diagrams for reactivity series, electrolysis, and acid reactions.', imageIds: ['d4-diag1', 'd4-diag2'] },
@@ -442,5 +442,7 @@ const LearningStyle = ({ userDetails, setUserDetails }: LearningStyleProps) => {
 };
 
 export default LearningStyle;
+
+    
 
     

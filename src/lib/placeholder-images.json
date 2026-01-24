@@ -20,50 +20,38 @@
     },
     {
       "id": "d1-diag1",
-      "description": "Timeline of atomic models: Dalton's sphere, Thomson's plum pudding, Rutherford's nucleus, and Bohr's electron shells.",
-      "imageUrl": "https://images.unsplash.com/photo-1720962158919-6c5f5f99630d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhdG9tJTIwdGltZWxpbmV8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "atom timeline"
-    },
-    {
-      "id": "d1-diag2",
-      "description": "Diagram of an atom's structure, labeling protons, neutrons, and electrons in their respective locations.",
-      "imageUrl": "https://images.unsplash.com/photo-1745237497721-5e6c13a171ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdG9tJTIwc3RydWN0dXJlfGVufDB8fHx8MTc2OTEzNTg1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "atom structure"
-    },
-    {
-      "id": "d1-diag3",
-      "description": "A simplified periodic table highlighting the locations of alkali metals, halogens, and noble gases.",
-      "imageUrl": "https://images.unsplash.com/photo-1628863353691-0071c8c1874c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJpb2RpYyUyMHRhYmxlfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "periodic table"
+      "description": "A summary of diagrams for Atomic Structure and the Periodic Table.",
+      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/d59178f7-8728-4033-8a35-24072f531393.jpg",
+      "imageHint": "atomic structure periodicity"
     },
     {
       "id": "d1-mind1",
       "description": "Mindmap showing the relationships between atoms, elements, compounds, and mixtures with visual examples.",
-      "imageUrl": "https://images.unsplash.com/photo-1676118036556-a6e23ddab63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hlbWlzdHJ5JTIwbWluZG1hcHxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1596088359637-8d614753fb28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaGVtaXN0cnklMjBtaW5kbWFwfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemistry mindmap"
     },
     {
       "id": "d2-diag1",
       "description": "Comparison diagram of Ionic, Covalent, and Metallic bonding, showing electron behavior.",
-      "imageUrl": "https://images.unsplash.com/photo-1657244358898-d9e110504fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hlbWljYWwlMjBib25kc3xlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1740666387475-548de5c37691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGVtaWNhbCUyMGJvbmRzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemical bonds"
     },
     {
       "id": "d2-diag2",
       "description": "A 3D representation of a giant ionic lattice structure, like Sodium Chloride (NaCl).",
-      "imageUrl": "https://images.unsplash.com/photo-1672255877511-7643d19bfbfb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxpb25pYyUyMGxhdHRpY2V8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1669988755276-ba9c33093279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aW9uaWMlMjBsYXR0aWNlfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "ionic lattice"
     },
     {
       "id": "d2-diag3",
       "description": "Visuals of carbon allotropes: the tetrahedral structure of diamond vs. the layered structure of graphite.",
-      "imageUrl": "https://images.unsplash.com/photo-1634772811314-f9bbb4b6c820?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjYXJib24lMjBhbGxvdHJvcGVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1522409600409-a2e797f1605b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXJib24lMjBhbGxvdHJvcGVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "carbon allotropes"
     },
     {
       "id": "d2-mind1",
       "description": "A flowchart linking different chemical structures (Ionic, Molecular, Giant Covalent, Metallic) to their physical properties.",
-      "imageUrl": "https://images.unsplash.com/photo-1764022587481-328bed85cfd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdHJ1Y3R1cmUlMjBwcm9wZXJ0aWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730184474747-f0b85ebc5f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdHJ1Y3R1cmUlMjBwcm9wZXJ0aWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "structure properties"
     },
     {
@@ -75,25 +63,25 @@
     {
       "id": "d3-diag2",
       "description": "A 'before and after' diagram illustrating a limiting reactant being fully consumed in a chemical reaction.",
-      "imageUrl": "https://images.unsplash.com/photo-1655891709782-15c1303a2a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaW1pdGluZyUyMHJlYWN0YW50fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1655890954753-f9ec41ce58ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaW1pdGluZyUyMHJlYWN0YW50fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "limiting reactant"
     },
     {
       "id": "d3-mind1",
       "description": "Flowchart showing the step-by-step process for calculating reacting masses using moles.",
-      "imageUrl": "https://images.unsplash.com/photo-1509228468518-180dd4864904?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYXNzJTIwY2FsY3VsYXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1635372722656-389f87a941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtYXNzJTIwY2FsY3VsYXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mass calculation"
     },
     {
       "id": "d4-diag1",
       "description": "A reactivity series ladder showing metals from most reactive (Potassium) to least reactive (Copper).",
-      "imageUrl": "https://images.unsplash.com/photo-1740532428065-ac723d5571ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZWFjdGl2aXR5JTIwc2VyaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1655891709727-1506dff4af97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFjdGl2aXR5JTIwc2VyaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reactivity series"
     },
     {
       "id": "d4-diag2",
       "description": "A diagram of an electrolysis cell, labeling the anode, cathode, electrolyte, and direction of ion flow.",
-      "imageUrl": "https://images.unsplash.com/photo-1716833323054-c0ea772156ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlbGVjdHJvbHlzaXMlMjBjZWxsfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1766340407188-4ac3771db9dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxlbGVjdHJvbHlzaXMlMjBjZWxsfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "electrolysis cell"
     },
     {
@@ -105,19 +93,19 @@
     {
       "id": "d5-diag1",
       "description": "Reaction profiles for exothermic (energy released) and endothermic (energy absorbed) reactions.",
-      "imageUrl": "https://images.unsplash.com/photo-1759261717693-1049b1dc9777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWFjdGlvbiUyMHByb2ZpbGV8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1720952118796-87e374ceec00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZWFjdGlvbiUyMHByb2ZpbGV8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reaction profile"
     },
     {
       "id": "d5-diag2",
       "description": "A simple diagram of an electrochemical cell (battery), showing the two different metals and electrolyte.",
-      "imageUrl": "https://images.unsplash.com/photo-1586792015460-099de4240210?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYXR0ZXJ5JTIwZGlhZ3JhbXxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1591964006776-90b32e88f5ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwZGlhZ3JhbXxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "battery diagram"
     },
     {
       "id": "d5-mind1",
       "description": "A flowchart explaining bond energy calculations, contrasting energy needed to break bonds vs. energy released forming them.",
-      "imageUrl": "https://images.unsplash.com/photo-1758526213933-c52468929318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxib25kJTIwZW5lcmd5fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1746513230312-83b1e7629e83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib25kJTIwZW5lcmd5fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "bond energy"
     },
     {
@@ -129,7 +117,7 @@
     {
       "id": "d6-diag2",
       "description": "A reaction profile graph showing how a catalyst provides a lower activation energy pathway.",
-      "imageUrl": "https://images.unsplash.com/photo-1594383538644-66fcb99ae1ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXRhbHlzdCUyMGdyYXBofGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1738082956233-b8f1803411d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXRhbHlzdCUyMGdyYXBofGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "catalyst graph"
     },
     {
@@ -141,7 +129,7 @@
     {
       "id": "d7-diag1",
       "description": "A diagram of a fractional distillation column used to separate crude oil.",
-      "imageUrl": "https://images.unsplash.com/photo-1706888135871-8d12ac8c508c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmcmFjdGlvbmFsJTIwZGlzdGlsbGF0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1602928309809-776bf9db8658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmFjdGlvbmFsJTIwZGlzdGlsbGF0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fractional distillation"
     },
     {
@@ -153,7 +141,7 @@
     {
       "id": "d7-mind1",
       "description": "A mindmap of hydrocarbon families, showing the structures of alkanes, alkenes, alcohols, and carboxylic acids.",
-      "imageUrl": "https://images.unsplash.com/photo-1752847050639-4e71ab0324c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoeWRyb2NhcmJvbiUyMGZhbWlsaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690960611384-117433022267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoeWRyb2NhcmJvbiUyMGZhbWlsaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "hydrocarbon families"
     },
     {
@@ -171,25 +159,25 @@
     {
       "id": "d8-mind1",
       "description": "A flowchart for identifying an unknown chemical, covering gas tests and ion tests.",
-      "imageUrl": "https://images.unsplash.com/photo-1766297246906-210617be31a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGVtaWNhbCUyMGFuYWx5c2lzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1733426510062-834412655567?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hlbWljYWwlMjBhbmFseXNpc3xlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemical analysis"
     },
     {
       "id": "d9-diag1",
       "description": "A timeline showing the evolution of the Earth's atmosphere over billions of years.",
-      "imageUrl": "https://images.unsplash.com/photo-1674377568774-d71a0971befa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhdG1vc3BoZXJlJTIwZXZvbHV0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1760405503557-212872d72f01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdG1vc3BoZXJlJTIwZXZvbHV0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "atmosphere evolution"
     },
     {
       "id": "d9-diag2",
       "description": "A diagram explaining the Greenhouse Effect, showing how certain gases trap heat.",
-      "imageUrl": "https://images.unsplash.com/photo-1636635979017-59d52bbc2681?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxncmVlbmhvdXNlJTIwZWZmZWN0fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1567597081373-7d8832f3a102?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncmVlbmhvdXNlJTIwZWZmZWN0fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "greenhouse effect"
     },
     {
       "id": "d9-mind1",
       "description": "A mindmap of common atmospheric pollutants and their environmental effects.",
-      "imageUrl": "https://images.unsplash.com/photo-1607432750402-48f85c94f63a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhaXIlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1532300481631-0bc14f3b7699?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhaXIlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "air pollution"
     }
   ]

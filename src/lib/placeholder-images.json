@@ -1,24 +1,6 @@
 {
   "placeholderImages": [
     {
-      "id": "c1",
-      "description": "Particulate nature of matter, showing atoms and molecules.",
-      "imageUrl": "https://images.unsplash.com/photo-1656331797721-b593b8f00297?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2xlY3VsZXMlMjBhdG9tc3xlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "molecules atoms"
-    },
-    {
-      "id": "c2",
-      "description": "A beaker on a scale, visualizing the mole concept.",
-      "imageUrl": "https://images.unsplash.com/photo-1688494930420-694c13332f83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZWFrZXIlMjBzY2FsZXxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "beaker scale"
-    },
-    {
-      "id": "c3",
-      "description": "Chemistry experiment showing reacting masses and volumes.",
-      "imageUrl": "https://images.unsplash.com/photo-1724860755552-55f1c46f763d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGVtaXN0cnklMjBleHBlcmltZW50fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "chemistry experiment"
-    },
-    {
       "id": "d1-diag1",
       "description": "A summary of diagrams for Atomic Structure and the Periodic Table.",
       "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/d59178f7-8728-4033-8a35-24072f531393.jpg",
@@ -27,26 +9,14 @@
     {
       "id": "d1-mind1",
       "description": "Mindmap showing the relationships between atoms, elements, compounds, and mixtures with visual examples.",
-      "imageUrl": "https://images.unsplash.com/photo-1596088359637-8d614753fb28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaGVtaXN0cnklMjBtaW5kbWFwfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1650945414781-b37315760ce8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaGVtaXN0cnklMjBtaW5kbWFwfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemistry mindmap"
     },
     {
       "id": "d2-diag1",
       "description": "Comparison diagram of Ionic, Covalent, and Metallic bonding, showing electron behavior.",
-      "imageUrl": "https://images.unsplash.com/photo-1740666387475-548de5c37691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGVtaWNhbCUyMGJvbmRzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "chemical bonds"
-    },
-    {
-      "id": "d2-diag2",
-      "description": "A 3D representation of a giant ionic lattice structure, like Sodium Chloride (NaCl).",
-      "imageUrl": "https://images.unsplash.com/photo-1669988755276-ba9c33093279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aW9uaWMlMjBsYXR0aWNlfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ionic lattice"
-    },
-    {
-      "id": "d2-diag3",
-      "description": "Visuals of carbon allotropes: the tetrahedral structure of diamond vs. the layered structure of graphite.",
-      "imageUrl": "https://images.unsplash.com/photo-1522409600409-a2e797f1605b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXJib24lMjBhbGxvdHJvcGVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "carbon allotropes"
+      "imageUrl": "https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGVtaWNhbCUyMGJvbmRpbmd8ZW58MHx8fHwxNzY5MjU1NDcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chemical bonding"
     },
     {
       "id": "d2-mind1",
@@ -56,33 +26,21 @@
     },
     {
       "id": "d3-diag1",
-      "description": "Diagram explaining the mole concept with Avogadro's constant, represented as a large quantity of particles.",
-      "imageUrl": "https://images.unsplash.com/photo-1674350369100-bc50d4da3580?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2xlJTIwY29uY2VwdHxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mole concept"
-    },
-    {
-      "id": "d3-diag2",
-      "description": "A 'before and after' diagram illustrating a limiting reactant being fully consumed in a chemical reaction.",
-      "imageUrl": "https://images.unsplash.com/photo-1655890954753-f9ec41ce58ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaW1pdGluZyUyMHJlYWN0YW50fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "limiting reactant"
+      "description": "A summary of diagrams for Quantitative Chemistry.",
+      "imageUrl": "https://storage.googleapis.com/project-spark-348419-public/public/quantitative-chemistry-diagram.jpg",
+      "imageHint": "quantitative chemistry"
     },
     {
       "id": "d3-mind1",
       "description": "Flowchart showing the step-by-step process for calculating reacting masses using moles.",
-      "imageUrl": "https://images.unsplash.com/photo-1635372722656-389f87a941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtYXNzJTIwY2FsY3VsYXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1699275303936-302a8d351a80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFzcyUyMGNhbGN1bGF0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mass calculation"
     },
     {
       "id": "d4-diag1",
       "description": "A reactivity series ladder showing metals from most reactive (Potassium) to least reactive (Copper).",
-      "imageUrl": "https://images.unsplash.com/photo-1655891709727-1506dff4af97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFjdGl2aXR5JTIwc2VyaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1740532428065-ac723d5571ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZWFjdGl2aXR5JTIwc2VyaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reactivity series"
-    },
-    {
-      "id": "d4-diag2",
-      "description": "A diagram of an electrolysis cell, labeling the anode, cathode, electrolyte, and direction of ion flow.",
-      "imageUrl": "https://images.unsplash.com/photo-1766340407188-4ac3771db9dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxlbGVjdHJvbHlzaXMlMjBjZWxsfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "electrolysis cell"
     },
     {
       "id": "d4-mind1",
@@ -93,14 +51,8 @@
     {
       "id": "d5-diag1",
       "description": "Reaction profiles for exothermic (energy released) and endothermic (energy absorbed) reactions.",
-      "imageUrl": "https://images.unsplash.com/photo-1720952118796-87e374ceec00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZWFjdGlvbiUyMHByb2ZpbGV8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1692251531156-15f4b3eb1a8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyZWFjdGlvbiUyMHByb2ZpbGV8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reaction profile"
-    },
-    {
-      "id": "d5-diag2",
-      "description": "A simple diagram of an electrochemical cell (battery), showing the two different metals and electrolyte.",
-      "imageUrl": "https://images.unsplash.com/photo-1591964006776-90b32e88f5ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwZGlhZ3JhbXxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "battery diagram"
     },
     {
       "id": "d5-mind1",
@@ -111,73 +63,49 @@
     {
       "id": "d6-diag1",
       "description": "Visualizing Collision Theory: how temperature, concentration, and surface area affect particle collisions.",
-      "imageUrl": "https://images.unsplash.com/photo-1581662853886-0d02cbe6bb0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2xsaXNpb24lMjB0aGVvcnl8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1540456151606-5bbb37c34b51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2xsaXNpb24lMjB0aGVvcnl8ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "collision theory"
-    },
-    {
-      "id": "d6-diag2",
-      "description": "A reaction profile graph showing how a catalyst provides a lower activation energy pathway.",
-      "imageUrl": "https://images.unsplash.com/photo-1738082956233-b8f1803411d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXRhbHlzdCUyMGdyYXBofGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "catalyst graph"
     },
     {
       "id": "d6-mind1",
       "description": "A mindmap illustrating Le Chatelier's Principle and how equilibrium shifts with changes in temperature, pressure, and concentration.",
-      "imageUrl": "https://picsum.photos/seed/d6mind1/600/400",
+      "imageUrl": "https://picsum.photos/seed/d6-mind1/600/400",
       "imageHint": "Le Chatelier"
     },
     {
       "id": "d7-diag1",
       "description": "A diagram of a fractional distillation column used to separate crude oil.",
-      "imageUrl": "https://images.unsplash.com/photo-1602928309809-776bf9db8658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmFjdGlvbmFsJTIwZGlzdGlsbGF0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1701448149957-b96dbd1926ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZnJhY3Rpb25hbCUyMGRpc3RpbGxhdGlvbnxlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fractional distillation"
-    },
-    {
-      "id": "d7-diag2",
-      "description": "Visual comparison of addition and condensation polymerization reactions.",
-      "imageUrl": "https://images.unsplash.com/photo-1711410498845-ee110120e788?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwb2x5bWVyaXphdGlvbiUyMGRpYWdyYW18ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "polymerization diagram"
     },
     {
       "id": "d7-mind1",
       "description": "A mindmap of hydrocarbon families, showing the structures of alkanes, alkenes, alcohols, and carboxylic acids.",
-      "imageUrl": "https://images.unsplash.com/photo-1690960611384-117433022267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoeWRyb2NhcmJvbiUyMGZhbWlsaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1765248149203-b26aca4430f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoeWRyb2NhcmJvbiUyMGZhbWlsaWVzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "hydrocarbon families"
     },
     {
       "id": "d8-diag1",
       "description": "A diagram illustrating a paper chromatography experiment to separate mixtures.",
-      "imageUrl": "https://images.unsplash.com/photo-1648949300036-00adb39ff080?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXBlciUyMGNocm9tYXRvZ3JhcGh5fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1656337426914-5e5ba162d606?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwYXBlciUyMGNocm9tYXRvZ3JhcGh5fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "paper chromatography"
-    },
-    {
-      "id": "d8-diag2",
-      "description": "A chart showing the characteristic colors of flame tests for different metal ions.",
-      "imageUrl": "https://images.unsplash.com/photo-1758221617221-b423936e28bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmbGFtZSUyMHRlc3RzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "flame tests"
     },
     {
       "id": "d8-mind1",
       "description": "A flowchart for identifying an unknown chemical, covering gas tests and ion tests.",
-      "imageUrl": "https://images.unsplash.com/photo-1733426510062-834412655567?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hlbWljYWwlMjBhbmFseXNpc3xlbnwwfHx8fDE3NjkxOTM0OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1673845514907-5258ad7c66f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjaGVtaWNhbCUyMGFuYWx5c2lzfGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chemical analysis"
     },
     {
       "id": "d9-diag1",
       "description": "A timeline showing the evolution of the Earth's atmosphere over billions of years.",
-      "imageUrl": "https://images.unsplash.com/photo-1760405503557-212872d72f01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdG1vc3BoZXJlJTIwZXZvbHV0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1642958439632-71af5ef3c8fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhdG1vc3BoZXJlJTIwZXZvbHV0aW9ufGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "atmosphere evolution"
-    },
-    {
-      "id": "d9-diag2",
-      "description": "A diagram explaining the Greenhouse Effect, showing how certain gases trap heat.",
-      "imageUrl": "https://images.unsplash.com/photo-1567597081373-7d8832f3a102?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncmVlbmhvdXNlJTIwZWZmZWN0fGVufDB8fHx8MTc2OTE5MzQ5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "greenhouse effect"
     },
     {
       "id": "d9-mind1",
       "description": "A mindmap of common atmospheric pollutants and their environmental effects.",
-      "imageUrl": "https://images.unsplash.com/photo-1532300481631-0bc14f3b7699?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhaXIlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1578604665675-9aee692f6ddc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhaXIlMjBwb2xsdXRpb258ZW58MHx8fHwxNzY5MTkzNDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "air pollution"
     }
   ]

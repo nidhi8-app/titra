@@ -35,14 +35,14 @@ import { DiagramsDialog } from './DiagramsDialog';
 
 const diagramFolders: Resource[] = [
   { id: 'd1', title: 'Atomic structure and the periodic table', description: 'Diagrams covering atomic models, structure, and periodic trends.', imageIds: ['d1-diag1'] },
-  { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: 'Visuals of ionic, covalent, and metallic bonds, plus carbon allotropes.', imageIds: ['d2-diag1', 'd2-diag2', 'd2-diag3'] },
-  { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams for the mole concept, reacting masses, and limiting reactants.', imageIds: ['d3-diag1', 'd3-diag2'] },
-  { id: 'd4', title: 'Chemical changes', description: 'Diagrams for reactivity series, electrolysis, and acid reactions.', imageIds: ['d4-diag1', 'd4-diag2'] },
-  { id: 'd5', title: 'Energy changes', description: 'Visuals for reaction profiles, cells, and fuel cells.', imageIds: ['d5-diag1', 'd5-diag2'] },
-  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Diagrams for collision theory, catalysts, and equilibrium.', imageIds: ['d6-diag1', 'd6-diag2'] },
-  { id: 'd7', title: 'Organic chemistry', description: 'Visuals for fractional distillation, polymerization, and hydrocarbon families.', imageIds: ['d7-diag1', 'd7-diag2'] },
-  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography and chemical identification tests.', imageIds: ['d8-diag1', 'd8-diag2'] },
-  { id: 'd9', title: 'Chemistry of the atmosphere', description: 'Visuals explaining atmospheric evolution and the greenhouse effect.', imageIds: ['d9-diag1', 'd9-diag2'] },
+  { id: 'd2', title: 'Bonding, structure, and the properties of matter', description: 'Visuals of ionic, covalent, and metallic bonds, plus carbon allotropes.', imageIds: ['d2-diag1'] },
+  { id: 'd3', title: 'Quantitative chemistry', description: 'Diagrams for the mole concept, reacting masses, and limiting reactants.', imageIds: ['d3-diag1'] },
+  { id: 'd4', title: 'Chemical changes', description: 'Diagrams for reactivity series, electrolysis, and acid reactions.', imageIds: ['d4-diag1'] },
+  { id: 'd5', title: 'Energy changes', description: 'Visuals for reaction profiles, cells, and fuel cells.', imageIds: ['d5-diag1'] },
+  { id: 'd6', title: 'The rate and extent of chemical change', description: 'Diagrams for collision theory, catalysts, and equilibrium.', imageIds: ['d6-diag1'] },
+  { id: 'd7', title: 'Organic chemistry', description: 'Visuals for fractional distillation, polymerization, and hydrocarbon families.', imageIds: ['d7-diag1'] },
+  { id: 'd8', title: 'Chemical analysis', description: 'Diagrams for chromatography and chemical identification tests.', imageIds: ['d8-diag1'] },
+  { id: 'd9', title: 'Chemistry of the atmosphere', description: 'Visuals explaining atmospheric evolution and the greenhouse effect.', imageIds: ['d9-diag1'] },
 ];
 
 const mindmapFolders: Resource[] = [

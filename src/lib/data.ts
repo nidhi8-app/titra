@@ -281,3 +281,5 @@ export const quizQuestions: { [key: string]: QuizQuestion[] } = {
   'deck8': Array.from({ length: 10 }, (_, i) => ({ id: `d8-q${i + 1}`, question: `Chemical analysis Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
   'deck9': Array.from({ length: 10 }, (_, i) => ({ id: `d9-q${i + 1}`, question: `Chemistry of the atmosphere Q${i + 1}`, options: ['A', 'B', 'C', 'D'], correctAnswer: 'A' })),
 };
+
+    

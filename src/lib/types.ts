@@ -34,6 +34,13 @@ export type Friend = {
   avatarUrl: string;
 };
 
+export type Message = {
+  id: string;
+  senderId: string;
+  text: string;
+  timestamp: Date;
+};
+
 export type QuizQuestion = {
   id: string;
   question: string;

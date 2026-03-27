@@ -1,15 +1,130 @@
+
 "use client";
 
-import React, { useState } from 'react';
-import type { Friend, UserDetails } from '@/lib/types';
+import React, { useState, useRef, useEffect } from 'react';
+import type { Friend, Message } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from './ui/button';
-import { UserPlus, MessageSquare, ArrowLeft, Flame, Layers, Search, UserSearch } from 'lucide-react';
+import { UserPlus, MessageSquare, ArrowLeft, Flame, Layers, Search, UserSearch, Send } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from './ui/input';
+import { ScrollArea } from './ui/scroll-area';
+import { useUser } from '@/firebase';
+import { cn } from '@/lib/utils';
+
+const ChatBox = ({ friend }: { friend: Friend }) => {
+  const { user } = useUser();
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom on new message
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  // Initial welcome message from friend
+  useEffect(() => {
+    setMessages([
+      {
+        id: 'welcome',
+        senderId: friend.id,
+        text: `Hey! Ready to study some Chemistry today?`,
+        timestamp: new Date(),
+      }
+    ]);
+  }, [friend]);
+
+  const handleSendMessage = () => {
+    if (!inputValue.trim() || !user) return;
+
+    const newMessage: Message = {
+      id: Date.now().toString(),
+      senderId: user.uid,
+      text: inputValue,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, newMessage]);
+    setInputValue('');
+
+    // Simulated reply after 1 second
+    setTimeout(() => {
+      const reply: Message = {
+        id: (Date.now() + 1).toString(),
+        senderId: friend.id,
+        text: "That sounds like a great plan! Let's hit the quizzes.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, reply]);
+    }, 1000);
+  };
+
+  return (
+    <Card className="flex flex-col h-[500px]">
+      <CardHeader className="border-b p-4">
+        <div className="flex items-center gap-3">
+          <Avatar className="w-8 h-8">
+            <AvatarImage src={friend.avatarUrl} />
+            <AvatarFallback>{friend.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+          <CardTitle className="text-lg">Chat with {friend.name}</CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent className="flex-1 overflow-hidden p-0 flex flex-col">
+        <ScrollArea className="flex-1 p-4">
+          <div className="space-y-4">
+            {messages.map((msg) => {
+              const isMe = msg.senderId === user?.uid;
+              return (
+                <div
+                  key={msg.id}
+                  className={cn(
+                    "flex flex-col max-w-[80%]",
+                    isMe ? "ml-auto items-end" : "mr-auto items-start"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "p-3 rounded-2xl text-sm",
+                      isMe
+                        ? "bg-primary text-primary-foreground rounded-tr-none"
+                        : "bg-muted text-foreground rounded-tl-none"
+                    )}
+                  >
+                    {msg.text}
+                  </div>
+                  <span className="text-[10px] text-muted-foreground mt-1 px-1">
+                    {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </div>
+              );
+            })}
+            <div ref={scrollRef} />
+          </div>
+        </ScrollArea>
+        <div className="p-4 border-t flex gap-2">
+          <Input
+            placeholder="Type a message..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+          />
+          <Button size="icon" onClick={handleSendMessage}>
+            <Send className="h-4 w-4" />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void }) => {
+  const [activeTab, setActiveTab] = useState('feed');
+
   return (
     <div className="p-4 md:p-6">
       <Button variant="ghost" onClick={onBack} className="mb-4">
@@ -27,7 +142,7 @@ const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void 
               <h2 className="text-3xl font-bold">{friend.name}</h2>
             </div>
             <div className="flex gap-4 pt-4">
-              <Button size="lg">
+              <Button size="lg" onClick={() => setActiveTab('chat')}>
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Chat
               </Button>
@@ -38,9 +153,10 @@ const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void 
             </div>
           </CardContent>
         </Card>
-        <Tabs defaultValue="feed" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="feed">Feed</TabsTrigger>
+            <TabsTrigger value="chat">Chat</TabsTrigger>
             <TabsTrigger value="stats">Stats</TabsTrigger>
             <TabsTrigger value="decks">Decks</TabsTrigger>
             <TabsTrigger value="school">School</TabsTrigger>
@@ -51,6 +167,9 @@ const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void 
                 <p>Friend's activity feed will show up here.</p>
               </CardContent>
             </Card>
+          </TabsContent>
+          <TabsContent value="chat">
+            <ChatBox friend={friend} />
           </TabsContent>
           <TabsContent value="stats">
             <Card>
@@ -91,7 +210,19 @@ const FriendProfile = ({ friend, onBack }: { friend: Friend, onBack: () => void 
 
 const FriendsView = () => {
   const [selectedFriend, setSelectedFriend] = useState<Friend | null>(null);
-  const [friends, setFriends] = useState<Friend[]>([]);
+  // Default sample friend for testing
+  const [friends] = useState<Friend[]>([
+    {
+      id: 'f1',
+      name: 'Sarah Chemist',
+      avatarUrl: 'https://api.dicebear.com/8.x/miniavs/svg?seed=Sarah'
+    },
+    {
+      id: 'f2',
+      name: 'James Proton',
+      avatarUrl: 'https://api.dicebear.com/8.x/miniavs/svg?seed=James'
+    }
+  ]);
 
   if (selectedFriend) {
     return <FriendProfile friend={selectedFriend} onBack={() => setSelectedFriend(null)} />;
